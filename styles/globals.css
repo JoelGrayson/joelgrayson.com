@@ -1,16 +1,36 @@
+/* BEGIN Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* END Tailwind */
+
 html,
 body {
-  padding: 0;
+  padding: 0;  
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  font-family: Segoe UI, Roboto, Helvetica Neue, sans-serif;
+}    
 
 * {
-  box-sizing: border-box;
+  box-sizing: border-box;  
+  transition: all 0.3s ease
 }
+*::selection {
+    background-color: #f9c44d;
+}
+a {
+    color: #0000e1;
+    text-decoration: underline;
+}
+a:hover {
+    color: #fa00f2;
+}
+
+main p, main div, main button, main li {
+    padding: 10px
+}
+
+.j_container {
+    @apply max-w-[800px] w-[100%] mx-auto leading-7 py-10
+}
+
