@@ -1,7 +1,7 @@
 import Header from './Header';
 import Footer from './Footer';
 
-export default ({children})=>{
+export default function Page({children}) {
     return <>
         <Header/>
         <main>{children}</main>

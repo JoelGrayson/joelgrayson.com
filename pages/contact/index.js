@@ -1,7 +1,7 @@
 // import styles from'./contact.css';
 import Talking from './talking/talking';
 
-function Contact() {
+export default function Contact() {
     return (
         <div>
             <style jsx>{
@@ -30,7 +30,7 @@ function Contact() {
             <div className='border-black border-solid border-2 w-[540px] h-[540px] mx-auto rounded-3xl my-[100px]
             flex flex-col items-center justify-around
             leading-loose bg-[#fff0d4]'> {/*Box*/}
-                <h2>I'd Love to Talk with You</h2>
+                <h2>I&apos;d Love to Talk with You</h2>
                 <p>Fill out the form below or email <a href='mailto:joel@joelgrayson.com'>joel@joelgrayson.com</a></p>
                 <form id='contactForm' method='POST' className='flex flex-col items-center'>
                     <div className='w-full flex justify-around'>
@@ -46,5 +46,3 @@ function Contact() {
         </div>
     );
 }
-
-export default Contact;

@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Page from './components/Page';
 import joelGraysonPortrait from './Home/Joel Grayson Portrait.webp';
 import signature from './home/signature.gif';
+import circle from './components/circle.png';
 
 export default function Home() {
     return (<Page>
@@ -31,7 +32,7 @@ export default function Home() {
                 <p>Hi friend! Thanks for stopping by. On this page, I will introduce myself. My intention is to share my projects.</p>
                 <p>I love to create. My three main interests are engineering, entrepreneurship, and politics.</p>
                 <p>I am passionate about engineering, Science, politics, and space. Since my Mom paints, and I like business, I
-                decided to found <a href='https://lirongart.com'>Lirong Art</a>, a business selling canvas prints of my mom's paintings. Also, I am fascinated by
+                decided to found <a href='https://lirongart.com'>Lirong Art</a>, a business selling canvas prints of my mom&apos;s paintings. Also, I am fascinated by
                 how things work: biotech (CRISPR), astronomy, physics, the economy, electricity, and math. I hope that the world
                 will unite and work on projects for humanity such as space exploration, scientific research, and ensuring
                 humanity will not go extinct. To understand more cultures, I am fluent in English and Chinese and am working on

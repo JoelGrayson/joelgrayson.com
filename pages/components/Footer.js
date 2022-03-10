@@ -16,9 +16,7 @@ function Footer() {
             >
                 <YoutubeSvg/>
                 <div className='flex items-end'>
-                    <Image src={src}
-                        className='w-13 color-[#0F1CA0] hue-rotate-30 brightness-[0.5]'
-                    />
+                    <Image src={src} className='w-13 color-[#0F1CA0] hue-rotate-30 brightness-[0.5]' alt='S' />
                     <span className='text-xl text-[#0F1CA0]'>laphappy</span>
                 </div>
             </a>
