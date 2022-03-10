@@ -34,3 +34,21 @@ main p, main div, main button, main li {
     @apply max-w-[800px] w-[100%] mx-auto leading-7 py-10
 }
 
+/* Buttons */
+.btn-red {
+    background-color: #E21C21; /* red */
+    color: white;
+
+    /*border*/
+    border: 2px solid #ED3A1E; /* slightly lighter */
+    border-radius: 14px;
+    font-size: 16px;
+    padding: 10px;
+}
+.btn-red:hover {
+    background-color: #f9c44d;
+    border-color: #ffd779;
+}
+.btn-red:active {
+    background-color: #ffd064;
+}
