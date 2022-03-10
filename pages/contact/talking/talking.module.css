@@ -1,0 +1,26 @@
+.leftImgContainer {
+    position: relative;
+    width: 400px;
+}
+.leftImgContainer svg {
+    position: absolute;
+    right: 21px;
+    bottom: 10px;
+    /* transform: scaleY(0.88) scaleX(0.91); */
+    /* show at top
+    z-index: 11;
+    visibility: hidden;
+    */
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 84px;
+    left: 230px;
+    background-color: #ecaa4b;
+    border-radius: 50%;
+    /* border: 1px solid red; */
+    z-index: 1;
+}
