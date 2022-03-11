@@ -1,5 +1,6 @@
 // import styles from'./contact.css';
 import Talking from './talking/talking';
+import Page from '../../components/Page';
 
 export default function Contact() {
     return (

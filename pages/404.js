@@ -1,4 +1,4 @@
-import Page from './components/Page';
+import Page from '../components/Page';
 import shrug from './home/shrug.png';
 import Image from 'next/image';
 import Link from 'next/link';

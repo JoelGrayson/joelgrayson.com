@@ -1,4 +1,4 @@
-import Page from '../../components/Page';
+import Page from '../../../components/Page';
 import Image from 'next/image';
 import styles from './talking.module.css';
 import { useState, useRef, useEffect } from 'react';
