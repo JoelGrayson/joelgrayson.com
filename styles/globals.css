@@ -4,26 +4,50 @@
 @tailwind utilities;
 /* END Tailwind */
 
-html,
-body {
-  padding: 0;  
-  margin: 0;
-  font-family: Segoe UI, Roboto, Helvetica Neue, sans-serif;
-}    
+/* BEGIN Font (sorted by boldness) */
+@font-face {
+    font-family: Avenir;
+    src: url('./fonts/Avenir\ Book.ttf');
+}
+@font-face {
+    font-family: AvenirMedium;
+    src: url('./fonts/Avenir\ Medium.ttf');
+}
+@font-face {
+    font-family: Myriad;
+    src: url('./fonts/Myriad\ Pro\ Bold.ttf');
+}
+/* END Font */
+
+
+
+html, body {
+    padding: 0;  
+    margin: 0;
+    font-family: Avenir, AvenirMedium, Myriad Segoe UI, Roboto, Helvetica Neue, sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: AvenirMedium;
+}
 
 * {
-  box-sizing: border-box;  
-  transition: all 0.3s ease
+    box-sizing: border-box;  
+    transition: all 0.3s ease
 }
-*::selection {
+*::selection { /* yellow highlight color */
     background-color: #f9c44d;
 }
 a {
     color: #0000e1;
     text-decoration: underline;
 }
-a:hover {
-    color: #fa00f2;
+a:not(.unstyled):hover {
+    color: #fa00f2; /* backup for browsers not supporting text gradient */
+    background: -webkit-linear-gradient(45deg, #fa00f2 0%, #000acd 60.42%, #00299d 100%); /* blue/purple gradient text */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: underline;
 }
 
 main p, main div, main button, main li {
@@ -43,7 +67,7 @@ main p, main div, main button, main li {
     border: 2px solid #ED3A1E; /* slightly lighter */
     border-radius: 14px;
     font-size: 16px;
-    padding: 10px;
+    padding: 8px 17px;
 }
 .btn-red:hover {
     background-color: #f9c44d;
