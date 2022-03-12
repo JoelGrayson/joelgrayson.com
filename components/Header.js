@@ -1,12 +1,6 @@
 import {useRouter} from 'next/router';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-
-import circleSig from './circle sig.png';
-import threeDotSigAnimation from './three dot sig animation.gif';
-
-const gifDurationMs=1260; //milliseconds
 
 export default function Header() {
     const { asPath }=useRouter() //the path (window object cannot be used)
@@ -26,6 +20,7 @@ export default function Header() {
                     <Link href='/'><a>
                         <li className='flex items-center pr-4 select-none'>
                             <div className='relative'>
+                                {/* Using <img> below instead of <Image> because reloads */}
                                 <img src={`/images/circle-signature-animation.gif?num=${loadNum}`} alt="Joel Grayson Circle Signature Animation"
                                     height='40px' width='40px'
                                     onMouseEnter={reload} //when hovering icon, replay the signature
@@ -60,9 +55,9 @@ export default function Header() {
 
 function HeaderItem({link /*a href's link*/, asPath, children}) { //highlighted if is current page
     const [bgColor, setBgColor]=useState('#fff');
-    const getColor=_=>link===asPath ? '#ffe273' : '#fff'; //function to get regular color
+    const colorFromUrl=_=>setBgColor(link===asPath ? '#ffe273' : '#fff'); //if the page is the url page, color yellow, otherwise color white
 
-    useEffect(()=>setBgColor(getColor()), []); //initially get color
+    useEffect(colorFromUrl, []); //initially get color
     
     return (
         <Link href={link}>
@@ -74,7 +69,7 @@ function HeaderItem({link /*a href's link*/, asPath, children}) { //highlighted 
                         border-solid border-[#11111130] border-[0.2px]' //active: #ffd13c
                         style={{backgroundColor: bgColor, fontFamily: 'AvenirMedium'}}
                         onMouseEnter={_=>setBgColor('#ffe062')} //hover color
-                        onMouseLeave={_=>setBgColor(getColor())} //when out of hover, return to regular color
+                        onMouseLeave={colorFromUrl} //when out of hover, return to regular color
                     >{children}</button>
                 </li>
             </a>

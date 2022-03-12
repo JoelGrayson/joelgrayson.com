@@ -1,0 +1,19 @@
+.talking {
+    position: absolute;
+    left: -250px;
+    top: 40px;
+    zoom: 0.94;
+    z-index: -1;
+}
+
+.form {
+    padding: 0;
+}
+
+.listening {
+    position: absolute;
+    right: -310px;
+    bottom: 101px;
+    zoom: 0.9;
+    z-index: -1;
+}
