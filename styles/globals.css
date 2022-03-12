@@ -1,10 +1,10 @@
-/* BEGIN Tailwind */
+/* <Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* END Tailwind */
+/* > */
 
-/* BEGIN Font (sorted by boldness) */
+/**|| <Font (sorted by boldness) */
 @font-face {
     font-family: Avenir;
     src: url('./fonts/Avenir\ Book.ttf');
@@ -17,20 +17,14 @@
     font-family: Myriad;
     src: url('./fonts/Myriad\ Pro\ Bold.ttf');
 }
-/* END Font */
+/* > */
 
-
-
+/**|| <Globals */
 html, body {
     padding: 0;  
     margin: 0;
     font-family: Avenir, AvenirMedium, Myriad Segoe UI, Roboto, Helvetica Neue, sans-serif;
 }
-
-h1, h2, h3, h4, h5 {
-    font-family: AvenirMedium;
-}
-
 * {
     box-sizing: border-box;  
     transition: all 0.3s ease
@@ -38,6 +32,25 @@ h1, h2, h3, h4, h5 {
 *::selection { /* yellow highlight color */
     background-color: #f9c44d;
 }
+main p, main div, main button, main li { /* padding in page */
+    padding: 10px
+}
+/* > */
+
+
+/**|| <DOMElements */
+/* Headers */
+h1, h2, h3, h4, h5 {
+    font-family: AvenirMedium;
+}
+h1 { font-size: 3.4rem; font-family: Myriad; }
+h2 { font-size: 2.1rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.3rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1.1rem; }
+
+/* Links */
 a {
     color: #0000e1;
     text-decoration: underline;
@@ -49,11 +62,9 @@ a:not(.unstyled):hover {
     -webkit-text-fill-color: transparent;
     text-decoration: underline;
 }
+/* > */
 
-main p, main div, main button, main li {
-    padding: 10px
-}
-
+/**|| Custom Class Elements */
 .j_container {
     @apply max-w-[800px] w-[100%] mx-auto leading-7 py-10
 }
@@ -76,3 +87,4 @@ main p, main div, main button, main li {
 .btn-red:active {
     background-color: #ffd064;
 }
+/* > */
