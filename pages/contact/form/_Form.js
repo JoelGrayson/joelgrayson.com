@@ -31,7 +31,10 @@ export default function Form() {
                     <input type="text" name="name" id="name" placeholder='Name' />
                     <input type="email" name="email" id="email" placeholder='Email' />
                 </div>
-                <textarea name="message" id="message" cols="50" rows="8" placeholder="Type your message here" form='contactForm'></textarea>
+                <textarea name="message" id="message" placeholder="Type your message here" form='contactForm'
+                    cols="50" rows="8"
+                    className='mx-8'
+                ></textarea>
                 <br/>
                 {/* Captcha? */}
                 <input className='blue-btn w-fit' type="submit" value="Send" />

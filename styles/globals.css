@@ -57,11 +57,19 @@ a {
 }
 a:not(.unstyled):hover {
     color: #fa00f2; /* backup for browsers not supporting text gradient */
-    background: -webkit-linear-gradient(45deg, #fa00f2 0%, #000acd 60.42%, #00299d 100%); /* blue/purple gradient text */
+    background-color: -webkit-linear-gradient(45deg, #fa00f2 0%, #000acd 60.42%, #00299d 100%); /* blue/purple gradient text */
+    font-family: AvenirMedium;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-decoration: underline;
 }
+a>.btn-red:hover { /* .btn-red hover color is white */
+    background-clip: unset;
+    -webkit-text-fill-color: white;
+    color: white;
+    font-family: Avenir;
+}
+
 /* > */
 
 /**|| Custom Class Elements */
