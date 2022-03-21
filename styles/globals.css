@@ -64,7 +64,7 @@ a:not(.unstyled):hover {
     font-family: AvenirMedium;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-decoration: underline;
+    text-decoration: underline; /* does not work because of -webkit-background-clip */
 }
 a>.btn-red:hover { /* .btn-red hover color is white */
     background-clip: unset;

@@ -1,6 +1,8 @@
 import {useRouter} from 'next/router';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
+
+const PathContext=createContext();
 
 export default function Header() {
     const { asPath }=useRouter() //the path (window object cannot be used)
@@ -40,23 +42,27 @@ export default function Header() {
                             </div>
                         </li>
                     </a></Link>
-                    <HeaderItem asPath={asPath} link='/'>Home</HeaderItem>
-                    <HeaderItem asPath={asPath} link='/machines'>Machines</HeaderItem>
-                    <HeaderItem asPath={asPath} link='/projects'>Projects</HeaderItem>
-                    <HeaderItem asPath={asPath} link='/art'>Art</HeaderItem>
-                    <HeaderItem asPath={asPath} link='/performances'>Performances</HeaderItem>
-                    <HeaderItem asPath={asPath} link='/perspective'>The Perspective</HeaderItem>
-                    <HeaderItem asPath={asPath} link='/contact'>Contact</HeaderItem>
+                    <PathContext.Provider value={asPath}>
+                        <HeaderItem link='/'>Home</HeaderItem>
+                        <HeaderItem link='/machines'>Machines</HeaderItem>
+                        <HeaderItem link='/projects'>Projects</HeaderItem>
+                        <HeaderItem link='/art'>Art</HeaderItem>
+                        <HeaderItem link='/performances'>Performances</HeaderItem>
+                        <HeaderItem link='/perspective'>The Perspective</HeaderItem>
+                        <HeaderItem link='/contact'>Contact</HeaderItem>
+                    </PathContext.Provider>
                 </ul>
             </nav>
         </header>
     );
 }
 
-function HeaderItem({link /*a href's link*/, asPath, children}) { //highlighted if is current page
+function HeaderItem({link /*a href's link*/, children}) { //highlighted if is current page
+    const asPath=useContext(PathContext);
+
     const [bgColor, setBgColor]=useState('#fff');
     const colorFromUrl=_=>setBgColor(link===asPath ? '#ffe273' : '#fff'); //if the page is the url page, color yellow, otherwise color white
-
+    
     useEffect(colorFromUrl, []); //initially get color
     
     return (
