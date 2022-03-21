@@ -33,7 +33,10 @@ html, body {
     background-color: #f9c44d;
 }
 main p, main div, main button, main li { /* padding in page */
-    padding: 10px
+    padding: 10px;
+}
+input[type='submit'] {
+    cursor: pointer;
 }
 /* > */
 
@@ -57,7 +60,7 @@ a {
 }
 a:not(.unstyled):hover {
     color: #fa00f2; /* backup for browsers not supporting text gradient */
-    background-color: -webkit-linear-gradient(45deg, #fa00f2 0%, #000acd 60.42%, #00299d 100%); /* blue/purple gradient text */
+    background: -webkit-linear-gradient(45deg, #fa00f2 0%, #000acd 60%, #00299d 100%); /* blue/purple gradient text */
     font-family: AvenirMedium;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
