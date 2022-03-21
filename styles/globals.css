@@ -55,10 +55,13 @@ h6 { font-size: 1.1rem; }
 
 /* Links */
 a {
+    cursor: pointer;
+}
+a:not(.unstyled) {
     color: #0000e1;
     text-decoration: underline;
 }
-a:not(.unstyled):hover {
+a:not(.unstyled):hover, .gradient-text { /* gradient text onHover */
     color: #fa00f2; /* backup for browsers not supporting text gradient */
     background: -webkit-linear-gradient(45deg, #fa00f2 0%, #000acd 60%, #00299d 100%); /* blue/purple gradient text */
     font-family: AvenirMedium;

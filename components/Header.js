@@ -5,7 +5,7 @@ import { useState, useEffect, createContext, useContext } from 'react';
 const PathContext=createContext();
 
 export default function Header() {
-    const { asPath }=useRouter() //the path (window object cannot be used)
+    const { asPath }=useRouter(); //the path (window object cannot be used)
     
     const [loadNum, setLoadNum]=useState(0);
     const reload=()=>setLoadNum(Math.random()); //reloads & replays the gif
@@ -44,17 +44,97 @@ export default function Header() {
                     </a></Link>
                     <PathContext.Provider value={asPath}>
                         <HeaderItem link='/'>Home</HeaderItem>
-                        <HeaderItem link='/machines'>Machines</HeaderItem>
-                        <HeaderItem link='/projects'>Projects</HeaderItem>
-                        <HeaderItem link='/art'>Art</HeaderItem>
-                        <HeaderItem link='/performances'>Performances</HeaderItem>
-                        <HeaderItem link='/perspective'>The Perspective</HeaderItem>
+                        <HeaderGroup title='Projects'>
+                            <HeaderGroupItem link='/art'>Art</HeaderGroupItem>
+                            <HeaderGroupItem link='/machines'>Machines</HeaderGroupItem>
+                            <HeaderGroupItem link='/performances'>Violin &amp; Piano</HeaderGroupItem>
+                            <HeaderGroupItem link='/slaphappy'>Slaphappy</HeaderGroupItem>
+                        </HeaderGroup>
+                        {/* <HeaderGroup title='Combating Climate Change'>
+                            <HeaderGroupItem link='/art'>★ Home</HeaderGroupItem>
+                            <HeaderGroupItem link='/machines'>Solar for Riverdale</HeaderGroupItem>
+                            <HeaderGroupItem link='/performances'>Electric School Buses</HeaderGroupItem>
+                            <HeaderGroupItem link='/slaphappy'>Electric Leaf Blowers</HeaderGroupItem>
+                        </HeaderGroup> */}
                         <HeaderItem link='/contact'>Contact</HeaderItem>
+                        
+                        {/* <HeaderItem link='/machines'>Machines</HeaderItem> */}
+                        {/* <HeaderItem link='/projects'>Projects</HeaderItem> */}
+                        {/* <HeaderItem link='/art'>Art</HeaderItem>
+                        <HeaderItem link='/performances'>Performances</HeaderItem>
+                        <HeaderItem link='/perspective'>The Perspective</HeaderItem> */}
                     </PathContext.Provider>
                 </ul>
             </nav>
         </header>
     );
+}
+
+function HeaderGroup({title, children}) {
+    const [open, setOpen]=useState(false);
+    
+    return (<>
+        <li onMouseLeave={_=>setOpen(false)}>
+            {/* Active is when mouseDown on button */}
+            <button
+                className='text-black font-[15px] mx-[9px] bg-white rounded-[13px] py-[0.6rem] px-7 select-none
+                border-solid border-[#11111130] border-[0.2px] hover:bg-[#ffe062] ' //active: #ffd13c
+                style={{fontFamily: 'AvenirMedium'}}
+                onMouseEnter={_=>{
+                    setOpen(true);
+                }}
+            >
+                {title}
+                {/* v    down arrow */}
+                <svg width="14" height="12" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    className='inline ml-2'
+                    style={{
+                        animation: 'transform 0.5s',
+                        transform: open ? 'scaleY(-1)' : '' //'rotate(180deg)'
+                    }}
+                >
+                    <path d="M1 1L10.328 16.7104C10.4055 16.8409 10.5945 16.8409 10.672 16.7104L20 1" stroke="black" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+            </button>
+            
+            {
+                open && <div className='absolute ml-3 p-4 rounded-md height-fit border-2 bg-[rgb(255,255,255,0.8)] border-gray-500 z-10'>
+                    {/* Vertical line */}
+                    <div style={{
+                        height: 'calc(100% - 27px)',
+                        width: '2px',
+                        backgroundColor: 'black',
+                        position: 'absolute',
+                        left: '14px',
+                        top: 0,
+                    }}></div>
+                    
+                    {children}
+                </div>
+            }
+        </li>
+    </>);
+}
+
+function HeaderGroupItem({link, children}) {
+    const [hovered, setHovered]=useState(false);
+    
+    return (<a className='unstyled relative' href={link || '#'}>
+        <div
+            onMouseEnter={_=>setHovered(true)}
+            onMouseLeave={_=>setHovered(false)}
+        >
+            {/* Arrow */}
+            <svg width={hovered ? '35' : "33"} height="15" viewBox="0 0 33 15" fill="none" xmlns="http://www.w3.org/2000/svg"
+                className='inline pr-2'
+            >
+                <path d="M0 6.90909H31M31 6.90909L22.5 14M31 6.90909L22.5 1" stroke="black" strokeWidth="2"/>
+            </svg>
+
+            {/* Content */}
+            <span className={hovered ? "gradient-text" : ""}>{children}</span>
+        </div>
+    </a>);
 }
 
 function HeaderItem({link /*a href's link*/, children}) { //highlighted if is current page
