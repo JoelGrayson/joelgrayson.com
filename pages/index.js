@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import Page from '../components/Page';
-import joelGraysonPortrait from './Home/Joel Grayson Portrait.webp';
 import signature from './home/signature.gif';
 
 export default function Home() {
@@ -39,7 +38,8 @@ export default function Home() {
 
                     {/* portrait */}
                     <div className='absolute p-0 bottom-0 mb-[-6px] right-24' style={{clipPath: 'inset(0 0 6px 1px)'}}>
-                        <Image src={joelGraysonPortrait} alt="Profile" id='profilePicture' height='270px' width='219px' />
+                        {/* <img> instead of <Image> to use image source from public */}
+                        <img src='/images/Joel Grayson Transparent.png' alt='Profile' id='profilePicture' height='270px' width='209px' />
                     </div>
                 </div>
             </div>
