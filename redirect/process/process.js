@@ -7,35 +7,35 @@ function process(
     const output=[];
     Object.entries(input).forEach(([key, val])=>{
         switch (getType(val)) {
-            case 'string':
-                output.push({
-                    source: key,
-                    destination: val,    
-                    permanent
-                });
-                break;
-            case 'regex':
-                output.push({
-                    source: key,
-                    destination: val.toString(),
-                    permanent
-                })
-                break;
             case 'array':
-                val.forEach(singleVal=>{ //val is an array of singleVals
-                    output.push({
-                        source: key,
-                        destination: singleVal,
-                        permanent
-                    });
-                });
+                for (let singleVal of val) { //array of singleVals
+                    output.push(packageIntoObj(key, singleVal, permanent));
+                }
                 break;
-            default:
-                throw new TypeError('value must be string, regex, or array');
+            default: //any other valid single item
+                output.push(packageIntoObj(key, val, permanent));
         }
     })
     return output;
 }
 
+function packageIntoObj(key, val, permanent) { //converts key and value -> obj for redirect
+    switch (getType(val)) {
+        case 'string':
+            return { //key is the destination, value is the src so it can be an array, regex, etc.
+                source: val,
+                destination: key,
+                permanent
+            };
+        case 'regex':
+            return {
+                source: val,
+                destination: key,
+                permanent
+            };
+        default:
+            throw new TypeError('Value must be a string, regex, or array');
+    }
+}
 
 module.exports=process;
