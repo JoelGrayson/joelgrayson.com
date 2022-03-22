@@ -50,7 +50,7 @@ function Talking() {
                 scaleY: 0
             }
         })
-    });
+    }, []);
 
     return (<>
         <div id='talking' ref={talkingRef}>

@@ -1,7 +1,9 @@
 import {useRouter} from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect, createContext, useContext } from 'react';
+import { useState, useEffect, createContext, useRef, useContext } from 'react';
+
+import { gsap } from 'gsap';
 
 const PathContext=createContext();
 
@@ -10,6 +12,34 @@ export default function Header() {
     
     const [loadNum, setLoadNum]=useState(0);
     const reload=()=>setLoadNum(Math.random()); //reloads & replays the gif
+
+    const bowRef=useRef();    
+
+    useEffect(()=>{ //violin bow animation back and forth
+        const offset=1;
+        const dist=7;
+        
+        const from = {
+            x: -1*dist+offset,
+            y: -1*dist+offset
+        };
+        const to={
+            x: dist+offset,
+            y: dist+offset,
+        };
+        
+        gsap.set(bowRef.current, from);
+        
+        const tl=gsap.timeline({
+            repeat: -1,
+            yoyo: true
+        });
+        tl.to(bowRef.current, {
+            ...to,
+            duration: .6,
+            ease: 'power0'
+        });
+    }, []);
     
     return (
         //Classname order: gradient, border, other
@@ -51,7 +81,10 @@ export default function Header() {
                                 <span className='relative'>
                                     Violin &amp; Piano &emsp;&nbsp;&nbsp;
                                     <div className='absolute right-[-12px] bottom-[-10px]'>
-                                        <Image src='/images/header/Violin.png' height='42px' width='42px' />
+                                        <Image src='/images/header/violin.png' height='42px' width='42px' alt='violin' />
+                                    </div>
+                                    <div className='absolute right-[-12px] bottom-[-10px]' ref={bowRef}>
+                                        <Image src='/images/header/bow.png' height='42px' width='42px' alt='bow' />
                                     </div>
                                 </span>
                             </HeaderGroupItem>
