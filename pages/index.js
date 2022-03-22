@@ -23,7 +23,9 @@ export default function Home() {
         }</style>
         <Head>
             <title>Joel Grayson</title>
-            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            <meta charSet="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
         </Head>
         <div className='w-full p-0 m-0'>
             {/* top */}
@@ -38,8 +40,7 @@ export default function Home() {
 
                     {/* portrait */}
                     <div className='absolute p-0 bottom-0 mb-[-6px] right-24' style={{clipPath: 'inset(0 0 6px 1px)'}}>
-                        {/* <img> instead of <Image> to use image source from public */}
-                        <img src='/images/Joel Grayson Transparent.png' alt='Profile' id='profilePicture' height='270px' width='209px' />
+                        <Image src='/images/Joel Grayson Transparent.png' alt='Profile' id='profilePicture' height='270px' width='209px' />
                     </div>
                 </div>
             </div>
@@ -48,11 +49,11 @@ export default function Home() {
                 <p>Hi friend! Thanks for stopping by. On this page, I will introduce myself. My intention is to share my projects.</p>
                 <p>I love to create. My three main interests are engineering, entrepreneurship, and politics.</p>
                 <p>I am passionate about engineering, Science, politics, and space. Since my Mom paints, and I like business, I
-                decided to found <a href='https://lirongart.com'>Lirong Art</a>, a business selling canvas prints of my mom&apos;s paintings. Also, I am fascinated by
+                decided to found <a href='https://lirongart.com' target='_blank' rel="noopener noreferrer">Lirong Art</a>, a business selling canvas prints of my mom&apos;s paintings. Also, I am fascinated by
                 how things work: biotech (CRISPR), astronomy, physics, the economy, electricity, and math. I hope that the world
                 will unite and work on projects for humanity such as space exploration, scientific research, and ensuring
                 humanity will not go extinct. To understand more cultures, I am fluent in English and Chinese and am working on
-                Spanish. I enjoy chess, perform <a href='https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A'>comedy with Dad</a>, and play the violin.</p>
+                Spanish. I enjoy chess, perform <a href='https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A' target='_blank' rel="noopener noreferrer">comedy with Dad</a>, and play the violin.</p>
                 <p>Click below to explore some of my projects:</p>
                 <div className='buttons'>
                     <li><Link href='/art'><a><button className='btn-red'>Art</button></a></Link></li>

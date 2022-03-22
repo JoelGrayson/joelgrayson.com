@@ -6,8 +6,8 @@ import { gsap } from 'gsap';
 export default function Listening() {
     return (<>
         <div className='flex'>
-            <Image src={trumpet} alt="Trumpet"/>
-            <img src='/images/Listening Joel.webp' alt="Listening Joel" className='pl-5'
+            <Image src={trumpet} alt="Trumpet" />
+            <Image src='/images/Listening Joel.webp' alt="Listening Joel" className='pl-5' width='216px' height='181px'
                 onMouseEnter={e=>{ //lean when hovering
                     gsap.set(e.target, { //move aside
                         x: -30,

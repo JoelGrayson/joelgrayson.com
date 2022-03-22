@@ -143,7 +143,7 @@ function HeaderItem({link /*a href's link*/, children}) { //highlighted if is cu
     const [bgColor, setBgColor]=useState('#fff');
     const colorFromUrl=_=>setBgColor(link===asPath ? '#ffe273' : '#fff'); //if the page is the url page, color yellow, otherwise color white
     
-    useEffect(colorFromUrl, []); //initially get color
+    useEffect(colorFromUrl, [asPath, link]); //initially get color
     
     return (
         <Link href={link}>
