@@ -1,3 +1,0 @@
-{
-    "presets": ["next/babel"] //disable SWC -> babel (slower, but less buggy)
-}
