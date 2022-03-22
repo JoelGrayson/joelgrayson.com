@@ -1,5 +1,6 @@
 import {useRouter} from 'next/router';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect, createContext, useContext } from 'react';
 
 const PathContext=createContext();
@@ -12,17 +13,16 @@ export default function Header() {
     
     return (
         //Classname order: gradient, border, other
-        <header>
-            <nav className='
-                border-solid border-b-[1px] border-black p-3
-                bg-gradient-to-b from-[#fcd98b] to-[#faca62]
-                w-full flex justify-center'
-            >
+        <header className='w-full
+            border-solid border-b-[1px] border-black p-3
+            bg-gradient-to-b from-[#fcd98b] to-[#faca62]'
+        >
+            <nav className='j_max-w mx-auto'>
                 <ul className='flex list-none items-center'>
                     <Link href='/'><a>
                         <li className='flex items-center pr-4 select-none'>
                             <div className='relative'>
-                                {/* Using <img> below instead of <Image> because reloads */}
+                                {/* Using <img> below instead of <Image> because reloads onHover */}
                                 <img src={`/images/circle-signature-animation.gif?num=${loadNum}`} alt="Joel Grayson Circle Signature Animation"
                                     height='40px' width='40px'
                                     onMouseEnter={reload} //when hovering icon, replay the signature
@@ -47,7 +47,14 @@ export default function Header() {
                         <HeaderGroup title='Projects'>
                             <HeaderGroupItem link='/art'>Art</HeaderGroupItem>
                             <HeaderGroupItem link='/machines'>Machines</HeaderGroupItem>
-                            <HeaderGroupItem link='/performances'>Violin &amp; Piano</HeaderGroupItem>
+                            <HeaderGroupItem link='/performances'>
+                                <span className='relative'>
+                                    Violin &amp; Piano &emsp;&nbsp;&nbsp;
+                                    <div className='absolute right-[-12px] bottom-[-10px]'>
+                                        <Image src='/images/header/Violin.png' height='42px' width='42px' />
+                                    </div>
+                                </span>
+                            </HeaderGroupItem>
                             <HeaderGroupItem link='/slaphappy'>Slaphappy</HeaderGroupItem>
                         </HeaderGroup>
                         {/* <HeaderGroup title='Combating Climate Change'>
@@ -71,7 +78,7 @@ export default function Header() {
 }
 
 function HeaderGroup({title, children}) {
-    const [open, setOpen]=useState(false);
+    const [open, setOpen]=useState(true);
     
     return (<>
         <li onMouseLeave={_=>setOpen(false)}>

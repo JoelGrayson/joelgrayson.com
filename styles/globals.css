@@ -61,7 +61,9 @@ a:not(.unstyled) {
     color: #0000e1;
     text-decoration: underline;
 }
-a:not(.unstyled):hover, .gradient-text { /* gradient text onHover */
+a:not(.unstyled):hover,
+.gradient-text,
+.gradient-text * { /* gradient text onHover */
     color: #fa00f2; /* backup for browsers not supporting text gradient */
     background: -webkit-linear-gradient(45deg, #fa00f2 0%, #000acd 60%, #00299d 100%); /* blue/purple gradient text */
     font-family: AvenirMedium;
@@ -80,7 +82,7 @@ a>.btn-red:hover { /* .btn-red hover color is white */
 
 /**|| Custom Class Elements */
 .j_container {
-    @apply max-w-[800px] w-[100%] mx-auto leading-7 py-10
+    @apply w-[100%] mx-auto leading-7 py-10;
 }
 
 /* Buttons */
@@ -101,4 +103,9 @@ a>.btn-red:hover { /* .btn-red hover color is white */
 .btn-red:active {
     background-color: #ffd064;
 }
+
+.j_max-w { /* page width */
+    max-width: 800px;
+}
+
 /* > */

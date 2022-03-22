@@ -1,12 +1,5 @@
 **/.DS_Store
 **/.env
 
-# dependencies
-/node_modules
-
-/.next/
-/out/
-.vercel
-
-# production
-/build
+node_modules
+.next

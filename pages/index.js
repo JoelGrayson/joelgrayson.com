@@ -3,12 +3,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import Page from '../components/Page';
-import signature from './home/signature.gif';
 
 export default function Home() {
     return (<Page>
-        <style jsx>{
-            `
+        <style jsx>{`
             .buttons { /* button grid */
                 display: -ms-grid;
                 display: grid;
@@ -19,8 +17,7 @@ export default function Home() {
                 list-style-type: none;
                 margin: 0 auto;
             }
-            `
-        }</style>
+        `}</style>
         <Head>
             <title>Joel Grayson</title>
             <meta charSet="UTF-8"/>
@@ -32,10 +29,10 @@ export default function Home() {
             <div className='w-full h-[290px] p-0'
                 style={{background: "linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(216,216,216,1) 100%)"}}
             >
-                <div className='max-w-[800px] relative mx-auto h-full'> {/* container for images same width as content */}
+                <div className='j_max-w relative mx-auto h-full'> {/* container for images same width as content */}
                     {/* signature gif */}
                     <div className='absolute bottom-8 left-11'>
-                        <Image src={signature} alt='Joel Grayson Signature' width='371px' height='150px' />
+                        <Image src='/images/signature.gif' alt='Joel Grayson Signature' width='371px' height='150px' />
                     </div>
 
                     {/* portrait */}
@@ -45,7 +42,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <article className='j_container'>
+            <article className='j_container j_max-w'>
                 <p>Hi friend! Thanks for stopping by. On this page, I will introduce myself. My intention is to share my projects.</p>
                 <p>I love to create. My three main interests are engineering, entrepreneurship, and politics.</p>
                 <p>I am passionate about engineering, Science, politics, and space. Since my Mom paints, and I like business, I
