@@ -7,5 +7,5 @@ module.exports = {
         extend: {}
     },
     plugins: [],
-    purge: ["./src/**/*.html", "./src/**/*.js", "./src/**/*.jsx", "./public/**/*.html"],
+    purge: ['./components/*.{js,ts,jsx,tsx}', './pages/*.{js,ts,jsx,tsx}'],
 };
