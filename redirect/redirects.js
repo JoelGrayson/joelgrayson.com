@@ -33,6 +33,7 @@ const permanent={ //301
     '/study-music': '/study',
     '/to-be-finder': ['/to-be', '/to-be-verb', '/to-be-verb-finder', '/be-verb'],
     '/programs': ['/tools', '/tool'],
+    '/combating-climate-change': ['/ccc', '/climate-change']
 };
 
 const temporary={ //302
