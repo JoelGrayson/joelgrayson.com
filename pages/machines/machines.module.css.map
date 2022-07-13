@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAWA,QAAQ",
+    "sources": [
+        "machines.module.sass"
+    ],
+    "names": [],
+    "file": "machines.module.css"
+}

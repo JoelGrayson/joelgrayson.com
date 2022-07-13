@@ -1,4 +1,22 @@
+import axios from 'axios';
+import { useState } from 'react';
+
 export default function Form() {
+    const [submitted, setSubmitted]=useState(false);
+    
+    function formSubmit(e) {
+        e.preventDefault();
+        const name=e.target[0].value;
+        const email=e.target[1].value;
+        const message=e.target[2].value;
+
+        axios.post('/api/contact', { name, email, message })
+        .then(res=>{
+            console.log(res);
+            setSubmitted(true);
+        });
+    }
+    
     return (<>
         <style jsx>{`
             input, textarea {
@@ -26,19 +44,25 @@ export default function Form() {
             leading-loose bg-[#fff0d4]'> {/*Box*/}
             <h2>I&apos;d Love to Talk with You</h2>
             <p>Fill out the form below or email <a href='mailto:joel@joelgrayson.com'>joel@joelgrayson.com</a></p>
-            <form id='contactForm' method='POST' className='flex flex-col items-center'>
-                <div className='w-full flex justify-around'>
-                    <input type="text" name="name" id="name" placeholder='Name' />
-                    <input type="email" name="email" id="email" placeholder='Email' />
-                </div>
-                <textarea name="message" id="message" placeholder="Type your message here" form='contactForm'
-                    cols="50" rows="8"
-                    className='mx-8'
-                ></textarea>
-                <br/>
-                {/* Captcha? */}
-                <input className='blue-btn w-fit' type="submit" value="Send" />
-            </form>
+            {
+                submitted
+                ?
+                <div className='text-green-500 font-bold'>Message received. Thanks for getting in touch!</div>
+                :
+                <form id='contactForm' method='POST' className='flex flex-col items-center' action='#' onSubmit={formSubmit}>
+                    <div className='w-full flex justify-around'>
+                        <input type="text" name="name" id="name" placeholder='Name' />
+                        <input type="email" name="email" id="email" placeholder='Email' />
+                    </div>
+                    <textarea name="message" id="message" placeholder="Type your message here" form='contactForm'
+                        cols="50" rows="8"
+                        className='mx-8'
+                    ></textarea>
+                    <br/>
+                    {/* Captcha? */}
+                    <input className='blue-btn w-fit' type="submit" value="Send" />
+                </form>
+            }
         </div>
     </>);
 }

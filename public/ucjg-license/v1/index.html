@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCJG License v1</title>
+    <link href='https://w.joelgrayson.com/styles/button.v2.css' rel='stylesheet'>
+    <style>
+        .form div {
+            margin: 1rem;
+        }
+    </style>
+</head>
+<body>    
+    <main>
+        <div class="form">
+            <div>Please fill out the following fields and click <button class="generate">Generate</button>:</div>
+            <div>UCJG License V1</div>
+        
+            <div>Copyright (c) <input type="text" placeholder="Year" id="year"> <input type="text" placeholder="Name" id="name"> <<input type="email" placeholder="Email" id="email">></div>
+        
+            <div>You may not privately distribute this software or use it for any commercial purpose. Any code base that incorporate this software must include this unmodified license, remain open-source to the public. The owner(s) of the code base must email the author of this software the purpose for using its code and the open-source code base link.</div>
+        
+            <div>If you violate the aforementioned terms, a Jubjub bird will sue you and your entire family until you live on the streets.</div>
+        
+            <div style="width: 100%; display: flex; justify-content: center;">
+                <button class="generate">Generate</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.querySelector('input#year').value=new Date().getFullYear();
+
+        document.querySelectorAll('.generate').forEach(el=>el.addEventListener('click', ()=>{ //all 'Generate' buttons create responsej
+            const res={ //response
+                year: document.getElementById('year').value,
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value
+            };
+
+
+            
+            const innerTxt='UCJG License V1\n\n' //license content
+                +`Copyright (c) ${res.year} ${res.name} <${res.email}>\n\n`
+                +'You may not privately distribute this software or use it for any commercial purpose. Any code base that incorporate this software must include this unmodified license, remain open-source to the public. The owner(s) of the code base must email the author of this software the purpose for using its code and the open-source code base link.\n\n'
+                +'If you violate the aforementioned terms, a Jubjub bird will sue you and your entire family until you live on the streets.';
+            
+            const generatedStr=`<pre style='white-space: pre-wrap'>` //wrap in pre
+                +innerTxt.replace('<', '&lt;').replace('>', '&gt;') //replace with HTML escape characters
+                +'</pre>';
+            
+            document.querySelector('main').innerHTML=generatedStr; //show in browser
+
+            // Download from blob
+            const linkEl=document.createElement('a');
+            const blob=new Blob([innerTxt], {type: 'text/plain'});
+            linkEl.href=window.URL.createObjectURL(blob);
+            linkEl.download='LICENSE';
+            linkEl.click();
+        }));
+    </script>
+</body>
+</html>
