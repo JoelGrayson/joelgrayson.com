@@ -14,7 +14,7 @@ export default function LinkDoc() {
                 <p>
                     <b><i>No configuration necessary.</i></b>
                     <br/>
-                    Want a fancy link on your site, but don't want to have to configure it like mad? This package can be used just like &lt;a href=""&gt;&lt;/a&gt;, but it shows a popup modal of where the address is and is an aesthetically pleasing rainbow when hovered.
+                    Want a fancy link on your site, but don&apos;t want to have to configure it like mad? This package can be used just like &lt;a href=&quot;&quot;&gt;&lt;/a&gt;, but it shows a popup modal of where the address is and is an aesthetically pleasing rainbow when hovered.
                     <br/><br/>
                 </p>
             </div>

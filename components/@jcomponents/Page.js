@@ -9,7 +9,7 @@ export default function Home({children}) {
         <Header color='#a9ceff'>
             <div> {/* Left */}
                 <Link href='/@jcomponents/'><a>
-                    <Image src='/images/@jcomponents/logo.png' width='80px' height='80px' />
+                    <Image src='/images/@jcomponents/logo.png' width='80px' height='80px' alt='logo' />
                 </a></Link>
             </div>
             <div> {/* Right */}

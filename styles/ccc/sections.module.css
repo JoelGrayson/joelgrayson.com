@@ -1,0 +1,31 @@
+.section {
+  position: relative;
+  width: 100vw;
+  background-color: #ddd;
+  padding: 25px 50px;
+  border-bottom: 1px solid black;
+}
+
+.section:last-child {
+  border: 0;
+}
+
+.content {
+  display: block;
+  width: 95%;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.75rem;
+  padding: 3px 2.5rem;
+}
+
+.contents-title {
+  font-family: Myriad;
+  font-size: 1.8rem;
+}
+
+.action-title {
+  font-family: Avenir-Medium;
+  font-size: 1.2rem;
+}
+/*# sourceMappingURL=sections.module.css.map */

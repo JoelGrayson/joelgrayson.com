@@ -9,8 +9,8 @@ export default function Home() {
         <br/>
         <h3>Contribute</h3>
         <ul>
-            <li>Source code: <a href='https://github.com/JoelGrayson/JComponents' target='_blank'>github.com/JoelGrayson/JComponents</a></li>
-            <li>Issue tracker: <a href="https://github.com/JoelGrayson/JComponents/issues" target='_blank'>github.com/JoelGrayson/JComponents/issues</a></li>
+            <li>Source code: <a href='https://github.com/JoelGrayson/JComponents' target='_blank' rel='noreferrer'>github.com/JoelGrayson/JComponents</a></li>
+            <li>Issue tracker: <a href="https://github.com/JoelGrayson/JComponents/issues" target='_blank' rel='noreferrer'>github.com/JoelGrayson/JComponents/issues</a></li>
         </ul>
     </Page>);
 }

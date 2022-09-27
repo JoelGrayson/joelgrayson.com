@@ -5,6 +5,10 @@
   border: 2px solid brown;
   width: calc(min(250px, 60vw));
   min-height: 200px;
+  z-index: 1;
+  background-color: #fafafa;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .collapsedViewer {
@@ -31,4 +35,4 @@
   right: 25px;
   bottom: 22px;
 }
-/*# sourceMappingURL=ccc.module.css.map */
+/*# sourceMappingURL=viewer.module.css.map */

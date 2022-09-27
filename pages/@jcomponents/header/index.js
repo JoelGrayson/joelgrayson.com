@@ -12,7 +12,7 @@ export default function HeaderDoc() {
                 <h3>Description</h3>
                 <p>
                     Left and right sides.
-                    For example, you can put your website's icon on the left and the navigation on the right.
+                    For example, you can put your website&apos;s icon on the left and the navigation on the right.
                 </p>
             </div>
             <div> {/* Right */}

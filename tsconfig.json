@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/combating-climate-change/index.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/combating-climate-change/index.js", "pages/projects/machines/index.jsx"],
   "exclude": ["node_modules"]
 }

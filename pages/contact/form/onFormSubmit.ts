@@ -1,4 +1,4 @@
-export default function onFormSubmit(setSubmitted) {
+export default function onFormSubmit(setSubmitted: Function) {
     return (e: any)=>{
         e.preventDefault();
         

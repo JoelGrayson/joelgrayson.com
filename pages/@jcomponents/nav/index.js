@@ -13,7 +13,7 @@ export default function NavDoc() {
                 <p>
                     The Nav &amp; NavItem element can be used to quickly &amp; easily create headers that update to show which page you are on.
                     <br/><br/>
-                    If used in next.js, you can pass in next's Link from next/link into the Link property of NavItem. Otherwise, if you are just in plain react, skip this step.
+                    If used in next.js, you can pass in next&apos;s Link from next/link into the Link property of NavItem. Otherwise, if you are just in plain react, skip this step.
                 </p>
             </div>
             <div> {/* Right */}
