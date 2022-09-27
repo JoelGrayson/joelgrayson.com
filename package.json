@@ -11,6 +11,12 @@
   "dependencies": {
     "@emotion/css": "^11.10.0",
     "@emotion/styled": "^11.10.4",
+    "@jcomponents/button": "^1.0.9",
+    "@jcomponents/container": "^1.0.1",
+    "@jcomponents/header": "^1.1.6",
+    "@jcomponents/link": "^1.0.0",
+    "@jcomponents/modal": "^1.0.6",
+    "@jcomponents/nav": "^1.1.5",
     "@sendgrid/mail": "^7.7.0",
     "autoprefixer": "^10.4.12",
     "axios": "^0.27.2",
@@ -20,6 +26,8 @@
     "next": "^12.3.1",
     "postcss": "^8.4.16",
     "react": "^18.2.0",
+    "react-code-blocks": "^0.0.9-0",
+    "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
     "sharp": "^0.31.0",
     "tailwindcss": "^3.1.8"
