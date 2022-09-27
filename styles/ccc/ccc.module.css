@@ -1,1 +1,6 @@
-/* No CSS *//*# sourceMappingURL=ccc.module.css.map */
+.viewer {
+  position: absolute;
+  bottom: 0;
+  right: calc(max(50vw - 400px, 10px));
+}
+/*# sourceMappingURL=ccc.module.css.map */

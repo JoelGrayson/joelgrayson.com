@@ -38,13 +38,15 @@ export default function Home() {
                 <li><Link href='/machines'><a><button className='btn-red'>Machines</button></a></Link></li>
                 <li><Link href='/performances'><a><button className='btn-red'>Performances</button></a></Link></li>
                 <li><Link href='https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A'><a><button className='btn-red'>Comedy with Dad</button></a></Link></li>
-                <li><button className='btn-red'>Student Council Campaigns</button></li>
+                <li><button className='btn-red'>Student Government Campaigns</button></li>
                 <li><button className='btn-red'>My Flag</button></li>
                 <li><Link href='https://lirongart.com'><a><button className='btn-red'>Lirong Art (Business)</button></a></Link></li>
             </div>
 
-            {/* Recent Projects */}
-            <section className='bg-slate-400'>
+        </article>
+        {/* Recent Projects */}
+        <article className='bg-slate-400 w-[100vw] pb-12 pt-4'>
+            <section className='j_container j_max-w'>
                 <h2 className='text-center'>Recent Projects</h2>
                 {/* Homework Checker Video */}
                 <div>

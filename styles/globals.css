@@ -86,7 +86,11 @@ a>.btn-red:hover { /* .btn-red hover color is white */
 
 /**|| Custom Class Elements */
 .j_container {
-    @apply w-[100%] mx-auto leading-7 py-10;
+    /* @apply w-[100%] mx-auto leading-7 py-10; */
+    width: 100%;
+    margin: 0 auto;
+    line-height: 1.75rem;
+    padding: 0 2.5rem;
 }
 
 /* Buttons */

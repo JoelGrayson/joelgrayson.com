@@ -1,72 +1,64 @@
-import { useRef, useEffect } from 'react';
 import Page from '../../components/Page';
 import styles from '../../styles/ccc/ccc.module.css';
 import Image from 'next/image';
-import draw from './draw';
 
 export default function CCC() {
-    const canvasRef=useRef();
-
-    useEffect(()=>{
-        const canvasEl: HTMLCanvasElement=canvasRef.current!;
-        const c=canvasEl.getContext('2d')!;
-
-        let t=0; //time or frame count since starting
-        let animationFrameId: number;
-
-        function render() {
-            t++;
-            draw(c, t);
-            animationFrameId=requestAnimationFrame(render);
-        }
-        render();
-        
-        return ()=>cancelAnimationFrame(animationFrameId);
-    }, []);
-
-    return (<Page className={styles.main} center>
+    return (<Page className={styles.main}>
         <style jsx>{`
-            article section {
+            section {
+                position: relative;
+                width: 100vw;
                 background-color: #ddd;
                 padding: 25px 50px;
                 border-bottom: 1px solid black;
                 /* border-bottom-color: black */
             }
-            article section:last-child {
+            section:last-child {
                 border: 0;
             }
-            article section h2 {
+
+            section .contents {
+                display: block;
+                border: 1px solid blue;
+                width: 95%;
+                max-width: 800px;
+                margin: 0 auto;
+                line-height: 1.75rem;
+                padding: 0 2.5rem;
+            }
+
+            section .contents h2 {
                 font-family: Myriad;
                 font-size: 1.8rem;
             }
-            article section .item .title {
+            section .contents .action .title {
                 font-family: Avenir-Medium;
                 font-size: 1.2rem;
             }
         `}</style>
 
-        <article>
-            <section>
+        <div id='viewer' className={styles.viewer}>
+            viewer
+            
+        </div>
+
+        <section>
+            <div className='contents'>
                 <h2>Producing Clean Electricity</h2>
-                <div className='item'>
+                <div className='action'>
                     <span className='title'>Solar for Riverdale </span>
                     <Image src="/images/ccc/solar.png" alt="solar panel" width={26} height={20} />
                 </div>
-            </section>
-            <section>
-                <h2>Transitioning to Clean Infrastructure</h2>
-            </section>
-            <section>
-                <h2>Raising Public Awareness</h2>
-            </section>
-            <section>
-                <h2>Energy Efficiency</h2>
-            </section>
-        </article>
-
-        
-        <article>
-            <canvas ref={canvasRef} width={500} height={200} />
-        </article>
+            </div>
+        </section>
+        {/* <section>
+            <h2>Transitioning to Clean Infrastructure</h2>
+        </section>
+        <section>
+            <h2>Raising Public Awareness</h2>
+        </section>
+        <section>
+            <h2>Energy Efficiency</h2>
+        </section> */}
     </Page>)
 }

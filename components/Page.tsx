@@ -9,26 +9,24 @@ export default function Page({children, title, center, ...props}: {
     [key: string]: any
 }) {
     return (<>
-        <Header/>
+        <Header/> {/* 77px */}
 
         <Head>
             <title>{title || 'Joel Grayson'}</title>
-            <meta charSet="UTF-8"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
+            <meta charSet="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         </Head>
-        
-        <main className='w-full p-0 m-0' {...{props}}>
-            {
-                center
-                ?
-                (<div className='j_container j_max-w'>
-                    {children}
-                </div>)
-                :
-                children
-            }
+
+        <main style={{
+            position: 'relative',
+            padding: 0, margin: 0, width: '100%', 
+            minHeight: 'calc(100vh - 77px - 89px)' // fills the entire page (minus footer and header's heights)
+        }} {...{props}}>
+            {center
+            ? <div className='j_container j_max-w'>{children}</div> //if center, wrap in centering container
+            : children}
         </main>
-        <Footer/>
+        <Footer/> {/* 89px */}
     </>)
 };
