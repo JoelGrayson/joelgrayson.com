@@ -5,6 +5,9 @@ import { gsap } from 'gsap';
 
 import talkingJoel from './Talking Joel.webp';
 
+const TALKING_BALL_SPEED=0.5;
+const DELAY_BETWEEN_BALLS=5;
+
 function Talking() {
     // const [aic, setAic]=useState('1'); //animation iteraction count (changes when hovering)
 
@@ -12,22 +15,24 @@ function Talking() {
     const circleRef=useRef();
     
     useEffect(()=>{ //animate contact every 5 seconds circle runs through
-        // gsap.registerPlugin(MotionPathPlugin);
-        gsap.set(circleRef.current, {css: {opacity: 0} }); //hide circle at start
-        gsap.from(talkingRef.current, {
-            x: -300,
-            opacity: 0,
-            duration: 1
+        // Talking
+        gsap.to(talkingRef.current, { //move in and fade in
+            opacity: 1,
+            right: -370,
+            duration: 1,
+            animationTimingFunction: 'linear'
         });
+
+        // Circle
+        gsap.set(circleRef.current, {css: {opacity: 0} }); //hide circle at start
         const tl=gsap.timeline({
             delay: 1,
-            repeatDelay: 5,
+            repeatDelay: DELAY_BETWEEN_BALLS,
             repeat: -1
         });
         function frame(speed, x, y) { //animating shortcut
-            const coeffSpeed=0.5; //adjust this for speeding up/slowing down
             tl.to(circleRef.current, {
-                duration: speed*coeffSpeed,
+                duration: speed*TALKING_BALL_SPEED,
                 ease: 'linear',
                 x, y
             });
@@ -42,7 +47,7 @@ function Talking() {
         frame(0.5,-36,  160);
         frame(1.3, 110, 170);
         tl.to(circleRef.current, {
-            delay: .3,
+            delay: .2,
             duration: .3,
             css: {
                 opacity: 0,
@@ -53,7 +58,11 @@ function Talking() {
     }, []);
 
     return (<>
-        <div id='talking' ref={talkingRef}>
+        <div id='talking' ref={talkingRef} style={{ //talkingRef starting position
+            position: 'absolute',
+            right: -100,
+            opacity: 0
+        }} >
             <div className={styles.leftImgContainer}>
                 <Image src={talkingJoel} width='434px' alt='Talking Joel'/>
                 <div className={styles.circle} ref={circleRef}></div> {/* circle */}

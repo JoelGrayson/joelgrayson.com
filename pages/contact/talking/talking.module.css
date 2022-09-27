@@ -1,3 +1,8 @@
+.talking {
+    opacity: 0;
+}
+
+
 .leftImgContainer {
     position: relative;
     width: 400px;
