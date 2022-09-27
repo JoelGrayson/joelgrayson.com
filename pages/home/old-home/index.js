@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import Page from '../components/Page';
-import styles from './home/home.module.css';
+import Page from '../../../components/Page';
+// import styles from '../../styles/home/old home/home.module.css';
+import styles from '../../../styles/home/old-home/home.module.css';
 
 export default function Home() {
     return (<Page>

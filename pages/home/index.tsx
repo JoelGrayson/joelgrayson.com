@@ -1,32 +1,16 @@
+import { css } from '@emotion/css';
 import Head from 'next/head';
-import Link from 'next/link';
+// import Link from 'next/link';
 import Image from 'next/image';
 import Page from '../../components/Page';
-import SEBLogo from './SEB Logo';
 
-import { css } from '@emotion/css';
-import styled from '@emotion/styled'
+import SEBLogo from './parts/SEB Logo';
+import BtnIcon from './parts/BtnIcon';
+import Block from './parts/Block';
+
 
 // TODO: add shadow to boxes
 // TODO: add shading gradient in boxes
-
-const Block=styled.div`
-    border: 1px solid black;
-    border-radius: 5px;
-`;
-const BtnIcon=styled.button`
-    border: 1px solid black;
-    border-radius: 5px;
-    user-select: none;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    &:hover {
-        background-color: #eee;
-    }
-`;
 
 
 export default function Home() {

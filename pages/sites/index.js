@@ -6,10 +6,11 @@ export default function Sites() { /* bullet points of all sites */
             <li>buseroo.com</li>
             <li>lirongart.com</li>
             <li>Slaphappy youtube.com/SonAndFather</li>
-            
+            <li>studentsforelectricbuses.org</li>
+
             <h3>Coming Soon</h3>
             <li>memorizethepresidents.com</li>
-            <li>studentsforelectricbuses.org</li>
+            <li>bulletbrainstorm.com</li>
         </ul>
     </>);
 }

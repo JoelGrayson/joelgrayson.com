@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './logo.module.css';
+import styles from '../../../styles/home/logo.module.css';
 import Link from 'next/link';
 
 export default function Logo() {
