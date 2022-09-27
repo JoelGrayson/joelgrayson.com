@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import UpDownArrow from '../UpDownArrow';
 
-export default function HeaderGroup({title, children}) {
+export default function HeaderGroup({title, children}: any) {
     const [open, setOpen]=useState(false);
     
     return (<>
@@ -14,15 +15,7 @@ export default function HeaderGroup({title, children}) {
             >
                 {title}
                 {/* v    down arrow      ^ up arrow onHover */}
-                <svg width="14" height="12" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    className='inline ml-2'
-                    style={{
-                        animation: 'transform 0.5s',
-                        transform: open ? 'scaleY(-1)' : '' //flip arrow onHover
-                    }}
-                >
-                    <path d="M1 1L10.328 16.7104C10.4055 16.8409 10.5945 16.8409 10.672 16.7104L20 1" stroke="black" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
+                <UpDownArrow dir={(open ? 'up' : 'down')} />
             </button>
             
             {

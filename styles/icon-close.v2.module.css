@@ -1,0 +1,40 @@
+/* NOTE: MAKE THE PARENT OF ICON-CLOSE `position: relative` FOR THIS TO WORK */
+.icon-close {
+    z-index: 1;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    background-color: red;
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+.icon-close:hover {
+    background-color: #b60c0c;
+}
+/* X */
+.icon-close::after { /* \ */
+    content: '';
+    right: 1.5px;
+    position: relative;
+    height: 15px;
+    width: 3px;
+    border-radius: 3px;
+    background-color: black;
+    transform: rotate(-45deg);
+}
+.icon-close::before { /* / */
+    content: '';
+    right: -1.5px;
+    position: relative;
+    height: 15px;
+    width: 3px;
+    border-radius: 3px;
+    background-color: black;
+    transform: rotate(45deg);
+}

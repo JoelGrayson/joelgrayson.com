@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const redirects=require('./redirect/main');
+const redirects=require('./redirects/main');
 
 const nextConfig = {
   reactStrictMode: true,

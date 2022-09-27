@@ -1,8 +1,23 @@
+import { useState } from 'react';
 import Page from '../../components/Page';
 import styles from '../../styles/ccc/ccc.module.css';
 import Image from 'next/image';
+import iconCloseStyles from '../../styles/new icon-close.v2.module.css';
+import UpDownArrow from '../../components/UpDownArrow';
+
+enum viewerTypes {
+    // Special
+    none,
+    hidden,
+    // Pages
+    solar,
+
+};
+
 
 export default function CCC() {
+    const [viewer, setViewer]=useState<viewerTypes>(viewerTypes.none); //value of viewer
+    
     return (<Page className={styles.main}>
         <style jsx>{`
             section {
@@ -37,10 +52,34 @@ export default function CCC() {
             }
         `}</style>
 
-        <div id='viewer' className={styles.viewer}>
-            viewer
-            
-        </div>
+        {viewer !== viewerTypes.hidden
+        ? (<div id='viewer' className={styles.viewer}>
+            {/* <button className={iconCloseStyles['icon-close']} onClick={_=>setViewer(viewerTypes.hidden)}></button> */}
+            <button className={styles.viewerToggleContainer}>
+                <button className={styles.viewerToggle} onClick={_=>setViewer(viewerTypes.hidden)}>
+                    <UpDownArrow dir='down' />
+                </button>
+            </button>
+
+            <h4 className='text-center'>Description</h4>
+            {(()=>{
+                switch (viewer) {
+                    case viewerTypes.none:
+                        return <p>Hover a section to see its description</p>;
+                    case viewerTypes.solar:
+                        return <p>Solar description.</p>;
+                    default:
+                        return <p>No description for section "{viewer}"</p>
+                }
+            })()}
+        </div>)
+        : <div className={`${styles.viewer} ${styles.collapsedViewer}`} onClick={_=>setViewer(viewerTypes.none)}>
+            <button className={styles.viewerToggleContainer}>
+                <button className={styles.viewerToggle}>
+                    <UpDownArrow dir='up' />
+                </button>
+            </button>
+        </div>}
 
         <section>
             <div className='contents'>

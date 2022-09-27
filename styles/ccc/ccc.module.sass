@@ -11,5 +11,29 @@
     position: absolute
     bottom: 0
     right: calc(max(50vw - 400px, 10px))
+    border: 2px solid brown
+    width: calc(min(250px, 60vw))
+    min-height: 200px
 
+
+.collapsedViewer
+    min-height: 0
+    height: 0
+    cursor: pointer
+    &:hover
+        background-color: #ccc
+
+
+.viewerToggleContainer
+    position: absolute
+    top: -24px
+    right: 0
+    border: 2px solid black
+    height: 8px
+    width: 15px
+
+.viewerToggle
+    position: relative    
+    right: 25px
+    bottom: 22px
 
