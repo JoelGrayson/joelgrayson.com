@@ -13,7 +13,7 @@ interface Machine {
     html: JSX.Element
 }
 
-function defaultTemplate({date, title, desc, yt}) {
+function defaultTemplate({date, title, desc, yt}: any) {
     return (<>
         <div className='date'>{date}</div>
         <h3 className='title'>{title}</h3>
@@ -22,7 +22,7 @@ function defaultTemplate({date, title, desc, yt}) {
     </>);
 }
 
-function Yt({children}) {
+function Yt({children}: any) {
     console.log(children)
     return <iframe width="560" height="315" src={`https://www.youtube.com/embed/${children}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen/>;
 }
