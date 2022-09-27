@@ -2,7 +2,10 @@
 
 const redirects=require('./redirect/main');
 
-module.exports={ //next configuration
-    reactStrictMode: true,
-    redirects
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  redirects
 };
+
+module.exports = nextConfig;
