@@ -1,23 +1,11 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-
 import Page from '../components/Page';
+import styles from './home/home.module.css';
 
 export default function Home() {
     return (<Page>
-        <style jsx>{`
-            .buttons { /* button grid */
-                display: -ms-grid;
-                display: grid;
-                -ms-grid-columns: 1fr 1fr 1fr;
-                    grid-template-columns: 1fr 1fr 1fr;
-            }
-            .buttons li {
-                list-style-type: none;
-                margin: 0 auto;
-            }
-        `}</style>
         <Head>
             <title>Joel Grayson</title>
             <meta charSet="UTF-8"/>
@@ -52,7 +40,7 @@ export default function Home() {
                 humanity will not go extinct. To understand more cultures, I am fluent in English and Chinese and am working on
                 Spanish. I enjoy chess, perform <a href='https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A' target='_blank' rel="noopener noreferrer">comedy with Dad</a>, and play the violin.</p>
                 <p>Click below to explore some of my projects:</p>
-                <div className='buttons'>
+                <div className={styles.buttons}>
                     <li><Link href='/art'><a><button className='btn-red'>Art</button></a></Link></li>
                     <li><Link href='/machines'><a><button className='btn-red'>Machines</button></a></Link></li>
                     <li><Link href='/performances'><a><button className='btn-red'>Performances</button></a></Link></li>

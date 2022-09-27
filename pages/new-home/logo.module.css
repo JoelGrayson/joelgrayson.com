@@ -1,0 +1,64 @@
+.container {
+  position: relative;
+  height: 80px;
+  width: 80px;
+  margin-left: 1rem;
+}
+
+.entire, .outer, .inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.entire {
+  z-index: 1;
+  opacity: 0;
+}
+
+.outer {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+.rotatingOuter {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-animation-name: rotating;
+          animation-name: rotating;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+@-webkit-keyframes rotating {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotating {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+/*# sourceMappingURL=logo.module.css.map */
