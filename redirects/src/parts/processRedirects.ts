@@ -5,10 +5,16 @@ export default function processRedirects(input: redirects, isPermanent: boolean)
 
     Object.entries(input).forEach(([key, val])=>{
         if (val instanceof Array)
-            for (let singleVal of val) //val is an array of singleVals
-                output.push(packageIntoObj(key, singleVal, isPermanent))
-        else
-            output.push(packageIntoObj(key, val, isPermanent));
+            for (let singleVal of val) { //val is an array of singleVals
+                const packaged=packageIntoObj(key, singleVal, isPermanent)
+                if (packaged)
+                    output.push(packaged)
+            }
+        else {
+            const packaged=packageIntoObj(key, val, isPermanent);
+            if (packaged)
+                output.push(packaged);
+        }   
     });
 
     return output;

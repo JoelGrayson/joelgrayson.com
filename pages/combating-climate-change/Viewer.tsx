@@ -1,24 +1,29 @@
-import { viewers } from './index';
 import styles from '../../styles/ccc/viewer.module.css';
 import UpDownArrow from '../../components/UpDownArrow';
+import { viewers } from './index';
 
 export default function Viewer({ status, setStatus }: { status: viewers, setStatus: Function }) {
-    return (
-        (status===viewers.hidden)
-        ? (<div className={`${styles.viewer} ${styles.collapsedViewer}`} onClick={_=>setStatus(viewers.none)}>
-            <button className={styles.viewerToggleContainer}>
-                <button className={styles.viewerToggle}>
-                    <UpDownArrow dir='up' />
-                </button>
-            </button>
-        </div>)
-        : (<div id='viewer' className={styles.viewer}>
-            <button className={styles.viewerToggleContainer}>
-                <button className={styles.viewerToggle} onClick={_=>setStatus(viewers.hidden)}>
-                    <UpDownArrow dir='down' />
-                </button>
-            </button>
+    function toggleShown() {
+        if (isHidden())
+            setStatus(viewers.none);
+        else
+            setStatus(viewers.hidden);
+    }
+    function isHidden() {
+        return status===viewers.hidden;
+    }
+    
+    return (<div
+        onClick={_=>{if (isHidden()) toggleShown()}} //click box to expand only when hidden
+        className={isHidden() ? `${styles.viewer} ${styles.collapsedViewer}` : styles.viewer} //if hidden, add collapsedViewer class
+    >
+        <button className={styles.viewerToggleContainer} onClick={toggleShown}>
+            <div className={styles.viewerToggle}>
+                <UpDownArrow dir={isHidden() ? 'up' : 'down'} />
+            </div>
+        </button> 
 
+        { !isHidden() && (<>
             <h4 className='text-center'>Description</h4>
             {(()=>{
                 switch (status) {
@@ -30,6 +35,6 @@ export default function Viewer({ status, setStatus }: { status: viewers, setStat
                         return <p>No description for section &quot;{status}&quot;</p>
                 }
             })()}
-        </div>)
-    );
+        </>)}
+    </div>);
 }
