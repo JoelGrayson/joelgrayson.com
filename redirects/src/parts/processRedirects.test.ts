@@ -1,7 +1,7 @@
-const process=require('./process');
+import processRedirects from './processRedirects';
 
 test('works on example', ()=>{
-    expect(JSON.stringify(process({ //check if two objects are equal with JSON.stringify
+    expect(JSON.stringify(processRedirects({ //check if two objects are equal with JSON.stringify
         '/new': ['/old', '/old-2']
     }, true))).toEqual(JSON.stringify([
         {
@@ -16,7 +16,7 @@ test('works on example', ()=>{
         }
     ]));
 
-    console.log(process({
+    console.log(processRedirects({
         '/onedrive-download-link-generator': [/\/onedrive-download-generator(-link)?/, '/download-link-generator-onedrive', '/onedrive-download-link', '/onedrive-link-generator']
     }, true))
 })

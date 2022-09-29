@@ -1,0 +1,1 @@
+Visit https://nextjs.org/docs/api-reference/next.config.js/redirects

@@ -1,6 +1,6 @@
 import { nextRedirects, redirects, src, dest, nextRedirect } from "./types";
 
-export default function process(input: redirects, isPermanent: boolean) {
+export default function processRedirects(input: redirects, isPermanent: boolean) {
     const output: nextRedirects=[];
 
     Object.entries(input).forEach(([key, val])=>{
@@ -14,9 +14,9 @@ export default function process(input: redirects, isPermanent: boolean) {
     return output;
 }
 
-function packageIntoObj(key: dest, val: src, isPermanent: boolean): nextRedirect | null { //converts key and value -> obj for redirect
+function packageIntoObj(key: dest, val: src, isPermanent: boolean): nextRedirect | undefined { //converts key and value -> obj for redirect
     if (typeof val==='string')
-        return { //key is the destination, value is the src so it can be an array, regex, etc.
+        return { //key is the destination, value is the src so it can be an array, regex as string, etc.
             source: val,
             destination: key,
             permanent: isPermanent
@@ -24,10 +24,9 @@ function packageIntoObj(key: dest, val: src, isPermanent: boolean): nextRedirect
     else if (val instanceof RegExp)
         return {
             source: val,
-            destination: key,
+            destination: key.toString(),
             permanent: isPermanent
         };
     else
         throw new TypeError('Value must be a string, regex, or array');
-        return null
 }
