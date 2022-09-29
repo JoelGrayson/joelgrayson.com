@@ -1,10 +1,9 @@
-const {permanent, temporary}=require('./redirects');
-const process=require('./process/process');
+import { permanent, temporary } from './REDIRECTS';
+import process from './parts/process';
 
 module.exports=()=>{ //returns function to get redirect objects for next.config.js
     const arr1=process(permanent, true);
     const arr2=process(temporary, false);
 
-    const merged=[ ...arr1, ...arr2 ];
-    return merged;
+    return arr1.concat(arr2); //return merged permanent & temporary arrays
 };

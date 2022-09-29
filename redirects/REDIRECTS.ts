@@ -1,8 +1,7 @@
-// destination: source
+import { redirects } from './parts/types';
 
-const permanent={ //301
+export const permanent: redirects={ //301
     'https://thejoelgrayson.wixsite.com/mysite': '/2019-campaign',
-    '/dropbox-download-link-generator': /\/dropbox-(download)?-link/, ///continue
     '/joel-for-grade-rep-2020': '/2020-campaign',
     '/': '/about',
     '/big-sur-sounds': '/audio/big-sur-sounds',
@@ -24,10 +23,11 @@ const permanent={ //301
     '/favicon-fetcher': '/favicon',
     '/joel-case': ['/jcase', '/joelcase'],
     'https://w.joelgrayson.com/kiosk': ['/kiosk', '/muffin'],
-    '/onedrive-download-link-generator': ['/onedrive-download-generator', '/onedrive-download-generator-link'],
-    '/onedrive-download-link-generator': ['/download-link-generator-onedrive', '/onedrive-download-link', '/onedrive-link-generator'],
-    '/open-in-new-tab-wix-code': /\/open-in-new-tab(-using)?(-wix-code)?-velo/,
-    '/open-in-new-tab-wix-code': '/wix-code-new-tab',
+    '/onedrive-download-link-generator': [
+        '/download-link-generator-onedrive', '/onedrive-download-link', '/onedrive-link-generator',
+        '/onedrive-download-generator', '/onedrive-download-generator-link'
+    ],
+    '/open-in-new-tab-wix-code': ['/wix-code-new-tab', /\/open-in-new-tab(-using)?(-wix-code)?-velo/,],
     '/performances': '/performance',
     '/the-perspective': '/perspective',
     'https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A': ['/Slaphappy', '/slaphappy'],
@@ -38,8 +38,6 @@ const permanent={ //301
     '/combating-climate-change': ['/ccc', '/climate-change']
 };
 
-const temporary={ //302
+export const temporary: redirects={ //302
 
 };
-
-module.exports={permanent, temporary};
