@@ -6,6 +6,7 @@ export const permanent: redirects={ //301
     '/': '/about',
     '/big-sur-sounds': '/audio/big-sur-sounds',
     '/zoom-sfx': '/audio/zoom-sound-effects',
+    '/@jcomponents': ['/jcomponents', '/jcomponent', '/@jcomponent'],
     '/box-download-link-generator': ['/box-direct-download-generator', '/box-direct-download-link-generator', '/box-download-generator', '/box-download-link', '/direct-download-link-generator-box', '/download-link-generator-box'],
     'https://w.joelgrayson.com/bus-info-kiosk': '/bus-info-kiosk',
     'https://developer-merch.herokuapp.com': ['/dev-merch', '/dev-merchandise', '/developer-merch', '/developer-merchandise'],
