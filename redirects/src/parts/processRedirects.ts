@@ -5,11 +5,11 @@ export default function processRedirects(input: redirects, isPermanent: boolean)
 
     Object.entries(input).forEach(([key, val])=>{
         if (val instanceof Array)
-            for (let singleVal of val) { //val is an array of singleVals
+            val.forEach(singleVal=>{ //val is an array of singleVals
                 const packaged=packageIntoObj(key, singleVal, isPermanent)
                 if (packaged)
                     output.push(packaged)
-            }
+            })
         else {
             const packaged=packageIntoObj(key, val, isPermanent);
             if (packaged)
@@ -20,19 +20,14 @@ export default function processRedirects(input: redirects, isPermanent: boolean)
     return output;
 }
 
-function packageIntoObj(key: dest, val: src, isPermanent: boolean): nextRedirect | undefined { //converts key and value -> obj for redirect
-    if (typeof val==='string')
-        return { //key is the destination, value is the src so it can be an array, regex as string, etc.
-            source: val,
-            destination: key,
-            permanent: isPermanent
-        };
-    else if (val instanceof RegExp)
-        return {
-            source: val,
-            destination: key.toString(),
-            permanent: isPermanent
-        };
-    else
-        throw new TypeError('Value must be a string, regex, or array');
+function packageIntoObj(key: dest, val: src, isPermanent: boolean): nextRedirect { //converts key and value -> obj for redirect
+    if (val instanceof RegExp) { //Process RegExp into string
+        val=`${val}`.slice(0, -1); // Remove first and last char: /regex/ -> regex
+    }
+    
+    return { //key is the destination, value is the src so it can be an array, regex as string, etc.
+        source: val+'',
+        destination: key,
+        permanent: isPermanent
+    };
 }

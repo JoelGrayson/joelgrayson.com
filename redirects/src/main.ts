@@ -1,7 +1,7 @@
 import { permanent, temporary } from './REDIRECTS';
 import processRedirects from './parts/processRedirects';
 
-export default async ()=>{ //returns function to get redirect objects for next.config.js
+export default async function() { //returns function to get redirect objects for next.config.js. Only async ∵ next.js documentation requires async functions for redirect value
     const arr1=processRedirects(permanent, true);
     const arr2=processRedirects(temporary, false);
 
