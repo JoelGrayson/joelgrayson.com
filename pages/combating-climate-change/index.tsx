@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { Section, Action } from '../../components/combating-climate-change/helpers';
 import { viewers } from './Viewer';
 // import { ButtonIcon,  } from '@jcomponents/button'
-import { ButtonIcon, ButtonIconStyle } from '@jcomponents/button'
+import { ButtonIcon, ButtonIconStyle } from '@jcomponents/button';
 
 export default function CCC() {
     const [viewer, setViewer]=useState<viewers>(viewers.none); //viewer status
