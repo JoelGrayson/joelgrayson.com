@@ -4,9 +4,9 @@ import Footer from './Footer';
 
 export default function Page({children, title, center, ...props}: {
     children: any;
-    title?: String,
-    center?: boolean,
-    [key: string]: any
+    title?: String;
+    center?: boolean;
+    [key: string]: any;
 }) {
     return (<>
         <Header/> {/* 77px */}

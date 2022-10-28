@@ -34,7 +34,7 @@ export default function ButtonDoc() {
         <br/>
 
         <h3>Demo</h3>
-        <Code>import Button from '@jcomponents/button';</Code>
+        <Code>import Button from &apos;@jcomponents/button&apos;</Code>
         <h4>Default Button</h4>
         <Code>{`
 <Button>Default</Button>
