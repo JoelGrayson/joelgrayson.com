@@ -3,7 +3,6 @@
 
 node_modules
 .next
-**/*.secret.js
 
 # Large Files
 public/combating-climate-change/Combating Climate Change.pptx
