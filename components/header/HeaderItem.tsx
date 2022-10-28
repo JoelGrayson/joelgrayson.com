@@ -1,13 +1,13 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState, useEffect, ReactNode } from 'react';
 import Link from 'next/link';
 import { PathContext } from '../Header';
 
-export default function HeaderItem({link /*a href's link*/, children}) { //highlighted if is current page
+export default function HeaderItem({link /*a href's link*/, children}: {link: string, children: ReactNode}) { //highlighted if is current page
     const asPath=useContext(PathContext);
 
     const [bgColor, setBgColor]=useState('#fff');
-    const colorFromUrl=_=>setBgColor(link===asPath ? '#ffe273' : '#fff'); //if the page is the url page, color yellow, otherwise color white
-    
+    const colorFromUrl=(_?: any)=>setBgColor(link===asPath ? '#ffe273' : '#fff'); //if the page is the url page, color yellow, otherwise color white
+
     useEffect(colorFromUrl, [asPath, link]); //initially get color
     
     return (

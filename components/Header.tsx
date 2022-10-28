@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { createContext } from 'react';
 
-export const PathContext=createContext();
+export const PathContext=createContext<string>('');
 
 // Header DOMEls
 import HeaderItem from './header/HeaderItem';

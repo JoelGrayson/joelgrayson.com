@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import { gsap } from 'gsap';
-import { useEffect, useRef } from 'react';
+import { useRef, useLayoutEffect } from 'react';
 
 export default function ViolinBow() {
-    const bowRef=useRef();    
+    const bowRef=useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement> ;
 
-    useEffect(()=>{ //violin bow animation back and forth
+    useLayoutEffect(()=>{ //violin bow animation back and forth
         const offset=1;
         const dist=7;
         
@@ -18,13 +18,13 @@ export default function ViolinBow() {
             y: dist+offset,
         };
         
-        gsap.set(bowRef.current, from);
+        gsap.set(bowRef.current!, from);
         
         const tl=gsap.timeline({
             repeat: -1,
             yoyo: true
         });
-        tl.to(bowRef.current, {
+        tl.to(bowRef.current!, {
             ...to,
             duration: .6,
             ease: 'power0'

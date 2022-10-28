@@ -1,10 +1,11 @@
 import Head from 'next/head';
 import Header from './Header';
 import Footer from './Footer';
+import { ReactNode } from 'react';
 
 export default function Page({children, title, center, ...props}: {
-    children: any;
-    title?: String;
+    children: ReactNode;
+    title?: string;
     center?: boolean;
     [key: string]: any;
 }) {

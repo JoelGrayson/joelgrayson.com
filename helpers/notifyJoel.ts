@@ -3,11 +3,11 @@ emailClient.setApiKey(process.env.SENDGRID_API_KEY);
 const textClient=require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 export default function notifyJoel(args: { //notify Joel of contact form submission
-    text?: String;
+    text?: string;
     email?: {
-        subject: String;
-        replyTo: String;
-        body: String;
+        subject: string;
+        replyTo: string;
+        body: string;
     };
 }) {
     // email Joel

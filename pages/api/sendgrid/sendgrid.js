@@ -4,7 +4,7 @@ import secret from './api key.secret';
 import sgMail from '@sendgrid/mail'
 sgMail.setApiKey(secret.SENDGRID_API_KEY);
 
-export function send({ subject, text, html, to, from={}/* :(object | String) */ }) { //including any from parameters changes sender details for that prop only
+export function send({ subject, text, html, to, from={}/* :(object | string) */ }) { //including any from parameters changes sender details for that prop only
     //Sender default values
     if (typeof from !== 'string') {
         from.name??='Joel';

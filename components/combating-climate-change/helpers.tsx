@@ -1,6 +1,7 @@
+import { ReactNode } from 'react';
 import styles from '../../styles/ccc/sections.module.css';
 
-export function Section({title, children}: {title: string, children: any}) {
+export function Section({title, children}: {title: string, children: ReactNode}) {
     return (<section className={styles.section}>
         <div className={styles.content}>
             <h2 className={styles['content-title']}>{title}</h2>
@@ -9,7 +10,7 @@ export function Section({title, children}: {title: string, children: any}) {
     </section>);
 }
 
-export function Action({children, title, ...props}: {children: any; title: string; [key: string]: any}) {
+export function Action({children, title, ...props}: {children: ReactNode; title: string; [key: string]: any}) {
     return (<div className={styles.action} {...props}>
         <span className={styles['action-title']}>{title}</span>
         {children}

@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, ReactNode } from 'react';
 import { gsap } from 'gsap';
 
-export default function HeaderSubGroup({title, children}) {
+export default function HeaderSubGroup({title, children}: {title: string, children: ReactNode}) {
     const [hovered, setHovered]=useState(false); //hovered & open
     
     return (<>
@@ -47,14 +47,14 @@ export default function HeaderSubGroup({title, children}) {
 
 
 
-function Arrow({open}) {
+function Arrow({open}: {open: boolean}) {
     const config={
         startSize: 16,
         endSize: 40
     };
     
     // Arrow
-    const lineRef=useRef();
+    const lineRef=useRef() as React.MutableRefObject<HTMLInputElement>;
     useEffect(()=>{
         contractArrow(true);
     }, []);

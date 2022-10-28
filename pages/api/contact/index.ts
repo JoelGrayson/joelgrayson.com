@@ -3,7 +3,7 @@ import { Client } from 'pg';
 import date2Timestamp from "../../../helpers/date2Timestamp";
 import notifyJoel from '../../../helpers/notifyJoel';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<{message: String, queryRes?: any}>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<{message: string, queryRes?: any}>) {
     const { name, email, message }=req.body;
 
     const notifyJoelMsg=`${name} <${email}> wrote:\n${message}`;

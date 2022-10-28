@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Button from '@jcomponents/button';
 
-export default function NavItem({children, href='#'}) {
+export default function NavItem({children, href='#'}: {children: ReactNode, href: string}) {
     const isCurrentPage=(href===window.location.pathname);
     
     return (<li style={{padding: 0}}>

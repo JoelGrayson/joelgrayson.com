@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 
-export default function HeaderGroupItem({link, children, arrow=true /* bool to show arrow */}) {
+export default function HeaderGroupItem({link, children, arrow=true /* bool to show arrow */}: {children: ReactNode, link?: string, arrow?: boolean}) {
     const [hovered, setHovered]=useState(false);
     
     return (<a className='unstyled relative' href={link || '#'}>

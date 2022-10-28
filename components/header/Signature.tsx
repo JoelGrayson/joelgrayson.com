@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Signature() { //interactive signature
     const reload=()=>setLoadNum(Math.random()); //reloads & replays the gif
-    const [loadNum, setLoadNum]=useState(0);
+    const [loadNum, setLoadNum]=useState<number>(0);
 
     return (<Link href='/'><a>
         <li className='flex items-center pr-4 select-none'>
