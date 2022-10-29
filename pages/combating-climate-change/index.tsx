@@ -4,7 +4,7 @@ import styles from '../../styles/ccc/sections.module.css';
 import Image from 'next/image';
 import Viewer from './Viewer';
 import Link from 'next/link';
-import { Section, Action } from '../../components/combating-climate-change/helpers';
+import { Section, Action } from '../../components/pages/combating-climate-change/helpers';
 import { viewers } from './Viewer';
 // import { ButtonIcon,  } from '@jcomponents/button'
 import Button from '@jcomponents/button';

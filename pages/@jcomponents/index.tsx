@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Page from '../../components/@jcomponents/Page';
 
 export default function Home() {
@@ -9,8 +10,8 @@ export default function Home() {
         <br/>
         <h3>Contribute</h3>
         <ul>
-            <li>Source code: <a href='https://github.com/JoelGrayson/JComponents' target='_blank' rel='noreferrer'>github.com/JoelGrayson/JComponents</a></li>
-            <li>Issue tracker: <a href="https://github.com/JoelGrayson/JComponents/issues" target='_blank' rel='noreferrer'>github.com/JoelGrayson/JComponents/issues</a></li>
+            <li>Source code: <Link href='https://github.com/JoelGrayson/JComponents' target='_blank' rel='noreferrer'><a>github.com/JoelGrayson/JComponents</a></Link></li>
+            <li>Issue tracker: <Link href="https://github.com/JoelGrayson/JComponents/issues" target='_blank' rel='noreferrer'><a>github.com/JoelGrayson/JComponents/issues</a></Link></li>
         </ul>
     </Page>);
 }

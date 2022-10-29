@@ -11,8 +11,8 @@ const DELAY_BETWEEN_BALLS=5;
 function Talking() {
     // const [aic, setAic]=useState('1'); //animation iteraction count (changes when hovering)
 
-    const talkingRef=useRef();
-    const circleRef=useRef();
+    const talkingRef=useRef() as React.MutableRefObject<HTMLDivElement>;
+    const circleRef=useRef() as React.MutableRefObject<HTMLDivElement>;
     
     useEffect(()=>{ //animate contact every 5 seconds circle runs through
         // Talking
@@ -30,7 +30,7 @@ function Talking() {
             repeatDelay: DELAY_BETWEEN_BALLS,
             repeat: -1
         });
-        function frame(speed, x, y) { //animating shortcut
+        function frame(speed: number, x: number, y: number) { //animating shortcut
             tl.to(circleRef.current, {
                 duration: speed*TALKING_BALL_SPEED,
                 ease: 'linear',

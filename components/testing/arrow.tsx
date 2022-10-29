@@ -2,13 +2,13 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
 export default function Arrow() {
-    const lineRef=useRef();
+    const lineRef=useRef() as React.MutableRefObject<HTMLDivElement>;
 
     useEffect(()=>{
         contractArrow(true);
     }, []);
 
-    function expandArrow(instant=false) {
+    function expandArrow() {
         gsap.to(lineRef.current, {
             opacity: 1,
             duration: 0.1

@@ -21,7 +21,7 @@ export default function ModalDoc() {
                     gap: 10,
                 }}>
                     <code className='light' style={{width: 'max-content'}}>npm i @jcomponents/modal</code>
-                    <button onClick={_=>navigator.clipboard.writeText('npm i @jcomponents/modal')}>Copy</button>
+                    <button onClick={(_?: any)=>navigator.clipboard.writeText('npm i @jcomponents/modal')}>Copy</button>
                 </div>
             </div>
         </div>
