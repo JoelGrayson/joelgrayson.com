@@ -57,6 +57,13 @@ small {
     font-size: 65%;
 }
 
+ul li {
+    margin-left: 1.5rem;
+}
+li {
+    list-style-type: disc;
+}
+
 /* Links */
 a {
     cursor: pointer;

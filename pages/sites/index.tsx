@@ -1,16 +1,28 @@
 import React from 'react';
+import Link from 'next/link';
+import Container from '@jcomponents/container';
 
 export default function Sites() { /* bullet points of all sites */
-    return (<>
+    return (<Container>
+        <h1 className='text-center'>Sites</h1>
         <ul>
-            <li>buseroo.com</li>
-            <li>lirongart.com</li>
-            <li>Slaphappy youtube.com/SonAndFather</li>
-            <li>studentsforelectricbuses.org</li>
+            <Site>joelgrayson.com</Site>
+            <Site>buseroo.com</Site>
+            <Site>lirongart.com</Site>
+            <Site href='https://youtube.com/SonAndFather'>youtube.com/SonAndFather (Slaphappy)</Site>
+            <Site>studentsforelectricbuses.org</Site>
+            <Site>memorizethepresidents.com</Site>
 
+            <br />
             <h3>Coming Soon</h3>
-            <li>memorizethepresidents.com</li>
-            <li>bulletbrainstorm.com</li>
+            <Site>bulletbrainstorm.com</Site>
+            <Site>giveawink.com</Site>
         </ul>
-    </>);
+    </Container>);
+}
+
+export function Site({children, href}: {children: string, href?: string}) {
+    return (<li>
+        <Link href={href || `https://${children}`}><a>{children}</a></Link>
+    </li>);
 }

@@ -10,8 +10,10 @@ export default function DaysUntil() { // /software/days-until?date=11.7.2022&eve
     const event=router.query.event || 'event';
     const daysLeft=calculateDaysLeftUntil(new Date(`${router.query.date}`));
 
-    return (<div className='text-2xl'>
-        <span className='font-bold text-4xl text-center'>{daysLeft}</span> days left until {event}
+    return (<div className='flex justify-center items-center' style={{height: '100vh'}}>
+        <div className='text-2xl'>
+            <span className='font-bold text-4xl'>{daysLeft}</span>&nbsp;days left until {event}
+        </div>
     </div>);
 }
 
