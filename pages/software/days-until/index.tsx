@@ -1,18 +1,17 @@
 import { useRouter } from 'next/router';
 import Page from '../../../components/Page';
 
-export default function DayCounter() { // /software/day-counter?date=11/7/2022&event=test
+export default function DaysUntil() { // /software/days-until?date=11.7.2022&event=test
     const router=useRouter(); 
 
-    if (!router.query.date) {
+    if (!router.query.date)
         return <div>Event not specified</div>;
-    }
 
     const event=router.query.event || 'event';
     const daysLeft=calculateDaysLeftUntil(new Date(`${router.query.date}`));
 
     return (<div className='text-2xl'>
-        <span className='font-bold text-4xl'>{daysLeft}</span> days left until {event}
+        <span className='font-bold text-4xl text-center'>{daysLeft}</span> days left until {event}
     </div>);
 }
 

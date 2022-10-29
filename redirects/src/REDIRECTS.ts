@@ -3,6 +3,7 @@ import { redirects } from './parts/types';
 export const permanent: redirects={ //301
     // Newest at top, oldest at bottom
 
+    '/software/days-until/': '/days-until',
     '/software/articlify/index.html': ['/software/articlify/', '/articlify'],
     '/combating-climate-change': ['/ccc', '/climate-change'],
     '/programs': ['/tools', '/tool'],

@@ -3,6 +3,7 @@ exports.__esModule = true;
 exports.temporary = exports.permanent = void 0;
 exports.permanent = {
     // Newest at top, oldest at bottom
+    '/software/days-until/': '/days-until',
     '/software/articlify/index.html': ['/software/articlify/', '/articlify'],
     '/combating-climate-change': ['/ccc', '/climate-change'],
     '/programs': ['/tools', '/tool'],
