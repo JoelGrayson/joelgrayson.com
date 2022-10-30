@@ -22,7 +22,7 @@ export default function Header() {
             bg-gradient-to-b from-[#fcd98b] to-[#faca62]'
         >
             <nav className='j_max-w mx-auto'>
-                <ul className='flex list-none items-center'>
+                <ul className='flex list-none items-center unstyled'>
                     <Signature />
                     <PathContext.Provider value={asPath}>
                         <div className='flex flex-row justify-between w-full'>

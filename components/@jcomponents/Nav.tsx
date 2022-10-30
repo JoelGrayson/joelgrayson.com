@@ -6,7 +6,7 @@ export default function Nav({children}: {children: React.ReactNode}) {
             display: 'flex',
             listStyleType: 'none',
             padding: 0
-        }}>
+        }} className='unstyled'>
             {children}
         </ul>
     </nav>);
