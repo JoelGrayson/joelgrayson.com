@@ -7,8 +7,7 @@ import RewindIcon from './RewindIcon';
 export default function Portrait() {
     const [offset, setOffset]=useState<number>(0);
     const [index, setIndex]=useState<number>(0); //index of selected portrait
-    const [hovering, setHovering]=useState<boolean>(true); //debugging
-    // const [hovering, setHovering]=useState<boolean>(false);
+    const [hovering, setHovering]=useState<boolean>(false);
 
     function changeIndex(index: number) { //returns onClick event
         return function() {
@@ -20,7 +19,7 @@ export default function Portrait() {
     
 
     return (<div className='absolute p-0 bottom-0 mb-[-6px] right-24' onMouseLeave={(_: any)=>setHovering(false)}>
-        <RewindIcon onMouseEnter={(_: any)=>setHovering(true)} hovering={hovering} />
+        <RewindIcon onMouseEnter={(_: any)=>setHovering(true)} />
         
         <span style={{
             display: 'inline-flex',

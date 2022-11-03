@@ -6,7 +6,7 @@ import Page from '../../Page';
 import SEBLogo from './parts/SEB Logo';
 import BtnIcon from './parts/BtnIcon';
 import Block from './parts/Block';
-import Portrait from './portrait/';
+import Portrait from './portrait';
 
 // TODO: add shadow to boxes
 // TODO: add shading gradient in boxes
@@ -54,7 +54,7 @@ export default function Home() {
                         display: flex;
                     `}>
                         <BtnIcon>
-                            <Image alt='solar' height={50} width={50} src='/images/home/solar.png' />
+                            <Image alt='solar' height={50} width={50} src='/images/ccc/solar.png' />
                             <span>Solar</span>
                         </BtnIcon> {/* sunbeam going down when hover */}
                         <BtnIcon>

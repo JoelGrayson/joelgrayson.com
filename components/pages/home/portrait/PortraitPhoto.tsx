@@ -6,7 +6,7 @@ export default function PortraitPhoto({date, ratio, hovering, setHovering, ...pr
     hovering: boolean, /** determines whether or not to show background */
     setHovering: (hovering: boolean)=>void,
 } & any) {
-    return <span style={{
+    return (<span style={{
         position: 'relative',
         top: topOffset,
         height: `${270+60}px`,
@@ -17,7 +17,7 @@ export default function PortraitPhoto({date, ratio, hovering, setHovering, ...pr
         marginRight: 3
     }}>
         <img
-            src={`/images/portraits/${date}/Joel Grayson.png`}
+            src={`/images/home/portraits/${date}/Joel Grayson.png`}
             height={270} width={270*ratio}
             alt='Joel Grayson Profile Photo'
             style={{
@@ -35,37 +35,5 @@ export default function PortraitPhoto({date, ratio, hovering, setHovering, ...pr
             width: '100%',
             fontWeight: 'bold',
         }}>{date.match(/(\d{4})$/)[1]}</span> } {/* Show year only */}
-    </span>
-    
-    
-    
-    /*
-    if (!hovering) //guard clause for simple image
-        return (<Image
-            src={`/images/portraits/${date}/Joel Grayson.png`}
-            height={270} width={270*ratio}
-            alt='Joel Grayson Profile Photo'
-            {...props}
-        />);
-
-    return (<div style={{ // Background
-        backgroundColor: 'red',
-        height: `${270+50}px`,
-        width: `${270*ratio+20}px`,
-        position: 'relative',
-        // left: 0,
-
-        display: 'flex',
-        flexDirection: 'column',
-        // justifyContent: 'left',
-        alignItems: 'center',
-    }}>
-        <Image
-            src={`/images/portraits/${date}/Joel Grayson.png`}
-            height={270} width={270*ratio}
-            alt='Joel Grayson Profile Photo'
-            {...props}
-        />
-        <div>{date}</div>
-    </div>); */
+    </span>);
 }
