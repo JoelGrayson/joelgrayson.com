@@ -16,6 +16,7 @@ export default function PortraitPhoto({date, ratio, hovering, setHovering, ...pr
         marginLeft: 3,
         marginRight: 3
     }}>
+        {/* eslint-disable */}
         <img
             src={`/images/home/portraits/${date}/Joel Grayson.png`}
             height={270} width={270*ratio}
@@ -26,7 +27,8 @@ export default function PortraitPhoto({date, ratio, hovering, setHovering, ...pr
                 bottom: `${topOffset}px`,
             }}
             {...props}
-        /> 
+        />
+        {/* eslint-enable */}
         {/* Show date text onHover */}
         { hovering && <span style={{
             position: 'absolute',

@@ -14,7 +14,7 @@ export default function Home({children}: {children: ReactNode}) {
                 </a></Link>
             </div>
             <div> {/* Right */}
-                <Nav gap={4}>
+                <Nav>
                     <Nav.Item Link={Link} href='/@jcomponents/'>All</Nav.Item>
                     <Nav.Item Link={Link} href='/@jcomponents/header'>Header</Nav.Item>
                     <Nav.Item Link={Link} href='/@jcomponents/modal'>Modal</Nav.Item>
