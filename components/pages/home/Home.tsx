@@ -13,7 +13,7 @@ import Portrait from './portrait';
 
 
 export default function Home() {
-    return (<Page>
+    return (<Page title='Joel Grayson'>
         <style jsx>{`
             .buttons { /* button grid */
                 display: -ms-grid;
@@ -26,12 +26,6 @@ export default function Home() {
                 margin: 0 auto;
             }
         `}</style>
-        <Head>
-            <title>Joel Grayson</title>
-            <meta charSet="UTF-8"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
-        </Head>
         <div className='w-full p-0 m-0'>
             {/* top */}
             <div className='w-full h-[290px] p-0'

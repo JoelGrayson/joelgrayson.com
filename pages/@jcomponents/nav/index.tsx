@@ -1,5 +1,6 @@
 import Page from '../../../components/@jcomponents/Page';
 import Code from '../../../components/@jcomponents/Code';
+import Button from '@jcomponents/button';
 
 export default function NavDoc() {
     return (<Page>
@@ -22,8 +23,8 @@ export default function NavDoc() {
                     display: 'flex',
                     gap: 10,
                 }}>
-                    <code className='light' style={{width: 'max-content'}}>npm i @jcomponents/nav</code>
-                    <button onClick={_=>navigator.clipboard.writeText('npm i @jcomponents/nav')}>Copy</button>
+                    <code className='dark' style={{width: 'max-content'}}>npm i @jcomponents/nav</code>
+                    <Button.Puffy color='#e63e3f' copy='npm i @jcomponents/nav'>Copy</Button.Puffy>
                 </div>
             </div>
         </div>

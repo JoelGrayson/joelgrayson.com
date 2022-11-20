@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAWA,QAAQ",
-    "sources": [
-        "machines.module.sass"
-    ],
-    "names": [],
-    "file": "machines.module.css"
-}
+{"version":3,"sources":["machines.module.sass"],"names":[],"mappings":"AAWA,OAAA","file":"machines.module.css"}

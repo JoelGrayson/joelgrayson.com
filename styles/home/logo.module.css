@@ -17,7 +17,6 @@
 }
 
 .outer {
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
   -webkit-animation-duration: 5s;
           animation-duration: 5s;
@@ -28,7 +27,6 @@
 }
 
 .rotatingOuter {
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
   -webkit-animation-name: rotating;
           animation-name: rotating;
@@ -42,23 +40,18 @@
 
 @-webkit-keyframes rotating {
   from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
 @keyframes rotating {
   from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
-}
-/*# sourceMappingURL=logo.module.css.map */
+}/*# sourceMappingURL=logo.module.css.map */

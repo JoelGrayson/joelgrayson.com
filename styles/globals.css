@@ -32,8 +32,8 @@ html, body {
 *::selection { /* yellow highlight color */
     background-color: #f9c44d;
 }
-main p, main div, main button, main li { /* padding in page */
-    padding: 10px;
+main p, main div, main button, main li { /* vertical padding in page */
+    padding: 10px 0;
 }
 input[type='submit'] {
     cursor: pointer;
@@ -47,12 +47,12 @@ h1, h2, h3, h4, h5 {
     font-family: AvenirMedium;
     line-height: 1.8;
 }
-h1 { font-size: 3.4rem; font-family: Myriad; }
-h2 { font-size: 2.1rem; }
-h3 { font-size: 1.6rem; }
-h4 { font-size: 1.3rem; }
-h5 { font-size: 1.2rem; }
-h6 { font-size: 1.1rem; }
+h1 { font-size: 3.4rem; font-family: Myriad; margin-top: 10px; }
+h2 { font-size: 2.1rem; margin-top: 8px; }
+h3 { font-size: 1.6rem; margin-top: 7px; }
+h4 { font-size: 1.3rem; margin-top: 6px; }
+h5 { font-size: 1.2rem; margin-top: 5px; }
+h6 { font-size: 1.1rem; margin-top: 4px; }
 small {
     font-size: 65%;
 }
@@ -61,6 +61,26 @@ ul:not(.unstyled) li {
     margin-left: 1.5rem;
     list-style-type: disc;
 }
+
+code.light { /* light code like notion */
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    padding: .5ch;
+    color: #eb5757;
+    background-color: #ededeb;
+    border-radius: .3ch;
+}
+code.dark { /* dark code like sublime */
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    padding: .5ch;
+    background-color: #222;
+    color: rgb(255, 77, 77);
+    border-radius: .3ch;
+}
+
 
 /* Links */
 a {

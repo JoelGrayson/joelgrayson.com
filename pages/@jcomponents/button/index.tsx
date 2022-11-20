@@ -26,8 +26,8 @@ export default function ButtonDoc() {
                     display: 'flex',
                     gap: 10,
                 }}>
-                    <code className='light' style={{width: 'max-content'}}>npm i @jcomponents/button</code>
-                    <button onClick={_=>navigator.clipboard.writeText('npm i @jcomponents/button')}>Copy</button>
+                    <code className='dark' style={{width: 'max-content'}}>npm i @jcomponents/button</code>
+                    <Button.Puffy color='#e63e3f' copy='npm i @jcomponents/button'>Copy</Button.Puffy>
                 </div>
             </div>
         </div>
@@ -54,6 +54,29 @@ export default function ButtonDoc() {
             <Button color='jblue'>JBlue</Button> <Gap/>
         </div>
         <Gap/><Gap/>
+
+        <h4>Copying Content</h4>
+        <Code>{`
+<div style={{display: 'flex', alignItems: 'center', gap: 10}}>
+    <Button copy='This is the text to copy'>Copy</Button>
+    <p>This is the text to copy</p>
+</div>
+<div style={{display: 'flex', alignItems: 'center', gap: 10}}>
+    <Button.Puffy copy='Lorem ipsum'>Copy</Button.Puffy>
+    <p>Lorem Ipsum</p>
+</div>
+        `}</Code>
+        <div>
+            <p>Rendered result:</p>
+            <div style={{display: 'flex', alignItems: 'center', gap: 10}}>
+                <Button copy='This is the text to copy'>Copy</Button>
+                <p>This is the text to copy</p>
+            </div>
+            <div style={{display: 'flex', alignItems: 'center', gap: 10}}>
+                <Button.Puffy copy='Lorem ipsum'>Copy</Button.Puffy>
+                <p>Lorem Ipsum</p>
+            </div>
+        </div>
 
         <h4>Using Button.Icon</h4>
         <Code>{`

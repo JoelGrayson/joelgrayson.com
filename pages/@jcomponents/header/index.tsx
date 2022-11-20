@@ -1,5 +1,6 @@
 import Page from '../../../components/@jcomponents/Page';
 import Code from '../../../components/@jcomponents/Code';
+import Button from '@jcomponents/button';
 
 export default function HeaderDoc() {
     return (<Page>
@@ -21,8 +22,8 @@ export default function HeaderDoc() {
                     display: 'flex',
                     gap: 10,
                 }}>
-                    <code className='light' style={{width: 'max-content'}}>npm i @jcomponents/header</code>
-                    <button onClick={_=>navigator.clipboard.writeText('npm i @jcomponents/header')}>Copy</button>
+                    <code className='dark' style={{width: 'max-content'}}>npm i @jcomponents/header</code>
+                    <Button.Puffy color='#e63e3f' copy='npm i @jcomponents/header'>Copy</Button.Puffy>
                 </div>
             </div>
         </div>

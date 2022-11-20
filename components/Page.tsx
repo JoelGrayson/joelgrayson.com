@@ -3,10 +3,10 @@ import Header from './Header';
 import Footer from './Footer';
 import { ReactNode } from 'react';
 
-export default function Page({children, title, center, ...props}: {
+export default function Page({children, title, padding, ...props}: {
     children: ReactNode;
     title?: string;
-    center?: boolean;
+    padding?: boolean;
     [key: string]: any;
 }) {
     return (<>
@@ -21,12 +21,13 @@ export default function Page({children, title, center, ...props}: {
 
         <main style={{
             position: 'relative',
-            padding: 0, margin: 0, width: '100%', 
+            padding: 0, margin: 0,
+            width: '100%',
             minHeight: 'calc(100vh - 77px - 89px)' // fills the entire page (minus footer and header's heights)
         }} {...{props}}>
-            {center
+            { padding
             ? <div className='j_container j_max-w'>{children}</div> //if center, wrap in centering container
-            : children}
+            : children }
         </main>
         <Footer/> {/* 89px */}
     </>)

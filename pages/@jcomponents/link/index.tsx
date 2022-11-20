@@ -1,6 +1,7 @@
 import Link from '@jcomponents/link';
 import Page from '../../../components/@jcomponents/Page';
 import Code from '../../../components/@jcomponents/Code';
+import Button from '@jcomponents/button';
 
 export default function LinkDoc() {
     return (<Page>
@@ -24,8 +25,8 @@ export default function LinkDoc() {
                     display: 'flex',
                     gap: 10,
                 }}>
-                    <code className='light' style={{width: 'max-content'}}>npm i @jcomponents/link</code>
-                    <button onClick={_=>navigator.clipboard.writeText('npm i @jcomponents/link')}>Copy</button>
+                    <code className='dark' style={{width: 'max-content'}}>npm i @jcomponents/link</code>
+                    <Button.Puffy color='#e63e3f' copy='npm i @jcomponents/link'>Copy</Button.Puffy>
                 </div>
             </div>
         </div>

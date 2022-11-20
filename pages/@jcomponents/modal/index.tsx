@@ -1,5 +1,6 @@
 import Page from '../../../components/@jcomponents/Page';
 import Code from '../../../components/@jcomponents/Code';
+import Button from '@jcomponents/button';
 
 export default function ModalDoc() {
     return (<Page>
@@ -20,8 +21,8 @@ export default function ModalDoc() {
                     display: 'flex',
                     gap: 10,
                 }}>
-                    <code className='light' style={{width: 'max-content'}}>npm i @jcomponents/modal</code>
-                    <button onClick={(_?: any)=>navigator.clipboard.writeText('npm i @jcomponents/modal')}>Copy</button>
+                    <code className='dark' style={{width: 'max-content'}}>npm i @jcomponents/modal</code>
+                    <Button.Puffy color='#e63e3f' copy='npm i @jcomponents/modal'>Copy</Button.Puffy>
                 </div>
             </div>
         </div>

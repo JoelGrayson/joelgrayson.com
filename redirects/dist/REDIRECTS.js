@@ -3,6 +3,8 @@ exports.__esModule = true;
 exports.temporary = exports.permanent = void 0;
 exports.permanent = {
     // Newest at top, oldest at bottom
+    'https://calendar.google.com/calendar/u/0?cid=Y182MTYxMThmYmE5ZTY1YWI0YzlkODlmZjAyZDlkMTcxNjE1ZjQ2ZTIyMzlhNTI0MWY1MDBlNjQzZTAyZmRmODRlQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20': '/software/day-number-calendar/google',
+    '/software/day-number-calendar.ics': '/software/day-number-calendar/apple',
     '/software/days-until/': '/days-until',
     '/software/articlify/index.html': ['/software/articlify/', '/articlify'],
     '/combating-climate-change': ['/ccc', '/climate-change'],
@@ -39,8 +41,7 @@ exports.permanent = {
     '/big-sur-sounds': '/audio/big-sur-sounds',
     '/': '/about',
     '/joel-for-grade-rep-2020': '/2020-campaign',
-    'https://thejoelgrayson.wixsite.com/mysite': '/2019-campaign',
-    '/to': /from-(\d)/
+    'https://thejoelgrayson.wixsite.com/mysite': '/2019-campaign'
 };
 exports.temporary = { //302
 };

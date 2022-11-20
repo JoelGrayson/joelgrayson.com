@@ -1,9 +1,9 @@
 .viewer {
   position: absolute;
   bottom: 0;
-  right: calc(max(50vw - 400px, 10px));
+  right: max(50vw - 400px, 10px);
   border: 2px solid brown;
-  width: calc(min(250px, 60vw));
+  width: min(250px, 60vw);
   min-height: 200px;
   z-index: 1;
   background-color: #fafafa;
@@ -16,7 +16,6 @@
   height: 0;
   cursor: pointer;
 }
-
 .collapsedViewer:hover {
   background-color: #ccc;
 }
@@ -34,5 +33,4 @@
   position: relative;
   right: 25px;
   bottom: 22px;
-}
-/*# sourceMappingURL=viewer.module.css.map */
+}/*# sourceMappingURL=viewer.module.css.map */

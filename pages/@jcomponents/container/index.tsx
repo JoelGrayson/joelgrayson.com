@@ -1,5 +1,6 @@
 import Page from '../../../components/@jcomponents/Page';
 import Code from '../../../components/@jcomponents/Code';
+import Button from '@jcomponents/button';
 
 export default function ContainerDoc() {
     return (<Page>
@@ -20,8 +21,8 @@ export default function ContainerDoc() {
                     display: 'flex',
                     gap: 10,
                 }}>
-                    <code className='light' style={{width: 'max-content'}}>npm i @jcomponents/container</code>
-                    <button onClick={_=>navigator.clipboard.writeText('npm i @jcomponents/container')}>Copy</button>
+                    <code className='dark' style={{width: 'max-content'}}>npm i @jcomponents/container</code>
+                    <Button.Puffy color='#e63e3f' copy='npm i @jcomponents/container'>Copy</Button.Puffy>
                 </div>
             </div>
         </div>
