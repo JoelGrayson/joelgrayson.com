@@ -109,6 +109,27 @@ a>.btn-red:hover { /* .btn-red hover color is white */
 
 /* > */
 
+/* Form */
+input, textarea {
+    border: 1px solid black;
+    background-color: #dde5ff;
+    border-radius: 0.4rem;
+    padding: 0.2rem 0.8rem;
+}
+
+input:invalid, textarea:invalid {
+    background-color: #fde2f0;
+}
+  
+input:hover, textarea:hover {
+    background-color: #c4c9f2;
+}
+  
+input:focus, textarea:focus {
+    background-color: #d4e0fd;
+}
+
+
 /**|| Custom Class Elements */
 .j_container {
     /* @apply w-[100%] mx-auto leading-7 py-10; */

@@ -1,9 +1,10 @@
 import Page from '../../components/Page';
 
-const getDate=(name: string)=>{
+const getDate: (name: string)=>Date | 'invalid date'=(name: string)=>{
     // name.matchAll(/\d{4}(.\d{2})?(.\d{2})?/)
-    const dateStr=name.split(' ')[0];
+    const dateStr=name.trim().split(' ')[0];
     const [year, month, day]=dateStr.match(/\d{4}(.\d{2})?(.\d{2})?/) || [];
+    if (year===undefined) return 'invalid date';
     const date=new Date();
     date.setFullYear(parseInt(year));
     date.setMonth(parseInt(month) || 0);
@@ -54,8 +55,8 @@ export default function Art() {
             gridTemplateColumns: 'repeat(3, 1fr)',
         }}>
             {
-            images.map(imageName=>(<span>
-                <img src={`/images/art/${imageName}`}/>
+            images.map(imageName=>(<span key={imageName}>
+                <img src={`/images/art/${imageName}`} alt={`Artwork titled '${imageName}'`} />
             </span>))
             }
         </div>
