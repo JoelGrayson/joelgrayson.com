@@ -3,6 +3,7 @@ exports.__esModule = true;
 exports.temporary = exports.permanent = void 0;
 exports.permanent = {
     // Newest at top, oldest at bottom
+    'https://joels-secrets-vemwxlduba-uk.a.run.app': '/secrets',
     '/art': '/projects/art',
     'https://calendar.google.com/calendar/u/0?cid=Y182MTYxMThmYmE5ZTY1YWI0YzlkODlmZjAyZDlkMTcxNjE1ZjQ2ZTIyMzlhNTI0MWY1MDBlNjQzZTAyZmRmODRlQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20': '/software/day-number-calendar/google',
     '/software/day-number-calendar.ics': '/software/day-number-calendar/apple',

@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { dateRegex, SignedMessage } from '../../../components/verify/helpers';
 import { msg2Str, escapeQuot } from '../../../components/verify/helpers';
 import { exec } from 'child_process';
+import path from 'path';
 
 type Data={
     status: 'Success';
@@ -44,6 +45,8 @@ export default async function validateHandler(req: NextApiRequest, res: NextApiR
     if (input.date.match(dateRegex)==null) return res.status(400).json({status: 'Error', message: 'Invalidly formed date. Must be of format `YEAR.MONTH.DAY`.'});
     if (input.signature.length<=8)         return res.status(400).json({status: 'Error', message: 'Invalidly formed signature. Must be at least 8 characters long.'});
 
-    const validated=await validate(input, './components/verify');
+    const pathToFile=path.join(__dirname, 'components', 'verify');
+    console.log('p', pathToFile);
+    const validated=await validate(input, pathToFile);
     res.status(200).json({ status: 'Success', valid: validated });
 }

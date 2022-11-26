@@ -88,7 +88,7 @@ export default function Verify() {
             </div>
             <div>
                 <label htmlFor="signature">Signature&emsp;</label>
-                <input ref={signatureRef} type="text" name="signature" id="signature" />
+                <input ref={signatureRef} type="text" name="signature" id="signature" className='w-[300px]' />
             </div>
 
             <Button onClick={verifyRequest}>Verify</Button>
