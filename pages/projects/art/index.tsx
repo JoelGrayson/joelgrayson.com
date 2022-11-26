@@ -1,4 +1,4 @@
-import Page from '../../components/Page';
+import Page from '../../../components/Page';
 import Image from 'next/image';
 import { useState } from 'react';
 import Button from '@jcomponents/button';

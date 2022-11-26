@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect, ReactNode } from 'react';
 import Link from 'next/link';
-import { PathContext } from '../Header';
+import { PathContext } from '..';
 
 export default function HeaderItem({link /*a href's link*/, children}: {link: string, children: ReactNode}) { //highlighted if is current page
     const asPath=useContext(PathContext);

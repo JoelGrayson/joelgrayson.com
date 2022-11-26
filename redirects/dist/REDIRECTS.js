@@ -4,7 +4,8 @@ exports.temporary = exports.permanent = void 0;
 exports.permanent = {
     // Newest at top, oldest at bottom
     'https://joels-secrets-vemwxlduba-uk.a.run.app': '/secrets',
-    '/art': '/projects/art',
+    '/projects/art': '/art',
+    '/projects/performances': ['/performance', '/performances'],
     'https://calendar.google.com/calendar/u/0?cid=Y182MTYxMThmYmE5ZTY1YWI0YzlkODlmZjAyZDlkMTcxNjE1ZjQ2ZTIyMzlhNTI0MWY1MDBlNjQzZTAyZmRmODRlQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20': '/software/day-number-calendar/google',
     '/software/day-number-calendar.ics': '/software/day-number-calendar/apple',
     '/software/days-until/': '/days-until',
@@ -15,7 +16,6 @@ exports.permanent = {
     '/audio': ['/sfx', '/sound', '/sound-effects', '/thelunarsquad-audio'],
     'https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A': ['/Slaphappy', '/slaphappy'],
     '/the-perspective': '/perspective',
-    '/performances': '/performance',
     '/open-in-new-tab-wix-code': ['/wix-code-new-tab', /open-in-new-tab(-using)?(-wix-code)?-velo/],
     '/onedrive-download-link-generator': [
         '/download-link-generator-onedrive', '/onedrive-download-link', '/onedrive-link-generator',

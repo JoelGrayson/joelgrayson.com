@@ -4,13 +4,13 @@ import { createContext } from 'react';
 export const PathContext=createContext<string>('');
 
 // Header DOMEls
-import HeaderItem from './header/HeaderItem';
-import HeaderGroup from './header/HeaderGroup';
-import HeaderGroupItem from './header/HeaderGroupItem';
-import HeaderSubGroup from './header/HeaderSubGroup';
+import HeaderItem from './parts/HeaderItem';
+import HeaderGroup from './parts/HeaderGroup';
+import HeaderGroupItem from './parts/HeaderGroupItem';
+import HeaderSubGroup from './parts/HeaderSubGroup';
 
-import ViolinBow from './header/ViolinBow';
-import Signature from './header/Signature';
+import ViolinBow from './parts/ViolinBow';
+import Signature from './parts/Signature';
 
 export default function Header() {
     const { asPath }=useRouter(); //the path (window object cannot be used)
@@ -35,9 +35,9 @@ export default function Header() {
                                     </span>
                                 </HeaderItem>
                                 <HeaderGroup title='Projects'>
-                                    <HeaderGroupItem link='/art'>Art</HeaderGroupItem>
-                                    <HeaderGroupItem link='/machines'>Machines</HeaderGroupItem>
-                                    <HeaderGroupItem link='/performances'>
+                                    <HeaderGroupItem link='/projects/art'>Art</HeaderGroupItem>
+                                    <HeaderGroupItem link='/projects/machines'>Machines</HeaderGroupItem>
+                                    <HeaderGroupItem link='/projects/performances'>
                                         <span className='relative'>
                                             Performances &emsp;&nbsp;&nbsp;
                                             <ViolinBow/>
