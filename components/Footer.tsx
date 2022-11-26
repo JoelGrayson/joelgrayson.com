@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 
 import wiggle from './slaphappy s.gif';
 import still from './still slaphappy s.png';

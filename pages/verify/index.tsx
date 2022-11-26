@@ -3,7 +3,6 @@ import Button from '@jcomponents/button';
 import { dateRegex, SignedMessage } from '../../components/verify/helpers';
 import React, { useState, useRef } from 'react';
 import Modal from '@jcomponents/modal';
-import Link from 'next/link';
 
 // Planning: https://docs.google.com/document/d/1hg9SUuCwXk_PzTEOq7oJTXakGg7oZRXB4trvmor_abY/edit
 
@@ -28,7 +27,7 @@ export default function Verify() {
         const sm: SignedMessage={ message, date, signature };
         console.log('Sending SignedMessage: ', sm);
 
-        fetch('/api/verify/', {
+        fetch('https://api.joelgrayson.com/verify', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -94,6 +93,7 @@ export default function Verify() {
             <Button onClick={verifyRequest}>Verify</Button>
 
             {(()=>{
+                // Verification status:
                 switch (isValid) {
                     case null:
                         return <></>;
