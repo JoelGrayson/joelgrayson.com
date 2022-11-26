@@ -5,15 +5,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const cors=require('cors');
 const whitelist=[
-    'http://localhost:8080', 'https://localhost:3000',
-    'https://joelgrayson.com', 'https://www.joelgrayson.com'
+    'http://localhost:8080', 'http://localhost:3000',
+    'https://joelgrayson.com', 'https://www.joelgrayson.com',
+    'https://joelgrayson.vercel.app', 'https://www.joelgrayson.vercel.app',
 ];
 app.use(cors({
     origin: (origin, callback)=>{
-        if (whitelist.includes(origin))
-            callback(null, true);
+        if (whitelist.includes(origin) || !origin)
+            return callback(null, true);
         else
-            callback(new Error('Not allowed by CORS'));
+            return callback(new Error('Not allowed by CORS'));
     }
 }))
 

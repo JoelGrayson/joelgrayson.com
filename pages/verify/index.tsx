@@ -12,10 +12,11 @@ export default function Verify() {
     const signatureRef=useRef() as React.MutableRefObject<HTMLInputElement>;;
     const [open, setOpen]=useState<boolean>(false);
 
-    const [isValid, setIsValid]=useState<null | 'valid' | 'invalid'>(null);
+    const [isValid, setIsValid]=useState<null | 'verifying...' | 'valid' | 'invalid'>(null);
 
     function verifyRequest() {
         console.log('Verifying');
+        setIsValid('verifying...');
         const message=messageRef.current.value;
         const date=dateRef.current.value;
         const signature=signatureRef.current.value;
@@ -97,6 +98,8 @@ export default function Verify() {
                 switch (isValid) {
                     case null:
                         return <></>;
+                    case 'verifying...':
+                        return <i>Verifying...</i>;
                     case 'valid':
                         return <p className='text-green-800'>Verified ✅. Joel Grayson signed/authorized this message.</p>;
                     case 'invalid':
