@@ -19,15 +19,15 @@ export default function Verify() {
     // Proper setState updates the query params
     function setMessage(newMsg: string) {
         _setMessage(newMsg);
-        router.replace({query: {...query, message: newMsg}});
+        router.replace({query: {...query, message: encodeURIComponent(newMsg)}});
     }
     function setDate(newDate: string) {
         _setDate(newDate);
-        router.replace({query: {...query, date: newDate}});
+        router.replace({query: {...query, date: encodeURIComponent(newDate)}});
     }
     function setSignature(newSignature: string) {
         _setSignature(newSignature);
-        router.replace({query: {...query, signature: newSignature}});
+        router.replace({query: {...query, signature: encodeURIComponent(newSignature)}});
     }
     
     const [isValid, setIsValid]=useState<null | 'verifying...' | 'valid' | 'invalid'>(null);
