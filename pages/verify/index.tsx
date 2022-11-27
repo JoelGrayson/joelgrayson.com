@@ -60,7 +60,6 @@ export default function Verify() {
     
     // Use query values
     const { query }=useRouter();
-    console.log('q', query);
     
     useEffect(()=>{ //automatically update validity when user types something
         if (query.message && query.date && query.signature) { //if valid query, use its values

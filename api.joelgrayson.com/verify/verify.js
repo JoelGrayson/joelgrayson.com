@@ -9,6 +9,7 @@ function saveToFile(string, filename) {
 }
 
 async function verify(msg, path) {
+    await saveToFile(addNotice(msg.message), `${path}/original-message.txt`);
     await saveToFile(msg2Str(msg), `${path}/message.txt`);
     await saveToFile(msg.signature, `${path}/signature.txt`);
     return new Promise((resolve, reject)=>{
@@ -40,8 +41,21 @@ async function verifyHandler(req, res) {
     res.status(200).send(JSON.stringify({ status: 'Success', valid: validated }));
 }
 
+function addNotice(msg) {
+    return 'NOTE: This file is not actually used for hashing. It is just a copy of the original, unaltered message. The actually hashed message (in `message.txt`) has tabs and newlines stripped and is lowercased.'
+        +'\n'
+        +'\n'
+        +msg;
+}
+
 function msg2Str(msg) {
-    return 'Message: '+msg.message.trim()+'\n'
+    // Cut off message's newlines, tabs, and capitalization.
+    const message=msg.message
+        .trim()
+        .split('').reduce((acc, char)=>char==='\n' || char==='\t' ? acc : acc+char, '')
+        .toLowerCase();
+
+    return 'Message: '+message+'\n'
     +'Date: '+date2Str(str2Date(msg.date)); //convert to standard date format (MONTH.DATE.YEAR)
 }
 
