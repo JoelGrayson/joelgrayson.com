@@ -60,16 +60,17 @@ export default function Verify() {
     
     // Use query values
     const { query }=useRouter();
-    if (query.message && query.date && query.signature) { //if valid query, use its values
-        setMessage(query.message as string);
-        setDate(query.date as string);
-        setSignature(query.signature as string);
-        verifyRequest();
-    }
+    console.log('q', query);
     
     useEffect(()=>{ //automatically update validity when user types something
+        if (query.message && query.date && query.signature) { //if valid query, use its values
+            setMessage(query.message as string);
+            setDate(query.date as string);
+            setSignature(query.signature as string);
+        }
+
         verifyRequest(true);
-    }, [message, date, signature, verifyRequest]);
+    }, [message, date, signature, verifyRequest, query]);
     
     return (<Page padding>
         <h1 className='flex justify-center items-center'>
@@ -94,7 +95,7 @@ export default function Verify() {
             <p>I sign messages I approve of with OpenSSL&apos;s SHA1 using my private key. SHA1 is an asymetric cryptographic algorithm, so when I sign a message, it returns a signature. The message can then be verified using the signature and public key.</p>
             <br />
             <p>Below is my public key:</p>   
-            <code>MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu/5vI2rS5T6bnelsyVegDDHeb4SYSxTC4gCdpCBZ7tFoKiq1rAleW6WmI9DNM+JGo8KsHVgacHq7yJDzXG1YOqqlnBp1lVyqgm+XS5uCmXjLE7rQKRU77H66UWGc7ZNxgqgRoGPekrUBWkn6bC1k3rdVZbVPrt1Qvdn87zVf/xD0SZy1Mn/SeeEig3Oaakerv7/i0JRY50ILQJsl+4EjMn2a24He+f0UGUMboRvLU7wjb1Kae3gmY8rfqKSBoPwiAEYod7Wn5cKrOOP3VC2lePx4iVLBNW4fcWocBRAQHmHPAxnn4WEqvWW6P7tXlTNUEYZJj4B0Ll03bV6sbvJ0/wIDAQAB</code>
+            <code>MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAN1x/1tamFGc/vdJMnXEM1HrMBxFyJavnMkl7GLsdMe9hfuadYZUsCDEp8KoVuYyPwWL1e4IEScfd9UaDoKSKUUCAwEAAQ==</code>
         </Modal>
         <div>
             <div>
