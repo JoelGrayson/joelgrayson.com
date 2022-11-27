@@ -1,32 +1,40 @@
 import Page from '../../components/Page';
 import Button from '@jcomponents/button';
 import { dateRegex, SignedMessage } from '../../components/verify/helpers';
-import React, { useState, useRef } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import Modal from '@jcomponents/modal';
+import { useRouter } from 'next/router';
 
 // Planning: https://docs.google.com/document/d/1hg9SUuCwXk_PzTEOq7oJTXakGg7oZRXB4trvmor_abY/edit
 
 export default function Verify() {
-    const messageRef=useRef() as React.MutableRefObject<HTMLTextAreaElement>;
-    const dateRef=useRef() as React.MutableRefObject<HTMLInputElement>;
-    const signatureRef=useRef() as React.MutableRefObject<HTMLInputElement>;;
-    const [open, setOpen]=useState<boolean>(false);
-
+    // DOM El Values
+    const [message, setMessage]=useState<string>('');
+    const [date, setDate]=useState<string>('');
+    const [signature, setSignature]=useState<string>('');
+    
     const [isValid, setIsValid]=useState<null | 'verifying...' | 'valid' | 'invalid'>(null);
+    const [open, setOpen]=useState<boolean>(false);
+    
+    const verifyRequest=useCallback((suppressWarnings=false)=>{
+        const dateRegex=/(\d{1,2}\.\d{1,2}\.\d{2,4}|\d{4}(\.\d{1,2})?(\.\d{1,2})?)/;
 
-    function verifyRequest() {
-        console.log('Verifying');
-        setIsValid('verifying...');
-        const message=messageRef.current.value;
-        const date=dateRef.current.value;
-        const signature=signatureRef.current.value;
-
-        if (!message)   return alert('Please provide a message');
-        if (!date)      return alert('Please provide a date');
-        if (!signature) return alert('Please provide a signature');
+        // Warnings
+        if (!date || !dateRegex.test(date)) {
+            if (suppressWarnings) return;
+            return alert('Invalidly formed date. Must be of format `YEAR.MONTH.DAY`.');
+        }
+        if (!message) {
+            if (suppressWarnings) return;
+            return alert('Please provide a message');
+        }
+        if (!signature || signature.length<=8) {
+            if (suppressWarnings) return;
+            return alert('Please provide a signature at least 9 letters long.');
+        }
 
         const sm: SignedMessage={ message, date, signature };
-        console.log('Sending SignedMessage: ', sm);
+        console.log('Verifying: ', sm);
 
         fetch('https://api.joelgrayson.com/verify', {
             method: 'POST',
@@ -48,8 +56,20 @@ export default function Verify() {
                 else
                     setIsValid(null);
             });
-        
+    }, [date, message, signature]);
+    
+    // Use query values
+    const { query }=useRouter();
+    if (query.message && query.date && query.signature) { //if valid query, use its values
+        setMessage(query.message as string);
+        setDate(query.date as string);
+        setSignature(query.signature as string);
+        verifyRequest();
     }
+    
+    useEffect(()=>{ //automatically update validity when user types something
+        verifyRequest(true);
+    }, [message, date, signature, verifyRequest]);
     
     return (<Page padding>
         <h1 className='flex justify-center items-center'>
@@ -80,18 +100,27 @@ export default function Verify() {
             <div>
                 <label htmlFor='message'>Message</label>
                 <br />
-                <textarea ref={messageRef} id='message' name='message' rows={10} cols={50}></textarea>
+                <textarea 
+                    id='message' name='message' rows={10} cols={50}
+                    value={message} onChange={e=>setMessage(e.target.value)}
+                />
             </div>
             <div>
                 <label htmlFor="date">Date&emsp;</label>
-                <input ref={dateRef} type="text" name="date" id="date" pattern={dateRegex.toString().slice(1, -1)} />
+                <input
+                    type="text" name="date" id="date" pattern={dateRegex.toString().slice(1, -1)} 
+                    value={date} onChange={e=>setDate(e.target.value)}
+                />
             </div>
             <div>
                 <label htmlFor="signature">Signature&emsp;</label>
-                <input ref={signatureRef} type="text" name="signature" id="signature" className='w-[300px]' />
+                <input
+                    type="text" name="signature" id="signature" className='w-[300px]'
+                    value={signature} onChange={e=>setSignature(e.target.value)}
+                />
             </div>
 
-            <Button onClick={verifyRequest}>Verify</Button>
+            <Button onClick={e=>verifyRequest()}>Verify</Button>
 
             {(()=>{
                 // Verification status:
@@ -99,7 +128,7 @@ export default function Verify() {
                     case null:
                         return <></>;
                     case 'verifying...':
-                        return <i>Verifying...</i>;
+                        return <p className='italic'>Verifying...</p>;
                     case 'valid':
                         return <p className='text-green-800'>Verified ✅. Joel Grayson signed/authorized this message.</p>;
                     case 'invalid':
