@@ -5,7 +5,7 @@ Content-Type: application/json
 {
     "message": "Hello world!",
     "date": "11.25.2022",
-    "signature": "U4x5N7tN1dyvukho80OqzRFG0KCLPzw8ChDI3NKcusUPF3txdLv1eGd7qDfht9wWpvVo5FSNX2bbLtq1RDDo8g=="
+    "signature": "eD36chdJBHUFllp3T6w5oMiZ0+6LRGDi/2zp9ElO/YsT+Gdwv+SsFDhYGVagnkqDSbhX7oc0QLEThkseo2Nhig=="
 }
 
 ###
@@ -16,6 +16,6 @@ Content-Type: application/json
 {
     "message": "Hacked message.",
     "date": "11.25.2022",
-    "signature": "U4x5N7tN1dyvukho80OqzRFG0KCLPzw8ChDI3NKcusUPF3txdLv1eGd7qDfht9wWpvVo5FSNX2bbLtq1RDDo8g=="
+    "signature": "eD36chdJBHUFllp3T6w5oMiZ0+6LRGDi/2zp9ElO/YsT+Gdwv+SsFDhYGVagnkqDSbhX7oc0QLEThkseo2Nhig=="
 }
 

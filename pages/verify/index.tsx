@@ -3,15 +3,32 @@ import Button from '@jcomponents/button';
 import { dateRegex, SignedMessage } from '../../components/verify/helpers';
 import React, { useState, useCallback, useEffect } from 'react';
 import Modal from '@jcomponents/modal';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 
 // Planning: https://docs.google.com/document/d/1hg9SUuCwXk_PzTEOq7oJTXakGg7oZRXB4trvmor_abY/edit
 
 export default function Verify() {
+    const router=useRouter();
+    const { query }=router;
+
     // DOM El Values
-    const [message, setMessage]=useState<string>('');
-    const [date, setDate]=useState<string>('');
-    const [signature, setSignature]=useState<string>('');
+    const [message, _setMessage]=useState<string>(query.message as string || '');
+    const [date, _setDate]=useState<string>(query.date as string || '');
+    const [signature, _setSignature]=useState<string>(query.signature as string || '');
+
+    // Proper setState updates the query params
+    function setMessage(newMsg: string) {
+        _setMessage(newMsg);
+        router.replace({query: {...query, message: newMsg}});
+    }
+    function setDate(newDate: string) {
+        _setDate(newDate);
+        router.replace({query: {...query, date: newDate}});
+    }
+    function setSignature(newSignature: string) {
+        _setSignature(newSignature);
+        router.replace({query: {...query, signature: newSignature}});
+    }
     
     const [isValid, setIsValid]=useState<null | 'verifying...' | 'valid' | 'invalid'>(null);
     const [open, setOpen]=useState<boolean>(false);
@@ -59,18 +76,22 @@ export default function Verify() {
     }, [date, message, signature]);
     
     // Use query values
-    const { query }=useRouter();
+    useEffect(()=>{ //if valid query, use its values
+        if(!router.isReady) return;
+        
+        console.log('query', query);
+
+        if (query.message) _setMessage(query.message as string);
+        if (query.date) _setDate(query.date as string);
+        if (query.signature) _setSignature(query.signature as string);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [router.isReady]); //only run once
     
     useEffect(()=>{ //automatically update validity when user types something
-        if (query.message && query.date && query.signature) { //if valid query, use its values
-            setMessage(query.message as string);
-            setDate(query.date as string);
-            setSignature(query.signature as string);
-        }
+        if (message && date && signature)
+            verifyRequest(true);
+    }, [message, date, signature, verifyRequest]);
 
-        verifyRequest(true);
-    }, [message, date, signature, verifyRequest, query]);
-    
     return (<Page padding>
         <h1 className='flex justify-center items-center'>
             <span>
