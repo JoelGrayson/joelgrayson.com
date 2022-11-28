@@ -1,5 +1,4 @@
 import { css } from '@emotion/css';
-import Head from 'next/head';
 import Image from 'next/image';
 import Page from '../../Page';
 
@@ -53,7 +52,7 @@ export default function Home() {
                         </BtnIcon> {/* sunbeam going down when hover */}
                         <BtnIcon>
                             {/* <Image alt='students-for-electric-buses' height={50} width={50} src='/images/home/students-for-electric-buses-logo.png' /> */}
-                            <SEBLogo/>
+                            <SEBLogo />
                             <span>Students for Electric Buses</span>
                         </BtnIcon> {/* sunbeam going down when hover */}
                         <BtnIcon>
