@@ -3,6 +3,7 @@ import { redirects } from './parts/types';
 export const permanent: redirects={ //301
     // Newest at top, oldest at bottom
 
+    '/stem/joels-sas-equation/index.html': '/stem/joels-sas-equation',
     'https://joels-secrets-vemwxlduba-uk.a.run.app': ['/secrets', '/sign', '/secret'],
     '/projects/art': '/art',
     '/projects/performances': ['/performance', '/performances'],

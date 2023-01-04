@@ -1,14 +1,17 @@
+.viewer, .viewerToggleContainer {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
 .viewer {
   position: absolute;
   bottom: 0;
   right: max(50vw - 400px, 10px);
-  border: 2px solid brown;
+  border: 2px solid #08811a;
   width: min(250px, 60vw);
   min-height: 200px;
   z-index: 1;
   background-color: #fafafa;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
 }
 
 .collapsedViewer {
@@ -24,13 +27,14 @@
   position: absolute;
   top: -24px;
   right: 0;
-  border: 2px solid black;
+  border: 2px solid #08811a;
   height: 8px;
-  width: 15px;
+  width: 25px;
+  background: #fafafa;
 }
 
 .viewerToggle {
   position: relative;
-  right: 25px;
+  right: 5px;
   bottom: 22px;
 }/*# sourceMappingURL=viewer.module.css.map */

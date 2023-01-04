@@ -1,4 +1,3 @@
-import { css } from '@emotion/css';
 import Image from 'next/image';
 import Page from '../../Page';
 
@@ -13,23 +12,9 @@ import Portrait from './portrait';
 
 export default function Home() {
     return (<Page title='Joel Grayson'>
-        <style jsx>{`
-            .buttons { /* button grid */
-                display: -ms-grid;
-                display: grid;
-                -ms-grid-columns: 1fr 1fr 1fr;
-                    grid-template-columns: 1fr 1fr 1fr;
-            }
-            .buttons li {
-                list-style-type: none;
-                margin: 0 auto;
-            }
-        `}</style>
         <div className='w-full p-0 m-0'>
             {/* top */}
-            <div className='w-full h-[290px] p-0'
-                style={{background: "linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(216,216,216,1) 100%)"}}
-            >
+            <div className='w-full h-[290px] p-0' style={{background: "linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(216,216,216,1) 100%)"}}>
                 <div className='j_max-w relative mx-auto h-full'> {/* container for images same width as content */}
                     {/* signature gif */}
                     <div className='absolute bottom-8 left-11'>
@@ -43,16 +28,13 @@ export default function Home() {
             <article className='j_container j_max-w'>
                 <Block>
                     <h2 className='title'>Climate Change Projects</h2>
-                    <div className={css`
-                        display: flex;
-                    `}>
+                    <div className={'flex'}>
                         <BtnIcon>
                             <Image alt='solar' height={50} width={50} src='/images/ccc/solar.png' />
                             <span>Solar</span>
                         </BtnIcon> {/* sunbeam going down when hover */}
                         <BtnIcon>
-                            {/* <Image alt='students-for-electric-buses' height={50} width={50} src='/images/home/students-for-electric-buses-logo.png' /> */}
-                            <SEBLogo />
+                            <SEBLogo size='75px' />
                             <span>Students for Electric Buses</span>
                         </BtnIcon> {/* sunbeam going down when hover */}
                         <BtnIcon>
@@ -64,7 +46,7 @@ export default function Home() {
                 <Block>
                     <h2 className='title'>Software</h2>
                 </Block>
-                </article>
+            </article>
         </div>
     </Page>);
 }

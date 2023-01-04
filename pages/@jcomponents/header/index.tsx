@@ -14,6 +14,7 @@ export default function HeaderDoc() {
                 <p>
                     Left and right sides.
                     For example, you can put your website&apos;s icon on the left and the navigation on the right.
+                    The header has a default height of 100px.
                 </p>
             </div>
             <div> {/* Right */}

@@ -1,33 +1,6 @@
 import styles from '../../styles/ccc/viewer.module.css';
 import UpDownArrow from '../../components/UpDownArrow';
-
-export enum viewers { //viewer types
-    // Special
-    none,
-    hidden,
-    // Pages
-    solar,
-    seb,
-    msCCCPresentation,
-    busIdlingBan
-};
-
-function InfoRenderer({status}: {status: viewers}) {
-    switch (status) {
-        case viewers.none:
-            return <p>Hover a section to see its description</p>;
-        case viewers.solar:
-            return <p>Solar description.</p>;
-        case viewers.seb:
-            return <p>SEB description.</p>;
-        case viewers.msCCCPresentation:
-            return <p>TODO:</p>;
-        case viewers.busIdlingBan:
-            return <p>TODO:</p>
-        default:
-            return <p>No description for section &quot;{status}&quot;</p>;
-    }
-}
+import InfoRenderer, { viewers } from './InfoRenderer';
 
 export default function Viewer({ status, setStatus }: { status: viewers, setStatus: Function }) {
     function toggleShown() {
