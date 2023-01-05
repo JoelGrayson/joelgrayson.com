@@ -3,7 +3,11 @@ exports.__esModule = true;
 exports.temporary = exports.permanent = void 0;
 exports.permanent = {
     // Newest at top, oldest at bottom
-    '/stem/joels-sas-equation/index.html': '/stem/joels-sas-equation',
+    '/maths/joels-sas-formula/index.html': [
+        '/stem/joels-sas-equation/index.html',
+        '/stem/joels-sas-equation/',
+        '/maths/joels-sas-formula/',
+    ],
     'https://joels-secrets-vemwxlduba-uk.a.run.app': ['/secrets', '/sign', '/secret'],
     '/projects/art': '/art',
     '/projects/performances': ['/performance', '/performances'],
