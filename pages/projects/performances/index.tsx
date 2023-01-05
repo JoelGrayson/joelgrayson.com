@@ -35,7 +35,7 @@ export default function Performances({videos}: any) {
                 return (
                     <div key={video.id}>
                         <a><Link href={ytUrl}>
-                            <img src={thumbnailUrl}/>
+                            <img src={thumbnailUrl} alt={`Thumbnail for ${video.title}`} />
                         </Link></a>
                     </div>
                 )
