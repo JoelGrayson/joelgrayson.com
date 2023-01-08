@@ -3,6 +3,7 @@ exports.__esModule = true;
 exports.temporary = exports.permanent = void 0;
 exports.permanent = {
     // Newest at top, oldest at bottom
+    '/maths': '/math',
     '/maths/joels-sas-formula/index.html': [
         '/stem/joels-sas-equation/index.html',
         '/stem/joels-sas-equation/',
