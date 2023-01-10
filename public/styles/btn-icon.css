@@ -1,0 +1,22 @@
+/*
+See example at https://w.joelgrayson.com/styles/btn-icon/
+
+Elements: a>button.btn-icon>(svg+span{GitHub Icon})
+*/
+
+a.btn-icon button {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+}
+
+a.btn-icon button .icon {
+    height: 40px;
+    max-width: 100px;
+}
+
+a.btn-icon { /* unstyled links */
+    color: inherit;
+    text-decoration: inherit;
+}

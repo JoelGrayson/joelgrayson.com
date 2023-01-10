@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Need for a Nuclear Renaissance</title>
+    <link href='https://w.joelgrayson.com/styles/ucjg.v2.css' rel='stylesheet'/>
+    <link href='https://w.joelgrayson.com/styles/btn-icon.css' rel='stylesheet'/>
+    <style>
+        #slides {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+        #slides img {
+            width: 100%;
+            max-width: 800px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align:center">The Need for a Nuclear Renaissance</h1>
+    
+        <div style="display:flex; align-items:center; gap: 15px;">
+            <a href="./The Need for a Nuclear Renaissance.pptx" class="btn-icon"><button>
+                <!-- PowerPoint SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 48 48" width="48px" height="48px"><path fill="#dc4c2c" d="M8,24c0,9.941,8.059,18,18,18s18-8.059,18-18H26H8z"/><path fill="#f7a278" d="M26,6v18h18C44,14.059,35.941,6,26,6z"/><path fill="#c06346" d="M26,6C16.059,6,8,14.059,8,24h18V6z"/><path fill="#9b341f" d="M22.319,34H5.681C4.753,34,4,33.247,4,32.319V15.681C4,14.753,4.753,14,5.681,14h16.638 C23.247,14,24,14.753,24,15.681v16.638C24,33.247,23.247,34,22.319,34z"/><path fill="#fff" d="M14.673,19.012H10v10h2.024v-3.521H14.3c1.876,0,3.397-1.521,3.397-3.397v-0.058 C17.697,20.366,16.343,19.012,14.673,19.012z M15.57,22.358c0,0.859-0.697,1.556-1.556,1.556h-1.99v-3.325h1.99 c0.859,0,1.556,0.697,1.556,1.556V22.358z"/></svg>
+                <span>Download Presentation</span>
+            </button></a>
+            <br>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Ao6dnDZTpQ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    
+        <br>
+
+        <div id="slides">
+            <!-- <img src="./slides/slide-1.svg" alt="slide 1"> -->
+            <!-- ... -->
+        </div>
+        <br><br>
+    </div>
+
+    <script>
+        const container=document.getElementById("slides")
+        for (let i=1; i<=11; i++) {
+            container.innerHTML+=`
+                <img src="./slides/slide-${i}.svg" alt="Slide ${i}">
+            `;
+        }
+    </script>
+</body>
+</html>

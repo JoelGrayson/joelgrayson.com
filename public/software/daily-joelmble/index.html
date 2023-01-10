@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<script type="text/javascript" src="index.js"></script>
+<form spellcheck="false">
+<html lang = "en">
+
+     <div align="center" id="sign"> <img display:"block";margin-left:"auto";margin-right:"auto"; src="dailyJoelmble.png"; height="1084" width="722"; position="relative"; align="center"></div>
+      
+  <head>
+    <body onload="blink()">
+
+
+    <title>formDemo.html</title>
+    <meta charset = "UTF-8" />
+  </head>
+  
+  <script type="text/javascript">
+        function zoom() {
+            document.body.style.zoom = "150%" 
+        }
+  </script>
+  <body onload="zoom()">
+    
+    <div align="center">
+      <form>
+        <fieldset class="container" position="relative" width="1000px" onload="loom()">
+          
+          <legend style="font-size:22px" onload="playsound()">Daily Joelmble</legend>
+          <p>
+            <label style="color:#2c54a3;font-family:Helvetica;"><b>LAAPORBA</b></label>
+            <input type = "text"
+                  id = "LAAPORBAid"
+                  maxlength = "8"
+                    /><button type="button" onclick="LAAPORBAfunc()">Check</button>
+                    <m style="font-size:25px;weight:bold" id="demo"></m><br>
+                    <script>
+                    function LAAPORBAfunc() {
+                      var x = document.getElementById("LAAPORBAid").value;
+                      if (x === "parabola" || x === "Parabola") {
+                        document.getElementById("demo").innerHTML = "  yay ✅";
+                        var audio = new Audio('Audio/Correct.mp3');
+                        audio.play();  
+                      } else {
+                        document.getElementById("demo").innerHTML = "  nope ❌";
+                        var audio = new Audio('Audio/incorrect.mp3');
+                        audio.play();
+                      };
+                    }
+                    </script>
+          </p>
+          <p>
+            <label style="color:#2c54a3;font-family:Helvetica;"><b>HFERINATHE</b></label>
+            <input type = "form"
+                    id = "HFERINATHE"
+                    value = ""
+                    maxlength = "10" /><button type="button" onclick="HFERINATHEfunc()">Check</button>
+                    <m style="font-size:25px;weight:bold" id="demo2"></m><br>
+                    <script>
+                    function HFERINATHEfunc() {
+                      var x = document.getElementById("HFERINATHE").value;
+                      if (x === "fahrenheit" || x==="Fahrenheit") {
+                        document.getElementById("demo2").innerHTML = "  yay ✅";
+                        var audio = new Audio('Audio/Correct.mp3');
+                        audio.play();
+                      } else {
+                        document.getElementById("demo2").innerHTML = "  nope ❌";
+                        var audio = new Audio('Audio/incorrect.mp3');
+                        audio.play();
+                      };
+                    }
+                    </script>
+          </p>
+          <img src="Dumbo.png" alt="Dumbo"
+          width="184" height="164">
+          <p>Dumbo is sad, because he feels <da style="color:#2c54a3"><b>______</b></da>
+          <p>
+            <label style="color:#2c54a3;font-family:Helvetica;"><b>PEITNARELRH</b></label>
+            <input type = "text"
+                  id = "PEITNARELRH"
+                  maxlength = "11"
+                    /><button type="button" onclick="PEITNARELRHfunc()">Check</button>
+                    <m style="font-size:25px;weight:bold" id="demo3"></m><br>
+                    <script>
+                    function PEITNARELRHfunc() {
+                      var x = document.getElementById("PEITNARELRH").value;
+                      if (x === "irrelephant" || x==="Irrelephant") {
+                        document.getElementById("demo3").innerHTML = "  yay ✅";
+                        var playme = new Audio('Audio/Done.mp3');
+                        playme.play();
+                      } else {
+                        document.getElementById("demo3").innerHTML = "  nope ❌";
+                        var audio = new Audio('Audio/incorrect.mp3');
+                        audio.play();
+                      };
+                    }
+                    </script>
+          </p>
+        </fieldset>
+      </form>
+    </div>
+    <br>
+    <div align="center">
+    <p style="font-size:17px;">Coded by Joel G</p>
+    </div>
+    </body>
+</html>
+<br><br>
+<iframe display="none" width="10" height="10"  src="https://www.youtube.com/embed/2aFGORYDz-E?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" autoplay></iframe>

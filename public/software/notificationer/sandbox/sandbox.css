@@ -1,0 +1,37 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px
+}
+#editor {
+    margin: 0;
+    position: absolute;
+    top: 9rem;
+    right: 6%;
+    left: 6%;
+    bottom: 0;
+    height: 9.5rem;
+    width: 84%;
+    font-family: Monaco, Menlo, 'Ubuntu Mono', Consolas, source-code-pro, monospace;
+}
+#bottomRun {
+    position: absolute;
+    top: 20rem;
+}
+button {
+    border: 1px solid #000;
+    border-radius: 3px;
+    padding: 5px 10px;
+}
+button:hover {
+    outline: 2px solid #111;
+    outline-offset: -2px;
+    filter: brightness(0.9) saturate(1.4);
+}
+button:active {
+	position: relative;
+	top: 1px;
+}
+button:disabled {
+    outline: none;
+}

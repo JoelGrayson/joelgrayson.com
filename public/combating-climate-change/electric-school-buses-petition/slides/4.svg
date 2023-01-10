@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="720pt" height="405pt" viewBox="0 0 720 405">
+<g enable-background="new">
+<g>
+<clipPath id="cp15">
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" d="M 0 0 L 365760 0 L 365760 205740 L 0 205740 L 0 0 Z "/>
+</clipPath>
+<g clip-path="url(#cp15)">
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" d="M 0 0 L 365760 0 L 365760 205740 L 0 205740 Z " fill="#c9daf8" fill-rule="evenodd"/>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" d="M 12468 59352.833 L 353292 59352.833 L 353292 141456.83 L 12468 141456.83 Z " fill-opacity="0" fill-rule="evenodd"/>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 24.543309 116.83628)" font-size="68" font-family="HelveticaNeue"><tspan y="132.22803" x="278.47093 319.95094 356.46693 395.49894 433.30696 472.33897 530.34298 545.43899 581.95498">Economics</tspan></text>
+</g>
+</g>
+</g>
+</svg>

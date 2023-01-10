@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title>Canvas Circles</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas onmouseover='mouseOver()' onmouseout='mouseOut()'></canvas>
+    
+    <script>
+        //<Config
+        let speed=1.1;
+        let numCircles=1500;
+
+        let minRadius=2;
+        let maxRadius=30;
+        let sensitivity=60;
+        let shrinkSpeed=0.5;
+
+
+        // />
+
+        const canvas=document.querySelector('canvas');
+        canvas.width=window.innerWidth;
+        canvas.height=window.innerHeight;
+
+        const c=canvas.getContext('2d');
+
+        let canGrow=false;
+        let mouse={
+            x: 0,
+            y: 0
+        }
+        class Circle {
+            constructor(x, y, radius) {
+                this.x=x;
+                this.y=y;
+                this.radius=radius;
+                this.dx=speed*(Math.random()<0.5?-1:1); //50-50 chance + or -
+                this.dy=speed*(Math.random()<0.5?-1:1);
+            }
+            draw() {
+                c.beginPath();
+                c.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+                c.fillStyle='black';
+                c.fill();
+            }
+            update() {
+                if (this.x<this.radius || this.x>canvas.width-this.radius) {
+                    this.dx*=-1;
+                }
+                if (this.y<this.radius || this.y>canvas.height-this.radius) {
+                    this.dy*=-1;
+                }
+
+                this.x+=this.dx;
+                this.y+=this.dy;
+            }
+            shrink() {
+                if (this.radius>minRadius) {
+                    this.radius-=shrinkSpeed;
+                }
+            }
+            grow() {
+                if (this.radius<maxRadius) {
+                    this.radius+=shrinkSpeed;
+                }
+            }
+        }
+        
+        let circles=[];
+        for (let i=0; i<numCircles; i++) { //assign circles
+            let newRadius=minRadius;
+            let newX=newRadius+Math.random()*(canvas.width-2*newRadius);  //radius to (canvas.width-radius)
+            let newY=newRadius+Math.random()*(canvas.height-2*newRadius);  //radius to (canvas.height-radius)
+            circles.push(new Circle(newX, newY, newRadius));
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            c.clearRect(0,0,canvas.width,canvas.height);
+            for (let i=0; i<numCircles; i++) {
+                circles[i].draw();
+                circles[i].update();
+                if (canGrow && distance(mouse.x, mouse.y, circles[i].x, circles[i].y)<sensitivity) {
+                    circles[i].grow();
+                } else {
+                    circles[i].shrink();
+                }
+            }
+        }
+        animate();
+        function distance(x1, y1, x2, y2) {
+            return Math.sqrt( (x1-x2)**2 + (y1-y2)**2 );
+        }
+
+        window.addEventListener('mousemove', event=>{
+            mouse.x=event.x;
+            mouse.y=event.y;
+            // console.log(`(x: ${mouse.x}, y: ${mouse.y})`);
+
+        });
+        window.addEventListener('resize',()=>{
+            canvas.width=window.innerWidth;
+            canvas.height=window.innerHeight;
+        })
+        function mouseOver() {  //triggered by canvas' onmouseover
+            canGrow=true;
+        }
+        function mouseOut() {  //triggered by canvas' onmouseover
+            canGrow=false;
+        }
+
+
+
+    </script>
+</body>
+</html>

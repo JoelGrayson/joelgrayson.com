@@ -1,0 +1,12 @@
+sign {
+  position: absolute;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+fieldset {
+  position: relative;
+  top: 0;
+}
+

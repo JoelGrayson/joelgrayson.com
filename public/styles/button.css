@@ -1,0 +1,21 @@
+button {
+    border: 1px solid #000;
+    border-radius: 3px;
+    padding: 5px 10px;
+}
+button:hover {
+    outline: 2px solid #111;
+    outline-offset: -2px;
+    filter: brightness(0.9) saturate(1.4);
+}
+button:active {
+	position: relative;
+	top: 1px;
+}
+button:disabled {
+    outline: none;
+}
+.btn-red   { background-color: #ff8f8f; }
+.btn-yellow{ background-color: #aded6d; }
+.btn-green { background-color: #90ee90; }
+.btn-blue  { background-color: #aed8fc; }

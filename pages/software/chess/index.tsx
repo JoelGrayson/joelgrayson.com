@@ -1,0 +1,17 @@
+import Page from '@/components/Page';
+import Image from 'next/image';
+import Link from 'next/link';
+
+export default function Chess() {
+    return (<Page padding>
+        <div className="container">
+            <h1>Chess</h1>
+            <Image alt='chess icon' src="/software/chess/icon.png" className='absolute right-[1rem] top-[1rem]' width='100px' />
+            <p>Coded in Processing November 2020.</p>
+            <br /><br />
+            <Link href="/software/chess/Chess.pde"><button>Source code</button></Link>
+            <br/><br /><br />
+            <Image alt='certified' width='60px' src='https://w.joelgrayson.com/image/certified.png' />
+        </div>
+    </Page>);
+}

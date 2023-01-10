@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="720pt" height="405pt" viewBox="0 0 720 405">
+<g enable-background="new">
+<g>
+<clipPath id="cp17">
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" d="M 0 0 L 365760 0 L 365760 205740 L 0 205740 L 0 0 Z "/>
+</clipPath>
+<g clip-path="url(#cp17)">
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" d="M 0 0 L 365760 0 L 365760 205740 L 0 205740 Z " fill="#cfe2f3" fill-rule="evenodd"/>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" d="M 12468 17801 L 353292 17801 L 353292 40709 L 12468 40709 Z " fill-opacity="0" fill-rule="evenodd"/>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 24.543309 35.04134)" font-size="33.6" font-family="HelveticaNeue"><tspan y="41.255998" x="376.2089 393.9161 412.59773 430.64094 438.10014 447.40733 471.6665 490.9529 507.7529">Fuel Cost</tspan></text>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" d="M 12468 49147 L 353292 49147 L 353292 72055 L 12468 72055 Z " fill-opacity="0" fill-rule="evenodd"/>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 24.543309 96.74606)" font-size="24" font-family="HelveticaNeue"><tspan y="32.04" x="9 23.64 28.968 41.856004 54.744005 62.280004 70.272 75.600009 88.48801 93.81601 101.35201 113.35201 120.000019 125.32802 137.32802 143.97602 156.86402 170.20801 183.09601 195.98401 210.19202 223.08002 231.07202 237.72002 245.25601 258.6 271.488 284.832 291.48 305.68803 318.57603 326.11204 333.67204 347.44804 352.77604 365.66404 379.00804 399.48005 406.12806 420.33607 433.22407 441.21607 447.86408 468.33607 473.66407 478.99208 491.88008">Electricity is cheaper than petroleum per mile.</tspan></text>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" stroke-width="381" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#9e9e9e" d="M 38100 79820 L 38100 127744 "/>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" stroke-width="381" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#9e9e9e" d="M 182880 79820 L 182880 127744 "/>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" stroke-width="381" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#9e9e9e" d="M 327660 79820 L 327660 127744 "/>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" stroke-width="381" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#9e9e9e" d="M 37910 80010 L 327850 80010 "/>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" stroke-width="381" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#9e9e9e" d="M 37910 95858 L 327850 95858 "/>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" stroke-width="381" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#9e9e9e" d="M 37910 111706 L 327850 111706 "/>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" stroke-width="381" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#9e9e9e" d="M 37910 127554 L 327850 127554 "/>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 75 157.5)" font-size="18.666666" font-family="Arial" font-weight="bold"><tspan y="26.919999" x="9 22.477334 27.647999 38.026666 48.40533 58.783998">Diesel</tspan></text>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 360 157.5)" font-size="18.666666" font-family="Arial" font-weight="bold"><tspan y="26.919999" x="9 21.432 26.602665 36.98133 47.359998 53.575998 60.83733 66.007999 76.386669 81.557338 87.77334 99.16 104.33067 115.71734 127.104007 140.58135">Electric (LionC)</tspan></text>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 75 188.69684)" font-size="18.666666" font-family="ArialMT"><tspan y="26.919999" x="9 19.378666 29.757332 40.135999 50.514665 59.847997 65.01866 69.16266 73.306659 78.477329 88.855998 94.026668 98.17066 113.71999">$124k lifetime</tspan></text>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 360 188.69684)" font-size="18.666666" font-family="ArialMT"><tspan y="26.919999" x="9 19.378666 29.757332 40.135999 49.46933 54.639997 58.783998 62.927999 68.09866 78.47733 83.648 87.792 103.34133">$13k lifetime</tspan></text>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 75 219.89369)" font-size="18.666666" font-family="ArialMT"><tspan y="26.919999" x="9 19.378666 29.757332 40.135999 45.306665 55.68533 66.063999 72.28 77.45067 93 97.144 101.287998">60&#x00a2; per mile</tspan></text>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 360 219.89369)" font-size="18.666666" font-family="ArialMT"><tspan y="26.919999" x="9 19.378666 29.757332 34.927999 45.306665 55.68533 61.90133 67.072 82.62133 86.76533 90.909328">6&#x00a2; per mile</tspan></text>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" d="M 257922.99 190736 L 365755 190736 L 365755 204896 L 257922.99 204896 Z " fill-opacity="0" fill-rule="evenodd"/>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 507.7224 375.46458)" font-size="14.666667" font-family="HelveticaNeue"><tspan y="23.08" x="167.81624 172.97891 182.17491 187.05892 190.31491 198.19092 206.06693 213.40026 217.46292 225.06026 233.21492 241.09093 245.69626 253.85092 261.72694 266.15629">*Prices &#xfb02;uctuate</tspan></text>
+</g>
+</g>
+</g>
+</svg>

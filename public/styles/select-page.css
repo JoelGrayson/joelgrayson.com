@@ -1,0 +1,16 @@
+h1 {
+    font-size: 40px;
+}
+body {
+    background-color: #F4F4F4;
+    text-align: center;
+}
+button {
+    background-color: #b3b3b3;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 8px 5px;
+}
+button:hover {
+    background-color: #fff;
+}

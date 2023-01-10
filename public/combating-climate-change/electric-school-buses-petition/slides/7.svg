@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="720pt" height="405pt" viewBox="0 0 720 405">
+<g enable-background="new">
+<g>
+<clipPath id="cp18">
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" d="M 0 0 L 365760 0 L 365760 205740 L 0 205740 L 0 0 Z "/>
+</clipPath>
+<g clip-path="url(#cp18)">
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" d="M 0 0 L 365760 0 L 365760 205740 L 0 205740 Z " fill="#d9d2e9" fill-rule="evenodd"/>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" d="M 12468 17801 L 353292 17801 L 353292 40709 L 12468 40709 Z " fill-opacity="0" fill-rule="evenodd"/>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 24.543309 35.04134)" font-size="33.6" font-family="HelveticaNeue"><tspan y="41.255998" x="310.56318 339.82878 357.87199 365.33119 384.0128 394.15998 412.2032 430.8848 448.928 467.60963 485.65284 503.69606 513.00326 537.26248 556.5488 573.3488">Maintenance Cost</tspan></text>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" d="M 12468 49147 L 353292 49147 L 353292 72055 L 12468 72055 Z " fill-opacity="0" fill-rule="evenodd"/>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 24.543309 96.74606)" font-size="24" font-family="HelveticaNeue"><tspan y="32.04" x="9 23.64 28.968 41.856004 54.744005 62.280004 70.272 75.600009 88.48801 95.13601 109.34401 122.68801 134.68802 147.57602 159.57602 166.22402 173.78401 186.67201 200.88 214.224 219.552 227.112 240 246.648 251.976 264.864 276.864 288.864 295.51203 315.984 328.872 334.2 347.544 354.79203 367.68003 381.02403 393.91203 407.256 420.144 433.032">Electric buses require less maintenance.</tspan></text>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" stroke-width="381" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#9e9e9e" d="M 38100 79820 L 38100 127744 "/>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" stroke-width="381" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#9e9e9e" d="M 182880 79820 L 182880 127744 "/>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" stroke-width="381" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#9e9e9e" d="M 327660 79820 L 327660 127744 "/>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" stroke-width="381" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#9e9e9e" d="M 37910 80010 L 327850 80010 "/>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" stroke-width="381" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#9e9e9e" d="M 37910 95858 L 327850 95858 "/>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" stroke-width="381" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#9e9e9e" d="M 37910 111706 L 327850 111706 "/>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" stroke-width="381" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#9e9e9e" d="M 37910 127554 L 327850 127554 "/>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 75 157.5)" font-size="18.666666" font-family="Arial" font-weight="bold"><tspan y="26.919999" x="9 22.477334 27.647999 38.026666 48.40533 58.783998 63.954664 69.12533 84.67466 95.05333 100.224 111.610668 117.82667 128.20534 139.59201 149.97068 161.35735 171.73601">Diesel Maintenance</tspan></text>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 360 157.5)" font-size="18.666666" font-family="Arial" font-weight="bold"><tspan y="26.919999" x="9 21.432 26.602665 36.98133 47.359998 53.575998 60.83733 66.007999 76.386669 81.557338 97.10667 107.48534 112.656009 124.04267 130.25867 140.63733 152.024 162.40267 173.78934 184.168 194.54666 199.71733 205.93334 217.32 222.49068 233.87735 245.26403 258.74137">Electric Maintenance (LionC)</tspan></text>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 75 188.69684)" font-size="18.666666" font-family="ArialMT"><tspan y="26.919999" x="9 19.378666 29.757332 40.135999 49.46933 54.639997 58.783998 62.927999 68.09866 78.47733 83.648 87.792 103.34133">$86k lifetime</tspan></text>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 360 188.69684)" font-size="18.666666" font-family="ArialMT"><tspan y="26.919999" x="9 19.378666 29.757332 40.135999 49.46933 54.639997 58.783998 62.927999 68.09866 78.47733 83.648 87.792 103.34133">$35k lifetime</tspan></text>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 75 219.89369)" font-size="18.666666" font-family="ArialMT"><tspan y="26.919999" x="9 19.378666 29.757332 40.135999 45.306665 55.68533 66.063999 72.28 77.45067 93 97.144 101.287998">40&#x00a2; per mile</tspan></text>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 360 219.89369)" font-size="18.666666" font-family="ArialMT"><tspan y="26.919999" x="9 19.378666 29.757332 40.135999 45.306665 55.68533 66.063999 72.28 77.45067 93 97.144 101.287998">16&#x00a2; per mile</tspan></text>
+<path transform="matrix(.001968504,0,0,.001968504,0,0)" d="M 257922.99 190736 L 365755 190736 L 365755 204896 L 257922.99 204896 Z " fill-opacity="0" fill-rule="evenodd"/>
+<text xml:space="preserve" transform="matrix(.75 0 0 .75 507.7224 375.46458)" font-size="14.666667" font-family="HelveticaNeue"><tspan y="23.08" x="15.134766 20.297432 29.244099 36.57743 41.182767 44.438768 56.949434 64.82543 69.25476 77.13076 84.464099 88.526767 95.8601 103.7361 108.693439 116.02677 120.08944 128.77211 136.64812 143.98145 151.85746 160.54012 164.60279 173.02146 181.17612 185.23879 192.57212 200.44812 208.60279 211.85878 219.73479 222.99079 230.86679 234.92946 242.26279 250.94545 258.82145 266.69746">*Estimates vary based on vehicle specs</tspan></text>
+</g>
+</g>
+</g>
+</svg>
