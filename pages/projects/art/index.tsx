@@ -98,7 +98,7 @@ export default function Art() {
                                 }}
                             >
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img data-index={index} src={`/images/art/${fullName}`} alt={`Artwork titled '${name}' on ${dateStr}`} title={tooltip} />
+                                <img data-index={index} src={`/image/art/${fullName}`} alt={`Artwork titled '${name}' on ${dateStr}`} title={tooltip} />
                             </span>
                         </span>
                     );
@@ -141,12 +141,12 @@ export default function Art() {
                     height: '80%'
                 }}>
                     {/* eslint-disable-next-line */}
-                    <img src={`/images/art/${images[imageIndex][0]}`} alt={`Artwork titled`} style={{
+                    <img src={`/image/art/${images[imageIndex][0]}`} alt={`Artwork titled`} style={{
                         width: '100%',
                         height: '100%',
                         objectFit: 'contain'
                     }} />
-                    {/* <Image src={`/images/art/${images[imageIndex][0]}`} layout='fill' objectFit='contain' alt={`Artwork titled`} /> */}
+                    {/* <Image src={`/image/art/${images[imageIndex][0]}`} layout='fill' objectFit='contain' alt={`Artwork titled`} /> */}
                 </div>
 
                 <Button onClick={e=>setImageIndex((imageIndex+1) % images.length)}>&gt;</Button>

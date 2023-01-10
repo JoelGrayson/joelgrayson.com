@@ -3,6 +3,7 @@ import { redirects } from './parts/types';
 export const permanent: redirects={ //301
     // Newest at top, oldest at bottom
 
+    '/software/focus': ['/software/focus-for-google-docs', '/focus'],
     '/maths': '/math',
     '/maths/joels-sas-formula/index.html': [
         '/stem/joels-sas-equation/index.html',

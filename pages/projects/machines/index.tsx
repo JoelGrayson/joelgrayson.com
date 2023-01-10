@@ -5,7 +5,7 @@ import Page from '../../../components/Page';
 
 export default function Machines() {
     return (<Page>
-        <Image alt='machines banner' src='/images/machines banner.jpg' width='1440' height='900' />
+        <Image alt='machines banner' src='/image/machines banner.jpg' width='1440' height='900' />
         <div>
             {
                 machines.map(machine=>(<div key={machine.sortBy.title}>

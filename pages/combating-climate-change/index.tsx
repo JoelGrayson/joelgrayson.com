@@ -19,7 +19,7 @@ export default function CCC() {
 
         <Section title='Producing Clean Electricity'>
             <Action title='Solar for Riverdale ' onMouseEnter={wrap(viewers.solar)}>
-                <Image src="/images/ccc/solar.png" alt="solar panel" width={26} height={20} />
+                <Image src="/image/ccc/solar.png" alt="solar panel" width={26} height={20} />
             </Action>
         </Section>
         <Section title='Transitioning to Clean Infrastructure'>

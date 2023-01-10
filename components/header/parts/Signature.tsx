@@ -10,7 +10,7 @@ export default function Signature() { //interactive signature
             <div className='relative'>
                 {/* eslint-disable */}
                     {/* Using <img> below instead of <Image> because reloads onHover */}
-                    <img src={`/images/circle-signature-animation.gif?num=${loadNum}`} alt="Joel Grayson Circle Signature Animation"
+                    <img src={`/image/circle-signature-animation.gif?num=${loadNum}`} alt="Joel Grayson Circle Signature Animation"
                         height='40px' width='40px'
                         onMouseEnter={reload} //when hovering icon, replay the signature
                         style={{

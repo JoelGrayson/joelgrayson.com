@@ -6,7 +6,7 @@ export default function Custom404() {
     return (<Page>
         <div className='flex justify-center items-center p-24'>
             <div className="left">
-                <Image width='455px' height='342px' src='/images/shrug.png' alt='Shrug' />
+                <Image width='455px' height='342px' src='/image/shrug.png' alt='Shrug' />
             </div>
             <div className="right flex flex-col items-center gap-8">
                 <h1 className='text-5xl font-bold'>404</h1>

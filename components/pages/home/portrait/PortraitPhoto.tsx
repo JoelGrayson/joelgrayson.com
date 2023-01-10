@@ -18,7 +18,7 @@ export default function PortraitPhoto({date, ratio, hovering, setHovering, ...pr
     }}>
         {/* eslint-disable */}
         <img
-            src={`/images/home/portraits/${date}/Joel Grayson.png`}
+            src={`/image/home/portraits/${date}/Joel Grayson.png`}
             height={270} width={270*ratio}
             alt='Joel Grayson Profile Photo'
             style={{

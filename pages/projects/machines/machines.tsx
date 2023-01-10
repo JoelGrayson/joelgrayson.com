@@ -99,8 +99,8 @@ export const machines: Machine[]=[
             date: '5.27.2021',
             title: <>Fundraising for the American Red Cross</>,
             desc: (<>
-                <Image src='/images/machines/1.jpg' width='222' height='232' alt='Fundraising for American Red Cross'  />
-                <Image src='/images/machines/2.jpg' width='343' height='240' alt='Customer interacting with stand' />
+                <Image src='/image/machines/1.jpg' width='222' height='232' alt='Fundraising for American Red Cross'  />
+                <Image src='/image/machines/2.jpg' width='343' height='240' alt='Customer interacting with stand' />
             </>),
             yt: 'DbfRmZZx4VA'
         })

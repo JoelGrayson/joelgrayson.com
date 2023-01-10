@@ -18,7 +18,7 @@ export default function Home() {
                 <div className='j_max-w relative mx-auto h-full'> {/* container for images same width as content */}
                     {/* signature gif */}
                     <div className='absolute bottom-8 left-11'>
-                        <Image src='/images/signature.gif' alt='Joel Grayson Signature' width='371px' height='150px' />
+                        <Image src='/image/signature.gif' alt='Joel Grayson Signature' width='371px' height='150px' />
                     </div>
 
                     <Portrait />
@@ -30,7 +30,7 @@ export default function Home() {
                     <h2 className='title'>Climate Change Projects</h2>
                     <div className={'flex'}>
                         <BtnIcon>
-                            <Image alt='solar' height={50} width={50} src='/images/ccc/solar.png' />
+                            <Image alt='solar' height={50} width={50} src='/image/ccc/solar.png' />
                             <span>Solar</span>
                         </BtnIcon> {/* sunbeam going down when hover */}
                         <BtnIcon>
@@ -38,7 +38,7 @@ export default function Home() {
                             <span>Students for Electric Buses</span>
                         </BtnIcon> {/* sunbeam going down when hover */}
                         <BtnIcon>
-                            <Image alt='buseroo-logo' height={50} width={50} src='/images/home/buseroo-logo.png' />
+                            <Image alt='buseroo-logo' height={50} width={50} src='/image/home/buseroo-logo.png' />
                             <span>Buseroo</span>
                         </BtnIcon>
                     </div>
