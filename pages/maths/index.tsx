@@ -21,6 +21,9 @@ export default function Maths() {
                 <div>Icosahedron Navigation</div>
                 <Image src='/maths/icosahedron-navigation/icosahedron.png' alt='icosahedron' width='200px' height='200px' />
             </Subject>
+            <Subject link='/maths/crustless-pizza'>
+                <div>Crustless Pizza Pieces Recurrence Problem</div>
+            </Subject>
         </div>
     </Page>);
 }

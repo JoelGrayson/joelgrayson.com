@@ -3,7 +3,7 @@ import Button from '@jcomponents/button';
 import styles from './btn-icon.module.css';
 import Link from 'next/link';
 
-export default function index() {
+export default function IcosahedronNavigation() {
     return (<Page padding>
         <Link href="/maths">
             <Button style={{
