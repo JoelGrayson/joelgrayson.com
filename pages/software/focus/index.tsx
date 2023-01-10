@@ -20,8 +20,8 @@ export default function index() {
         <h3>How to Use</h3>
         <p>Click the extension icon to toggle focus mode.</p>
         <p>Click the pomodoro timer in the bottom-right of the Google Doc to start a pomodoro session.</p>
-        <p>Right-click the extension icon and select "Options" to open the Options page for configuring settings.</p>
-        <p>Right-click the extension and select "Report a Bug" or "Feedback" to leave feedback. Thank you!</p>
+        <p>Right-click the extension icon and select &quot;Options&quot; to open the Options page for configuring settings.</p>
+        <p>Right-click the extension and select &quot;Report a Bug&quot; or &quot;Feedback&quot; to leave feedback. Thank you!</p>
         <p>Note: Chrome version of at least 102 is required. Before Chrome version 94, Focus does not work.</p>
         <br />
 
