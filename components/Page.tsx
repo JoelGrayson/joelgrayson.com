@@ -9,7 +9,7 @@ export default function Page({children, title, padding, ...props}: {
     padding?: boolean;
     [key: string]: any;
 }) {
-    return (<>
+    return <>
         <Header/> {/* 77px */}
 
         <Head>
@@ -30,5 +30,5 @@ export default function Page({children, title, padding, ...props}: {
             : children }
         </main>
         <Footer/> {/* 89px */}
-    </>)
+    </>;
 };

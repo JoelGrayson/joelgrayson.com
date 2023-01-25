@@ -16,7 +16,7 @@ export default function Sites() { /* bullet points of all sites */
             <br />
             <h3>Coming Soon</h3>
             <Site>bulletbrainstorm.com</Site>
-            <Site>giveawink.com</Site>
+            <Site>shirtocracy.com</Site>
         </ul>
     </Container>);
 }

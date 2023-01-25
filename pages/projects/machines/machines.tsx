@@ -23,7 +23,7 @@ export default function DefaultTemplate({date, title, desc, yt}: any) {
 }
 
 function Yt({children}: any) {
-    console.log(children)
+    console.log(children);
     return <iframe width="560" height="315" src={`https://www.youtube.com/embed/${children}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen/>;
 }
 

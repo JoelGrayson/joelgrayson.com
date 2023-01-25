@@ -14,7 +14,7 @@ export default function Portrait() {
             setIndex(index);
             setOffset(index*(270+20+4));
             setHovering(false);
-        }
+        };
     }
     
 

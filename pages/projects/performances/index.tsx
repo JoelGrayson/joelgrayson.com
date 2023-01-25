@@ -10,7 +10,7 @@ export async function getServerSideProps() {
         props: {
             videos: data,
         }
-    }
+    };
 }
 
 export default function Performances({videos}: any) {
@@ -32,14 +32,11 @@ export default function Performances({videos}: any) {
                 //     thumbnailUrl=video.snippet.thumbnails?.maxres?.url;
 
                 console.log(thumbnailUrl);
-                return (
-                    <div key={video.id}>
-                        <a><Link href={ytUrl}>
-                            <img src={thumbnailUrl} alt={`Thumbnail for ${video.title}`} />
-                        </Link></a>
-                    </div>
-                )
-                // return <li key={video.id}>{JSON.stringify(video)}</li>
+                return <div key={video.id}>
+                    <a><Link href={ytUrl}>
+                        <img src={thumbnailUrl} alt={`Thumbnail for ${video.title}`} />
+                    </Link></a>
+                </div>;
             })}
         </div>
     </Page>);

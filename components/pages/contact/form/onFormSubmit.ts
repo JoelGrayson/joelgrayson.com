@@ -20,5 +20,5 @@ export default function onFormSubmit(setSubmitted: Function) {
             console.log(res);
             setSubmitted(true);
         });
-    }
+    };
 }

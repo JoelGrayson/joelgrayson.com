@@ -14,7 +14,7 @@ export default function CCC() {
     const [viewer, setViewer]=useState<viewers>(viewers.none); //viewer status
     const wrap=(newViewerStatus: viewers)=>(_: any)=>setViewer(newViewerStatus); //wrap viewer change
 
-    return (<Page>
+    return <Page>
         <Viewer status={viewer} setStatus={setViewer} />
 
         <Section title='Producing Clean Electricity'>
@@ -53,5 +53,5 @@ export default function CCC() {
             <Action title='Bus Idling Ban' onMouseEnter={wrap(viewers.busIdlingBan)}>
             </Action>
         </Section>
-    </Page>)
+    </Page>;
 }

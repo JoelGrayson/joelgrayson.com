@@ -13,14 +13,14 @@ const getDate: (name: string)=>Date | 'invalid date'=(name: string)=>{
     date.setMonth(parseInt(month) || 0);
     date.setDate(parseInt(day) || 0);
     return date;
-}
+};
 
 function parse(fullName: string) {
     return {
         dateStr: fullName.trim().split(' ')[0],
         date: getDate(fullName),
         name: fullName.trim().split(' ').slice(1).join(' ').slice(0, -4) //cut off extension
-    }
+    };
 }
 
 let w='col-span-2';

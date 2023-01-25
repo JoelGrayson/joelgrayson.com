@@ -10,6 +10,7 @@ export const permanent: redirects={ //301
         '/stem/joels-sas-equation/',
         '/maths/joels-sas-formula/',
     ],
+    '/sites': '/websites',
     'https://joels-secrets-vemwxlduba-uk.a.run.app': ['/secrets', '/sign', '/secret'],
     '/projects/art': '/art',
     '/projects/performances': ['/performance', '/performances'],

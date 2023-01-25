@@ -14,7 +14,7 @@ export default function Viewer({ status, setStatus }: { status: viewers, setStat
     }
     
     return (<div
-        onClick={_=>{if (isHidden()) toggleShown()}} //click box to expand only when hidden
+        onClick={_=>{if (isHidden()) toggleShown();}} //click box to expand only when hidden
         className={isHidden() ? `${styles.viewer} ${styles.collapsedViewer}` : styles.viewer} //if hidden, add collapsedViewer class
     >
         <button className={styles.viewerToggleContainer} onClick={toggleShown}>

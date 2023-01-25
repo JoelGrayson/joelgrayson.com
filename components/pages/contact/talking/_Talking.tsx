@@ -54,7 +54,7 @@ function Talking() {
                 scaleX: 0,
                 scaleY: 0
             }
-        })
+        });
     }, []);
 
     return (<>

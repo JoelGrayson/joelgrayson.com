@@ -40,7 +40,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     catch (e: any) {
         res.json({
             message: e.toString()
-        })
+        });
     }
     finally {
         client.end();

@@ -1,5 +1,5 @@
 // Sends email
-import sgMail from '@sendgrid/mail'
+import sgMail from '@sendgrid/mail';
 sgMail.setApiKey(<string>process.env.SENDGRID_API_KEY);
 
 type fromT={name?: string; email: string};

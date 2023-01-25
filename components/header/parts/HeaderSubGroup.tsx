@@ -4,10 +4,10 @@ import { gsap } from 'gsap';
 export default function HeaderSubGroup({title, children}: {title: string, children: ReactNode}) {
     const [hovered, setHovered]=useState(false); //hovered & open
     
-    return (<>
+    return <>
         <div className='relative w-full inline-flex items-center'
             onMouseEnter={_=>setHovered(true)}
-            onMouseLeave={_=>{ setHovered(false) }}
+            onMouseLeave={_=>setHovered(false)}
         >
             {/* --> Left Arrow (onhover increases arrow length) */}
             <svg width={hovered ? '37px' : "33px"} height="15px" viewBox="0 0 33 15" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -36,13 +36,11 @@ export default function HeaderSubGroup({title, children}: {title: string, childr
                     position: 'absolute',
                     top: '-100%',
                 }}>
-                    <span style={{whiteSpace: 'nowrap'}}>
-                        {children}
-                    </span>
+                    <span style={{whiteSpace: 'nowrap'}}>{children}</span>
                 </div>
             }
         </div>
-    </>);
+    </>;
 }
 
 
@@ -55,14 +53,13 @@ function Arrow({open}: {open: boolean}) {
     
     // Arrow
     const lineRef=useRef() as React.MutableRefObject<HTMLInputElement>;
-    useEffect(()=>{
-        contractArrow(true);
-    }, []);
+    // eslint-disable-next-line
+    useEffect(()=>{ contractArrow(true); }, []);
 
     if (open)
         expandArrow(false);
     else
-        contractArrow(false)
+        contractArrow(false);
 
     function expandArrow(instant=false) {
         gsap.to(lineRef.current, {
