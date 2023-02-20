@@ -1,20 +1,26 @@
-import Image from 'next/image';
-import { machines } from './machines';
-import machinesStyle from '../../../styles/machines/machines.module.css';
+import { machines } from './data/data';
 import Page from '../../../components/Page';
+import Container from '@jcomponents/container';
+import MiscellaneousBottom from './data/MiscellaneousBottom';
 
 export default function Machines() {
     return (<Page>
-        <Image alt='machines banner' src='/image/machines banner.jpg' width='1440' height='900' />
-        <div>
-            {
-                machines.map(machine=>(<div key={machine.sortBy.title}>
-                    <div className='machine'>
-                        {machine.html}
-                    </div>
-                    <hr/>
-                </div>))
-            }
-        </div>
+        <div id='paralax' style={{
+            backgroundImage: 'url("/image/machines/banner.jpg")',
+            minHeight: '600px',
+            backgroundAttachment: 'fixed',
+            backgroundPosition: 'center',
+            backgroundPositionY: '-70px'
+        }}></div>
+        <Container>
+            <>{
+                machines.map(machine=><div key={machine.sortBy.title}>
+                    <div className='machine'>{machine.html}</div>
+                    <hr />
+                </div>)
+            }</>
+            {/* Miscellaneous */}
+            <MiscellaneousBottom></MiscellaneousBottom>
+        </Container>
     </Page>);
 }

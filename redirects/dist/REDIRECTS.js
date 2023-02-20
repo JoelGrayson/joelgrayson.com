@@ -10,6 +10,14 @@ exports.permanent = {
         '/stem/joels-sas-equation/',
         '/maths/joels-sas-formula/',
     ],
+    '/software/homework-checker': [
+        '/hwchecker',
+        '/hw-checker',
+        '/homeworkchecker',
+        '/hwc',
+        '/homework-checker',
+        '/software/homeworkchecker'
+    ],
     '/sites': '/websites',
     'https://joels-secrets-vemwxlduba-uk.a.run.app': ['/secrets', '/sign', '/secret'],
     '/projects/art': '/art',
