@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
-export default function Signature() { //interactive signature
+export default function JThreeDots() { //interactive signature
     const reload=()=>setLoadNum(Math.random()); //reloads & replays the gif
     const [loadNum, setLoadNum]=useState<number>(0);
 

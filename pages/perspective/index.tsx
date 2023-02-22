@@ -1,7 +1,7 @@
-import Article from "@/components/perspective/Article";
+import PerspectiveBody from "@/components/perspective/PerspectiveBody";
 
 export default function JoelsPerspective() {
-    return <Article>
-        <p>Hello world</p>
-    </Article>;
+    return <PerspectiveBody>
+        <p>List of articles...</p>
+    </PerspectiveBody>;
 }
