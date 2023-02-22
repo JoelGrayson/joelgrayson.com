@@ -6,7 +6,7 @@ import Container from '@jcomponents/container';
 const chomsky=localFont({ src: './chomsky/Chomsky.woff2' });
 
 export default function PerspectiveBody({children, maxWidth=800}: {children: JSX.Element | any, maxWidth?: number}) {
-    return <div>
+    return <div style={{backgroundColor: '#fdfdfd'}}>
         <header className='relative flex justify-between items-center px-5 py-0'>
             <JThreeDots />
             <h1 className={chomsky.className}>
