@@ -3,7 +3,7 @@ import { ReactNode, useState } from 'react';
 export default function HeaderGroupItem({link, children, arrow=true /* bool to show arrow */}: {children: ReactNode, link?: string, arrow?: boolean}) {
     const [hovered, setHovered]=useState(false);
     
-    return (<a className='unstyled relative' href={link || '#'}>
+    return <a className='unstyled relative' href={link || '#'}>
         <div
             onMouseEnter={_=>setHovered(true)}
             onMouseLeave={_=>setHovered(false)}
@@ -20,5 +20,5 @@ export default function HeaderGroupItem({link, children, arrow=true /* bool to s
             {/* Content */}
             <span className={hovered ? "gradient-text" : ""}>{children}</span>
         </div>
-    </a>);
+    </a>;
 }

@@ -10,7 +10,7 @@ import HeaderGroupItem from './parts/HeaderGroupItem';
 import HeaderSubGroup from './parts/HeaderSubGroup';
 
 import ViolinBow from './parts/ViolinBow';
-import Signature from './parts/Signature';
+import JThreeDots from '../JThreeDots';
 
 export default function Header() {
     const { asPath }=useRouter(); //the path (window object cannot be used)
@@ -23,7 +23,7 @@ export default function Header() {
         >
             <nav className='j_max-w mx-auto'>
                 <ul className='flex list-none items-center unstyled'>
-                    <Signature />
+                    <JThreeDots />
                     <PathContext.Provider value={asPath}>
                         <div className='flex flex-row justify-between w-full'>
                             <div className='flex'> {/* left */}

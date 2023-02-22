@@ -64,7 +64,7 @@ function Talking() {
             opacity: 0
         }} >
             <div className={styles.leftImgContainer}>
-                <Image src={talkingJoel} width='434px' alt='Talking Joel'/>
+                <Image src={talkingJoel} width='434' alt='Talking Joel'/>
                 <div className={styles.circle} ref={circleRef}></div> {/* circle */}
             </div>
         </div>

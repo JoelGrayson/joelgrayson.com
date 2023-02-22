@@ -5,7 +5,7 @@ export default function Signature() { //interactive signature
     const reload=()=>setLoadNum(Math.random()); //reloads & replays the gif
     const [loadNum, setLoadNum]=useState<number>(0);
 
-    return (<Link href='/'><a>
+    return <Link href='/'>
         <li className='flex items-center pr-4 select-none'>
             <div className='relative'>
                 {/* eslint-disable */}
@@ -29,5 +29,5 @@ export default function Signature() { //interactive signature
                 </svg>
             </div>
         </li>
-    </a></Link>);
+    </Link>;
 }

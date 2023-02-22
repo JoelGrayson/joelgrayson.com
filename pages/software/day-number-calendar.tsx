@@ -8,7 +8,7 @@ export default function DayNumberCalendar() {
         <p>Shows what day of the week it is in Riverdale&quot; eight-day cycle.</p>
         <div className='flex'>
             <div className='w-[50%]'> {/* Google */}
-                <Link href='/software/day-number-calendar/google'><a className='unstyled' target='_blank'>
+                <Link href='/software/day-number-calendar/google' className='unstyled' target='_blank'>
                     <Button>
                         <p>Add to Google Calendar</p>
                         {/* Google Calendar Icon */}
@@ -24,7 +24,7 @@ export default function DayNumberCalendar() {
                             <path fill="#1967D2" d="M196.25,43.618V12.039c0-8.724-7.066-15.789-15.789-15.789h-31.579v47.368H196.25z"/>
                         </svg>
                     </Button>
-                </a></Link>
+                </Link>
             </div>
             <div className='w-[50%]'> {/* Apple */}
                 <h3>Add to Apple Calendar</h3>

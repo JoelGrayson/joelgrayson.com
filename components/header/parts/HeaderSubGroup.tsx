@@ -4,43 +4,41 @@ import { gsap } from 'gsap';
 export default function HeaderSubGroup({title, children}: {title: string, children: ReactNode}) {
     const [hovered, setHovered]=useState(false); //hovered & open
     
-    return <>
-        <div className='relative w-full inline-flex items-center'
-            onMouseEnter={_=>setHovered(true)}
-            onMouseLeave={_=>setHovered(false)}
+    return <div className='relative w-full inline-flex items-center'
+        onMouseEnter={_=>setHovered(true)}
+        onMouseLeave={_=>setHovered(false)}
+    >
+        {/* --> Left Arrow (onhover increases arrow length) */}
+        <svg width={hovered ? '37px' : "33px"} height="15px" viewBox="0 0 33 15" fill="none" xmlns="http://www.w3.org/2000/svg"
+            className='inline pr-2'
         >
-            {/* --> Left Arrow (onhover increases arrow length) */}
-            <svg width={hovered ? '37px' : "33px"} height="15px" viewBox="0 0 33 15" fill="none" xmlns="http://www.w3.org/2000/svg"
-                className='inline pr-2'
-            >
-                <path d="M0 6.90909H31M31 6.90909L22.5 14M31 6.90909L22.5 1" stroke="black" strokeWidth="2"/>
-            </svg>
-            
-            <span
-                className='flex'
-                style={{fontFamily: 'AvenirMedium'}}
-                onMouseEnter={_=>setHovered(true)}
-            >
-                <span className={hovered ? "gradient-text" : ""}>{title}</span>
-                {/* side arrow   >  which becomes --> */}
-                <Arrow open={hovered} />
-            </span>
-            
-            { /* show children if open */
-                hovered && <div className='p-4 rounded-md height-fit' style={{
-                    zIndex: 5,
-                    width: 'fit-content',
-                    backgroundColor: 'rgb(255,255,255,0.8)',
-                    border: '2px solid gray',
-                    left: '7.6rem',
-                    position: 'absolute',
-                    top: '-100%',
-                }}>
-                    <span style={{whiteSpace: 'nowrap'}}>{children}</span>
-                </div>
-            }
-        </div>
-    </>;
+            <path d="M0 6.90909H31M31 6.90909L22.5 14M31 6.90909L22.5 1" stroke="black" strokeWidth="2"/>
+        </svg>
+        
+        <span
+            className='flex'
+            style={{fontFamily: 'AvenirMedium'}}
+            onMouseEnter={_=>setHovered(true)}
+        >
+            <span className={hovered ? "gradient-text" : ""}>{title}</span>
+            {/* side arrow   >  which becomes --> */}
+            <Arrow open={hovered} />
+        </span>
+        
+        { /* show children if open */
+            hovered && <div className='p-4 rounded-md height-fit' style={{
+                zIndex: 5,
+                width: 'fit-content',
+                backgroundColor: 'rgb(255,255,255,0.8)',
+                border: '2px solid gray',
+                left: '7.6rem',
+                position: 'absolute',
+                top: '-100%',
+            }}>
+                <span style={{whiteSpace: 'nowrap'}}>{children}</span>
+            </div>
+        }
+    </div>;
 }
 
 

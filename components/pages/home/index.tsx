@@ -9,16 +9,15 @@ import Portrait from './portrait';
 // TODO: add shadow to boxes
 // TODO: add shading gradient in boxes
 
-
 export default function Home() {
-    return (<Page title='Joel Grayson'>
+    return <Page title='Joel Grayson'>
         <div className='w-full p-0 m-0'>
             {/* top */}
             <div className='w-full h-[290px] p-0' style={{background: "linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(216,216,216,1) 100%)"}}>
                 <div className='j_max-w relative mx-auto h-full'> {/* container for images same width as content */}
                     {/* signature gif */}
                     <div className='absolute bottom-8 left-11'>
-                        <Image src='/image/signature.gif' alt='Joel Grayson Signature' width='371px' height='150px' />
+                        <Image src='/image/signature.gif' alt='Joel Grayson Signature' width='371' height='150' />
                     </div>
 
                     <Portrait />
@@ -34,7 +33,7 @@ export default function Home() {
                             <span>Solar</span>
                         </BtnIcon> {/* sunbeam going down when hover */}
                         <BtnIcon>
-                            <SEBLogo size='75px' />
+                            <SEBLogo size={75} />
                             <span>Students for Electric Buses</span>
                         </BtnIcon> {/* sunbeam going down when hover */}
                         <BtnIcon>
@@ -48,5 +47,5 @@ export default function Home() {
                 </Block>
             </article>
         </div>
-    </Page>);
+    </Page>;
 }

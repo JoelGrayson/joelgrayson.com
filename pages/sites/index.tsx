@@ -23,6 +23,6 @@ export default function Sites() { /* bullet points of all sites */
 
 export function Site({children, href}: {children: string, href?: string}) {
     return (<li>
-        <Link href={href || `https://${children}`}><a>{children}</a></Link>
+        <Link href={href || `https://${children}`}>{children}</Link>
     </li>);
 }

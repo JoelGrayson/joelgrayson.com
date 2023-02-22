@@ -3,14 +3,15 @@ import Header from './header';
 import Footer from './Footer';
 import { ReactNode } from 'react';
 
-export default function Page({children, title, padding, ...props}: {
+export default function Page({children, title, padding, noheader=false, ...props}: {
     children: ReactNode;
     title?: string;
     padding?: boolean;
+    noheader?: boolean;
     [key: string]: any;
 }) {
     return <>
-        <Header/> {/* 77px */}
+        {!noheader && <Header />} {/* 77px */}
 
         <Head>
             <title>{title || 'Joel Grayson'}</title>
