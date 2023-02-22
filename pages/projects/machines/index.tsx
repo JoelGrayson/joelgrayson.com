@@ -1,7 +1,7 @@
-import { machines } from './data/data';
+import { machines } from '../../../components/pages/machines/data';
 import Page from '../../../components/Page';
 import Container from '@jcomponents/container';
-import MiscellaneousBottom from './data/MiscellaneousBottom';
+import MiscellaneousBottom from '@/components/pages/machines/MiscellaneousBottom';
 
 export default function Machines() {
     return (<Page>
