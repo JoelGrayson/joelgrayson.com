@@ -1,5 +1,5 @@
 export const title='Connecting with the Past';
-export const publishedDate=new Date('Aug 10, 2021');
+export const date=new Date('Aug 10, 2021');
 
 export default function ConnectingWithThePast() {
     return <div>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Citation, Footnote, BU } from '../helpers';
 
 export const title='Why We Need Nuclear Energy';
-export const publishedDate=new Date('Aug 10, 2021');
+export const date=new Date('May 9, 2021');
 
 export default function WhyWeNeedNuclearEnergy() {
     return <div>
