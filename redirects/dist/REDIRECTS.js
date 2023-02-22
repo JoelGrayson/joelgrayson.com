@@ -26,7 +26,7 @@ exports.permanent = {
     '/software/day-number-calendar.ics': '/software/day-number-calendar/apple',
     '/software/days-until/': '/days-until',
     '/software/articlify/index.html': ['/software/articlify/', '/articlify'],
-    '/combating-climate-change': ['/ccc', '/climate-change'],
+    '/combating-climate-change': ['/ccc', '/climate-change', '/projects/combating-climate/change', '/projects/ccc', '/projects/climate-change'],
     '/programs': ['/tools', '/tool'],
     '/to-be-finder': ['/to-be', '/to-be-verb', '/to-be-verb-finder', '/be-verb'],
     '/audio': ['/sfx', '/sound', '/sound-effects', '/thelunarsquad-audio'],

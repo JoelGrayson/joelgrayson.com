@@ -66,8 +66,8 @@ export const machines: Machine[]=[
             title: 'Picnic Tables' //sort alphabetically
         },
         html: <div className='relative h-[400px]'>
-            <img className='absolute top-0 rounded-xl' src='/image/machines/picnic-table.jpg' width='348px' height='258px' />
-            <img className='absolute top-52 left-72 rounded-xl' src='/image/machines/constructing-picnic-table.gif' width='237px' height='164px' />
+            <img className='absolute top-0 rounded-xl' src='/image/machines/picnic-table.jpg' width='348px' height='258px' alt='Picnic Table' />
+            <img className='absolute top-52 left-72 rounded-xl' src='/image/machines/constructing-picnic-table.gif' width='237px' height='164px' alt='Constructing Picnic Table' />
             <div className='absolute left-[370px] top-0'>
                 <p>5.6.21</p>
                 <h3>Picnic Tables</h3>

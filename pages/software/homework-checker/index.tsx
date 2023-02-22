@@ -152,10 +152,10 @@ export default function HomeworkChecker() {
                 </tr>
                 <tr> {/* images */}
                     <td>
-                        <Image width="200px" alt="default" src="/software/homework-checker/regular.jpg" />
+                        <Image width="200" alt="default" src="/software/homework-checker/regular.jpg" />
                     </td>
                     <td>
-                        <Image width="200px" alt="demo" src="/software/homework-checker/with-homework-checker.jpg" />
+                        <Image width="200" alt="demo" src="/software/homework-checker/with-homework-checker.jpg" />
                     </td>
                 </tr>
                 <tr> {/* explanation */}
