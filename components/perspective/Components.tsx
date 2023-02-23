@@ -25,3 +25,21 @@ export function BU({children}: any) {
         <u>{children}</u>
     </span>;
 }
+
+export function P({...props}: any) {
+    return <p style={{
+        paddingBottom: '.5em',
+        lineHeight: '1.65rem',
+        textIndent: '4ch'
+    }} {...props}></p>;
+}
+
+export function H2({children, ...props}: any) {
+    return <h2 style={{
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontSize: '2rem',
+        marginTop: '8px',
+        marginBottom: '10px'
+    }} {...props}>{children}</h2>;
+}

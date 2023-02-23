@@ -16,5 +16,5 @@ model User {
 
 model Article {
     id   String @id @default(cuid())
-    name String //for import(`components/articles/${name}`) and URL `/perspective/${name}`
+    name String //for import(`components/articles/${name}`) and URL `/image/perspective/${name}`
 }
