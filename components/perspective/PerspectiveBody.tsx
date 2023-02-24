@@ -9,7 +9,7 @@ export default function PerspectiveBody({children, maxWidth=800}: {children: JSX
     return <div style={{backgroundColor: '#fdfdfd'}}>
         <header className='relative flex justify-between items-center px-5 py-0'>
             <JThreeDots />
-            <h1 className={chomsky.className}>
+            <h1 className={`${chomsky.className} text-[2.5rem] sm:text-[3.4rem]`}>
                 <Link href='/perspective'>
                     Joel&apos;s Perspective
                 </Link>
