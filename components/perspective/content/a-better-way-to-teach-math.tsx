@@ -1,6 +1,5 @@
-import Image from 'next/image';
 export const title='A Better Way to Teach Math';
-export const date=new Date('Nov 11, 2021'); //published date
+export const date=new Date('Feb 20, 2023'); //published date
 import { P, BU } from '../Components';
 
 export default function ABetterWayToTeachMath() {
