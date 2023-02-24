@@ -49,7 +49,7 @@ export default function JoelsPerspective() { //List of articles
                     }}>
                         {/* <div>{JSON.stringify(article)}</div> */}
                         <Image src={`/image/perspective/${article.hyphenatedName}/thumbnail.jpg`} alt={'Article thumbnail'} width='200' height='113' />
-                        <div>{article.name}</div>
+                        <div className='text-center'>{article.name}</div>
                     </div>
                 </Link>
             )) }
