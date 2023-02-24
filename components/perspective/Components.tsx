@@ -26,12 +26,13 @@ export function BU({children}: any) {
     </span>;
 }
 
-export function P({...props}: any) {
-    return <p style={{
+export function P({noindent, ...props}: {noindent?: boolean; [key: string]: any}) {
+    return <p {...props} style={{
         paddingBottom: '.5em',
         lineHeight: '1.65rem',
-        textIndent: '4ch'
-    }} {...props}></p>;
+        textIndent: !noindent ? '4ch' : '0',
+        ...props.style
+    }}></p>;
 }
 
 export function H2({children, ...props}: any) {
