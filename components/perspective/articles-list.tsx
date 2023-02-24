@@ -15,6 +15,7 @@ export type article={
 };
 export const articles: article[]=[
     { name: 'A Better Way to Teach Math',               hyphenatedName: 'a-better-way-to-teach-math',               date: new Date('Feb 20, 2023'), category: 'science' },
+    { name: 'A Better Way to Teach Math',               hyphenatedName: 'a-better-way-to-teach-math',               date: new Date('Feb 20, 2023'), category: 'science' },
     { name: 'Thank You, Fossil Fuel',                   hyphenatedName: 'thank-you-fossil-fuels',                   date: new Date('Feb 19, 2023'), category: 'climate-change' },
     { name: 'Climate Change Is an Exponential Problem', hyphenatedName: 'climate-change-is-an-exponential-problem', date: new Date('Aug 17, 2022'), category: 'climate-change' },
     { name: 'Reflection on Privilege',                  hyphenatedName: 'reflection-on-privilege',                  date: new Date('Jan 21, 2023'), category: 'philosophy' },

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { MathComponent } from 'mathjax-react';
 
 export function Citation({number}: { number: string | number }) {
     return <Link href={`#footnote-${number}`} className='text-blue-700'>
@@ -43,4 +44,8 @@ export function H2({children, ...props}: any) {
         marginTop: '8px',
         marginBottom: '10px'
     }} {...props}>{children}</h2>;
+}
+
+export function TeX({children}: {children: string}) { //Usage: <TeX>{String.raw``}</TeX>
+    return <MathComponent tex={children} display={false} />;
 }

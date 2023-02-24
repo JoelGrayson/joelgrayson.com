@@ -10,13 +10,13 @@ const gridStyle={
 };
 
 export default function JoelsPerspective() { //List of articles
-    type sortingMethodT='newest to oldest' | 'oldest to newest' | 'by category' | 'A-Z' | 'Z-A';
+    type sortingMethodT='newest to oldest' | 'oldest to newest' | 'category' | 'A-Z' | 'Z-A';
     const [sortingMethod, setSortingMethod]=useState<sortingMethodT>('newest to oldest');
     const sortedArticles=(()=>{
         switch (sortingMethod) {
             case 'newest to oldest': return articles.sort((a, b)=>b.date.getTime()-a.date.getTime());
             case 'oldest to newest': return articles.sort((a, b)=>a.date.getTime()-b.date.getTime());
-            case 'by category':      return articles;
+            case 'category':      return articles;
             case 'A-Z':              return articles.sort((a, b)=>a.name<b.name ? -1 : 1);
             case 'Z-A':              return articles.sort((a, b)=>a.name<b.name ? 1 : -1);
         }
@@ -30,13 +30,13 @@ export default function JoelsPerspective() { //List of articles
             <select name='sorting-method' id='sorting-method' value={sortingMethod} onChange={e=>setSortingMethod(e.target.value as sortingMethodT)}>
                 <option value='newest to oldest'>Newest to Oldest</option>
                 <option value='oldest to newest'>Oldest to Newest</option>
-                <option value='by category'>By Category</option>
+                <option value='category'>By Category</option>
                 <option value='A-Z'>A-Z</option>
                 <option value='Z-A'>Z-A</option>
             </select>
         </div>
         {
-            sortingMethod==='by category'
+            sortingMethod==='category'
             ? <>
                 {categories.map(category=>{ 
                     const { name, color }=displayCategory.get(category)!;

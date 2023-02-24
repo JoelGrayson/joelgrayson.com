@@ -166,3 +166,8 @@ input:focus, textarea:focus {
 }
 
 /* > */
+
+
+/* Specifics */
+.MathJax>svg { display: inline; }
+/* > */
