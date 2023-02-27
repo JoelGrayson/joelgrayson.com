@@ -22,7 +22,7 @@ export default function JoelsPerspective() { //List of articles
         }
     })();
     
-    console.log(sortedArticles);
+    console.log('Sorted articles:', sortedArticles);
 
     return <PerspectiveBody>
         <div className='flex justify-end mb-3'>
@@ -76,7 +76,9 @@ export function Article({article}: {article: articleT}) { //rectangle with thumb
         }}>
             {/* <div>{JSON.stringify(article)}</div> */}
             <Image src={`/image/perspective/${article.hyphenatedName}/thumbnail.jpg`} alt={'Article thumbnail'} width='200' height='113' />
-            <div className='text-center'>{article.name}</div>
+            <div className='text-center' style={{
+                fontFamily: 'AvenirMedium'
+            }}>{article.name}</div>
         </div>
-    </Link>
+    </Link>;
 }

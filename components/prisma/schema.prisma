@@ -1,0 +1,37 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    email     String   @unique
+    name      String?
+}
+
+model Article {
+    id             String    @id @default(cuid())
+    name           String //for import(`components/articles/${name}`) and URL `/image/perspective/${name}`
+    hyphenatedName String    @unique
+    views          Int       @default(0) //number of views
+    comments       Comment[]
+}
+
+// Have to verify email every time you post a comment
+model Comment {
+    id        String   @id @default(cuid())
+    author    String //display name on comment author
+    content   String
+    postedAt  DateTime
+    email     String
+    Article   Article  @relation(fields: [articleId], references: [id])
+    articleId String
+
+    verified    Boolean @default(false) //whether or not the email has been verified
+    verifyToken String  @unique
+}

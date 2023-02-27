@@ -28,9 +28,8 @@ export default function WhyWeNeedNuclearEnergy() {
         <P>Nuclear energy has important benefits, but its reputation and construction cost, time, and risk hinder the production of more plants, so society should invest in small modular reactors. Small Modular Reactors (SMRs), now being developed, produce below 300 megawatts of electricity, smaller than the current big reactors in the thousands of megawatts. Unlike the bigger reactors, which require many years and billions of dollars to build on site and require a unique installation at each location (in the U.S.), SMRs could be mass-produced and shipped inside trucks or airplanes. SMRs come with fuel and never need to be opened. SMRs can run independent of the power grid, making them excellent for remote areas and buildings that require electricity at all times. Rural areas not connected to the power grid that currently rely on fossil fuels could employ SMRs as a clean alternative. During power grid failure disasters, SMRs as backups can power important buildings such as hospitals, data centers, and military bases. SMRs will likely be available by 2030 or earlier in the U.S., and one is currently being built in Canada that will finish in 2024. When these SMRs are available, facilities such as Riverdale could purchase and connect an SMR to their microgrids to make campus carbon-neutral.</P>
         <P>In addition to SMRs, society should fund more research into thorium and fusion reactors due to their potential to start new energy revolutions. Uranium is not renewable, and supplies will run out in 200 years if we do not continue to innovate. Thorium, on the other hand, is three times as abundant, and almost completely fertile, meaning we can use most of the mined thorium to generate energy, compared to only using less than 1% of mined uranium.</P>
         <P>What can we do? Stay informed. Nuclear is one of the most misunderstood energy sources, and fear without logic has steered the public away from it. Environmental advocates have often mistakenly criticized nuclear energy in counterproductive ways. To fight disinformation, form your nuclear energy opinions based on scientific research and studies, instead of irrational fear.</P>
-
-        
         <br /><br />
+        
         <div> {/* Footnotes */}
             <Footnote number='1'>
                 <i>For First Time, Majority in U.S. Oppose Nuclear Energy. (n.d.). Retrieved May 27, 2021, from <Link className='styled' href='https://news.gallup.com/poll/190064/first-time-majority-oppose-nuclear-energy.aspx<'>https://news.gallup.com/poll/190064/first-time-majority-oppose-nuclear-energy.aspx</Link></i>
@@ -45,6 +44,5 @@ export default function WhyWeNeedNuclearEnergy() {
             <Footnote number='7'><i>U.S. energy capacity factors by source 2020 | Statista.</i> (n.d.). Retrieved May 27, 2021, from <Link href='https://www.statista.com/statistics/183680/' className='styled'>https://www.statista.com/statistics/183680/us-average-capacity-factors-by-selected-energy-source-since-1998/</Link></Footnote>
             <Footnote number='8'>Data from the Illinois Energy Professor&apos;s calculations.</Footnote>
         </div>
-        
     </div>;
 }
