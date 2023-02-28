@@ -5,7 +5,7 @@ import type { AppProps } from 'next/app';
 export default function MyApp({ Component, pageProps }: AppProps) {
     useEffect(()=>{
         console.log(
-`┏---------------------------------------┓
+`%c┏---------------------------------------┓
 |                                       |
 |            jjjjjjjjj                  |
 |        jjjjjjjjjjjjjjj                |
@@ -22,9 +22,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 |  jjjjj    jjjjjjjj           jjjj     |
 |  jjjjj  jjjjjjjj                      |
 |  jjjjjjjjjjjj                         |
-|   jjjjjjjj           joelgrayson.com  |
+|   jjjjjjjj           %cjoelgrayson.com  %c|
 |                                       |
-┖---------------------------------------┛`);
+┖---------------------------------------┛`, "text-shadow: #84d8f0 0 0 2px", "text-shadow: cyan 0 0 2px; font-weight: bold", "text-shadow: #84d8f0 0 0 2px");
     }, []);
 
     return <Component {...pageProps} />;
