@@ -45,7 +45,7 @@ export default function Header() {
                                             <ViolinBow/>
                                         </span>
                                     </HeaderGroupItem>
-                                    <HeaderGroupItem link='/slaphappy'>Slaphappy</HeaderGroupItem>
+                                    <HeaderGroupItem link='/projects/slaphappy'>Slaphappy</HeaderGroupItem>
                                 </HeaderGroup>
                                 <HeaderGroup title='Software'>
                                     <HeaderGroupItem link='https://buseroo.com'>Buseroo</HeaderGroupItem>

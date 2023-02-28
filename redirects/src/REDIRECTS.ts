@@ -30,8 +30,8 @@ export const permanent: redirects={ //301
     '/programs': ['/tools', '/tool'],
     '/to-be-finder': ['/to-be', '/to-be-verb', '/to-be-verb-finder', '/be-verb'],
     '/audio': ['/sfx', '/sound', '/sound-effects', '/thelunarsquad-audio'],
-    'https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A': ['/Slaphappy', '/slaphappy'],
-    '/perspective': ['/the-perspective', '/joels-perspective'],
+    '/projects/slaphappy': ['/Slaphappy', '/slaphappy'],
+    '/perspective': ['/the-perspective', '/joels-perspective', '/blog'],
     '/open-in-new-tab-wix-code': ['/wix-code-new-tab', /open-in-new-tab(-using)?(-wix-code)?-velo/],
     '/onedrive-download-link-generator': [
         '/download-link-generator-onedrive', '/onedrive-download-link', '/onedrive-link-generator',
