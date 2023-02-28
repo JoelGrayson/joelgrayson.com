@@ -20,12 +20,13 @@ export default function Page({children, title, padding, noheader=false, ...props
             <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         </Head>
 
-        <main style={{
+        <main {...props} style={{
             position: 'relative',
             padding: 0, margin: 0,
             width: '100%',
-            minHeight: 'calc(100vh - 77px - 89px)' // fills the entire page (minus footer and header's heights)
-        }} {...{props}}>
+            minHeight: 'calc(100vh - 77px - 89px)', // fills the entire page (minus footer and header's heights)
+            ...props.style
+        }}>
             { padding
             ? <div className='j_container j_max-w'>{children}</div> //if center, wrap in centering container
             : children }
