@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import PerspectiveBody from "@/components/perspective/PerspectiveBody";
 import jdate from 'joeldate';
 import Button from '@jcomponents/button';
-import { ExposedComment } from '@/components/prisma/TYPES';
+import { ExposedComment } from '@/components/data/TYPES';
 import AddComment from '@/components/perspective/AddComment';
 
 export default function Article({ notitle=false, nodate=false }: { notitle?: boolean; nodate?: boolean }) {

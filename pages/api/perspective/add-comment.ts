@@ -1,6 +1,6 @@
-import { ExposedComment } from '@/components/prisma/TYPES';
+import { ExposedComment } from '@/components/data/TYPES';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '@/components/prisma/client';
+import prisma from '@/components/data/client';
 import sendEmail from '@/components/sendEmail';
 import generateToken from '@/components/helpers/generate-token';
 

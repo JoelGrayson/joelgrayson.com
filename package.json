@@ -2,12 +2,15 @@
   "name": "joelgrayson.com",
   "version": "0.1.0",
   "private": true,
+  "license": "UCJG",
+  "homepage": "https://joelgrayson.com",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest --verbose",
+    "vercel-build": "prisma generate",
     "test-next": "npm run build && npm start",
     "redirects": "cd redirects && ./build.sh",
     "reset-data": "cd components/prisma && prisma db push && prisma migrate && prisma generate && ./insert-articles"
