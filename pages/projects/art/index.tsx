@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import Page from '../../../components/Page';
-import { useState, useEffect } from 'react';
-import Button from '@jcomponents/button';
+import Gallery from '@/components/gallery/Gallery';
 
 const getDate: (name: string)=>Date | 'invalid date'=(name: string)=>{
     // name.matchAll(/\d{4}(.\d{2})?(.\d{2})?/)
@@ -59,32 +59,11 @@ const images=[
     [ '2010 Vacuum.jpg' ],
     [ '2009 Dad\'s Face.jpg' ]
 ];
-const numImages=images.length;
   
 export default function Art() {
     const [galleryOpen, setGalleryOpen]=useState<boolean>(false);
-    const [imageIndex, setImageIndex]=useState<number>(0);
-    
-    useEffect(()=>{
-        document.addEventListener('keyup', e=>{
-            if (galleryOpen) {
-                if (e.key==='ArrowLeft') galleryLeft();
-                else if (e.key==='ArrowRight') galleryRight();
-            }
-        }, true);
-    });
-    
-    function galleryLeft() { //decrement image index or loop to end
-        let newIndex=(imageIndex-1) % numImages;
-        while (newIndex<0)
-            newIndex+=numImages;
-        
-        setImageIndex(newIndex);
-    }
-    function galleryRight() { //increment image index or loop around to start
-        setImageIndex((imageIndex+1) % numImages);
-    }
-    
+    const [index, setIndex]=useState<number>(0);
+
     return <Page padding title='Art'>
         <h1 className='text-center'>Art</h1>
         <p>Every child is an artist. The problem is how to remain an artist once he grows up. -Pablo Picasso</p>
@@ -112,7 +91,7 @@ export default function Art() {
                             }}
                             data-index={index}
                             onClick={(e: any)=>{
-                                setImageIndex(e.target.dataset.index);
+                                setIndex(e.target.dataset.index);
                                 setGalleryOpen(true);
                             }}
                         >
@@ -124,64 +103,17 @@ export default function Art() {
             }
         </div>
 
-        {/* Gallery View Overlay */}
-        {(()=>{
-            const imagePath=images[imageIndex][0];
-            const { name, dateStr, date }=parse(imagePath);
-            
-            return galleryOpen && 
-            <div id='gallery' style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100vw',
-                height: '100vh',
-                backgroundColor: 'white',
-                zIndex: 1
-            }}>
-                {/* Close Button */}
-                <Button onClick={_=>setGalleryOpen(false)} style={{
-                    position: 'absolute',
-                    top: '20px',
-                    right: '50px',
-                    borderRadius: '50%',
-                    padding: '2px 7px',
-                    width: '30px',
-                    height: '30px',
-                    textAlign: 'center',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    fontSize: '36px'
-                }} color='jred'>&times;</Button>
-                
-                {/* <- Artwork -> */}
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: '100%'
-                }}>
-                    <Button style={{ width: '40px', height: '40px', textAlign: 'center', verticalAlign: 'center' }} onClick={galleryLeft}>&lt;</Button>
-
-                    <div className='px-3 py-2 mx-6' style={{ //Image
-                        width: '60vw',
-                        // border: '1px solid #888',
-                        height: '80%',
-                        borderRadius: 10
-                    }}>
-                        {/* eslint-disable-next-line */}
-                        <img src={`/image/art/${imagePath}`} alt={`Artwork titled ${name}`} style={{
-                            width: '100%',
-                            height: '100%',
-                            objectFit: 'contain'
-                        }} />
-                        <div className='text-center text-3xl font-bold mt-5'>{name} ({dateStr})</div>
-                    </div>
-
-                    <Button style={{ width: '40px', height: '40px', textAlign: 'center', verticalAlign: 'center' }} onClick={galleryRight}>&gt;</Button>
-                </div>
-            </div>;
-        })()}
+        <Gallery images={images.map(img=>img[0])} renderChildren={(imagePath: string)=>{
+            const { name, dateStr }=parse(imagePath);
+            const title=`${name} (${dateStr})`;
+            return <>
+                <img src={`/image/art/${imagePath}`} alt={`Artwork titled ${name}`} style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain'
+                }} />
+                <div className='text-center text-3xl font-bold mt-5'>{title}</div>
+            </>;
+        }} {...{galleryOpen, setGalleryOpen, index, setIndex}} />
     </Page>;
 }
