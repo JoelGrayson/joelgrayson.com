@@ -15,7 +15,7 @@ export function Footnote({ number, children }: { number: string | number; childr
         textIndent: '4ch'
     }}>
         <Link href={`#citation-${number}`}>
-            <sup>{number} </sup>
+            <sup title='Return to point in text that cites this'><a className='styled nounderline'>[{number}]</a> </sup>
         </Link>
         {children}
     </div>;
@@ -48,4 +48,11 @@ export function H2({children, ...props}: any) {
 
 export function TeX({children}: {children: string}) { //Usage: <TeX>{String.raw``}</TeX>
     return <MathComponent tex={children} display={false} />;
+}
+
+export function HangingIndent({children}: {children: any}) {
+    return <p style={{
+        textIndent: '-4ch',
+        paddingLeft: '4ch'
+    }}>{children}</p>;
 }

@@ -91,6 +91,8 @@ a {
 }
 a.styled {
     color: #0000e1;
+}
+a.styled:not(.nounderline) {
     text-decoration: underline;
 }
 a.styled:hover,
