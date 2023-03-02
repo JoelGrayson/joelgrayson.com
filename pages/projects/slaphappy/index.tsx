@@ -7,7 +7,7 @@ import { gsap } from 'gsap';
 export default function Slaphappy() {
     // https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A
     
-    const curtainsRef=useRef();
+    const curtainsRef=useRef() as React.MutableRefObject<HTMLImageElement>;
 
     useLayoutEffect(()=>{
         const el=curtainsRef.current!;
