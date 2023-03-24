@@ -3,6 +3,7 @@ exports.__esModule = true;
 exports.temporary = exports.permanent = void 0;
 exports.permanent = {
     // Newest at top, oldest at bottom
+    '/software/create-joel-app/files-to-transfer.tgz': 'https://raw.githubusercontent.com/JoelGrayson/create-joel-app/main/files-to-transfer.tgz',
     '/software/focus': ['/software/focus-for-google-docs', '/focus'],
     '/maths': '/math',
     '/maths/joels-sas-formula/index.html': [
