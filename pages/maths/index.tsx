@@ -1,50 +1,79 @@
-import Page from "../../components/Page";
+import Page from '../../components/Page';
 import Link from 'next/link';
 import { css } from '@emotion/css';
 import Image from 'next/image';
+import SASFormula from './joels-sas-formula/SASFormula';
 
 export default function Maths() {
-    return (<Page padding>
-        <h1 className='text-center'>Maths</h1>
-        <div className={css`
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3px;
-        `}>
-            <Subject link='/maths/joels-sas-formula/index.html' >
-                <div>
-                    <div style={{textAlign: 'center'}}>Joel&apos;s SAS Formula</div>
-                    <svg width="260.176px" height="43.384px" viewBox="0 -1359 14374.7 2397.1"><defs><path id="MJX-19-TEX-I-41" d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z"></path><path id="MJX-19-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-19-TEX-I-74" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path id="MJX-19-TEX-I-61" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path id="MJX-19-TEX-I-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-19-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-19-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-19-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-19-TEX-I-73" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path><path id="MJX-19-TEX-I-69" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path id="MJX-19-TEX-I-42" d="M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z"></path><path id="MJX-19-TEX-I-63" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path><path id="MJX-19-TEX-I-6F" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path><path id="MJX-19-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-19-TEX-N-A0" d=""></path><path id="MJX-19-TEX-N-69" d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z"></path><path id="MJX-19-TEX-N-6E" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path id="MJX-19-TEX-N-25B3" d="M75 0L72 2Q69 3 67 5T62 11T59 20Q59 24 62 30Q65 37 245 370T428 707Q428 708 430 710T436 714T444 716Q451 716 455 712Q459 710 644 368L828 27V20Q828 7 814 0H75ZM610 347L444 653Q443 653 278 347T113 40H775Q775 42 610 347Z"></path><path id="MJX-19-TEX-I-43" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path></defs><g stroke="currentColor" fill="currentColor" strokeWidth="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use href="#MJX-19-TEX-I-41"></use></g><g data-mml-node="mo" transform="translate(1027.8, 0)"><use href="#MJX-19-TEX-N-3D"></use></g><g data-mml-node="mi" transform="translate(2083.6, 0)"><use href="#MJX-19-TEX-I-74"></use></g><g data-mml-node="mi" transform="translate(2444.6, 0)"><use href="#MJX-19-TEX-I-61"></use></g><g data-mml-node="msup" transform="translate(2973.6, 0)"><g data-mml-node="mi"><use href="#MJX-19-TEX-I-6E"></use></g><g data-mml-node="TeXAtom" transform="translate(600, 413) scale(0.707)"><g data-mml-node="mo"><use href="#MJX-19-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(778, 0)"><use href="#MJX-19-TEX-N-31"></use></g></g></g><g data-mml-node="mo" transform="translate(4527.2, 0)"><use href="#MJX-19-TEX-N-28"></use></g><g data-mml-node="mfrac" transform="translate(4916.2, 0)"><g data-mml-node="mrow" transform="translate(1224.8, 676)"><g data-mml-node="mi"><use href="#MJX-19-TEX-I-73"></use></g><g data-mml-node="mi" transform="translate(469, 0)"><use href="#MJX-19-TEX-I-69"></use></g><g data-mml-node="mi" transform="translate(814, 0)"><use href="#MJX-19-TEX-I-6E"></use></g><g data-mml-node="mi" transform="translate(1414, 0)"><use href="#MJX-19-TEX-I-42"></use></g></g><g data-mml-node="mrow" transform="translate(220, -686)"><g data-mml-node="mfrac"><g data-mml-node="mi" transform="translate(253.9, 394) scale(0.707)"><use href="#MJX-19-TEX-I-63"></use></g><g data-mml-node="mi" transform="translate(220, -345) scale(0.707)"><use href="#MJX-19-TEX-I-61"></use></g><rect width="574.1" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(1036.3, 0)"><use href="#MJX-19-TEX-N-2212"></use></g><g data-mml-node="mi" transform="translate(2036.5, 0)"><use href="#MJX-19-TEX-I-63"></use></g><g data-mml-node="mi" transform="translate(2469.5, 0)"><use href="#MJX-19-TEX-I-6F"></use></g><g data-mml-node="mi" transform="translate(2954.5, 0)"><use href="#MJX-19-TEX-I-73"></use></g><g data-mml-node="mi" transform="translate(3423.5, 0)"><use href="#MJX-19-TEX-I-42"></use></g></g><rect width="4382.5" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(9538.7, 0)"><use href="#MJX-19-TEX-N-29"></use></g><g data-mml-node="mtext" transform="translate(9927.7, 0)"><use href="#MJX-19-TEX-N-A0"></use><use href="#MJX-19-TEX-N-69" transform="translate(250, 0)"></use><use href="#MJX-19-TEX-N-6E" transform="translate(528, 0)"></use><use href="#MJX-19-TEX-N-A0" transform="translate(1084, 0)"></use></g><g data-mml-node="mi" transform="translate(11261.7, 0)"><use href="#MJX-19-TEX-N-25B3"></use></g><g data-mml-node="mi" transform="translate(12150.7, 0)"><use href="#MJX-19-TEX-I-41"></use></g><g data-mml-node="mi" transform="translate(12900.7, 0)"><use href="#MJX-19-TEX-I-42"></use></g><g data-mml-node="mi" transform="translate(13659.7, 0)"><use href="#MJX-19-TEX-I-43"></use></g></g></g></svg>
-                </div>
-            </Subject>
-            <Subject link='/maths/icosahedron-navigation'>
-                <div>Icosahedron Navigation</div>
-                <Image src='/maths/icosahedron-navigation/icosahedron.png' alt='icosahedron' width='200' height='200' />
-            </Subject>
-            <Subject link='/maths/crustless-pizza'>
-                <div>Crustless Pizza Pieces Recurrence Problem</div>
-            </Subject>
-        </div>
-    </Page>);
+    return (
+        <Page padding>
+            <h1 className="text-center">Maths</h1>
+            <div
+                className={css`
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                    gap: 3px;
+                `}
+            >
+                <Subject link="https://youtu.be/7BqbyixlSRU">
+                    <div style={{textAlign: 'center'}}>
+                        Proving the Geometric Series Formula with a
+                        Rectangle
+                    </div>
+                    <iframe width="280" height="158" src="https://www.youtube.com/embed/7BqbyixlSRU" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                </Subject>
+                <Subject link="/maths/joels-sas-formula/index.html">
+                    <div>
+                        <div style={{textAlign: 'center'}}>
+                            Joel&apos;s SAS Formula
+                        </div>
+                        <SASFormula />
+                    </div>
+                </Subject>
+                <Subject link="/maths/icosahedron-navigation">
+                    <div>Icosahedron Navigation</div>
+                    <Image
+                        src="/maths/icosahedron-navigation/icosahedron.png"
+                        alt="icosahedron"
+                        width="200"
+                        height="200"
+                    />
+                </Subject>
+                <Subject link="/maths/crustless-pizza">
+                    <div>Crustless Pizza Pieces Recurrence Problem</div>
+                </Subject>
+            </div>
+        </Page>
+    );
 }
 
-export function Subject({ children, link }: { children: any; link: string }) {
-    return (<Link href={link}><div className={css`
-        width: 300px;
-        height: 300px;
-        border: 1px solid black;
-        border-radius: 10px;
-        cursor: pointer;
-        background-color: #fefefe;
-        &:hover { background-color: #eee; }
-        &:active { background-color: #ccc; }
+export function Subject({children, link}: {children: any; link: string}) {
+    return (
+        <Link href={link}>
+            <div
+                className={css`
+                    width: 300px;
+                    height: 300px;
+                    border: 1px solid black;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    background-color: #fefefe;
+                    &:hover {
+                        background-color: #eee;
+                    }
+                    &:active {
+                        background-color: #ccc;
+                    }
 
-        display: grid;
-        place-items: center;
-        font-size: 20px;
-        font-weight: bold;
-        font-family: 'Lato Semibold';
-    `}>
-        {children}
-    </div></Link>);
+                    display: grid;
+                    place-items: center;
+                    font-size: 20px;
+                    font-weight: bold;
+                    font-family: 'Lato Semibold';
+                `}
+            >
+                {children}
+            </div>
+        </Link>
+    );
 }

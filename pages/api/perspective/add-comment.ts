@@ -11,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     
     const token=generateToken();
     
-    const verificationLink=`https://joelgrayson.com/api/perspective/verify-comment/${token}`;
+    const verificationLink=`https://joelgrayson.vercel.app/api/perspective/verify-comment/${token}`;
     sendEmail({
         to: email,
         from: { name: "Joel's Perspective", email: 'bot@joelgrayson.com' }, //TODO: test if this works
