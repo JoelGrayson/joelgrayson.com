@@ -4,6 +4,7 @@ export const permanent: redirects={ //301
     // Newest at top, oldest at bottom
     // Destination: source
 
+    'https://raw.githubusercontent.com/JoelGrayson/create-joel-app/main/jredirects.tgz': '/software/create-joel-app/jredirects.tgz',
     'https://raw.githubusercontent.com/JoelGrayson/create-joel-app/main/files-to-transfer.tgz': '/software/create-joel-app/files-to-transfer.tgz',
     '/software/focus': ['/software/focus-for-google-docs', '/focus'],
     '/maths': '/math',
