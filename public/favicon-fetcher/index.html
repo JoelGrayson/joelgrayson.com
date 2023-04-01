@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            :root {
+                zoom: 1.35; /* so that it fits wix program (not to small) */
+            overflow: hidden; /* on scroll bar */
+            }
+            #input {
+            padding: 6px;
+            padding-left: 8px;
+            padding-right: 8px;
+            margin-right: 20px;
+            width: 180px;
+            border-radius: 6px;
+            border-color: black;
+            border-width: 2px;
+            font-size: 16px;
+            
+            display: inline;
+            transition-duration: 0.6s;
+            }
+            #input:hover {
+                background-color: #e6f2ff;
+            }
+    
+            #faviconImage {
+            vertical-align: middle;
+            }
+            .downloadButton {
+            padding: 5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            cursor: pointer;
+            text-decoration: none;
+            font-family: avenir;
+            font-weight: bold;
+            padding: 10px;
+            width: 103px;
+            text-align: center;
+            border-radius: 5px;
+            transition-duration: 0.4s;
+    
+            background-color: #463fc588;
+            cursor: not-allowed;
+            color: #e5e5e5;
+            }
+            .downloadButton:hover {
+            background-color: #0a00c2;
+            letter-spacing: 1px;
+            }
+        </style>
+    </head>
+    
+    <body id='root' style="background-image: url(/favicon-fetcher/cupcake.jpg)">
+        <div style="display: flex; flex-direction: column; margin-top: 4vw; align-items: center;">
+            <div style="display:flex">
+                <h1>Favicon Fetcher</h1>
+                <img src="/favicon-fetcher/fetch.png" alt="Favicon-Fetcher-Icon" width='120px'>
+            </div>
+            
+            <main>
+                <input id='input' spellcheck='false' placeholder='website.com'></input>
+                <img id='faviconImage' src='https://static.wixstatic.com/media/f11390_a2fcffeffe3141adaa9a559cdcfce094~mv2.png' width=80px;>
+                <div style='height:23px'></div> <!-- instead of <br> -->
+        
+                <div style='width: 280px;'>
+                <a target='_blank' class='downloadButton' id='downloadLink' download>Download</a>
+                </div>
+            </main>
+        </div>
+    </body>
+
+    <script>
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) { // if mobile user
+        document.getElementById('root').style.zoom=0.96;
+    }
+        var img=document.getElementById('faviconImage');
+        var download = document.getElementById('downloadLink');
+
+        window.setInterval(() => {
+        var url=document.getElementById('input').value;  
+        if (url) {
+            var width,height;
+            var srcURL = 'https://www.google.com/s2/favicons?domain_url=' + url;
+        
+        if (url.indexOf('.')===-1) { //if no tld, then add .com
+            srcURL+='.com';
+        }
+        
+            var imgFromURL=new Image();
+            imgFromURL.src=srcURL;
+            imgFromURL.onload = function() {
+            width=1.3*this.width;
+            height=1.3*this.height;
+            if (width<40) { //ensures image is not tiny
+                width=40;
+                height=40;
+            }
+            faviconImage.src=srcURL;
+            faviconImage.style.display='inline';
+            img.width=width;
+            img.height=height;
+            
+            //reveals download button
+            download.href=srcURL;
+            download.style.backgroundColor='#2419ebff';
+            download.style.cursor='pointer';
+            download.style.color='#ffffff';
+            download.disabled=false;
+            }
+        } else { //no favicon
+            img.src='https://static.wixstatic.com/media/f11390_a2fcffeffe3141adaa9a559cdcfce094~mv2.png';
+            img.width=80;
+            img.height=80;
+            
+            download.style.backgroundColor='#463fc588';
+            download.style.cursor='not-allowed';
+            download.style.color='#e5e5e5';
+            download.disabled=true;
+        }
+        }, 800);
+    </script>
+</html>

@@ -38,7 +38,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 var REDIRECTS_1 = require("./REDIRECTS");
 var processRedirects_1 = require("./parts/processRedirects");
-function default_1() {
+function Redirects() {
     return __awaiter(this, void 0, void 0, function () {
         var arr1, arr2;
         return __generator(this, function (_a) {
@@ -48,4 +48,4 @@ function default_1() {
         });
     });
 }
-exports["default"] = default_1;
+exports["default"] = Redirects;

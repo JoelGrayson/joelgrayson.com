@@ -1,6 +1,24 @@
 "use strict";
 exports.__esModule = true;
-exports.temporary = exports.permanent = void 0;
+exports.permanent = exports.temporary = void 0;
+exports.temporary = {
+    // Polyfill the old wix website
+    // TODO: replace wixsitejoelgrayson with whatever the free wix site hosting, such as joelgrayson.wixsite.com
+    'https://wixsitejoelgrayson.com/onedrive-download-link-generator': '/onedrive-download-link-generator',
+    'https://wixsitejoelgrayson.com/drive-download-link-generator': '/drive-download-link-generator',
+    'https://wixsitejoelgrayson.com/box-download-link-generator': '/box-download-link-generator',
+    'https://wixsitejoelgrayson.com/big-sur-sounds': '/big-sur-sounds',
+    'https://wixsitejoelgrayson.com/zoom-sfx': '/zoom-sfx',
+    'https://wixsitejoelgrayson.com/dropbox-download-link-generator': '/dropbox-download-link-generator',
+    'https://wixsitejoelgrayson.com/zoom-timers': '/zoom-timers',
+    'https://wixsitejoelgrayson.com/open-in-new-tab-wix-code': '/open-in-new-tab-wix-code',
+    'https://wixsitejoelgrayson.com/jeopardy-theme': '/jeopardy-theme',
+    'https://wixsitejoelgrayson.com/joel-case': '/joel-case',
+    'https://wixsitejoelgrayson.com/projects': '/projects',
+    'https://wixsitejoelgrayson.com/big-sur-icons': '/big-sur-icons',
+    'https://wixsitejoelgrayson.com/the-perspective': '/the-perspective',
+    'https://wixsitejoelgrayson.com/audio/:slug*': '/audio/:slug*' // /audio/*
+};
 exports.permanent = {
     // Newest at top, oldest at bottom
     // Destination: source
@@ -22,6 +40,7 @@ exports.permanent = {
         '/software/homeworkchecker'
     ],
     '/sites': '/websites',
+    '/perspective/mindfully-travelling-to-school': '/perspective/my-three-hour-journey-to-school',
     'https://joels-secrets-vemwxlduba-uk.a.run.app': ['/secrets', '/sign', '/secret'],
     '/projects/art': '/art',
     '/projects/performances': ['/performance', '/performances'],
@@ -63,6 +82,4 @@ exports.permanent = {
     '/': '/about',
     '/joel-for-grade-rep-2020': '/2020-campaign',
     'https://thejoelgrayson.wixsite.com/mysite': '/2019-campaign'
-};
-exports.temporary = { //302
 };
