@@ -3,11 +3,11 @@ import styles from '../../../../styles/home/logo.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function SEBLogo({size=80}: {size?: number}) {
+export default function SEBLogo({size=80, noLink}: {size?: number; noLink?: boolean}) {
     // const [rotating, setRotating]=useState(true);
-
-    return <Link href='https://studentsforelectricbuses.org' target='_blank'>
-        <div className={styles.container} style={{height: size, width: size}}
+    
+    if (noLink)
+        return <div className={styles.container} style={{height: size, width: size}}
             // onMouseEnter={_=>setRotating(false)}
             // onMouseLeave={_=>setRotating(true)}
         >
@@ -21,6 +21,23 @@ export default function SEBLogo({size=80}: {size?: number}) {
             <div className={styles.rotatingOuter} style={{height: size, width: size}}>
                 <Image alt="Inner logo" height={size} width={size} src="/image/home/seb-logo/outer.png" />
             </div>
-        </div>
-    </Link>;
+        </div>;
+    else
+        return <Link href='https://studentsforelectricbuses.org' target='_blank'>
+            <div className={styles.container} style={{height: size, width: size}}
+                // onMouseEnter={_=>setRotating(false)}
+                // onMouseLeave={_=>setRotating(true)}
+            >
+                <div className={styles.entire} style={{height: size, width: size}}>
+                    <Image src="/image/home/seb-logo/entire.png" alt="Logo" height={80} width={80} />
+                </div>
+                <div className={styles.inner} style={{height: size, width: size}}>
+                    <Image alt="Outer logo" height={size} width={size} src="/image/home/seb-logo/inner.png" />
+                </div>
+                {/* <div className={rotating ? styles.rotatingOuter : styles.outer}> */}
+                <div className={styles.rotatingOuter} style={{height: size, width: size}}>
+                    <Image alt="Inner logo" height={size} width={size} src="/image/home/seb-logo/outer.png" />
+                </div>
+            </div>
+        </Link>;
 }

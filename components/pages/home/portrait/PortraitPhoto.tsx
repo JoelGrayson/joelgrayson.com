@@ -6,12 +6,12 @@ export default function PortraitPhoto({date, ratio, hovering, setHovering, ...pr
     hovering: boolean, /** determines whether or not to show background */
     setHovering: (hovering: boolean)=>void,
 } & any) {
-    return (<span style={{
+    return <span style={{
         position: 'relative',
         top: topOffset,
         height: `${270+60}px`,
         width: `${270*ratio+20}px`,
-        backgroundColor: hovering ? '#aaa' : '',
+        backgroundColor: hovering ? '#aaa' : 'none',
         borderRadius: 10,
         marginLeft: 3,
         marginRight: 3
@@ -37,5 +37,5 @@ export default function PortraitPhoto({date, ratio, hovering, setHovering, ...pr
             width: '100%',
             fontWeight: 'bold',
         }}>{date.match(/(\d{4})$/)[1]}</span> } {/* Show year only */}
-    </span>);
+    </span>;
 }
