@@ -17,7 +17,7 @@ export default function Focus() {
             y: 0,
             duration: 0.5
         });
-        gsap.fromTo(pageRef, { opacity: 0 }, { opacity: 1, duration: 0.5, delay: 1 })
+        gsap.fromTo(pageRef, { opacity: 0 }, { opacity: 1, duration: 0.5, delay: 1 });
     }, []);
     
     return <Page padding>

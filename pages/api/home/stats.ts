@@ -11,7 +11,7 @@ export default async function ApiHandler(req: any, res: any) {
     res.json({ hCInstalls, focusInstalls });
 }
 
-function createGetChromeExtensionStats(url) {
+function createGetChromeExtensionStats(url: string) {
     return ()=>{
         return new Promise(async (resolve, reject)=>{
             const browser=await puppeteer.launch({ headless: true });
@@ -30,5 +30,5 @@ function createGetChromeExtensionStats(url) {
             await page.close();
             await browser.close();
         });
-    }
+    };
 }

@@ -15,8 +15,7 @@ export default function Home() {
     const [focusInstalls, setFocusInstalls]=useState(null);
 
     useEffect(()=>{
-        if (hCInstalls!=null) return;
-        if (focusInstalls!=null) return;
+        if (hCInstalls!=null || focusInstalls!=null) return;
         
         fetch('/api/home/stats')
             .then(res=>res.json())
