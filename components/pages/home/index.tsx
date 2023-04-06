@@ -4,7 +4,6 @@ import Page from '../../Page';
 import SEBLogo from './parts/SEB Logo';
 import BtnIcon from './parts/BtnIcon';
 import Block from './parts/Block';
-import Portrait from './portrait';
 import { useEffect, useState } from 'react';
 
 // TODO: add shadow to boxes
@@ -38,8 +37,36 @@ export default function Home() {
                     <div className='absolute bottom-8 left-11'>
                         <Image src='/image/signature.gif' alt='Joel Grayson Signature' width='371' height='150' />
                     </div>
-
-                    <Portrait />
+                    {/* Portrait */}
+                    <div className='absolute p-0 bottom-0 mb-[-6px] right-24'>
+                        <span style={{
+                            display: 'inline-flex',
+                            justifyContent: 'center',
+                            position: 'relative',
+                            top: 0
+                        }}>
+                            <span style={{
+                                position: 'relative',
+                                top: 40,
+                                height: `${270+60}px`,
+                                width: `${209+20}px`,
+                                borderRadius: 10,
+                                marginLeft: 3,
+                                marginRight: 3
+                            }}>
+                                <Image
+                                    src={`/image/home/portraits/3.20.2022/Joel Grayson.png`}
+                                    height={270} width={209}
+                                    alt='Joel Grayson Profile Photo'
+                                    style={{
+                                        position: 'absolute',
+                                        left: '10px',
+                                        bottom: '40px',
+                                    }}
+                                />
+                            </span>
+                        </span>
+                    </div>
                 </div>
             </div>
 
@@ -65,17 +92,17 @@ export default function Home() {
                     <div className='flex justify-center'>
                         <BtnIcon href='https://buseroo.com'>
                             <Image alt='buseroo-logo' height={50} width={50} src='/image/home/buseroo-logo.png' />
-                            <span>Buseroo</span>
+                            <span>Buseroo.com</span>
                         </BtnIcon>
                         <BtnIcon href='https://chrome.google.com/webstore/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf'>
                             <Image alt='focus-logo' height={50} width={50} src='/image/home/focus-logo.png' />
                             <span>Focus</span>
-                            { focusInstalls!=null && <span>{focusInstalls} installs</span> }
+                            { focusInstalls!=null && <Label>{focusInstalls} installs</Label> }
                         </BtnIcon>
                         <BtnIcon href='https://chrome.google.com/webstore/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>
                             <Image alt='homework-checker-logo' height={50} width={50} src='/image/home/homework-checker-logo.png' />
-                            <span>Homework Checker</span>
-                            { hCInstalls!=null && <span>{hCInstalls} installs</span> }
+                            <span className='text-[0.8rem]'>Homework Checker</span>
+                            { hCInstalls!=null && <Label>{hCInstalls} installs</Label> }
                         </BtnIcon>
                     </div>
                 </Block>
@@ -83,4 +110,8 @@ export default function Home() {
             </article>
         </div>
     </Page>;
+}
+
+function Label({children}: {children: any}) {
+    return <div className='bg-[#ffd166] px-1.5 text-sm py-0.5 rounded-lg border border-[#ecb715]'>{children}</div>;
 }

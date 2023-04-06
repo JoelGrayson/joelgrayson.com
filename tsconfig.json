@@ -5,8 +5,8 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["./components/*"],
-      "@/styles/*": ["styles/*"],
-      "@/helpers/*": ["helpers/*"]
+      "@/styles/*": ["./styles/*"],
+      "@/helpers/*": ["./helpers/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
