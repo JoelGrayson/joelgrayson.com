@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect, ReactNode } from 'react';
 import Link from 'next/link';
-import { PathContext } from '..';
+import { PathContext } from './PathContext';
 
 export default function HeaderItem({link /*a href's link*/, children}: {link: string, children: ReactNode}) { //highlighted if is current page
     const asPath=useContext(PathContext);
@@ -11,7 +11,7 @@ export default function HeaderItem({link /*a href's link*/, children}: {link: st
     useEffect(colorFromUrl, [asPath, link]); //initially get color
     
     return <Link href={link}>
-        <li>
+        <li className='cursor-pointer'>
             {/* Active is when mouseDown on button */}
             <button
                 className='text-black font-[15px] mx-[9px] bg-white rounded-[13px] py-[0.6rem] px-7 select-none

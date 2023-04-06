@@ -1,4 +1,4 @@
-import localFont from '@next/font/local';
+import localFont from 'next/font/local';
 import Link from 'next/link';
 import JThreeDots from '../JThreeDots';
 import Container from '@jcomponents/container';
