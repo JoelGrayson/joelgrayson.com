@@ -35,7 +35,7 @@ export default function Home() {
                 <div className='j_max-w relative mx-auto h-full'> {/* container for images same width as content */}
                     {/* signature gif */}
                     <div className='absolute bottom-8 left-11'>
-                        <Image src='/image/signature.gif' alt='Joel Grayson Signature' width='371' height='150' />
+                        <Image src='/image/signature.gif' alt='Joel Grayson Signature' width='371' height='149' priority />
                     </div>
                     {/* Portrait */}
                     <div className='absolute p-0 bottom-0 mb-[-6px] right-24'>
@@ -63,6 +63,7 @@ export default function Home() {
                                         left: '10px',
                                         bottom: '40px',
                                     }}
+                                    priority
                                 />
                             </span>
                         </span>
@@ -75,11 +76,13 @@ export default function Home() {
                     <h2 className='title text-center'>Climate Change Projects</h2>
                     <div className='flex justify-center'>
                         <BtnIcon href='#'>
-                            <Image alt='solar' height={50} width={50} src='/image/ccc/solar.png' />
+                            <div style={{width: 50, height: 50, display: 'grid', placeItems: 'center'}}>
+                                <Image alt='solar' height={50} width={37.5} src='/image/ccc/solar.png' />
+                            </div>
                             <span>Solar for Riverdale</span>
                         </BtnIcon> {/* sunbeam going down when hover */}
                         <BtnIcon href='https://studentsforelectricbuses.org'>
-                            <SEBLogo size={75} noLink />
+                            <SEBLogo size={75} />
                             <span>Students for Electric Buses</span>
                         </BtnIcon> {/* sunbeam going down when hover */}
                         <BtnIcon href='#'>

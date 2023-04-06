@@ -1,12 +1,14 @@
 .container //image container
     position: relative
     margin-left: 1rem
+    display: grid
+    place-items: center
 
 .entire, .outer, .inner, .rotatingOuter
     padding: 0
     position: absolute
     top: 0
-    left: 0
+    left: -4px
 
 .entire //on top, but hidden (so when open image in new tab, it shows)
     z-index: 1

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Page from '../../components/Page';
-import styles from '../../styles/ccc/sections.module.css';
+// import styles from '../../styles/ccc/sections.module.css';
 import SEBLogo from '../../components/pages/home/parts/SEB Logo';
 import Image from 'next/image';
 import Viewer from './Viewer';
@@ -24,7 +24,9 @@ export default function CCC() {
         </Section>
         <Section title='Transitioning to Clean Infrastructure'>
             <Action title='Students for Electric Buses' onMouseEnter={wrap(viewers.seb)}>
-                <SEBLogo size={30} />
+                <Link href='https://studentsforelectricbuses.org' target='_blank'>
+                    <SEBLogo size={30} />
+                </Link>
             </Action>
         </Section>
         <Section title='Raising Public Awareness'>

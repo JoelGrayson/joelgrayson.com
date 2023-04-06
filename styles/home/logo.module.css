@@ -1,13 +1,15 @@
 .container {
   position: relative;
   margin-left: 1rem;
+  display: grid;
+  place-items: center;
 }
 
 .entire, .outer, .inner, .rotatingOuter {
   padding: 0;
   position: absolute;
   top: 0;
-  left: 0;
+  left: -4px;
 }
 
 .entire {
@@ -17,33 +19,17 @@
 
 .outer {
   transition: all 0.5s;
-  -webkit-animation-duration: 5s;
-          animation-duration: 5s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 .rotatingOuter {
   transition: all 0.5s;
-  -webkit-animation-name: rotating;
-          animation-name: rotating;
-  -webkit-animation-duration: 5s;
-          animation-duration: 5s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-}
-
-@-webkit-keyframes rotating {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  animation-name: rotating;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 @keyframes rotating {
@@ -53,4 +39,6 @@
   to {
     transform: rotate(360deg);
   }
-}/*# sourceMappingURL=logo.module.css.map */
+}
+
+/*# sourceMappingURL=logo.module.css.map */
