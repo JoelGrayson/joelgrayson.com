@@ -18,26 +18,19 @@ export default function HeaderGroup({title, children}: any) {
             <UpDownArrow dir={(open ? 'up' : 'down')} />
         </button>
         
-        {
-            open && <div className='absolute ml-3 p-4 rounded-md height-fit border-2 bg-[rgb(255,255,255,0.8)] border-gray-500 z-10'>
-                {/* Vertical line */}
-                <div style={{
-                    // height: 'calc(16px - 12px + 3 * 24px)',
-                    // height: 16 //top padding
-                    //     -12 //in middle of item
-                    //     +2 //cover end of item
-                    //     +3*24 //items
-                    height: `calc(100% - 16px - 12px + 2px)`,
-                    width: '2px',
-                    backgroundColor: 'black',
-                    position: 'absolute',
-                    left: '14px',
-                    top: 0,
-                }}/>
-                
-                {children}
-            </div>
-        }
+        { open && <div className='absolute ml-3 p-4 rounded-md height-fit border-2 bg-[rgb(255,255,255,0.8)] border-gray-500 z-10 select-none'>
+            {/* Vertical line */}
+            <div style={{
+                height: `calc(100% - 16px - 12px + 2px)`,
+                width: '2px',
+                backgroundColor: 'black',
+                position: 'absolute',
+                left: '14px',
+                top: 0
+            }}/>
+
+            {children}
+        </div> }
     </li>;
 }
 

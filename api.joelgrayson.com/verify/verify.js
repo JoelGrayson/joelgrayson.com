@@ -4,7 +4,7 @@ const path=require('path');
 
 function saveToFile(string, filename) {
     return new Promise((resolve, reject) => {
-        exec(`echo '''${escapeQuot(string)}''' > ${filename}`, _=>resolve());
+        exec(`echo '''${escapeQuot(string)}''' > ${filename}`, ()=>resolve());
     });
 }
 

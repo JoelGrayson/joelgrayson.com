@@ -6,8 +6,8 @@ export default function HeaderGroupItem({link, children, arrow=true /* bool to s
     
     return <Link className='unstyled relative' href={link || '#'}>
         <div
-            onMouseEnter={_=>setHovered(true)}
-            onMouseLeave={_=>setHovered(false)}
+            onMouseEnter={()=>setHovered(true)}
+            onMouseLeave={()=>setHovered(false)}
         >
             {/* --> Left Arrow (onhover increases arrow length) */}
             { arrow && <svg className='inline pr-2' width={hovered ? '37px' : "33px"} height="15px" viewBox="0 0 33 15" fill="none" xmlns="http://www.w3.org/2000/svg">

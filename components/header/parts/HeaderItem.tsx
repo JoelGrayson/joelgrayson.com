@@ -17,7 +17,7 @@ export default function HeaderItem({link /*a href's link*/, children}: {link: st
                 className='text-black font-[15px] mx-[9px] bg-white rounded-[13px] py-[0.6rem] px-7 select-none
                 border-solid border-[#11111130] border-[0.2px]' //active: #ffd13c
                 style={{backgroundColor: bgColor, fontFamily: 'AvenirMedium'}}
-                onMouseEnter={_=>setBgColor('#ffe062')} //hover color
+                onMouseEnter={()=>setBgColor('#ffe062')} //hover color
                 onMouseLeave={colorFromUrl} //when out of hover, return to regular color
             >
                 {children}

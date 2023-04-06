@@ -5,8 +5,8 @@ export default function HeaderSubGroup({title, children}: {title: string, childr
     const [hovered, setHovered]=useState(false); //hovered & open
 
     return <div className='relative w-full items-center'
-        onMouseEnter={_=>setHovered(true)}
-        onMouseLeave={_=>setHovered(false)}
+        onMouseEnter={()=>setHovered(true)}
+        onMouseLeave={()=>setHovered(false)}
         style={{ height: '24px' }}
     >
         {/* --> Left Arrow (onhover increases arrow length) */}
@@ -17,7 +17,7 @@ export default function HeaderSubGroup({title, children}: {title: string, childr
         <span
             className='inline'
             style={{ fontFamily: 'AvenirMedium' }}
-            onMouseEnter={_=>setHovered(true)}
+            onMouseEnter={()=>setHovered(true)}
         >
             <span className={hovered ? "gradient-text" : ""}>{title}</span>
             {/* side arrow > which becomes --> on hover */}
@@ -34,7 +34,7 @@ export default function HeaderSubGroup({title, children}: {title: string, childr
                 position: 'absolute',
                 top: '-100%',
             }}>
-                <span style={{whiteSpace: 'nowrap'}}>{children}</span>
+                <span style={{whiteSpace: 'nowrap', userSelect: 'none'}}>{children}</span>
             </div>
         }
     </div>;

@@ -6,8 +6,8 @@ export default function SEBLogo({size=80}: {size?: number}) {
     // const [rotating, setRotating]=useState(true);
 
     return <div className={styles.container} style={{height: size, width: size}}
-        // onMouseEnter={_=>setRotating(false)}
-        // onMouseLeave={_=>setRotating(true)}
+        // onMouseEnter={()=>setRotating(false)}
+        // onMouseLeave={()=>setRotating(true)}
     >
         <div className={styles.entire} style={{height: size, width: size}}>
             <Image src="/image/home/seb-logo/entire.png" alt="Logo" height={80} width={80} />

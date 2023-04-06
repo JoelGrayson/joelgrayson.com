@@ -4,7 +4,15 @@ const redirects=require('./redirects/dist/main').default;
 
 module.exports={
     reactStrictMode: true,
-    // reactStrictMode: false,
     swcMinify: true,
-    redirects: redirects
+    redirects: redirects,
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'i.ytimg.com',
+                pathname: '/vi/**',
+            }
+        ]
+    }
 };

@@ -30,7 +30,7 @@ export default function Arrow() {
             gsap.to(lineRef.current, obj); 
     }
     
-    return (<div className='p-4' onMouseEnter={expandArrow} onMouseLeave={_=>contractArrow(false)}>
+    return (<div className='p-4' onMouseEnter={expandArrow} onMouseLeave={()=>contractArrow(false)}>
         <div className='flex items-center'> {/* arrow */}
             {/* --- Expanding arrow line */}
             <div ref={lineRef} style={{

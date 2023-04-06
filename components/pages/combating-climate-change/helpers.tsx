@@ -30,7 +30,7 @@ export function Action({children, title, ...props}: {children: ReactNode; title:
 <section className={styles.section}>
     <div className={styles.content}>
         <h2 className={styles['content-title']}>Producing Clean Electricity</h2>
-        <div className={styles.action} onMouseEnter={_=>setViewer(viewers.solar)}>
+        <div className={styles.action} onMouseEnter={()=>setViewer(viewers.solar)}>
             <span className={styles['action-title']}>Solar for Riverdale </span>
             <Image src="/image/ccc/solar.png" alt="solar panel" width={26} height={20} />
         </div>

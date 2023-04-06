@@ -11,8 +11,8 @@ function Footer() {
         <footer className='bg-[#facb62] flex justify-center p-4'>
             {/* Image wiggles onHover by changing its source from the wiggling.gif to the still.png */}
             <a href="https://www.youtube.com/SonAndFather" className='no-underline flex justify-center items-center'
-                onMouseEnter={_=>setSrc(wiggle)}
-                onMouseLeave={_=>setSrc(still)}
+                onMouseEnter={()=>setSrc(wiggle)}
+                onMouseLeave={()=>setSrc(still)}
             >
                 <YoutubeSvg/>
                 <div className='flex items-end'>

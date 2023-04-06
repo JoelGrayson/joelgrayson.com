@@ -105,7 +105,7 @@ export default function Verify() {
         </h1>
         <p>
             <span>See if a message was indeed signed by Joel Grayson on a certain date. In this era of misinformation, how can you trust if someone actually said something? This page is intended to prevent someone from forging my name on a message by using asymmetric cryptography with OpenSSL. </span>
-            <span style={{cursor: 'pointer'}} className='text-gray-500 underline hover:text-gray-400' onClick={_=>setOpen(true)}>
+            <span style={{cursor: 'pointer'}} className='text-gray-500 underline hover:text-gray-400' onClick={()=>setOpen(true)}>
                 Learn more
             </span>
             <span>.</span>

@@ -44,7 +44,7 @@ export default function Gallery({ images, renderChildren, galleryOpen, setGaller
             zIndex: 1
         }}>
             {/* Close Button */}
-            <Button onClick={_=>setGalleryOpen(false)} style={{
+            <Button onClick={()=>setGalleryOpen(false)} style={{
                 position: 'absolute',
                 top: '20px',
                 right: '50px',
