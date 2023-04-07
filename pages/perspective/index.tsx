@@ -39,7 +39,7 @@ export default function JoelsPerspective() { //List of articles
             ? <>
                 {categories.map(category=>{ 
                     const { name, color }=displayCategory.get(category)!;
-                    return <div key={category} style={{ backgroundColor: color, borderRadius: 10 }} className='border-b-2 mb-1 shadow-sm px-3 py-3 pb-5 mb-4'>
+                    return <div key={category} style={{ backgroundColor: color, borderRadius: 10 }} className='border-b-2 shadow-sm px-3 py-3 pb-5 mb-4'>
                         <h3 className='text-center bold'>{name}</h3> {/* Category name */}
                         <div style={gridStyle}> {/* Articles item */}
                             {articles.filter(a=>a.category===category).map(article=>( //get articles of a category

@@ -9,7 +9,7 @@ export default function Sites() { /* bullet points of all sites */
             <Site>joelgrayson.com</Site>
             <Site>buseroo.com</Site>
             <Site>lirongart.com</Site>
-            <Site href='https://youtube.com/SonAndFather'>youtube.com/SonAndFather (Slaphappy)</Site>
+            <Site href='https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A'>youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A (Slaphappy)</Site>
             <Site>studentsforelectricbuses.org</Site>
             <Site>memorizethepresidents.com</Site>
 

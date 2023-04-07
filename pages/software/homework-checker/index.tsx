@@ -1,28 +1,14 @@
 import Page from '@/components/Page';
-import { css } from '@emotion/css';
 import Button from '@jcomponents/button';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// note: this page is migrated from w.joelgrayson.com/homework-checker
-
 export default function HomeworkChecker() {
     return <Page padding>
-        <h1 className={css`
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            img {
-                height: 3rem;
-                position: relative;
-                right: -15px;
-            }
-        `}>
+        <h1 className='text-center flex justify-center items-center'>
             <span>Homework&nbsp;</span>
             <span className="text-[#00962a]">Checker</span>
-            <img src="/software/homework-checker/logo.png" alt="Logo" />
+            <Image width='48' height='48' className='relative right-[-15px]' src="/software/homework-checker/logo.png" alt="Logo" />
         </h1>
         
         {/* Buttons */}
@@ -42,7 +28,9 @@ export default function HomeworkChecker() {
         </div>                
         <p>Organize your school life and motivate yourself with Homework Checker. Keep track of your complete/incomplete Schoology assignments by checking them off.</p>
         <figure id="demo" className='relative'>
+            {/* eslint-disable */}
             <img src="/software/homework-checker/demo.gif" alt="Demo" className='width-full' />
+            {/* eslint-enable */}
             <figcaption className='absolute' style={{
                 fontSize: '2rem',
                 bottom: '1rem',
@@ -91,6 +79,11 @@ export default function HomeworkChecker() {
                 </tr>
             </tbody>
         </table>
+        <br /><br /><br />
+        <h3>Privacy Policy</h3>
+        <p>Homework Checker does not collect any data. It keeps checked assignments on your computer&apos;s local storage, but this information cannot be accessed by any other extensions, websites, or apps. In otherwords, nobody sees what assignments you have checked except you.</p>
+        <p>Separately, the google web store collects anonymously what country you are from. I have no control over this. All I know is what google tells me: how many installs Homework Checker has and in what countries.</p>
+
         <br />
     </Page>;
 }
