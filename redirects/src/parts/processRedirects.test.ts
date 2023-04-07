@@ -18,5 +18,5 @@ test('works on example', ()=>{
 
     console.log(processRedirects({
         '/onedrive-download-link-generator': [/\/onedrive-download-generator(-link)?/, '/download-link-generator-onedrive', '/onedrive-download-link', '/onedrive-link-generator']
-    }, true))
-})
+    }, true));
+});

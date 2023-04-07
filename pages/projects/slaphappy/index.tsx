@@ -19,6 +19,7 @@ export default function Slaphappy() {
     }, []);
     
     return <Page title='Art' style={{overflow: 'hidden'}}>
+        {/* eslint-disable */}
         {/* Curtain background image */}
         <img src="/image/slaphappy/curtains.png" ref={curtainsRef} alt="Curtains" style={{
             position: 'absolute',
@@ -27,12 +28,12 @@ export default function Slaphappy() {
             width: '100vw',
             zIndex: -1
         }} />
-        
         <img src='/image/slaphappy/Channel-Art.png' alt='Slaphappy Channel Art' className='mx-auto pt-[60px] sm:pt-[100px] lg:pt-[160px]' style={{
             width: '60%',
             zIndex: -2,
             position: 'inherit'
         }} />
+        {/* eslint-enable */}
 
         <div className='items-center md:flex md:gap-8'>
             <div style={{

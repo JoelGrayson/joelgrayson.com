@@ -26,9 +26,8 @@ export default function Home() {
                 setHCInstalls(res.hCInstalls);
                 setFocusInstalls(res.focusInstalls);
             });
-    // eslint-disable
+    // eslint-disable-next-line
     }, []);
-    // eslint-enable
 
     return <Page title='Joel Grayson'>
         <div className='w-full p-0 m-0'>

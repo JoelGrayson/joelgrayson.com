@@ -12,9 +12,7 @@ export const machines: Machine[]=[
         html: DefaultTemplate({
             date: '7.15.2021',
             title: <>Guardbox <small>(Arduino Safe)</small></>,
-            desc: (<>
-                The challenge was to create and present a safe in under 24 hours using Arduino. <br/> Code: <Link href='https://github.com/JoelGrayson/Guardbox'>github.com/JoelGrayson/Guardbox</Link>
-            </>),
+            desc: <>The challenge was to create and present a safe in under 24 hours using Arduino. <br/> Code: <Link href='https://github.com/JoelGrayson/Guardbox'>github.com/JoelGrayson/Guardbox</Link></>,
             yt: 'DbfRmZZx4VA'
         })
     },
@@ -27,9 +25,7 @@ export const machines: Machine[]=[
         html: DefaultTemplate({
             date: '7.12.2021',
             title: <>Eater <small>(Arduino Game)</small></>,
-            desc: (<>
-                The challenge was to create and present a safe in under 24 hours using Arduino. <br/> Code: <Link href='https://github.com/JoelGrayson/Eater-Arduino-Game'>github.com/JoelGrayson/Eater-Arduino-Game</Link>
-            </>),
+            desc: <>The challenge was to create and present a safe in under 24 hours using Arduino. <br/> Code: <Link href='https://github.com/JoelGrayson/Eater-Arduino-Game'>github.com/JoelGrayson/Eater-Arduino-Game</Link></>,
             yt: 'f52mLKATghw'
         })
     },
@@ -42,7 +38,7 @@ export const machines: Machine[]=[
         html: DefaultTemplate({
             date: '5.27.2021',
             title: <>Nuclear Dystopia</>,
-            desc: (<>
+            desc: <>
                 <div className='flex relative gap-6'>
                     <div className='w-[80%]'>
                         <div>This project depicts the dystopian world many people imagine at the thought of nuclear energy.
@@ -51,12 +47,10 @@ export const machines: Machine[]=[
                         <div>Code: <Link href="https://github.com/JoelGrayson/Guardbox">github.com/JoelGrayson/Guardbox</Link></div>
                     </div>
                     <Link href='https://joelgrayson.github.io/Nuclear-Dystopia/' target='_blank'>
-                        <div className='w-[50%] cursor-pointer'>
-                            <img className='hover:shadow-xl hover:outline-2 outline-double transition-none outline-0' src='/image/machines/nuclear-dystopia-thumbnail.jpg' alt='Thumbnail' />
-                        </div>
+                        <Image width='170' height='154' className='hover:shadow-xl hover:outline-2 outline-double transition-none outline-0' src='/image/machines/nuclear-dystopia-thumbnail.jpg' alt='Thumbnail' />
                     </Link>
                 </div>
-            </>)
+            </>
         })
     },
     {
@@ -66,8 +60,8 @@ export const machines: Machine[]=[
             title: 'Picnic Tables' //sort alphabetically
         },
         html: <div className='relative h-[400px]'>
-            <img className='absolute top-0 rounded-xl' src='/image/machines/picnic-table.jpg' width='348px' height='258px' alt='Picnic Table' />
-            <img className='absolute top-52 left-72 rounded-xl' src='/image/machines/constructing-picnic-table.gif' width='237px' height='164px' alt='Constructing Picnic Table' />
+            <Image className='absolute top-0 rounded-xl' src='/image/machines/picnic-table.jpg' width='348' height='258' alt='Picnic Table' />
+            <Image className='absolute top-52 left-72 rounded-xl' src='/image/machines/constructing-picnic-table.gif' width='237' height='164' alt='Constructing Picnic Table' />
             <div className='absolute left-[370px] top-0'>
                 <p>5.6.21</p>
                 <h3>Picnic Tables</h3>
@@ -101,13 +95,13 @@ export const machines: Machine[]=[
             title: 'Fundraising for the American Red Cross' //sort alphabetically
         },
         html: <div className='relative h-[380px]'>
-            <img src='/image/machines/lemonade-1.jpg' width='343' height='240' alt='Fundraising for American Red Cross' style={{
+            <Image src='/image/machines/lemonade-1.jpg' width='343' height='240' alt='Fundraising for American Red Cross' style={{
                 position: 'absolute',
                 left: 0,
                 top: 0,
                 borderRadius: 10
             }} />
-            <img src='/image/machines/lemonade-2.jpg' width='222' height='232' alt='Customer interacting with stand' style={{
+            <Image src='/image/machines/lemonade-2.jpg' width='222' height='232' alt='Customer interacting with stand' style={{
                 position: 'absolute',
                 left: 310,
                 top: 120,

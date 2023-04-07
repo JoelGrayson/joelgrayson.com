@@ -45,6 +45,7 @@ export const permanent: redirects={ //301
     '/perspective/mindfully-travelling-to-school': '/perspective/my-three-hour-journey-to-school',
     'https://joels-secrets-vemwxlduba-uk.a.run.app': ['/secrets', '/sign', '/secret'],
     '/projects/art': '/art',
+    '/projects/machines': '/machines',
     '/projects/performances': ['/performance', '/performances'],
     'https://calendar.google.com/calendar/u/0?cid=Y182MTYxMThmYmE5ZTY1YWI0YzlkODlmZjAyZDlkMTcxNjE1ZjQ2ZTIyMzlhNTI0MWY1MDBlNjQzZTAyZmRmODRlQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20': '/software/day-number-calendar/google',
     '/software/day-number-calendar.ics': '/software/day-number-calendar/apple',

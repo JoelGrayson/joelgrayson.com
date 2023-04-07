@@ -107,11 +107,13 @@ export default function Art() {
             const { name, dateStr }=parse(imagePath);
             const title=`${name} (${dateStr})`;
             return <>
+                {/* eslint-disable */}
                 <img src={`/image/art/${imagePath}`} alt={`Artwork titled ${name}`} style={{
                     width: '100%',
                     height: '100%',
                     objectFit: 'contain'
                 }} />
+                {/* eslint-enable */}
                 <div className='text-center text-3xl font-bold mt-5'>{title}</div>
             </>;
         }} {...{galleryOpen, setGalleryOpen, index, setIndex}} />

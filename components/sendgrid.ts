@@ -20,7 +20,7 @@ export function send({ subject, text, html, to, from={email: ''}/* :(object | st
     sgMail
     .send({subject, text, html, to, from: (from as fromT)})
     .then(()=>{
-        console.log('Email sent');
+        console.log(`Email sent to ${to}`);
     })
     .catch(error=>{
         console.error(error);

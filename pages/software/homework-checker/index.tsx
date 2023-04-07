@@ -5,7 +5,7 @@ import Image from 'next/image';
 // note: this page is migrated from w.joelgrayson.com/homework-checker
 
 export default function HomeworkChecker() {
-    return (<Page padding>
+    return <Page padding>
         <style jsx>{`
             .green {
                 color: #00962a;
@@ -152,10 +152,10 @@ export default function HomeworkChecker() {
                 </tr>
                 <tr> {/* images */}
                     <td>
-                        <Image width="200" alt="default" src="/software/homework-checker/regular.jpg" />
+                        <Image width="200" height='198' alt="default" src="/software/homework-checker/regular.jpg" />
                     </td>
                     <td>
-                        <Image width="200" alt="demo" src="/software/homework-checker/with-homework-checker.jpg" />
+                        <Image width="200" height='198' alt="demo" src="/software/homework-checker/with-homework-checker.jpg" />
                     </td>
                 </tr>
                 <tr> {/* explanation */}
@@ -172,5 +172,5 @@ export default function HomeworkChecker() {
             </tbody>
         </table>
         
-    </Page>);
+    </Page>;
 }

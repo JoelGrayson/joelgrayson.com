@@ -17,7 +17,7 @@ export default function onFormSubmit(setSubmitted: Function) {
         })
         .then(res=>res.json())
         .then(res=>{
-            console.log(res);
+            console.log('form submitted:', res);
             setSubmitted(true);
         });
     };

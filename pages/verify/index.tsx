@@ -51,7 +51,7 @@ export default function Verify() {
         }
 
         const sm: SignedMessage={ message, date, signature };
-        console.log('Verifying: ', sm);
+        console.log('Verifying:', sm);
 
         fetch('https://api.joelgrayson.com/verify', {
             method: 'POST',
@@ -62,7 +62,6 @@ export default function Verify() {
         })
             .then(res=>res.json())
             .then(res=>{
-                console.log('Res', res);
                 if (res.status!=='Success' || res.valid===undefined)
                     alert('The verification server is not working');
 
@@ -79,8 +78,6 @@ export default function Verify() {
     useEffect(()=>{ //if valid query, use its values
         if(!router.isReady) return;
         
-        console.log('query', query);
-
         if (query.message) _setMessage(query.message as string);
         if (query.date) _setDate(query.date as string);
         if (query.signature) _setSignature(query.signature as string);

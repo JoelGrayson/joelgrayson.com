@@ -9,11 +9,12 @@ export default function HeaderSubGroupArrow({open}: {open: boolean}) {
     
     // Arrow
     const lineRef=useRef() as React.MutableRefObject<HTMLDivElement>;
-    // eslint-disable-next-line
+
     useEffect(()=>{
         if (!lineRef.current) return;
         
         contractArrow(true);
+    // eslint-disable-next-line
     }, [lineRef.current]);
 
     if (lineRef.current) {

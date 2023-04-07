@@ -21,7 +21,6 @@ export default function JoelsPerspective() { //List of articles
             case 'Z-A':              return articles.sort((a, b)=>a.name<b.name ? 1 : -1);
         }
     })();
-    
     console.log('Sorted articles:', sortedArticles);
 
     return <PerspectiveBody>

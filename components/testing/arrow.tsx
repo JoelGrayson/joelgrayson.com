@@ -22,7 +22,6 @@ export default function Arrow() {
             width: 16,
             opacity: 0
         };
-        console.log(instant ? 'instant' : 'fluid');
         
         if (instant) //snap with set
             gsap.set(lineRef.current, obj); 

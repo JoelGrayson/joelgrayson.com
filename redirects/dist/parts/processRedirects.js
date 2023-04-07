@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 function processRedirects(input, isPermanent) {
     var output = [];
     Object.entries(input).forEach(function (_a) {
@@ -18,7 +18,7 @@ function processRedirects(input, isPermanent) {
     });
     return output;
 }
-exports["default"] = processRedirects;
+exports.default = processRedirects;
 function packageIntoObj(key, val, isPermanent) {
     if (val instanceof RegExp) { //Process RegExp into string
         val = "".concat(val).slice(0, -1); // Remove first and last char: /regex/ -> regex
