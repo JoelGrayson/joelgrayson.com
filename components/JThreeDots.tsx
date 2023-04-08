@@ -10,7 +10,7 @@ export default function JThreeDots() { //interactive signature
             <div className='relative'>
                 {/* eslint-disable */}
                     {/* Using <img> below instead of <Image> because reloads onHover */}
-                    <img src={`/image/circle-signature-animation.gif?num=${loadNum}`} alt='Joel Grayson Circle Signature Animation'
+                    <img src={`/image/ucjg/circle-signature-animation.gif?num=${loadNum}`} alt='Joel Grayson Circle Signature Animation'
                         height='40px' width='40px'
                         onMouseEnter={reload} //when hovering icon, replay the signature
                         className='w-[30px] sm:w-[40px] pt-[5.5px] sm:pt-0'

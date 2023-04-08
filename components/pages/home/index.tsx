@@ -36,7 +36,7 @@ export default function Home() {
                 <div className='j_max-w relative mx-auto h-full'> {/* container for images same width as content */}
                     {/* signature gif */}
                     <div className='absolute bottom-8 left-11'>
-                        <Image src='/image/signature.gif' alt='Joel Grayson Signature' width='371' height='149' priority />
+                        <Image src='/image/ucjg/signature.gif' alt='Joel Grayson Signature' width='371' height='149' priority />
                     </div>
                     {/* Portrait */}
                     <div className='absolute p-0 bottom-0 mb-[-6px] right-24'>

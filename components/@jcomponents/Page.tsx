@@ -10,7 +10,7 @@ export default function Home({children}: {children: ReactNode}) {
         <Header color='#a9ceff'>
             <div> {/* Left */}
                 <Link href='/@jcomponents/'>
-                    <Image src='/image/@jcomponents/logo.png' width='80' height='80' alt='logo' />
+                    <Image src='/image/software/@jcomponents/logo.png' width='80' height='80' alt='logo' />
                 </Link>
             </div>
             <div> {/* Right */}

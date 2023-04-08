@@ -29,7 +29,7 @@ export default function HomeworkChecker() {
         <p>Organize your school life and motivate yourself with Homework Checker. Keep track of your complete/incomplete Schoology assignments by checking them off.</p>
         <figure id='demo' className='relative'>
             {/* eslint-disable */}
-            <img src='/software/homework-checker/demo.gif' alt='Demo' className='width-full' />
+            <img src='/image/software/homework-checker/demo.gif' alt='Demo' className='width-full' />
             {/* eslint-enable */}
             <figcaption className='absolute' style={{
                 fontSize: '2rem',
@@ -81,8 +81,7 @@ export default function HomeworkChecker() {
         </table>
         <br /><br /><br />
         <h3>Privacy Policy</h3>
-        <p>Homework Checker does not collect any data. It keeps checked assignments on your computer&apos;s local storage, but this information cannot be accessed by any other extensions, websites, or apps. In otherwords, nobody sees what assignments you have checked except you.</p>
-        <p>Separately, the google web store collects anonymously what country you are from. I have no control over this. All I know is what google tells me: how many installs Homework Checker has and in what countries.</p>
+        <p>Homework Checker does not and will never collect any data.</p>
 
         <Link target='_blank' href='https://forms.gle/AzoqSVwKaVtRzrAH8'><Button>
             Report a bug
