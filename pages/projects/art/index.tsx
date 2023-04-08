@@ -46,7 +46,7 @@ const images=[
     [ '2019 Paris Bistro.jpg', w2 ],
     [ '2019 Hôtel Pont Royale.jpg' ],
     [ '2017.07.21 The Dog Walker.jpg' ],
-    [ "2017 The Philosopher's Lamp.jpg" ],
+    [ `2017 The Philosopher's Lamp.jpg` ],
     [ '2017 Plant.jpg' ],
     [ '2016 Political Cartoon.jpg', w2 ],
     [ '2015.08.29 Paul Reading.jpg' ],

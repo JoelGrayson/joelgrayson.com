@@ -1,4 +1,4 @@
-import { nextRedirects, redirects, src, dest, nextRedirect } from "./types";
+import { nextRedirects, redirects, src, dest, nextRedirect } from './types';
 
 export default function processRedirects(input: redirects, isPermanent: boolean) {
     const output: nextRedirects=[];

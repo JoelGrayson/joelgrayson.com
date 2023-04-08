@@ -6,7 +6,7 @@ import MiscellaneousBottom from '@/components/pages/machines/MiscellaneousBottom
 export default function Machines() {
     return (<Page>
         <div id='paralax' style={{
-            backgroundImage: 'url("/image/machines/banner.jpg")',
+            backgroundImage: `url('/image/machines/banner.jpg')`,
             minHeight: '600px',
             backgroundAttachment: 'fixed',
             backgroundPosition: 'center',

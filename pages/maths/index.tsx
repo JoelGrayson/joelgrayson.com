@@ -7,7 +7,7 @@ import SASFormula from './joels-sas-formula/SASFormula';
 export default function Maths() {
     return (
         <Page padding>
-            <h1 className="text-center">Maths</h1>
+            <h1 className='text-center'>Maths</h1>
             <div
                 className={css`
                     display: grid;
@@ -15,14 +15,14 @@ export default function Maths() {
                     gap: 3px;
                 `}
             >
-                <Subject link="https://youtu.be/7BqbyixlSRU">
+                <Subject link='https://youtu.be/7BqbyixlSRU'>
                     <div style={{textAlign: 'center'}}>
                         Proving the Geometric Series Formula with a
                         Rectangle
                     </div>
-                    <iframe width="280" height="158" src="https://www.youtube.com/embed/7BqbyixlSRU" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                    <iframe width='280' height='158' src='https://www.youtube.com/embed/7BqbyixlSRU' title='YouTube video player' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowFullScreen></iframe>
                 </Subject>
-                <Subject link="/maths/joels-sas-formula/index.html">
+                <Subject link='/maths/joels-sas-formula/index.html'>
                     <div>
                         <div style={{textAlign: 'center'}}>
                             Joel&apos;s SAS Formula
@@ -30,16 +30,16 @@ export default function Maths() {
                         <SASFormula />
                     </div>
                 </Subject>
-                <Subject link="/maths/icosahedron-navigation">
+                <Subject link='/maths/icosahedron-navigation'>
                     <div>Icosahedron Navigation</div>
                     <Image
-                        src="/maths/icosahedron-navigation/icosahedron.png"
-                        alt="icosahedron"
-                        width="200"
-                        height="200"
+                        src='/maths/icosahedron-navigation/icosahedron.png'
+                        alt='icosahedron'
+                        width='200'
+                        height='200'
                     />
                 </Subject>
-                <Subject link="/maths/crustless-pizza">
+                <Subject link='/maths/crustless-pizza'>
                     <div>Crustless Pizza Pieces Recurrence Problem</div>
                 </Subject>
             </div>

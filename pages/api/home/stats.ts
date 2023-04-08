@@ -13,7 +13,7 @@ export default async function ApiHandler(req: any, res: any) {
 
 function createGetChromeExtensionStats(url: string) {
     return ()=>{
-        return new Promise(async (resolve, reject)=>{
+        return new Promise(async (resolve)=>{
             const browser=await puppeteer.launch({ headless: true });
             const page=await browser.newPage();
         

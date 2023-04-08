@@ -21,7 +21,7 @@ export default function Slaphappy() {
     return <Page title='Art' style={{overflow: 'hidden'}}>
         {/* eslint-disable */}
         {/* Curtain background image */}
-        <img src="/image/slaphappy/curtains.png" ref={curtainsRef} alt="Curtains" style={{
+        <img src='/image/slaphappy/curtains.png' ref={curtainsRef} alt='Curtains' style={{
             position: 'absolute',
             top: -30,
             left: 0,

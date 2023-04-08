@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from "next/image";
+import Image from 'next/image';
 import { Machine, DefaultTemplate, Yt } from './helpers';
 
 export const machines: Machine[]=[
@@ -43,8 +43,8 @@ export const machines: Machine[]=[
                     <div className='w-[80%]'>
                         <div>This project depicts the dystopian world many people imagine at the thought of nuclear energy.
                         As a nuclear proponent myself (I wrote an article on my thoughts here), I wanted to explore the fear.</div>
-                        <div>Website: <Link href="https://joelgrayson.github.io/Nuclear-Dystopia">joelgrayson.github.io/Nuclear-Dystopia</Link></div>
-                        <div>Code: <Link href="https://github.com/JoelGrayson/Guardbox">github.com/JoelGrayson/Guardbox</Link></div>
+                        <div>Website: <Link href='https://joelgrayson.github.io/Nuclear-Dystopia'>joelgrayson.github.io/Nuclear-Dystopia</Link></div>
+                        <div>Code: <Link href='https://github.com/JoelGrayson/Guardbox'>github.com/JoelGrayson/Guardbox</Link></div>
                     </div>
                     <Link href='https://joelgrayson.github.io/Nuclear-Dystopia/' target='_blank'>
                         <Image width='170' height='154' className='hover:shadow-xl hover:outline-2 outline-double transition-none outline-0' src='/image/machines/nuclear-dystopia-thumbnail.jpg' alt='Thumbnail' />

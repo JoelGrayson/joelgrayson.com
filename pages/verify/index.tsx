@@ -95,9 +95,9 @@ export default function Verify() {
                 Verify
             </span>
             {/* Lock Icon */}
-            <svg width={51*0.7} height={69*0.7} className='relative bottom-2 ml-4' viewBox="0 0 51 69" fill="none">
-                <path d="M13 28H7C5.34315 28 4 29.3431 4 31V62C4 63.6569 5.34315 65 7 65H44C45.6569 65 47 63.6569 47 62V31C47 29.3431 45.6569 28 44 28H38M13 28V11C13.3333 8.33333 18.6882 3.5 25.5 3.5C33.5 3.5 38 8.66667 38 11V28M13 28H38" stroke="#0A673A" strokeWidth="7" />
-                <rect x="4" y="29" width="43" height="36" fill="#0A673A"/>
+            <svg width={51*0.7} height={69*0.7} className='relative bottom-2 ml-4' viewBox='0 0 51 69' fill='none'>
+                <path d='M13 28H7C5.34315 28 4 29.3431 4 31V62C4 63.6569 5.34315 65 7 65H44C45.6569 65 47 63.6569 47 62V31C47 29.3431 45.6569 28 44 28H38M13 28V11C13.3333 8.33333 18.6882 3.5 25.5 3.5C33.5 3.5 38 8.66667 38 11V28M13 28H38' stroke='#0A673A' strokeWidth='7' />
+                <rect x='4' y='29' width='43' height='36' fill='#0A673A'/>
             </svg>
         </h1>
         <p>
@@ -124,16 +124,16 @@ export default function Verify() {
                 />
             </div>
             <div>
-                <label htmlFor="date">Date&emsp;</label>
+                <label htmlFor='date'>Date&emsp;</label>
                 <input
-                    type="text" name="date" id="date" pattern={dateRegex.toString().slice(1, -1)} 
+                    type='text' name='date' id='date' pattern={dateRegex.toString().slice(1, -1)} 
                     value={date} onChange={e=>setDate(e.target.value)}
                 />
             </div>
             <div>
-                <label htmlFor="signature">Signature&emsp;</label>
+                <label htmlFor='signature'>Signature&emsp;</label>
                 <input
-                    type="text" name="signature" id="signature" className='w-[300px]'
+                    type='text' name='signature' id='signature' className='w-[300px]'
                     value={signature} onChange={e=>setSignature(e.target.value)}
                 />
             </div>

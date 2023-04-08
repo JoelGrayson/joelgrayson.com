@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function IcosahedronNavigation() {
     return (<Page padding>
-        <Link href="/maths">
+        <Link href='/maths'>
             <Button style={{
                 position: 'absolute',
                 top: '1rem',
@@ -38,7 +38,7 @@ export default function IcosahedronNavigation() {
             </span></Link>
         </div>
 
-        <iframe src="/maths/icosahedron-navigation/Icosahedron Navigation.pdf" width="100%" style={{height: "90vh"}} />
+        <iframe src='/maths/icosahedron-navigation/Icosahedron Navigation.pdf' width='100%' style={{height: '90vh'}} />
         <br /><br />
     </Page>);
 }

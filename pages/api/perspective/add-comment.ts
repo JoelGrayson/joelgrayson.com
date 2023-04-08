@@ -14,13 +14,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const verificationLink=`https://joelgrayson.vercel.app/api/perspective/verify-comment/${token}`;
     sendEmail({
         to: email,
-        from: { name: "Joel's Perspective", email: 'bot@joelgrayson.com' }, //TODO: test if this works
+        from: { name: `Joel's Perspective`, email: 'bot@joelgrayson.com' }, //TODO: test if this works
         subject: 'Confirm Comment',
         text: `Please go to ${verificationLink} to confirm your comment. Once confirmed, the following will be posted\n`
         +'Name: '+name+'\n'
         +'Email: '+email+'\n'
         +'Comment: '+comment+'\n',
-        html: `<p>Please go to <a href="${verificationLink}">this link</a> to confirm your comment. Once confirmed, the comment will be posted</p>`
+        html: `<p>Please go to <a href='${verificationLink}'>this link</a> to confirm your comment. Once confirmed, the comment will be posted</p>`
     });
     
     const article=await prisma.article.findFirst({

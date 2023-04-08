@@ -46,7 +46,7 @@ export default function Performances({videos}: { videos: ytVideos }) {
 
         <Gallery
             images={videos.items.map(video=>({ videoId: video.snippet.resourceId.videoId, title: video.snippet.title }))} renderChildren={({videoId, title})=><div className='flex justify-center items-center h-full flex-col'>
-                <iframe width="560" height="315" src={`https://www.youtube.com/embed/${videoId}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                <iframe width='560' height='315' src={`https://www.youtube.com/embed/${videoId}`} title='YouTube video player' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowFullScreen></iframe>
                 <div className='text-xl font-bold mt-5 flex gap-3 items-center'>
                     <span>{title}</span>
                     <Link href={`https://www.youtube.com/watch?v=${videoId}`} target='_blank'>

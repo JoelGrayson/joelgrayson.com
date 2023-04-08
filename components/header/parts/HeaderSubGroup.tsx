@@ -10,8 +10,8 @@ export default function HeaderSubGroup({title, children}: {title: string, childr
         style={{ height: '24px' }}
     >
         {/* --> Left Arrow (onhover increases arrow length) */}
-        <svg className='inline pr-2' width='33px' height="15px" viewBox="0 0 33 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 6.90909H31M31 6.90909L22.5 14M31 6.90909L22.5 1" stroke="black" strokeWidth="2"/>
+        <svg className='inline pr-2' width='33px' height='15px' viewBox='0 0 33 15' fill='none' xmlns='http://www.w3.org/2000/svg'>
+            <path d='M0 6.90909H31M31 6.90909L22.5 14M31 6.90909L22.5 1' stroke='black' strokeWidth='2'/>
         </svg>
         
         <span
@@ -19,7 +19,7 @@ export default function HeaderSubGroup({title, children}: {title: string, childr
             style={{ fontFamily: 'AvenirMedium' }}
             onMouseEnter={()=>setHovered(true)}
         >
-            <span className={hovered ? "gradient-text" : ""}>{title}</span>
+            <span className={hovered ? 'gradient-text' : ''}>{title}</span>
             {/* side arrow > which becomes --> on hover */}
             <HeaderSubGroupArrow open={hovered} />
         </span>

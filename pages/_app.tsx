@@ -25,14 +25,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 |  jjjjjjjjjjjj                         |
 |   jjjjjjjj           %cjoelgrayson.com%c  |
 |                                       |
-┖---------------------------------------┛`, "text-shadow: #84d8f0 0 0 2px", "text-shadow: cyan 0 0 2px; font-weight: bold", "text-shadow: #84d8f0 0 0 2px");
+┖---------------------------------------┛`, 'text-shadow: #84d8f0 0 0 2px', 'text-shadow: cyan 0 0 2px; font-weight: bold', 'text-shadow: #84d8f0 0 0 2px');
     }, []);
 
     return <>
         <Component {...pageProps} />
 
         {/* Google tag (gtag.js) */}
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-25JL4Z9H4S" strategy='afterInteractive' />
+        <Script async src='https://www.googletagmanager.com/gtag/js?id=G-25JL4Z9H4S' strategy='afterInteractive' />
         <Script id='google-analytics' strategy='afterInteractive'>{`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

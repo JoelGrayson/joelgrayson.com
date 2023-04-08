@@ -32,7 +32,7 @@ export default function Home() {
     return <Page title='Joel Grayson'>
         <div className='w-full p-0 m-0'>
             {/* top */}
-            <div className='w-full h-[290px] p-0' style={{background: "linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(216,216,216,1) 100%)"}}>
+            <div className='w-full h-[290px] p-0' style={{background: 'linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(216,216,216,1) 100%)'}}>
                 <div className='j_max-w relative mx-auto h-full'> {/* container for images same width as content */}
                     {/* signature gif */}
                     <div className='absolute bottom-8 left-11'>

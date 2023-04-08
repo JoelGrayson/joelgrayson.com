@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useRouter } from "next/router";
-import PerspectiveBody from "@/components/perspective/PerspectiveBody";
+import { useRouter } from 'next/router';
+import PerspectiveBody from '@/components/perspective/PerspectiveBody';
 import jdate from 'joeldate';
 import Button from '@jcomponents/button';
 import { ExposedComment } from '@/components/data/TYPES';

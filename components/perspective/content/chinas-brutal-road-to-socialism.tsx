@@ -1,4 +1,4 @@
-export const title="China's Brutal Road to Socialism";
+export const title=`China's Brutal Road to Socialism`;
 export const date=new Date('May 23, 2022'); //published date
 import { P, Citation, Footnote, HangingIndent } from '../Components';
 import Link from 'next/link';

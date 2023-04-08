@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Client } from 'pg';
-import date2Timestamp from "../../../helpers/date2Timestamp";
+import date2Timestamp from '../../../helpers/date2Timestamp';
 import notifyJoel from '../../../helpers/notifyJoel';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<{message: string, queryRes?: any}>) {

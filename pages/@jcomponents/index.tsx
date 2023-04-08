@@ -11,7 +11,7 @@ export default function Home() {
         <h3>Contribute</h3>
         <ul>
             <li>Source code: <Link href='https://github.com/JoelGrayson/JComponents' target='_blank' rel='noreferrer'>github.com/JoelGrayson/JComponents</Link></li>
-            <li>Issue tracker: <Link href="https://github.com/JoelGrayson/JComponents/issues" target='_blank' rel='noreferrer'>github.com/JoelGrayson/JComponents/issues</Link></li>
+            <li>Issue tracker: <Link href='https://github.com/JoelGrayson/JComponents/issues' target='_blank' rel='noreferrer'>github.com/JoelGrayson/JComponents/issues</Link></li>
         </ul>
     </Page>);
 }
