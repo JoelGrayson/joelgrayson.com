@@ -2,6 +2,6 @@
     "compilerOptions": {
         "lib": ["ES2017"],
         "rootDir": "./src/",
-        "outDir": "./dist/"
+        "outDir": "./compiled-js/"
     }
 }
