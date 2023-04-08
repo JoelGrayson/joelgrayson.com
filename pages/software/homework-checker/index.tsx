@@ -58,10 +58,10 @@ export default function HomeworkChecker() {
                 </tr>
                 <tr> {/* images */}
                     <td>
-                        <Image width='200' height='198' alt='default' src='/software/homework-checker/regular.jpg' />
+                        <Image width='200' height='198' alt='default' src='/image/software/homework-checker/regular.jpg' />
                     </td>
                     <td>
-                        <Image width='200' height='100' alt='demo' src='/software/homework-checker/with-homework-checker.jpg' />
+                        <Image width='200' height='100' alt='demo' src='/image/software/homework-checker/with-homework-checker.jpg' />
                     </td>
                 </tr>
                 {/* Explanation */}
@@ -81,7 +81,8 @@ export default function HomeworkChecker() {
         </table>
         <br /><br /><br />
         <h3>Privacy Policy</h3>
-        <p>Homework Checker does not and will never collect any data.</p>
+        <p>Homework Checker does not and will never collect any data. It is fully-transparent: you can see the source code at <Link href='https://github.com/JoelGrayson/Homework-Checker'>github.com/JoelGrayson/Homework-Checker</Link></p>
+
 
         <Link target='_blank' href='https://forms.gle/AzoqSVwKaVtRzrAH8'><Button>
             Report a bug
