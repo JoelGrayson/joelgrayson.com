@@ -12,7 +12,7 @@
     "test": "jest --verbose",
     "vercel-build": "prisma generate",
     "test-next": "npm run build && npm start",
-    "jredirects": "cd redirects && ./build.sh",
+    "jredirects": "cd jredirects && ./build.sh",
     "reset-data": "cd components/prisma && prisma db push && prisma migrate && prisma generate && ./insert-articles"
   },
   "dependencies": {

@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 
-const redirects=require('./redirects/dist/main').default;
+const jredirects=require('./jredirects/dist/main').default();
 
 module.exports={
     reactStrictMode: true,
     swcMinify: true,
-    redirects: redirects,
+    redirects: jredirects,
     images: {
         remotePatterns: [
             {

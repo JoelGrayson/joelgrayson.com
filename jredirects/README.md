@@ -1,9 +1,12 @@
-# How to Use
-1. Add your redirects to REDIRECTS.ts
+# How to Use JRedirects
+1. Add your redirects to src/REDIRECTS.ts
 2. Run `./build.sh`
 2. Add to your `next.config.js` file:
 ```js
-const redirects=require('./redirects/dist/main').default;
+// JRedirects
+const jredirects=require('./jredirects/dist/main').default;
+
+module.exports={ redirects: jredirects };
 ```
 
 # Learn more
