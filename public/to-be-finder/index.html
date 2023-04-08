@@ -1,83 +1,83 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-		<link href="./styles.css" rel="stylesheet" />
-	</head>
-	<body>
-		<main>
-			<h1>To Be Verb Finder</h1>
-			<div class='toolbar'>
-				<button onclick='find()' id='find'>Find</button>
-				<span id='submitResponse'></span>
-				<button onclick='showModal()'>How Does it Work?</button>
-			</div>
-			<div title='br' style='height:15px;'></div>
-			<div id='alert'>To Be Found</div>
-			<textarea placeholder="Paste your text in here. I'll let you know if there [IS] a to be verb." onkeypress='hideMessage()'></textarea>
-			<footer>
-				<a class='footerLink' href='https://joelgrayson.com/tools'>Coded 2021</a>
-				<div id='codeGraph'>
-					<div id='firstColumn'>20% HTML</div>
-					<div id='secondColumn'>40% CSS</div>
-					<div id='thirdColumn'>40% JS</div>
-				</div>
-			</footer>
-		</main>
-	
-		<div id='modal'>
-			<span id='blackenBackground'></span>
-			<div id='modalContent'>
-				<p>This page is coded in HTML, CSS, and JS. I used it as basic Regex practice by identifying the following phrases:</p>
-				<table>
-					<tr>
-						<th>Present Tense</th>
-						<th>Past Tense</th>
-						<th>Others</th>
-						<th>Contractions</th>
-					</tr>
-					<tr>
-						<td>
-							<ul>
-								<li>Am</li>
-								<li>Is</li>
-								<li>Are</li>
-							</ul>
-						</td>
-						<td>
-							<ul>
-								<li>Was</li>
-								<li>Were</li>
-								<li>Been</li>
-							</ul>
-						</td>
-						<td>
-							<ul>
-								<li>Be</li>
-								<li>Being</li>
-							</ul>
-						</td>
-						<td>
-							<ul>
-								<li>I'm</li>
-								<li>He's</li>
-								<li>She's</li>
-								<li>They're</li>
-								<li>We're</li>
-								<li>There're</li>
-								<li>Isn't</li>
-								<li>Aren't</li>
-								<li>Wasn't</li>
-								<li>Weren't</li>
-						</td>
-					</tr>
-				</table>
-				<p>Here is the source code: </p><a id='downloadButton' href='UNAVAILABLE' style='position:relative;top:6px;right:4px;'>get_app</i>Download Open-Source Code </a>
-				<!-- The link is unavailable, because I could not predetermine the URL to this file. -->
-				<br><br>
-				<button onclick='hideModal()'>Close</button>
-			</div>
+<head>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link href="/to-be-finder/styles.css" rel="stylesheet" />
+</head>
+<body>
+	<main>
+		<h1>To Be Verb Finder</h1>
+		<div class='toolbar'>
+			<button onclick='find()' id='find'>Find</button>
+			<span id='submitResponse'></span>
+			<button onclick='showModal()'>How Does it Work?</button>
 		</div>
-		<script src="./script.js"></script>
-	</body>
+		<div title='br' style='height:15px;'></div>
+		<div id='alert'>To Be Found</div>
+		<textarea placeholder="Paste your text in here. I'll let you know if there [IS] a to be verb." onkeypress='hideMessage()'></textarea>
+		<footer>
+			<a class='footerLink' href='https://joelgrayson.com/tools'>Coded 2021</a>
+			<div id='codeGraph'>
+				<div id='firstColumn'>20% HTML</div>
+				<div id='secondColumn'>40% CSS</div>
+				<div id='thirdColumn'>40% JS</div>
+			</div>
+		</footer>
+	</main>
+
+	<div id='modal'>
+		<span id='blackenBackground'></span>
+		<div id='modalContent'>
+			<p>This page is coded in HTML, CSS, and JS. I used it as basic Regex practice by identifying the following phrases:</p>
+			<table>
+				<tr>
+					<th>Present Tense</th>
+					<th>Past Tense</th>
+					<th>Others</th>
+					<th>Contractions</th>
+				</tr>
+				<tr>
+					<td>
+						<ul>
+							<li>Am</li>
+							<li>Is</li>
+							<li>Are</li>
+						</ul>
+					</td>
+					<td>
+						<ul>
+							<li>Was</li>
+							<li>Were</li>
+							<li>Been</li>
+						</ul>
+					</td>
+					<td>
+						<ul>
+							<li>Be</li>
+							<li>Being</li>
+						</ul>
+					</td>
+					<td>
+						<ul>
+							<li>I'm</li>
+							<li>He's</li>
+							<li>She's</li>
+							<li>They're</li>
+							<li>We're</li>
+							<li>There're</li>
+							<li>Isn't</li>
+							<li>Aren't</li>
+							<li>Wasn't</li>
+							<li>Weren't</li>
+					</td>
+				</tr>
+			</table>
+			<p>Here is the source code: </p><a id='downloadButton' href='UNAVAILABLE' style='position:relative;top:6px;right:4px;'>get_app</i>Download Open-Source Code </a>
+			<!-- The link is unavailable, because I could not predetermine the URL to this file. -->
+			<br><br>
+			<button onclick='hideModal()'>Close</button>
+		</div>
+	</div>
+	<script src="/to-be-finder/script.js"></script>
+</body>
 </html>

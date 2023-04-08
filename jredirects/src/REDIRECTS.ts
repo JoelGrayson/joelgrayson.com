@@ -24,8 +24,6 @@ export const permanent: redirects={ //301
 
     'https://raw.githubusercontent.com/JoelGrayson/create-joel-app/main/jredirects.tgz': '/software/create-joel-app/jredirects.tgz',
     'https://raw.githubusercontent.com/JoelGrayson/create-joel-app/main/files-to-transfer.tgz': '/software/create-joel-app/files-to-transfer.tgz',
-    '/favicon-fetcher/index.html': '/favicon-fetcher',
-    '/terms-and-conditions/index.html': '/terms-and-conditions',
     '/software/focus': ['/software/focus-for-google-docs', '/focus'],
     '/maths': '/math',
     '/maths/joels-sas-formula/index.html': [
@@ -54,7 +52,7 @@ export const permanent: redirects={ //301
     '/image/combating-climate-change/*': ['/ccc/image/*', '/image/climate-change/*', '/image/projects/combating-climate/change/*', '/image/projects/ccc/*', '/image/projects/climate-change/*'],
     '/combating-climate-change': ['/ccc', '/climate-change', '/projects/combating-climate/change', '/projects/ccc', '/projects/climate-change'],
     '/programs': ['/tools', '/tool'],
-    '/to-be-finder': ['/to-be', '/to-be-verb', '/to-be-verb-finder', '/be-verb'],
+    '/to-be-finder/index.html': ['/to-be', '/to-be-verb', '/to-be-finder', '/to-be-verb-finder', '/be-verb'],
     '/audio': ['/sfx', '/sound', '/sound-effects', '/thelunarsquad-audio'],
     '/projects/slaphappy': ['/Slaphappy', '/slaphappy'],
     '/perspective': ['/the-perspective', '/joels-perspective', '/blog'],
@@ -86,4 +84,11 @@ export const permanent: redirects={ //301
     '/': '/about',
     '/joel-for-grade-rep-2020': '/2020-campaign',
     'https://joelgrayson.wixsite.com/vote-joel': '/2019-campaign',
+
+    // index.html is not automatic on next.js
+    '/favicon-fetcher/index.html': '/favicon-fetcher',
+    '/terms-and-conditions/index.html': '/terms-and-conditions',
+    '/pablo-neruda/index.html': '/pablo-neruda',
+    '/software/canvas-circles/index.html': '/software/canvas-circles',
+    '/rise/index.html': '/rise',
 };

@@ -32,8 +32,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
 
         {/* Google tag (gtag.js) */}
-        <Script async src='https://www.googletagmanager.com/gtag/js?id=G-25JL4Z9H4S' strategy='afterInteractive' />
-        <Script id='google-analytics' strategy='afterInteractive'>{`
+        <Script strategy='afterInteractive' async src='https://www.googletagmanager.com/gtag/js?id=G-25JL4Z9H4S' />
+        <Script strategy='afterInteractive' id='google-analytics'>{`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
