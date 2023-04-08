@@ -1,4 +1,4 @@
-import { nextRedirects, redirects, src, dest, nextRedirect } from "./types";
+import { nextRedirects, redirects, src, dest, nextRedirect, singleSrc } from "./types";
 import { permanent, temporary } from '../REDIRECTS';
 
 
@@ -10,6 +10,12 @@ function replaceStars(url: string) {
     return url;
 }
 
+function regexOrStringToString(regexOrString: singleSrc) {
+    if (regexOrString instanceof RegExp) //Process RegExp into string
+        return `${regexOrString}`.slice(0, -1); // Remove first and last char: /regex/ -> regex
+    return regexOrString;
+}
+
 
 // Step 2
 function packageIntoObj(key: dest, val: src, isPermanent: boolean): nextRedirect { //converts key and value -> obj for redirect
@@ -17,14 +23,13 @@ function packageIntoObj(key: dest, val: src, isPermanent: boolean): nextRedirect
     key=replaceStars(key);
     
     // Processing val
-    if (val instanceof RegExp) //Process RegExp into string
-        val=`${val}`.slice(0, -1); // Remove first and last char: /regex/ -> regex
+    const curried=(val: singleSrc)=>replaceStars(regexOrStringToString(val));
 
     if (Array.isArray(val))
-        val.map(replaceStars);
+        val.map(val=>curried(val))
     else
-        val=replaceStars(val);
-    
+        val=curried(val);
+
     // Construct
     return { //key is the destination, value is the src so it can be an array, regex as string, etc.
         source: val+'',
