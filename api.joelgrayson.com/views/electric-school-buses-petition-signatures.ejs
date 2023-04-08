@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <base href="/combating-climate-change/electric-school-buses-petition/signatures/" />
+    <link rel='stylesheet' href='style.css' />
+    <link rel='stylesheet' href='switch.css' />
+</head>
+<body>
+    <div class="container">
+        <br>
+        
+        <h1>Electric School Bus Petition Signatures</h1>
+        <br>
+        <div class='table-container'>
+            <h3>Total signatures: <%= total %></h3>
+            <br>
+            <table>
+                <tr>
+                    <th>Grade</th>
+                    <th>Signatures</th>
+                    <th>% of Grade</th>
+                </tr>
+                <% for (let i=0; i<data.length; i++) { %>
+                    <tr>
+                        <td><%= data[i].grade %></td>
+                        <td><%= data[i].signatures %></td>
+                        <td>
+                            <div class="progress">
+                                <%# Progress bar shows & says percentage %>
+                                <div class="progress-bar" style='width: <%= data[i].percent %>' role="progressbar" aria-valuenow="<%= data[i].percent %>" aria-valuemin="0" aria-valuemax="100">
+                                    <%= data[i].percent %>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <% } %>
+            </table>
+            <br>
+            <iframe width="780" height="527" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSg3sVIBychAWVp1s8ezaPznm-Oeb8aFyrnbfeS1fgo40l1Bz6gKH5m00jTlQsY4-FMXupsJCZeoIOF/pubchart?oid=834418990&amp;format=interactive"></iframe>
+            <label for="toggle">
+                Show by grade & faculty
+                <button type="button" id="toggle" role="switch" aria-checked="false">
+                    <span>on</span><span>off</span>  
+                </button>
+            </label>
+            <br>
+            <a href='https://forms.gle/XXSiWhcDd7howzKH8'>Sign the petition</a>
+            <br>
+        </div>
+    </div>
+    <script>
+        const button = document.querySelector('button');
+        button.addEventListener('click', (e) => {  //switch change
+            let el = e.target;
+            let state = el.getAttribute('aria-checked');
+            let isState = (state === 'true');
+            el.setAttribute('aria-checked', isState ? false : true)
+            let reg='https://docs.google.com/spreadsheets/d/e/2PACX-1vSg3sVIBychAWVp1s8ezaPznm-Oeb8aFyrnbfeS1fgo40l1Bz6gKH5m00jTlQsY4-FMXupsJCZeoIOF/pubchart?oid=834418990&amp;format=interactive';
+            let parts='https://docs.google.com/spreadsheets/d/e/2PACX-1vSg3sVIBychAWVp1s8ezaPznm-Oeb8aFyrnbfeS1fgo40l1Bz6gKH5m00jTlQsY4-FMXupsJCZeoIOF/pubchart?oid=1010867117&amp;format=interactive';
+            document.querySelector('iframe').src=isState?reg:parts;
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

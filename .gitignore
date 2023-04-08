@@ -1,12 +1,16 @@
-**/.DS_Store
+# Private Secrets
 **/.env
+api.joelgrayson.com/private
 
+
+# Bloat
+**/.DS_Store
 node_modules
 .next
 .vscode
 
-*.mp4
 
-# Large Files
+# Large Files (so Github doesn't complain)
 public/combating-climate-change/Combating Climate Change.pptx
 /TODO
+*.mp4

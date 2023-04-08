@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon app.js",
+    "deploy": "./deploy.sh"
   },
   "keywords": [],
   "author": "Joel Grayson <joel@joelgrayson.com> (https://github.com/JoelGrayson)",
@@ -13,6 +14,10 @@
   "dependencies": {
     "cors": "^2.8.5",
     "ejs": "^3.1.8",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "googleapis": "^114.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
