@@ -23,8 +23,8 @@ export default function Header() {
             <nav className='j_max-w mx-auto'>
                 <ul className='list-none items-center unstyled'>
                     <PathContext.Provider value={asPath}>
-                        <span className='flex w-full'>
-                            <JThreeDots />
+                        <span className='flex w-full j_container'>
+                            <li><JThreeDots /></li>
                             
                             <HeaderItem link='/'>Home</HeaderItem>
 

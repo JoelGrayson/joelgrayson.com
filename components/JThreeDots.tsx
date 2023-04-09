@@ -5,8 +5,8 @@ export default function JThreeDots() { //interactive signature
     const reload=()=>setLoadNum(Math.random()); //reloads & replays the gif
     const [loadNum, setLoadNum]=useState<number>(0);
 
-    return <Link href='/'>
-        <li className='flex items-center pr-4 select-none w-[30px] sm:w-[40px]'>
+    return <Link href='/' className='block w-[55px] sm:w-[65px]'>
+        <div className='flex items-center pr-4 select-none w-[30px] sm:w-[40px]'>
             <div className='relative'>
                 {/* eslint-disable */}
                     {/* Using <img> below instead of <Image> because reloads onHover */}
@@ -29,6 +29,6 @@ export default function JThreeDots() { //interactive signature
                     </defs>
                 </svg>
             </div>
-        </li>
+        </div>
     </Link>;
 }
