@@ -15,11 +15,11 @@ model User {
 }
 
 model Article {
-    id             String    @id @default(cuid())
-    name           String //for import(`components/articles/${name}`) and URL `/image/perspective/${name}`
-    hyphenatedName String    @unique
-    views          Int       @default(0) //number of views
-    comments       Comment[]
+    id              String    @id @default(cuid())
+    name            String //for import(`components/articles/${name}`) and URL `/image/perspective/${name}`
+    hyphenatedTitle String    @unique
+    views           Int       @default(0) //number of views
+    comments        Comment[]
 }
 
 // Have to verify email every time you post a comment

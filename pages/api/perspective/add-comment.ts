@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     });
     
     const article=await prisma.article.findFirst({
-        where: { hyphenatedName: hyphenatedTitle },
+        where: { hyphenatedTitle: hyphenatedTitle },
         select: {
             id: true,
             views: true,

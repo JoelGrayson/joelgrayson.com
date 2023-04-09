@@ -3,7 +3,7 @@ import Code from '../../../components/@jcomponents/Code';
 import Button from '@jcomponents/button';
 
 export default function HeaderDoc() {
-    return <Page nopadding>
+    return <Page>
         <h1 style={{textAlign: 'center'}}>Header</h1>
         <div style={{
             display: 'flex',

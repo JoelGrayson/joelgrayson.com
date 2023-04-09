@@ -3,11 +3,11 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/components/data/client';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<string | { views: number; comments: ExposedComment[]; }>) {
-    const hyphenatedName=req.body.hyphenatedName;
-    if (!hyphenatedName) return res.json('Invalid hyphenatedName');
+    const hyphenatedTitle=req.body.hyphenatedTitle;
+    if (!hyphenatedTitle) return res.json('Invalid hyphenatedTitle');
     
     const data=await prisma.article.findFirst({
-        where: { hyphenatedName },
+        where: { hyphenatedTitle },
         select: {
             id: true,
             views: true,
@@ -31,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
     // Increment the view count
     await prisma.article.update({
-        where: { hyphenatedName },
+        where: { hyphenatedTitle },
         data: {
             views: (data?.views || 0)+1
         }

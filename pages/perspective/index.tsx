@@ -16,13 +16,13 @@ export default function JoelsPerspective() { //List of articles
         switch (sortingMethod) {
             case 'newest to oldest': return articles.sort((a, b)=>b.date.getTime()-a.date.getTime());
             case 'oldest to newest': return articles.sort((a, b)=>a.date.getTime()-b.date.getTime());
-            case 'category':      return articles;
+            case 'category':         return articles;
             case 'A-Z':              return articles.sort((a, b)=>a.name<b.name ? -1 : 1);
             case 'Z-A':              return articles.sort((a, b)=>a.name<b.name ? 1 : -1);
         }
     })();
 
-    return <PerspectiveBody title="Joel's Perspective">
+    return <PerspectiveBody>
         <div className='flex justify-end mb-3'>
             <span>Sort by: </span>
             <select name='sorting-method' id='sorting-method' value={sortingMethod} onChange={e=>setSortingMethod(e.target.value as sortingMethodT)}>
@@ -42,7 +42,7 @@ export default function JoelsPerspective() { //List of articles
                         <h3 className='text-center bold'>{name}</h3> {/* Category name */}
                         <div style={gridStyle}> {/* Articles item */}
                             {articles.filter(a=>a.category===category).map(article=>( //get articles of a category
-                                <Article key={article.hyphenatedName} article={article} />
+                                <Article key={article.hyphenatedTitle} article={article} />
                             ))}
                         </div>
                     </div>;
@@ -50,7 +50,7 @@ export default function JoelsPerspective() { //List of articles
             </>
             : <div style={gridStyle}>{
                 sortedArticles.map(article=>
-                    <Article key={article.hyphenatedName} article={article} />
+                    <Article key={article.hyphenatedTitle} article={article} />
                 )
             }</div>
         }
@@ -58,7 +58,7 @@ export default function JoelsPerspective() { //List of articles
 }
 
 export function Article({article}: {article: articleT}) { //rectangle with thumbnail and title
-    return <Link href={`/perspective/${article.hyphenatedName}`} style={{width: 'fit-content', margin: '0.5rem'}}>
+    return <Link href={`/perspective/${article.hyphenatedTitle}`} style={{width: 'fit-content', margin: '0.5rem'}}>
         {/* Thumbnail Heights
             CSS Size
                 image height: 113px
@@ -73,7 +73,7 @@ export function Article({article}: {article: articleT}) { //rectangle with thumb
             width: '250px',
         }}>
             {/* <div>{JSON.stringify(article)}</div> */}
-            <Image src={`/image/perspective/${article.hyphenatedName}/thumbnail.jpg`} alt='Article thumbnail' width='200' height='113' />
+            <Image src={`/image/perspective/${article.hyphenatedTitle}/thumbnail.jpg`} alt='Article thumbnail' width='200' height='113' />
             <div className='text-center' style={{
                 fontFamily: 'AvenirMedium'
             }}>{article.name}</div>

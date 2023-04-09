@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Page from '../../components/@jcomponents/Page';
 
 export default function Home() {
-    return <Page nopadding>
+    return <Page>
         <h1 style={{textAlign: 'center'}}>JComponents</h1>
         <p>Easily integrate custom-made components into your React projects.</p>
         <p>This page is a demo of all the components</p>

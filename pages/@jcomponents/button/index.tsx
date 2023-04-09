@@ -8,7 +8,7 @@ function Gap() { //separator
 }
 
 export default function ButtonDoc() {
-    return <Page nopadding>
+    return <Page>
         <h1 style={{textAlign: 'center'}}>Button</h1>
         <div style={{
             display: 'flex',

@@ -11,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         select: {
             Article: {
                 select: {
-                    hyphenatedName: true
+                    hyphenatedTitle: true
                 }
             }
         }
@@ -25,5 +25,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         }
     });
 
-    res.redirect(`/perspective/${comment.Article.hyphenatedName}#comments`);
+    res.redirect(`/perspective/${comment.Article.hyphenatedTitle}#comments`);
 }

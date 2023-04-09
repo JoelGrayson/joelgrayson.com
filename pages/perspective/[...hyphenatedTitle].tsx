@@ -2,12 +2,11 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PerspectiveBody from '@/components/perspective/PerspectiveBody';
 import jdate from 'joeldate';
-import Button from '@jcomponents/button';
 import { ExposedComment } from '@/components/data/TYPES';
 import AddComment from '@/components/perspective/AddComment';
 
 export default function Article({ notitle=false, nodate=false }: { notitle?: boolean; nodate?: boolean }) {
-    const hyphenatedTitle=useRouter().query.title?.[0];
+    const hyphenatedTitle=useRouter().query.hyphenatedTitle?.[0];
     const [content, setContent]=useState<JSX.Element | null>(null);
     const [title, setTitle]=useState<string | null>(null);
     const [date, setDate]=useState<Date | null>(null);
@@ -17,7 +16,7 @@ export default function Article({ notitle=false, nodate=false }: { notitle?: boo
     useEffect(()=>{ //Load content from .tsx component files
         if (!hyphenatedTitle) return; //loading
         
-        import(`@/components/perspective/content/${hyphenatedTitle}`)
+        import(`@/components/perspective/content/${hyphenatedTitle}`) //load content afterward, so not a slow pageload
             .then((imported: { default: JSX.Element; title: string; date: Date })=>{
                 setContent(imported?.default || null);
                 setTitle(imported.title);
@@ -41,7 +40,7 @@ export default function Article({ notitle=false, nodate=false }: { notitle?: boo
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                hyphenatedName: hyphenatedTitle
+                hyphenatedTitle: hyphenatedTitle
             })
         })
             .then(res=>res.json())
@@ -53,7 +52,7 @@ export default function Article({ notitle=false, nodate=false }: { notitle?: boo
             });
     }, [hyphenatedTitle]);
     
-    return <PerspectiveBody title={title ? `${title} | Joel's Perspective` : "Joel's Perspective"}>
+    return <PerspectiveBody seo={{ title: title ? `${title} | Joel's Perspective` : "Joel's Perspective" }}>
         {(hyphenatedTitle && content && title) ? <>
             {!notitle && <h1 style={{fontSize: '2.5rem', textAlign: 'center'}}>{title}</h1>}
             {!nodate && <div className='text-right mb-6'>{date && jdate(date)}</div>}

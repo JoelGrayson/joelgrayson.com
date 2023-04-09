@@ -13,7 +13,7 @@
     "vercel-build": "prisma generate",
     "test-next": "npm run build && npm start",
     "jredirects": "cd jredirects && ./build.sh",
-    "reset-data": "cd components/prisma && prisma db push && prisma migrate && prisma generate && ./insert-articles"
+    "reset-data": "cd components/data && prisma db push && prisma migrate && prisma generate && ./insert-articles.js"
   },
   "dependencies": {
     "@emotion/css": "^11.10.6",

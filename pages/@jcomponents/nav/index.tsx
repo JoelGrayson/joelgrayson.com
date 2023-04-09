@@ -3,7 +3,7 @@ import Code from '../../../components/@jcomponents/Code';
 import Button from '@jcomponents/button';
 
 export default function NavDoc() {
-    return <Page nopadding>
+    return <Page>
         <h1 style={{textAlign: 'center'}}>Nav</h1>
         <div style={{
             display: 'flex',

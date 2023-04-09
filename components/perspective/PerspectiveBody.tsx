@@ -2,16 +2,17 @@ import localFont from 'next/font/local';
 import Link from 'next/link';
 import JThreeDots from '../JThreeDots';
 import Container from '@jcomponents/container';
-import SEO from '../global/SEO';
+import SEO, { SEOProps } from '../global/SEO';
 
 const chomsky=localFont({ src: './chomsky/Chomsky.woff2' });
 
-export default function PerspectiveBody({children, title, maxWidth=800}: {children: JSX.Element | any; title?: string; maxWidth?: number}) {
+export default function PerspectiveBody({children, seo, maxWidth=800}: {children: JSX.Element | any; seo?: SEOProps; maxWidth?: number}) {
     return <div style={{backgroundColor: '#fdfdfd'}}>
         <SEO seo={{
-            title: "Joel's Perspective",
+            title: "Joel's Perspective", //can be overridden by props.seo
             description: 'Short blog articles about philosophy, science, climate change, and other topics',
-            keywords: ['blog', 'Joel Grayson', 'articles']
+            keywords: ['blog', 'Joel Grayson', 'articles'],
+            ...seo
         }} />
         
         <header className='relative flex justify-between items-center px-5 py-0'>
