@@ -1,10 +1,10 @@
-import Page from '@/components/Page';
+import Page from '@/components/global/Page';
 import Button from '@jcomponents/button';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function HomeworkChecker() {
-    return <Page padding>
+    return <Page>
         <h1 className='text-center flex justify-center items-center'>
             <span>Homework&nbsp;</span>
             <span className='text-[#00962a]'>Checker</span>

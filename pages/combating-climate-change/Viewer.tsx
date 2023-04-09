@@ -13,7 +13,7 @@ export default function Viewer({ status, setStatus }: { status: viewers, setStat
         return status===viewers.hidden;
     }
     
-    return (<div
+    return <div
         onClick={()=>{if (isHidden()) toggleShown();}} //click box to expand only when hidden
         className={isHidden() ? `${styles.viewer} ${styles.collapsedViewer}` : styles.viewer} //if hidden, add collapsedViewer class
     >
@@ -23,9 +23,9 @@ export default function Viewer({ status, setStatus }: { status: viewers, setStat
             </div>
         </button> 
 
-        { !isHidden() && (<>
+        { !isHidden() && <>
             <h4 className='text-center'>Description</h4>
             <InfoRenderer status={status} />
-        </>) }
-    </div>);
+        </> }
+    </div>;
 }

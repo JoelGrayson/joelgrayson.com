@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Page from '../../components/Page';
+import Page from '../../components/global/Page';
 // import styles from '../../styles/ccc/sections.module.css';
 import SEBLogo from '../../components/pages/home/parts/SEB Logo';
 import Image from 'next/image';
@@ -14,7 +14,7 @@ export default function CCC() {
     const [viewer, setViewer]=useState<viewers>(viewers.none); //viewer status
     const wrap=(newViewerStatus: viewers)=>(_: any)=>setViewer(newViewerStatus); //wrap viewer change
 
-    return <Page>
+    return <Page nopadding>
         <Viewer status={viewer} setStatus={setViewer} />
 
         <Section title='Producing Clean Electricity'>

@@ -3,7 +3,7 @@ import Code from '../../../components/@jcomponents/Code';
 import Button from '@jcomponents/button';
 
 export default function NavDoc() {
-    return (<Page>
+    return <Page nopadding>
         <h1 style={{textAlign: 'center'}}>Nav</h1>
         <div style={{
             display: 'flex',
@@ -48,5 +48,5 @@ import Nav from '@jcomponents/nav';
         <div>
             <p>The rendered result is the header you see at the top of the page</p>
         </div>
-    </Page>);
+    </Page>;
 }

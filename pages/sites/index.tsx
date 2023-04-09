@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Container from '@jcomponents/container';
 
 export default function Sites() { /* bullet points of all sites */
-    return (<Container>
+    return <Container>
         <h1 className='text-center'>Sites</h1>
         <ul>
             <Site>joelgrayson.com</Site>
@@ -18,11 +18,11 @@ export default function Sites() { /* bullet points of all sites */
             <Site>bulletbrainstorm.com</Site>
             <Site>shirtocracy.com</Site>
         </ul>
-    </Container>);
+    </Container>;
 }
 
 export function Site({children, href}: {children: string, href?: string}) {
-    return (<li>
+    return <li>
         <Link href={href || `https://${children}`}>{children}</Link>
-    </li>);
+    </li>;
 }

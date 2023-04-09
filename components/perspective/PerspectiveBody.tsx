@@ -2,15 +2,18 @@ import localFont from 'next/font/local';
 import Link from 'next/link';
 import JThreeDots from '../JThreeDots';
 import Container from '@jcomponents/container';
-import Head from 'next/head';
+import SEO from '../global/SEO';
 
 const chomsky=localFont({ src: './chomsky/Chomsky.woff2' });
 
 export default function PerspectiveBody({children, title, maxWidth=800}: {children: JSX.Element | any; title?: string; maxWidth?: number}) {
     return <div style={{backgroundColor: '#fdfdfd'}}>
-        <Head>
-            <title>{title}</title>
-        </Head>
+        <SEO seo={{
+            title: "Joel's Perspective",
+            description: 'Short blog articles about philosophy, science, climate change, and other topics',
+            keywords: ['blog', 'Joel Grayson', 'articles']
+        }} />
+        
         <header className='relative flex justify-between items-center px-5 py-0'>
             <JThreeDots />
             <h1 className={`${chomsky.className} text-[2.5rem] sm:text-[3.4rem]`}>

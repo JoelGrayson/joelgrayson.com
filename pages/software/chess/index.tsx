@@ -1,9 +1,9 @@
-import Page from '@/components/Page';
+import Page from '@/components/global/Page';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Chess() {
-    return <Page padding>
+    return <Page>
         <div className='container'>
             <h1>Chess</h1>
             <Image alt='chess icon' src='/software/chess/icon.png' className='absolute right-[1rem] top-[1rem]' width='100' />

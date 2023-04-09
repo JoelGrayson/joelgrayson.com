@@ -1,4 +1,4 @@
-import Page from '../../components/Page';
+import Page from '../../components/global/Page';
 import Button from '@jcomponents/button';
 import { dateRegex, SignedMessage } from '../../components/verify/helpers';
 import React, { useState, useCallback, useEffect } from 'react';
@@ -89,7 +89,7 @@ export default function Verify() {
             verifyRequest(true);
     }, [message, date, signature, verifyRequest]);
 
-    return (<Page padding>
+    return <Page>
         <h1 className='flex justify-center items-center'>
             <span>
                 Verify
@@ -157,5 +157,5 @@ export default function Verify() {
             })()}
         </div>
         <br /><br />
-    </Page>);
+    </Page>;
 }

@@ -8,7 +8,7 @@ function Gap() { //separator
 }
 
 export default function ButtonDoc() {
-    return (<Page>
+    return <Page nopadding>
         <h1 style={{textAlign: 'center'}}>Button</h1>
         <div style={{
             display: 'flex',
@@ -117,5 +117,5 @@ export default function ButtonDoc() {
             <Button.Puffy color='#3505a7'>#3505a7 Picking your custom color 2</Button.Puffy> <Gap/>
         </div>
         <Gap/><Gap/>
-    </Page>);
+    </Page>;
 }

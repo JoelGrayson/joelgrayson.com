@@ -1,5 +1,5 @@
 export default function Headers() {
-    return (<>
+    return <>
         <h1>Header 1</h1>
         <h2>Header 2</h2>
         <h3>Header 3</h3>
@@ -15,5 +15,5 @@ export default function Headers() {
             <button className='btn-red'>Btn-red</button>
         </div>
         <div><a href='#' className=''><button className='btn-red'>Button Red Link</button></a></div>
-    </>);
+    </>;
 }

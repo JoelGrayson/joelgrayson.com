@@ -31,12 +31,12 @@ export default function ViolinBow() {
         });
     }, []);
 
-    return (<>
+    return <>
         <div className='absolute right-[-12px] bottom-[-10px]'>
             <Image src='/image/header/violin.png' height='42' width='42' alt='violin' />
         </div>
         <div className='absolute right-[-12px] bottom-[-10px]' ref={bowRef}>
             <Image src='/image/header/bow.png' height='42' width='42' alt='bow' />
         </div>
-    </>);
+    </>;
 }

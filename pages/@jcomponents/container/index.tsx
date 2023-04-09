@@ -3,7 +3,7 @@ import Code from '../../../components/@jcomponents/Code';
 import Button from '@jcomponents/button';
 
 export default function ContainerDoc() {
-    return (<Page>
+    return <Page nopadding>
         <h1 style={{textAlign: 'center'}}>Container</h1>
         <div style={{
             display: 'flex',
@@ -44,5 +44,5 @@ export default function ContainerDoc() {
         <div>
             <p>The rendered result is the header you see at the top of the page</p>
         </div>
-    </Page>);
+    </Page>;
 }

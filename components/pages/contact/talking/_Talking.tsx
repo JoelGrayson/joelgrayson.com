@@ -57,7 +57,7 @@ function Talking() {
         });
     }, []);
 
-    return (<>
+    return <>
         <div id='talking' ref={talkingRef} style={{ //talkingRef starting position
             position: 'absolute',
             right: -100,
@@ -68,7 +68,7 @@ function Talking() {
                 <div className={styles.circle} ref={circleRef}></div> {/* circle */}
             </div>
         </div>
-    </>);
+    </>;
 }
 
 export default Talking;

@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { ReactNode } from 'react';
 
 export default function Home({children}: {children: ReactNode}) {
-    return (<>
+    return <>
         <Header color='#a9ceff'>
             <div> {/* Left */}
                 <Link href='/@jcomponents/'>
@@ -30,5 +30,5 @@ export default function Home({children}: {children: ReactNode}) {
             {children}
         </Container>
         <div style={{height: 100}}></div>
-    </>);
+    </>;
 }

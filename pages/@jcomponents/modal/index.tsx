@@ -3,7 +3,7 @@ import Code from '../../../components/@jcomponents/Code';
 import Button from '@jcomponents/button';
 
 export default function ModalDoc() {
-    return (<Page>
+    return <Page nopadding>
         <h1 style={{textAlign: 'center'}}>Modal</h1>
         <div style={{
             display: 'flex',
@@ -38,5 +38,5 @@ export default function ModalDoc() {
         <div>
             <p>The rendered result is the header you see at the top of the page</p>
         </div>
-    </Page>);
+    </Page>;
 }

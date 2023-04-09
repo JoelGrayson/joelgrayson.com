@@ -1,4 +1,4 @@
-import Page from '../../../components/Page';
+import Page from '../../../components/global/Page';
 import Image from 'next/image';
 import Link from 'next/link';
 import Gallery from '@/components/gallery/Gallery';
@@ -21,7 +21,10 @@ export default function Performances({videos}: { videos: ytVideos }) {
     const [galleryOpen, setGalleryOpen]=useState<boolean>(false);
     const [index, setIndex]=useState<number>(0);
 
-    return <Page padding>
+    return <Page padding seo={{
+        keywords: ['violin', 'piano', 'recitals'],
+        description: 'Playing the violin over the years'
+    }}>
         <h1 className='text-center'>Performances</h1>
         
         <div style={{

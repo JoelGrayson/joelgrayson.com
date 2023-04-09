@@ -1,9 +1,9 @@
-import Page from '../../components/Page';
+import Page from '../../components/global/Page';
 import Button from '@jcomponents/button';
 import Link from 'next/link';
 
 export default function DayNumberCalendar() {
-    return (<Page padding>
+    return <Page>
         <h1 className='text-center'>Day Number Calendar</h1>
         <p>Shows what day of the week it is in Riverdale&quot; eight-day cycle.</p>
         <div className='flex'>
@@ -32,5 +32,5 @@ export default function DayNumberCalendar() {
                 <p>On a Mac: Click File, New Calendar Subscription, and paste in the same url: <a href='https://joelgrayson.com/software/day-number-calendar/apple'>joelgrayson.com/software/day-number-calendar/apple</a></p>
             </div>
         </div>
-    </Page>);
+    </Page>;
 }

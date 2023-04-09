@@ -1,9 +1,9 @@
-import Page from '../components/Page';
+import Page from '../components/global/Page';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Custom404() {
-    return (<Page>
+    return <Page nopadding>
         <div className='flex justify-center items-center p-24'>
             <div className='left'>
                 <Image width='455' height='342' src='/image/joel/shrugging.png' alt='Shrug' />
@@ -16,5 +16,5 @@ export default function Custom404() {
                 </Link>
             </div>
         </div>
-    </Page>);
+    </Page>;
 }

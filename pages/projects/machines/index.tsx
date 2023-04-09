@@ -1,10 +1,12 @@
 import { machines } from '../../../components/pages/machines/data';
-import Page from '../../../components/Page';
+import Page from '../../../components/global/Page';
 import Container from '@jcomponents/container';
 import MiscellaneousBottom from '@/components/pages/machines/MiscellaneousBottom';
 
 export default function Machines() {
-    return (<Page>
+    return <Page seo={{ title: 'Machines | Joel Grayson' }} seo={{
+        description: `Ever since I can remember, I've always loved to build. Here are some machines I've created over the years (including pinball machines, vending machines, and a Tesla coil).`
+    }}>
         <div id='paralax' style={{
             backgroundImage: `url('/image/machines/banner.jpg')`,
             minHeight: '600px',
@@ -13,14 +15,11 @@ export default function Machines() {
             backgroundPositionY: '-70px'
         }}></div>
         <Container>
-            <>{
-                machines.map(machine=><div key={machine.sortBy.title}>
-                    <div className='machine'>{machine.html}</div>
-                    <hr />
-                </div>)
-            }</>
-            {/* Miscellaneous */}
-            <MiscellaneousBottom></MiscellaneousBottom>
+            { machines.map(machine=><div key={machine.sortBy.title}>
+                <div className='machine'>{machine.html}</div>
+                <hr />
+            </div>) }
+            <MiscellaneousBottom />
         </Container>
-    </Page>);
+    </Page>;
 }

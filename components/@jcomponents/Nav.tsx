@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Nav({children}: {children: React.ReactNode}) {
-    return (<nav>
+    return <nav>
         <ul style={{
             display: 'flex',
             listStyleType: 'none',
@@ -9,5 +9,5 @@ export default function Nav({children}: {children: React.ReactNode}) {
         }} className='unstyled'>
             {children}
         </ul>
-    </nav>);
+    </nav>;
 }

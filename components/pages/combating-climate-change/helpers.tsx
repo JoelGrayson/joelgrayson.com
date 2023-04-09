@@ -2,19 +2,19 @@ import { ReactNode } from 'react';
 import styles from '../../../styles/ccc/sections.module.css';
 
 export function Section({title, children}: {title: string, children: ReactNode}) {
-    return (<section className={styles.section}>
+    return <section className={styles.section}>
         <div className={styles.content}>
             <h2 className={styles['content-title']}>{title}</h2>
             {children}
         </div>
-    </section>);
+    </section>;
 }
 
 export function Action({children, title, ...props}: {children: ReactNode; title: string; [key: string]: any}) {
-    return (<div className={styles.action} {...props}>
+    return <div className={styles.action} {...props}>
         <span className={styles['action-title']}>{title}</span>
         {children}
-    </div>);
+    </div>;
 }
 
 /* # Demo Usage

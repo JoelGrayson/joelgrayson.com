@@ -1,10 +1,10 @@
-import Page from '../../../components/Page';
+import Page from '../../../components/global/Page';
 import Button from '@jcomponents/button';
 import styles from './btn-icon.module.css';
 import Link from 'next/link';
 
 export default function IcosahedronNavigation() {
-    return (<Page padding>
+    return <Page>
         <Link href='/maths'>
             <Button style={{
                 position: 'absolute',
@@ -40,5 +40,5 @@ export default function IcosahedronNavigation() {
 
         <iframe src='/maths/icosahedron-navigation/Icosahedron Navigation.pdf' width='100%' style={{height: '90vh'}} />
         <br /><br />
-    </Page>);
+    </Page>;
 }

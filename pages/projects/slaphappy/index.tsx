@@ -1,4 +1,4 @@
-import Page from '@/components/Page';
+import Page from '@/components/global/Page';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRef, useLayoutEffect } from 'react';
@@ -18,7 +18,7 @@ export default function Slaphappy() {
         );
     }, []);
     
-    return <Page title='Art' style={{overflow: 'hidden'}}>
+    return <Page seo={{ title: 'Art' }} style={{overflow: 'hidden'}} nopadding>
         {/* eslint-disable */}
         {/* Curtain background image */}
         <img src='/image/slaphappy/curtains.png' ref={curtainsRef} alt='Curtains' style={{

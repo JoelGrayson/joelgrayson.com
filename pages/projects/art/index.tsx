@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Page from '../../../components/Page';
+import Page from '../../../components/global/Page';
 import Gallery from '@/components/gallery/Gallery';
 
 const getDate: (name: string)=>Date | 'invalid date'=(name: string)=>{
@@ -64,7 +64,9 @@ export default function Art() {
     const [galleryOpen, setGalleryOpen]=useState<boolean>(false);
     const [index, setIndex]=useState<number>(0);
 
-    return <Page padding title='Art'>
+    return <Page padding title='Art | Joel Grayson' seo={{
+        description: 'Drawings and sculptures'
+    }}>
         <h1 className='text-center'>Art</h1>
         <p>Every child is an artist. The problem is how to remain an artist once he grows up. -Pablo Picasso</p>
 

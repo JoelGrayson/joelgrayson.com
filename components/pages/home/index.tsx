@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Page from '../../Page';
+import Page from '../../global/Page';
 
 import SEBLogo from './parts/SEB Logo';
 import BtnIcon from './parts/BtnIcon';
@@ -29,7 +29,7 @@ export default function Home() {
     // eslint-disable-next-line
     }, []);
 
-    return <Page title='Joel Grayson'>
+    return <Page seo={{ title: 'Joel Grayson' }} nopadding>
         <div className='w-full p-0 m-0'>
             {/* top */}
             <div className='w-full h-[290px] p-0' style={{background: 'linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(216,216,216,1) 100%)'}}>

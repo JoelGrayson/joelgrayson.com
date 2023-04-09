@@ -11,12 +11,12 @@ export interface Machine {
 };
 
 export function DefaultTemplate({date, title, desc, yt}: any) {
-    return (<div>
+    return <div>
         <div className='date'>{date}</div>
         <h3 className='title'>{title}</h3>
         <div className='desc'>{desc}</div>
         {yt && <Yt>{yt}</Yt>}
-    </div>);
+    </div>;
 }
 
 export function Yt({children}: any) {

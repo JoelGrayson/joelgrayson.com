@@ -1,4 +1,4 @@
-import Page from '../../components/Page';
+import Page from '../../components/global/Page';
 import Link from 'next/link';
 import { css } from '@emotion/css';
 import Image from 'next/image';
@@ -6,7 +6,7 @@ import SASFormula from './joels-sas-formula/SASFormula';
 
 export default function Maths() {
     return (
-        <Page padding>
+        <Page>
             <h1 className='text-center'>Maths</h1>
             <div
                 className={css`

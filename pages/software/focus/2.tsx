@@ -1,10 +1,10 @@
-import Page from '@/components/Page';
+import Page from '@/components/global/Page';
 import Image from 'next/image';
 import Button from '@jcomponents/button';
 import Container from '@jcomponents/container';
 
 export default function index() {
-    return (<Page noheader>
+    return <Page noheader nopadding>
         <div style={{backgroundColor: '#e5e5e5'}}>
             <Container>
                 <h1 className='flex justify-center items-center gap-5'>
@@ -39,5 +39,5 @@ export default function index() {
                 <br /><br />
             </Container>
         </div>
-    </Page>);
+    </Page>;
 }

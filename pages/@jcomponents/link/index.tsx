@@ -4,7 +4,7 @@ import Code from '../../../components/@jcomponents/Code';
 import Button from '@jcomponents/button';
 
 export default function LinkDoc() {
-    return (<Page>
+    return <Page nopadding>
         <h1 style={{textAlign: 'center'}}>Link</h1>
         <div style={{
             display: 'flex',
@@ -43,5 +43,5 @@ import Link from '@jcomponents/link';
             <p>Rendered result</p>
             <Link href='https://www.joelgrayson.com'>Visit my site</Link>
         </div>
-    </Page>);
+    </Page>;
 }

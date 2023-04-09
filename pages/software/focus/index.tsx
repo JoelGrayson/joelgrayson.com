@@ -1,4 +1,4 @@
-import Page from '@/components/Page';
+import Page from '@/components/global/Page';
 import Image from 'next/image';
 import Button from '@jcomponents/button';
 import { gsap } from 'gsap';
@@ -20,7 +20,7 @@ export default function Focus() {
         gsap.fromTo(pageRef, { opacity: 0 }, { opacity: 1, duration: 0.5, delay: 1 });
     }, []);
     
-    return <Page padding>
+    return <Page>
         <h1 className='flex justify-center items-center gap-5' ref={titleRef}>
             Focus
             <Image alt='logo' src='/software/focus/logo.png' width={55} height={55} />
