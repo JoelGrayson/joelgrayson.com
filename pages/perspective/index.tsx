@@ -22,7 +22,7 @@ export default function JoelsPerspective() { //List of articles
         }
     })();
 
-    return <PerspectiveBody>
+    return <PerspectiveBody title="Joel's Perspective">
         <div className='flex justify-end mb-3'>
             <span>Sort by: </span>
             <select name='sorting-method' id='sorting-method' value={sortingMethod} onChange={e=>setSortingMethod(e.target.value as sortingMethodT)}>
@@ -49,9 +49,9 @@ export default function JoelsPerspective() { //List of articles
                 })}
             </>
             : <div style={gridStyle}>{
-                sortedArticles.map(article=>(
+                sortedArticles.map(article=>
                     <Article key={article.hyphenatedName} article={article} />
-                ))
+                )
             }</div>
         }
     </PerspectiveBody>;

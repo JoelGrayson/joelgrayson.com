@@ -1,2 +1,1 @@
-import Home from '../components/pages/home/index';
-export default Home;
+export { default } from '../components/pages/home/index';

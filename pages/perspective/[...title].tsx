@@ -53,7 +53,7 @@ export default function Article({ notitle=false, nodate=false }: { notitle?: boo
             });
     }, [hyphenatedTitle]);
     
-    return <PerspectiveBody>
+    return <PerspectiveBody title={title ? `${title} | Joel's Perspective` : "Joel's Perspective"}>
         {(hyphenatedTitle && content && title) ? <>
             {!notitle && <h1 style={{fontSize: '2.5rem', textAlign: 'center'}}>{title}</h1>}
             {!nodate && <div className='text-right mb-6'>{date && jdate(date)}</div>}

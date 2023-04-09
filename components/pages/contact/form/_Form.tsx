@@ -4,7 +4,7 @@ import onFormSubmit from './onFormSubmit';
 export default function Form() {
     const [submitted, setSubmitted]=useState(false);
 
-    return (<>
+    return <>
         <style jsx>{`
             input, textarea {
                 border: 1px solid black;
@@ -45,7 +45,7 @@ export default function Form() {
             {
                 submitted
                 ? <div className='text-green-500 font-bold'>Message received. Thanks for getting in touch!</div>
-                : (<form id='contactForm' method='POST' className='flex flex-col items-center' action='#' onSubmit={onFormSubmit(setSubmitted)}>
+                : <form id='contactForm' method='POST' className='flex flex-col items-center' action='#' onSubmit={onFormSubmit(setSubmitted)}>
                     <div className='w-full flex justify-center gap-[12px]'>
                         <input type='text' name='name' id='name' placeholder='Name' />
                         <input type='email' name='email' id='email' placeholder='Email' />
@@ -57,8 +57,8 @@ export default function Form() {
                     <br/>
                     {/* Captcha? */}
                     <input className='blue-btn w-fit mb-6' type='submit' value='Send' />
-                </form>)
+                </form>
             }
         </div>
-    </>);
+    </>;
 }

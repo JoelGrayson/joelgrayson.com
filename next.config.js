@@ -14,5 +14,9 @@ module.exports={
                 pathname: '/vi/**',
             }
         ]
+    },
+    i18n: {
+        locales: ['en'],
+        defaultLocale: 'en'
     }
 };

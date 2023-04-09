@@ -15,7 +15,8 @@ export const temporary: redirects={ //302
     'https://joelgrayson.wixsite.com/joelgrayson/projects': '/projects',
     'https://joelgrayson.wixsite.com/joelgrayson/big-sur-icons': '/big-sur-icons',
     'https://joelgrayson.wixsite.com/joelgrayson/the-perspective': '/the-perspective',
-    'https://joelgrayson.wixsite.com/joelgrayson/audio/:slug*': '/audio/:slug*' // /audio/*
+    'https://joelgrayson.wixsite.com/joelgrayson/audio/*': '/audio/*',
+    'https://joelgrayson.wixsite.com/joelgrayson': ['/wix', '/old', '/wixsite']
 };
 
 export const permanent: redirects={ //301

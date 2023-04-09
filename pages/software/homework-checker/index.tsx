@@ -8,7 +8,7 @@ export default function HomeworkChecker() {
         <h1 className='text-center flex justify-center items-center'>
             <span>Homework&nbsp;</span>
             <span className='text-[#00962a]'>Checker</span>
-            <Image width='48' height='48' className='relative right-[-15px]' src='/software/homework-checker/logo.png' alt='Logo' />
+            <Image width='48' height='48' className='relative right-[-15px]' src='/image/software/homework-checker/logo.png' alt='Logo' />
         </h1>
         
         {/* Buttons */}
@@ -61,7 +61,7 @@ export default function HomeworkChecker() {
                         <Image width='200' height='198' alt='default' src='/image/software/homework-checker/regular.jpg' />
                     </td>
                     <td>
-                        <Image width='200' height='100' alt='demo' src='/image/software/homework-checker/with-homework-checker.jpg' />
+                        <Image width='200' height='198' alt='demo' src='/image/software/homework-checker/with-homework-checker.jpg' />
                     </td>
                 </tr>
                 {/* Explanation */}
