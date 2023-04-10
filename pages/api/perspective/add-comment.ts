@@ -5,7 +5,7 @@ import sendEmail from '@/components/sendEmail';
 import generateToken from '@/components/helpers/generate-token';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<string | { views: number; comments: ExposedComment[]; }>) {
-    const { name, email, comment, hyphenatedTitle }=req.body;
+    const { name, email, comment, hyphenatedTitle }=req.body as { name?: string; email?: string; comment?: string; hyphenatedTitle?: string };
     
     if (!name || !email || !comment || !hyphenatedTitle) return res.json('No name, email, or comment provided');
     
