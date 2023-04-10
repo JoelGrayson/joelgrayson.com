@@ -1,19 +1,6 @@
-export type category='miscellaneous' | 'science' | 'climate-change' | 'philosophy';
-export const categories: category[]=['philosophy', 'science', 'climate-change', 'miscellaneous'];
-export const displayCategory: Map<category, { name: string; color: string }>=new Map([
-    ['philosophy',     { name: 'Philosophy',     color: '#dfdfdf' }],
-    ['science',        { name: 'Science',        color: '#b4d6eb' }],
-    ['climate-change', { name: 'Climate Change', color: '#adf0b9' }],
-    ['miscellaneous',  { name: 'Miscellaneous',  color: '#f4e1aa' }],
-]);
+import { article as articleT } from './types';
 
-export type article={
-    name: string;
-    hyphenatedTitle: string;
-    date: Date;
-    category: category;
-};
-export const articles: article[]=[
+export const articles: articleT[]=[
     { name: 'A Better Way to Teach Math',                   hyphenatedTitle: 'a-better-way-to-teach-math',                   date: new Date('Feb 20, 2023'), category: 'science'        },
     { name: 'Thank You, Fossil Fuel',                       hyphenatedTitle: 'thank-you-fossil-fuels',                       date: new Date('Feb 19, 2023'), category: 'climate-change' },
     { name: 'The Importance of Phase in Quantum Mechanics', hyphenatedTitle: 'the-importance-of-phase-in-quantum-mechanics', date: new Date('Feb 6, 2023'),  category: 'science'        },

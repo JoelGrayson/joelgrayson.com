@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import PerspectivePage from '@/components/perspective/PerspectivePage';
-import { article as articleT, articles, categories, displayCategory } from 'pages/perspective/articles-list';
-import Image from 'next/image';
-import Link from 'next/link';
+import { articles } from '@/components/perspective/ArticlesList';
+import { categories, displayCategory } from '@/components/perspective/ArticlesList/types';
+import Article from '@/components/perspective/ArticlesList/Article';
 
 const gridStyle={
     display: 'grid',
@@ -55,28 +55,4 @@ export default function JoelsPerspective() { //List of articles
             }</div>
         }
     </PerspectivePage>;
-}
-
-export function Article({article}: {article: articleT}) { //rectangle with thumbnail and title
-    return <Link href={`/perspective/${article.hyphenatedTitle}`} style={{width: 'fit-content', margin: '0.5rem'}}>
-        {/* Thumbnail Heights
-            CSS Size
-                image height: 113px
-                image width: 200px
-
-            Actual Image Size (2x CSS Size)
-                image height: 225px
-                image width: 400px
-        */}
-        <div className='p-3 border-gray-400 border-[1px] rounded-xl shadow-md bg-gray-50 hover:shadow-slate-300 hover:shadow-lg cursor-pointer grid place-items-center' style={{
-            height: '220px',
-            width: '250px',
-        }}>
-            {/* <div>{JSON.stringify(article)}</div> */}
-            <Image src={`/image/perspective/${article.hyphenatedTitle}/thumbnail.jpg`} alt='Article thumbnail' width='200' height='113' />
-            <div className='text-center' style={{
-                fontFamily: 'AvenirMedium'
-            }}>{article.name}</div>
-        </div>
-    </Link>;
 }
