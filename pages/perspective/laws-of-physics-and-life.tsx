@@ -1,5 +1,5 @@
-import ArticleWrapper from '@/components/perspective/layout/ArticleWrapper';
-import { P } from '../../components/perspective/Components';
+import ArticleWrapper from '@/components/perspective/ArticleWrapper';
+import { P } from '@/components/perspective/writing-components';
 
 export default function LawsOfPhysicsAndLife() {
     return <ArticleWrapper title='Laws of Physics & Life' date={new Date('June 13, 2021')} hyphenatedTitle='laws-of-physics-and-life'>

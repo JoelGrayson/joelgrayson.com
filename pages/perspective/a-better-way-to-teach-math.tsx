@@ -1,5 +1,5 @@
-import ArticleWrapper from '@/components/perspective/layout/ArticleWrapper';
-import { P, BU } from '../../components/perspective/Components';
+import ArticleWrapper from '@/components/perspective/ArticleWrapper';
+import { P, BU } from '@/components/perspective/writing-components';
 
 export default function ABetterWayToTeachMath() {
     return <ArticleWrapper title='A Better Way to Teach Math' date={new Date('Feb 20, 2023')} hyphenatedTitle='a-better-way-to-teach-math'>

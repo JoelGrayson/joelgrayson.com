@@ -1,5 +1,5 @@
-import ArticleWrapper from '@/components/perspective/layout/ArticleWrapper';
-import { P, BU } from '../../components/perspective/Components';
+import ArticleWrapper from '@/components/perspective/ArticleWrapper';
+import { P, BU } from '@/components/perspective/writing-components';
 
 export default function ThankYouFossilFuels() {
     return <ArticleWrapper title='Thank You, Fossil Fuels' date={new Date('Feb 19, 2023')} hyphenatedTitle='thank-you-fossil-fuels'>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import PerspectiveBody from '@/components/perspective/layout/PerspectivePage';
-import { article as articleT, articles, categories, displayCategory } from '@/components/perspective/articles-list';
+import PerspectivePage from '@/components/perspective/PerspectivePage';
+import { article as articleT, articles, categories, displayCategory } from 'pages/perspective/articles-list';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -22,7 +22,7 @@ export default function JoelsPerspective() { //List of articles
         }
     })();
 
-    return <PerspectiveBody>
+    return <PerspectivePage>
         <div className='flex justify-end mb-3'>
             <span>Sort by: </span>
             <select name='sorting-method' id='sorting-method' value={sortingMethod} onChange={e=>setSortingMethod(e.target.value as sortingMethodT)}>
@@ -54,7 +54,7 @@ export default function JoelsPerspective() { //List of articles
                 )
             }</div>
         }
-    </PerspectiveBody>;
+    </PerspectivePage>;
 }
 
 export function Article({article}: {article: articleT}) { //rectangle with thumbnail and title

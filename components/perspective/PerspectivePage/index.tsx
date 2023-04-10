@@ -4,9 +4,9 @@ import JThreeDots from '@/components/JThreeDots';
 import Container from '@jcomponents/container';
 import SEO, { SEOProps } from '@/components/global/SEO';
 
-const chomsky=localFont({ src: './chomsky/Chomsky.woff2' });
+const chomsky=localFont({ src: './chomsky-font/Chomsky.woff2' });
 
-export default function PerspectiveBody({children, seo, maxWidth=800}: {children: React.ReactNode | any; seo?: SEOProps; maxWidth?: number}) {
+export default function PerspectivePage({children, seo, maxWidth=800}: {children: React.ReactNode | any; seo?: SEOProps; maxWidth?: number}) {
     return <div style={{backgroundColor: '#fdfdfd'}}>
         <SEO seo={{
             title: "Joel's Perspective", //can be overridden by props.seo

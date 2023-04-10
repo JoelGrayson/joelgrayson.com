@@ -1,5 +1,5 @@
-import ArticleWrapper from '@/components/perspective/layout/ArticleWrapper';
-import { P } from '../../components/perspective/Components';
+import ArticleWrapper from '@/components/perspective/ArticleWrapper';
+import { P } from '@/components/perspective/writing-components';
 
 export default function ReflectionOnPrivilege() {
     return <ArticleWrapper title='Reflection On Privilege' date={new Date('Jan 21, 2023')} hyphenatedTitle='reflection-on-privilege'>

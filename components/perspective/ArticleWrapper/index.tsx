@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import PerspectiveBody from './PerspectivePage';
+import PerspectivePage from '../PerspectivePage';
 import jdate from 'joeldate';
 import { ExposedComment } from '@/components/data/TYPES';
-import AddComment from '@/components/perspective/AddComment';
+import { Reply } from './Reply';
+import AddComment from './AddComment';
 
 export default function Article({ hyphenatedTitle, title, date /** published date */, children, notitle=false, nodate=false }: { hyphenatedTitle: string; title: string; date: Date; children: React.ReactNode; notitle?: boolean; nodate?: boolean }) {
     const [comments, setComments]=useState<ExposedComment[]>([]);
@@ -17,22 +18,26 @@ export default function Article({ hyphenatedTitle, title, date /** published dat
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                hyphenatedTitle: hyphenatedTitle
+                hyphenatedTitle
             })
         })
             .then(res=>res.json())
             .then(res=>{
                 if (res.views===-1) return; //data was not found
 
+                console.log(res);
                 setViews(res.views);
                 setComments(res.comments);
             });
     }, [hyphenatedTitle]);
     
-    return <PerspectiveBody seo={{ title: title ? `${title} | Joel's Perspective` : "Joel's Perspective" }}>
+    return <PerspectivePage seo={{ title: title ? `${title} | Joel's Perspective` : "Joel's Perspective" }}>
         {/* Title & Date */}
         {!notitle && <h1 style={{fontSize: '2.5rem', textAlign: 'center'}}>{title}</h1>}
-        {!nodate && <div className='text-right mb-6'>{date && jdate(date)}</div>}
+        {!nodate && <div className='text-right' title={date && `Published on ${jdate()}`}>{date && jdate(date)}</div>}
+        <div className='text-right mb-6'>{views && <>
+            <span>{views} views</span>
+        </>}</div>
 
         {/* Article Content */}
         {children}
@@ -46,17 +51,5 @@ export default function Article({ hyphenatedTitle, title, date /** published dat
             )}
             <AddComment {...{hyphenatedTitle}} />
         </div>
-    </PerspectiveBody>;
-}
-
-export function Reply({children, author, date}: { children: any; author: string; date: string }) {
-    return <div className='my-1 py-3 px-4 relative' style={{
-        border: '1px solid black',
-        borderRadius: 10
-    }}>
-        <div className='mb-6'>{children}</div> {/* Content */}
-        <div className='absolute right-3 bottom-2'>
-            <div>Wrote <b>{author}</b> on {date}</div>
-        </div>
-    </div>;
+    </PerspectivePage>;
 }

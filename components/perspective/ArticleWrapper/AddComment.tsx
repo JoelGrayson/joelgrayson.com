@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function AddComment({ hyphenatedTitle }: { hyphenatedTitle: string }) {
+export default function AddComment({ hyphenatedTitle }: { hyphenatedTitle: string }) { //form for submitting a comment
     const [name, setName]=useState<string>('');
     const [email, setEmail]=useState<string>('');
     const [comment, setComment]=useState<string>();
