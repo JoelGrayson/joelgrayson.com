@@ -1,12 +1,10 @@
+import ArticleWrapper from '@/components/perspective/layout/ArticleWrapper';
+import { Citation, Footnote, BU, P, H2, TeX } from '../../components/perspective/Components';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Citation, Footnote, BU, P, H2 } from '../Components';
-
-export const title='Why We Need Nuclear Energy';
-export const date=new Date('May 9, 2021');
 
 export default function WhyWeNeedNuclearEnergy() {
-    return <div>
+    return <ArticleWrapper title='Why We Need Nuclear Energy' date={new Date('May 9, 2021')} hyphenatedTitle='why-we-need-nuclear-energy'>
         <P>Since students face the consequences of climate change now and increasingly as we grow up, I urge Riverdalians to consider solutions in battling climate change. Given American nuclear energy’s stagnation in the last three decades and low public trust, I hope students learn that employing nuclear energy is one of the <BU>best strategies to save millions of lives from pollution, lower carbon emissions all while boosting the economy.</BU> I have divided this article into three sections: nuclear energy’s benefits, costs, and solutions.</P>
         
         <H2>Benefits</H2>
@@ -44,5 +42,5 @@ export default function WhyWeNeedNuclearEnergy() {
             <Footnote number='7'><i>U.S. energy capacity factors by source 2020 | Statista.</i> (n.d.). Retrieved May 27, 2021, from <Link href='https://www.statista.com/statistics/183680/' className='styled'>https://www.statista.com/statistics/183680/us-average-capacity-factors-by-selected-energy-source-since-1998/</Link></Footnote>
             <Footnote number='8'>Data from the Illinois Energy Professor&apos;s calculations.</Footnote>
         </div>
-    </div>;
+    </ArticleWrapper>;
 }

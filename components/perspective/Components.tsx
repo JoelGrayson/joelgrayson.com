@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { MathComponent } from 'mathjax-react';
+import Latex from 'react-latex';
+import 'katex/dist/katex.min.css';
 
 export function Citation({number}: { number: string | number }) {
     return <Link href={`#footnote-${number}`} className='text-blue-700'>
@@ -15,7 +16,9 @@ export function Footnote({ number, children }: { number: string | number; childr
         textIndent: '4ch'
     }}>
         <Link href={`#citation-${number}`}>
-            <sup title='Return to point in text that cites this'><a className='styled nounderline'>[{number}]</a> </sup>
+            <sup title='Return to point in text that cites this'>
+                <span className='j_link nounderline'>[{number}]</span>
+            </sup>
         </Link>
         {children}
     </div>;
@@ -47,7 +50,7 @@ export function H2({children, ...props}: any) {
 }
 
 export function TeX({children}: {children: string}) { //Usage: <TeX>{String.raw``}</TeX>
-    return <MathComponent tex={children} display={false} />;
+    return <Latex>{`$$${children}$$`}</Latex>;
 }
 
 export function HangingIndent({children}: {children: any}) {

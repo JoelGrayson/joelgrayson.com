@@ -1,12 +1,12 @@
 import localFont from 'next/font/local';
 import Link from 'next/link';
-import JThreeDots from '../JThreeDots';
+import JThreeDots from '@/components/JThreeDots';
 import Container from '@jcomponents/container';
-import SEO, { SEOProps } from '../global/SEO';
+import SEO, { SEOProps } from '@/components/global/SEO';
 
 const chomsky=localFont({ src: './chomsky/Chomsky.woff2' });
 
-export default function PerspectiveBody({children, seo, maxWidth=800}: {children: JSX.Element | any; seo?: SEOProps; maxWidth?: number}) {
+export default function PerspectiveBody({children, seo, maxWidth=800}: {children: React.ReactNode | any; seo?: SEOProps; maxWidth?: number}) {
     return <div style={{backgroundColor: '#fdfdfd'}}>
         <SEO seo={{
             title: "Joel's Perspective", //can be overridden by props.seo

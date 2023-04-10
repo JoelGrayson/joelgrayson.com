@@ -1,11 +1,10 @@
-export const title=`China's Brutal Road to Socialism`;
-export const date=new Date('May 23, 2022'); //published date
-import { P, Citation, Footnote, HangingIndent } from '../Components';
-import Link from 'next/link';
+import ArticleWrapper from '@/components/perspective/layout/ArticleWrapper';
+import { Citation, Footnote, BU, P, H2, TeX, HangingIndent } from '../../components/perspective/Components';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function ChinasBrutalRoadToSocialism() {
-    return <div>
+    return <ArticleWrapper title={`China's Brutal Road to Socialism`} date={new Date('May 23, 2022')} hyphenatedTitle='chinas-brutal-road-to-socialism'>
         {/* TODO: footnotes */}
         <h3 id='introduction'>Introduction</h3>
         <Character name='hua' alt='huá' />
@@ -71,7 +70,7 @@ export default function ChinasBrutalRoadToSocialism() {
         <HangingIndent>Li, Xing. “The Chinese Cultural Revolution Revisited.” <i>China Review</i>, no. 1 (2001): 137–65, <Link href='https://www.jstor.org/stable/23461931' target='_blank' className='styled'>www.jstor.org/stable/23461931</Link>.</HangingIndent>
         <HangingIndent>Schram, Stuart. <i>The Thought of Mao Tse-Tung</i>. New York: Cambridge University Press, 1989.</HangingIndent>
         <HangingIndent>Spence, Jonathan D. <i>The Search for Modern China</i>, 2nd ed. New York: W. W. Norton & Company, 1999.</HangingIndent>
-    </div>;
+    </ArticleWrapper>;
 }
 
 function Character({ name, alt }: { name: string; alt: string }) {

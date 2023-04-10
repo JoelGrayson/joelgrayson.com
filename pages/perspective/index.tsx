@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import PerspectiveBody from '@/components/perspective/PerspectiveBody';
+import PerspectiveBody from '@/components/perspective/layout/PerspectivePage';
 import { article as articleT, articles, categories, displayCategory } from '@/components/perspective/articles-list';
 import Image from 'next/image';
 import Link from 'next/link';

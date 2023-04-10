@@ -89,7 +89,7 @@ code.dark { /* dark code like sublime */
 a {
     cursor: pointer;
 }
-a.styled {
+a.styled, .j_link {
     color: #0000e1;
 }
 a.styled:not(.nounderline) {

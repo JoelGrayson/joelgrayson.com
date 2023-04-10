@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import PerspectiveBody from '@/components/perspective/PerspectiveBody';
+import PerspectiveBody from '@/components/perspective/layout/PerspectivePage';
 import jdate from 'joeldate';
 import { ExposedComment } from '@/components/data/TYPES';
 import AddComment from '@/components/perspective/AddComment';
@@ -13,23 +13,23 @@ export default function Article({ notitle=false, nodate=false }: { notitle?: boo
     const [comments, setComments]=useState<ExposedComment[]>([]);
     const [views, setViews]=useState<null | number>(null);
     
-    useEffect(()=>{ //Load content from .tsx component files
-        if (!hyphenatedTitle) return; //loading
+    // useEffect(()=>{ //Load content from .tsx component files
+    //     if (!hyphenatedTitle) return; //loading
         
-        import(`@/components/perspective/content/${hyphenatedTitle}`) //load content afterward, so not a slow pageload
-            .then((imported: { default: JSX.Element; title: string; date: Date })=>{
-                setContent(imported?.default || null);
-                setTitle(imported.title);
-                setDate(imported.date);
-            })
-            .catch(e=>{
-                if (e.code==='MODULE_NOT_FOUND') { //article does not exist
-                    setTitle('404');
-                    setContent(<p className='text-center'>The article titled &quot;{hyphenatedTitle}&quot; does not exist.</p>);
-                } else //unknown error
-                    console.log('Unknown error', e);
-            });
-    }, [hyphenatedTitle]);
+    //     import(`@/components/perspective/content/${hyphenatedTitle}`) //load content afterward, so not a slow pageload
+    //         .then((imported: { default: JSX.Element; title: string; date: Date })=>{
+    //             setContent(imported?.default || null);
+    //             setTitle(imported.title);
+    //             setDate(imported.date);
+    //         })
+    //         .catch(e=>{
+    //             if (e.code==='MODULE_NOT_FOUND') { //article does not exist
+    //                 setTitle('404');
+    //                 setContent(<p className='text-center'>The article titled &quot;{hyphenatedTitle}&quot; does not exist.</p>);
+    //             } else //unknown error
+    //                 console.log('Unknown error', e);
+    //         });
+    // }, [hyphenatedTitle]);
 
     useEffect(()=>{ //load from prisma
         if (!hyphenatedTitle) return;

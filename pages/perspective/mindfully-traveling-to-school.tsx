@@ -1,10 +1,9 @@
+import ArticleWrapper from '@/components/perspective/layout/ArticleWrapper';
+import { P } from '../../components/perspective/Components';
 import Image from 'next/image';
-export const title='Mindfully Traveling to School';
-export const date=new Date('Nov 11, 2021'); //published date
-import { P } from '../Components';
 
 export default function MindfullyTravelingToSchool() {
-    return <div>
+    return <ArticleWrapper title='Mindfully Traveling to School' date={new Date('Nov 11, 2021')} hyphenatedTitle='mindfully-traveling-to-school'>
         <Image src='/image/perspective/mindfully-traveling-to-school/Biking to School square.jpg' alt='Biking to School' width='250' height='242' style={{ float: 'right', marginLeft: 20 }} />
         <P>On a clear November morning last fall, I decided to bike and walk the 15 miles to school instead of taking my usual school bus. A Riverdale assembly speaker shared her story of walking across the United States a few years ago, and I was similarly curious to observe what was along the way that I typically ignore on my trip to school.</P>
         <P>I left home from the Financial District, the southern tip of Manhattan, packing my bag earlier than usual after reassuring my parents that I would be safe. I had wanted to do this two years earlier, but they insisted I was too young. I biked along the Hudson River, watching the rising sun and flow of the river. A group of ducks quacked while flying into the water, and leaves fell gracefully into sheets of orange, pink, and red covering the ground. After a while, I stopped to rest on a bench. The calm breeze and beauty of the rising sun made me joyful and at ease, a change from being immersed in busy student life.</P>
@@ -15,5 +14,5 @@ export default function MindfullyTravelingToSchool() {
         
         <br /><br />
         <Image src='/image/perspective/mindfully-traveling-to-school/Map.jpg' alt='Map' width='110' height='378' />
-    </div>;
+    </ArticleWrapper>;
 }
