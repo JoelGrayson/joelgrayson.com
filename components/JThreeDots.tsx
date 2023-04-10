@@ -1,9 +1,14 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 
 export default function JThreeDots() { //interactive signature
-    const reload=()=>setLoadNum(Math.random()); //reloads & replays the gif
     const [loadNum, setLoadNum]=useState<number>(0);
+    const lastReloaded=useRef<number>(Date.now());
+    const reload=()=>{
+        if (Date.now()-lastReloaded.current<1400) return; //do not reload the image if it was reloaded less than 1 second ago
+        lastReloaded.current=Date.now();
+        setLoadNum(Math.random);
+    };
 
     return <Link href='/' className='block w-[55px] sm:w-[65px]'>
         <div className='flex items-center pr-4 select-none w-[30px] sm:w-[40px]'>

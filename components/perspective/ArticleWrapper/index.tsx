@@ -14,9 +14,7 @@ export default function Article({ hyphenatedTitle, title, date /** published dat
 
         fetch('/api/perspective/comments-and-views', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 hyphenatedTitle
             })
@@ -35,9 +33,7 @@ export default function Article({ hyphenatedTitle, title, date /** published dat
         {/* Title & Date */}
         {!notitle && <h1 style={{fontSize: '2.5rem', textAlign: 'center'}}>{title}</h1>}
         {!nodate && <div className='text-right' title={date && `Published on ${jdate()}`}>{date && jdate(date)}</div>}
-        <div className='text-right mb-6'>{views && <>
-            <span>{views} views</span>
-        </>}</div>
+        <div className='text-right mb-6'>{views ? `${views} views` : ''}</div>
 
         {/* Article Content */}
         {children}
