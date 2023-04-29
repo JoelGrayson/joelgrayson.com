@@ -4,7 +4,7 @@
 2. Add to your `next.config.js` file:
 ```js
 // JRedirects
-const jredirects=require('./jredirects/dist/main').default;
+const jredirects=require('./jredirects/dist');
 
 module.exports={ redirects: jredirects };
 ```

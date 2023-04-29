@@ -30,7 +30,7 @@ export default function WhyWeNeedNuclearEnergy() {
         
         <div> {/* Footnotes */}
             <Footnote number='1'>
-                <i>For First Time, Majority in U.S. Oppose Nuclear Energy. (n.d.). Retrieved May 27, 2021, from <Link className='styled' href='https://news.gallup.com/poll/190064/first-time-majority-oppose-nuclear-energy.aspx<'>https://news.gallup.com/poll/190064/first-time-majority-oppose-nuclear-energy.aspx</Link></i>
+                <i>For First Time, Majority in U.S. Oppose Nuclear Energy. (n.d.). Retrieved May 27, 2021, from <Link className='styled' href='https://news.gallup.com/poll/190064/first-time-majority-oppose-nuclear-energy.aspx'>https://news.gallup.com/poll/190064/first-time-majority-oppose-nuclear-energy.aspx</Link></i>
             </Footnote>
             <Footnote number='2'>
                 <i>Lessons from catastrophic dam failures in August 1975 in Zhumadian, China—HKUST SPD | The Institutional Repository.</i> (n.d.). Retrieved May 27, 2021, from <Link href='https://repository.ust.hk/ir/Record/1783.1-20080' className='styled'>https://repository.ust.hk/ir/Record/1783.1-20080</Link>
