@@ -1,5 +1,5 @@
 import ArticleWrapper from '@/components/perspective/ArticleWrapper';
-import { P, TeX } from '@/components/perspective/writing-components';
+import { P, TeX } from '@jcomponents/writing-components';
 
 export default function TheImportanceOfPhaseInQuantumMechanics() {
     return <ArticleWrapper title='The Importance of Phase in Quantum Mechanics' date={new Date('Jan 21, 2023')} hyphenatedTitle='the-importance-of-phase-in-quantum-mechanics'>

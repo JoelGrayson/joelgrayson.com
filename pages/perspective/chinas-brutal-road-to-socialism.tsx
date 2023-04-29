@@ -1,5 +1,5 @@
 import ArticleWrapper from '@/components/perspective/ArticleWrapper';
-import { Citation, Footnote, BU, P, H2, TeX, HangingIndent } from '@/components/perspective/writing-components';
+import { Citation, Footnote, BU, P, H2, TeX, HangingIndent } from '@jcomponents/writing-components';
 import Image from 'next/image';
 import Link from 'next/link';
 

@@ -1,5 +1,5 @@
 import ArticleWrapper from '@/components/perspective/ArticleWrapper';
-import { P } from '@/components/perspective/writing-components';
+import { P } from '@jcomponents/writing-components';
 import Image from 'next/image';
 
 export default function MindfullyTravelingToSchool() {
