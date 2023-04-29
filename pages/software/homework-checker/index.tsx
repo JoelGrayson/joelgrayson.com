@@ -25,7 +25,7 @@ export default function HomeworkChecker() {
                     <span>Source Code</span>
                 </Button>
             </Link>
-        </div>                
+        </div>
         <p>Organize your school life and motivate yourself with Homework Checker. Keep track of your complete/incomplete Schoology assignments by checking them off.</p>
         <figure id='demo' className='relative'>
             {/* eslint-disable */}
