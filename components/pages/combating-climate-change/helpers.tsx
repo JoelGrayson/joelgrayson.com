@@ -10,9 +10,12 @@ export function Section({title, children}: {title: string, children: ReactNode})
     </section>;
 }
 
-export function Action({children, title, ...props}: {children: ReactNode; title: string; [key: string]: any}) {
+export function Action({children, title, icon, ...props}: {children: ReactNode; title: string; icon?: React.ReactNode; [key: string]: any}) {
     return <div className={styles.action} {...props}>
-        <span className={styles['action-title']}>{title}</span>
+        <div className={styles['action-title']}>
+            <span>{title}</span>
+            {icon}
+        </div>
         {children}
     </div>;
 }
@@ -21,7 +24,7 @@ export function Action({children, title, ...props}: {children: ReactNode; title:
 
 <Section title='Producing Clean Electricity'>
     <Action title='Solar for Riverdale' onMouseEnter={wrap(viewers.solar)}>
-        <Image src='/image/ccc/solar.png' alt='solar panel' width={26} height={20} />
+        <Image src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='solar panel' width={26} height={20} />
     </Action>
 </Section>
 
@@ -32,7 +35,7 @@ export function Action({children, title, ...props}: {children: ReactNode; title:
         <h2 className={styles['content-title']}>Producing Clean Electricity</h2>
         <div className={styles.action} onMouseEnter={()=>setViewer(viewers.solar)}>
             <span className={styles['action-title']}>Solar for Riverdale </span>
-            <Image src='/image/ccc/solar.png' alt='solar panel' width={26} height={20} />
+            <Image src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='solar panel' width={26} height={20} />
         </div>
     </div>
 </section>

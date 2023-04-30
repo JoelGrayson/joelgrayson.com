@@ -26,4 +26,8 @@
 .action-title {
   font-family: Avenir-Medium;
   font-size: 1.2rem;
+  display: flex;
+  gap: 2px;
+  width: -moz-fit-content;
+  width: fit-content;
 }/*# sourceMappingURL=sections.module.css.map */

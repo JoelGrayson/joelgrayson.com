@@ -78,7 +78,7 @@ export default function Home() {
                     <div className='flex justify-center'>
                         <BtnIcon href='#'>
                             <div style={{width: 50, height: 50, display: 'grid', placeItems: 'center'}}>
-                                <Image alt='solar' height={50} width={37.5} src='/image/ccc/solar.png' />
+                                <Image alt='solar' height={50} width={37.5} src='/image/ccc/solar-for-riverdale/solar-panel.png' />
                             </div>
                             <span>Solar for Riverdale</span>
                         </BtnIcon> {/* sunbeam going down when hover */}
