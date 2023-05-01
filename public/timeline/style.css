@@ -1,0 +1,24 @@
+@font-face {
+    font-family: Avenir;
+    src: url('/styles/fonts/Avenir\ Book.ttf');
+}
+@font-face {
+    font-family: AvenirMedium;
+    src: url('/styles/fonts/Avenir\ Medium.ttf');
+}
+@font-face {
+    font-family: Myriad;
+    src: url('/styles/fonts/Myriad\ Pro\ Bold.ttf');
+}
+
+#title {
+    text-align: center;
+    font-family: Myriad;
+}
+
+#timeline {
+    border: 1px solid black;
+    width: 100%;
+    height: 50vh;
+    min-height: 300px;
+}

@@ -7,15 +7,15 @@
 /**|| <Font (sorted by boldness) */
 @font-face {
     font-family: Avenir;
-    src: url('./fonts/Avenir\ Book.ttf');
+    src: url('../public/styles/fonts/Avenir\ Book.ttf');
 }
 @font-face {
     font-family: AvenirMedium;
-    src: url('./fonts/Avenir\ Medium.ttf');
+    src: url('../public/styles/fonts/Avenir\ Medium.ttf');
 }
 @font-face {
     font-family: Myriad;
-    src: url('./fonts/Myriad\ Pro\ Bold.ttf');
+    src: url('../public/styles/fonts/Myriad\ Pro\ Bold.ttf');
 }
 /* > */
 
