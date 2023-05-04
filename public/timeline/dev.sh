@@ -1,4 +1,6 @@
 #!/bin/bash
 
-tsc --watch --outFile dist.js script.ts data.ts &
+# Run enable_all first
+
+tsc --watch &
 live-server
