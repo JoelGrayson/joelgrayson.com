@@ -1,4 +1,4 @@
-import { inCoords } from './utils.js';
+import { forEachYear, inCoords } from './utils.js';
 
 type year=number;
 const born: year=2006;
@@ -11,12 +11,15 @@ type images={
 };
 
 export default class Timeline {
+    // Elements
     canvasEl: HTMLCanvasElement;
     c: CanvasRenderingContext2D;
+    images: images;
+
+    // View settings
     start: year;
     end: year;
     showControls: boolean;
-    images: images;
 
     constructor() { //setup
         this.canvasEl=document.getElementById('timeline') as HTMLCanvasElement;
@@ -105,11 +108,9 @@ export default class Timeline {
         const fontSize=20;
         c.font=`${20}px Avenir`;
 
-        for (let year=this.start; year <= this.end; year++) {
-            const offset=year-this.start;
-            // '06 instead of 2006
-            c.fillText(`'${s(year).slice(-2)}`, startingPlace+offset*yearSpan, lineY+fontSize);
-        }
+        forEachYear(this, ({ year, offset }: { year: number; offset: number })=>{
+            c.fillText(`'${s(year).slice(-2)}`, startingPlace+offset*yearSpan, lineY+fontSize); //'06 instead of 2006
+        });
     }
 
     renderEvent() {
@@ -134,21 +135,33 @@ export default class Timeline {
     }
 
     // Events
-    clickEvent(e: MouseEvent) {
+    clickEvent=(e: MouseEvent)=>{
         // Control button listeners
         for (let i=0; i<tools.length; i++) { //background rectangles
             if (inCoords(10+40*i, 10, 30, 30, e.offsetX, e.offsetY)) { //c.rect(10+40*i, 10, 30, 30)
-                console.log(tools[i], 'clicked');
+                const sixthInterval=(this.end-this.start)/6;
                 switch (tools[i]) {
                     case 'left':
+                        this.start-=sixthInterval;
+                        this.end-=sixthInterval;
+                        break;
                     case 'zoom-out':
+                        this.start-=sixthInterval;
+                        this.end+=sixthInterval;
+                        break;
                     case 'zoom-in':
+                        this.start+=sixthInterval;
+                        this.end-=sixthInterval;
+                        break;
                     case 'right':
+                        this.start+=sixthInterval;
+                        this.end+=sixthInterval;
+                        break;
                 }
             }
         }
-        
     }
+
     wheelEvent(e: Event) { //zooming
         console.log('Scroll event', e);
     }

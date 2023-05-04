@@ -1,4 +1,4 @@
-import { inCoords } from './utils.js';
+import { forEachYear, inCoords } from './utils.js';
 const born = 2006;
 const now = new Date().getFullYear();
 const tools = ['left', 'zoom-out', 'zoom-in', 'right'];
@@ -26,6 +26,33 @@ export default class Timeline {
                 clear: () => c.clearRect(0, 0, w, h),
                 s: (n) => Math.floor(n).toString(), //toString
             };
+        };
+        // Events
+        this.clickEvent = (e) => {
+            // Control button listeners
+            for (let i = 0; i < tools.length; i++) { //background rectangles
+                if (inCoords(10 + 40 * i, 10, 30, 30, e.offsetX, e.offsetY)) { //c.rect(10+40*i, 10, 30, 30)
+                    const sixthInterval = (this.end - this.start) / 6;
+                    switch (tools[i]) {
+                        case 'left':
+                            this.start -= sixthInterval;
+                            this.end -= sixthInterval;
+                            break;
+                        case 'zoom-out':
+                            this.start -= sixthInterval;
+                            this.end += sixthInterval;
+                            break;
+                        case 'zoom-in':
+                            this.start += sixthInterval;
+                            this.end -= sixthInterval;
+                            break;
+                        case 'right':
+                            this.start += sixthInterval;
+                            this.end += sixthInterval;
+                            break;
+                    }
+                }
+            }
         };
         this.canvasEl = document.getElementById('timeline');
         this.canvasEl.addEventListener('click', this.clickEvent);
@@ -70,11 +97,9 @@ export default class Timeline {
         // Text
         const fontSize = 20;
         c.font = `${20}px Avenir`;
-        for (let year = this.start; year <= this.end; year++) {
-            const offset = year - this.start;
-            // '06 instead of 2006
-            c.fillText(`'${s(year).slice(-2)}`, startingPlace + offset * yearSpan, lineY + fontSize);
-        }
+        forEachYear(this, ({ year, offset }) => {
+            c.fillText(`'${s(year).slice(-2)}`, startingPlace + offset * yearSpan, lineY + fontSize); //'06 instead of 2006
+        });
     }
     renderEvent() {
     }
@@ -90,21 +115,6 @@ export default class Timeline {
         for (let i = 0; i < tools.length; i++) { //images on top
             const tool = tools[i];
             c.drawImage(this.images[tool], 10 + i * 40, 10, 30, 30);
-        }
-    }
-    // Events
-    clickEvent(e) {
-        // Control button listeners
-        for (let i = 0; i < tools.length; i++) { //background rectangles
-            if (inCoords(10 + 40 * i, 10, 30, 30, e.offsetX, e.offsetY)) { //c.rect(10+40*i, 10, 30, 30)
-                console.log(tools[i], 'clicked');
-                switch (tools[i]) {
-                    case 'left':
-                    case 'zoom-out':
-                    case 'zoom-in':
-                    case 'right':
-                }
-            }
         }
     }
     wheelEvent(e) {

@@ -26,3 +26,10 @@ export function* generateColor(): Generator<string> {
 export function inCoords(x: number, y: number, w: number, h: number, x2: number, y2: number) {
     return x2>=x && x2<=x+w && y2>=y && y2<=y+h;
 }
+
+export const forEachYear=(thisObj: { start: number; end: number }, cb: Function)=>{
+    for (let year=thisObj.start; year<=thisObj.end; year++) {
+        const offset=year-thisObj.start;
+        cb({ year, offset });
+    }
+};

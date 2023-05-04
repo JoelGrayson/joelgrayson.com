@@ -23,4 +23,10 @@ export function* generateColor() {
 export function inCoords(x, y, w, h, x2, y2) {
     return x2 >= x && x2 <= x + w && y2 >= y && y2 <= y + h;
 }
+export const forEachYear = (thisObj, cb) => {
+    for (let year = thisObj.start; year <= thisObj.end; year++) {
+        const offset = year - thisObj.start;
+        cb({ year, offset });
+    }
+};
 //# sourceMappingURL=utils.js.map

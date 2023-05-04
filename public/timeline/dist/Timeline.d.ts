@@ -6,10 +6,10 @@ type images = {
 export default class Timeline {
     canvasEl: HTMLCanvasElement;
     c: CanvasRenderingContext2D;
+    images: images;
     start: year;
     end: year;
     showControls: boolean;
-    images: images;
     constructor();
     draw: () => void;
     getVars: () => {
@@ -23,7 +23,7 @@ export default class Timeline {
     renderLines(): void;
     renderEvent(): void;
     renderControls(): void;
-    clickEvent(e: MouseEvent): void;
+    clickEvent: (e: MouseEvent) => void;
     wheelEvent(e: Event): void;
 }
 export {};
