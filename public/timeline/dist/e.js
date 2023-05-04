@@ -1,4 +1,4 @@
-import { jdate, monthNumToStr, generateColor, turnIntoDate } from "utils";
+import { jdate, monthNumToStr, generateColor, turnIntoDate } from './utils.js';
 const colorGenerator = generateColor();
 export default function e(title, date, note = '', color) {
     var _a, _b;
@@ -25,7 +25,7 @@ export default function e(title, date, note = '', color) {
                 scope: 'month',
                 month: date.month,
                 year: date.year,
-                dateString: `${monthNumToStr(day.getMonth())}.${day.getFullYear()}`,
+                dateString: `${monthNumToStr(date.month)}.${date.year}`,
                 title, note, color
             };
         case 'year':

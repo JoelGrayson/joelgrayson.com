@@ -1,4 +1,4 @@
-import { jdate, monthNumToStr, generateColor, turnIntoDate } from "utils";
+import { jdate, monthNumToStr, generateColor, turnIntoDate } from './utils.js';
 
 export type propsT={
     scope?: 'day' | 'month' | 'year' | 'range'; //default is range
@@ -45,7 +45,7 @@ export default function e(title: string, date: propsT, note: string | Element=''
                 scope: 'month',
                 month: date.month,
                 year: date.year,
-                dateString: `${monthNumToStr(day.getMonth())}.${day.getFullYear()}`, //month.year
+                dateString: `${monthNumToStr(date.month)}.${date.year}`, //month.year
                 title, note, color
             };
         case 'year':
