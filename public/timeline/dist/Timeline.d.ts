@@ -4,6 +4,7 @@ type images = {
     [key in tool]: HTMLImageElement;
 };
 export default class Timeline {
+    #private;
     canvasEl: HTMLCanvasElement;
     c: CanvasRenderingContext2D;
     images: images;
@@ -24,6 +25,10 @@ export default class Timeline {
     renderEvent(): void;
     renderControls(): void;
     clickEvent: (e: MouseEvent) => void;
+    smoothly: (changeBy: {
+        start: number;
+        end: number;
+    }) => void;
     wheelEvent(e: Event): void;
 }
 export {};

@@ -1,9 +1,23 @@
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+};
+var _Timeline_transitionInterval;
 import { forEachYear, inCoords } from './utils.js';
 const born = 2006;
 const now = new Date().getFullYear();
 const tools = ['left', 'zoom-out', 'zoom-in', 'right'];
 export default class Timeline {
     constructor() {
+        // Internal settings
+        _Timeline_transitionInterval.set(this, void 0);
         // Rendering
         this.draw = () => {
             const { c, w, h, clear } = this.getVars();
@@ -35,24 +49,51 @@ export default class Timeline {
                     const sixthInterval = (this.end - this.start) / 6;
                     switch (tools[i]) {
                         case 'left':
-                            this.start -= sixthInterval;
-                            this.end -= sixthInterval;
+                            this.smoothly({
+                                start: -sixthInterval,
+                                end: -sixthInterval
+                            });
                             break;
                         case 'zoom-out':
-                            this.start -= sixthInterval;
-                            this.end += sixthInterval;
+                            this.smoothly({
+                                start: -sixthInterval,
+                                end: sixthInterval
+                            });
                             break;
                         case 'zoom-in':
-                            this.start += sixthInterval;
-                            this.end -= sixthInterval;
+                            this.smoothly({
+                                start: sixthInterval,
+                                end: -sixthInterval
+                            });
                             break;
                         case 'right':
-                            this.start += sixthInterval;
-                            this.end += sixthInterval;
+                            this.smoothly({
+                                start: sixthInterval,
+                                end: sixthInterval
+                            });
                             break;
                     }
                 }
             }
+        };
+        this.smoothly = (changeBy) => {
+            if (__classPrivateFieldGet(this, _Timeline_transitionInterval, "f")) {
+                clearInterval(__classPrivateFieldGet(this, _Timeline_transitionInterval, "f"));
+                __classPrivateFieldSet(this, _Timeline_transitionInterval, undefined, "f");
+            }
+            const duration = 250;
+            const frequency = 10;
+            __classPrivateFieldSet(this, _Timeline_transitionInterval, window.setInterval((() => {
+                let timePassed = 0;
+                return () => {
+                    if (timePassed > duration)
+                        return window.clearInterval(__classPrivateFieldGet(this, _Timeline_transitionInterval, "f"));
+                    const numTimesWillRepeat = duration / frequency;
+                    this.start += changeBy.start / numTimesWillRepeat;
+                    this.end += changeBy.end / numTimesWillRepeat;
+                    timePassed += frequency;
+                };
+            })(), frequency), "f");
         };
         this.canvasEl = document.getElementById('timeline');
         this.canvasEl.addEventListener('click', this.clickEvent);
@@ -81,23 +122,19 @@ export default class Timeline {
         window.requestAnimationFrame(this.draw);
     }
     renderLines() {
-        const { c, w, h, s } = this.getVars();
-        // Middle Timeline Line
+        const { c, h, s } = this.getVars();
         const lineWidth = 2; //must be even
-        const xPadding = 5;
         const middle = h / 2;
         const lineY = middle - lineWidth / 2;
         c.fillStyle = 'black';
-        c.fillRect(xPadding, lineY, w - 2 * xPadding, lineWidth); //timeline line
-        // Year Lines (Sleepers)
-        const startingPlace = xPadding;
-        const endingPlace = w - xPadding - c.measureText('00').width; //width of 4 characters (year)
-        const span = endingPlace - startingPlace; //span of entire timeline line
-        const yearSpan = Math.floor(span / (this.end - this.start)); //width per year
-        // Text
         const fontSize = 20;
         c.font = `${20}px Avenir`;
-        forEachYear(this, ({ year, offset }) => {
+        forEachYear(this, ({ year, offset, startingPlace, endingPlace, yearSpan }) => {
+            // Middle Timeline Line
+            c.fillRect(startingPlace, lineY, endingPlace, lineWidth); //timeline line
+            // Year
+            // Year Lines (Sleepers)
+            // Year Text
             c.fillText(`'${s(year).slice(-2)}`, startingPlace + offset * yearSpan, lineY + fontSize); //'06 instead of 2006
         });
     }
@@ -121,4 +158,5 @@ export default class Timeline {
         console.log('Scroll event', e);
     }
 }
+_Timeline_transitionInterval = new WeakMap();
 //# sourceMappingURL=Timeline.js.map

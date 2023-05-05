@@ -1,4 +1,4 @@
-import { forEachYear, inCoords } from './utils.js';
+import { forEachYear, forEachYearProps, inCoords } from './utils.js';
 
 type year=number;
 const born: year=2006;
@@ -20,6 +20,9 @@ export default class Timeline {
     start: year;
     end: year;
     showControls: boolean;
+
+    // Internal settings
+    #transitionInterval: number | undefined;
 
     constructor() { //setup
         this.canvasEl=document.getElementById('timeline') as HTMLCanvasElement;
@@ -88,27 +91,23 @@ export default class Timeline {
     };
 
     renderLines() {
-        const { c, w, h, s }=this.getVars();
+        const { c, h, s }=this.getVars();
 
-        // Middle Timeline Line
         const lineWidth=2; //must be even
-        const xPadding=5;
         const middle=h/2;
         const lineY=middle-lineWidth/2;
         c.fillStyle='black';
-        c.fillRect(xPadding, lineY, w-2*xPadding, lineWidth); //timeline line
-
-        // Year Lines (Sleepers)
-        const startingPlace=xPadding;
-        const endingPlace=w-xPadding-c.measureText('00').width; //width of 4 characters (year)
-        const span=endingPlace-startingPlace; //span of entire timeline line
-        const yearSpan=Math.floor(span/(this.end-this.start)); //width per year
-
-        // Text
         const fontSize=20;
         c.font=`${20}px Avenir`;
 
-        forEachYear(this, ({ year, offset }: { year: number; offset: number })=>{
+        forEachYear(this, ({ year, offset, startingPlace, endingPlace, yearSpan }: forEachYearProps)=>{
+            // Middle Timeline Line
+            c.fillRect(startingPlace, lineY, endingPlace, lineWidth); //timeline line
+
+            // Year
+            // Year Lines (Sleepers)
+            
+            // Year Text
             c.fillText(`'${s(year).slice(-2)}`, startingPlace+offset*yearSpan, lineY+fontSize); //'06 instead of 2006
         });
     }
@@ -142,24 +141,52 @@ export default class Timeline {
                 const sixthInterval=(this.end-this.start)/6;
                 switch (tools[i]) {
                     case 'left':
-                        this.start-=sixthInterval;
-                        this.end-=sixthInterval;
+                        this.smoothly({
+                            start: -sixthInterval,
+                            end: -sixthInterval
+                        });
                         break;
                     case 'zoom-out':
-                        this.start-=sixthInterval;
-                        this.end+=sixthInterval;
+                        this.smoothly({
+                            start: -sixthInterval,
+                            end: sixthInterval
+                        });
                         break;
                     case 'zoom-in':
-                        this.start+=sixthInterval;
-                        this.end-=sixthInterval;
+                        this.smoothly({
+                            start: sixthInterval,
+                            end: -sixthInterval
+                        });
                         break;
                     case 'right':
-                        this.start+=sixthInterval;
-                        this.end+=sixthInterval;
+                        this.smoothly({
+                            start: sixthInterval,
+                            end: sixthInterval
+                        });
                         break;
                 }
             }
         }
+    }
+
+    smoothly=(changeBy: { start: number; end: number })=>{
+        if (this.#transitionInterval) {
+            clearInterval(this.#transitionInterval);
+            this.#transitionInterval=undefined;
+        }
+        const duration=250;
+        const frequency=10;
+        this.#transitionInterval=window.setInterval((()=>{
+            let timePassed=0;
+            return ()=>{
+                if (timePassed>duration) return window.clearInterval(this.#transitionInterval);
+
+                const numTimesWillRepeat=duration/frequency;
+                this.start+=changeBy.start/numTimesWillRepeat;
+                this.end+=changeBy.end/numTimesWillRepeat;
+                timePassed+=frequency;
+            };
+        })(), frequency);
     }
 
     wheelEvent(e: Event) { //zooming
