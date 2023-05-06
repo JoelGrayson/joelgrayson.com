@@ -1,37 +1,26 @@
-import { forEachYear, inCoords } from './utils.js';
+import JGraphicsLibrary from './JGraphicsLibrary.js';
 const born = 2006; //default start
 const now = new Date().getFullYear(); //default end
 const tools = ['home', 'left', 'zoom-out', 'zoom-in', 'right'];
-export default class Timeline {
+export default class Timeline extends JGraphicsLibrary {
     constructor() {
+        super(document.getElementById('timeline'));
+        // Config
+        this.xPadding = 15;
         // Rendering
         this.draw = () => {
-            const { c, w, h, clear } = this.getVars();
+            const { clear } = this.getVars();
             clear();
             this.renderEvent();
             this.renderLines();
             this.renderControls(); //last so that it is on top
             window.requestAnimationFrame(this.draw); //go to next frame
         };
-        this.getVars = () => {
-            const c = this.c;
-            const canvasEl = this.canvasEl;
-            const w = canvasEl.width;
-            const h = canvasEl.height;
-            return {
-                canvasEl,
-                c,
-                w,
-                h,
-                clear: () => c.clearRect(0, 0, w, h),
-                s: (n) => Math.floor(n).toString(), //toString
-            };
-        };
-        // Events
+        // Event Handlers
         this.clickEvent = (e) => {
             // Control button listeners
             for (let i = 0; i < tools.length; i++) { //background rectangles
-                if (inCoords(10 + 40 * i, 10, 30, 30, e.offsetX, e.offsetY)) { //c.rect(10+40*i, 10, 30, 30)
+                if (this.inCoords(10 + 40 * i, 10, 30, 30, e.offsetX, e.offsetY)) { //c.rect(10+40*i, 10, 30, 30)
                     const sixthInterval = (this.end - this.start) / 6;
                     switch (tools[i]) {
                         case 'home':
@@ -72,6 +61,8 @@ export default class Timeline {
                 }
             }
         };
+        // # Helpers
+        // ## Rendering Helpers
         this.smoothlyMove = (changeBy) => {
             return new Promise((resolve, reject) => {
                 const duration = 250;
@@ -97,10 +88,34 @@ export default class Timeline {
                 animate(-1);
             });
         };
-        this.canvasEl = document.getElementById('timeline');
+        // ## Other Helpers
+        this.forEachYear = (cb) => {
+            const { leftOffset, rightOffset } = this.getVars();
+            const span = rightOffset - leftOffset; //span of entire timeline line
+            const yearSpan = Math.floor(span / (this.end - this.start)); //width per year
+            const roundStart = Math.ceil(this.start); //cannot start at 2006.5, but 2007
+            const roundEnd = Math.floor(this.end);
+            for (let year = roundStart; year <= roundEnd; year++) {
+                const offset = year - this.start;
+                cb({ year, offset, yearSpan });
+            }
+        };
+        this.getVars = () => {
+            const c = this.c;
+            const canvasEl = this.canvasEl;
+            const w = canvasEl.width;
+            const h = canvasEl.height;
+            const leftOffset = this.xPadding;
+            const rightOffset = w - 2 * this.xPadding;
+            return {
+                canvasEl,
+                c, w, h, leftOffset, rightOffset,
+                clear: () => c.clearRect(0, 0, w, h),
+                s: (n) => Math.floor(n).toString(), //toString
+            };
+        };
         this.canvasEl.addEventListener('click', this.clickEvent);
         this.canvasEl.addEventListener('wheel', this.wheelEvent);
-        this.c = this.canvasEl.getContext('2d');
         this.c.textAlign = 'center';
         this.start = born;
         this.end = now;
@@ -122,21 +137,33 @@ export default class Timeline {
         window.requestAnimationFrame(this.draw);
     }
     renderLines() {
-        const { c, h, s } = this.getVars();
+        const { c, h, s, leftOffset, rightOffset } = this.getVars();
         const lineWidth = 2; //must be even
         const middle = h / 2;
         const lineY = middle - lineWidth / 2;
         c.fillStyle = 'black';
         const fontSize = 20;
-        c.font = `${20}px Avenir`;
-        forEachYear(this, ({ year, offset, startingPlace, endingPlace, yearSpan }) => {
-            // Middle Timeline Line
-            c.fillRect(startingPlace, lineY, endingPlace, lineWidth); //timeline line
-            // Year
-            // Year Lines (Sleepers)
+        c.font = `${fontSize}px Avenir`;
+        c.fillRect(leftOffset, lineY, rightOffset, lineWidth); //middle timeline line
+        this.forEachYear(({ year, offset, yearSpan }) => {
+            // Year Lines (sleepers)
             // Year Text
-            c.fillText(`'${s(year).slice(-2)}`, startingPlace + offset * yearSpan, lineY + fontSize); //'06 instead of 2006
+            c.fillText(`'${s(year).slice(-2)}`, leftOffset + offset * yearSpan, lineY + fontSize); //'06 instead of 2006
         });
+        // Render arrow heads <- and -> for the ends of the timeline line
+        c.strokeStyle = 'black';
+        c.lineWidth = 2;
+        c.lineJoin = 'round';
+        // Left Arrow
+        const leftMost = leftOffset - 9;
+        this.drawLine(leftMost, middle, leftMost + 5, middle - 5);
+        this.drawLine(leftMost, middle, leftMost + 5, middle + 5);
+        this.drawLine(leftMost, middle, leftMost + 9, middle);
+        // Right Arrow
+        const rightMost = rightOffset + 24;
+        this.drawLine(rightMost, middle, rightMost - 5, middle - 5);
+        this.drawLine(rightMost, middle, rightMost - 5, middle + 5);
+        this.drawLine(rightMost, middle, rightMost - 9, middle);
     }
     renderEvent() {
     }
@@ -157,6 +184,11 @@ export default class Timeline {
     }
     wheelEvent(e) {
         console.log('Scroll event', e);
+        console.log('Scrolling into', e.offsetX, e.offsetY);
+    }
+    year2X() {
+    }
+    x2Year() {
     }
 }
 //# sourceMappingURL=Timeline.js.map
