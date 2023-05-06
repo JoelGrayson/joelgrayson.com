@@ -11,9 +11,9 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
 };
 var _Timeline_transitionInterval;
 import { forEachYear, inCoords } from './utils.js';
-const born = 2006;
-const now = new Date().getFullYear();
-const tools = ['left', 'zoom-out', 'zoom-in', 'right'];
+const born = 2006; //default start
+const now = new Date().getFullYear(); //default end
+const tools = ['home', 'left', 'zoom-out', 'zoom-in', 'right'];
 export default class Timeline {
     constructor() {
         // Internal settings
@@ -48,6 +48,12 @@ export default class Timeline {
                 if (inCoords(10 + 40 * i, 10, 30, 30, e.offsetX, e.offsetY)) { //c.rect(10+40*i, 10, 30, 30)
                     const sixthInterval = (this.end - this.start) / 6;
                     switch (tools[i]) {
+                        case 'home':
+                            this.smoothly({
+                                start: born - this.start,
+                                end: now - this.end
+                            });
+                            break;
                         case 'left':
                             this.smoothly({
                                 start: -sixthInterval,
@@ -99,6 +105,7 @@ export default class Timeline {
         this.canvasEl.addEventListener('click', this.clickEvent);
         this.canvasEl.addEventListener('wheel', this.wheelEvent);
         this.c = this.canvasEl.getContext('2d');
+        this.c.textAlign = 'center';
         this.start = born;
         this.end = now;
         this.showControls = true;
@@ -110,14 +117,11 @@ export default class Timeline {
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
         // Icon Images
-        this.images = {
-            'left': new Image(),
-            'zoom-in': new Image(),
-            'zoom-out': new Image(),
-            'right': new Image(),
-        };
-        for (let tool of tools)
+        this.images = {};
+        for (let tool of tools) {
+            this.images[tool] = new Image();
             this.images[tool].src = `./controls/${tool}.png`;
+        }
         // Start draw loop
         window.requestAnimationFrame(this.draw);
     }

@@ -1,5 +1,6 @@
 type year = number;
-type tool = 'left' | 'zoom-out' | 'zoom-in' | 'right';
+declare const tools: string[];
+type tool = typeof tools[number];
 type images = {
     [key in tool]: HTMLImageElement;
 };
