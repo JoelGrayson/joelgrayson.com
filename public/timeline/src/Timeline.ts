@@ -21,9 +21,6 @@ export default class Timeline {
     end: year;
     showControls: boolean;
 
-    // Internal settings
-    #transitionInterval: number | undefined;
-
     constructor() { //setup
         this.canvasEl=document.getElementById('timeline') as HTMLCanvasElement;
         this.canvasEl.addEventListener('click', this.clickEvent);
@@ -62,7 +59,7 @@ export default class Timeline {
         this.renderLines();
         this.renderControls(); //last so that it is on top
 
-        requestAnimationFrame(this.draw); //go to next frame
+        window.requestAnimationFrame(this.draw); //go to next frame
     };
 
     getVars: ()=>{ //returns variables that should not be set through this.var=
@@ -140,31 +137,35 @@ export default class Timeline {
                 const sixthInterval=(this.end-this.start)/6;
                 switch (tools[i]) {
                     case 'home':
-                        this.smoothly({
+                        this.smoothlyMove({
                             start: born-this.start,
                             end: now-this.end
-                        });
+                        })
+                            .then(()=>{ //make sure that afterward, the same exact values are used because of floating point errors
+                                this.start=born;
+                                this.end=now;
+                            });
                         break;
                     case 'left':
-                        this.smoothly({
+                        this.smoothlyMove({
                             start: -sixthInterval,
                             end: -sixthInterval
                         });
                         break;
                     case 'zoom-out':
-                        this.smoothly({
+                        this.smoothlyMove({
                             start: -sixthInterval,
                             end: sixthInterval
                         });
                         break;
                     case 'zoom-in':
-                        this.smoothly({
+                        this.smoothlyMove({
                             start: sixthInterval,
                             end: -sixthInterval
                         });
                         break;
                     case 'right':
-                        this.smoothly({
+                        this.smoothlyMove({
                             start: sixthInterval,
                             end: sixthInterval
                         });
@@ -174,24 +175,36 @@ export default class Timeline {
         }
     }
 
-    smoothly=(changeBy: { start: number; end: number })=>{
-        if (this.#transitionInterval) {
-            clearInterval(this.#transitionInterval);
-            this.#transitionInterval=undefined;
-        }
-        const duration=250;
-        const frequency=10;
-        this.#transitionInterval=window.setInterval((()=>{
-            let timePassed=0;
-            return ()=>{
-                if (timePassed>duration) return window.clearInterval(this.#transitionInterval);
+    smoothlyMove=(changeBy: { start: number; end: number })=>{
+        return new Promise<void>((resolve, reject)=>{
+            const duration=250;
 
-                const numTimesWillRepeat=duration/frequency;
-                this.start+=changeBy.start/numTimesWillRepeat;
-                this.end+=changeBy.end/numTimesWillRepeat;
-                timePassed+=frequency;
-            };
-        })(), frequency);
+            const animate=(()=>{ //clojure for internal state variables below
+                const initialStart=this.start;
+                const initialEnd=this.end;
+                let startingTimestamp=-1;
+    
+                const innerAnimate=(timestamp: number)=>{ //called every frame
+                    if (startingTimestamp===-1 && timestamp===-1) return window.requestAnimationFrame(innerAnimate); //not ready yet
+                    
+                    if (startingTimestamp===-1 && timestamp!==-1) //make ready by starting timer
+                        startingTimestamp=timestamp;
+
+                    const timePassed=timestamp-startingTimestamp;
+                    const progress=timePassed/duration; //0 to 1
+    
+                    if (progress>=1) return resolve(); //finished
+    
+                    this.start=initialStart+changeBy.start*progress;
+                    this.end=  initialEnd+  changeBy.end  *progress;
+    
+                    return window.requestAnimationFrame(innerAnimate);
+                };
+                return innerAnimate;
+            })();
+    
+            animate(-1);
+        });
     }
 
     wheelEvent(e: Event) { //zooming

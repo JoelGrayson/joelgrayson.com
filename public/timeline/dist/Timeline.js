@@ -1,23 +1,9 @@
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-};
-var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
-    if (kind === "m") throw new TypeError("Private method is not writable");
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
-    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
-};
-var _Timeline_transitionInterval;
 import { forEachYear, inCoords } from './utils.js';
 const born = 2006; //default start
 const now = new Date().getFullYear(); //default end
 const tools = ['home', 'left', 'zoom-out', 'zoom-in', 'right'];
 export default class Timeline {
     constructor() {
-        // Internal settings
-        _Timeline_transitionInterval.set(this, void 0);
         // Rendering
         this.draw = () => {
             const { c, w, h, clear } = this.getVars();
@@ -25,7 +11,7 @@ export default class Timeline {
             this.renderEvent();
             this.renderLines();
             this.renderControls(); //last so that it is on top
-            requestAnimationFrame(this.draw); //go to next frame
+            window.requestAnimationFrame(this.draw); //go to next frame
         };
         this.getVars = () => {
             const c = this.c;
@@ -49,31 +35,35 @@ export default class Timeline {
                     const sixthInterval = (this.end - this.start) / 6;
                     switch (tools[i]) {
                         case 'home':
-                            this.smoothly({
+                            this.smoothlyMove({
                                 start: born - this.start,
                                 end: now - this.end
+                            })
+                                .then(() => {
+                                this.start = born;
+                                this.end = now;
                             });
                             break;
                         case 'left':
-                            this.smoothly({
+                            this.smoothlyMove({
                                 start: -sixthInterval,
                                 end: -sixthInterval
                             });
                             break;
                         case 'zoom-out':
-                            this.smoothly({
+                            this.smoothlyMove({
                                 start: -sixthInterval,
                                 end: sixthInterval
                             });
                             break;
                         case 'zoom-in':
-                            this.smoothly({
+                            this.smoothlyMove({
                                 start: sixthInterval,
                                 end: -sixthInterval
                             });
                             break;
                         case 'right':
-                            this.smoothly({
+                            this.smoothlyMove({
                                 start: sixthInterval,
                                 end: sixthInterval
                             });
@@ -82,24 +72,30 @@ export default class Timeline {
                 }
             }
         };
-        this.smoothly = (changeBy) => {
-            if (__classPrivateFieldGet(this, _Timeline_transitionInterval, "f")) {
-                clearInterval(__classPrivateFieldGet(this, _Timeline_transitionInterval, "f"));
-                __classPrivateFieldSet(this, _Timeline_transitionInterval, undefined, "f");
-            }
-            const duration = 250;
-            const frequency = 10;
-            __classPrivateFieldSet(this, _Timeline_transitionInterval, window.setInterval((() => {
-                let timePassed = 0;
-                return () => {
-                    if (timePassed > duration)
-                        return window.clearInterval(__classPrivateFieldGet(this, _Timeline_transitionInterval, "f"));
-                    const numTimesWillRepeat = duration / frequency;
-                    this.start += changeBy.start / numTimesWillRepeat;
-                    this.end += changeBy.end / numTimesWillRepeat;
-                    timePassed += frequency;
-                };
-            })(), frequency), "f");
+        this.smoothlyMove = (changeBy) => {
+            return new Promise((resolve, reject) => {
+                const duration = 250;
+                const animate = (() => {
+                    const initialStart = this.start;
+                    const initialEnd = this.end;
+                    let startingTimestamp = -1;
+                    const innerAnimate = (timestamp) => {
+                        if (startingTimestamp === -1 && timestamp === -1)
+                            return window.requestAnimationFrame(innerAnimate); //not ready yet
+                        if (startingTimestamp === -1 && timestamp !== -1) //make ready by starting timer
+                            startingTimestamp = timestamp;
+                        const timePassed = timestamp - startingTimestamp;
+                        const progress = timePassed / duration; //0 to 1
+                        if (progress >= 1)
+                            return resolve(); //finished
+                        this.start = initialStart + changeBy.start * progress;
+                        this.end = initialEnd + changeBy.end * progress;
+                        return window.requestAnimationFrame(innerAnimate);
+                    };
+                    return innerAnimate;
+                })();
+                animate(-1);
+            });
         };
         this.canvasEl = document.getElementById('timeline');
         this.canvasEl.addEventListener('click', this.clickEvent);
@@ -163,5 +159,4 @@ export default class Timeline {
         console.log('Scroll event', e);
     }
 }
-_Timeline_transitionInterval = new WeakMap();
 //# sourceMappingURL=Timeline.js.map
