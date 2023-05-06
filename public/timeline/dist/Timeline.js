@@ -145,7 +145,8 @@ export default class Timeline {
     renderEvent() {
     }
     renderControls() {
-        const { c, w, h, s } = this.getVars();
+        const { c } = this.getVars();
+        const imagePadding = 2; //inner image padding
         c.fillStyle = '#d9d9d9';
         c.strokeStyle = 'black';
         for (let i = 0; i < tools.length; i++) { //background rectangles
@@ -155,7 +156,7 @@ export default class Timeline {
         }
         for (let i = 0; i < tools.length; i++) { //images on top
             const tool = tools[i];
-            c.drawImage(this.images[tool], 10 + i * 40, 10, 30, 30);
+            c.drawImage(this.images[tool], 10 + i * 40 + imagePadding, 10 + imagePadding, 30 - 2 * imagePadding, 30 - 2 * imagePadding);
         }
     }
     wheelEvent(e) {

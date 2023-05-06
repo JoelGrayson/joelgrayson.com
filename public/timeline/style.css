@@ -19,6 +19,7 @@ body {
 #title {
     text-align: center;
     font-family: Myriad;
+    user-select: none;
 }
 
 #container {
