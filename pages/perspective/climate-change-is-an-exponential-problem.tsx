@@ -1,7 +1,5 @@
 import ArticleWrapper from '@/components/perspective/ArticleWrapper';
 import { P } from '@jcomponents/writing-components';
-import Image from 'next/image';
-import Link from 'next/link';
 
 export default function ClimateChangeIsAnExponentialProblem() {
     return <ArticleWrapper title='Climate Change Is an Exponential Problem' hyphenatedTitle='climate-change-is-an-exponential-problem' date={new Date('Aug 17, 2022')}>
