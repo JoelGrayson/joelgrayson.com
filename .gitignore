@@ -4,10 +4,13 @@ api.joelgrayson.com/private
 
 
 # Bloat
-**/.DS_Store
 node_modules
 .next
 .vscode
+
+
+# Platform-Specific
+**/.DS_Store
 
 
 # Large Files (so Github doesn't complain)
