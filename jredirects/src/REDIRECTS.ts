@@ -1,6 +1,8 @@
 import { redirects } from './_internals/types';
 
 export const temporary: redirects={ //302
+    '/fisher/index.html': ['/mr-fisher', '/mr. fisher', '/mister-fisher', '/paul-fisher', '/mrfisher', '/misterfisher', '/fisher'],
+
     // Polyfill the old wix website
     'https://joelgrayson.wixsite.com/joelgrayson/onedrive-download-link-generator': '/onedrive-download-link-generator',
     'https://joelgrayson.wixsite.com/joelgrayson/drive-download-link-generator': '/drive-download-link-generator',
