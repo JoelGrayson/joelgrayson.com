@@ -8,6 +8,12 @@ h2 {
     margin-bottom: 2rem;
 }
 
+summary {
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 9px;
+}
+
 .grid {
     display: grid;
 }
@@ -15,10 +21,41 @@ h2 {
 .item {
     display: flex;
     align-items: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 30px;
+    border: 1px solid #ccc;
+}
+
+.imageless-item {
+    border: 1px solid #ccc;
+    padding: 10px 30px;
 }
 
 .item img {
     padding-right: 10px;
+}
+
+
+/* Markdown */
+.markdown-h1 { font-weight: bold; font-size: 1.5rem; }
+.markdown-h2 { font-weight: bold; font-size: 1.3rem; }
+.markdown-h3 { font-weight: bold; font-size: 1.1rem; }
+.markdown-h4 { font-weight: bold; font-size: 1rem; }
+
+/* Regex
+Replace (?<!#)##[^#](.*)
+   with <div class='markdown-h2'>$1</div>
+ */
+
+
+/* j_table */
+.j_table {
+    border-collapse: collapse;
+    background-color: #ddf;
+}
+.j_table td, .j_table th {
+    border: 1px solid #aaa;
+    padding: .2rem .5rem;
+}
+.j_table>tbody>tr+tr>th {
+    text-align: left;
 }

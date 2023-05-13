@@ -7,6 +7,7 @@
     <title>Joel & Mr. Fisher</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://joelgrayson.com/software/articlify/plain.css">
+    <link rel="stylesheet" href="./prism.css">
 </head>
 <body>
     <h1 id="title">Record of Joel & Mr. Fisher</h1>
@@ -16,28 +17,268 @@
     
     
     <h2>10th Grade</h2>
+    <div class="imageless-item">
+        <a href="./files/10th/sorting-algorithms.zip">
+            <h3>Bucket Sort</h3>
+        </a>
+        <div>
+            <details>
+                <summary>Source code</summary>
+                <j_code language="python" src="./files/10th/bucket_sort.py" />
+            </details>
+
+            <b>Results (average of timing three tests)</b>
+            <table class="j_table">
+                <tbody>
+                    <tr>
+                        <th>Sort Method</th>
+                        <th>All</th>
+                        <th>Worst</th>
+                        <th>Best</th>
+                        <th>Random</th>
+                    </tr>
+                    <tr>
+                        <th>Bubble Sort</th>
+                        <td>4.8s</td>
+                        <td>5s</td>
+                        <td>0.4s</td>
+                        <td>0.4s</td>
+                    </tr>
+                    <tr>
+                        <th>Selection Sort</th>
+                        <td>5.1s</td>
+                        <td>2.1s</td>
+                        <td>2.1s</td>
+                        <td>2.5s</td>
+                    </tr>
+                    <tr>
+                        <th>Insertion Sort</th>
+                        <td>4s</td>
+                        <td>1.5s</td>
+                        <td>0.3s</td>
+                        <td>1.9s</td>
+                    </tr>
+                    <tr style="color: rgb(2, 2, 165);">
+                        <th>Bucket Sort</th>
+                        <td>.7s</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
     <a href="https://drive.google.com/file/d/1rWOVEmD6I8YOI1MT-i8WsyKw7QD7r91_/view?usp=sharing">
         <div class="item">
             <img src="./demos/10th/3-apis.png" alt="3 APIs" width="400px">
-            <div>3 APIs Demo (3.21.22)&emsp;</div>
-            <div>Click to watch video demo</div>
+            <div>
+                <div>3 APIs Demo (3.21.22)</div>
+                <div>Click to watch video demo</div>
+            </div>
         </div>
     </a>
-    <!-- <a href="./files/10th/word-generator.zip">
-        <div class="item">
-            <img src="./demos/10th/word-generator.png" alt="Word generator" width="400px">
-            <span>Functional Programming in Haskell (5.20.22)&emsp;</span>
+    <div class="imageless-item">
+        <div>Functional Programming in Haskell (5.20.22)&emsp;</div>
+        <details>
+            <summary>romanNumerals.hs - convert integers to roman numeral strings</summary>
+            <pre data-src="./files/10th/romanNumerals.hs">
+                <code class="language-hs">
+{-
+    Converts integer into roman numeral string representation
+    4 => IX
+    18 => XVIII
+    314 => CCCXIV
+    583 => DLXXXIII
+    848 => DCCCXLVIII
+    2022 => MMXXII
+
+    Symbol    Value
+    I          1
+    V          5
+    X          10
+    L          50
+    C          100
+    D          500
+    M          1000
+-}
+
+main :: IO ()
+main=do
+    print $ romanize 4
+    print $ romanize 18
+    print $ romanize 314
+    print $ romanize 583
+    print $ romanize 848
+    print $ romanize 2022
+
+jrepeat :: String -> Int -> String
+jrepeat str n = concat $ replicate n str --repeats a character n times
+
+
+romanize :: Int -> String
+romanize n
+    | n==0 = "" --base case
+    | n>4999 || n<=0 = "Only accepts numbers in range 0-4999" --range limitation
+    --thousands place
+    | n>=1000 = jrepeat "M" (n `div` 1000)++romanize (n `mod` 1000) -- "M" for every thousand
+    --hundreds place
+    | n>=900 = "CM"++romanize (n-900) --special case
+    | n>=500 = "D"++jrepeat "C" ((n-500) `div` 100)++romanize ((n-500) `mod` 100) -- "D" and "C" for every 100
+    | n>=400 = "CD"++romanize (n-400) --special case
+    | n>=100 = jrepeat "C" (n `div` 100)++romanize(n `mod` 100)
+    -- tens place
+    | n>=90 = "XC"++romanize(n-90) --special case
+    | n>=50 = "L"++jrepeat "X" ((n-50) `div` 10)++romanize ((n-50) `mod` 10)
+    | n>=40 = "XL"++romanize(n-40) --special case
+    | n>=10 = jrepeat "X" (n `div` 10)++romanize(n `mod` 10)
+    -- units place
+    | n>=9 = "IX" --special case
+    | n>=5 = "V"++jrepeat "I" (n-5)
+    | n==4 = "IV" --special case
+    | n<=3 && n>=1 = jrepeat "I" n
+    | otherwise = ""</code>
+            </pre>
+        </details>
+        <details>
+            <summary>booleans.hs - functional implementation of booleans</summary>
+            <pre>
+                <code class='language-hs'>
+-- Bools
+jtrue :: p1 -> p2 -> p1
+jtrue x y=x --returns first
+jfalse :: p1 -> p2 -> p2
+jfalse x y=y --returns second
+
+-- Creating Operators
+jnot x=x jfalse jtrue
+jand x y=x (y jtrue jfalse) jfalse
+jor x y=x jtrue (y jtrue jfalse)
+
+-- Using prev functions:
+jxor x y=jnot (jand x y) `jand` jor x y jtrue jfalse --not both, but at least one
+-- Just lambda:
+jxor2 x y=x (y jfalse jtrue) (y jtrue jfalse)
+
+
+main=do
+    putStrLn "Bools"
+    print $ jtrue 1 0
+    print $ jfalse 1 0
+
+    putStrLn "Not"
+    print $ jnot jtrue 1 0
+    print $ jnot jfalse 1 0
+
+    putStrLn "And"
+    print $ jand jtrue jtrue 1 0
+    print $ jand jfalse jtrue 1 0
+    print $ jand jtrue jfalse 1 0
+    print $ jand jfalse jfalse 1 0
+
+    putStrLn "Or"
+    print $ jor jtrue jtrue 1 0
+    print $ jor jtrue jfalse 1 0
+    print $ jor jfalse jtrue 1 0
+    print $ jor jfalse jfalse 1 0
+
+    putStrLn "Xor"
+    print $ jxor jtrue jtrue 1 0
+    print $ jxor jtrue jfalse 1 0
+    print $ jxor jfalse jtrue 1 0
+    print $ jxor jfalse jfalse 1 0
+
+    putStrLn "Xor2"
+    print $ jxor2 jtrue jtrue 1 0
+    print $ jxor2 jtrue jfalse 1 0
+    print $ jxor2 jfalse jtrue 1 0
+    print $ jxor2 jfalse jfalse 1 0                    
+                </code>
+            </pre>
+        </details>
+    </div>
+    <div class="imageless-item" style='padding-top: 40px; padding-bottom: 40px;'>
+        <a href="./files/10th/hash-table.zip">
+            <span>Hash Table Python Implementation (4.23.22)&emsp;</span>
+        </a>
+        <details>
+            <summary>HashTable Documentation</summary>
+            <div class='markdown-h2'>Getting Started</div>
+            <code class="language-python">from HashTable import HashTable
+ht=HashTable()</code>
+
+            <div class='markdown-h2'>Methods</div>
+            get, set, clear, remove, size, is_empty, has, keys, values, inspect
+
+            <div class='markdown-h3'>get(key) -> value</div>
+                Returns the HashMap's value of the key
+
+            <div class='markdown-h3'>set(key, value) -> None</div>
+                Sets the HashMap to your value at the key
+
+            <div class='markdown-h3'>clear() -> None</div>
+                Removes all the key-value pairs, emptying the HashMap.
+
+            <div class='markdown-h3'>remove(key) -> value</div>
+                Removes the key-value pairs at the specified key. Returns the removed value.
+
+            <div class='markdown-h3'>size() -> int</div>
+                Returns the number of key-value pairs.
+
+            <div class='markdown-h3'>is_empty() -> bool</div>
+                Returns whether or not the HashMap has no key-value pairs.
+
+            <div class='markdown-h3'>has(key) -> bool</div>
+                Returns whether or not the HashMap has a key-value pair of the specified key.
+
+            <div class='markdown-h3'>keys() -> array[any]</div>
+                Returns all the keys of the HashMap in an array.
+
+            <div class='markdown-h3'>values() -> array[any]</div>
+                Returns all the values of the HashMap in an array.
+
+            <div class='markdown-h3'>inspect() -> str</div>
+                Returns the raw self.data for development purposes
+
+
+            <div class='markdown-h2'>Example</div>
+            <pre>
+                <code class="language-python">
+>>> ht=HashTable()
+>>> ht.set('hi', 'world')
+>>> ht.get('hi')
+'world'
+>>> ht.set('authors', ['joel', 'david'])
+>>> print(ht)
+HashTable {
+    authors: ['joel', 'david'],
+    hi: world
+}
+>>> ht.has('hi')
+True
+>>> ht.size()
+2
+>>> ht.keys()
+['authors', 'hi']
+>>> ht.values()
+[['joel', 'david'], 'world']
+>>> ht.remove('authors')
+['joel', 'david']
+>>> print(ht)
+HashTable {
+    hi: world
+}
+>>> ht.clear()
+>>> print(ht)
+{}
+                </code>
+            </pre>
         </div>
-    </a>
+        </details>
+    </div>
     <a href="./files/10th/word-generator.zip">
         <div class="item">
-            <img src="./demos/10th/word-generator.png" alt="Word generator" width="400px">
-            <span>Hash-Table Python Implementation (4.23.22)&emsp;</span>
-        </div>
-    </a> -->
-    <a href="./files/10th/word-generator.zip">
-        <div class="item">
-            <img src="./demos/10th/word-generator.png" alt="Word generator" width="400px">
+            <img src="./demos/10th/word-generator.png" alt="Word generator" height="250px">
             <span>Word Generator (5.20.22)&emsp;</span>
         </div>
     </a>
@@ -93,5 +334,23 @@
             </div>
         </a>
     </div>
+
+    <script src="./prism.js" data-manual></script>
+    <script>
+        // Processing <j_code language='python' src='./files/*' />
+        document.querySelectorAll('j_code').forEach(el=>{
+            const lang=el.getAttribute('language');
+            const src=el.getAttribute('src');
+            fetch(src).then(res=>res.text()).then(text=>{
+                const preEl=document.createElement('pre');
+                    const codeEl=document.createElement('code');
+                    codeEl.innerHTML=Prism.highlight(text, Prism.languages[lang], lang);
+                    codeEl.className='language-'+lang;
+                    preEl.appendChild(codeEl);
+                el.appendChild(preEl);
+                Prisma.highlightElement(text);
+            });
+        });
+    </script>
 </body>
 </html>
