@@ -1,4 +1,5 @@
 import JGraphicsLibrary from './JGraphicsLibrary.js';
+import { eventT } from './e.js';
 
 const born: year=2006; //default start
 const now: year=new Date().getFullYear(); //default end
@@ -19,6 +20,7 @@ type forEachYearProps={
 export default class Timeline extends JGraphicsLibrary {
     // Elements
     images: images;
+    events: eventT[];
 
     // View settings
     start: year;
@@ -28,7 +30,7 @@ export default class Timeline extends JGraphicsLibrary {
     // Config
     xPadding=15;
 
-    constructor() { //setup
+    constructor(events: eventT[]) { //setup
         super(document.getElementById('timeline') as HTMLCanvasElement)
         this.canvasEl.addEventListener('click', this.clickEvent);
         this.canvasEl.addEventListener('wheel', this.wheelEvent);
@@ -36,6 +38,8 @@ export default class Timeline extends JGraphicsLibrary {
         this.start=born;
         this.end=now;
         this.showControls=true;
+        this.events=events;
+        console.log(events);
 
         const resizeCanvas=()=>{
             const lowestEven=(e: number)=>e%2===0 ? e : Math.floor(e/2)*2; //must be even so that strokewidth is not blurry
@@ -103,7 +107,26 @@ export default class Timeline extends JGraphicsLibrary {
     }
 
     renderEvent() {
-
+        for (const e of this.events) {
+            /* Example e:
+            {
+                "scope": "range",
+                "startDate": "2019-09-01T04:00:00.000Z", //typeof date
+                "endDate": "2023-05-11T11:28:16.458Z", //typeof enddate
+                "rangeScope": "month",
+                "dateString": "Sep 2019-Sep 2019",
+                "title": "Student Government Grade Representative",
+                "note": "",
+                "color": "hsla(82.55540965795339, 32.82372588962783%, 90.63269527226213%, 42.10319331808845%)" //typeof string
+            } */
+            // switch (e.scope) {
+            //     case 'day':
+            //     case 'month':
+            //     case 'year':
+            //     case 'range':
+            // }
+            // this.date2X(e.startDate);
+        }
     }
     
     renderControls() {
@@ -226,12 +249,12 @@ export default class Timeline extends JGraphicsLibrary {
         }
     }
 
-    year2X() { //get the x offset of a year
-        
+    date2X(date: Date): number { //get the x offset of a year
+        return 0;
     }
 
-    x2Year() { //turn x offset into year float
-
+    x2YDate(x: number): Date { //turn x offset into year float
+        return new Date();
     }
     
     getVars: ()=>{ //returns variables that should not be set through this.var=

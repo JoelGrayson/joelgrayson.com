@@ -1,3 +1,4 @@
 import Timeline from './Timeline.js';
+import events from './data.js';
 
-const timeline=new Timeline();
+new Timeline(events);

@@ -3,7 +3,7 @@ const born = 2006; //default start
 const now = new Date().getFullYear(); //default end
 const tools = ['home', 'left', 'zoom-out', 'zoom-in', 'right'];
 export default class Timeline extends JGraphicsLibrary {
-    constructor() {
+    constructor(events) {
         super(document.getElementById('timeline'));
         // Config
         this.xPadding = 15;
@@ -120,6 +120,8 @@ export default class Timeline extends JGraphicsLibrary {
         this.start = born;
         this.end = now;
         this.showControls = true;
+        this.events = events;
+        console.log(events);
         const resizeCanvas = () => {
             const lowestEven = (e) => e % 2 === 0 ? e : Math.floor(e / 2) * 2; //must be even so that strokewidth is not blurry
             this.canvasEl.width = lowestEven(window.innerWidth - 20); //canvas padding of 10px on both sides
@@ -166,6 +168,26 @@ export default class Timeline extends JGraphicsLibrary {
         this.drawLine(rightMost, middle, rightMost - 9, middle);
     }
     renderEvent() {
+        for (const e of this.events) {
+            /* Example e:
+            {
+                "scope": "range",
+                "startDate": "2019-09-01T04:00:00.000Z", //typeof date
+                "endDate": "2023-05-11T11:28:16.458Z", //typeof enddate
+                "rangeScope": "month",
+                "dateString": "Sep 2019-Sep 2019",
+                "title": "Student Government Grade Representative",
+                "note": "",
+                "color": "hsla(82.55540965795339, 32.82372588962783%, 90.63269527226213%, 42.10319331808845%)" //typeof string
+            } */
+            switch (e.scope) {
+                case 'day':
+                case 'month':
+                case 'year':
+                case 'range':
+            }
+            this.date2X(e.startDate);
+        }
     }
     renderControls() {
         const { c } = this.getVars();
@@ -186,9 +208,11 @@ export default class Timeline extends JGraphicsLibrary {
         console.log('Scroll event', e);
         console.log('Scrolling into', e.offsetX, e.offsetY);
     }
-    year2X() {
+    date2X(date) {
+        return 0;
     }
-    x2Year() {
+    x2YDate(x) {
+        return new Date();
     }
 }
 //# sourceMappingURL=Timeline.js.map

@@ -1,3 +1,4 @@
 import Timeline from './Timeline.js';
-const timeline = new Timeline();
+import events from './data.js';
+new Timeline(events);
 //# sourceMappingURL=main.js.map

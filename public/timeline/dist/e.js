@@ -4,7 +4,10 @@ export default function e(title, date, note = '', color) {
     var _a, _b;
     // Default values
     (_a = date.scope) !== null && _a !== void 0 ? _a : (date.scope = 'range');
-    (_b = date.rangeScope) !== null && _b !== void 0 ? _b : (date.rangeScope = 'month');
+    if (date.rangeScope == undefined) { //setting rangeScope sets scope to range
+        date.scope = 'range';
+        (_b = date.rangeScope) !== null && _b !== void 0 ? _b : (date.rangeScope = 'month');
+    }
     color !== null && color !== void 0 ? color : (color = colorGenerator.next().value);
     // Return event object based on scope
     switch (date.scope) {
@@ -38,7 +41,7 @@ export default function e(title, date, note = '', color) {
                 title, note, color
             };
         case 'range':
-            if (date.year == undefined || date.startDate == undefined || date.endDate == undefined)
+            if (!(date.year == undefined || (date.startDate == undefined || date.endDate == undefined)))
                 throw new Error('Year must be specified');
             const startDate = turnIntoDate(date.startDate);
             const endDate = date.endDate === 'today' ? new Date() : turnIntoDate(date.endDate);

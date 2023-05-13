@@ -25,7 +25,10 @@ const colorGenerator=generateColor();
 export default function e(title: string, date: propsT, note: string | Element='', color?: string): eventT {
     // Default values
     date.scope??='range';
-    date.rangeScope??='month';
+    if (date.rangeScope==undefined) { //setting rangeScope sets scope to range
+        date.scope='range';
+        date.rangeScope??='month';
+    }
     color??=colorGenerator.next().value as string;
     
     // Return event object based on scope
@@ -57,7 +60,7 @@ export default function e(title: string, date: propsT, note: string | Element=''
                 title, note, color
             };
         case 'range':
-            if (date.year==undefined || date.startDate==undefined || date.endDate==undefined) throw new Error('Year must be specified');
+            if (!(date.year==undefined || (date.startDate==undefined || date.endDate==undefined))) throw new Error('Year must be specified');
             const startDate=turnIntoDate(date.startDate);
             const endDate=date.endDate==='today' ? new Date() : turnIntoDate(date.endDate);
             return {
