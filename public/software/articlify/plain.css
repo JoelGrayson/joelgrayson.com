@@ -1,33 +1,32 @@
 html {
-  background-color: #ddd;
-  padding: 0;
-  margin: 0;
-  font-family: Lato, Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.6rem;
+    background-color: #ddd;
+    padding: 0;
+    margin: 0;
+    font-family: Lato, Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6rem;
 }
 
 body {
-  margin: 0 auto;
-  width: 90%;
-  max-width: 55rem;
-  border: 2px solid #aaa;
-  border-radius: .6rem;
-  background-color: white;
-  padding: 0.3rem 1rem;
-  margin-top: 1rem;
-  min-height: calc(100vh - .5rem - 1rem - 1rem);
+    margin: 0 auto;
+    width: 90%;
+    max-width: 55rem;
+    border: 2px solid #aaa;
+    border-radius: .6rem;
+    background-color: white;
+    padding: 0.3rem 1rem;
+    margin-top: 1rem;
+    min-height: calc(100vh - .5rem - 1rem - 1rem);
 }
 
-code, code.light {
-  font-family: monospace;
-  padding: .2rem .35rem;
-  color: #eb5757;
-  background-color: #ededeb;
-  border-radius: .3rem;
+code.light {
+    font-family: monospace;
+    padding: .2rem .35rem;
+    color: #eb5757;
+    background-color: #ededeb;
+    border-radius: .3rem;
 }
 
 code.dark {
-  background-color: #222;
-  color: #ff4d4d;
+    background-color: #222;
+    color: #ff4d4d;
 }
-/*# sourceMappingURL=plain.css.map */
