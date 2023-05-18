@@ -11,8 +11,8 @@ export default function JThreeDots() { //interactive signature
     };
 
     return <Link href='/' className='block w-[55px] sm:w-[65px]'>
-        <div className='flex items-center pr-4 select-none w-[30px] sm:w-[40px]'>
-            <div className='relative'>
+        <div className='flex items-center pr-4 select-none w-[30px] sm:w-[40px] cursor-pointer'>
+            <div className='relative cursor-pointer'>
                 {/* eslint-disable */}
                     {/* Using <img> below instead of <Image> because reloads onHover */}
                     <img src={`/image/ucjg/circle-signature-animation.gif?num=${loadNum}`} alt='Joel Grayson Circle Signature Animation'
@@ -22,11 +22,12 @@ export default function JThreeDots() { //interactive signature
                         style={{
                             position: 'absolute',
                             left: '6.3px',
-                            top: '5px'
+                            top: '5px',
+                            cursor: 'pointer'
                         }}
                     />
                 {/* eslint-enable */}
-                <svg width='52' height='52' viewBox='0 0 154 154' fill='none' className='w-[39px] sm:w-[52px]'>
+                <svg width='52' height='52' viewBox='0 0 154 154' fill='none' className='w-[39px] sm:w-[52px] cursor-pointer'>
                     <circle cx='77' cy='77' r='73' fill='#F7F7F7' stroke='#00369B' strokeWidth='8'/>
                     <rect x='19' y='14' width='120' height='120' fill='url(#pattern0)'/>
                     <defs>

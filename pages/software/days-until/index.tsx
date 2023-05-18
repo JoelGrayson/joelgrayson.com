@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import Page from '../../../components/global/Page';
+import Page from '@/components/global/Page';
 
 export default function DaysUntil() { // /software/days-until?date=11.7.2022&event=test
     const router=useRouter(); 

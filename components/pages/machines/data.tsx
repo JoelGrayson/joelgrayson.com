@@ -25,7 +25,17 @@ export const machines: Machine[]=[
         html: DefaultTemplate({
             date: '7.12.2021',
             title: <>Eater <small>(Arduino Game)</small></>,
-            desc: <>The challenge was to create and present a safe in under 24 hours using Arduino. <br/> Code: <Link href='https://github.com/JoelGrayson/Eater-Arduino-Game'>github.com/JoelGrayson/Eater-Arduino-Game</Link></>,
+            desc: <>
+                The challenge was to create and present a safe in under 24 hours using Arduino. <br/> Code: <Link href='https://github.com/JoelGrayson/Eater-Arduino-Game'>github.com/JoelGrayson/Eater-Arduino-Game</Link>
+                <div style={{
+                    position: 'absolute',
+                    left: 490,
+                    top: 200
+                }}>
+                    <Image src='/image/machines/eater-inner-prototype.jpg' width='300' height='200' alt='Eater Inner Prototype' style={{ borderRadius: 10 }} />
+                    <p className='text-center'>Inner circuitry that connects the Arduino, number pad, lock, screen, and lights.</p>
+                </div>
+            </>,
             yt: 'f52mLKATghw'
         })
     },
@@ -60,8 +70,8 @@ export const machines: Machine[]=[
             title: 'Picnic Tables' //sort alphabetically
         },
         html: <div className='relative h-[400px]'>
-            <Image className='absolute top-0 rounded-xl' src='/image/machines/picnic-table.jpg' width='348' height='258' alt='Picnic Table' />
-            <Image className='absolute top-52 left-72 rounded-xl' src='/image/machines/constructing-picnic-table.gif' width='237' height='164' alt='Constructing Picnic Table' />
+            <Image className='absolute top-0 rounded-xl' src='/image/machines/picnic-table.jpg' width='300' height='242' alt='Picnic Table' />
+            <Image className='absolute top-48 left-64 rounded-xl' src='/image/machines/constructing-picnic-table.gif' width='237' height='164' alt='Constructing Picnic Table' />
             <div className='absolute left-[370px] top-0'>
                 <p>5.6.21</p>
                 <h3>Picnic Tables</h3>
@@ -95,18 +105,83 @@ export const machines: Machine[]=[
             title: 'Tesla Coil' //sort alphabetically
         },
         html: <div className='relative h-[240px]'>
-            <Image src='/image/machines/tesla-coil.jpg' width='343' height='240' alt='Fundraising for American Red Cross' style={{
+            <Image src='/image/machines/tesla-coil.jpg' width='350' height='213' alt='Fundraising for American Red Cross' style={{
                 position: 'absolute',
                 left: 0,
                 top: 0,
                 borderRadius: 10
             }} />
+            <Image src='/image/machines/building-tesla-coil.jpg' width='263' height='180' alt='Building the Tesla Coil' style={{
+                position: 'absolute',
+                left: 370,
+                top: 50,
+                borderRadius: 10
+            }} />
             <div style={{
                 position: 'absolute',
-                left: 380
+                left: 380,
+                top: -21
             }}>
                 <span>5.2020</span>
-                <h3 style={{fontSize: '1.4rem'}}>Tesla Coil</h3>
+                <h3 style={{ fontSize: '1.4rem', marginTop: -5 }}>Tesla Coil</h3>
+            </div>
+        </div>
+    },
+    {
+        sortBy: {
+            rank: 3, //sort by best project
+            date: new Date('May 1, 2020'), //sort by date of project
+            title: 'Stilts' //sort alphabetically
+        },
+        html: <div className='relative h-[300px]'>
+            <Yt>-McMpUTj_SQ</Yt>
+            <div style={{
+                position: 'absolute',
+                left: 500,
+                top: 0
+            }}>
+                <span>5.2020</span>
+                <h3 style={{fontSize: '1.4rem'}}>Stilts</h3>
+                <p>Made in maker class.</p>
+            </div>
+        </div>
+    },
+    {
+        sortBy: {
+            rank: 3, //sort by best project
+            date: new Date('Apr 25, 2020'), //sort by date of project
+            title: 'Piernátil' //sort alphabetically
+        },
+        html: <div className='relative h-[300px]'>
+            <Yt>iKWFrjWFiek</Yt>
+            <div style={{
+                position: 'absolute',
+                left: 500,
+                top: 0
+            }}>
+                <span>4.2020</span>
+                <h3 style={{fontSize: '1.4rem'}}>Piernátil</h3>
+                <p>Mi anuncio para una computadora inventada. Ese video fue parte de mi clase de español.</p>
+            </div>
+        </div>
+    },
+    {
+        sortBy: {
+            rank: 3, //sort by best project
+            date: new Date('Nov 3, 2019'), //sort by date of project
+            title: 'Wooden Vending Machine' //sort alphabetically
+        },
+        html: <div className='relative h-[300px] flex'>
+            <div className='max-w-[290px]'>
+                <span>2019</span>
+                <h3 style={{fontSize: '1.4rem'}}>Wooden Vending Machine</h3>
+                <p>Accepts a quarter for resistors. Uses the same mechanism as my cardboard vending machine except made from a more durable material, wood.</p>
+            </div>
+            <div style={{
+                position: 'absolute',
+                left: 300
+            }}>
+                <Yt>rtzCYWZvnCQ</Yt>
             </div>
         </div>
     },
@@ -137,5 +212,89 @@ export const machines: Machine[]=[
                 <h3 style={{fontSize: '1.4rem'}}>Fundraising for the American Red Cross</h3>
             </div>
         </div>
-    }
+    },
+    {
+        sortBy: {
+            rank: 3, //sort by best project
+            date: new Date('May 31, 2016'), //sort by date of project
+            title: 'Wooden Pinball Machine' //sort alphabetically
+        },
+        html: <div className='relative h-[300px]'>
+            <Image src='/image/machines/wooden-pinball-machine.jpg' width='343' height='268' alt='Fundraising for American Red Cross' style={{
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                borderRadius: 10
+            }} />
+            <div style={{
+                position: 'absolute',
+                left: 380
+            }}>
+                <span>2016</span>
+                <h3 style={{fontSize: '1.4rem'}}>Wooden Pinball Machine</h3>
+                <p>Made afterschool in my school&apos;s woodshop. <Link className='styled' href='https://www.youtube.com/watch?v=uZWBtcp2BMU&list=PLPq06AMW3cIGYmcroupuIOC-vkwSVSW0I'>Demo video here</Link>.</p>
+            </div>
+        </div>
+    },
+    {
+        sortBy: {
+            rank: 3, //sort by best project
+            date: new Date('May 31, 2016'), //sort by date of project
+            title: 'Cardboard Fortune Teller' //sort alphabetically
+        },
+        html: <div className='relative h-[300px] flex'>
+            <Yt>KP3Bd6e4nGQ</Yt>
+            <div style={{
+                position: 'absolute',
+                left: 500
+            }}>
+                <span>2016</span>
+                <h3 style={{fontSize: '1.4rem'}}>Cardboard Fortune Teller</h3>
+                <p>I used to love collecting cardboard from my building&apos; recycling bin and Staples to build machines like this.</p>
+            </div>
+        </div>
+    },
+    {
+        sortBy: {
+            rank: 3, //sort by best project
+            date: new Date('May 30, 2016'), //sort by date of project
+            title: 'Cardboard Vending Machine' //sort alphabetically
+        },
+        html: <div className='relative h-[300px] flex'>
+            <div>
+                <span>2016</span>
+                <h3 style={{fontSize: '1.4rem'}}>Cardboard Vending Machine</h3>
+                <p>Accepts a quarter for a tic-tac.</p>
+            </div>
+            <div style={{
+                position: 'absolute',
+                left: 300
+            }}>
+                <Yt>g3gHsebEoJQ</Yt>
+            </div>
+        </div>
+    },
+    {
+        sortBy: {
+            rank: 3, //sort by best project
+            date: new Date('May 30, 2016'), //sort by date of project
+            title: 'The Gumball Machine' //sort alphabetically
+        },
+        html: <div className='relative h-[300px] flex'>
+            <Image src='/image/machines/gumball-machine.jpg' width='314' height='290' alt='Gumball Machine' style={{
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                borderRadius: 10
+            }} />
+            <div style={{
+                position: 'absolute',
+                left: 370
+            }}>
+                <span>circa 2015</span>
+                <h3 style={{fontSize: '1.4rem'}}>The Gumball Machine</h3>
+                <p>My oldest creation. It stores marbles.</p>
+            </div>
+        </div>
+    },
 ];

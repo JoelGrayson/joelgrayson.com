@@ -20,5 +20,5 @@ export function DefaultTemplate({date, title, desc, yt}: any) {
 }
 
 export function Yt({children}: any) {
-    return <iframe width='560' height='315' src={`https://www.youtube.com/embed/${children}`} title='YouTube video player' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowFullScreen/>;
+    return <iframe width='476' height='268' src={`https://www.youtube.com/embed/${children}`} title='YouTube video player' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowFullScreen/>;
 }

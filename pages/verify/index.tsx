@@ -1,6 +1,6 @@
-import Page from '../../components/global/Page';
+import Page from '@/components/global/Page';
 import Button from '@jcomponents/button';
-import { dateRegex, SignedMessage } from '../../components/verify/helpers';
+import { dateRegex, SignedMessage } from '@/components/verify/helpers';
 import React, { useState, useCallback, useEffect } from 'react';
 import Modal from '@jcomponents/modal';
 import Router, { useRouter } from 'next/router';

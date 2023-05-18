@@ -17,22 +17,31 @@ export default function Gallery({ images, renderChildren, galleryOpen, setGaller
         while (newIndex<0)
             newIndex+=numImages;
         
+        console.log('Going left', {index, newIndex, numImages});
         setIndex(newIndex);
     }
+
     function galleryRight() { //increment image index or loop around to start
+        console.log('Going right', {index});
         setIndex((index+1) % numImages);
     }
+
+    const eventHandler=(e: KeyboardEvent)=>{
+        if (!galleryOpen) return;
+        switch (e.key) {
+            case 'ArrowLeft': return galleryLeft();
+            case 'ArrowRight': return galleryRight();
+            case 'Escape': return setGalleryOpen(false);
+            default: return;
+        }
+    };
+
     useEffect(()=>{
-        document.addEventListener('keyup', e=>{
-            if (galleryOpen) {
-                if (e.key==='ArrowLeft') galleryLeft();
-                else if (e.key==='ArrowRight') galleryRight();
-                if (e.key==='Escape') setGalleryOpen(false);
-            }
-        }, true);
-    });
+        document.addEventListener('keyup', eventHandler, true);
+        return ()=>document.removeEventListener('keyup', eventHandler, true);
+    }, [numImages]);
     
-    return <div id='gallery'>{
+    return <div id='gallery-container'>{
         galleryOpen && 
         <div id='gallery' style={{
             position: 'fixed',
@@ -41,7 +50,8 @@ export default function Gallery({ images, renderChildren, galleryOpen, setGaller
             width: '100vw',
             height: '100vh',
             backgroundColor: 'white',
-            zIndex: 1
+            zIndex: 1,
+            overflow: 'hidden'
         }}>
             {/* Close Button */}
             <Button onClick={()=>setGalleryOpen(false)} style={{

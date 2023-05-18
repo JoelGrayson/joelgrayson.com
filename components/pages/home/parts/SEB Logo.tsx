@@ -1,5 +1,5 @@
 // import { useState } from 'react';
-import styles from '../../../../styles/home/logo.module.css';
+import styles from '@/styles/home/logo.module.css';
 import Image from 'next/image';
 
 export default function SEBLogo({size=80}: {size?: number}) {

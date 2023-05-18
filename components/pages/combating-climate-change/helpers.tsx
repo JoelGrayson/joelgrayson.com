@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import styles from '../../../styles/ccc/sections.module.css';
+import styles from '@/styles/ccc/sections.module.css';
 
 export function Section({title, children}: {title: string, children: ReactNode}) {
     return <section className={styles.section}>

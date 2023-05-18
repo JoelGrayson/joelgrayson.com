@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import Page from '../../components/global/Page';
-// import styles from '../../styles/ccc/sections.module.css';
-import SEBLogo from '../../components/pages/home/parts/SEB Logo';
+import Page from '@/components/global/Page';
+// import styles from '@/styles/ccc/sections.module.css';
+import SEBLogo from '@/components/pages/home/parts/SEB Logo';
 import Image from 'next/image';
 import Viewer from './Viewer';
 import Link from 'next/link';
-import { Section, Action } from '../../components/pages/combating-climate-change/helpers';
+import { Section, Action } from '@/components/pages/combating-climate-change/helpers';
 import { viewers } from './InfoRenderer';
 // import { ButtonIcon,  } from '@jcomponents/button'
 import Button from '@jcomponents/button';

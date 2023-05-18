@@ -1,6 +1,6 @@
 import Link from '@jcomponents/link';
-import Page from '../../../components/@jcomponents/Page';
-import Code from '../../../components/@jcomponents/Code';
+import Page from '@/components/@jcomponents/Page';
+import Code from '@/components/@jcomponents/Code';
 import Button from '@jcomponents/button';
 
 export default function LinkDoc() {

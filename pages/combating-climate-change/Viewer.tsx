@@ -1,5 +1,5 @@
-import styles from '../../styles/ccc/viewer.module.css';
-import UpDownArrow from '../../components/UpDownArrow';
+import styles from '@/styles/ccc/viewer.module.css';
+import UpDownArrow from '@/components/UpDownArrow';
 import InfoRenderer, { viewers } from './InfoRenderer';
 
 export default function Viewer({ status, setStatus }: { status: viewers, setStatus: Function }) {

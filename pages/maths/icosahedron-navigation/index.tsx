@@ -1,4 +1,4 @@
-import Page from '../../../components/global/Page';
+import Page from '@/components/global/Page';
 import Button from '@jcomponents/button';
 import styles from './btn-icon.module.css';
 import Link from 'next/link';

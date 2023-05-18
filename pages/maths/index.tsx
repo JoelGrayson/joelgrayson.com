@@ -1,4 +1,4 @@
-import Page from '../../components/global/Page';
+import Page from '@/components/global/Page';
 import Link from 'next/link';
 import { css } from '@emotion/css';
 import Image from 'next/image';
