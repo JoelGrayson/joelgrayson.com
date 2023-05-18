@@ -11,7 +11,7 @@ export interface Machine {
 };
 
 export function DefaultTemplate({date, title, desc, yt}: any) {
-    return <div>
+    return <div className='relative'>
         <div className='date'>{date}</div>
         <h3 className='title'>{title}</h3>
         <div className='desc'>{desc}</div>

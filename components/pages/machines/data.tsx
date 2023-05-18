@@ -11,8 +11,33 @@ export const machines: Machine[]=[
         },
         html: DefaultTemplate({
             date: '7.15.2021',
+            title: <>Energy T-Shirt</>,
+            desc: <>
+                <Image src='/image/machines/energy-t-shirt.jpg' height='300' width='200' alt='Energy T-Shirt Photo' />
+                <div>This t-shirt makes a noise proportional to the amount of light the solar panels receive, also powering a green fan. There is a back-up battery supply for the lights.</div>
+            </>
+        })
+    },
+    {
+        sortBy: {
+            rank: 3, //sort by best project
+            date: new Date('July 15, 2021'), //sort by date of project
+            title: 'Guardbox' //sort alphabetically
+        },
+        html: DefaultTemplate({
+            date: '7.15.2021',
             title: <>Guardbox <small>(Arduino Safe)</small></>,
-            desc: <>The challenge was to create and present a safe in under 24 hours using Arduino. <br/> Code: <Link href='https://github.com/JoelGrayson/Guardbox'>github.com/JoelGrayson/Guardbox</Link></>,
+            desc: <>
+                The challenge was to create and present a safe in under 24 hours using Arduino. <br/> Code: <Link className='styled'  href='https://github.com/JoelGrayson/Guardbox'>github.com/JoelGrayson/Guardbox</Link>
+                <div style={{
+                    position: 'absolute',
+                    left: 490,
+                    top: 10
+                }}>
+                    <Image src='/image/machines/eater-inner-prototype.jpg' width='300' height='200' alt='Eater Inner Prototype' style={{ borderRadius: 10 }} />
+                    <p className='text-center'>Inner circuitry that connects the Arduino, number pad, lock, screen, and lights.</p>
+                </div>
+            </>,
             yt: 'DbfRmZZx4VA'
         })
     },
@@ -26,15 +51,8 @@ export const machines: Machine[]=[
             date: '7.12.2021',
             title: <>Eater <small>(Arduino Game)</small></>,
             desc: <>
-                The challenge was to create and present a safe in under 24 hours using Arduino. <br/> Code: <Link href='https://github.com/JoelGrayson/Eater-Arduino-Game'>github.com/JoelGrayson/Eater-Arduino-Game</Link>
-                <div style={{
-                    position: 'absolute',
-                    left: 490,
-                    top: 200
-                }}>
-                    <Image src='/image/machines/eater-inner-prototype.jpg' width='300' height='200' alt='Eater Inner Prototype' style={{ borderRadius: 10 }} />
-                    <p className='text-center'>Inner circuitry that connects the Arduino, number pad, lock, screen, and lights.</p>
-                </div>
+                Game made in C++ for the Arduino.
+                <br/> Code: <Link className='styled' href='https://github.com/JoelGrayson/Eater-Arduino-Game'>github.com/JoelGrayson/Eater-Arduino-Game</Link>
             </>,
             yt: 'f52mLKATghw'
         })
@@ -53,10 +71,10 @@ export const machines: Machine[]=[
                     <div className='w-[80%]'>
                         <div>This project depicts the dystopian world many people imagine at the thought of nuclear energy.
                         As a nuclear proponent myself (I wrote an article on my thoughts here), I wanted to explore the fear.</div>
-                        <div>Website: <Link href='https://joelgrayson.github.io/Nuclear-Dystopia'>joelgrayson.github.io/Nuclear-Dystopia</Link></div>
-                        <div>Code: <Link href='https://github.com/JoelGrayson/Guardbox'>github.com/JoelGrayson/Guardbox</Link></div>
+                        <div>Website: <Link className='styled'  href='https://joelgrayson.github.io/Nuclear-Dystopia'>joelgrayson.github.io/Nuclear-Dystopia</Link></div>
+                        <div>Code: <Link className='styled'  href='https://github.com/JoelGrayson/Guardbox'>github.com/JoelGrayson/Guardbox</Link></div>
                     </div>
-                    <Link href='https://joelgrayson.github.io/Nuclear-Dystopia/' target='_blank'>
+                    <Link className='styled'  href='https://joelgrayson.github.io/Nuclear-Dystopia/' target='_blank'>
                         <Image width='170' height='154' className='hover:shadow-xl hover:outline-2 outline-double transition-none outline-0' src='/image/machines/nuclear-dystopia-thumbnail.jpg' alt='Thumbnail' />
                     </Link>
                 </div>

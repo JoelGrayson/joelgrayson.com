@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import Button from '@jcomponents/button';
 
 export default function Gallery({ images, renderChildren, galleryOpen, setGalleryOpen, index, setIndex }: {
@@ -26,7 +26,7 @@ export default function Gallery({ images, renderChildren, galleryOpen, setGaller
         setIndex((index+1) % numImages);
     }
 
-    const eventHandler=(e: KeyboardEvent)=>{
+    const eventHandler=useCallback((e: KeyboardEvent)=>{
         if (!galleryOpen) return;
         switch (e.key) {
             case 'ArrowLeft': return galleryLeft();
@@ -34,7 +34,8 @@ export default function Gallery({ images, renderChildren, galleryOpen, setGaller
             case 'Escape': return setGalleryOpen(false);
             default: return;
         }
-    };
+    // eslint-disable-next-line
+    }, []);
 
     useEffect(()=>{
         document.addEventListener('keyup', eventHandler, true);
