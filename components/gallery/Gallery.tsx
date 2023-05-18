@@ -39,7 +39,7 @@ export default function Gallery({ images, renderChildren, galleryOpen, setGaller
     useEffect(()=>{
         document.addEventListener('keyup', eventHandler, true);
         return ()=>document.removeEventListener('keyup', eventHandler, true);
-    }, [numImages]);
+    }, [numImages, eventHandler]);
     
     return <div id='gallery-container'>{
         galleryOpen && 

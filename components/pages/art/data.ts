@@ -21,6 +21,7 @@ const images=[
     '2019.08.17 Dad Napping.jpg',
   [ '2019 Paris Bistro.jpg', w2 ],
     '2019 Hôtel Pont Royale.jpg',
+    '2018 Bow',
     '2017 Pop-Quiz-o-Meter.jpg',
     '2017.07.21 The Dog Walker.jpg',
     `2017 The Philosopher's Lamp.jpg`,
