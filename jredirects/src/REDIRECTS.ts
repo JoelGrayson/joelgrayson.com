@@ -25,6 +25,7 @@ export const permanent: redirects={ //301
     // Newest at top, oldest at bottom
     // Destination: source
 
+    'https://www.youtube.com/@JoelGrayson': ['/youtube', '/yt'],
     'https://github.com/JoelGrayson': '/github',
     '/timeline/index.html': '/timeline',
     'https://raw.githubusercontent.com/JoelGrayson/create-joel-app/main/jredirects.tgz': '/software/create-joel-app/jredirects.tgz',

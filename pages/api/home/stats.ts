@@ -14,7 +14,7 @@ export default async function ApiHandler(req: any, res: any) {
 function createGetChromeExtensionStats(url: string) {
     return ()=>{
         return new Promise(async (resolve)=>{
-            const browser=await puppeteer.launch({ headless: true });
+            const browser=await puppeteer.launch({ headless: 'new' });
             const page=await browser.newPage();
         
             await page.goto(url, { waitUntil: 'domcontentloaded' });

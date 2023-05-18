@@ -91,7 +91,29 @@ export const machines: Machine[]=[
     {
         sortBy: {
             rank: 3, //sort by best project
-            date: new Date('May 27, 2021'), //sort by date of project
+            date: new Date('May 30, 2020'), //sort by date of project
+            title: 'Tesla Coil' //sort alphabetically
+        },
+        html: <div className='relative h-[240px]'>
+            <Image src='/image/machines/tesla-coil.jpg' width='343' height='240' alt='Fundraising for American Red Cross' style={{
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                borderRadius: 10
+            }} />
+            <div style={{
+                position: 'absolute',
+                left: 380
+            }}>
+                <span>5.2020</span>
+                <h3 style={{fontSize: '1.4rem'}}>Tesla Coil</h3>
+            </div>
+        </div>
+    },
+    {
+        sortBy: {
+            rank: 3, //sort by best project
+            date: new Date('May 31, 2017'), //sort by date of project
             title: 'Fundraising for the American Red Cross' //sort alphabetically
         },
         html: <div className='relative h-[380px]'>
