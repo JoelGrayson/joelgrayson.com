@@ -1,5 +1,5 @@
 import JGraphicsLibrary from './JGraphicsLibrary.js';
-import { eventT } from 'e.js';
+import { eventT } from './e.js';
 declare const tools: string[];
 type tool = typeof tools[number];
 type year = number;

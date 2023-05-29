@@ -180,13 +180,13 @@ export default class Timeline extends JGraphicsLibrary {
                 "note": "",
                 "color": "hsla(82.55540965795339, 32.82372588962783%, 90.63269527226213%, 42.10319331808845%)" //typeof string
             } */
-            switch (e.scope) {
-                case 'day':
-                case 'month':
-                case 'year':
-                case 'range':
-            }
-            this.date2X(e.startDate);
+            // switch (e.scope) {
+            //     case 'day':
+            //     case 'month':
+            //     case 'year':
+            //     case 'range':
+            // }
+            // this.date2X(e.startDate);
         }
     }
     renderControls() {
