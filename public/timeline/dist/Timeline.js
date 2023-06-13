@@ -1,3 +1,4 @@
+import { date2Year } from './utils.js';
 import JGraphicsLibrary from './JGraphicsLibrary.js';
 const born = 2006; //default start
 const now = new Date().getFullYear(); //default end
@@ -11,7 +12,7 @@ export default class Timeline extends JGraphicsLibrary {
         this.draw = () => {
             const { clear } = this.getVars();
             clear();
-            this.renderEvent();
+            this.renderEvents();
             this.renderLines();
             this.renderControls(); //last so that it is on top
             window.requestAnimationFrame(this.draw); //go to next frame
@@ -90,9 +91,7 @@ export default class Timeline extends JGraphicsLibrary {
         };
         // ## Other Helpers
         this.forEachYear = (cb) => {
-            const { leftOffset, rightOffset } = this.getVars();
-            const span = rightOffset - leftOffset; //span of entire timeline line
-            const yearSpan = Math.floor(span / (this.end - this.start)); //width per year
+            const { leftOffset, rightOffset, yearSpan } = this.getVars();
             const roundStart = Math.ceil(this.start); //cannot start at 2006.5, but 2007
             const roundEnd = Math.floor(this.end);
             for (let year = roundStart; year <= roundEnd; year++) {
@@ -107,11 +106,14 @@ export default class Timeline extends JGraphicsLibrary {
             const h = canvasEl.height;
             const leftOffset = this.xPadding;
             const rightOffset = w - 2 * this.xPadding;
+            const span = rightOffset - leftOffset; //span of entire timeline line
+            const yearSpan = Math.floor(span / (this.end - this.start)); //width per year
             return {
                 canvasEl,
                 c, w, h, leftOffset, rightOffset,
                 clear: () => c.clearRect(0, 0, w, h),
-                s: (n) => Math.floor(n).toString(), //toString
+                s: (n) => Math.floor(n).toString(),
+                yearSpan
             };
         };
         this.canvasEl.addEventListener('click', this.clickEvent);
@@ -167,8 +169,20 @@ export default class Timeline extends JGraphicsLibrary {
         this.drawLine(rightMost, middle, rightMost - 5, middle + 5);
         this.drawLine(rightMost, middle, rightMost - 9, middle);
     }
-    renderEvent() {
+    renderEvents() {
+        const { c, h } = this.getVars();
+        const eventHeight = 30;
+        const eventWidth = 80;
+        c.strokeStyle = 'black';
+        c.lineWidth = 1;
+        c.fillStyle = '#ccc';
+        // Make sure no overlaying events
+        const yearsCovered = new Set();
         for (const e of this.events) {
+            console.log(e);
+            c.rect(this.year2X(date2Year(e.startDate)), h / 2 - eventHeight - 5, eventWidth, eventHeight);
+            c.fill();
+            c.stroke();
             /* Example e:
             {
                 "scope": "range",
@@ -187,6 +201,7 @@ export default class Timeline extends JGraphicsLibrary {
             //     case 'range':
             // }
             // this.date2X(e.startDate);
+            yearsCovered.add(date2Year(e.startDate));
         }
     }
     renderControls() {
@@ -208,8 +223,10 @@ export default class Timeline extends JGraphicsLibrary {
         console.log('Scroll event', e);
         console.log('Scrolling into', e.offsetX, e.offsetY);
     }
-    date2X(date) {
-        return 0;
+    year2X(year) {
+        const { yearSpan } = this.getVars();
+        const offset = year - this.start; //offset from start in years
+        return offset * yearSpan;
     }
     x2YDate(x) {
         return new Date();

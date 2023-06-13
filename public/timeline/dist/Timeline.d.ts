@@ -1,8 +1,8 @@
+import { year } from './utils.js';
 import JGraphicsLibrary from './JGraphicsLibrary.js';
 import { eventT } from './e.js';
 declare const tools: string[];
 type tool = typeof tools[number];
-type year = number;
 type images = {
     [key in tool]: HTMLImageElement;
 };
@@ -21,7 +21,7 @@ export default class Timeline extends JGraphicsLibrary {
     constructor(events: eventT[]);
     draw: () => void;
     renderLines(): void;
-    renderEvent(): void;
+    renderEvents(): void;
     renderControls(): void;
     clickEvent: (e: MouseEvent) => void;
     wheelEvent(e: WheelEvent): void;
@@ -30,7 +30,7 @@ export default class Timeline extends JGraphicsLibrary {
         end: number;
     }) => Promise<void>;
     forEachYear: (cb: (obj: forEachYearProps) => void) => void;
-    date2X(date: Date): number;
+    year2X(year: year): number;
     x2YDate(x: number): Date;
     getVars: () => {
         canvasEl: HTMLCanvasElement;
@@ -41,6 +41,7 @@ export default class Timeline extends JGraphicsLibrary {
         rightOffset: number;
         clear: () => void;
         s: (n: number) => string;
+        yearSpan: number;
     };
 }
 export {};

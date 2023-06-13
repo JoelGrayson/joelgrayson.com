@@ -10,7 +10,7 @@
         "start": "next start",
         "lint": "next lint",
         "test": "jest --verbose",
-        "vercel-build": "npm run prisma-generate",
+        "vercel-build": "npm run prisma-generate && cd public/timeline && tsc && cd ../..",
         "test-next": "npm run build && npm start",
         "dev-timeline": "(sleep 2 && open http://localhost:3000/timeline/index.html) & concurrently 'cd public/timeline && tsc --watch' 'npm run dev'",
         "jredirects": "cd jredirects && ./build.sh",
