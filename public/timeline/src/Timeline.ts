@@ -111,22 +111,17 @@ export default class Timeline extends JGraphicsLibrary {
 
         const eventHeight=30;
         const eventWidth=80;
+        const minimumVicinity=eventWidth*1; //if an event is within this distance, it will be pushed up
         
         c.strokeStyle='black';
         c.lineWidth=1;
         c.fillStyle='#ccc';
 
         // Make sure no overlaying events
-        const yearsCovered=new Set<number>();
+        const yearsCovered=[];
         
         for (const e of this.events) {
-            console.log(e);
-            
-            c.rect(this.year2X(date2Year(e.startDate)), h/2-eventHeight-5, eventWidth, eventHeight);
-            c.fill();
-            c.stroke();
-            
-            
+            // console.log(e);
             /* Example e:
             {
                 "scope": "range",
@@ -138,15 +133,48 @@ export default class Timeline extends JGraphicsLibrary {
                 "note": "",
                 "color": "hsla(82.55540965795339, 32.82372588962783%, 90.63269527226213%, 42.10319331808845%)" //typeof string
             } */
-            // switch (e.scope) {
-            //     case 'day':
-            //     case 'month':
-            //     case 'year':
-            //     case 'range':
-            // }
-            // this.date2X(e.startDate);
+            
+            // c.rect(this.year2X(date2Year(e.startDate)), h/2-eventHeight-5, eventWidth, eventHeight);
 
-            yearsCovered.add(date2Year(e.startDate));
+            const minimumWidth=30; //event cannot be shorter than this
+            const startingYear=date2Year(e.startDate);
+            const startingPosition=this.year2X(startingYear);
+            const endingYear=date2Year(e.endDate);
+            const width=this.year2X(endingYear)-startingPosition;
+            
+
+            let renderedInVicinity=0; //number of events that have already been rendered in the vicinity
+            yearsCovered.forEach(year=>{
+                if (Math.abs(year-startingYear)>minimumVicinity)
+                    renderedInVicinity++;
+            });
+
+            // console.log('renderedInVicinity', renderedInVicinity);
+            console.log(yearsCovered);
+            
+            c.rect(
+                startingPosition,
+                h/2-eventHeight-5 /* timeline */ - eventHeight*renderedInVicinity /* stack */,
+                width<minimumWidth ? minimumWidth : width,
+                eventHeight
+            );
+            c.fill();
+            c.stroke();
+    
+            switch (e.scope) {
+                case 'year':
+                    break;
+                case 'month':
+                    break;
+                case 'day':
+                    break;
+                case 'range':
+                    break;
+                default:
+                    throw new Error(`Invalid scope ${e.scope}`);
+            }
+
+            yearsCovered.push(date2Year(e.startDate)); //log year
         }
     }
     
