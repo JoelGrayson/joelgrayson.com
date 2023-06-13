@@ -6,7 +6,8 @@ import Article from '@/components/perspective/ArticlesList/Article';
 
 const gridStyle={
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))'
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    justifyItems: 'center',
 };
 
 export default function JoelsPerspective() { //List of articles
@@ -16,7 +17,7 @@ export default function JoelsPerspective() { //List of articles
         switch (sortingMethod) {
             case 'newest to oldest': return articles.sort((a, b)=>b.date.getTime()-a.date.getTime());
             case 'oldest to newest': return articles.sort((a, b)=>a.date.getTime()-b.date.getTime());
-            case 'category':         return articles;
+            case 'category':         return articles; //group later
             case 'A-Z':              return articles.sort((a, b)=>a.name<b.name ? -1 : 1);
             case 'Z-A':              return articles.sort((a, b)=>a.name<b.name ? 1 : -1);
         }
@@ -35,8 +36,8 @@ export default function JoelsPerspective() { //List of articles
         </div>
         {
             sortingMethod==='category'
-            ? <>
-                {categories.map(category=>{ 
+            ? 
+                categories.map(category=>{ 
                     const { name, color }=displayCategory.get(category)!;
                     return <div key={category} style={{ backgroundColor: color, borderRadius: 10 }} className='border-b-2 shadow-sm px-3 py-3 pb-5 mb-4'>
                         <h3 className='text-center bold'>{name}</h3> {/* Category name */}
@@ -46,8 +47,7 @@ export default function JoelsPerspective() { //List of articles
                             ))}
                         </div>
                     </div>;
-                })}
-            </>
+                })
             : <div style={gridStyle}>{
                 sortedArticles.map(article=>
                     <Article key={article.hyphenatedTitle} article={article} />
