@@ -1,3 +1,4 @@
+import { date2Year, year } from './utils.js';
 import JGraphicsLibrary from './JGraphicsLibrary.js';
 import { eventT } from './e.js';
 
@@ -7,7 +8,6 @@ const tools=['home', 'left', 'zoom-out', 'zoom-in', 'right'];
 
 // Types
 type tool=typeof tools[number];
-type year=number;
 type images={
     [key in tool]: HTMLImageElement;
 };
@@ -65,7 +65,7 @@ export default class Timeline extends JGraphicsLibrary {
         const { clear }=this.getVars();
 
         clear();
-        this.renderEvent();
+        this.renderEvents();
         this.renderLines();
         this.renderControls(); //last so that it is on top
 
@@ -106,8 +106,27 @@ export default class Timeline extends JGraphicsLibrary {
         this.drawLine(rightMost, middle, rightMost-9, middle);
     }
 
-    renderEvent() {
+    renderEvents() {
+        const { c, h }=this.getVars();
+
+        const eventHeight=30;
+        const eventWidth=80;
+        
+        c.strokeStyle='black';
+        c.lineWidth=1;
+        c.fillStyle='#ccc';
+
+        // Make sure no overlaying events
+        const yearsCovered=new Set<number>();
+        
         for (const e of this.events) {
+            console.log(e);
+            
+            c.rect(this.year2X(date2Year(e.startDate)), h/2-eventHeight-5, eventWidth, eventHeight);
+            c.fill();
+            c.stroke();
+            
+            
             /* Example e:
             {
                 "scope": "range",
@@ -126,6 +145,8 @@ export default class Timeline extends JGraphicsLibrary {
             //     case 'range':
             // }
             // this.date2X(e.startDate);
+
+            yearsCovered.add(date2Year(e.startDate));
         }
     }
     
@@ -236,9 +257,7 @@ export default class Timeline extends JGraphicsLibrary {
 
     // ## Other Helpers
     forEachYear=(cb: (obj: forEachYearProps)=>void)=>{
-        const { leftOffset, rightOffset }=this.getVars();
-        const span=rightOffset-leftOffset; //span of entire timeline line
-        const yearSpan=Math.floor(span/(this.end-this.start)); //width per year
+        const { leftOffset, rightOffset, yearSpan }=this.getVars();
     
         const roundStart=Math.ceil(this.start); //cannot start at 2006.5, but 2007
         const roundEnd=Math.floor(this.end);
@@ -249,8 +268,10 @@ export default class Timeline extends JGraphicsLibrary {
         }
     }
 
-    date2X(date: Date): number { //get the x offset of a year
-        return 0;
+    year2X(year: year): number { //get the x offset from left of canvas of a date or year
+        const { yearSpan }=this.getVars();
+        const offset=year-this.start; //offset from start in years
+        return offset*yearSpan;
     }
 
     x2YDate(x: number): Date { //turn x offset into year float
@@ -266,6 +287,7 @@ export default class Timeline extends JGraphicsLibrary {
         rightOffset: number;
         clear: ()=>void;
         s: (n: number)=>string;
+        yearSpan: number;
     }=()=>{
         const c=this.c;
         const canvasEl=this.canvasEl;
@@ -273,12 +295,15 @@ export default class Timeline extends JGraphicsLibrary {
         const h=canvasEl.height;
         const leftOffset=this.xPadding;
         const rightOffset=w-2*this.xPadding;
+        const span=rightOffset-leftOffset; //span of entire timeline line
+        const yearSpan=Math.floor(span/(this.end-this.start)); //width per year
 
         return {
             canvasEl,
             c, w, h, leftOffset, rightOffset,
             clear: ()=>c.clearRect(0, 0, w, h),
             s: (n: number)=>Math.floor(n).toString(), //toString
+            yearSpan
         };
     }
 }
