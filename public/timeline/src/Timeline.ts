@@ -1,6 +1,6 @@
 import { date2Year, year } from './utils.js';
 import JGraphicsLibrary from './JGraphicsLibrary.js';
-import e, { eventT, eventPositionT } from './e.js';
+import { eventT, eventPositionT } from './e.js';
 
 const born: year=2006; //default start
 const now: year=new Date().getFullYear(); //default end
