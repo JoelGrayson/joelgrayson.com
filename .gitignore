@@ -1,6 +1,7 @@
 # Private Secrets
 **/.env
 api.joelgrayson.com/private
+api.joelgrayson.com/node_modules
 
 
 # Bloat
@@ -20,6 +21,6 @@ public/combating-climate-change/Combating Climate Change.pptx
 *.mp4
 
 
-# Compiled Timeline
+# Compiled Timeline (recompiled on npm run vercel-build)
 public/timeline/dist
 
