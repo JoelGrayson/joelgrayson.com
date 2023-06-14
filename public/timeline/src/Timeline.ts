@@ -182,7 +182,6 @@ export default class Timeline extends JGraphicsLibrary {
             }
 
             yearsCovered.push({ startPosition, endPosition }); //log year
-            console.log(yearsCovered);
         }
     }
     
@@ -254,6 +253,8 @@ export default class Timeline extends JGraphicsLibrary {
         console.log('Scroll event', e);
         console.log('Scrolling into', e.offsetX, e.offsetY);
         
+        // e.deltaX controls position moving left-right
+        // e.deltaY controls zoom
     }
 
     // # Helpers

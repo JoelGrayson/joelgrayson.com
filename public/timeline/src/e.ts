@@ -29,7 +29,7 @@ export default function e(title: string, date: propsT, note: string | Element=''
         date.scope='range';
         date.rangeScope??='month';
     }
-    color??=colorGenerator.next().value as string;
+    color??=colorGenerator.next().value as string; //if no color, generate random
     
     // Return event object based on scope
     switch (date.scope) {
