@@ -1,15 +1,18 @@
 import e, { eventT } from './e.js';
 
-const data: eventT[]=[ //ordered from past to future in shortest to longest time duration categories in order that year is rendered at top
-    // Dates
-    // Harvard Club
-    // Talent Show
-    // 
-
-    // Date Ranges <1 month
+const data: eventT[]=[ //ordered from past to future in longest to shortest time duration categories in order that year is rendered at bottom
+    // Year Ranges
+    e('VCS', { startDate: 2010, endDate: 2016, rangeScope: 'year' }, 'Lower School'),
+    e('Riverdale', { startDate: 2016, endDate: 2024, rangeScope: 'year' }, 'Middle and High School'),
 
 
-    // Months
+    // Month Ranges >1 year
+    e('joelgrayson.com', { startDate: 'Aug 2020', endDate: 'today', rangeScope: 'month' }, 'I created joelgrayson.com initially for Student Government campaigning. It has evolved into this website, coded in Next.js and TypeScript.'),
+    e('Student Government Grade Representative', { startDate: 'Sep 2019', endDate: 'today', rangeScope: 'month' }),
+
+
+    // Year
+
 
 
     // Month Ranges <1 year
@@ -23,19 +26,16 @@ const data: eventT[]=[ //ordered from past to future in shortest to longest time
     ),
     
 
-    // Year
+    // Months
     
+
     
-    // Month Ranges >1 year
-    e('joelgrayson.com', { startDate: 'Aug 2020', endDate: 'today', rangeScope: 'month' }, 'I created joelgrayson.com initially for Student Government campaigning. It has evolved into this website, coded in Next.js and TypeScript.'),
-    e('Student Government Grade Representative', { startDate: 'Sep 2019', endDate: 'today', rangeScope: 'month' }),
+    // Date Ranges <1 month
+    // Individual Dates
+    // Harvard Club
+    // Talent Show
 
 
-    // Year Ranges
-    e('VCS', { startDate: 2010, endDate: 2016, rangeScope: 'year' }, 'Lower School'),
-    e('Riverdale', { startDate: 2016, endDate: 2024, rangeScope: 'year' }, 'Middle and High School'),
-    
-    
 ];
 
 export default data;

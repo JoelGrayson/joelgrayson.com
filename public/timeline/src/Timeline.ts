@@ -143,18 +143,16 @@ export default class Timeline extends JGraphicsLibrary {
             const endPosition=startPosition+width;
 
             let renderedInVicinity=0; //number of events that have already been rendered in the vicinity
-            yearsCovered.forEach(({ startYear: otherStartYear, endYear: otherEndYear })=>{
-                const otherInCurr=otherStartYear>=startYear && otherEndYear<=endYear;
-                const currInOther=startYear>=otherStartYear && endYear<=otherEndYear;
-                if (otherInCurr || currInOther)
+            yearsCovered.forEach(({ startPosition: otherStartPosition, endPosition: otherEndPosition })=>{
+                const overlap=endPosition>otherStartPosition && startPosition<otherEndPosition;
+                if (overlap)
                     renderedInVicinity++;
             });
 
             let heightOffset=h/2-eventHeight-5 /* timeline */ - eventHeight*renderedInVicinity /* stack offset */;
 
-            c.fillStyle=e.color;
-
             c.beginPath();
+            c.fillStyle=e.color;
             c.rect(
                 startPosition,
                 heightOffset,
@@ -183,7 +181,8 @@ export default class Timeline extends JGraphicsLibrary {
                     throw new Error(`Invalid scope ${e.scope}`);
             }
 
-            yearsCovered.push({ startYear: date2Year(startYear), endYear: date2Year(endYear) }); //log year
+            yearsCovered.push({ startPosition, endPosition }); //log year
+            console.log(yearsCovered);
         }
     }
     
