@@ -11,8 +11,15 @@ export function jdate(date=new Date()): string {
     return `${month}.${day}.${year}`;
 }
 
-export const turnIntoDate=(str: string | Date | number | undefined)=>
-    str instanceof Date ? str : new Date(str as string);
+export const turnIntoDate=(input: string | Date | number | undefined)=>{
+    if (input instanceof Date)
+        return input;
+    if (typeof input==='number') //set year as number
+        return new Date(input, 0, 1);
+    if (typeof input==='string')
+        return new Date(input);
+    throw new Error('Not valid type');
+}
 
 export function year2Date(year: number | string): Date {
     if (typeof year==='string') //cast to number
@@ -30,7 +37,7 @@ export function year2Date(year: number | string): Date {
 export function date2Year(date: Date | string | number): number { //year in decimals
     if (typeof date==='string') //cast to date
         date=new Date(date);
-    else if (typeof date==='number') //already a year
+    if (typeof date==='number') //already a year
         return date;
 
     const year=date.getFullYear();

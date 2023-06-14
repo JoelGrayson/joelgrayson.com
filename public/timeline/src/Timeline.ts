@@ -39,7 +39,7 @@ export default class Timeline extends JGraphicsLibrary {
         this.end=now;
         this.showControls=true;
         this.events=events;
-        console.log(events);
+        console.log('Events', events);
 
         const resizeCanvas=()=>{
             const lowestEven=(e: number)=>e%2===0 ? e : Math.floor(e/2)*2; //must be even so that strokewidth is not blurry
@@ -121,7 +121,6 @@ export default class Timeline extends JGraphicsLibrary {
         const yearsCovered=[];
         
         for (const e of this.events) {
-            // console.log(e);
             /* Example e:
             {
                 "scope": "range",
@@ -134,14 +133,13 @@ export default class Timeline extends JGraphicsLibrary {
                 "color": "hsla(82.55540965795339, 32.82372588962783%, 90.63269527226213%, 42.10319331808845%)" //typeof string
             } */
             
-            // c.rect(this.year2X(date2Year(e.startDate)), h/2-eventHeight-5, eventWidth, eventHeight);
 
             const minimumWidth=30; //event cannot be shorter than this
             const startingYear=date2Year(e.startDate);
             const startingPosition=this.year2X(startingYear);
             const endingYear=date2Year(e.endDate);
-            const width=this.year2X(endingYear)-startingPosition;
-            
+            let width=this.year2X(endingYear)-startingPosition;
+            width=width<minimumWidth ? minimumWidth : width; //if width is too small, make it minimumWidth
 
             let renderedInVicinity=0; //number of events that have already been rendered in the vicinity
             yearsCovered.forEach(year=>{
@@ -149,18 +147,26 @@ export default class Timeline extends JGraphicsLibrary {
                     renderedInVicinity++;
             });
 
-            // console.log('renderedInVicinity', renderedInVicinity);
-            console.log(yearsCovered);
-            
+            let heightOffset=h/2-eventHeight-5 /* timeline */ - eventHeight*renderedInVicinity /* stack offset */;
+
+            c.fillStyle=e.color;
+
+            c.beginPath();
             c.rect(
                 startingPosition,
-                h/2-eventHeight-5 /* timeline */ - eventHeight*renderedInVicinity /* stack */,
-                width<minimumWidth ? minimumWidth : width,
+                heightOffset,
+                width,
                 eventHeight
             );
             c.fill();
             c.stroke();
-    
+
+            c.textBaseline='top';
+            // change text color
+            c.fillStyle='black';
+            c.fillText(e.title, startingPosition, heightOffset, width);
+
+
             switch (e.scope) {
                 case 'year':
                     break;
@@ -174,7 +180,7 @@ export default class Timeline extends JGraphicsLibrary {
                     throw new Error(`Invalid scope ${e.scope}`);
             }
 
-            yearsCovered.push(date2Year(e.startDate)); //log year
+            yearsCovered.push(date2Year(startingYear)); //log year
         }
     }
     

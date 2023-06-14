@@ -32,8 +32,8 @@ const data: eventT[]=[ //ordered from past to future in shortest to longest time
 
 
     // Year Ranges
-    e('VCS', { startDate: 2010, endDate: 2016, rangeScope: 'year' }),
-    e('Riverdale', { startDate: 2016, endDate: 2024, rangeScope: 'year' }),
+    e('VCS', { startDate: 2010, endDate: 2016, rangeScope: 'year' }, 'Lower School'),
+    e('Riverdale', { startDate: 2016, endDate: 2024, rangeScope: 'year' }, 'Middle and High School'),
     
     
 ];
