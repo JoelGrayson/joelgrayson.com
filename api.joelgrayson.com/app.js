@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express=require('express');
 const app=express();
 const port=8080;
@@ -9,10 +10,12 @@ app.use(express.static('public'));
 // Link api.joelgrayson.com with joelgrayson.com
 const cors=require('cors');
 const whitelist=[
-    'http://localhost:8080', 'http://localhost:3000',
     'https://joelgrayson.com', 'https://www.joelgrayson.com',
     'https://joelgrayson.vercel.app', 'https://www.joelgrayson.vercel.app',
 ];
+if (process.env.NODE_ENV==='development')
+    whitelist=whitelist.concat(['http://localhost:8080', 'http://localhost:3000',]);
+
 app.use(cors({
     origin: (origin, callback)=>{
         if (whitelist.includes(origin) || !origin)
