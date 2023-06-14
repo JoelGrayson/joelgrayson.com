@@ -1,6 +1,6 @@
 import { date2Year, year } from './utils.js';
 import JGraphicsLibrary from './JGraphicsLibrary.js';
-import { eventT } from './e.js';
+import { eventT, eventPositionT } from './e.js';
 
 const born: year=2006; //default start
 const now: year=new Date().getFullYear(); //default end
@@ -20,7 +20,7 @@ type forEachYearProps={
 export default class Timeline extends JGraphicsLibrary {
     // Elements
     images: images;
-    events: eventT[];
+    events: eventPositionT[];
 
     // View settings
     start: year;
@@ -38,7 +38,7 @@ export default class Timeline extends JGraphicsLibrary {
         this.start=born;
         this.end=now;
         this.showControls=true;
-        this.events=events;
+        this.events=this.processEvents(events);
         console.log('Events', events);
 
         const resizeCanvas=()=>{
@@ -60,18 +60,29 @@ export default class Timeline extends JGraphicsLibrary {
         window.requestAnimationFrame(this.draw);
     }
 
+    processEvents(events: eventT[]): eventPositionT[] { //find the start year and end year value of each event (called once)
+        return;
+    }
+
+    calculateEventPositions(): void { //find the position of each event based on zoom settings (called every frame)
+        // Useful for rendering and collision detection in hover/click events
+
+        return;
+    }
+
     // Rendering
     draw=()=>{
         const { clear }=this.getVars();
 
         clear();
+        this.calculateEventPositions();
         this.renderEvents();
         this.renderLines();
         this.renderControls(); //last so that it is on top
 
         window.requestAnimationFrame(this.draw); //go to next frame
     }
-
+    
     renderLines() {
         const { c, h, s, leftOffset, rightOffset }=this.getVars();
 
@@ -111,7 +122,6 @@ export default class Timeline extends JGraphicsLibrary {
 
         const eventHeight=30;
         const eventWidth=80;
-        const minimumVicinity=eventWidth*1; //if an event is within this distance, it will be pushed up
         
         c.strokeStyle='black';
         c.lineWidth=1;
@@ -145,6 +155,9 @@ export default class Timeline extends JGraphicsLibrary {
             let renderedInVicinity=0; //number of events that have already been rendered in the vicinity
             yearsCovered.forEach(({ startPosition: otherStartPosition, endPosition: otherEndPosition })=>{
                 const overlap=endPosition>otherStartPosition && startPosition<otherEndPosition;
+                // const otherInCurr=otherStartPosition>=startPosition && otherEndPosition<=endPosition;
+                // const currInOther=startPosition>=otherStartPosition && endPosition<=otherEndPosition;    
+                // if (overlap || currInOther || otherInCurr)
                 if (overlap)
                     renderedInVicinity++;
             });

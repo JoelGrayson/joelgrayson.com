@@ -20,6 +20,13 @@ export type eventT=propsT & { //output
     color: string;
 };
 
+export type eventPositionT=eventT & {
+    y: number;
+    x: number;
+    width: number;
+    height: number;
+};
+
 const colorGenerator=generateColor();
 
 export default function e(title: string, date: propsT, note: string | Element='', color?: string): eventT {

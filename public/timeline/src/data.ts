@@ -32,6 +32,7 @@ const data: eventT[]=[ //ordered from past to future in longest to shortest time
     
     // Date Ranges <1 month
     // Individual Dates
+    e('Present at Harvard Club', { day: '5/18/2022', rangeScope: 'day' }, 'Stuck at home with Riverdale shut down because of COVID. Appendicitis.'),
     // Harvard Club
     // Talent Show
 
