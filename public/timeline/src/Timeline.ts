@@ -1,6 +1,6 @@
 import { date2Year, year } from './utils.js';
 import JGraphicsLibrary from './JGraphicsLibrary.js';
-import { eventT, eventPositionT } from './e.js';
+import e, { eventT, eventPositionT } from './e.js';
 
 const born: year=2006; //default start
 const now: year=new Date().getFullYear(); //default end
@@ -40,6 +40,7 @@ export default class Timeline extends JGraphicsLibrary {
         this.showControls=true;
         this.events=this.processEvents(events);
         console.log('Events', events);
+        console.log('Processed Events', this.events);
 
         const resizeCanvas=()=>{
             const lowestEven=(e: number)=>e%2===0 ? e : Math.floor(e/2)*2; //must be even so that strokewidth is not blurry
@@ -61,15 +62,48 @@ export default class Timeline extends JGraphicsLibrary {
     }
 
     processEvents(events: eventT[]): eventPositionT[] { //find the start year and end year value of each event (called once)
-        return;
+        return events.map((event: eventT)=>{ //add start and end year
+            let startYear: number;
+            let endYear: number;
+            switch (event.scope) {
+                case 'day':
+                    if (!(event.day instanceof Date)) throw new Error('Day must be a Date object');
+                    const nextDay=new Date(event.day); //clone date
+                    nextDay.setDate(nextDay.getDate()+1);
+
+                    startYear=date2Year(event.day);
+                    endYear=date2Year(nextDay);
+                    break;
+                case 'month':
+                    startYear=date2Year(new Date(event.year!, event.month!, 0));
+                    endYear=date2Year(new Date(event.year!, event.month!, 30));
+                    break;
+                case 'year':
+                    startYear=event.year!;
+                    endYear=event.year!;
+                    break;
+                case 'range':
+                    startYear=date2Year(new Date(event.startDate!));
+                    endYear=date2Year(new Date(event.endDate!));
+                    break;
+                default:
+                    throw new Error('Invalid event scope');
+            }
+            
+            return {
+                ...event,
+                startYear,
+                endYear,
+    
+                x: 0,
+                y: 0,
+                width: 0,
+                height: 0
+            }
+        });
     }
 
-    calculateEventPositions(): void { //find the position of each event based on zoom settings (called every frame)
-        // Useful for rendering and collision detection in hover/click events
-
-        return;
-    }
-
+    
     // Rendering
     draw=()=>{
         const { clear }=this.getVars();
@@ -82,7 +116,57 @@ export default class Timeline extends JGraphicsLibrary {
 
         window.requestAnimationFrame(this.draw); //go to next frame
     }
+
+    calculateEventPositions(): void { //find the position of each event based on zoom settings (called every frame)
+        // Useful for rendering and collision detection in hover/click events)
+        const { h }=this.getVars();
+
+        const eventHeight=30;
+
+        // Make sure no overlaying events
+        const yearsCovered=[];
     
+        for (const e of this.events) {
+            /* Example e:
+            {
+                "scope": "range",
+                "startDate": "2019-09-01T04:00:00.000Z", //typeof date
+                "endDate": "2023-05-11T11:28:16.458Z", //typeof enddate
+                "rangeScope": "month",
+                "dateString": "Sep 2019-Sep 2019",
+                "title": "Student Government Grade Representative",
+                "note": "",
+                "color": "hsla(82.55540965795339, 32.82372588962783%, 90.63269527226213%, 42.10319331808845%)" //typeof string
+            } */
+            
+
+            const minimumWidth=30; //event cannot be shorter than this
+            const startPosition=this.year2X(e.startYear);
+            let width=this.year2X(e.endYear)-startPosition;
+            width=width<minimumWidth ? minimumWidth : width; //if width is too small, make it minimumWidth
+            const endPosition=startPosition+width;
+
+            let renderedInVicinity=0; //number of events that have already been rendered in the vicinity
+            yearsCovered.forEach(({ startPosition: otherStartPosition, endPosition: otherEndPosition })=>{
+                const overlap=endPosition>otherStartPosition && startPosition<otherEndPosition;
+                // const otherInCurr=otherStartPosition>=startPosition && otherEndPosition<=endPosition;
+                // const currInOther=startPosition>=otherStartPosition && endPosition<=otherEndPosition;    
+                // if (overlap || currInOther || otherInCurr)
+                if (overlap)
+                    renderedInVicinity++;
+            });
+
+            let heightOffset=h/2-eventHeight-5 /* timeline */ - eventHeight*renderedInVicinity /* stack offset */;
+
+            e.x=startPosition;
+            e.y=heightOffset;
+            e.width=width;
+            e.height=eventHeight;
+
+            yearsCovered.push({ startPosition, endPosition }); //log year
+        }
+    }
+
     renderLines() {
         const { c, h, s, leftOffset, rightOffset }=this.getVars();
 
@@ -118,59 +202,20 @@ export default class Timeline extends JGraphicsLibrary {
     }
 
     renderEvents() {
-        const { c, h, yearSpan }=this.getVars();
+        const { c }=this.getVars();
 
-        const eventHeight=30;
-        const eventWidth=80;
-        
         c.strokeStyle='black';
         c.lineWidth=1;
         c.fillStyle='#ccc';
 
-        // Make sure no overlaying events
-        const yearsCovered=[];
-        
         for (const e of this.events) {
-            /* Example e:
-            {
-                "scope": "range",
-                "startDate": "2019-09-01T04:00:00.000Z", //typeof date
-                "endDate": "2023-05-11T11:28:16.458Z", //typeof enddate
-                "rangeScope": "month",
-                "dateString": "Sep 2019-Sep 2019",
-                "title": "Student Government Grade Representative",
-                "note": "",
-                "color": "hsla(82.55540965795339, 32.82372588962783%, 90.63269527226213%, 42.10319331808845%)" //typeof string
-            } */
-            
-
-            const minimumWidth=30; //event cannot be shorter than this
-            const startYear=date2Year(e.startDate);
-            const startPosition=this.year2X(startYear);
-            const endYear=date2Year(e.endDate);
-            let width=this.year2X(endYear)-startPosition;
-            width=width<minimumWidth ? minimumWidth : width; //if width is too small, make it minimumWidth
-            const endPosition=startPosition+width;
-
-            let renderedInVicinity=0; //number of events that have already been rendered in the vicinity
-            yearsCovered.forEach(({ startPosition: otherStartPosition, endPosition: otherEndPosition })=>{
-                const overlap=endPosition>otherStartPosition && startPosition<otherEndPosition;
-                // const otherInCurr=otherStartPosition>=startPosition && otherEndPosition<=endPosition;
-                // const currInOther=startPosition>=otherStartPosition && endPosition<=otherEndPosition;    
-                // if (overlap || currInOther || otherInCurr)
-                if (overlap)
-                    renderedInVicinity++;
-            });
-
-            let heightOffset=h/2-eventHeight-5 /* timeline */ - eventHeight*renderedInVicinity /* stack offset */;
-
             c.beginPath();
             c.fillStyle=e.color;
             c.rect(
-                startPosition,
-                heightOffset,
-                width,
-                eventHeight
+                e.x,
+                e.y,
+                e.width,
+                e.height
             );
             c.fill();
             c.stroke();
@@ -178,23 +223,7 @@ export default class Timeline extends JGraphicsLibrary {
             c.textBaseline='top';
             // change text color
             c.fillStyle='black';
-            c.fillText(e.title, startPosition, heightOffset, width);
-
-
-            switch (e.scope) {
-                case 'year':
-                    break;
-                case 'month':
-                    break;
-                case 'day':
-                    break;
-                case 'range':
-                    break;
-                default:
-                    throw new Error(`Invalid scope ${e.scope}`);
-            }
-
-            yearsCovered.push({ startPosition, endPosition }); //log year
+            c.fillText(e.title, e.x, e.y, e.width);
         }
     }
     

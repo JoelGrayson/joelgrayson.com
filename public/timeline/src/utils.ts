@@ -18,6 +18,7 @@ export const turnIntoDate=(input: string | Date | number | undefined)=>{
         return new Date(input, 0, 1);
     if (typeof input==='string')
         return new Date(input);
+    console.log('input', input);
     throw new Error('Not valid type');
 }
 

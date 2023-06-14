@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Router from 'next/router';
 import PerspectivePage from '@/components/perspective/PerspectivePage';
 import { articles } from '@/components/perspective/ArticlesList';
@@ -15,7 +15,7 @@ export default function JoelsPerspective() { //List of articles
     // # Sort_By
     const defaultSortingMethod='newest-to-oldest';
     type sortingMethodT='newest-to-oldest' | 'oldest-to-newest' | 'category' | 'A-Z' | 'Z-A';
-    const sortingMethods: sortingMethodT[]=['newest-to-oldest', 'oldest-to-newest', 'category', 'A-Z', 'Z-A'];
+    const sortingMethods: sortingMethodT[]=useMemo(()=>['newest-to-oldest', 'oldest-to-newest', 'category', 'A-Z', 'Z-A'], []);
     const [sortingMethod, _setSortingMethod]=useState<sortingMethodT>(defaultSortingMethod);
     function setSortingMethod(newSortingMethod: sortingMethodT) {
         // update query
@@ -35,7 +35,7 @@ export default function JoelsPerspective() { //List of articles
             const sortingMethod=Router.query.sort_by as sortingMethodT;
             _setSortingMethod(sortingMethod);
         }
-    }, []);
+    }, [sortingMethods]);
 
     // # Articles
     const sortedArticles=(()=>{

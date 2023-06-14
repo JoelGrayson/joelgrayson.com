@@ -14,7 +14,6 @@ const data: eventT[]=[ //ordered from past to future in longest to shortest time
     // Year
 
 
-
     // Month Ranges <1 year
     e('Life Restart', { startDate: 'June 2017', endDate: 'Dec 2017', rangeScope: 'month' }, 'Leaving VCS meant I had no friends for a while, a lonely and sad experience. It was at this point that I first became extremely scared of death although I thought about it with anxiety at VCS occasionally while waiting in the hallway before class.'),
     e('Dark Ages', { startDate: 'Mar 2020', endDate: 'Aug 2020', rangeScope: 'month' }, 'Stuck at home with Riverdale shut down because of COVID. Appendicitis.'),
@@ -29,13 +28,12 @@ const data: eventT[]=[ //ordered from past to future in longest to shortest time
     // Months
     
 
-    
     // Date Ranges <1 month
-    // Individual Dates
-    e('Present at Harvard Club', { day: '5/18/2022', rangeScope: 'day' }, 'Stuck at home with Riverdale shut down because of COVID. Appendicitis.'),
-    // Harvard Club
-    // Talent Show
 
+
+    // Individual Dates
+    e('Present at Harvard Club', { day: '5/18/2022', scope: 'day' }, 'Presented to the Harvard Club on the solar energy and electric school bus initiatives.'),
+    e('Magic Show', { day: '12/11/2017', scope: 'day' }, 'Performed a magic show in front of the middle school. As a new student, this was very brave of me.'),
 
 ];
 

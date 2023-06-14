@@ -21,6 +21,10 @@ export type eventT=propsT & { //output
 };
 
 export type eventPositionT=eventT & {
+    // Extended
+    startYear: number;
+    endYear: number;
+    
     y: number;
     x: number;
     width: number;
@@ -30,12 +34,13 @@ export type eventPositionT=eventT & {
 const colorGenerator=generateColor();
 
 export default function e(title: string, date: propsT, note: string | Element='', color?: string): eventT {
+    console.log('og date', date);
     // Default values
     date.scope??='range';
-    if (date.rangeScope==undefined) { //setting rangeScope sets scope to range
-        date.scope='range';
+    if (date.scope==='range' && date.rangeScope==undefined) //default rangeScope is month
         date.rangeScope??='month';
-    }
+    if (date.rangeScope!=undefined) //setting rangeScope sets scope to range
+        date.scope='range';
     color??=colorGenerator.next().value as string; //if no color, generate random
     
     // Return event object based on scope
@@ -68,6 +73,7 @@ export default function e(title: string, date: propsT, note: string | Element=''
             };
         case 'range':
             if (!(date.year==undefined || (date.startDate==undefined || date.endDate==undefined))) throw new Error('Year must be specified');
+            console.log(date);
             const startDate=turnIntoDate(date.startDate);
             const endDate=date.endDate==='today' ? new Date() : turnIntoDate(date.endDate);
             return {
@@ -101,6 +107,8 @@ export default function e(title: string, date: propsT, note: string | Element=''
                                     return `${monthNumToStr(startDate.getMonth())} ${startDate.getDate()}-${monthNumToStr(endDate.getMonth())} ${endDate.getDate()}, ${startDate.getFullYear()}`; //Jan 3-Mar 5, 2023
                             else
                                 return `${startDate.getDate()}.${startDate.getMonth()+1}-${endDate.getDate()}.${endDate.getMonth()+1}.${startDate.getFullYear()}`; //2.2.23-3.3.23
+                        default:
+                            throw new Error(`Invalid rangeScope ${date.rangeScope}`);
                     }
                 })(),
                 title, note, color
