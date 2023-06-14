@@ -107,7 +107,7 @@ export default class Timeline extends JGraphicsLibrary {
     }
 
     renderEvents() {
-        const { c, h }=this.getVars();
+        const { c, h, yearSpan }=this.getVars();
 
         const eventHeight=30;
         const eventWidth=80;
@@ -135,15 +135,18 @@ export default class Timeline extends JGraphicsLibrary {
             
 
             const minimumWidth=30; //event cannot be shorter than this
-            const startingYear=date2Year(e.startDate);
-            const startingPosition=this.year2X(startingYear);
-            const endingYear=date2Year(e.endDate);
-            let width=this.year2X(endingYear)-startingPosition;
+            const startYear=date2Year(e.startDate);
+            const startPosition=this.year2X(startYear);
+            const endYear=date2Year(e.endDate);
+            let width=this.year2X(endYear)-startPosition;
             width=width<minimumWidth ? minimumWidth : width; //if width is too small, make it minimumWidth
+            const endPosition=startPosition+width;
 
             let renderedInVicinity=0; //number of events that have already been rendered in the vicinity
-            yearsCovered.forEach(year=>{
-                if (Math.abs(year-startingYear)>minimumVicinity)
+            yearsCovered.forEach(({ startYear: otherStartYear, endYear: otherEndYear })=>{
+                const otherInCurr=otherStartYear>=startYear && otherEndYear<=endYear;
+                const currInOther=startYear>=otherStartYear && endYear<=otherEndYear;
+                if (otherInCurr || currInOther)
                     renderedInVicinity++;
             });
 
@@ -153,7 +156,7 @@ export default class Timeline extends JGraphicsLibrary {
 
             c.beginPath();
             c.rect(
-                startingPosition,
+                startPosition,
                 heightOffset,
                 width,
                 eventHeight
@@ -164,7 +167,7 @@ export default class Timeline extends JGraphicsLibrary {
             c.textBaseline='top';
             // change text color
             c.fillStyle='black';
-            c.fillText(e.title, startingPosition, heightOffset, width);
+            c.fillText(e.title, startPosition, heightOffset, width);
 
 
             switch (e.scope) {
@@ -180,7 +183,7 @@ export default class Timeline extends JGraphicsLibrary {
                     throw new Error(`Invalid scope ${e.scope}`);
             }
 
-            yearsCovered.push(date2Year(startingYear)); //log year
+            yearsCovered.push({ startYear: date2Year(startYear), endYear: date2Year(endYear) }); //log year
         }
     }
     
@@ -313,6 +316,8 @@ export default class Timeline extends JGraphicsLibrary {
     }
     
     getVars: ()=>{ //returns variables that should not be set through this.var=
+        // const { c, h, s }=this.getVars(); is a way of importing necessary variables like libraries
+
         canvasEl: HTMLCanvasElement;
         c: CanvasRenderingContext2D;
         w: number;
