@@ -6,14 +6,19 @@
     "homepage": "https://joelgrayson.com",
     "scripts": {
         "dev": "next dev",
-        "build": "next build",
+        "dev-timeline": "(sleep 2 && open http://localhost:3000/timeline/index.html) & concurrently 'cd public/timeline && tsc --watch' 'npm run dev'",
+
         "start": "next start",
         "lint": "next lint",
+
         "test": "jest --verbose",
-        "vercel-build": "npm run prisma-generate && cd public/timeline && tsc && cd ../..",
         "test-next": "npm run build && npm start",
-        "dev-timeline": "(sleep 2 && open http://localhost:3000/timeline/index.html) & concurrently 'cd public/timeline && tsc --watch' 'npm run dev'",
+
+        "build": "next build && npm run compile-timeline",
+        "vercel-build": "npm run prisma-generate",
+        "compile-timeline": "cd public/timeline && tsc && cd ../..",
         "jredirects": "cd jredirects && ./build.sh",
+        
         "reset-data": "cd components/data && prisma db push && prisma migrate && npm run prisma-generate && ./insert-articles.js",
         "prisma-studio": "npx prisma studio --schema ./components/data/schema.prisma",
         "prisma-generate": "npx prisma generate --schema ./components/data/schema.prisma"

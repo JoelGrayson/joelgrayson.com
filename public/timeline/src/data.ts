@@ -3,6 +3,7 @@ import e, { eventT } from './e.js';
 const data: eventT[]=[ //ordered from past to future in longest to shortest time duration categories in order that year is rendered at bottom
     // Year Ranges
     e('VCS', { startDate: 2010, endDate: 2016, rangeScope: 'year' }, 'Lower School'),
+    e('Chicken Factory', { startDate: 2013, endDate: 2016, rangeScope: 'year' }, ''),
     e('Riverdale', { startDate: 2016, endDate: 2024, rangeScope: 'year' }, 'Middle and High School'),
 
 

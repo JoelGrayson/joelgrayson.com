@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Header from '../header';
 import Footer from '../Footer';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import SEO, { SEOProps } from './SEO';
 
 export default function Page({children, nopadding, seo, noheader=false, ...props}: {
@@ -11,6 +11,12 @@ export default function Page({children, nopadding, seo, noheader=false, ...props
     noheader?: boolean;
     [key: string]: any;
 }) {
+    useEffect(()=>{ //redirect from .vercel.app -> .com
+        if (typeof window!=='undefined')
+            if (window.location.hostname.includes('joelgrayson.vercel.app'))
+                window.location.hostname='joelgrayson.com';
+    }, []);
+    
     return <>
         <SEO seo={seo} />
         <Head>
