@@ -6,11 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timeline</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://joelgrayson.com/styles/icon-close.v2.css">
 </head>
-<body style="background-color: #fafafa">
+<body>
     <h1 id="title">Timeline</h1>
-    <div id="container">
-        <canvas id="timeline"></canvas>
+    <canvas id="timeline"></canvas>
+    <div id="event-descriptions">
+        <!-- events descriptions are inserted here by Timeline.ts -->
+        <div class="event">
+            <button class="icon-close"></button>
+            <p>Hello</p>
+        </div>
     </div>
 
     <script src="./dist/main.js" type="module"></script>
