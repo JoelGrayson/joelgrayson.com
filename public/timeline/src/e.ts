@@ -36,7 +36,6 @@ export type eventPositionT=eventT & {
 const colorGenerator=generateColor();
 
 export default function e(title: string, date: propsT, note: string='', color?: string): eventT {
-    console.log('og date', date);
     // Default values
     date.scope??='range';
     if (date.scope==='range' && date.rangeScope==undefined) //default rangeScope is month

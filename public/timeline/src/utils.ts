@@ -1,3 +1,5 @@
+import tinycolor from './tinycolor.js';
+
 // Date
 export type year=number;
 
@@ -60,4 +62,10 @@ export function* generateColor(): Generator<string> {
         yield newColor;
     }
 };
+
+
+// Formatting
+export function blackOrWhiteTextColor(rawColor) {
+    return tinycolor(rawColor)!.getBrightness()>128 ? 'black' : 'white';
+}
 

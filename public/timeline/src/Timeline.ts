@@ -1,4 +1,4 @@
-import { date2Year, year } from './utils.js';
+import { blackOrWhiteTextColor, date2Year, year } from './utils.js';
 import JGraphicsLibrary from './JGraphicsLibrary.js';
 import { eventT, eventPositionT } from './e.js';
 import tinycolor from './tinycolor.js';
@@ -253,10 +253,7 @@ export default class Timeline extends JGraphicsLibrary {
             c.stroke();
 
             // Text color
-            if (tinycolor(c.fillStyle).getBrightness()>128)
-                c.fillStyle='black';
-            else
-                c.fillStyle='white';
+            c.fillStyle=blackOrWhiteTextColor(c.fillStyle);
 
             // Place text in center of event
             c.textBaseline='middle';
@@ -398,10 +395,10 @@ export default class Timeline extends JGraphicsLibrary {
         console.log('Selecting event', e)
         this.eventEl.classList.remove('hidden');
         this.eventEl.style.backgroundColor=e.color;
+        this.eventEl.style.color=blackOrWhiteTextColor(e.color);
         (this.eventEl.querySelector('.date-string') as HTMLParagraphElement).innerText=e.dateString;
         (this.eventEl.querySelector('.title') as HTMLParagraphElement).innerText=e.title;
         (this.eventEl.querySelector('.description') as HTMLParagraphElement).innerHTML=e.note ? '' : e.note;
-        e.dateString;
     }
     
 
