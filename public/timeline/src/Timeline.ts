@@ -253,7 +253,7 @@ export default class Timeline extends JGraphicsLibrary {
             c.stroke();
 
             // Text color
-            c.fillStyle=blackOrWhiteTextColor(c.fillStyle);
+            c.fillStyle=blackOrWhiteTextColor(<string>c.fillStyle);
 
             // Place text in center of event
             c.textBaseline='middle';

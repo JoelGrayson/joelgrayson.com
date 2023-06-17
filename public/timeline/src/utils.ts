@@ -65,7 +65,7 @@ export function* generateColor(): Generator<string> {
 
 
 // Formatting
-export function blackOrWhiteTextColor(rawColor) {
+export function blackOrWhiteTextColor(rawColor: string) {
     return tinycolor(rawColor)!.getBrightness()>128 ? 'black' : 'white';
 }
 

@@ -22,5 +22,6 @@ public/combating-climate-change/Combating Climate Change.pptx
 
 
 # Compiled Timeline (recompiled on npm run vercel-build)
-public/timeline/dist
+# public/timeline/dist
+# !public/timeline/dist/tinycolor.js
 
