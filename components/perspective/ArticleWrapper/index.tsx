@@ -23,7 +23,7 @@ export default function Article({ hyphenatedTitle, title, date /** published dat
             .then(res=>{
                 if (res.views===-1) return; //data was not found
 
-                console.log(res);
+                console.log('Comments and views response', res);
                 setViews(res.views);
                 setComments(res.comments);
             });
@@ -32,7 +32,7 @@ export default function Article({ hyphenatedTitle, title, date /** published dat
     return <PerspectivePage seo={{ title: title ? `${title} | Joel's Perspective` : "Joel's Perspective" }}>
         {/* Title & Date */}
         {!notitle && <h1 style={{fontSize: '2.5rem', textAlign: 'center'}}>{title}</h1>}
-        {!nodate && <div className='text-right' title={date && `Published on ${jdate()}`}>{date && jdate(date)}</div>}
+        {!nodate && <div className='text-right' title={date && `Published on ${jdate(date)}`}>{date && jdate(date)}</div>}
         <div className='text-right mb-6'>{views ? `${views} views` : ''}</div>
 
         {/* Article Content */}

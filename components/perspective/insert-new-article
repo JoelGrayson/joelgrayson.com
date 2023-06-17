@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+// Executable to insert a new article. Meant to be run every time a new article is added.
+
+const { PrismaClient }=require("@prisma/client");
+const prisma=new PrismaClient();
+
+(async ()=>{
+    await prisma.article.createMany({
+        data: [
+            { name: 'What It Means to Be an American', hyphenatedTitle: 'what-it-means-to-be-an-american', views: 0 },
+            { name: `China's Brutal Road to Socialism`, hyphenatedTitle: 'chinas-brutal-road-to-socialism', views: 0 },
+        ]
+    });
+})();
+

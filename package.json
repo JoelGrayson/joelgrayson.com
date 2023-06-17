@@ -9,7 +9,7 @@
         "dev-timeline": "cd public/timeline && ./dev.sh",
 
         "build": "next build && npm run compile-timeline",
-        "vercel-build": "npm run prisma-generate",
+        "vercel-build": "npm run prisma-generate && node node_modules/puppeteer/install.js",
         "compile-timeline": "cd public/timeline && tsc && cd ../..",
         "jredirects": "cd jredirects && ./build.sh",
         "prisma-studio": "npx prisma studio --schema ./components/data/schema.prisma",
@@ -19,7 +19,7 @@
         
         "lint": "next lint",
         "open-sitemap": "open https://docs.google.com/document/d/16YT7899bFbgKvBiruonL3wRYBa64Rj0m4cCRCL-VfAg/edit",
-        "reset-data": "cd components/data && prisma db push && prisma migrate && npm run prisma-generate && ./insert-articles.js",
+        "reset-data": "cd components/data && prisma db push && prisma migrate && npm run prisma-generate && ./insert-articles",
         "test": "jest --verbose"
     },
     "dependencies": {
