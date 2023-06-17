@@ -12,9 +12,12 @@
 }
 
 body {
-    margin: 2;
-    padding: 2;
-    background-color: #fafafa;
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+
+    --bg-color: #fafafa;
+    background-color: var(--bg-color);
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -26,43 +29,36 @@ body {
     font-family: Myriad;
     user-select: none;
     position: absolute;
-    top: 15px;
+    top: 20px;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: var(--bg-color);
+    padding: 2px 10px;
+    border-radius: 5px;
 }
 
-#timeline {
-    /* width set by JS so whole number only for non-blurry renderings */
-    height: 70%;
-    border: 1px dotted red;
-}
+/* #timeline width set by JS so whole number only for non-blurry renderings */
 
 #event-descriptions {
     display: flex;
     justify-content: center;
-    height: 20%;
 }
 
 .event {
     position: relative;
     width: 80%;
+    margin-top: 28px;
     max-width: 300px;
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
-    background-color: white;
     padding: 8px 15px;
-    
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 20%;
-    height: 100%;
-    margin: 0 1%;
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: white;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
-    overflow: hidden; */
+    background-color: white; /* overriden by JS using the event's event color */
 }
+
+@media (max-height: 400px) {
+    .event {
+        margin-top: 10px;
+    }    
+}
+

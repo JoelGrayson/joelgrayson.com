@@ -30,6 +30,7 @@ export default class Timeline extends JGraphicsLibrary {
     // Config
     xPadding=15;
 
+
     constructor(events: eventT[]) { //setup
         super(document.getElementById('timeline') as HTMLCanvasElement)
         this.canvasEl.addEventListener('click', this.clickEvent);
@@ -108,6 +109,7 @@ export default class Timeline extends JGraphicsLibrary {
     draw=()=>{
         const { clear }=this.getVars();
 
+        // this.resizeCanvas();
         clear();
         this.calculateEventPositions();
         this.renderEvents();
@@ -117,9 +119,15 @@ export default class Timeline extends JGraphicsLibrary {
         window.requestAnimationFrame(this.draw); //go to next frame
     }
 
+    // resizeCanvas() {
+    //     const { w, h }=this.getVars();
+    //     this.canvasEl.style.width=`${w}`;
+    //     this.canvasEl.style.height=`${w*2/3}`;
+    // }
+    
     calculateEventPositions(): void { //find the position of each event based on zoom settings (called every frame)
         // Useful for rendering and collision detection in hover/click events)
-        const { h }=this.getVars();
+        const { timelineBottom }=this.getVars();
 
         const eventHeight=30;
 
@@ -156,7 +164,7 @@ export default class Timeline extends JGraphicsLibrary {
                     renderedInVicinity++;
             });
 
-            let heightOffset=h/2-eventHeight-5 /* timeline */ - eventHeight*renderedInVicinity /* stack offset */;
+            let heightOffset=timelineBottom-eventHeight-5 /* timeline */ - eventHeight*renderedInVicinity /* stack offset */;
 
             e.x=startPosition;
             e.y=heightOffset;
@@ -168,11 +176,10 @@ export default class Timeline extends JGraphicsLibrary {
     }
 
     renderLines() {
-        const { c, h, s, leftOffset, rightOffset }=this.getVars();
+        const { c, timelineBottom, s, leftOffset, rightOffset }=this.getVars();
 
         const lineWidth=2; //must be even
-        const middle=h/2;
-        const lineY=middle-lineWidth/2;
+        const lineY=timelineBottom-lineWidth/2;
         c.fillStyle='black';
         const fontSize=20;
         c.font=`${fontSize}px Avenir`;
@@ -191,14 +198,14 @@ export default class Timeline extends JGraphicsLibrary {
         c.lineJoin='round';
         // Left Arrow
         const leftMost=leftOffset-9;
-        this.drawLine(leftMost, middle, leftMost+5, middle-5);
-        this.drawLine(leftMost, middle, leftMost+5, middle+5);
-        this.drawLine(leftMost, middle, leftMost+9, middle);
+        this.drawLine(leftMost, timelineBottom, leftMost+5, timelineBottom-5);
+        this.drawLine(leftMost, timelineBottom, leftMost+5, timelineBottom+5);
+        this.drawLine(leftMost, timelineBottom, leftMost+9, timelineBottom);
         // Right Arrow
         const rightMost=rightOffset+24;
-        this.drawLine(rightMost, middle, rightMost-5, middle-5);
-        this.drawLine(rightMost, middle, rightMost-5, middle+5);
-        this.drawLine(rightMost, middle, rightMost-9, middle);
+        this.drawLine(rightMost, timelineBottom, rightMost-5, timelineBottom-5);
+        this.drawLine(rightMost, timelineBottom, rightMost-5, timelineBottom+5);
+        this.drawLine(rightMost, timelineBottom, rightMost-9, timelineBottom);
     }
 
     renderEvents() {
@@ -336,7 +343,7 @@ export default class Timeline extends JGraphicsLibrary {
 
     // ## Other Helpers
     forEachYear=(cb: (obj: forEachYearProps)=>void)=>{
-        const { leftOffset, rightOffset, yearSpan }=this.getVars();
+        const { yearSpan }=this.getVars();
     
         const roundStart=Math.ceil(this.start); //cannot start at 2006.5, but 2007
         const roundEnd=Math.floor(this.end);
@@ -353,35 +360,40 @@ export default class Timeline extends JGraphicsLibrary {
         return offset*yearSpan;
     }
 
-    x2YDate(x: number): Date { //turn x offset into year float
-        return new Date();
+    x2Year(x: number): number { //turn x offset into year float
+        return 0; //not implemented yet but might not be needed
     }
     
     getVars: ()=>{ //returns variables that should not be set through this.var=
-        // const { c, h, s }=this.getVars(); is a way of importing necessary variables like libraries
-
+                   //const { c, h, s }=this.getVars(); is a way of importing necessary variables like libraries
         canvasEl: HTMLCanvasElement;
         c: CanvasRenderingContext2D;
+
         w: number;
         h: number;
         leftOffset: number;
         rightOffset: number;
+        timelineBottom: number;
+
         clear: ()=>void;
         s: (n: number)=>string;
         yearSpan: number;
     }=()=>{
-        const c=this.c;
         const canvasEl=this.canvasEl;
+        const c=this.c;
+
         const w=canvasEl.width;
         const h=canvasEl.height;
         const leftOffset=this.xPadding;
         const rightOffset=w-2*this.xPadding;
+        const timelineBottom=h-50;
+
         const span=rightOffset-leftOffset; //span of entire timeline line
         const yearSpan=Math.floor(span/(this.end-this.start)); //width per year
 
         return {
             canvasEl,
-            c, w, h, leftOffset, rightOffset,
+            c, w, h, leftOffset, rightOffset, timelineBottom,
             clear: ()=>c.clearRect(0, 0, w, h),
             s: (n: number)=>Math.floor(n).toString(), //toString
             yearSpan
