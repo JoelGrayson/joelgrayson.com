@@ -21,6 +21,7 @@ type forEachYearProps={
 export default class Timeline extends JGraphicsLibrary {
     // Elements
     images: images;
+    eventEl: HTMLDivElement;
     events: eventPositionT[];
 
     // Interactive
@@ -40,6 +41,7 @@ export default class Timeline extends JGraphicsLibrary {
 
     constructor(events: eventT[]) { //setup
         super(document.getElementById('timeline') as HTMLCanvasElement)
+        this.eventEl=document.getElementById('event') as HTMLDivElement;
         this.canvasEl.addEventListener('click', this.clickEvent);
         this.canvasEl.addEventListener('mousemove', this.hoverEvent);
         this.canvasEl.addEventListener('wheel', this.wheelEvent);
@@ -66,6 +68,13 @@ export default class Timeline extends JGraphicsLibrary {
             this.images[tool].src=`./controls/${tool}.png`;
         }
 
+        // Event HTML Element
+        this.eventEl.addEventListener('click', e=>{
+            this.eventEl.classList.add('hidden');
+            for (const e of this.events) //deselect all events
+                e.isSelected=false;
+        });
+        
         // Start draw loop
         window.requestAnimationFrame(this.draw);
     }
@@ -213,7 +222,7 @@ export default class Timeline extends JGraphicsLibrary {
     }
 
     renderEvents() {
-        const { c, s }=this.getVars();
+        const { c }=this.getVars();
 
         c.strokeStyle='black';
         c.lineWidth=1;
@@ -229,6 +238,12 @@ export default class Timeline extends JGraphicsLibrary {
             c.fillStyle=color.toString();
             c.strokeStyle=color.darken(20).toString();
 
+            if (e.isSelected) {
+                c.fillStyle='#a9dafc';
+                c.strokeStyle='#0e7dcc';
+                c.lineWidth=3;
+            }
+            
             c.beginPath();
             c.rect(
                 e.x,
@@ -239,10 +254,13 @@ export default class Timeline extends JGraphicsLibrary {
             c.fill();
             c.stroke();
 
-            c.textBaseline='top';
             // change text color
             c.fillStyle='black';
-            c.fillText(e.title, e.x, e.y, e.width);
+
+            // Place text in center of event
+            c.textBaseline='middle';
+            c.textAlign='center';
+            c.fillText(e.title, e.x+e.width/2, e.y+e.height/2, e.width);
         }
     }
     
@@ -377,12 +395,11 @@ export default class Timeline extends JGraphicsLibrary {
 
         e.isSelected=true;
         console.log('Selecting event', e)
-        const eventEl=document.getElementById('event') as HTMLDivElement;
-        eventEl.classList.remove('hidden');
-        eventEl.style.backgroundColor=e.color;
-        (eventEl.querySelector('.date-string') as HTMLParagraphElement).innerText=e.dateString;
-        (eventEl.querySelector('.title') as HTMLParagraphElement).innerText=e.title;
-        (eventEl.querySelector('.description') as HTMLParagraphElement).innerHTML=e.note ? '' : e.note;
+        this.eventEl.classList.remove('hidden');
+        this.eventEl.style.backgroundColor=e.color;
+        (this.eventEl.querySelector('.date-string') as HTMLParagraphElement).innerText=e.dateString;
+        (this.eventEl.querySelector('.title') as HTMLParagraphElement).innerText=e.title;
+        (this.eventEl.querySelector('.description') as HTMLParagraphElement).innerHTML=e.note ? '' : e.note;
         e.dateString;
     }
     
