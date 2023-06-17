@@ -18,10 +18,6 @@ body {
 
     --bg-color: #fafafa;
     background-color: var(--bg-color);
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
 }
 
 #title {
@@ -40,11 +36,18 @@ body {
 #timeline {
     /* width set by JS so whole number only for non-blurry renderings */
     font-family: Avenir;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 #event-descriptions {
     display: flex;
     justify-content: center;
+    /* border: 1px dotted red; */
+    position: absolute;
+    bottom: 5%;
+    width: 100%;
 }
 
 .event {

@@ -24,7 +24,8 @@ export default class Timeline extends JGraphicsLibrary {
     events: eventPositionT[];
 
     // Interactive
-    toHover?: [eventPositionT, 'hovered'];
+    mouseX: number;
+    mouseY: number;
     
     // View settings
     start: year;
@@ -32,7 +33,8 @@ export default class Timeline extends JGraphicsLibrary {
     showControls: boolean;
 
     // Config
-    xPadding=15;
+    xPadding=20;
+    yPadding=20;
     fontSize=20;
 
 
@@ -118,13 +120,15 @@ export default class Timeline extends JGraphicsLibrary {
         c.font=`${this.fontSize}px Avenir`;
         clear();
         this.calculateEventPositions();
-        this.renderEvents(this.events, 'normal');
+        this.renderEvents();
         this.renderLines();
         this.renderControls(); //last so that it is on top
-        if (this.toHover)
-            this.renderEvents([this.toHover[0]], this.toHover[1]);
-
         window.requestAnimationFrame(this.draw); //go to next frame
+        
+        // // Render Cursor
+        // c.beginPath();
+        // c.arc(this.mouseX, this.mouseY, 10, 0, 1.9*Math.PI);
+        // c.fill();
     }
 
     calculateEventPositions(): void { //find the position of each event based on zoom settings (called every frame)
@@ -208,32 +212,24 @@ export default class Timeline extends JGraphicsLibrary {
         this.drawLine(rightMost, timelineBottom, rightMost-9, timelineBottom);
     }
 
-    renderEvents(events: eventPositionT[], style: 'normal' | 'hovered' | 'active' /* being clicked */ | 'selected' /* event is selected */) {
+    renderEvents() {
         const { c, s }=this.getVars();
 
         c.strokeStyle='black';
         c.lineWidth=1;
         c.fillStyle='#ccc';
 
-        for (const e of events) {
+        for (const e of this.events) {
+            let color=tinycolor(e.color)!;
+            
+            // Hovered style is darker
+            if (this.inCoords(e.x, e.y, e.width, e.height, this.mouseX, this.mouseY))
+                color=color.darken(20);
+
+            c.fillStyle=color.toString();
+            c.strokeStyle=color.darken(20).toString();
+
             c.beginPath();
-            const color=tinycolor(e.color)!;
-            switch (style) {
-                case 'normal': 
-                    c.fillStyle=color.toString();
-                    c.strokeStyle=color.darken(20).toString();
-                    break;
-                case 'hovered':
-                    c.fillStyle=color.darken(20).toString();
-                    c.strokeStyle=color.darken(40).toString();
-                    break;
-                case 'active':
-                    c.fillStyle=color.darken(30).toString();
-                    c.strokeStyle=color.darken(50).toString();
-                    break;
-                default:
-                    throw new Error(`Invalid style attribute passed to renderEvents: ${style}.`);
-            }
             c.rect(
                 e.x,
                 e.y,
@@ -256,15 +252,15 @@ export default class Timeline extends JGraphicsLibrary {
         const imagePadding=2; //inner image padding
         c.fillStyle='#d9d9d9';
         c.strokeStyle='black';
-
+        
         for (let i=0; i<tools.length; i++) { //background rectangles
-            c.rect(10+40*i, 10, 30, 30); 
+            c.rect(this.xPadding+40*i, this.yPadding, 30, 30); 
             c.fill();
             c.stroke();
         }
         for (let i=0; i<tools.length; i++) { //images on top
             const tool=tools[i];
-            c.drawImage(this.images[tool], 10+i*40+imagePadding, 10+imagePadding, 30-2*imagePadding, 30-2*imagePadding);
+            c.drawImage(this.images[tool], this.xPadding+i*40+imagePadding, this.yPadding+imagePadding, 30-2*imagePadding, 30-2*imagePadding);
         }
     }
 
@@ -317,13 +313,8 @@ export default class Timeline extends JGraphicsLibrary {
     }
 
     hoverEvent=(mouseEvent: any)=>{
-        // Event event listeners (haha)
-        for (const e of this.events) {
-            if (this.inCoords(e.x, e.y, e.width, e.height, mouseEvent.clientX, mouseEvent.clientY)) {
-                console.log('hovered');
-                this.toHover=[e, 'hovered']
-            }
-        }
+        this.mouseX=mouseEvent.offsetX;
+        this.mouseY=mouseEvent.offsetY;
     }
 
     wheelEvent(e: WheelEvent) { //zooming
@@ -413,7 +404,7 @@ export default class Timeline extends JGraphicsLibrary {
         const w=canvasEl.width;
         const h=canvasEl.height;
         const leftOffset=this.xPadding;
-        const rightOffset=w-2*this.xPadding;
+        const rightOffset=w-2*leftOffset;
         const timelineBottom=h-50;
 
         const span=rightOffset-leftOffset; //span of entire timeline line
