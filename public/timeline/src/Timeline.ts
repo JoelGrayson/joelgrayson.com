@@ -316,9 +316,15 @@ export default class Timeline extends JGraphicsLibrary {
         }
 
         // Event event listeners (haha)
+        for (const e of this.events) {
+            if (this.inCoords(e.x, e.y, e.width, e.height, this.mouseX, this.mouseY)) {
+                this.selectEvent(e);
+                return;
+            }
+        }
     }
 
-    hoverEvent=(mouseEvent: any)=>{
+    hoverEvent=(mouseEvent: any)=>{ //update mouseX and mouseY coordinates
         this.mouseX=mouseEvent.offsetX;
         this.mouseY=mouseEvent.offsetY;
     }
@@ -365,6 +371,21 @@ export default class Timeline extends JGraphicsLibrary {
         });
     }
 
+    selectEvent(e: eventPositionT) {
+        for (const event of this.events) //deselect any other event
+            event.isSelected=false;
+
+        e.isSelected=true;
+        console.log('Selecting event', e)
+        const eventEl=document.getElementById('event') as HTMLDivElement;
+        eventEl.classList.remove('hidden');
+        eventEl.style.backgroundColor=e.color;
+        (eventEl.querySelector('.date-string') as HTMLParagraphElement).innerText=e.dateString;
+        (eventEl.querySelector('.title') as HTMLParagraphElement).innerText=e.title;
+        (eventEl.querySelector('.description') as HTMLParagraphElement).innerHTML=e.note ? '' : e.note;
+        e.dateString;
+    }
+    
 
     // ## Other Helpers
     forEachYear=(cb: (obj: forEachYearProps)=>void)=>{

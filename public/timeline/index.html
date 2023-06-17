@@ -11,11 +11,13 @@
 <body>
     <h1 id="title">Timeline</h1>
     <canvas id="timeline"></canvas>
-    <div id="event-descriptions">
+    <div id="event-description-container">
         <!-- events descriptions are inserted here by Timeline.ts -->
-        <div class="event">
+        <div id='event' class="hidden" onclick="this.classList.add('hidden')">
             <button class="icon-close"></button>
-            <p>Hello</p>
+            <p class="title">Title</p>
+            <p class="date-string">Date String</p>
+            <p class="description">Description</p>
         </div>
     </div>
 

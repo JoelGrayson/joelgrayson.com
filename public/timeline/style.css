@@ -41,7 +41,7 @@ body {
     left: 0;
 }
 
-#event-descriptions {
+#event-description-container {
     display: flex;
     justify-content: center;
     /* border: 1px dotted red; */
@@ -50,7 +50,7 @@ body {
     width: 100%;
 }
 
-.event {
+#event {
     position: relative;
     width: 80%;
     margin-top: 28px;
@@ -60,6 +60,10 @@ body {
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
     padding: 8px 15px;
     background-color: white; /* overriden by JS using the event's event color */
+}
+
+.hidden {
+    display: none;
 }
 
 @media (max-height: 400px) {

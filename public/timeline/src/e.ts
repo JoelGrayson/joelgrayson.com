@@ -16,7 +16,7 @@ export type propsT={
 export type eventT=propsT & { //output
     dateString: string; //displayed on event
     title: string;
-    note: string | Element;
+    note: string;
     color: string;
 };
 
@@ -29,11 +29,13 @@ export type eventPositionT=eventT & {
     x: number;
     width: number;
     height: number;
+
+    isSelected?: boolean;
 };
 
 const colorGenerator=generateColor();
 
-export default function e(title: string, date: propsT, note: string | Element='', color?: string): eventT {
+export default function e(title: string, date: propsT, note: string='', color?: string): eventT {
     console.log('og date', date);
     // Default values
     date.scope??='range';
