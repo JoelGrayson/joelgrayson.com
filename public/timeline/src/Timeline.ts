@@ -24,7 +24,7 @@ export default class Timeline extends JGraphicsLibrary {
     events: eventPositionT[];
 
     // Interactive
-    toHover: [eventPositionT, 'hovered']=null;
+    toHover?: [eventPositionT, 'hovered'];
     
     // View settings
     start: year;
@@ -121,7 +121,7 @@ export default class Timeline extends JGraphicsLibrary {
         this.renderEvents(this.events, 'normal');
         this.renderLines();
         this.renderControls(); //last so that it is on top
-        if (this.toHover!==null)
+        if (this.toHover)
             this.renderEvents([this.toHover[0]], this.toHover[1]);
 
         window.requestAnimationFrame(this.draw); //go to next frame
