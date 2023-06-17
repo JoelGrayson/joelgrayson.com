@@ -224,10 +224,6 @@ export default class Timeline extends JGraphicsLibrary {
     renderEvents() {
         const { c }=this.getVars();
 
-        c.strokeStyle='black';
-        c.lineWidth=1;
-        c.fillStyle='#ccc';
-
         for (const e of this.events) {
             let color=tinycolor(e.color)!;
             
@@ -242,6 +238,8 @@ export default class Timeline extends JGraphicsLibrary {
                 c.fillStyle='#a9dafc';
                 c.strokeStyle='#0e7dcc';
                 c.lineWidth=3;
+            } else {
+                c.lineWidth=1;
             }
             
             c.beginPath();
@@ -254,8 +252,11 @@ export default class Timeline extends JGraphicsLibrary {
             c.fill();
             c.stroke();
 
-            // change text color
-            c.fillStyle='black';
+            // Text color
+            if (tinycolor(c.fillStyle).getBrightness()>128)
+                c.fillStyle='black';
+            else
+                c.fillStyle='white';
 
             // Place text in center of event
             c.textBaseline='middle';
