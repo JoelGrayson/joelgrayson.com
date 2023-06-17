@@ -8,9 +8,11 @@
         "declaration": true, //type declaration files (.d.ts)
         "sourceMap": true, //for debugging
         "esModuleInterop": false, //es6 and cjs can communicate
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true
     },
     "include": [
-        "src/**/*.ts"
+        "src/**/*.ts",
+        // "src/tinycolor.js" //From https://raw.githubusercontent.com/bgrins/TinyColor/master/npm/esm/tinycolor.js
     ]
 }

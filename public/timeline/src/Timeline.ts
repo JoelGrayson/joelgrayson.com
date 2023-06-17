@@ -1,6 +1,7 @@
 import { date2Year, year } from './utils.js';
 import JGraphicsLibrary from './JGraphicsLibrary.js';
 import { eventT, eventPositionT } from './e.js';
+import tinycolor from './tinycolor.js';
 
 const born: year=2006; //default start
 const now: year=new Date().getFullYear(); //default end
@@ -35,6 +36,7 @@ export default class Timeline extends JGraphicsLibrary {
     constructor(events: eventT[]) { //setup
         super(document.getElementById('timeline') as HTMLCanvasElement)
         this.canvasEl.addEventListener('click', this.clickEvent);
+        this.canvasEl.addEventListener('hover', this.hoverEvent);
         this.canvasEl.addEventListener('wheel', this.wheelEvent);
         this.c.textAlign='center';
         this.start=born;
@@ -113,7 +115,13 @@ export default class Timeline extends JGraphicsLibrary {
         c.font=`${this.fontSize}px Avenir`;
         clear();
         this.calculateEventPositions();
-        this.renderEvents();
+        if (Date.now() % 3000 < 1000)
+            this.renderEvents(this.events, 'normal');
+        else if (Date.now() % 3000 < 2000)
+            this.renderEvents(this.events, 'hovered');
+        else if (Date.now() % 3000 < 3000)
+            this.renderEvents(this.events, 'active');
+        
         this.renderLines();
         this.renderControls(); //last so that it is on top
 
@@ -201,16 +209,32 @@ export default class Timeline extends JGraphicsLibrary {
         this.drawLine(rightMost, timelineBottom, rightMost-9, timelineBottom);
     }
 
-    renderEvents() {
-        const { c }=this.getVars();
+    renderEvents(events: eventPositionT[], style: 'normal' | 'hovered' | 'active' /* being clicked */) {
+        const { c, s }=this.getVars();
 
         c.strokeStyle='black';
         c.lineWidth=1;
         c.fillStyle='#ccc';
 
-        for (const e of this.events) {
+        for (const e of events) {
             c.beginPath();
-            c.fillStyle=e.color;
+            const color=tinycolor(e.color)!;
+            switch (style) {
+                case 'normal': 
+                    c.fillStyle=color.toString();
+                    c.strokeStyle=color.darken(20).toString();
+                    break;
+                case 'hovered':
+                    c.fillStyle=color.darken(20).toString();
+                    c.strokeStyle=color.darken(40).toString();
+                    break;
+                case 'active':
+                    c.fillStyle=color.darken(30).toString();
+                    c.strokeStyle=color.darken(50).toString();
+                    break;
+                default:
+                    throw new Error(`Invalid style attribute passed to renderEvents: ${style}.`);
+            }
             c.rect(
                 e.x,
                 e.y,
@@ -249,8 +273,8 @@ export default class Timeline extends JGraphicsLibrary {
     clickEvent=(e: MouseEvent)=>{
         // Control button listeners
         for (let i=0; i<tools.length; i++) { //background rectangles
-            if (this.inCoords(10+40*i, 10, 30, 30, e.offsetX, e.offsetY)) { //c.rect(10+40*i, 10, 30, 30)
-                const sixthInterval=(this.end-this.start)/6;
+            if (this.inCoords(10+40*i, 10, 30, 30, e.offsetX, e.offsetY)) { //clicked inside the tool
+                const moveBy=(this.end-this.start)/6; //move by 1/6 of the timeline
                 switch (tools[i]) {
                     case 'home':
                         this.smoothlyMove({
@@ -261,32 +285,45 @@ export default class Timeline extends JGraphicsLibrary {
                                 this.start=born;
                                 this.end=now;
                             });
-                        break;
+                        return; //exit the function so computation is over and no other action is executed
                     case 'left':
                         this.smoothlyMove({
-                            start: -sixthInterval,
-                            end: -sixthInterval
+                            start: -moveBy,
+                            end: -moveBy
                         });
-                        break;
+                        return;
                     case 'zoom-out':
                         this.smoothlyMove({
-                            start: -sixthInterval,
-                            end: sixthInterval
+                            start: -moveBy,
+                            end: moveBy
                         });
-                        break;
+                        return;
                     case 'zoom-in':
                         this.smoothlyMove({
-                            start: sixthInterval,
-                            end: -sixthInterval
+                            start: moveBy,
+                            end: -moveBy
                         });
-                        break;
+                        return;
                     case 'right':
                         this.smoothlyMove({
-                            start: sixthInterval,
-                            end: sixthInterval
+                            start: moveBy,
+                            end: moveBy
                         });
-                        break;
+                        return;
                 }
+            }
+        }
+
+        // Event event listeners (haha)
+    }
+
+    hoverEvent(mouseEvent: any) {
+        const { c }=this.getVars();
+        
+        // Event event listeners (haha)
+        for (const e of this.events) {
+            if (this.inCoords(e.x, e.y, e.width, e.height, mouseEvent.clientX, mouseEvent.clientY)) {
+                this.renderEvents([e], 'hovered');
             }
         }
     }
@@ -388,8 +425,9 @@ export default class Timeline extends JGraphicsLibrary {
             canvasEl,
             c, w, h, leftOffset, rightOffset, timelineBottom,
             clear: ()=>c.clearRect(0, 0, w, h),
-            s: (n: number)=>Math.floor(n).toString(), //toString
+            s: (n: number)=>Math.floor(n).toString(), //round and toString
             yearSpan
         };
     }
 }
+
