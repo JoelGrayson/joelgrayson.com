@@ -23,6 +23,9 @@ export default class Timeline extends JGraphicsLibrary {
     images: images;
     events: eventPositionT[];
 
+    // Interactive
+    toHover: [eventPositionT, 'hovered']=null;
+    
     // View settings
     start: year;
     end: year;
@@ -36,7 +39,7 @@ export default class Timeline extends JGraphicsLibrary {
     constructor(events: eventT[]) { //setup
         super(document.getElementById('timeline') as HTMLCanvasElement)
         this.canvasEl.addEventListener('click', this.clickEvent);
-        this.canvasEl.addEventListener('hover', this.hoverEvent);
+        this.canvasEl.addEventListener('mousemove', this.hoverEvent);
         this.canvasEl.addEventListener('wheel', this.wheelEvent);
         this.c.textAlign='center';
         this.start=born;
@@ -115,15 +118,11 @@ export default class Timeline extends JGraphicsLibrary {
         c.font=`${this.fontSize}px Avenir`;
         clear();
         this.calculateEventPositions();
-        if (Date.now() % 3000 < 1000)
-            this.renderEvents(this.events, 'normal');
-        else if (Date.now() % 3000 < 2000)
-            this.renderEvents(this.events, 'hovered');
-        else if (Date.now() % 3000 < 3000)
-            this.renderEvents(this.events, 'active');
-        
+        this.renderEvents(this.events, 'normal');
         this.renderLines();
         this.renderControls(); //last so that it is on top
+        if (this.toHover!==null)
+            this.renderEvents([this.toHover[0]], this.toHover[1]);
 
         window.requestAnimationFrame(this.draw); //go to next frame
     }
@@ -209,7 +208,7 @@ export default class Timeline extends JGraphicsLibrary {
         this.drawLine(rightMost, timelineBottom, rightMost-9, timelineBottom);
     }
 
-    renderEvents(events: eventPositionT[], style: 'normal' | 'hovered' | 'active' /* being clicked */) {
+    renderEvents(events: eventPositionT[], style: 'normal' | 'hovered' | 'active' /* being clicked */ | 'selected' /* event is selected */) {
         const { c, s }=this.getVars();
 
         c.strokeStyle='black';
@@ -317,13 +316,12 @@ export default class Timeline extends JGraphicsLibrary {
         // Event event listeners (haha)
     }
 
-    hoverEvent(mouseEvent: any) {
-        const { c }=this.getVars();
-        
+    hoverEvent=(mouseEvent: any)=>{
         // Event event listeners (haha)
         for (const e of this.events) {
             if (this.inCoords(e.x, e.y, e.width, e.height, mouseEvent.clientX, mouseEvent.clientY)) {
-                this.renderEvents([e], 'hovered');
+                console.log('hovered');
+                this.toHover=[e, 'hovered']
             }
         }
     }
