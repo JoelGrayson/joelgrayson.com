@@ -24,8 +24,8 @@ export default class Timeline extends JGraphicsLibrary {
     events: eventPositionT[];
 
     // Interactive
-    mouseX: number;
-    mouseY: number;
+    mouseX: number=0;
+    mouseY: number=0;
     
     // View settings
     start: year;
@@ -250,11 +250,17 @@ export default class Timeline extends JGraphicsLibrary {
         const { c }=this.getVars();
 
         const imagePadding=2; //inner image padding
-        c.fillStyle='#d9d9d9';
         c.strokeStyle='black';
-        
+
         for (let i=0; i<tools.length; i++) { //background rectangles
-            c.rect(this.xPadding+40*i, this.yPadding, 30, 30); 
+            c.beginPath();
+            const [x, y, w, h]=[this.xPadding+40*i, this.yPadding, 30, 30];
+            if (this.inCoords(x, y, w, h, this.mouseX, this.mouseY))
+                c.fillStyle='#aaa';
+            else
+                c.fillStyle='#d9d9d9';
+
+            c.rect(x, y, w, h);
             c.fill();
             c.stroke();
         }
