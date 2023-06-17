@@ -29,6 +29,7 @@ export default class Timeline extends JGraphicsLibrary {
 
     // Config
     xPadding=15;
+    fontSize=20;
 
 
     constructor(events: eventT[]) { //setup
@@ -107,9 +108,9 @@ export default class Timeline extends JGraphicsLibrary {
     
     // Rendering
     draw=()=>{
-        const { clear }=this.getVars();
+        const { c, clear }=this.getVars();
 
-        // this.resizeCanvas();
+        c.font=`${this.fontSize}px Avenir`;
         clear();
         this.calculateEventPositions();
         this.renderEvents();
@@ -119,12 +120,6 @@ export default class Timeline extends JGraphicsLibrary {
         window.requestAnimationFrame(this.draw); //go to next frame
     }
 
-    // resizeCanvas() {
-    //     const { w, h }=this.getVars();
-    //     this.canvasEl.style.width=`${w}`;
-    //     this.canvasEl.style.height=`${w*2/3}`;
-    // }
-    
     calculateEventPositions(): void { //find the position of each event based on zoom settings (called every frame)
         // Useful for rendering and collision detection in hover/click events)
         const { timelineBottom }=this.getVars();
@@ -181,15 +176,13 @@ export default class Timeline extends JGraphicsLibrary {
         const lineWidth=2; //must be even
         const lineY=timelineBottom-lineWidth/2;
         c.fillStyle='black';
-        const fontSize=20;
-        c.font=`${fontSize}px Avenir`;
 
         c.fillRect(leftOffset, lineY, rightOffset, lineWidth); //middle timeline line
         this.forEachYear(({ year, offset, yearSpan }: forEachYearProps)=>{
             // Year Lines (sleepers)
             
             // Year Text
-            c.fillText(`'${s(year).slice(-2)}`, leftOffset+offset*yearSpan, lineY+fontSize); //'06 instead of 2006
+            c.fillText(`'${s(year).slice(-2)}`, leftOffset+offset*yearSpan, lineY+this.fontSize); //'06 instead of 2006
         });
 
         // Render arrow heads <- and -> for the ends of the timeline line

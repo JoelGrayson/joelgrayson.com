@@ -37,7 +37,10 @@ body {
     border-radius: 5px;
 }
 
-/* #timeline width set by JS so whole number only for non-blurry renderings */
+#timeline {
+    /* width set by JS so whole number only for non-blurry renderings */
+    font-family: Avenir;
+}
 
 #event-descriptions {
     display: flex;
