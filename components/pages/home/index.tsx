@@ -16,7 +16,7 @@ export default function Home() {
     useEffect(()=>{
         if (hCInstalls!=null || focusInstalls!=null) return;
         
-        fetch('/api/home/stats')
+        fetch('https://api.joelgrayson.com/homepage-stats')
             .then(res=>res.json())
             .then((res)=>{
                 if (res.hCInstalls===-1 || !res.hCInstalls) return console.log('hCInstalls is -1');

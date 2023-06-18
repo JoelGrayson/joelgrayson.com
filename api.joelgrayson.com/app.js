@@ -1,7 +1,6 @@
-require('dotenv').config();
 const express=require('express');
 const app=express();
-const port=8080;
+const port=process.env.PORT || 8080;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
@@ -26,14 +25,11 @@ app.use(cors({
 }));
 
 
-// Verify
-const { verifyHandler }=require('./servers/verify/verify');
-app.post('/verify', verifyHandler);
-
-
-// Electric School Buses
-const esbHandler=require('./servers/electric-school-buses-petition/server');
-app.use('/combating-climate-change/electric-school-buses-petition', esbHandler);
+// Handlers
+app.post('/verify', require('./servers/verify/verify').verifyHandler);
+app.use('/combating-climate-change/electric-school-buses-petition', require('./servers/electric-school-buses-petition/server'));
+app.use('/homepage-stats', require('./servers/homepage-stats/server'));
 
 
 app.listen(port, ()=>console.log(`Listening on port ${port}`));
+

@@ -9,7 +9,7 @@
         "dev-timeline": "cd public/timeline && ./dev.sh",
 
         "build": "next build && npm run compile-timeline",
-        "vercel-build": "npm run prisma-generate && node node_modules/puppeteer/install.js",
+        "vercel-build": "npm run prisma-generate",
         "compile-timeline": "cd public/timeline && tsc && cd ../..",
         "jredirects": "cd jredirects && ./build.sh",
         "prisma-studio": "npx prisma studio --schema ./components/data/schema.prisma",

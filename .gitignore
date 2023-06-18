@@ -13,7 +13,6 @@ node_modules
 # Platform-Specific
 **/.DS_Store
 Icon
-/screenshot.png
 
 
 # Large Files (so Github doesn't complain)
