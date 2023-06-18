@@ -20,7 +20,7 @@ module.exports=router;
 function createGetChromeExtensionStats(url) {
     return new Promise(async resolve=>{
         const browser=await puppeteer.launch({
-            headless: 'new',
+            // headless: 'new',
             executablePath: process.env.CHROMIUM_PATH || undefined, //Docker has its own chromium path
             args: [
                 '--no-sandbox', //disable security feature of sandboxing chrome's processes. Gives more privileges to the program execution runtime.
@@ -37,9 +37,9 @@ function createGetChromeExtensionStats(url) {
             const usersText=usersEl.innerText;
             return parseInt(usersText.match(/(\d+) users/)?.[1] || '-1');
         });
-        resolve(users);
         await page.close();
         await browser.close();
+        resolve(users);
     });
 }
 
