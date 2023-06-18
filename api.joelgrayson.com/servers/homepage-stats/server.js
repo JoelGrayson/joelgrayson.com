@@ -1,11 +1,12 @@
 const express=require('express');
 const router=express.Router();
+const cacheMiddleware=require('./statCache');
 const puppeteer=require('puppeteer');
 
 const getHCInstalls=createGetChromeExtensionStats('https://chrome.google.com/webstore/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj');
 const getFocusInstalls=createGetChromeExtensionStats('https://chrome.google.com/webstore/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf');
 
-router.get('/', async (req, res)=>{
+router.get('/', cacheMiddleware, async (req, res)=>{
     const [hCInstalls, focusInstalls]=await Promise.all([
         getHCInstalls,
         getFocusInstalls

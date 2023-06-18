@@ -13,10 +13,12 @@
   "author": "Joel Grayson <joel@joelgrayson.com> (https://github.com/JoelGrayson)",
   "license": "MIT",
   "dependencies": {
+    "compression": "^1.7.4",
     "cors": "^2.8.5",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "googleapis": "^114.0.0",
+    "node-cache": "^5.1.2",
     "puppeteer": "~17.1.3"
   },
   "devDependencies": {

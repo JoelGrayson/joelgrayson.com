@@ -6,6 +6,10 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
+// Compress responses
+const compression=require('compression');
+app.use(compression());
+
 // Update CORS policy to link api.joelgrayson.com with joelgrayson.com
 const cors=require('cors');
 const whitelist=[
