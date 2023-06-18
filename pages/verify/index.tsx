@@ -3,7 +3,8 @@ import Button from '@jcomponents/button';
 import { dateRegex, SignedMessage } from '@/components/verify/helpers';
 import React, { useState, useCallback, useEffect } from 'react';
 import Modal from '@jcomponents/modal';
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
+
 
 // Planning: https://docs.google.com/document/d/1hg9SUuCwXk_PzTEOq7oJTXakGg7oZRXB4trvmor_abY/edit
 
@@ -51,8 +52,10 @@ export default function Verify() {
         }
 
         const sm: SignedMessage={ message, date, signature };
+        setIsValid('verifying...');
         console.log('Verifying:', sm);
 
+        // fetch('http://http://localhost:8080/verify', {
         fetch('https://api.joelgrayson.com/verify', {
             method: 'POST',
             headers: {
@@ -138,7 +141,7 @@ export default function Verify() {
                 />
             </div>
 
-            <Button onClick={e=>verifyRequest()}>Verify</Button>
+            <Button onClick={()=>verifyRequest()}>Verify</Button>
 
             {(()=>{
                 // Verification status:
@@ -146,7 +149,7 @@ export default function Verify() {
                     case null:
                         return <></>;
                     case 'verifying...':
-                        return <p className='italic'>Verifying...</p>;
+                        return <p className='italic'>Verifying... <img className='inline' src='/image/miscellaneous/loading.gif' alt='Loading' width='50px' /></p>;
                     case 'valid':
                         return <p className='text-green-800'>Verified ✅. Joel Grayson signed/authorized this message.</p>;
                     case 'invalid':

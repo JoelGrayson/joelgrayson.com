@@ -6,14 +6,15 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
-// Link api.joelgrayson.com with joelgrayson.com
+// Update CORS policy to link api.joelgrayson.com with joelgrayson.com
 const cors=require('cors');
 const whitelist=[
     'https://joelgrayson.com', 'https://www.joelgrayson.com',
     'https://joelgrayson.vercel.app', 'https://www.joelgrayson.vercel.app',
 ];
 if (process.env.NODE_ENV==='development')
-    whitelist=whitelist.concat(['http://localhost:8080', 'http://localhost:3000',]);
+    whitelist=whitelist.concat(['http://localhost:8080', 'http://localhost:3000']);
+console.log('The CORS origin whitelist is', whitelist);
 
 app.use(cors({
     origin: (origin, callback)=>{
