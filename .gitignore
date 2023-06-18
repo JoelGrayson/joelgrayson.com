@@ -5,7 +5,7 @@ api.joelgrayson.com/node_modules
 
 
 # Bloat
-node_modules
+**/node_modules
 .next
 .vscode
 
