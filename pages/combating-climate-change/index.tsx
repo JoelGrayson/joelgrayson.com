@@ -23,6 +23,7 @@ export default function CCC() {
             }>
                 <p>While learning about different energy sources, I realized that my school&apos;s empty rooftops had great potential for solar energy. I measured the rooftops, created solar models in <Link href='https://helioscope.aurorasolar.com' className='styled'>HelioScope</Link>, did some calculations, prepared a presentation, and gathered quotes from several companies. I spoke to the Head of School and Board of Trustees and we worked together to create a 410 kW solar PPA arrangement (enough to power 40+ homes) that will cover six buildings, promoting renewable energy and saving the school tens of thousands of dollars every year.</p>
                 <Image src='/image/ccc/solar-for-riverdale/models.png' width='720' height='146' alt='Solar Models' />
+                <Image src='/image/ccc/solar-for-riverdale/Presenting.png' width='720' height='146' alt='Solar Models' />
             </Action>
         </Section>
         <Section title='Electrification'>
