@@ -47,7 +47,7 @@ export default function Header() {
                                 <HeaderGroupItem link='/projects/slaphappy'>Slaphappy</HeaderGroupItem>
                             </HeaderGroup>
 
-                            <HeaderGroup title='Software'>
+                            <HeaderGroup title='Software' link='/software'>
                                 <HeaderGroupItem link='https://buseroo.com'>Buseroo</HeaderGroupItem>
                                 <HeaderGroupItem link='https://lirongart.com'>Lirong Art</HeaderGroupItem>
                                 <HeaderGroupItem link='/zoom-timers'>Zoom Timers</HeaderGroupItem>

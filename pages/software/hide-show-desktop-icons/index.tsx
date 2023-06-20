@@ -1,17 +1,17 @@
 import Page from '@/components/global/Page';
 import Button from '@jcomponents/button';
 
-export default function index() {
+export default function HideShowDesktopIcons() {
     return <Page>
         <h1>Hide/Show Desktop Icons</h1>
         <p>Lets you easily hide and show desktop icons on MacOS.</p>
         
-        <a href="/public/software/hide desktop.command">
+        <a href="/software/hide desktop.command">
             <Button color='jblue'>Download</Button>
         </a>
         
         <h3>How to Use</h3>
-        <p><a href="/public/software/hide desktop.command" className='styled'>Download</a> the <code>hide desktop.command</code> & move it to your Desktop.</p>
+        <p><a href="/software/hide desktop.command" className='styled'>Download</a> the <code>hide desktop.command</code> & move it to your Desktop.</p>
         <p>Double click the `hide desktop` executable to hide desktop icons.</p>
         <p>After doing so, a `show desktop` file will appear in your downloads folder. Double click this file to restore the desktop icons.</p>
 
@@ -21,3 +21,4 @@ export default function index() {
         <br /><br />
     </Page>;
 }
+

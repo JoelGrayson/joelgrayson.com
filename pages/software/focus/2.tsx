@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Button from '@jcomponents/button';
 import Container from '@jcomponents/container';
 
-export default function index() {
+export default function FocusOld() {
     return <Page noheader nopadding>
         <div style={{backgroundColor: '#e5e5e5'}}>
             <Container>
