@@ -10,22 +10,28 @@ import { useEffect, useState } from 'react';
 // TODO: add shading gradient in boxes
 
 export default function Home() {
-    const [hCInstalls, setHCInstalls]=useState(null);
-    const [focusInstalls, setFocusInstalls]=useState(null);
+    const [hCInstalls, setHCInstalls]=useState<number | null>(null);
+    const [focusInstalls, setFocusInstalls]=useState<number | null>(null);
 
     useEffect(()=>{
         if (hCInstalls!=null || focusInstalls!=null) return;
         
-        fetch('https://api.joelgrayson.com/homepage-stats')
-            .then(res=>res.json())
-            .then((res)=>{
-                if (res.hCInstalls===-1 || !res.hCInstalls) return console.log('hCInstalls is -1');
-                if (res.focusInstalls===-1 || !res.focusInstalls) return console.log('focusInstalls is -1');
+        if (process.env.NODE_ENV==='development') { //skip calling api.joelgrayson.com/homepage-stats in development because of CORS error
+            console.log('skipping getting homepage-stats in development');
+            setHCInstalls(-4);
+            setFocusInstalls(-4);
+        } else {
+            fetch('https://api.joelgrayson.com/homepage-stats')
+                .then(res=>res.json())
+                .then((res)=>{
+                    if (res.hCInstalls===-1 || !res.hCInstalls) return console.log('hCInstalls is -1');
+                    if (res.focusInstalls===-1 || !res.focusInstalls) return console.log('focusInstalls is -1');
 
-                console.log('/api/home/stats returned', res);
-                setHCInstalls(res.hCInstalls);
-                setFocusInstalls(res.focusInstalls);
-            });
+                    console.log('/api/home/stats returned', res);
+                    setHCInstalls(res.hCInstalls);
+                    setFocusInstalls(res.focusInstalls);
+                });
+        }
     // eslint-disable-next-line
     }, []);
 
@@ -49,8 +55,8 @@ export default function Home() {
                             <span style={{
                                 position: 'relative',
                                 top: 40,
-                                height: `${270+60}px`,
-                                width: `${209+20}px`,
+                                height: 270+60,
+                                width: 209+20,
                                 borderRadius: 10,
                                 marginLeft: 3,
                                 marginRight: 3
@@ -119,3 +125,4 @@ export default function Home() {
 function Label({children}: {children: any}) {
     return <div className='bg-[#ffd166] px-1.5 text-sm py-0.5 rounded-lg border border-[#ecb715]'>{children}</div>;
 }
+

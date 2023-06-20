@@ -22,7 +22,6 @@ function createGetChromeExtensionStats(url) {
     return new Promise(async resolve=>{
         const browser=await puppeteer.launch({
             // headless: 'new',
-            executablePath: process.env.CHROMIUM_PATH || undefined, //Docker has its own chromium path
             args: [
                 '--no-sandbox', //disable security feature of sandboxing chrome's processes. Gives more privileges to the program execution runtime.
                 // '--disable-setuid-sandbox'

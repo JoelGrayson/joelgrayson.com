@@ -2,10 +2,10 @@
 import styles from '@/styles/home/logo.module.css';
 import Image from 'next/image';
 
-export default function SEBLogo({size=80}: {size?: number}) {
+export default function SEBLogo({ size=80, inline=false, style={} }: { size?: number; inline?: boolean; style?: any }) {
     // const [rotating, setRotating]=useState(true);
 
-    return <div className={styles.container} style={{height: size, width: size}}
+    return <div className={styles.container} style={{ height: size, width: size, display: (inline ? 'inline-block' : 'block'), ...style }}
         // onMouseEnter={()=>setRotating(false)}
         // onMouseLeave={()=>setRotating(true)}
     >
