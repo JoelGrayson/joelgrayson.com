@@ -12,6 +12,9 @@ export default function Resume() {
             padding-left: 25px;
             padding-right: 25px;
         }
+        #root>h3 {
+            margin-top: 1rem;
+        }
         #root li {
             position: relative;
         }
@@ -69,7 +72,7 @@ export default function Resume() {
                         <div className='description'>Convinced facilities to transition from gas to electric leaf blowers.</div>
                     </li>
                     <li>
-                        <Image src='/image/ccc/electric-leaf-blowers/stopping-bus-idling.png' alt='stopping-bus-idling' width={20} height={13} className='relative bottom-[3px] mr-1 inline' />
+                        <Image src='/image/ccc/stopping-bus-idling/stopping-bus-idling.png' alt='stopping-bus-idling' width={20} height={13} className='relative bottom-[3px] mr-1 inline' />
                         <span>Stopping Bus Idling</span>
                         <span className="date">2022</span>
                         <div className="description">Wrote to SuperSelby to enforce <a className='styled' href='https://portal.311.nyc.gov/article/?kanumber=KA-02222'>NYC&apos;s law banning bus idling</a>.</div>
@@ -87,14 +90,47 @@ export default function Resume() {
                         <div className="description">Kiosk and website finding the school bus going to a student&apos;s destination.</div>
                     </li>
                     <li>
+                        <Image src='/image/home/homework-checker-logo.png' alt='homework-checker-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
+                        <span>Homework Checker</span>
+                        <span className="date">2021-22</span>
+                        <div className="description">Helps 500+ students manage their homework every day.</div>
+                    </li>
+                    <li>
+                        <Image src='/image/home/focus-logo.png' alt='focus-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
                         <span>Focus</span>
                         <span className="date">2022</span>
                         <div className="description">Chrome extension helping 140+ people write distraction-free.</div>
                     </li>
+                    <li>
+                        <img src='/image/lirong-art/lirong-art.png' alt='lirongart-logo' width={16.8125} height={30} className='mr-1 inline bottom-[3px] right-[3px] relative' />
+                        <span>LirongArt.com</span>
+                        <span className="date">2020</span>
+                        <div className="description">Showcases and sells prints of my mother&apos;s paintings.</div>
+                    </li>
                 </ul>
             </div>
-            
+
+            <h3>Education</h3>
+            <div>
+                <div className='relative'>
+                    <span>Riverdale Country School</span>
+                    <span className='date'>2017-24</span>
+                </div>
+                <div>GPA: 3.94 (out of 4.0)</div>
+                <div>Honors: Geometry, Algebra II, Precalculus, Spanish I-VII, Biology II, Chemistry II, Physics II</div>
+            </div>
+
+
+            <h3>Honors</h3>
+            <div>
+                <div className='relative'>
+                    <span>Selected as a finalist in the Rise competition (global search for talented youth).</span>
+                    <span className='date'>2021</span>
+                </div>
+            </div>            
         </div>
+
+        <br /><br /><br />
     </div>;
 }
 
