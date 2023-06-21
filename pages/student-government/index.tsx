@@ -3,6 +3,9 @@ import Table from '@jcomponents/table';
 import Image from 'next/image';
 
 export default function StudentGovernment() {
+    const victoryClass='bg-green-400 text-green-700';
+    const lossClass='bg-red-400 text-red-700';
+
     return <Page bottomPadding>
         <h1 className='text-center'>Student Government</h1>
         <p>I have had a fun career of being elected grade representative for five years straight. It has been an exhilirating and emotion-full experience.</p>
@@ -11,67 +14,67 @@ export default function StudentGovernment() {
         <Table>
             <thead>
                 <tr>
+                    <th>Victory</th>
                     <th>Date</th>
                     <th>Position</th>
-                    <th>Victory</th>
                     <th># Spots</th>
                     <th># Candidates</th>
                     <th>Odds</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr className={victoryClass}>
+                    <td className='text-center'>✅</td>
                     <td>2019</td>
                     <td>8th Grade Representative</td>
-                    <td>✅</td>
                     <td>4</td>
                     <td>11</td>
                     <td>36%</td>
                 </tr>
-                <tr>
+                <tr className={lossClass}>
+                    <td className='text-center'>❌</td>
                     <td>2019</td>
                     <td>MS President</td>
-                    <td>❌</td>
                     <td>2</td>
                     <td>11</td>
                     <td>18%</td>
                 </tr>
-                <tr>
+                <tr className={victoryClass}>
+                    <td className='text-center'>✅</td>
                     <td>2020</td>
                     <td>9th Grade Representative</td>
-                    <td>✅</td>
                     <td>3</td>
                     <td>18</td>
                     <td>17%</td>
                 </tr>
-                <tr>
+                <tr className={victoryClass}>
+                    <td className='text-center'>✅</td>
                     <td>2021</td>
                     <td>10th Grade Representative</td>
-                    <td>✅</td>
                     <td>3</td>
                     <td>9</td>
                     <td>33%</td>
                 </tr>
-                <tr>
+                <tr className={victoryClass}>
+                    <td className='text-center'>✅</td>
                     <td>2022</td>
                     <td>11th Grade Representative</td>
-                    <td>✅</td>
                     <td>3</td>
                     <td>11</td>
                     <td>27%</td>
                 </tr>
-                <tr>
+                <tr className={victoryClass}>
+                    <td className='text-center'>✅</td>
                     <td>2023</td>
                     <td>12th Grade Representative</td>
-                    <td>✅</td>
                     <td>4</td>
                     <td>12</td>
                     <td>33%</td>
                 </tr>
-                <tr>
+                <tr className={lossClass}>
+                    <td className='text-center'>❌</td>
                     <td>2023</td>
                     <td>US Co-President</td>
-                    <td>❌</td>
                     <td>2</td>
                     <td>12</td>
                     <td>17%</td>
