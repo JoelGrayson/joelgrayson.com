@@ -84,9 +84,9 @@ export default function HomeworkChecker() {
         <p>Homework Checker does not and will never collect any data. It is fully-transparent: you can see the source code at <Link href='https://github.com/JoelGrayson/Homework-Checker'>github.com/JoelGrayson/Homework-Checker</Link></p>
 
 
-        <Link target='_blank' href='https://forms.gle/AzoqSVwKaVtRzrAH8'><Button>
-            Report a bug
-        </Button></Link>
+        <Link target='_blank' href='https://forms.gle/AzoqSVwKaVtRzrAH8'>
+            <Button>Report a bug</Button>
+        </Link>
 
         <br /><br />
     </Page>;

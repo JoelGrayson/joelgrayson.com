@@ -4,7 +4,11 @@ import Link from 'next/link';
 export default function HeaderGroupItem({link, children, arrow=true /* bool to show arrow */}: {children: any, link?: string, arrow?: boolean}) {
     const [hovered, setHovered]=useState(false); //hovered & open
     
-    return <Link className='unstyled relative' href={link || '#'}>
+    return <Link
+        className='unstyled relative'
+        href={link || '#'}
+        target={link?.trim()?.slice(0, 4)==='http' ? '_blank' : undefined} //open in new tab if external link
+    >
         <div
             onMouseEnter={()=>setHovered(true)}
             onMouseLeave={()=>setHovered(false)}
