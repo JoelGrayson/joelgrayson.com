@@ -1,4 +1,5 @@
 import Page from '@/components/global/Page';
+import Table from '@jcomponents/table';
 
 export default function StudentGovernment() {
     return <Page>
@@ -6,7 +7,7 @@ export default function StudentGovernment() {
         <p>I have had a fun career of being elected grade representative for five years straight. It has been an exhilirating experience.</p>
 
         <h3>Record</h3>
-        <table>
+        <Table>
             <thead>
                 <tr>
                     <th>Date</th>
@@ -73,7 +74,7 @@ export default function StudentGovernment() {
                     <td>2</td>
                 </tr>
             </tbody>
-        </table>
+        </Table>
         
         <br />
         <h3>Campaigns</h3>

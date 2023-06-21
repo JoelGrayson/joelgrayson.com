@@ -6,9 +6,9 @@ export default function HeaderGroup({ title, children, link }: { title: string, 
     const [open, setOpen]=useState(false);
     // const [open, setOpen]=[true, (_: any)=>{}]; //always open (for testing)
     
-    return <Link href={link || ''}>
-        <li onMouseLeave={()=>setOpen(false)}>
-            {/* Active is when mouseDown on button */}
+    return <li onMouseLeave={()=>setOpen(false)}>
+        {/* Active is when mouseDown on button */}
+        <Link href={link || ''}>
             <button
                 className='flex items-center text-black font-[15px] mx-[9px] bg-white rounded-[13px] py-[0.6rem] px-7 select-none
                 border-solid border-[#11111130] border-[0.2px] hover:bg-[#ffe062] ' //active: #ffd13c
@@ -19,21 +19,21 @@ export default function HeaderGroup({ title, children, link }: { title: string, 
                 {/* v    down arrow      ^ up arrow onHover */}
                 <UpDownArrow dir={(open ? 'up' : 'down')} />
             </button>
+        </Link>
 
-            { open && <div className='absolute ml-3 p-4 rounded-md height-fit border-2 bg-[rgb(255,255,255,0.8)] border-gray-500 z-10 select-none'>
-                {/* Vertical line */}
-                <div style={{
-                    height: `calc(100% - 16px - 12px + 2px)`,
-                    width: '2px',
-                    backgroundColor: 'black',
-                    position: 'absolute',
-                    left: '14px',
-                    top: 0
-                }}/>
+        { open && <div className='absolute ml-3 p-4 rounded-md height-fit border-2 bg-[rgb(255,255,255,0.8)] border-gray-500 z-10 select-none'>
+            {/* Vertical line */}
+            <div style={{
+                height: `calc(100% - 16px - 12px + 2px)`,
+                width: '2px',
+                backgroundColor: 'black',
+                position: 'absolute',
+                left: '14px',
+                top: 0
+            }}/>
 
-                {children}
-            </div> }
-        </li>
-    </Link>;
+            {children}
+        </div> }
+    </li>;
 }
 
