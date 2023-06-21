@@ -102,7 +102,7 @@ export default function Resume() {
                         <div className="description">Chrome extension helping 140+ people write distraction-free.</div>
                     </li>
                     <li>
-                        <img src='/image/lirong-art/lirong-art.png' alt='lirongart-logo' width={16.8125} height={30} className='mr-1 inline bottom-[3px] right-[3px] relative' />
+                        <Image src='/image/lirong-art/lirong-art.png' alt='lirongart-logo' width={16.8125} height={30} className='mr-1 inline bottom-[3px] right-[3px] relative' />
                         <span>LirongArt.com</span>
                         <span className="date">2020</span>
                         <div className="description">Showcases and sells prints of my mother&apos;s paintings.</div>
