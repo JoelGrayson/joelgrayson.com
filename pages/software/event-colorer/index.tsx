@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function EventColorer() {
-    return <Page>
+    return <Page bottomPadding>
         <h1 className='text-center flex justify-center items-center'>
             <span>Event Colorer&nbsp;</span>
             <Image width='48' height='48' className='relative right-[-15px]' src='/image/software/event-colorer/logo.png' alt='Logo' />
@@ -40,6 +40,5 @@ export default function EventColorer() {
         <h3>Privacy Policy</h3>
         <p>We do not collect any data. We cannot sell your personal data or share it with a third-party service because we have no way of collecting data. Why am I using &quot;we?&quot; I&apos;m just an indie dev. For any questions, email joel@joelgrayson.com</p>
 
-        <br /><br />
     </Page>;
 }

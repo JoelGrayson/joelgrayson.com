@@ -2,7 +2,7 @@ import Page from '@/components/global/Page';
 import Button from '@jcomponents/button';
 
 export default function HideShowDesktopIcons() {
-    return <Page>
+    return <Page bottomPadding>
         <h1>Hide/Show Desktop Icons</h1>
         <p>Lets you easily hide and show desktop icons on MacOS.</p>
         
@@ -17,8 +17,6 @@ export default function HideShowDesktopIcons() {
 
         <h3>Demo</h3>
         <iframe width='560' height='315' src='https://youtube.com/embed/DkhdgAGMLx4' title='YouTube video player' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowFullScreen></iframe>
-
-        <br /><br />
     </Page>;
 }
 

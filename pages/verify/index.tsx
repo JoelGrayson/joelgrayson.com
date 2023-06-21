@@ -92,7 +92,7 @@ export default function Verify() {
             verifyRequest(true);
     }, [message, date, signature, verifyRequest]);
 
-    return <Page>
+    return <Page bottomPadding>
         <h1 className='flex justify-center items-center'>
             <span>
                 Verify
@@ -159,6 +159,5 @@ export default function Verify() {
                 }
             })()}
         </div>
-        <br /><br />
     </Page>;
 }

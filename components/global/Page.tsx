@@ -4,9 +4,10 @@ import Footer from '../Footer';
 import { ReactNode, useEffect } from 'react';
 import SEO, { SEOProps } from './SEO';
 
-export default function Page({children, nopadding, seo, noheader=false, ...props}: {
+export default function Page({children, nopadding, bottomPadding, seo, noheader=false, ...props}: {
     children: ReactNode;
     nopadding?: boolean;
+    bottomPadding?: boolean;
     seo?: SEOProps;
     noheader?: boolean;
     [key: string]: any;
@@ -39,6 +40,7 @@ export default function Page({children, nopadding, seo, noheader=false, ...props
             padding: 0, margin: 0,
             width: '100%',
             minHeight: 'calc(100vh - 77px - 89px)', // fills the entire page (minus footer and header's heights)
+            paddingBottom: bottomPadding ? 60 : 0,
             ...props.style
         }}>
             { nopadding

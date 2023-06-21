@@ -20,7 +20,7 @@ export default function Focus() {
         gsap.fromTo(pageRef, { opacity: 0 }, { opacity: 1, duration: 0.5, delay: 1 });
     }, []);
     
-    return <Page>
+    return <Page bottomPadding>
         <h1 className='flex justify-center items-center gap-5' ref={titleRef}>
             Focus
             <Image alt='logo' src='/software/focus/logo.png' width={55} height={55} />
@@ -51,8 +51,6 @@ export default function Focus() {
                     View source code
                 </Button>
             </a>
-            <br /><br />
         </div>
-
     </Page>;
 }

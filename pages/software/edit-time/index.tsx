@@ -2,10 +2,9 @@ import Page from '@/components/global/Page';
 import Button from '@jcomponents/button';
 
 export default function EditTime() {
-    return <Page>
+    return <Page bottomPadding>
         <h1>Edit Time</h1>
-
-        <br /><br />
+        
     </Page>;
 }
 
