@@ -3,11 +3,13 @@ import Button from '@jcomponents/button';
 
 export default function Gallery({ images, renderChildren, galleryOpen, setGalleryOpen, index, setIndex }: {
     images: any[];
+    /* eslint-disable no-unused-vars */
     renderChildren: (iterator: any)=>JSX.Element;
     galleryOpen: boolean;
     setGalleryOpen: (open: boolean)=>void;
     index: number;
     setIndex: (index: number)=>void;
+    /* eslint-disable no-unused-vars */
 }) {
     const numImages=images.length;
     const imagePath=images[index];

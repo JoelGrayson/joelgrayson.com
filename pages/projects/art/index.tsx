@@ -3,7 +3,7 @@ import Page from '@/components/global/Page';
 import Gallery from '@/components/gallery/Gallery';
 import images from '@/components/pages/art/data';
 
-const getDate: (name: string)=>Date | 'invalid date'=(name: string)=>{
+const getDate=(name: string): Date | 'invalid date'=>{
     // name.matchAll(/\d{4}(.\d{2})?(.\d{2})?/)
     const dateStr=name.trim().split(' ')[0];
     const [year, month, day]=dateStr.match(/\d{4}(.\d{2})?(.\d{2})?/) || [];
@@ -47,6 +47,7 @@ export default function Art() {
                     else
                         fullName=item;
 
+                    // eslint-disable-next-line no-unused-vars
                     const { name, dateStr, date }=parse(fullName);
 
                     const tooltip=`${name} (${dateStr})`;

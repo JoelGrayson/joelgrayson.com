@@ -12,7 +12,7 @@ import Button from '@jcomponents/button';
 
 export default function CCC() {
     const [viewer, setViewer]=useState<viewers>(viewers.none); //viewer status
-    const wrap=(newViewerStatus: viewers)=>(_: any)=>setViewer(newViewerStatus); //wrap viewer change
+    const wrap=(newViewerStatus: viewers)=>()=>setViewer(newViewerStatus); //wrap viewer change
 
     return <Page nopadding>
         <Viewer status={viewer} setStatus={setViewer} />

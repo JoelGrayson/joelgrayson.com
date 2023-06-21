@@ -6,7 +6,7 @@ export default function HeaderItem({link /*a href's link*/, children}: {link: st
     const asPath=useContext(PathContext);
 
     const [bgColor, setBgColor]=useState('#fff');
-    const colorFromUrl=(_?: any)=>setBgColor(link===asPath ? '#ffe273' : '#fff'); //if the page is the url page, color yellow, otherwise color white
+    const colorFromUrl=()=>setBgColor(link===asPath ? '#ffe273' : '#fff'); //if the page is the url page, color yellow, otherwise color white
 
     useEffect(colorFromUrl, [asPath, link]); //initially get color
     

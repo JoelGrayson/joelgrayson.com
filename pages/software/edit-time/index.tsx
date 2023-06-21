@@ -1,5 +1,5 @@
 import Page from '@/components/global/Page';
-import Button from '@jcomponents/button';
+// import Button from '@jcomponents/button';
 
 export default function EditTime() {
     return <Page bottomPadding>

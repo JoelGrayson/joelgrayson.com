@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 export enum viewers { //viewer types
     // Special
     none,
@@ -10,6 +11,7 @@ export enum viewers { //viewer types
     petitionForElectricSchoolBuses,
     presentationOnNuclearRenaissance
 };
+/* eslint-enable no-unused-vars */
 
 export default function InfoRenderer({status}: {status: viewers}) {
     switch (status) {

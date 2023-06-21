@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Router from 'next/router';
 import PerspectivePage from '@/components/perspective/PerspectivePage';
 import { articles } from '@/components/perspective/ArticlesList';
-import { categories, category, displayCategory } from '@/components/perspective/ArticlesList/types';
+import { categories, displayCategory } from '@/components/perspective/ArticlesList/types';
 import Article from '@/components/perspective/ArticlesList/Article';
 
 const gridStyle={

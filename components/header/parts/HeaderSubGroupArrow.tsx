@@ -19,12 +19,12 @@ export default function HeaderSubGroupArrow({open}: {open: boolean}) {
 
     if (lineRef.current) {
         if (open)
-            expandArrow(false);
+            expandArrow();
         else
             contractArrow(false);
     }
 
-    function expandArrow(instant=false) {
+    function expandArrow() {
         gsap.to(lineRef.current, {
             // opacity: 1,
             width: config.endSize,
