@@ -4,7 +4,7 @@ import Table from '@jcomponents/table';
 export default function StudentGovernment() {
     return <Page>
         <h1 className='text-center'>Student Government</h1>
-        <p>I have had a fun career of being elected grade representative for five years straight. It has been an exhilirating experience.</p>
+        <p>I have had a fun career of being elected grade representative for five years straight. It has been an exhilirating and emotion-full experience.</p>
 
         <h3>Record</h3>
         <Table>
@@ -13,9 +13,9 @@ export default function StudentGovernment() {
                     <th>Date</th>
                     <th>Position</th>
                     <th>Victory</th>
-                    <th>Number of Spots</th>
-                    <th>Number of Candidates</th>
-                    <th>Odds of Winning</th>
+                    <th># Spots</th>
+                    <th># Candidates</th>
+                    <th>Odds</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,8 +32,8 @@ export default function StudentGovernment() {
                     <td>MS President</td>
                     <td>❌</td>
                     <td>2</td>
-                    <td>4</td>
-                    <td>50%</td>
+                    <td>11</td>
+                    <td>18%</td>
                 </tr>
                 <tr>
                     <td>2020</td>
@@ -63,21 +63,25 @@ export default function StudentGovernment() {
                     <td>2023</td>
                     <td>12th Grade Representative</td>
                     <td>✅</td>
-                    <td>12</td>
                     <td>4</td>
+                    <td>12</td>
+                    <td>33%</td>
                 </tr>
                 <tr>
                     <td>2023</td>
                     <td>US Co-President</td>
                     <td>❌</td>
-                    <td>4</td>
                     <td>2</td>
+                    <td>12</td>
+                    <td>17%</td>
                 </tr>
             </tbody>
         </Table>
         
         <br />
+
         <h3>Campaigns</h3>
+        <p>Here is a record of some of my campaign posters.</p>
         
     </Page>;
 }
