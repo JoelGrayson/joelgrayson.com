@@ -19,24 +19,23 @@ export default function CCC() {
 
         <Section title='Producing Clean Electricity'>
             <Action title='Solar for Riverdale' onMouseEnter={wrap(viewers.solar)} icon={
-                <Image src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='solar panel' width={26} height={20} className='ml-3' />
+                <Image src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='solar panel' width={26} height={20} className='ml-3 inline' />
             }>
                 <p>While learning about different energy sources, I realized that my school&apos;s empty rooftops had great potential for solar energy. I measured the rooftops, created solar models in <Link href='https://helioscope.aurorasolar.com' className='styled'>HelioScope</Link>, did some calculations, prepared a presentation, and gathered quotes from several companies. I spoke to the Head of School and Board of Trustees and we worked together to create a 410 kW solar PPA arrangement (enough to power 40+ homes) that will cover six buildings, promoting renewable energy and saving the school tens of thousands of dollars every year.</p>
-                <Image src='/image/ccc/solar-for-riverdale/models.png' width='720' height='146' alt='Solar Models' />
-                {/* <Image src='/image/ccc/solar-for-riverdale/Presenting.png' width='720' height='146' alt='Solar Models' /> */}
+                <Image src='/image/ccc/solar-for-riverdale/models.png' width={720} height={146} alt='Solar Models' />
+                <Image src='/image/ccc/solar-for-riverdale/Presenting.png' width={500} height={265} alt='Solar Models' priority />
             </Action>
         </Section>
         <Section title='Electrification'>
             <Action title='Students for Electric Buses' onMouseEnter={wrap(viewers.seb)} icon={
                 <Link href='https://studentsforelectricbuses.org' target='_blank'>
-                    <SEBLogo size={30} />
+                    <SEBLogo size={30} inline style={{ position: 'relative', top: 9 }} />
                 </Link>
             }>
                 
             </Action>
             <Action title='Electric Leaf Blowers' onMouseEnter={wrap(viewers.seb)} icon={
-                <Image src='/image/ccc/electric-leaf-blowers/electric-leaf-blower.png' alt='leaf blower' width={20} height={13} className='ml-3' />
-                // 200x137
+                <Image src='/image/ccc/electric-leaf-blowers/electric-leaf-blower.png' alt='leaf blower' width={20} height={14} className='ml-3 inline' />
             }>
                 I convinced Riverdale&apos;s facilities to transition from gas to electric leaf blowers. Not only is it better for the environment, but it also reduces noise pollution and improves workers&apos; health.
             </Action>

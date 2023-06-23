@@ -14,7 +14,7 @@ export default function MiscellaneousBottom() {
         <div className='flex flex-col items-center'>
             <Image src='/image/machines/wooden-shelf.jpg' width='216' height='288' alt='Wooden Shelf' />
             <h4>Wooden Shelf</h4>
-            {/* <Image src=''></Image> */}
+            {/* <Image src=''/> */}
             <p className='mx-3'>One of my earliest wood creations still in use</p>
         </div>
     </div>;

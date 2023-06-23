@@ -11,7 +11,7 @@ export function Section({title, children}: {title: string, children: ReactNode})
 }
 
 export function Action({children, title, icon, ...props}: {children: ReactNode; title: string; icon?: React.ReactNode; [key: string]: any}) {
-    return <div className={styles.action} {...props}>
+    return <div {...props}>
         <div className={styles['action-title']}>
             <span>{title}</span>
             {icon}
