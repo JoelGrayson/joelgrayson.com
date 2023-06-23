@@ -33,6 +33,7 @@ export default function Art() {
         <h1 className='text-center'>Art</h1>
         <p>Every child is an artist. The problem is how to remain an artist once he grows up. -Pablo Picasso</p>
 
+        {/* Grid of Images to Select From */}
         <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
@@ -75,7 +76,9 @@ export default function Art() {
             }
         </div>
 
-        <Gallery images={images.map(img=>img[0])} renderChildren={(imagePath: string)=>{
+
+        {/* View Singular Image */}
+        <Gallery images={images.map(img=>Array.isArray(img) ? img[0] : img)} renderChildren={(imagePath: string)=>{
             const { name, dateStr }=parse(imagePath);
             const title=`${name} (${dateStr})`;
             return <>

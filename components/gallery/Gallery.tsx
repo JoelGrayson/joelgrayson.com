@@ -14,6 +14,8 @@ export default function Gallery({ images, renderChildren, galleryOpen, setGaller
     const numImages=images.length;
     const imagePath=images[index];
 
+    console.log('imagePath', imagePath, {images});
+    
     function galleryLeft() { //decrement image index or loop to end
         let newIndex=(index-1) % numImages;
         while (newIndex<0)
