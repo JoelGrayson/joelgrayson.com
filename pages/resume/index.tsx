@@ -52,7 +52,7 @@ export default function Resume() {
                         <Image src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='solar panel' width={26} height={20} className='mr-1 inline bottom-1 relative' />
                         <span>Worked to bring a 410 kW solar installation to my school.</span>    
                         <span className="date">2021-present</span>
-                        <div className="description">Researched solar&apos;s feasibility, collected rooftop measurements, created solar models with HelioScope, got quotes from several installers, and presented to the Head of School and Board of Trustees. It will create enough energy to power 40+ homes.</div>
+                        <div className="description">Researched solar&apos;s feasibility, collected rooftop measurements, created solar models with HelioScope, got quotes from several installers, and presented to the Head of School and Board of Trustees. It will create enough energy to power 40+ households.</div>
                     </li>
                     <li>
                         <SEBLogo size={25} inline style={{ marginLeft: 4, marginRight: 4, top: 6 }} />
@@ -146,7 +146,7 @@ New York, NY 10038
 Accomplishments
 Climate Change
 Campaigned and worked to bring a 410 kW solar installation to my school.	2021-present
-Researched solar&apos;s feasibility for my school, collected rooftop measurements, created solar models with HelioScope, got quotes from several installers, and presented to the Head of School and Board of Trustees. It will create enough energy to power 40+ homes.
+Researched solar&apos;s feasibility for my school, collected rooftop measurements, created solar models with HelioScope, got quotes from several installers, and presented to the Head of School and Board of Trustees. It will create enough energy to power 40+ households.
 Founded Students for Electric Buses.	2021-present
 Organized a coalition of students and administrators to integrate electric school buses into my school&apos;s bus company&apos;s all-diesel fleet.
 Presented on Climate Change.	2021-present

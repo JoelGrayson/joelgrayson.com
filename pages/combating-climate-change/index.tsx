@@ -21,9 +21,19 @@ export default function CCC() {
             <Action title='Solar for Riverdale' onMouseEnter={wrap(viewers.solar)} icon={
                 <Image src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='solar panel' width={26} height={20} className='ml-3 inline' />
             }>
-                <p>While learning about different energy sources, I realized that my school&apos;s empty rooftops had great potential for solar energy. I measured the rooftops, created solar models in <a href='https://helioscope.aurorasolar.com' className='styled' target='_blank'>HelioScope</a>, did some calculations, prepared a presentation, and gathered quotes from several companies. I spoke to the Head of School and Board of Trustees and we worked together to create a 410 kW solar PPA arrangement (enough to power 40+ homes) that will cover six buildings, promoting renewable energy and saving the school tens of thousands of dollars every year.</p>
+                <p>While learning about different energy sources, I realized that my school&apos;s empty rooftops had great potential for solar energy. I measured the rooftops, created solar models in HelioScope (image below), calculated savings, and gathered quotes from two companies. I presented to the administration and board of trustees, who agreed to a 410 kW solar PPA arrangement (enough to power 40+ households) that will cover six buildings, promote renewable energy, and save the school tens of thousands of dollars every year.</p>
                 <Image src='/image/ccc/solar-for-riverdale/models.png' width={720} height={146} alt='Solar Models' />
                 <Image src='/image/ccc/solar-for-riverdale/Presenting.png' width={500} height={265} alt='Solar Models' priority />
+                {/* <div className='flex flex-col items-center'>
+                    <iframe src={
+                        'https://docs.google.com/spreadsheets/d/e/2PACX-1vT7fANCIqaPCEP65K7KyVODt3FVzny1dvch_YCa1wnq0v4smzoEs40Crg6qHKHjTOtRdD_kkUL2ia1n/pubhtml'
+                        +'?gid=0' //spreadsheet to be displayed
+                        +'&single=true' //only display one spreadsheet
+                        +'&widget=false' //hide bottom bar
+                        +'&chrome=false' //hide title bar
+                        +'&range=a1:h13' //cells
+                    } width={1018} height={462} />
+                </div> */}
             </Action>
         </Section>
         <Section title='Electrification'>
