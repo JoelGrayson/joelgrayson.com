@@ -27,6 +27,7 @@ export const permanent: redirects={ //301
 
     'https://www.youtube.com/@JoelGrayson': ['/youtube', '/yt'],
     'https://github.com/JoelGrayson': '/github',
+    'https://www.linkedin.com/in/joelgrayson/': '/linkedin',
     '/timeline/index.html': '/timeline',
     'https://raw.githubusercontent.com/JoelGrayson/create-joel-app/main/jredirects.tgz': '/software/create-joel-app/jredirects.tgz',
     'https://raw.githubusercontent.com/JoelGrayson/create-joel-app/main/files-to-transfer.tgz': '/software/create-joel-app/files-to-transfer.tgz',

@@ -69,7 +69,7 @@ export default function Resume() {
                         <Image src='/image/ccc/electric-leaf-blowers/electric-leaf-blower.png' alt='leaf blower' width={20} height={13} className='relative bottom-[3px] mr-1 inline' />
                         <span>Electric Leaf Blowers</span>
                         <span className="date">2022</span>
-                        <div className='description'>Convinced facilities to transition from gas to electric leaf blowers.</div>
+                        <div className='description'>Convinced facilities to switch from gas to electric leaf blowers.</div>
                     </li>
                     <li>
                         <Image src='/image/ccc/stopping-bus-idling/stopping-bus-idling.png' alt='stopping-bus-idling' width={20} height={13} className='relative bottom-[3px] mr-1 inline' />
