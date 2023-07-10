@@ -17,6 +17,8 @@ export default function Resume() {
         }
         #root li {
             position: relative;
+            list-style-type: none;
+            margin-left: 0;
         }
         #root .date {
             position: absolute;
@@ -118,6 +120,39 @@ export default function Resume() {
                 </div>
                 <div>GPA: 3.94 (out of 4.0)</div>
                 <div>Honors: Geometry, Algebra II, Precalculus, Spanish I-VII, Biology II, Chemistry II, Physics II</div>
+            </div>
+
+
+            <h3>Activities</h3>
+            <div>
+                <div className='relative'>
+                    <span>Serving as a board member of Manhattan Community Board 1.</span>
+                    <span className='date'>2023-4</span>
+                </div>
+                <div className='relative'>
+                    <span>Researched crystal engineering at Lee Labs as part of NYU&apos;s seven-week ARISE program.</span>
+                    <span className='date'>2023</span>
+                </div>
+                <div className='relative'>
+                    <span>Trained to become an En-ROADS Ambassador (climate educator).</span>
+                    <span className='date'>2022-present</span>
+                </div>
+                <div className='relative'>
+                    <span>Interned for the Stone House Group (energy efficiency consultants).</span>
+                    <span className='date'>2021</span>
+                </div>
+                <div className='relative'>
+                    <span>Grade representative for five consecutive years in student government.</span>
+                    <span className='date'>2019-present</span>
+                </div>
+                <div className='relative'>
+                    <span>Slaphappy channel with clay stop motion, comedy, and project records.</span>
+                    <span className='date'>2018-present</span>
+                </div>
+                <div className='relative'>
+                    <span>Completed MIT xPRO&apos;s Introduction to Quantum Computing four-week course.</span>
+                    <span className='date'>2023</span>
+                </div>
             </div>
 
 
