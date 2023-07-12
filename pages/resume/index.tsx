@@ -5,6 +5,9 @@ import Image from "next/image";
 
 export default function Resume() {
     return <div className={css`
+        * {
+            transition: all 0s ease, background-color .3s ease;
+        }
         #root {
             max-width: 830px;
         }
