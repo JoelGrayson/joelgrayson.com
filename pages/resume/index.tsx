@@ -74,13 +74,13 @@ export default function Resume() {
                         <Image src='/image/ccc/electric-leaf-blowers/electric-leaf-blower.png' alt='leaf blower' width={20} height={13} className='relative bottom-[3px] mr-1 inline' />
                         <span>Electric Leaf Blowers</span>
                         <span className="date">2022</span>
-                        <div className='description'>Convinced facilities to switch from gas to electric leaf blowers.</div>
+                        <div className='description'>Convinced Facilities to switch from gas to electric leaf blowers</div>
                     </li>
                     <li>
                         <Image src='/image/ccc/stopping-bus-idling/stopping-bus-idling.png' alt='stopping-bus-idling' width={20} height={13} className='relative bottom-[3px] mr-1 inline' />
                         <span>Stopping Bus Idling</span>
                         <span className="date">2022</span>
-                        <div className="description">Wrote to SuperSelby to enforce <a className='styled' href='https://portal.311.nyc.gov/article/?kanumber=KA-02222'>NYC&apos;s law banning bus idling</a>.</div>
+                        <div className="description">Wrote to bus contractor to enforce <a className='styled' href='https://portal.311.nyc.gov/article/?kanumber=KA-02222'>NYC&apos;s law banning bus idling</a>.</div>
                     </li>
                 </ul>
             </div>
@@ -121,15 +121,15 @@ export default function Resume() {
                     <span>Riverdale Country School</span>
                     <span className='date'>2017-24</span>
                 </div>
-                <div>GPA: 3.94 (out of 4.0)</div>
                 <div>Honors: Geometry, Algebra II, Precalculus, Spanish I-VII, Biology II, Chemistry II, Physics II</div>
+                <div>GPA: 3.94 (out of 4.0), SAT: 1560</div>
             </div>
 
 
             <h3>Activities</h3>
             <div>
                 <div className='relative'>
-                    <span>Serving as a board member of Manhattan Community Board 1.</span>
+                    <span>Board member of Manhattan Community Board 1.</span>
                     <span className='date'>2023-4</span>
                 </div>
                 <div className='relative'>
@@ -141,20 +141,20 @@ export default function Resume() {
                     <span className='date'>2022-present</span>
                 </div>
                 <div className='relative'>
-                    <span>Interned for the Stone House Group (energy efficiency consultants).</span>
-                    <span className='date'>2021</span>
-                </div>
-                <div className='relative'>
                     <span>Grade representative for five consecutive years in student government.</span>
                     <span className='date'>2019-present</span>
                 </div>
                 <div className='relative'>
-                    <span>Slaphappy channel with clay stop motion, comedy, and project records.</span>
-                    <span className='date'>2018-present</span>
-                </div>
-                <div className='relative'>
                     <span>Completed MIT xPRO&apos;s Introduction to Quantum Computing four-week course.</span>
                     <span className='date'>2023</span>
+                </div>
+                <div className='relative'>
+                    <span>Interned for the Stone House Group (energy efficiency consultants).</span>
+                    <span className='date'>2021</span>
+                </div>
+                <div className='relative'>
+                    <span><a className="styled" href='youtube.com/SonAndFather'>YouTube channel</a> with clay stop motion, father-son comedy, and project records.</span>
+                    <span className='date'>2018-present</span>
                 </div>
             </div>
 
