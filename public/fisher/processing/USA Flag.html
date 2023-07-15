@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!-- 10.8.20 -->
+<html>
+    <head>
+        <title>USA Flag</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+    </head>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <body>
+        <script type="application/processing">
+void setup() {
+  size(650,260);
+  background(198,236,255);
+  flagX=100;
+}
+
+int flagX;
+
+void draw() {
+  background(198,236,255);
+  //white background
+  fill(255);
+  rect(flagX-100,30,300,190);
+  //blue banner
+  fill(60,58,110);
+  rect(flagX-100,30,130,95);
+  //shorter top stripes
+  fill(178,34,52);
+  rect(flagX+30,30,170,13.5714285);
+  rect(flagX+30,57.142857,170,13.5714285);
+  rect(flagX+30,84.2857,170,13.5714285);
+  rect(flagX+30,111.428557,170,13.5714285);
+  //longer bottom stripes
+  rect(flagX-100,138.571414,300,13.5714285);
+  rect(flagX-100,165.714271,300,13.5714285);
+  rect(flagX-100,192.857128,300,13.5714285);
+  //first row of stars
+  fill(255);
+  ellipse(flagX-85,39.5,7, 7);
+  ellipse(flagX-65,39.5,7, 7);
+  ellipse(flagX-45,39.5,7, 7);
+  ellipse(flagX-25,39.5,7, 7);
+  ellipse(flagX-5,39.5,7, 7);
+  ellipse(flagX+15,39.5,7, 7);
+  //second row of stars -- 49
+  ellipse(flagX-75,49,7, 7);
+  ellipse(flagX-55,49,7, 7);
+  ellipse(flagX-35,49,7, 7);
+  ellipse(flagX-15,49,7, 7);
+  ellipse(flagX+5,49,7, 7);
+  //third row of stars
+  ellipse(flagX-85,58.5,7, 7);
+  ellipse(flagX-65,58.5,7, 7);
+  ellipse(flagX-45,58.5,7, 7);
+  ellipse(flagX-25,58.5,7, 7);
+  ellipse(flagX-5,58.5,7, 7);
+  ellipse(flagX+15,58.5,7, 7);
+  //fourth row -- 68
+  ellipse(flagX-75,68,7, 7);
+  ellipse(flagX-55,68,7, 7);
+  ellipse(flagX-35,68,7, 7);
+  ellipse(flagX-15,68,7, 7);
+  ellipse(flagX+5,68,7, 7);
+  //fifth row
+  ellipse(flagX-85,77.5,7, 7);
+  ellipse(flagX-65,77.5,7, 7);
+  ellipse(flagX-45,77.5,7, 7);
+  ellipse(flagX-25,77.5,7, 7);
+  ellipse(flagX-5,77.5,7, 7);
+  ellipse(flagX+15,77.5,7, 7);
+  //sixth row -- 87
+  ellipse(flagX-75,87,7, 7);
+  ellipse(flagX-55,87,7, 7);
+  ellipse(flagX-35,87,7, 7);
+  ellipse(flagX-15,87,7, 7);
+  ellipse(flagX+5,87,7, 7);
+  //seventh row -- 96.5
+  ellipse(flagX-85,96.5,7, 7);
+  ellipse(flagX-65,96.5,7, 7);
+  ellipse(flagX-45,96.5,7, 7);
+  ellipse(flagX-25,96.5,7, 7);
+  ellipse(flagX-5,96.5,7, 7);
+  ellipse(flagX+15,96.5,7, 7);
+  //eighth row -- 106
+  ellipse(flagX-75,106,7, 7);
+  ellipse(flagX-55,106,7, 7);
+  ellipse(flagX-35,106,7, 7);
+  ellipse(flagX-15,106,7, 7);
+  ellipse(flagX+5,106,7, 7);  
+  //ninth row -- 115.5
+  ellipse(flagX-85,115.5,7, 7);
+  ellipse(flagX-65,115.5,7, 7);
+  ellipse(flagX-45,115.5,7, 7);
+  ellipse(flagX-25,115.5,7, 7);
+  ellipse(flagX-5,115.5,7, 7);
+  ellipse(flagX+15,115.5,7, 7);
+  flagX=flagX+2;
+  if (flagX>800) { //loop flag
+    flagX=-300;
+  }
+}
+        </script>
+        <canvas id="sketch"></canvas>
+    </body>
+</html>

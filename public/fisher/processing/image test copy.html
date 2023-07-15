@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image Test</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+    </head>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <body>
+        <script type="application/processing">
+            <!DOCTYPE html>
+            <!-- 11.6.20 -->
+            <html>
+                <head>
+                    <title>Joel's Drawing Software</title>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+                </head>
+                <style>
+                    body {
+                        padding: 0;
+                        margin: 0;
+                    }
+                </style>
+                <body>
+                    <script type="application/processing">
+                        /*------------------------------------------------\
+                        |                TABLE OF CONTENTS:               |
+                        |   Variables ………………………………………………………………………… 40     |
+                        |     Color ……………………………………………………………………………… 41     |
+                        |     Controls ……………………………………………………………………… 47     |
+                        |     Tool Icons ………………………………………………………………… 61     |
+                        |   Setup …………………………………………………………………………………… 70     |
+                        |      Color …………………………………………………………………………… 71     |
+                        |      Preferences …………………………………………………………… 79     |
+                        |      Controls …………………………………………………………………… 85     |
+                        |      Frame Counters …………………………………………………… 93     |
+                        |    Draw …………………………………………………………………………………… 99     |
+                        |      Clear Background ……………………………………………… 100    |
+                        |      Tool Type ………………………………………………………………… 104    |
+                        |      Drawing ……………………………………………………………………… 123    |
+                        |      Expanded Menu Bar …………………………………………… 127    |
+                        |        Dropdown Menu for Color & Size …… 140    |
+                        |          Base Rectangle ………………………………………… 141    |
+                        |          Expanded Rectangle ……………………………… 150    |
+                        |            Color Options ……………………………………… 154    |
+                        |            Highlights on Hover ……………………… 161    |
+                        |            Size Options ………………………………………… 194    |
+                        |        Notification …………………………………………………… 215    |
+                        |      Contracted Menu Bar ……………………………………… 242    |
+                        |      Frame Counters & Toggle Variables … 254    |
+                        |    mousePressed ……………………………………………………………… 264    |
+                        |      Expanded Menu ……………………………………………………… 266    |
+                        |         Menu Bar (not contracted) ……………… 268    |
+                        |           Selecting Tool ……………………………………… 275    |
+                        |           Open/Close Dropdown Menu …………… 281    |
+                        |           Dropdown Menu Option Selected… 295    |
+                        |             Change Color/Size ………………………… 297    |
+                        |             Closing Procedures ……………………… 320    |
+                        |           Dismiss Notification [x] …………… 325    |
+                        |         Contracted Menu Bar ……………………………… 330    |
+                        |    keyPressed (keyboard shortcuts)……………… 337    |
+                        |                                                 |
+                        \------------------------------------------------*/
+                        
+                        //VARIABLES
+                        //Color
+                        color red;
+                        color green;
+                        color blue;
+                        color brushColor;
+                        color backgroundColor;
+                        //Controls
+                        float brushSize;
+                        float notificationX; //notification X axis
+                        String toolType; //"brush" or "eraser"
+                        boolean contractMenu;
+                        boolean dropdownMenu; //opens dropdownMenu & closes dropdownMenu w/ resetSettingsMenu
+                        boolean clear;
+                        boolean resetMenu; //paints over menu when contracted
+                        boolean resetSettingsMenu; //closes dropdownMenu w/ help of dropdownMenu = false
+                        boolean notificationClosed;
+                        int framesAfterStart;
+                        int dontDrawForXFrames; //When over 0, cannot draw. When user selects new setting, or clicks in the setting menu bar, pen will not draw
+                        int framesAfterNotificationClosed;
+                        int framesAfterClear; //makes clearImage blue for a second
+                        //Tool Icons
+                        PImage brush;
+                        PImage eraser;
+                        PImage clearImage;
+                        //Blue tool icons
+                        PImage brushBlue;
+                        PImage eraserBlue;
+                        PImage clearBlue;
+                        
+                        void setup() {  
+                          //COLOR palette
+                          red=color(247,47,32);
+                          green=color(52,237,83);
+                          blue=color(9,40,185);
+                          brushColor=blue;
+                          backgroundColor=color(255,255,255);
+                          background(backgroundColor);
+                          
+                          //PREFERENCES
+                          brushSize=22;
+                          frameRate(100); //recommended not to change
+                          size(700,700);
+                          textSize(30);
+                          
+                          //CONTORLS
+                          brush = loadImage("http://localhost:3000/fisher/processing/images/drawing-software/brush.png");
+                          eraser = loadImage("/fisher/processing/images/drawing-software/eraser.png");
+                          clearImage = loadImage("/fisher/processing/images/drawing-software/clear.png");
+                          toolType="brush";
+                          dropdownMenu = false; 
+                          notificationClosed = false;
+                          
+                          //FRAME COUNTERS (these variables act like stopwatches/timers afters different events)
+                          dontDrawForXFrames=-1000; //when >0, doesn't draw
+                          framesAfterClear=1000; //when <80, clear icon is blue
+                          framesAfterNotificationClosed=1000;
+                        
+                          //CLEAR BACKGROUND
+                          if (clear) { //only occurs if button pressed
+                            background(backgroundColor);
+                          }
+                          //TOOL TYPE
+                          if (toolType=="brush") {
+                            brush = loadImage("/fisher/processing/images/drawing-software/brushBlue.png"); //blue brush
+                            eraser = loadImage("/fisher/processing/images/drawing-software/eraser.png"); //black eraser
+                            fill(brushColor);
+                            stroke(brushColor);
+                            strokeWeight(brushSize);
+                          } else if (toolType=="eraser") {
+                            eraser = loadImage("/fisher/processing/images/drawing-software/eraserBlue.png"); //blue eraser
+                            brush = loadImage("/fisher/processing/images/drawing-software/brush.png"); //black brush
+                            fill(backgroundColor);
+                            stroke(backgroundColor);
+                            strokeWeight(brushSize+15);
+                          }
+                          if (framesAfterClear<80) { //clear is blue for 80 frames after selected
+                            clearImage = loadImage("/fisher/processing/images/drawing-software/clearBlue.png");
+                          } else {
+                            clearImage = loadImage("/fisher/processing/images/drawing-software/clear.png");
+                          }
+                          //DRAWING
+                          if (mousePressed && !(dontDrawForXFrames>0)) { //dontDrawForXFrames ensures user does not draw immediately after selecting settings, contracting menu, or in settings dashboard
+                            line(pmouseX,pmouseY,mouseX,mouseY);
+                          }
+                          //EXPANDED MENU BAR
+                          strokeWeight(1);
+                          stroke(0);
+                        
+                            fill(255,230,162);
+                            fill(0);
+                            text(">>",width-448,48); // >> button
+                            image(brush,0,0); //brush icon
+                            image(eraser,0,0); //eraser icon
+                            image(clearImage,0,0); //clear icon
+                            //image(brush,width-355,15); //brush icon
+                            //image(eraser,width-278,15); //eraser icon
+                            //image(clearImage,width-75,15); //clear icon
+                            
+                            
+                          //FRAME COUNTERS & TOGGLE VARIABLES
+                          clear = false;
+                          resetMenu = false;
+                          resetSettingsMenu = false;
+                          dontDrawForXFrames--;
+                          framesAfterStart++;
+                          framesAfterNotificationClosed++;
+                          framesAfterClear++;
+                        }
+                        
+                        void mousePressed() {
+                          if (!contractMenu) { 
+                            //EXPANDED MENU scenario
+                            if (mouseY<80 && mouseX>width-465) { 
+                              //MENU BAR (not contracted)
+                              dontDrawForXFrames=20; //doesn't draw when clicking in menu bar
+                              if (mouseX<width-385) { //contract >> selected
+                                contractMenu = true;
+                                resetMenu = true;
+                                dontDrawForXFrames = 10; //doesn't draw for 10 frames
+                              } if (mouseY>15 && mouseY<60) { //vertical position is in correct region
+                                //SELECTING TOOL
+                                if (mouseX>width-355 && mouseX<width-305) { //Brush selected
+                                  toolType = "brush";
+                                } else if (mouseX>width-278 && mouseX<width-228) {//Eraser selected
+                                  toolType = "eraser";
+                                } else if (mouseX>width-193 && mouseX<width-103) { 
+                                  //OPEN/CLOSE DROPDOWN MENU
+                                  if (dropdownMenu) { //if dropdown menu base doubleclicked
+                                    //close menu
+                                    dropdownMenu = false;
+                                    resetSettingsMenu = true;
+                                  } else { //if dropdown menu base singleclicked
+                                    dropdownMenu = true; //open menu
+                                  }
+                                } else if (mouseX>width-75 && mouseX<width-32) { //Clear selected
+                                  clear = true;
+                                  framesAfterClear=0;
+                                }
+                              }
+                            }
+                            //DROPDOWN MENU OPTION SELECTED
+                            if (dropdownMenu && mouseX>width-198 && mouseX<width-100 && mouseY>60 && framesAfterNotificationClosed>10) { //dropdown menu open & mouse in the expanded white rectangle
+                              //CHANGE COLOR/SIZE
+                              if (mouseY<97) {
+                                brushSize=6*2; //*2 because dropdown menu numbers scaled down to look normal
+                              } else if (mouseY<130) { //9
+                                brushSize=9*2;
+                              } else if (mouseY<163) { //11
+                                brushSize=11*2;
+                              } else if (mouseY<196) { //14
+                                brushSize=14*2;
+                              } else if (mouseY<229) { //18
+                                brushSize=18*2;
+                              } else if (mouseY<262) { //22
+                                brushSize=22*2;
+                              } else if (mouseX<width-164.6667) { //red circle selected
+                                brushColor=red;
+                                toolType = "brush"; //sets to brush because erasers don't have color
+                              } else if (mouseX<width-132.333) { //green circle selected
+                                brushColor=green;
+                                toolType = "brush"; //sets to brush because erasers don't have color
+                              } else if (mouseY<width-300) { //blue circle seleced
+                                brushColor=blue;
+                                toolType = "brush"; //sets to brush because erasers don't have color
+                              }
+                              //CLOSING DROPDOWN MENU PROCEDURES
+                              dropdownMenu = false; //stops painting dropdown menu
+                              resetSettingsMenu = true; //paints over old menu bar
+                              dontDrawForXFrames = 30; //mouse does not immediately draw when closing menu bar
+                            }
+                            //DISMISS NOTIFICATION [x]
+                            if (framesAfterStart>3080 && !notificationClosed && dist(mouseX,mouseY,notificationX+5,12)<=(16+1)/2) { //notification fully opened at 3080 frames & notification not previously closed & mouse is diameter+1 away from [x] center
+                              framesAfterNotificationClosed=0;
+                              notificationClosed=true;
+                            }
+                          } else { //CONTRACTED MENU scenario
+                            if (mouseX>width-80) { //if expand menu pressed <<
+                              contractMenu = false;
+                            }
+                          }
+                        }
+                        
+                        void keyPressed() {
+                          if (key=='b') {
+                            toolType = "brush";
+                          } else if (key=='e') {
+                            toolType = "eraser";
+                          } else if (key=='r') {
+                            clear = true;
+                            framesAfterClear=0;
+                          }
+                        }
+                        void draw() {}
+                    </script>
+                    <canvas id="sketch" willReadFrequeytnly></canvas>
+                </body>
+            </html>
+        </script>
+        <canvas id="sketch"></canvas>
+    </body>
+</html>

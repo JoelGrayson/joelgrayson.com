@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!-- 10.23.20 -->
+<html>
+    <head>
+        <title></title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+    </head>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <body>
+        <script type="application/processing">
+float altitude;
+float acceleration;
+float speed;
+float gravity; //(m/s)
+boolean fasterFuel;
+
+void setup() {
+  size(600,800);
+  textSize(25);
+  fasterFuel=false;
+  //variable original values
+}
+
+void draw() {
+  //background
+  fill(246);
+  background(135,207,238); //sky
+  rect(0,height-200,width,200); //ground = height-410
+
+  if (!fasterFuel) {
+    rect(400,650,150,50);
+    fill(0);
+    text("Faster fuel",413,685);
+  }
+  
+  //controls
+  fill(0);
+  gravity=6;
+  //text("Speed: " + String.format("%.2f",speed),-250+width/2,height-100);
+  //text("Acceleration: " + String.format("%.1f",acceleration),-60+width/2,height-100);
+  
+  
+  //fire color
+  if (mousePressed) {
+    if (fasterFuel) {//blue fire if fasterFuel
+      fill(85,131,255); //blue fire
+      stroke(231,265,255);
+      ellipse(width/2,altitude+190,30,100);
+    } else {
+      fill(255,113,90); //red fire
+      stroke(242,169,142);
+      ellipse(width/2,altitude+190,27,54);
+    }
+  }
+  
+  //rocket design
+  stroke(0);
+  fill(240);
+  /*body*/       rect(-40+width/2,altitude,80,170);
+  fill(191,14,14);
+  /*nose cone*/ triangle(width/2,altitude-60,width/2-40,altitude,width/2+40,altitude);
+  /*left fin*/  triangle(width/2-40,altitude+115,width/2-40,altitude+170,width/2-72,altitude+209);
+  /*right fin*/ triangle(width/2+40,altitude+115,width/2+40,altitude+170,width/2+72,altitude+209);
+  fill(100,98,96);
+  /*nozzle*/    rect(-14+width/2,altitude+170,28,10);
+  fill(0);
+  text("S",-7+width/2,altitude+30);
+  text("p",-8+width/2,altitude+55);
+  text("a",-8+width/2,altitude+80);
+  text("c",-8+width/2,altitude+105);
+  text("e",-8+width/2,altitude+130);
+  text("X",-8+width/2,altitude+155);
+  
+  //movement  
+  
+  if (altitude>=height-410) { //rocket hits ground
+    altitude=height-410.2; //so that conditional does not run every time
+    if (abs(speed)>0.3) { // if fast then bounce
+      speed*=-0.4; //bounce
+    } 
+    if (mousePressed) { //if
+      speed+=3+2*acceleration;
+    }
+  } else if (altitude<=height-411) { //above ground (prevents endless bounce)
+      speed=speed+acceleration-gravity/100;
+  }
+  
+  if (mousePressed) {
+    acceleration+=0.014;
+    
+    if (fasterFuel) { //additional speed boost if fasterFuel
+      acceleration+=0.017;
+    }
+  }
+  
+  altitude-=speed;
+
+  if (acceleration>0) {
+    acceleration-=gravity/600;
+    if (acceleration<0) { //keeps acceleration positive
+      acceleration=0;
+    }
+  }
+}
+
+void mouseClicked() {
+  if (mouseX>400 && mouseY>650 && mouseX<650 && mouseX<700 && !fasterFuel) { //faster fuel pressed
+    fasterFuel=true;
+    fill(103,237,126);
+    rect(400,650,150,50);
+    fill(0);
+    text("Faster fuel",413,685);
+  }
+}
+        </script>
+        <canvas id="sketch"></canvas>
+    </body>
+</html>

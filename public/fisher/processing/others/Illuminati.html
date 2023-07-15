@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+    </head>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <body>
+        <script type="application/processing">
+// Illuminati triangle
+
+void setup() {
+  size(800,800);
+  background(51,62,45);
+  fill(139,162,129);
+  triangle(400,100,100,700,700,700);
+  fill(26,44,21);
+  ellipse(400,430,220,140);
+  fill(151,176,150);
+  ellipse(400,431,213,133);
+  fill(33,61,34);
+  ellipse(400,420,120,120); //pupil
+  fill(240);
+  ellipse(380,384,40,40); //white circle
+  textSize(80);
+  text("Illuminati",200,770);
+};
+        </script>
+        <p>10.2.20</p>
+        <canvas id="sketch"></canvas>
+    </body>
+</html>
