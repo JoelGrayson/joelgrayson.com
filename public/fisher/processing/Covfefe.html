@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Covfefe</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+    </head>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <body>
+        <script type="application/processing">
+void setup() {
+  size(800,600);
+  background(200,220,250);
+  //noStroke();
+  fill(0);
+  textSize(46);
+  text("Need a little boost? Just click",80,60);
+  textSize(21);
+}
+void draw() {
+}
+
+void mouseClicked() {
+  fill(250);
+  ellipse(mouseX-40,mouseY-10,50,49);
+  fill(200,220,250);
+  ellipse(mouseX-34,mouseY-10,34,29); //hole in handle
+  fill(250);
+  rect(mouseX-40,mouseY-50,80,100);
+  fill(128+random(61),30+random(67),5+random(38)); //brown varies from 128,30,5 --> 189,97,43
+  ellipse(mouseX,mouseY-53,80,50); //coffee
+  fill(0);
+  text("Covfefe", mouseX-38,mouseY+80);
+}
+        </script>
+        <canvas id="sketch"></canvas>
+    </body>
+</html>

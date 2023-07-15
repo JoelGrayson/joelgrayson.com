@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bouncy Ball</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+    </head>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <body>
+        <script type="application/processing">
+float locationX;
+float locationY;
+float speedX;
+float speedY;
+float ballRadius;
+float friction;
+boolean frictionEnabled=true;
+
+void setup() {
+  size(800,600);
+  background(255,226,129);
+  textSize(15);
+  locationX=width/2;
+  locationY=height/2;
+  speedX=2;
+  speedY=1;
+  ballRadius=50;
+  friction=0.99;
+}
+
+void draw() {
+  background(255,226,129);
+  fill(67,178,245);
+  ellipse(locationX,locationY,ballRadius*2,ballRadius*2);
+  
+  //variable calculations below ↓
+  locationX=locationX+speedX;
+  locationY=locationY+speedY;
+  if (frictionEnabled) {
+    speedX*=friction;
+    speedY*=friction;
+  }
+  if (locationX<ballRadius || locationX>width-ballRadius) {
+    speedX=speedX * -1;
+  }
+  if (locationY<ballRadius || locationY>height-ballRadius) {
+    speedY=speedY * -1;
+  }
+  
+  //slider (I'm just playing around)
+  
+  fill(240);
+  rect(-300+width/2,-30+height/1.2,470,126);
+  fill(0);
+  text("Horizontal Speed",-280+width/2,5+height/1.2);
+  text("Vertical Speed",-280+width/2,43+height/1.2);
+  fill(80);
+  rect(-140+width/2,-10+height/1.2,280,20);
+  rect(-140+width/2,30+height/1.2,280,20);
+  fill(255);
+  ellipse(abs(speedX)*28-140+width/2,height/1.2,40, 40); //varies by 280
+  ellipse(abs(speedY)*28-140+width/2,40+height/1.2,40, 40);
+  
+  //friction
+  if (frictionEnabled)
+    fill(100, 255, 100);
+  else
+    fill(200);
+  text("Friction enabled ", -280+width/2, 81+height/1.2);
+  rect(-157+width/2,69+height/1.2,20, 20);
+
+  //280 across
+}
+
+void mouseClicked() {
+  if(mouseX>-140+width/2 && mouseX<140+width/2 && mouseY>-10+height/1.2 && mouseY<10+height/1.2) { //if mouse is in slider area
+    speedX=(mouseX-(width-280)/2)/28;
+  }
+  if(mouseX>-140+width/2 && mouseX<140+width/2 && mouseY>30+height/1.2 && mouseY<50+height/1.2) { //if mouse is in slider area
+    speedY=(mouseX-(width-280)/2)/28;
+  }
+  if (mouseX>-157+width/2 && mouseX<-157+width/2+20
+  && mouseY>69+height/1.2 && mouseY<69+height/1.2+20) //toggle frictionEnabled
+    frictionEnabled=!frictionEnabled;
+}
+        </script>
+        <canvas id="sketch"></canvas>
+    </body>
+</html>
