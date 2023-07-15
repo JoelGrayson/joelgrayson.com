@@ -23,9 +23,15 @@ export default function RunProcessingInWeb() {
         <title>${title}</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
     </head>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
     <body>
         <script type="application/processing">
-            ${processingCode}
+${processingCode}
         </script>
         <canvas id="sketch"></canvas>
     </body>
@@ -36,7 +42,7 @@ export default function RunProcessingInWeb() {
     return <Page bottomPadding noPageStyling>
         <h1>Run Processing in Web</h1>
         <h3>Processing Code</h3>
-        <div className='flex gap-2 items-center'>
+        <div className='flex gap-2 items-center mb-3'>
             <label htmlFor='title'>Title</label>
             <input type='text' id='title' name='title' value={title} onChange={e=>setTitle(e.target.value)} />
         </div>
@@ -54,6 +60,7 @@ export default function RunProcessingInWeb() {
             <h3>HTML Code</h3>
             <textarea name='HTML' id='html-code' cols={50} rows={8} value={htmlCode}></textarea>
         </> }
+        <br />
         <Button onClick={()=>window.navigator.clipboard.writeText(htmlCode)}>Copy</Button>
     </Page>;
 }

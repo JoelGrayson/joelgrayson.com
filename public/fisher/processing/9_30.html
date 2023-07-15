@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>9_30</title>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
-	</head>
-	<body>
-		<script type="application/processing">
-            void setup() {
-                size(500,500);
-                background(249,196,77);//yellow background
-              
-                fill(3,150,255);
-                ellipse(180,180,30,30); //left eye
-                ellipse(320,180,30,30); //right eye
-                rect(170,276,160,20); //mouth rectangle (bottom)
-                rect(170,250,20,26); //mouth rectangle (left)
-                rect(310,250,20,26); //mouth rectangle (right)
-                fill(50,204,188); //green
-                ellipse(250,231,30,15); //nose
-                fill(247,140,124); //change color to pink
-                ellipse(250,100,110,80); //pink hat top
-                ellipse(250,120,150,40); //pink hat bottom
-              };
-		</script>
+    <head>
+        <title>9_30</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+    </head>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <body>
+        <script type="application/processing">
+void setup() {
+  size(500,500);
+  background(249,196,77);//yellow background
+
+  fill(3,150,255);
+  ellipse(180,180,30,30); //left eye
+  ellipse(320,180,30,30); //right eye
+  rect(170,276,160,20); //mouth rectangle (bottom)
+  rect(170,250,20,26); //mouth rectangle (left)
+  rect(310,250,20,26); //mouth rectangle (right)
+  fill(50,204,188); //green
+  ellipse(250,231,30,15); //nose
+  fill(247,140,124); //change color to pink
+  ellipse(250,100,110,80); //pink hat top
+  ellipse(250,120,150,40); //pink hat bottom
+};
+        </script>
         <canvas id="sketch"></canvas>
-	</body>
+    </body>
 </html>
