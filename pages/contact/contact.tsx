@@ -6,7 +6,7 @@ import Listening from '@/components/pages/contact/listening/_Listening';
 import styles from './contact.module.css';
 
 export default function Contact() {
-    return <Page nopadding>
+    return <Page noPadding>
         <div className='overflow-x-hidden'> {/* make sure does not overflow */}
             <div className='relative max-w-[700px] mx-auto'>
                 <div className={ styles.talking }><Talking /> </div>

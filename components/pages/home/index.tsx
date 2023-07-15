@@ -38,7 +38,7 @@ export default function Home() {
     return <Page seo={{
         title: 'Joel Grayson',
         // TODO: description: ''
-    }} nopadding>
+    }} noPadding>
         <div className='w-full p-0 m-0'>
             {/* top */}
             <div className='w-full h-[290px] p-0' style={{background: 'linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(216,216,216,1) 100%)'}}>

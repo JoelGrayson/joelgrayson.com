@@ -3,13 +3,15 @@ import Header from '../header';
 import Footer from '../Footer';
 import { ReactNode, useEffect } from 'react';
 import SEO, { SEOProps } from './SEO';
+import pageStyle from '@/styles/page/page.module.css';
 
-export default function Page({children, nopadding, bottomPadding, seo, noheader=false, ...props}: {
+export default function Page({children, noPadding, bottomPadding, seo, noHeader=false, noPageStyling=false, ...props}: {
     children: ReactNode;
-    nopadding?: boolean;
+    noPadding?: boolean;
     bottomPadding?: boolean;
     seo?: SEOProps;
-    noheader?: boolean;
+    noHeader?: boolean;
+    noPageStyling?: boolean;
     [key: string]: any;
 }) {
     useEffect(()=>{ //redirect from .vercel.app -> .com
@@ -33,7 +35,7 @@ export default function Page({children, nopadding, bottomPadding, seo, noheader=
             <meta name="theme-color" content="#ffffff" />
         </Head>
 
-        {!noheader && <Header />} {/* 77px */}
+        {!noHeader && <Header />} {/* 77px */}
 
         <main {...props} style={{
             position: 'relative',
@@ -43,9 +45,9 @@ export default function Page({children, nopadding, bottomPadding, seo, noheader=
             paddingBottom: bottomPadding ? 60 : 0,
             ...props.style
         }}>
-            { nopadding
+            { noPadding
                 ? children
-                : <div className='j_container j_max-w'>{children}</div> //if center, wrap in centering container
+                : <div id='pageNamespace' className={`j_container j_max-w ${noPageStyling ? '' : pageStyle.pageNamespace}`}>{children}</div> //if center, wrap in centering container
             }
         </main>
         <Footer/> {/* 89px */}

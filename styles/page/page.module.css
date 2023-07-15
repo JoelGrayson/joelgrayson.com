@@ -1,0 +1,16 @@
+.pageNamespace main p,
+.pageNamespace main div,
+.pageNamespace main button,
+.pageNamespace main li { /* vertical padding in page */
+    padding: 10px 0;
+}
+
+.pageNamespace * { /* transition everything */
+    box-sizing: border-box;  
+    transition: all 0.3s ease
+}
+
+.pageNamespace *::selection { /* yellow highlight color */
+    background-color: #f9c44d;
+}
+

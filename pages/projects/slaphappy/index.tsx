@@ -18,7 +18,7 @@ export default function Slaphappy() {
         );
     }, []);
     
-    return <Page seo={{ title: 'Art' }} style={{overflow: 'hidden'}} nopadding bottomPadding>
+    return <Page seo={{ title: 'Art' }} style={{overflow: 'hidden'}} noPadding bottomPadding>
         {/* eslint-disable */}
         {/* Curtain background image */}
         <img src='/image/slaphappy/curtains.png' ref={curtainsRef} alt='Curtains' style={{

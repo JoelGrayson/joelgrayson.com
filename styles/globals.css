@@ -25,16 +25,6 @@ html, body {
     margin: 0;
     font-family: Avenir, AvenirMedium, Myriad Segoe UI, Roboto, Helvetica Neue, sans-serif;
 }
-* {
-    box-sizing: border-box;  
-    transition: all 0.3s ease
-}
-*::selection { /* yellow highlight color */
-    background-color: #f9c44d;
-}
-main p, main div, main button, main li { /* vertical padding in page */
-    padding: 10px 0;
-}
 input[type='submit'] {
     cursor: pointer;
 }

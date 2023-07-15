@@ -14,7 +14,7 @@ export default function CCC() {
     const [viewer, setViewer]=useState<viewers>(viewers.none); //viewer status
     const wrap=(newViewerStatus: viewers)=>()=>setViewer(newViewerStatus); //wrap viewer change
 
-    return <Page nopadding>
+    return <Page noPadding>
         <Viewer status={viewer} setStatus={setViewer} />
 
         <Section title='Producing Clean Electricity'>
