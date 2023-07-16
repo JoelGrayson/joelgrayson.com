@@ -23,8 +23,12 @@ void setup() {
   size(400,400);
 }
 void draw() {
-  //unfair mode button
   background(240);
+  // instructions
+  textSize(25);
+  text("Click to roll", 15, 30)
+  
+  //unfair mode button
   showDie(dieNum);
   if (unfairMode) {
     fill(200,220,200);
@@ -41,14 +45,14 @@ void draw() {
   fill(0);
   textSize(15);
   text("Change # sides",width-124,78);
-  println(numSides);
+  //println(numSides);
 }
 int rollDie(int numSides) {
   int num=int(random(numSides)+1);;
   if (unfairMode) {
     num=6;
   }
-  println(num);
+  //println(num);
   return num;
 }
 void showDie(int num) {

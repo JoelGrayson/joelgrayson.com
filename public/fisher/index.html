@@ -9,17 +9,62 @@
     <link rel="stylesheet" href="https://joelgrayson.com/software/articlify/plain.css">
     <link rel="stylesheet" href="./prism.css">
 </head>
-<body>
+<body style="position: relative">
     <h1 id="title">Record of Joel & Mr. Fisher</h1>
     <p id="subtitle">Ordered chronologically from 9th to 11th grade.</p>
 
-    <div style="width: fit-content; display: flex; flex-direction: column; align-items: center; position: absolute; right: 5%; top: 160px;">
-        <img src="./files/Computer.jpg" alt="Computer" width="250" height="192">
+    <div id="cardboard-computer">
+        <img src="./files/Computer.jpg" alt="Computer" width="150" height="115">
         <div>Computer Science</div>
     </div>
 
     <h2>9th Grade</h2>
-
+    <p>In 9th grade, we learned about Processing. I found it super fun and self-learned syntax to make my submissions above and beyond the assignment instructions. Here are 9 highlights:</p>
+    <div id="processing-grid-container">
+        <div id="processing-grid">
+            <!-- Row 1 -->
+            <iframe width="770px" height="770px" src='/fisher/processing/Chess.html' frameborder="0"></iframe>
+            <div>
+                <iframe width="720px" height="720px" src='/fisher/processing/Drawing Software.html' frameborder="0"></iframe>
+                <p>Draw Scratchpad</p>
+            </div>
+            <div>
+                <iframe width="670px" height="670px" src='/fisher/processing/agario.html' frameborder="0"></iframe>
+                <p>Agar.io</p>
+            </div>
+    
+            <!-- Row 2 -->
+            <iframe width="620px" height="820px" src='/fisher/processing/Rocket.html' frameborder="0"></iframe>
+            <div>
+                <iframe width="820px" height="620px" src='/fisher/processing/Bouncy Ball.html' frameborder="0"></iframe>
+                <p>Ball with Friction Simulator</p>
+            </div>
+            <!-- <iframe width="660px" height="660px" src='/fisher/processing/100 Bouncing Balls.html' frameborder="0"></iframe>                 -->
+            <div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/aTI5Rlj_fwg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <p style="font-size: 43px; margin-top: 20px;">Tesseract OS (Photo Editor)</p>
+            </div>
+           
+            
+            <!-- Row 3 -->
+            <div>
+                <iframe width="670px" height="670px" src='/fisher/processing/Cookie Clicker.html' frameborder="0"></iframe>
+                <p>Cookie Clicker</p>
+            </div>
+            <iframe width="660px" height="270px" src='/fisher/processing/USA Flag.html' frameborder="0"></iframe>
+            <!-- <iframe width="820px" height="620px" src='/fisher/processing/Covfefe.html' frameborder="0"></iframe> -->
+            <div>
+                <iframe width="420px" height="420px" src='/fisher/processing/die.html' frameborder="0"></iframe>
+                <p>Die</p>
+            </div>
+            <!-- <iframe width="820px" height="820px" src='/fisher/processing/tofu.html' frameborder="0"></iframe> -->
+        </div>
+    </div>
+    
+    
+    <p>Creating these programs took a lot of planning like in the photos below</p>
+    <img src="./files/9th/draw-planning.png" alt="Sketchpad planning" width="297px" height="220px">
+    <img src="./files/9th/planning-chess.jpg" alt="Chess planning" width="348px" height="220px">
     
     
     <h2>10th Grade</h2>
@@ -42,7 +87,9 @@
         <div>
             <details>
                 <summary>Source code</summary>
-                <j_code language="python" src="./files/10th/bucket_sort.py" />
+                <div style="background: black; word-wrap: break-word">
+                    <j_code language="python" src="./files/10th/bucket_sort.py" />
+                </div>
             </details>
 
             <b>Results (average of timing three tests)</b>
