@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!-- 11.1.20 -->
+<html>
+    <head>
+        <title>Cookie Clicker</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+    </head>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <body>
+        <script type="application/processing">
+/* ----------------------------------------------------
+NOTE: table of contents is COOKIE, CURSOR, and GENERAL
+-----------------------------------------------------*/
+
+//COOKIE
+float cDiameter; //cookie diameter
+int cClicks;
+float cX;
+float cY;
+
+//CURSOR
+float cursorX1;
+float cursorY1;
+int cursor1Frames;
+float cursorX2;
+float cursorY2;
+int cursor2Frames;
+float cursorX3;
+float cursorY3;
+int cursor3Frames;
+int cursorNum;
+int framesAfterError;
+
+//GENERAL
+int framesAfterClick; //after the cookie is clicked, the cookie expands and contracts based on the framesAfterClicked variable
+int frames;
+
+void setup() {
+  size(650,650);
+  background(198,223,255);
+  
+  //COOKIE
+  cDiameter=360;
+  cX=width/2;
+  cY=height/2;
+  
+  //CURSOR
+  cursorNum=0;
+  framesAfterError=500; //so that error message does not show up
+  cursorX1=518;
+  cursorY1=300;
+  cursorX2=498;
+  cursorY2=220;
+  cursorX3=512;
+  cursorY3=380;
+    
+  //GENERAL
+  framesAfterClick=60; //so that cookie expansion does not trigger
+}
+
+void draw() {
+  background(198,223,255);
+  
+  //COOKIE
+  fill(247,158,97);
+  if (framesAfterClick<15) { //expands cookie
+    cDiameter+=2.5;
+  } else if (framesAfterClick<24) { //contracts cookie
+    cDiameter-=4.1666666667;
+  }
+  strokeWeight(2);
+  ellipse(cX,cY,cDiameter, cDiameter); //cookie
+  
+  //CURSOR
+  textSize(20);
+  fill(0);
+  strokeWeight(1);
+  stroke(0);
+  
+  if (cursorNum>0) {//cursor 1
+    stroke(0);
+    fill(0);
+    if (frames%60>29) { //back and forth cursor
+      cursorX1+=0.6;
+    } else {
+      cursorX1-=0.6;
+    }
+    if (cursor1Frames%120==0) {//adds cookie every 2 seconds
+      cClicks++;
+    }
+    if (cursor1Frames%120<20) {//flashes blue
+      fill(50,104,245);
+      stroke(50,104,245);
+    }
+    triangle(cursorX1,cursorY1,cursorX1,cursorY1+30,cursorX1+20,cursorY1+20);
+    strokeWeight(5);
+    line(cursorX1+5,cursorY1+10,cursorX1+15,cursorY1+35);
+    cursor1Frames++;
+  } if (cursorNum>1) {//cursor 2
+    stroke(0);
+    fill(0);
+    if ((frames+15)%60>29) { //back and forth cursor
+      cursorX2-=0.6;
+    } else {
+      cursorX2+=0.6;
+    }
+    if (cursor2Frames%120==0) {//adds cookie every 2 seconds
+      cClicks++;
+    }
+    if (cursor2Frames%120<20) {//flashes blue
+      fill(50,104,245);
+      stroke(50,104,245);
+    }
+    triangle(cursorX2,cursorY2,cursorX2,cursorY2+30,cursorX2+20,cursorY2+20);
+    strokeWeight(5);
+    line(cursorX2+5,cursorY2+10,cursorX2+15,cursorY2+35);
+    cursor2Frames++;
+  } if (cursorNum>2) {//cursor 3   
+    stroke(0);
+    fill(0);
+    if (frames%60>29) { //back and forth cursor
+      cursorX3-=0.6;
+    } else {
+      cursorX3+=0.6;
+    }
+    
+    if (cursor3Frames%120==0) {//adds cookie every 2 seconds
+      cClicks++;
+    }
+    if (cursor3Frames%120<20) {//flashes blue
+      fill(50,104,245);
+      stroke(50,104,245);
+    }  
+    triangle(cursorX3,cursorY3,cursorX3,cursorY3+30,cursorX3+20,cursorY3+20);
+    strokeWeight(5);
+    line(cursorX3+5,cursorY3+10,cursorX3+15,cursorY3+35);
+    cursor3Frames++;
+  }
+  stroke(0);
+  
+  if (framesAfterError<150) { //shows for 2.5 seconds
+    fill(255,0,0);
+    text("You have reached the maximum # of cursors",200,90);
+    fill(0);
+  }
+  
+  strokeWeight(1);
+  
+  //cursor button
+  fill(140,80,70);
+  rect(width-190,20,131,40);
+  fill(255);
+  text("Add Cursor",width-180,47);
+  
+  //GENERAL
+  textSize(60);
+  fill(0);
+  text(cClicks,width-120,height-80); //cookieClicks
+  
+  frames++;
+  framesAfterClick++;
+  framesAfterError++;
+}
+
+void mouseClicked() {
+  if (cDiameter/2>=dist(mouseX,mouseY,cX,cY)) { //if mouse in circle radius
+    if (framesAfterClick>24) { //so that cookie does not continuously expand without contracting
+      framesAfterClick=0;
+    }
+    cClicks++; //increases cookie count
+  }
+  
+  if (mouseX>width-190 && mouseX<width-59 && mouseY>20 && mouseY<60) { //add cursor button pressed
+    if (cursorNum>3) { //triggers error message
+      framesAfterError=0;
+    }
+    cursorNum++;
+  }
+}
+        </script>
+        <canvas id="sketch"></canvas>
+    </body>
+</html>

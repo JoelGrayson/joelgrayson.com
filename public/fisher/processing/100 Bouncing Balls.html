@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>100 Bouncing Balls</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+    </head>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <body>
+        <script type="application/processing">
+int numBalls=100;
+float x[]=new float[numBalls];
+float y[]=new float[numBalls];
+float diam[]=new float[numBalls];
+float speedX[]=new float[numBalls];
+float speedY[]=new float[numBalls];
+color c[]=new color[numBalls];
+
+void setup() {
+  size(650,650);
+  for (int i=0; i<numBalls; i++) {
+    float safeSpace=20; //safe space ensures balls do not spawn on the border (and stay stuck)
+    x[i]=safeSpace+random(width-safeSpace*2);
+    y[i]=safeSpace+random(height-safeSpace*2);
+    diam[i]=10+random(20); //size 10-30
+    speedX[i]=1+random(3);
+    speedY[i]=1+random(3);
+    c[i] = color(random(255),random(255),random(255));
+  }
+}
+void draw() {
+  background(255);
+  for (int i=0; i<numBalls; i++) {
+    if (x[i]-diam[i]/2<=0||x[i]+diam[i]>=width
+    ||y[i]-diam[i]/2<=0||y[i]+diam[i]>=height) { //if out of boundaries
+      speedX[i]*=-1;
+      speedY[i]*=-1;
+    }
+    fill(c[i]);
+    ellipse(x[i],y[i],diam[i], diam[i]);
+    //equations
+    x[i]+=speedX[i];
+    y[i]+=speedY[i];
+  }
+}
+        </script>
+        <canvas id="sketch"></canvas>
+    </body>
+</html>

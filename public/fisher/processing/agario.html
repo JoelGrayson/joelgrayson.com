@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Agario</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+    </head>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <body>
+        <script type="application/processing">
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Agario</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+    </head>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <body>
+        <script type="application/processing">
+int numBalls=30;
+int addLimit=150; //can add 150 balls max
+int addPerClick=8; //adds 8 balls per click
+int addedAlready=0; //tracks #added balls
+float x[]=new float[numBalls+addLimit];
+float y[]=new float[numBalls+addLimit];
+float diam[]=new float[numBalls+addLimit];
+float speedX[]=new float[numBalls+addLimit];
+float speedY[]=new float[numBalls+addLimit];
+color c[]=new color[numBalls+addLimit];
+boolean bounceX[]=new boolean[numBalls+addLimit]; //ensures ball does not get stuck in border
+boolean bounceY[]=new boolean[numBalls+addLimit];
+
+void setup() {
+  size(650,650);
+  for (int i=0; i<numBalls; i++) {
+    float safeSpace=diam[i]+10; //safe space ensures balls do not spawn on the border (and stay stuck)
+    x[i]=safeSpace+random(width-safeSpace*2);
+    y[i]=safeSpace+random(height-safeSpace*2);
+    diam[i]=10+random(20); //size 10-30
+    speedX[i]=-3+random(6);
+    speedY[i]=-3+random(6);
+    c[i] = color(random(255),random(255),random(255));
+    bounceX[i]=true;
+    bounceY[i]=true;
+  }
+}
+void draw() {
+  background(255);
+  for (int i=0; i<numBalls; i++) {
+    if (x[i]-diam[i]/2>0||x[i]+diam[i]/2<width) {
+      bounceX[i]=true;
+    }
+    if (y[i]-diam[i]/2>0||y[i]+diam[i]/2<width) {
+      bounceY[i]=true;
+    }
+    if ((x[i]-diam[i]/2<=0||x[i]+diam[i]/2>=width) && bounceX[i]) {
+      speedX[i]*=-1;
+      bounceX[i]=false;
+    }
+    if ((y[i]-diam[i]/2<=0||y[i]+diam[i]/2>=height) && bounceY[i]) {
+      speedY[i]*=-1;
+      bounceY[i]=false;
+    }
+    //gobbling up ball
+    for (int i2=0; i2<numBalls; i2++) {
+      if (i2!=i) { //ensures the ball cannot gobble itself
+        if (dist(x[i],y[i],x[i2],y[i2])<(diam[i]+diam[i2])/2) {
+          if (diam[i2]<diam[i]) { //determines bigger ball
+            diam[i]+=diam[i2]/2; //grows
+            diam[i2]=0; //disappears
+            bounceX[i]=false;
+            bounceY[i]=false;
+          }
+          else if (diam[i]<diam[i2]) { //determines bigger ball
+            diam[i2]+=diam[i]/2; //grows
+            diam[i]=0; //disappears
+            bounceX[i2]=false;
+            bounceY[i2]=false;
+          }
+        }
+      }
+    }
+    fill(c[i]);
+    ellipse(x[i],y[i],diam[i], diam[i]);
+    //equations
+    x[i]+=speedX[i];
+    y[i]+=speedY[i];
+  }
+  
+  //adjustment bar +-
+  fill(220,55,55);
+  rect(width-70,20,50, 50); //+
+  fill(57,224,86);
+  rect(width-120,20,50, 50); //-
+  fill(255);
+  noStroke();
+  rect(width-60,40,30,10); // -
+  rect(width-100,30,10,30); // | of +
+  rect(width-110,40,30,10); // - of +  strokeWeight(1);
+  stroke(0);
+}
+void mousePressed() {
+  if(4<5 && mouseX>width-120&&mouseX<width-70&&mouseY>20&&mouseY<70) {
+    if (addedAlready+addPerClick<addLimit) { //ensures can add values to array
+      for (int i=0; i<addPerClick; i++) {
+        float safeSpace=diam[numBalls]+10; //safe space ensures balls do not spawn on the border (and stay stuck)
+        x[numBalls]=safeSpace+random(width-safeSpace*2);
+        y[numBalls]=safeSpace+random(height-safeSpace*2);
+        diam[numBalls]=10+random(20); //size 10-30
+        speedX[numBalls]=-3+random(6);
+        speedY[numBalls]=-3+random(6);
+        c[numBalls] = color(random(255),random(255),random(255));
+        bounceX[numBalls]=true;
+        bounceY[numBalls]=true;
+        numBalls++;
+      }
+      addedAlready+=addPerClick;
+    }
+  }
+  if(4>1 && mouseX>width-70&&mouseX<width-20&&mouseY>20&&mouseY<70) {
+    for (int i=0; i<numBalls; i++) {
+      if (diam[i]>10) {
+        diam[i]-=10;
+      }
+      else if (diam[i]<10) {
+        diam[i]=0; //smaller balls go to 0
+      }
+    }
+  }
+}
+        </script>
+        <canvas id="sketch"></canvas>
+    </body>
+</html>
+        </script>
+        <canvas id="sketch"></canvas>
+    </body>
+</html>

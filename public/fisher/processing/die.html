@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Die</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+    </head>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <body>
+        <script type="application/processing">
+int numSides=6;
+int dieNum=rollDie(numSides);
+boolean unfairMode=false;
+boolean changeNumSides=false;
+int framesAfterErrorMessage=5000;
+int framesAfterChangeNumSides=5000;
+
+void setup() {
+  size(400,400);
+}
+void draw() {
+  //unfair mode button
+  background(240);
+  showDie(dieNum);
+  if (unfairMode) {
+    fill(200,220,200);
+  } else {
+    fill(255);
+  }
+  rect(width-130,20,120,30,10);
+  fill(0);
+  textSize(17);
+  text("Unfair Mode",width-120,42);
+  //change #sides button
+  fill(255);
+  rect(width-130,58,120,30,10);
+  fill(0);
+  textSize(15);
+  text("Change # sides",width-124,78);
+  println(numSides);
+}
+int rollDie(int numSides) {
+  int num=int(random(numSides)+1);;
+  if (unfairMode) {
+    num=6;
+  }
+  println(num);
+  return num;
+}
+void showDie(int num) {
+  fill(250);
+  rect((width-150)/2,(height-150)/2,150, 150);
+  fill(0);
+  if (num==1) {
+    ellipse(width/2,height/2,20, 20);
+  } else if (num==2) {
+    ellipse(width/2+20,height/2,18, 18);
+    ellipse(width/2-20,height/2,18, 18);
+  } else if (num==3) {
+    ellipse(width/2-30,height/2+30,18, 18);
+    ellipse(width/2,height/2,18, 18);
+    ellipse(width/2+30,height/2-30,18, 18);
+  } else if (num==4) {
+    ellipse(width/2+23,height/2+23,18, 18);
+    ellipse(width/2+23,height/2-23,18, 18);
+    ellipse(width/2-23,height/2+23,18, 18);
+    ellipse(width/2-23,height/2-23,18, 18);
+  } else if (num==5) {
+    ellipse(width/2+25,height/2+25,18, 18);
+    ellipse(width/2+25,height/2-25,18, 18);
+    ellipse(width/2-25,height/2+25,18, 18);
+    ellipse(width/2-25,height/2-25,18, 18);
+    ellipse(width/2,height/2,18, 18);
+  } else if (num==6) {
+    ellipse(width/2+25,height/2+30,18, 18);
+    ellipse(width/2+25,height/2,18, 18);
+    ellipse(width/2+25,height/2-30,18, 18);
+    ellipse(width/2-25,height/2+30,18, 18);
+    ellipse(width/2-25,height/2,18, 18);
+    ellipse(width/2-25,height/2-30,18, 18);
+  } else if (num<10) {
+    textSize(74);
+    text(num,179,222);
+  } else if (num>=10) {
+    textSize(74);
+    text(num,154,222);
+  }
+  if (changeNumSides || framesAfterChangeNumSides<60) { //display modal
+    int padding=30;
+    fill(100,100,100,100); //transparent gray
+    rect(0,0,width,height); //modal
+    fill(100,100,100);
+    rect(padding,padding,width-padding*2,height-padding*2,40);
+    fill(255);
+    textSize(32);
+    if (framesAfterChangeNumSides<60) { //success message for 2 sec
+      textSize(33);
+      text("       Success!\nSides updated to "+numSides,55,167);
+    } else if (framesAfterErrorMessage>60) { //change numSides message
+        text("Current #sides: "+numSides,55,146);
+        text("Type a key to change \n     #sides on die",42,208);
+    } else if (framesAfterErrorMessage<60) { //show error message
+        textSize(30);
+        text("Invalid key. Try again.",45,180);
+    }
+  }
+  framesAfterErrorMessage++;
+  framesAfterChangeNumSides++;
+}
+void mousePressed() {
+  if (mouseX>width-130&&mouseX<width-130+120
+  &&mouseY>20&&mouseY<20+30) {
+    unfairMode=!unfairMode;
+  } else if (mouseX>width-130&&mouseX<width-130+120
+  &&mouseY>58&&mouseY<58+30) {
+    changeNumSides=true;
+  } else {
+    dieNum=rollDie(numSides);
+  }
+}
+void keyPressed() {
+  int input=int(str(key));
+  if (input==0) {
+    framesAfterErrorMessage=0;
+  } else {
+    numSides=input;
+    changeNumSides=false; //hides modal
+    framesAfterErrorMessage=5000;
+    framesAfterChangeNumSides=0;
+  }
+}
+        </script>
+        <canvas id="sketch"></canvas>
+    </body>
+</html>

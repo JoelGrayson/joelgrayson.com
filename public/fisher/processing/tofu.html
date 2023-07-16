@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tofu</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+    </head>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <body>
+        <script type="application/processing">
+float tofuX[]=new float[1000]; //stores fixed tofu coordinates
+float tofuY[]=new float[1000];
+int numTofu=0;
+
+Boolean chopstickMode=false; //triggered when chopstick clicked
+color tofuColor=color(255);
+int framesAfterStart=0;
+
+void setup() {
+  size(800,800);
+  textSize(20);
+}
+void draw() {
+  background(211,157,131);
+  for (int i=0; i<numTofu; i++) {
+    tofu(tofuX[i],tofuY[i]);
+  }
+  if (!chopstickMode) {
+    tofu(mouseX,mouseY); //draw tofu
+  }
+  
+  //chopsticks
+  if (chopstickMode) {
+    //done button
+    fill(230);
+    rect(width-110,20,100,40);
+    fill(0);
+    text("Done",width-90,47);
+    //tofu design
+    tofuColor=color(255,171,131);
+    for (int i=0;i<numTofu;i++) { //jiggle
+      int jiggleFreq=20;
+      float jiggleAmount=0.5;
+      if (framesAfterStart%jiggleFreq>jiggleFreq/2) {
+        tofuX[i]+=jiggleAmount;
+      } else {
+        tofuX[i]-=jiggleAmount;
+      }
+    }
+  } else {
+    //chopstick icon
+    stroke(255,222,57);
+    strokeWeight(10);
+    line(width-60,90,width-30,20);
+    line(width-45,90,width-50,20);
+    fill(0);
+    stroke(0);
+    strokeWeight(1);
+    //tofu design
+    tofuColor=color(255);
+  }
+  framesAfterStart++;
+}
+void tofu(float x, float y) {
+  fill(tofuColor);
+  rect(x-73,y-50,146,100,8);
+  fill(0);
+  ellipse(x-20,y-15,4, 4);
+  ellipse(x+20,y-15,4, 4);
+  text("Tofu",x-17.5,y+23);
+  if (chopstickMode) {
+    fill(250,10,10);
+    ellipse(x-73,y-50,24, 24);
+    fill(255);
+    text("x",x-78,y-45);
+  }
+}
+void mousePressed() {
+  if (mouseX>width-110&&mouseX<width-10
+   && mouseY>20&&mouseY<60 && chopstickMode) { //done button clicked
+    chopstickMode=false;
+  }
+  else if (mouseX>=width-65&&mouseX<=width-25
+  &&mouseY>=15&&mouseY<=95 && !chopstickMode) {
+    chopstickMode=true;
+  } else if (!chopstickMode) { //add frozen tofu
+    tofuX[numTofu]=mouseX;
+    tofuY[numTofu]=mouseY;
+    numTofu++;
+  } else { //delete tofu with (x) clicked
+    for (int i=0;i<numTofu;i++) {
+      if (dist(mouseX,mouseY,tofuX[i]-73,tofuY[i]-50)<=24/2) {
+        tofuX[i]=-1000; //hides tofu
+        tofuY[i]=-1000;
+      }
+    }
+  }
+}
+void clearTofu() {
+  for (int i=0;i>=numTofu&&i<tofuX.length;i++) { //removes tofu coordinates from array
+    tofuX[i]=0.0;
+    tofuY[i]=0.0;
+  }
+  numTofu=0;
+}
+void keyPressed() {
+  if (key==' ') {
+    clearTofu();
+  }
+}
+        </script>
+        <canvas id="sketch"></canvas>
+    </body>
+</html>

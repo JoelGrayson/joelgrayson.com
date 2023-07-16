@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+    </head>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <body>
+        <script type="application/processing">
+/* CHESSBOARD NUMBERS
+╔═╤═╤═╤═╤═╤═╤═╤═╗╮
+╟─┼─┼─┼─┼─┼─┼─┼─╢┊1
+╟─┼─┼─┼─┼─┼─┼─┼─╢┊2
+╟─┼─┼─┼─┼─┼─┼─┼─╢┊3
+╟─┼─┼─┼─┼─┼─┼─┼─╢┊4
+╟─┼─┼─┼─┼─┼─┼─┼─╢┊5
+╟─┼─┼─┼─┼─┼─┼─┼─╢┊6
+╟─┼─┼─┼─┼─┼─┼─┼─╢┊7
+╚═╧═╧═╧═╧═╧═╧═╧═╝┊8
+╰1┈2┈3┈4┈5┈6┈7┈8┈╯
+*/
+
+//SETTINGS
+
+String settings; //values: start
+boolean userColor; //0=b, 1=white
+boolean pieceSelectedBool;
+boolean tripleClicked; //ensures if a piece is clicked 3 times, it is reselected
+boolean capturing;
+String bCanCastle; //values: yes=both ways, left=only left (if right rook moved), right=only right (if left rook moved), no=cannot castle (king moved or both rooks moved)
+String wCanCastle;
+String style;
+String turn="white"; //values: white, black, tie, white wins, black wins
+
+//COLORS
+color backgroundColor;
+color boardColor;
+color squareColor;
+color wPiece;
+color bPiece;
+color highlightColor;
+
+//PIECES LOCATION (float because animation)
+float bPawn1X,bPawn2X,bPawn3X,bPawn4X,bPawn5X,bPawn6X,bPawn7X,bPawn8X;
+float bPawn1Y,bPawn2Y,bPawn3Y,bPawn4Y,bPawn5Y,bPawn6Y,bPawn7Y,bPawn8Y;
+float bRook1X,bRook1Y;
+float bRook2X,bRook2Y;
+float bKnight1X,bKnight1Y;
+float bKnight2X,bKnight2Y;
+float bBishop1X,bBishop1Y;
+float bBishop2X,bBishop2Y;
+float bQueenX,bQueenY;
+float bKingX,bKingY;
+
+float wPawn1X,wPawn2X,wPawn3X,wPawn4X,wPawn5X,wPawn6X,wPawn7X,wPawn8X;
+float wPawn1Y,wPawn2Y,wPawn3Y,wPawn4Y,wPawn5Y,wPawn6Y,wPawn7Y,wPawn8Y;
+float wRook1X,wRook1Y;
+float wRook2X,wRook2Y;
+float wKnight1X,wKnight1Y;
+float wKnight2X,wKnight2Y;
+float wBishop1X,wBishop1Y;
+float wBishop2X,wBishop2Y;
+float wQueenX,wQueenY;
+float wKingX,wKingY;
+float bPiecesCaptured,wPiecesCaptured;
+float captureX=-4;
+float captureY=-4; //-4 is null value
+
+int previousSquareX,previousSquareY;
+int clickedX,clickedY;
+int frames; //for moving pieces animation
+int framesAfterCastle;
+String selectedPiece; //string of seleced piece name (triggered when piece clicked)
+
+//animation pieces
+boolean pieceMoving;
+String pieceBeingMoved;
+float newX,newY;
+float oldX,oldY;
+float movingX,movingY;
+
+void setup() {
+  size(750,750);  
+  //Variables
+  settings="settings";
+  highlightColor=color(72,88,255); //blue
+  previousSquareX=1000; //preset so not undefined
+  previousSquareY=1000; //preset so not undefined
+  tripleClicked=false;
+  pieceMoving=false;
+  style="default";
+  bCanCastle="yes";
+  wCanCastle="yes";
+  pieceBeingMoved="";
+  frames=1000;
+  movingX=5000;
+  movingY=5000;
+  framesAfterCastle=5000;
+  
+  //Pieces
+  bPawn1Y=bPawn2Y=bPawn3Y=bPawn4Y=bPawn5Y=bPawn6Y=bPawn7Y=bPawn8Y=2;
+  bRook1Y=bKnight1Y=bBishop1Y=bQueenY=bKingY=bBishop2Y=bKnight2Y=bRook2Y=1;
+  bPawn1X=1;
+  bPawn2X=2;
+  bPawn3X=3;
+  bPawn4X=4;
+  bPawn5X=5;
+  bPawn6X=6;
+  bPawn7X=7;
+  bPawn8X=8;
+  bRook1X=1;
+  bKnight1X=2;
+  bBishop1X=3;
+  bQueenX=4;
+  bKingX=5;
+  bBishop2X=6;
+  bKnight2X=7;
+  bRook2X=8;
+  
+  wPawn1Y=wPawn2Y=wPawn3Y=wPawn4Y=wPawn5Y=wPawn6Y=wPawn7Y=wPawn8Y=7;
+  wRook1Y=wKnight1Y=wBishop1Y=wQueenY=wKingY=wBishop2Y=wKnight2Y=wRook2Y=8;
+  wPawn1X=1;
+  wPawn2X=2;
+  wPawn3X=3;
+  wPawn4X=4;
+  wPawn5X=5;
+  wPawn6X=6;
+  wPawn7X=7;
+  wPawn8X=8;
+  wRook1X=1;
+  wKnight1X=2;
+  wBishop1X=3;
+  wQueenX=4;
+  wKingX=5;
+  wBishop2X=6;
+  wKnight2X=7;
+  wRook2X=8;
+  bPiecesCaptured=wPiecesCaptured=0;
+}
+
+void draw() {
+  if (style=="default") {
+    backgroundColor=color(52,198,89); //mint
+    bPiece=color(0);
+    wPiece=color(118,118,97); //gray
+    boardColor=color(123,222,111); //green
+    squareColor=color(225,255,222); //very light green
+  } else if (style=="ice") {
+    backgroundColor=color(56,161,209);
+    boardColor=color(61,196,94);
+    bPiece=color(10);
+    wPiece=color(222,254,255);
+    boardColor=color(11, 175, 184); //dark blue
+    squareColor=color(174,216,230); //light blue
+  } else if (style=="wood") {
+    backgroundColor=color(232,165,95); //wood
+    boardColor=color(61,196,94);
+    bPiece=color(83,32,21);
+    wPiece=color(232,160,67);
+    //wPiece=color(240,201,120);
+    boardColor=color(181,136,99); //green
+    squareColor=color(241,217,181); //white
+  }
+  background(backgroundColor);
+  
+  noStroke();
+  if (turn=="black" && settings=="play") {
+    fill(255,0,0);
+    ellipse(30,150,35, 35);
+  } else if (turn=="white") {
+    fill(255,0,0);
+    ellipse(30,width-150,35, 35);
+  }
+  
+  //Chess Board Background
+  fill(boardColor);
+  stroke(170,75,60); //brown border color
+  strokeWeight(5);
+  rect(67.5,67.5,605); //inner part (not border, 605); //inner part (not border) starts at 70
+  
+  //Tiles
+  noStroke();
+  fill(squareColor);
+  for(int n=70; n<670; n+=150) {
+    rect(n,70,75, 75); //row 1
+    rect(n,220,75, 75); //row 3
+    rect(n,370,75, 75); //row 5
+    rect(n,520,75, 75); //row 7
+  }
+  for(int n=145; n<670; n+=150) {
+    rect(n,145,75, 75); //row 2
+    rect(n,295,75, 75); //row 4
+    rect(n,445,75, 75); //row 6
+    rect(n,595,75, 75); //row 8
+  }
+  
+  //HIGHIGHT CLICKED SQUARE (BLACK)
+  fill(highlightColor);
+  if (mousePressed && mouseX<670 && mouseX>70 && mouseY<670 && mouseY>70) { //Highlight any clicked tile
+    clickedX=int(mouseToSq(mouseX));
+    clickedY=int(mouseToSq(mouseY));
+    rect(sqToPix(clickedX)-75/2,sqToPix(clickedY)-75/2,75, 75); //clicked tile
+  }
+  if (pieceSelectedBool&&turn=="black") { //Check if clicking piece
+    if ((bPawn1X==clickedX&&bPawn1Y==clickedY)||(bPawn2Y==clickedY&&bPawn2X==clickedX)||
+        (bPawn3X==clickedX&&bPawn3Y==clickedY)||(bPawn4X==clickedX&&bPawn4Y==clickedY)||
+        (bPawn5X==clickedX&&bPawn5Y==clickedY)||(bPawn6X==clickedX&&bPawn6Y==clickedY)||
+        (bPawn7X==clickedX&&bPawn7Y==clickedY)||(bPawn8X==clickedX&&bPawn8Y==clickedY)) {
+      //Pawn clicked
+      rect(sqToPix(clickedX)-75/2,sqToPix(clickedY)-75/2,75, 75); //pressed square
+      option(clickedX,clickedY+1);
+      if (clickedY==2 && !checkIfOccupied(clickedX,clickedY+1)) { //move twice if pawn unmoved
+        option(clickedX,clickedY+2);
+      }
+           if (bPawn1X==clickedX&&bPawn1Y==clickedY) {selectedPiece="bPawn1";} //determine which pawn
+      else if (bPawn2X==clickedX&&bPawn2Y==clickedY) {selectedPiece="bPawn2";}
+      else if (bPawn3X==clickedX&&bPawn3Y==clickedY) {selectedPiece="bPawn3";}
+      else if (bPawn4X==clickedX&&bPawn4Y==clickedY) {selectedPiece="bPawn4";}
+      else if (bPawn5X==clickedX&&bPawn5Y==clickedY) {selectedPiece="bPawn5";}
+      else if (bPawn6X==clickedX&&bPawn6Y==clickedY) {selectedPiece="bPawn6";}
+      else if (bPawn7X==clickedX&&bPawn7Y==clickedY) {selectedPiece="bPawn7";}
+      else if (bPawn8X==clickedX&&bPawn8Y==clickedY) {selectedPiece="bPawn8";}
+      
+    } else if ((bRook2X==clickedX&&bRook2Y==clickedY)||(bRook1X==clickedX&&bRook1Y==clickedY)) {
+      //Rook clicked
+      rect(sqToPix(clickedX)-75/2,sqToPix(clickedY)-75/2,75, 75); //pressed square
+      for (int n=1; n<=7; n++) { //horizontal left
+        if (!checkIfOccupied(clickedX+n,clickedY)) {
+          option(clickedX+n,clickedY);
+        } else { if(canCapture(clickedX+n,clickedY)){ captureOption(clickedX+n,clickedY); } break; } //stops program if hits piece (so does not continue)
+      }
+      for (int n=1; n<=7; n++) { //horizontal right
+        if (!checkIfOccupied(clickedX-n,clickedY)) {
+          option(clickedX-n,clickedY);
+        } else { if(canCapture(clickedX-n,clickedY)){ captureOption(clickedX-n,clickedY); } break; }
+      }
+      for (int n=1; n<=7; n++) { //vertical up
+        if (!checkIfOccupied(clickedX,clickedY+n)) {
+          option(clickedX,clickedY+n);
+        } else { if(canCapture(clickedX,clickedY+n)){ captureOption(clickedX,clickedY+n); } break; }
+      }
+      for (int n=1; n<=7; n++) { //vertical down
+        if (!checkIfOccupied(clickedX,clickedY-n)) {
+          option(clickedX,clickedY-n);
+        } else { if(canCapture(clickedX,clickedY-n)){ captureOption(clickedX,clickedY-n); } break; }
+      }
+           if (bRook1X==clickedX&&bRook1Y==clickedY) {selectedPiece="bRook1";} //determine which rook
+      else if (bRook2X==clickedX&&bRook2Y==clickedY) {selectedPiece="bRook2";}
+      
+    } else if ((bKnight1X==clickedX&&bKnight1Y==clickedY)||(bKnight2X==clickedX&&bKnight2Y==clickedY)) {
+      //Knight clicked
+      rect(sqToPix(clickedX)-75/2,sqToPix(clickedY)-75/2,75, 75); //pressed square
+      for (int n=1; n>=-1; n-=2) {
+        option(clickedX+1,clickedY+2*n);
+        option(clickedX+2,clickedY+1*n);
+        option(clickedX-1,clickedY-2*n);
+        option(clickedX-2,clickedY-1*n);
+      }
+           if (bKnight1X==clickedX&&bKnight1Y==clickedY) {selectedPiece="bKnight1";} //determine which knight
+      else if (bKnight2X==clickedX&&bKnight2Y==clickedY) {selectedPiece="bKnight2";}
+      
+    } else if ((bBishop1X==clickedX&&bBishop1Y==clickedY)||(bBishop2X==clickedX&&bBishop2Y==clickedY)) {
+      //Bishop clicked
+      rect(sqToPix(clickedX)-75/2,sqToPix(clickedY)-75/2,75, 75); //piece square
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX+n,clickedY+n)) { //up right
+          option(clickedX+n,clickedY+n);
+        } else { if(canCapture(clickedX+n,clickedY+n)){ captureOption(clickedX+n,clickedY+n); } break; }
+      }
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX-n,clickedY-n)) { //down left
+          option(clickedX-n,clickedY-n);
+        } else { if(canCapture(clickedX-n,clickedY-n)){ captureOption(clickedX-n,clickedY-n); } break; }
+      }
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX-n,clickedY+n)) { //up left
+          option(clickedX-n,clickedY+n);
+        } else { if(canCapture(clickedX-n,clickedY+n)){ captureOption(clickedX-n,clickedY+n); } break; }
+      }
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX+n,clickedY-n)) { //down right
+          option(clickedX+n,clickedY-n);
+        } else { if(canCapture(clickedX+n,clickedY-n)){ captureOption(clickedX+n,clickedY-n); } break; }
+      }
+           if (bBishop1X==clickedX&&bBishop1Y==clickedY) {selectedPiece="bBishop1";} //determine which knight
+      else if (bBishop2X==clickedX&&bBishop2Y==clickedY) {selectedPiece="bBishop2";}
+      
+    } else if (bQueenX==clickedX&&bQueenY==clickedY) {
+      //Queen clicked
+      rect(sqToPix(clickedX)-75/2,sqToPix(clickedY)-75/2,75, 75); //pressed square
+      for (int n=1; n<=7; n++) { //Rook
+        if (!checkIfOccupied(clickedX-n,clickedY)) { //left 
+          option(clickedX-n,clickedY);
+        } else { if(canCapture(clickedX-n,clickedY)){ captureOption(clickedX-n,clickedY); } break; } //stops program if hits piece (so does not continue)
+      }
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX+n,clickedY)) { //right
+          option(clickedX+n,clickedY);
+        } else { if(canCapture(clickedX+n,clickedY)){ captureOption(clickedX+n,clickedY); } break; }
+      }
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX,clickedY+n)) { //up
+          option(clickedX,clickedY+n);
+        } else { if(canCapture(clickedX,clickedY+n)){ captureOption(clickedX,clickedY+n); } break; }
+      }
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX,clickedY-n)) { //down
+          option(clickedX,clickedY-n);
+        } else { if(canCapture(clickedX,clickedY-n)){ captureOption(clickedX,clickedY-n); } break; }
+      }
+      for (int n=1; n<=7; n++) {//Bishop
+        if (!checkIfOccupied(clickedX+n,clickedY+n)) { //up-right
+          option(clickedX+n,clickedY+n);
+        } else { if(canCapture(clickedX+n,clickedY+n)){ captureOption(clickedX+n,clickedY+n); } break; }
+      }
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX-n,clickedY-n)) { //down-left
+          option(clickedX-n,clickedY-n);
+        } else { if(canCapture(clickedX-n,clickedY-n)){ captureOption(clickedX-n,clickedY-n); } break; }
+      }
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX-n,clickedY+n)) { //up-left
+          option(clickedX-n,clickedY+n);
+        } else { if(canCapture(clickedX-n,clickedY+n)){ captureOption(clickedX-n,clickedY+n); } break; }
+      }
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX+n,clickedY-n)) { //down-right
+          option(clickedX+n,clickedY-n);
+        } else { if(canCapture(clickedX+n,clickedY-n)){ captureOption(clickedX+n,clickedY-n); } break; }
+      }
+      selectedPiece="bQueen";
+    } else if (bKingX==clickedX&&bKingY==clickedY) {
+      //King clicked
+      rect(sqToPix(clickedX)-75/2,sqToPix(clickedY)-75/2,75, 75); //pressed square
+      for (int n=1; n>=-1; n--) {
+        captureOption(clickedX+1,clickedY+n);
+        captureOption(clickedX-1,clickedY+n);
+      }
+      captureOption(clickedX,clickedY-1);
+      captureOption(clickedX,clickedY+1);
+      if ((bCanCastle=="right"||bCanCastle=="yes")&&(!checkIfOccupied(clickedX+1,clickedY))&&(!checkIfOccupied(clickedX+2,clickedY))) { //O-O short castle
+        option(clickedX+2,clickedY);
+      }
+      if ((bCanCastle=="left"||bCanCastle=="yes")&&(!checkIfOccupied(clickedX-1,clickedY))&&(!checkIfOccupied(clickedX-2,clickedY))&&(!checkIfOccupied(clickedX-3,clickedY))) { //O-O-O long castle
+        option(clickedX-2,clickedY);
+      }
+      selectedPiece="bKing";
+    }
+  }
+  if (framesAfterCastle==37 && turn=="white") { //castling black (switches white to black because moves twice)
+    if (wKingX==3) { //left castle
+      animation(wRook1X,wRook1X+3,wRook1Y,clickedY,"wRook1");
+    } else if (wKingX==7) { //right castle
+      animation(wRook2X,wRook2X-2,wRook2Y,clickedY,"wRook2");
+    }
+    turn="black";
+  }
+  //HIGHLIGHT CLICKED SQUARE (WHITE)
+  if (pieceSelectedBool&&turn=="white") { //Check if clicking piece
+    if ((wPawn1X==clickedX&&wPawn1Y==clickedY)||(wPawn2Y==clickedY&&wPawn2X==clickedX)||
+        (wPawn3X==clickedX&&wPawn3Y==clickedY)||(wPawn4X==clickedX&&wPawn4Y==clickedY)||
+        (wPawn5X==clickedX&&wPawn5Y==clickedY)||(wPawn6X==clickedX&&wPawn6Y==clickedY)||
+        (wPawn7X==clickedX&&wPawn7Y==clickedY)||(wPawn8X==clickedX&&wPawn8Y==clickedY)) {
+      //Pawn clicked
+      rect(sqToPix(clickedX)-75/2,sqToPix(clickedY)-75/2,75, 75); //pressed square
+      option(clickedX,clickedY-1);
+      if (clickedY==7 && !checkIfOccupied(clickedX,clickedY-1)) { //move twice if pawn unmoved
+        option(clickedX,clickedY-2);
+      }
+           if (wPawn1X==clickedX&&wPawn1Y==clickedY) {selectedPiece="wPawn1";} //determine which pawn
+      else if (wPawn2X==clickedX&&wPawn2Y==clickedY) {selectedPiece="wPawn2";}
+      else if (wPawn3X==clickedX&&wPawn3Y==clickedY) {selectedPiece="wPawn3";}
+      else if (wPawn4X==clickedX&&wPawn4Y==clickedY) {selectedPiece="wPawn4";}
+      else if (wPawn5X==clickedX&&wPawn5Y==clickedY) {selectedPiece="wPawn5";}
+      else if (wPawn6X==clickedX&&wPawn6Y==clickedY) {selectedPiece="wPawn6";}
+      else if (wPawn7X==clickedX&&wPawn7Y==clickedY) {selectedPiece="wPawn7";}
+      else if (wPawn8X==clickedX&&wPawn8Y==clickedY) {selectedPiece="wPawn8";}
+      
+    } else if ((wRook2X==clickedX&&wRook2Y==clickedY)||(wRook1X==clickedX&&wRook1Y==clickedY)) {
+      //Rook clicked
+      rect(sqToPix(clickedX)-75/2,sqToPix(clickedY)-75/2,75, 75); //pressed square
+      for (int n=1; n<=7; n++) { //horizontal left
+        if (!checkIfOccupied(clickedX-n,clickedY)) {
+          option(clickedX-n,clickedY);
+        } else { break; } //stops program if hits piece (so does not continue)
+      }
+      for (int n=1; n<=7; n++) { //horizontal right
+        if (!checkIfOccupied(clickedX+n,clickedY)) {
+          option(clickedX+n,clickedY);
+        } else { break; }
+      }      
+      for (int n=1; n<=7; n++) { //vertical up
+        if (!checkIfOccupied(clickedX,clickedY+n)) {
+          option(clickedX,clickedY+n);
+        } else { break; }
+      }
+      for (int n=1; n<=7; n++) { //vertical down
+        if (!checkIfOccupied(clickedX,clickedY-n)) {
+          option(clickedX,clickedY-n);
+        } else { break; }
+      }
+      
+           if (wRook1X==clickedX&&wRook1Y==clickedY) {selectedPiece="wRook1";} //determine which rook
+      else if (wRook2X==clickedX&&wRook2Y==clickedY) {selectedPiece="wRook2";}
+      
+    } else if ((wKnight1X==clickedX&&wKnight1Y==clickedY)||(wKnight2X==clickedX&&wKnight2Y==clickedY)) {
+      //Knight clicked
+      rect(sqToPix(clickedX)-75/2,sqToPix(clickedY)-75/2,75, 75); //pressed square
+      for (int n=1; n>=-1; n-=2) {
+        option(clickedX+1,clickedY+2*n);
+        option(clickedX+2,clickedY+1*n);
+        option(clickedX-1,clickedY-2*n);
+        option(clickedX-2,clickedY-1*n);
+      }
+           if (wKnight1X==clickedX&&wKnight1Y==clickedY) {selectedPiece="wKnight1";} //determine which knight
+      else if (wKnight2X==clickedX&&wKnight2Y==clickedY) {selectedPiece="wKnight2";}
+      
+    } else if ((wBishop1X==clickedX&&wBishop1Y==clickedY)||(wBishop2X==clickedX&&wBishop2Y==clickedY)) {
+      //Bishop clicked
+      rect(sqToPix(clickedX)-75/2,sqToPix(clickedY)-75/2,75, 75); //piece square
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX+n,clickedY+n)) { //up right
+          option(clickedX+n,clickedY+n);
+        } else { break; }
+      }
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX-n,clickedY-n)) { //down left
+          option(clickedX-n,clickedY-n);
+        } else { break; }
+      }
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX-n,clickedY+n)) { //up left
+          option(clickedX-n,clickedY+n);
+        } else { break; }
+      }
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX+n,clickedY-n)) { //down right
+          option(clickedX+n,clickedY-n);
+        } else { break; }
+      }
+           if (wBishop1X==clickedX&&wBishop1Y==clickedY) {selectedPiece="wBishop1";} //determine which knight
+      else if (wBishop2X==clickedX&&wBishop2Y==clickedY) {selectedPiece="wBishop2";}
+      
+    } else if (wQueenX==clickedX&&wQueenY==clickedY) {
+      //Queen clicked
+      rect(sqToPix(clickedX)-75/2,sqToPix(clickedY)-75/2,75, 75); //pressed square
+      for (int n=1; n<=7; n++) { //Rook
+        if (!checkIfOccupied(clickedX-n,clickedY)) { //left 
+          option(clickedX-n,clickedY);
+        } else { break; } //stops program if hits piece (so does not continue)
+      }
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX+n,clickedY)) { //right
+          option(clickedX+n,clickedY);
+        } else { break; }
+      }
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX,clickedY+n)) { //up
+          option(clickedX,clickedY+n);
+        } else { break; }
+      }
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX,clickedY-n)) { //down
+          option(clickedX,clickedY-n);
+        } else { break; }
+      }
+      for (int n=1; n<=7; n++) {//Bishop
+        if (!checkIfOccupied(clickedX+n,clickedY+n)) { //up-right
+          option(clickedX+n,clickedY+n);
+        } else { break; }
+      }
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX-n,clickedY-n)) { //down-left
+          option(clickedX-n,clickedY-n);
+        } else { break; }
+      }
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX-n,clickedY+n)) { //up-left
+          option(clickedX-n,clickedY+n);
+        } else { break; }
+      }
+      for (int n=1; n<=7; n++) {
+        if (!checkIfOccupied(clickedX+n,clickedY-n)) { //down-right
+          option(clickedX+n,clickedY-n);
+        } else { break; }
+      }
+      selectedPiece="wQueen";
+    } else if (wKingX==clickedX&&wKingY==clickedY) {
+      //King clicked
+      rect(sqToPix(clickedX)-75/2,sqToPix(clickedY)-75/2,75, 75); //pressed square
+      for (int n=1; n>=-1; n--) {
+        option(clickedX+1,clickedY+n);
+        option(clickedX-1,clickedY+n);
+      }
+      option(clickedX,clickedY-1);   
+      option(clickedX,clickedY+1);
+      if ((wCanCastle=="right"||wCanCastle=="yes")&&(!checkIfOccupied(clickedX+1,clickedY))&&(!checkIfOccupied(clickedX+2,clickedY))) { //O-O short castle
+        option(clickedX+2,clickedY);
+      }
+      if ((wCanCastle=="left"||wCanCastle=="yes")&&(!checkIfOccupied(clickedX-1,clickedY))&&(!checkIfOccupied(clickedX-2,clickedY))&&(!checkIfOccupied(clickedX-3,clickedY))) { //O-O-O long castle
+        option(clickedX-2,clickedY);
+      }
+      selectedPiece="wKing";
+    }
+  }
+  if (framesAfterCastle==37 && turn=="black") { //castling white
+    if (bKingX==3) { //left castle
+      animation(bRook1X,bRook1X+3,bRook1Y,clickedY,"bRook1");
+    } else if (bKingX==7) { //right castle
+      animation(bRook2X,bRook2X-2,bRook2Y,clickedY,"bRook2");
+    }
+    turn="white";
+  }
+
+  //MOVING APPARATUS
+  if (pieceMoving) {
+    movingXF();
+    movingYF();
+    if (!(captureX==-4&&captureY==-4)) {
+      capture(captureX,captureY);
+      captureX=-4;
+      captureY=-4;
+    }
+  }
+  
+  //DRAWING BLACK PIECES
+  fill(bPiece);
+  //Pawn 1
+  ellipse(sqToPix(bPawn1X),sqToPix(bPawn1Y)-13,25, 25); // base format: triangle,rect,triangle: / || \
+  triangle(sqToPix(bPawn1X)+5,sqToPix(bPawn1Y)-8,sqToPix(bPawn1X)+5,sqToPix(bPawn1Y)+22,sqToPix(bPawn1X)+15,sqToPix(bPawn1Y)+22); //left triangle (5,-8,5,22,15,22)
+  triangle(sqToPix(bPawn1X)-5,sqToPix(bPawn1Y)-8,sqToPix(bPawn1X)-5,sqToPix(bPawn1Y)+22,sqToPix(bPawn1X)-15,sqToPix(bPawn1Y)+22); //right triangle (-5,-8,-5,22,-15,22)
+  rect(sqToPix(bPawn1X)-6,sqToPix(bPawn1Y)-8,12,30); //middle rect (-6,-8,12,30)
+  //Pawn 2
+  ellipse(sqToPix(bPawn2X),sqToPix(bPawn2Y)-13,25, 25); // base format: triangle,rect,triangle: / || \
+  triangle(sqToPix(bPawn2X)+5,sqToPix(bPawn2Y)-8,sqToPix(bPawn2X)+5,sqToPix(bPawn2Y)+22,sqToPix(bPawn2X)+15,sqToPix(bPawn2Y)+22); //left triangle (5,-8,5,22,15,22)
+  triangle(sqToPix(bPawn2X)-5,sqToPix(bPawn2Y)-8,sqToPix(bPawn2X)-5,sqToPix(bPawn2Y)+22,sqToPix(bPawn2X)-15,sqToPix(bPawn2Y)+22); //right triangle (-5,-8,-5,22,-15,22)
+  rect(sqToPix(bPawn2X)-6,sqToPix(bPawn2Y)-8,12,30); //middle rect (-6,-8,12,30)
+  //Pawn 3
+  ellipse(sqToPix(bPawn3X),sqToPix(bPawn3Y)-13,25, 25); // base format: triangle,rect,triangle: / || \
+  triangle(sqToPix(bPawn3X)+5,sqToPix(bPawn3Y)-8,sqToPix(bPawn3X)+5,sqToPix(bPawn3Y)+22,sqToPix(bPawn3X)+15,sqToPix(bPawn3Y)+22); //left triangle (5,-8,5,22,15,22)
+  triangle(sqToPix(bPawn3X)-5,sqToPix(bPawn3Y)-8,sqToPix(bPawn3X)-5,sqToPix(bPawn3Y)+22,sqToPix(bPawn3X)-15,sqToPix(bPawn3Y)+22); //right triangle (-5,-8,-5,22,-15,22)
+  rect(sqToPix(bPawn3X)-6,sqToPix(bPawn3Y)-8,12,30); //middle rect (-6,-8,12,30)
+  //Pawn 4
+  ellipse(sqToPix(bPawn4X),sqToPix(bPawn4Y)-13,25, 25); // base format: triangle,rect,triangle: / || \
+  triangle(sqToPix(bPawn4X)+5,sqToPix(bPawn4Y)-8,sqToPix(bPawn4X)+5,sqToPix(bPawn4Y)+22,sqToPix(bPawn4X)+15,sqToPix(bPawn4Y)+22); //left triangle (5,-8,5,22,15,22)
+  triangle(sqToPix(bPawn4X)-5,sqToPix(bPawn4Y)-8,sqToPix(bPawn4X)-5,sqToPix(bPawn4Y)+22,sqToPix(bPawn4X)-15,sqToPix(bPawn4Y)+22); //right triangle (-5,-8,-5,22,-15,22)
+  rect(sqToPix(bPawn4X)-6,sqToPix(bPawn4Y)-8,12,30); //middle rect (-6,-8,12,30)
+  //Pawn 5
+  ellipse(sqToPix(bPawn5X),sqToPix(bPawn5Y)-13,25, 25); // base format: triangle,rect,triangle: / || \
+  triangle(sqToPix(bPawn5X)+5,sqToPix(bPawn5Y)-8,sqToPix(bPawn5X)+5,sqToPix(bPawn5Y)+22,sqToPix(bPawn5X)+15,sqToPix(bPawn5Y)+22); //left triangle (5,-8,5,22,15,22)
+  triangle(sqToPix(bPawn5X)-5,sqToPix(bPawn5Y)-8,sqToPix(bPawn5X)-5,sqToPix(bPawn5Y)+22,sqToPix(bPawn5X)-15,sqToPix(bPawn5Y)+22); //right triangle (-5,-8,-5,22,-15,22)
+  rect(sqToPix(bPawn5X)-6,sqToPix(bPawn5Y)-8,12,30); //middle rect (-6,-8,12,30)
+  //Pawn 6
+  ellipse(sqToPix(bPawn6X),sqToPix(bPawn6Y)-13,25, 25); // base format: triangle,rect,triangle: / || \
+  triangle(sqToPix(bPawn6X)+5,sqToPix(bPawn6Y)-8,sqToPix(bPawn6X)+5,sqToPix(bPawn6Y)+22,sqToPix(bPawn6X)+15,sqToPix(bPawn6Y)+22); //left triangle (5,-8,5,22,15,22)
+  triangle(sqToPix(bPawn6X)-5,sqToPix(bPawn6Y)-8,sqToPix(bPawn6X)-5,sqToPix(bPawn6Y)+22,sqToPix(bPawn6X)-15,sqToPix(bPawn6Y)+22); //right triangle (-5,-8,-5,22,-15,22)
+  rect(sqToPix(bPawn6X)-6,sqToPix(bPawn6Y)-8,12,30); //middle rect (-6,-8,12,30)
+  //Pawn 7
+  ellipse(sqToPix(bPawn7X),sqToPix(bPawn7Y)-13,25, 25); // base format: triangle,rect,triangle: / || \
+  triangle(sqToPix(bPawn7X)+5,sqToPix(bPawn7Y)-8,sqToPix(bPawn7X)+5,sqToPix(bPawn7Y)+22,sqToPix(bPawn7X)+15,sqToPix(bPawn7Y)+22); //left triangle (5,-8,5,22,15,22)
+  triangle(sqToPix(bPawn7X)-5,sqToPix(bPawn7Y)-8,sqToPix(bPawn7X)-5,sqToPix(bPawn7Y)+22,sqToPix(bPawn7X)-15,sqToPix(bPawn7Y)+22); //right triangle (-5,-8,-5,22,-15,22)
+  rect(sqToPix(bPawn7X)-6,sqToPix(bPawn7Y)-8,12,30); //middle rect (-6,-8,12,30)
+  //Pawn 8
+  ellipse(sqToPix(bPawn8X),sqToPix(bPawn8Y)-13,25, 25); // base format: triangle,rect,triangle: / || \
+  triangle(sqToPix(bPawn8X)+5,sqToPix(bPawn8Y)-8,sqToPix(bPawn8X)+5,sqToPix(bPawn8Y)+22,sqToPix(bPawn8X)+15,sqToPix(bPawn8Y)+22); //left triangle (5,-8,5,22,15,22)
+  triangle(sqToPix(bPawn8X)-5,sqToPix(bPawn8Y)-8,sqToPix(bPawn8X)-5,sqToPix(bPawn8Y)+22,sqToPix(bPawn8X)-15,sqToPix(bPawn8Y)+22); //right triangle (-5,-8,-5,22,-15,22)
+  rect(sqToPix(bPawn8X)-6,sqToPix(bPawn8Y)-8,12,30); //middle rect (-6,-8,12,30)
+  //ROOKS
+  //parts in order: central rect,left tri,right tri,crown base,left crownpiece,central crownpiece,right crownpiece
+  rect(sqToPix(bRook1X)-14,sqToPix(bRook1Y)-8,28,36); //base - rect(-13,-15,26,30)
+  triangle(sqToPix(bRook1X)-13,sqToPix(bRook1Y)+13,sqToPix(bRook1X)-13,sqToPix(bRook1Y)+28,sqToPix(bRook1X)-22,sqToPix(bRook1Y)+28); //left triangle - -13,13,-13,28,-22,28
+  triangle(sqToPix(bRook1X)+13,sqToPix(bRook1Y)+13,sqToPix(bRook1X)+13,sqToPix(bRook1Y)+28,sqToPix(bRook1X)+22,sqToPix(bRook1Y)+28); //right triangle - 13,13,13,28,22,28
+  rect(sqToPix(bRook1X)-19,sqToPix(bRook1Y)-13,38,6); //rect(-19,-13,38,6) 
+  rect(sqToPix(bRook1X)-19,sqToPix(bRook1Y)-18,10,6); //rect(-19,-18,10,6)
+  rect(sqToPix(bRook1X)-5,sqToPix(bRook1Y)-18,10,6); //rect(-5,-18,10,6)
+  rect(sqToPix(bRook1X)+9,sqToPix(bRook1Y)-18,10,6); //rect(+9,-18,10,6)
+  //rook 2
+  rect(sqToPix(bRook2X)-14,sqToPix(bRook2Y)-8,28,36); //base - rect(-13,-15,26,30)
+  triangle(sqToPix(bRook2X)-13,sqToPix(bRook2Y)+13,sqToPix(bRook2X)-13,sqToPix(bRook2Y)+28,sqToPix(bRook2X)-22,sqToPix(bRook2Y)+28); //left triangle - -13,13,-13,28,-22,28
+  triangle(sqToPix(bRook2X)+13,sqToPix(bRook2Y)+13,sqToPix(bRook2X)+13,sqToPix(bRook2Y)+28,sqToPix(bRook2X)+22,sqToPix(bRook2Y)+28); //right triangle - 13,13,13,28,22,28
+  rect(sqToPix(bRook2X)-19,sqToPix(bRook2Y)-13,38,6); //rect(-19,-13,38,6) 
+  rect(sqToPix(bRook2X)-19,sqToPix(bRook2Y)-18,10,6); //rect(-19,-18,10,6)
+  rect(sqToPix(bRook2X)-5,sqToPix(bRook2Y)-18,10,6); //rect(-5,-18,10,6)
+  rect(sqToPix(bRook2X)+9,sqToPix(bRook2Y)-18,10,6); //rect(+9,-18,10,6)
+  //KNIGHTS
+  //parts in order: base,central triangle,right complementing triangle,head rect,snout ellipse,cut-out mouth
+  stroke(bPiece);
+  strokeWeight(7);
+  line(sqToPix(bKnight1X)-17,sqToPix(bKnight1Y)+22,sqToPix(bKnight1X)+17,sqToPix(bKnight1Y)+22);
+  triangle(sqToPix(bKnight1X)-9,sqToPix(bKnight1Y)+18,sqToPix(bKnight1X)+10,sqToPix(bKnight1Y)+18,sqToPix(bKnight1X)+16,sqToPix(bKnight1Y)-7); //tri(-9,18,10,18,16,-7)
+  triangle(sqToPix(bKnight1X)+6,sqToPix(bKnight1Y)+3,sqToPix(bKnight1X)+16,sqToPix(bKnight1Y)-15,sqToPix(bKnight1X)+6,sqToPix(bKnight1Y)-15); //tri(6,3,16,-15,6,-15)
+  rect(sqToPix(bKnight1X)-12,sqToPix(bKnight1Y)-15,26,12); //rect(-12,-15,26,12)
+  ellipse(sqToPix(bKnight1X)-12,sqToPix(bKnight1Y)-9,5,12);
+  strokeWeight(3);
+  stroke(colorOfSquare(bKnight1X,bKnight1Y)); //cut out mouth for background
+  line(sqToPix(bKnight1X)-17,sqToPix(bKnight1Y)-5,sqToPix(bKnight1X)-10,sqToPix(bKnight1Y)-5);
+  noStroke();
+  //knight 2
+  stroke(bPiece);
+  strokeWeight(7);
+  line(sqToPix(bKnight2X)-17,sqToPix(bKnight2Y)+22,sqToPix(bKnight2X)+17,sqToPix(bKnight2Y)+22);
+  triangle(sqToPix(bKnight2X)-9,sqToPix(bKnight2Y)+18,sqToPix(bKnight2X)+10,sqToPix(bKnight2Y)+18,sqToPix(bKnight2X)+16,sqToPix(bKnight2Y)-7); //tri(-9,18,10,18,16,-7)
+  triangle(sqToPix(bKnight2X)+6,sqToPix(bKnight2Y)+3,sqToPix(bKnight2X)+16,sqToPix(bKnight2Y)-15,sqToPix(bKnight2X)+6,sqToPix(bKnight2Y)-15); //tri(6,3,16,-15,6,-15)
+  rect(sqToPix(bKnight2X)-12,sqToPix(bKnight2Y)-15,26,12); //rect(-12,-15,26,12)
+  ellipse(sqToPix(bKnight2X)-12,sqToPix(bKnight2Y)-9,5,12);
+  strokeWeight(3);
+  stroke(colorOfSquare(bKnight2X,bKnight2Y)); //cut out mouth for background
+  line(sqToPix(bKnight2X)-17,sqToPix(bKnight2Y)-5,sqToPix(bKnight2X)-10,sqToPix(bKnight2Y)-5);
+  noStroke();
+  //BISHOPS
+  //parts in order: triangle, 
+  triangle(sqToPix(bBishop1X),sqToPix(bBishop1Y)-10,sqToPix(bBishop1X)+17,sqToPix(bBishop1Y)+27,sqToPix(bBishop1X)-17,sqToPix(bBishop1Y)+27);
+  ellipse(sqToPix(bBishop1X),sqToPix(bBishop1Y)-7,25, 25);
+  ellipse(sqToPix(bBishop1X),sqToPix(bBishop1Y)-20,10, 10);
+  stroke(colorOfSquare(bBishop1X,bBishop1Y)); //color of square behind bishop (subtracts mouth piece)
+  strokeWeight(4);
+  line(sqToPix(bBishop1X)+11,sqToPix(bBishop1Y)-11,sqToPix(bBishop1X)+5,sqToPix(bBishop1Y)-9);
+  noStroke();
+  //bishop 2
+  triangle(sqToPix(bBishop2X),sqToPix(bBishop2Y)-10,sqToPix(bBishop2X)+17,sqToPix(bBishop2Y)+27,sqToPix(bBishop2X)-17,sqToPix(bBishop2Y)+27);
+  ellipse(sqToPix(bBishop2X),sqToPix(bBishop2Y)-7,25, 25);
+  ellipse(sqToPix(bBishop2X),sqToPix(bBishop2Y)-20,10, 10);
+  stroke(colorOfSquare(bBishop2X,bBishop2Y)); //color of square behind bishop (subtracts mouth piece)
+  strokeWeight(4);
+  line(sqToPix(bBishop2X)+11,sqToPix(bBishop2Y)-11,sqToPix(bBishop2X)+5,sqToPix(bBishop2Y)-9);
+  noStroke();
+  //QUEEN
+  stroke(bPiece);
+  rect(sqToPix(bQueenX)-16,sqToPix(bQueenY)+21,32,3,3); //base
+  strokeWeight(1);
+  rect(sqToPix(bQueenX)-12,sqToPix(bQueenY)-5,24,5,3); //collar
+  triangle(sqToPix(bQueenX)-13,sqToPix(bQueenY)-21,sqToPix(bQueenX)-8,sqToPix(bQueenY)-2,sqToPix(bQueenX)+8,sqToPix(bQueenY)-2); //left part
+  triangle(sqToPix(bQueenX)-8,sqToPix(bQueenY)-2,sqToPix(bQueenX)+8,sqToPix(bQueenY)-2,sqToPix(bQueenX)+13,sqToPix(bQueenY)-21); //left part
+  triangle(sqToPix(bQueenX),sqToPix(bQueenY)-23,sqToPix(bQueenX)-8,sqToPix(bQueenY)-5,sqToPix(bQueenX)+8,sqToPix(bQueenY)-5);
+  ellipse(sqToPix(bQueenX),sqToPix(bQueenY)-23,5, 5);
+  ellipse(sqToPix(bQueenX)-13,sqToPix(bQueenY)-21,5, 5);
+  ellipse(sqToPix(bQueenX)+13,sqToPix(bQueenY)-21,5, 5);
+  noStroke();
+  triangle(sqToPix(bQueenX),sqToPix(bQueenY)-16,sqToPix(bQueenX)+16,sqToPix(bQueenY)+25,sqToPix(bQueenX)-16,sqToPix(bQueenY)+25); //main body
+  //KING
+  //parts order: base,collar,left trangle,right triangle,cross vertical,cross horizontal,main body
+  stroke(bPiece);
+  rect(sqToPix(bKingX)-16,sqToPix(bKingY)+21,32,3,3); //base
+  strokeWeight(1);
+  rect(sqToPix(bKingX)-12,sqToPix(bKingY)-5,24,5,3); //collar
+  triangle(sqToPix(bKingX)-13,sqToPix(bKingY)-16,sqToPix(bKingX)+13,sqToPix(bKingY)-16,sqToPix(bKingX)+9,sqToPix(bKingY)-2); //right part
+  triangle(sqToPix(bKingX)-13,sqToPix(bKingY)-16,sqToPix(bKingX)-9,sqToPix(bKingY)-2,sqToPix(bKingX)+9,sqToPix(bKingY)-2); //left part
+  strokeWeight(5); //cross
+  line(sqToPix(bKingX),sqToPix(bKingY)-16,sqToPix(bKingX),sqToPix(bKingY)-28); //0,-16,0,-26
+  line(sqToPix(bKingX)-6,sqToPix(bKingY)-22,sqToPix(bKingX)+6,sqToPix(bKingY)-22);
+  noStroke();
+  triangle(sqToPix(bKingX),sqToPix(bKingY)-16,sqToPix(bKingX)+16,sqToPix(bKingY)+25,sqToPix(bKingX)-16,sqToPix(bKingY)+25); //king main body
+  
+  
+  //DRAWING WHITE PIECES
+  fill(wPiece);
+  noStroke();
+  //Pawn 1
+  ellipse(sqToPix(wPawn1X),sqToPix(wPawn1Y)-13,25, 25); // base format: triangle,rect,triangle: / || \
+  triangle(sqToPix(wPawn1X)+5,sqToPix(wPawn1Y)-8,sqToPix(wPawn1X)+5,sqToPix(wPawn1Y)+22,sqToPix(wPawn1X)+15,sqToPix(wPawn1Y)+22); //left triangle (5,-8,5,22,15,22)
+  triangle(sqToPix(wPawn1X)-5,sqToPix(wPawn1Y)-8,sqToPix(wPawn1X)-5,sqToPix(wPawn1Y)+22,sqToPix(wPawn1X)-15,sqToPix(wPawn1Y)+22); //right triangle (-5,-8,-5,22,-15,22)
+  rect(sqToPix(wPawn1X)-6,sqToPix(wPawn1Y)-8,12,30); //middle rect (-6,-8,12,30)
+  //Pawn 2
+  ellipse(sqToPix(wPawn2X),sqToPix(wPawn2Y)-13,25, 25); // base format: triangle,rect,triangle: / || \
+  triangle(sqToPix(wPawn2X)+5,sqToPix(wPawn2Y)-8,sqToPix(wPawn2X)+5,sqToPix(wPawn2Y)+22,sqToPix(wPawn2X)+15,sqToPix(wPawn2Y)+22); //left triangle (5,-8,5,22,15,22)
+  triangle(sqToPix(wPawn2X)-5,sqToPix(wPawn2Y)-8,sqToPix(wPawn2X)-5,sqToPix(wPawn2Y)+22,sqToPix(wPawn2X)-15,sqToPix(wPawn2Y)+22); //right triangle (-5,-8,-5,22,-15,22)
+  rect(sqToPix(wPawn2X)-6,sqToPix(wPawn2Y)-8,12,30); //middle rect (-6,-8,12,30)
+  //Pawn 3
+  ellipse(sqToPix(wPawn3X),sqToPix(wPawn3Y)-13,25, 25); // base format: triangle,rect,triangle: / || \
+  triangle(sqToPix(wPawn3X)+5,sqToPix(wPawn3Y)-8,sqToPix(wPawn3X)+5,sqToPix(wPawn3Y)+22,sqToPix(wPawn3X)+15,sqToPix(wPawn3Y)+22); //left triangle (5,-8,5,22,15,22)
+  triangle(sqToPix(wPawn3X)-5,sqToPix(wPawn3Y)-8,sqToPix(wPawn3X)-5,sqToPix(wPawn3Y)+22,sqToPix(wPawn3X)-15,sqToPix(wPawn3Y)+22); //right triangle (-5,-8,-5,22,-15,22)
+  rect(sqToPix(wPawn3X)-6,sqToPix(wPawn3Y)-8,12,30); //middle rect (-6,-8,12,30)
+  //Pawn 4
+  ellipse(sqToPix(wPawn4X),sqToPix(wPawn4Y)-13,25, 25); // base format: triangle,rect,triangle: / || \
+  triangle(sqToPix(wPawn4X)+5,sqToPix(wPawn4Y)-8,sqToPix(wPawn4X)+5,sqToPix(wPawn4Y)+22,sqToPix(wPawn4X)+15,sqToPix(wPawn4Y)+22); //left triangle (5,-8,5,22,15,22)
+  triangle(sqToPix(wPawn4X)-5,sqToPix(wPawn4Y)-8,sqToPix(wPawn4X)-5,sqToPix(wPawn4Y)+22,sqToPix(wPawn4X)-15,sqToPix(wPawn4Y)+22); //right triangle (-5,-8,-5,22,-15,22)
+  rect(sqToPix(wPawn4X)-6,sqToPix(wPawn4Y)-8,12,30); //middle rect (-6,-8,12,30)
+  //Pawn 5
+  ellipse(sqToPix(wPawn5X),sqToPix(wPawn5Y)-13,25, 25); // base format: triangle,rect,triangle: / || \
+  triangle(sqToPix(wPawn5X)+5,sqToPix(wPawn5Y)-8,sqToPix(wPawn5X)+5,sqToPix(wPawn5Y)+22,sqToPix(wPawn5X)+15,sqToPix(wPawn5Y)+22); //left triangle (5,-8,5,22,15,22)
+  triangle(sqToPix(wPawn5X)-5,sqToPix(wPawn5Y)-8,sqToPix(wPawn5X)-5,sqToPix(wPawn5Y)+22,sqToPix(wPawn5X)-15,sqToPix(wPawn5Y)+22); //right triangle (-5,-8,-5,22,-15,22)
+  rect(sqToPix(wPawn5X)-6,sqToPix(wPawn5Y)-8,12,30); //middle rect (-6,-8,12,30)
+  //Pawn 6
+  ellipse(sqToPix(wPawn6X),sqToPix(wPawn6Y)-13,25, 25); // base format: triangle,rect,triangle: / || \
+  triangle(sqToPix(wPawn6X)+5,sqToPix(wPawn6Y)-8,sqToPix(wPawn6X)+5,sqToPix(wPawn6Y)+22,sqToPix(wPawn6X)+15,sqToPix(wPawn6Y)+22); //left triangle (5,-8,5,22,15,22)
+  triangle(sqToPix(wPawn6X)-5,sqToPix(wPawn6Y)-8,sqToPix(wPawn6X)-5,sqToPix(wPawn6Y)+22,sqToPix(wPawn6X)-15,sqToPix(wPawn6Y)+22); //right triangle (-5,-8,-5,22,-15,22)
+  rect(sqToPix(wPawn6X)-6,sqToPix(wPawn6Y)-8,12,30); //middle rect (-6,-8,12,30)
+  //Pawn 7
+  ellipse(sqToPix(wPawn7X),sqToPix(wPawn7Y)-13,25, 25); // base format: triangle,rect,triangle: / || \
+  triangle(sqToPix(wPawn7X)+5,sqToPix(wPawn7Y)-8,sqToPix(wPawn7X)+5,sqToPix(wPawn7Y)+22,sqToPix(wPawn7X)+15,sqToPix(wPawn7Y)+22); //left triangle (5,-8,5,22,15,22)
+  triangle(sqToPix(wPawn7X)-5,sqToPix(wPawn7Y)-8,sqToPix(wPawn7X)-5,sqToPix(wPawn7Y)+22,sqToPix(wPawn7X)-15,sqToPix(wPawn7Y)+22); //right triangle (-5,-8,-5,22,-15,22)
+  rect(sqToPix(wPawn7X)-6,sqToPix(wPawn7Y)-8,12,30); //middle rect (-6,-8,12,30)
+  //Pawn 8
+  ellipse(sqToPix(wPawn8X),sqToPix(wPawn8Y)-13,25, 25); // base format: triangle,rect,triangle: / || \
+  triangle(sqToPix(wPawn8X)+5,sqToPix(wPawn8Y)-8,sqToPix(wPawn8X)+5,sqToPix(wPawn8Y)+22,sqToPix(wPawn8X)+15,sqToPix(wPawn8Y)+22); //left triangle (5,-8,5,22,15,22)
+  triangle(sqToPix(wPawn8X)-5,sqToPix(wPawn8Y)-8,sqToPix(wPawn8X)-5,sqToPix(wPawn8Y)+22,sqToPix(wPawn8X)-15,sqToPix(wPawn8Y)+22); //right triangle (-5,-8,-5,22,-15,22)
+  rect(sqToPix(wPawn8X)-6,sqToPix(wPawn8Y)-8,12,30); //middle rect (-6,-8,12,30)
+  //ROOKS
+  //parts in order: central rect,left tri,right tri,crown base,left crownpiece,central crownpiece,right crownpiece
+  rect(sqToPix(wRook1X)-14,sqToPix(wRook1Y)-8,28,36); //base - rect(-13,-15,26,30)
+  triangle(sqToPix(wRook1X)-13,sqToPix(wRook1Y)+13,sqToPix(wRook1X)-13,sqToPix(wRook1Y)+28,sqToPix(wRook1X)-22,sqToPix(wRook1Y)+28); //left triangle - -13,13,-13,28,-22,28
+  triangle(sqToPix(wRook1X)+13,sqToPix(wRook1Y)+13,sqToPix(wRook1X)+13,sqToPix(wRook1Y)+28,sqToPix(wRook1X)+22,sqToPix(wRook1Y)+28); //right triangle - 13,13,13,28,22,28
+  rect(sqToPix(wRook1X)-19,sqToPix(wRook1Y)-13,38,6); //rect(-19,-13,38,6) 
+  rect(sqToPix(wRook1X)-19,sqToPix(wRook1Y)-18,10,6); //rect(-19,-18,10,6)
+  rect(sqToPix(wRook1X)-5,sqToPix(wRook1Y)-18,10,6); //rect(-5,-18,10,6)
+  rect(sqToPix(wRook1X)+9,sqToPix(wRook1Y)-18,10,6); //rect(+9,-18,10,6)
+  //rook 2
+  rect(sqToPix(wRook2X)-14,sqToPix(wRook2Y)-8,28,36); //base - rect(-13,-15,26,30)
+  triangle(sqToPix(wRook2X)-13,sqToPix(wRook2Y)+13,sqToPix(wRook2X)-13,sqToPix(wRook2Y)+28,sqToPix(wRook2X)-22,sqToPix(wRook2Y)+28); //left triangle - -13,13,-13,28,-22,28
+  triangle(sqToPix(wRook2X)+13,sqToPix(wRook2Y)+13,sqToPix(wRook2X)+13,sqToPix(wRook2Y)+28,sqToPix(wRook2X)+22,sqToPix(wRook2Y)+28); //right triangle - 13,13,13,28,22,28
+  rect(sqToPix(wRook2X)-19,sqToPix(wRook2Y)-13,38,6); //rect(-19,-13,38,6) 
+  rect(sqToPix(wRook2X)-19,sqToPix(wRook2Y)-18,10,6); //rect(-19,-18,10,6)
+  rect(sqToPix(wRook2X)-5,sqToPix(wRook2Y)-18,10,6); //rect(-5,-18,10,6)
+  rect(sqToPix(wRook2X)+9,sqToPix(wRook2Y)-18,10,6); //rect(+9,-18,10,6)
+  //KNIGHTS
+  //parts in order: base,central triangle,right complementing triangle,head rect,snout ellipse,cut-out mouth
+  stroke(wPiece);
+  strokeWeight(7);
+  line(sqToPix(wKnight1X)-17,sqToPix(wKnight1Y)+22,sqToPix(wKnight1X)+17,sqToPix(wKnight1Y)+22);
+  triangle(sqToPix(wKnight1X)-9,sqToPix(wKnight1Y)+18,sqToPix(wKnight1X)+10,sqToPix(wKnight1Y)+18,sqToPix(wKnight1X)+16,sqToPix(wKnight1Y)-7); //tri(-9,18,10,18,16,-7)
+  triangle(sqToPix(wKnight1X)+6,sqToPix(wKnight1Y)+3,sqToPix(wKnight1X)+16,sqToPix(wKnight1Y)-15,sqToPix(wKnight1X)+6,sqToPix(wKnight1Y)-15); //tri(6,3,16,-15,6,-15)
+  rect(sqToPix(wKnight1X)-12,sqToPix(wKnight1Y)-15,26,12); //rect(-12,-15,26,12)
+  ellipse(sqToPix(wKnight1X)-12,sqToPix(wKnight1Y)-9,5,12);
+  strokeWeight(3);
+  stroke(colorOfSquare(wKnight1X,wKnight1Y)); //cut out mouth for background
+  line(sqToPix(wKnight1X)-17,sqToPix(wKnight1Y)-5,sqToPix(wKnight1X)-10,sqToPix(wKnight1Y)-5);
+  noStroke();
+  //knight 2
+  stroke(wPiece);
+  strokeWeight(7);
+  line(sqToPix(wKnight2X)-17,sqToPix(wKnight2Y)+22,sqToPix(wKnight2X)+17,sqToPix(wKnight2Y)+22);
+  triangle(sqToPix(wKnight2X)-9,sqToPix(wKnight2Y)+18,sqToPix(wKnight2X)+10,sqToPix(wKnight2Y)+18,sqToPix(wKnight2X)+16,sqToPix(wKnight2Y)-7); //tri(-9,18,10,18,16,-7)
+  triangle(sqToPix(wKnight2X)+6,sqToPix(wKnight2Y)+3,sqToPix(wKnight2X)+16,sqToPix(wKnight2Y)-15,sqToPix(wKnight2X)+6,sqToPix(wKnight2Y)-15); //tri(6,3,16,-15,6,-15)
+  rect(sqToPix(wKnight2X)-12,sqToPix(wKnight2Y)-15,26,12); //rect(-12,-15,26,12)
+  ellipse(sqToPix(wKnight2X)-12,sqToPix(wKnight2Y)-9,5,12);
+  strokeWeight(3);
+  stroke(colorOfSquare(wKnight2X,wKnight2Y)); //cut out mouth for background
+  line(sqToPix(wKnight2X)-17,sqToPix(wKnight2Y)-5,sqToPix(wKnight2X)-10,sqToPix(wKnight2Y)-5);
+  noStroke();
+  //BISHOPS
+  //parts in order: triangle, 
+  triangle(sqToPix(wBishop1X),sqToPix(wBishop1Y)-10,sqToPix(wBishop1X)+17,sqToPix(wBishop1Y)+27,sqToPix(wBishop1X)-17,sqToPix(wBishop1Y)+27);
+  ellipse(sqToPix(wBishop1X),sqToPix(wBishop1Y)-7,25, 25);
+  ellipse(sqToPix(wBishop1X),sqToPix(wBishop1Y)-20,10, 10);
+  stroke(colorOfSquare(wBishop1X,wBishop1Y)); //color of square behind bishop (subtracts mouth piece)
+  strokeWeight(4);
+  line(sqToPix(wBishop1X)+11,sqToPix(wBishop1Y)-11,sqToPix(wBishop1X)+5,sqToPix(wBishop1Y)-9);
+  noStroke();
+  //bishop 2
+  triangle(sqToPix(wBishop2X),sqToPix(wBishop2Y)-10,sqToPix(wBishop2X)+17,sqToPix(wBishop2Y)+27,sqToPix(wBishop2X)-17,sqToPix(wBishop2Y)+27);
+  ellipse(sqToPix(wBishop2X),sqToPix(wBishop2Y)-7,25, 25);
+  ellipse(sqToPix(wBishop2X),sqToPix(wBishop2Y)-20,10, 10);
+  stroke(colorOfSquare(wBishop2X,wBishop2Y)); //color of square behind bishop (subtracts mouth piece)
+  strokeWeight(4);
+  line(sqToPix(wBishop2X)+11,sqToPix(wBishop2Y)-11,sqToPix(wBishop2X)+5,sqToPix(wBishop2Y)-9);
+  noStroke();
+  //QUEEN
+  stroke(wPiece);
+  rect(sqToPix(wQueenX)-16,sqToPix(wQueenY)+21,32,3,3); //base
+  strokeWeight(1);
+  rect(sqToPix(wQueenX)-12,sqToPix(wQueenY)-5,24,5,3); //collar
+  triangle(sqToPix(wQueenX)-13,sqToPix(wQueenY)-21,sqToPix(wQueenX)-8,sqToPix(wQueenY)-2,sqToPix(wQueenX)+8,sqToPix(wQueenY)-2); //left part
+  triangle(sqToPix(wQueenX)-8,sqToPix(wQueenY)-2,sqToPix(wQueenX)+8,sqToPix(wQueenY)-2,sqToPix(wQueenX)+13,sqToPix(wQueenY)-21); //left part
+  triangle(sqToPix(wQueenX),sqToPix(wQueenY)-23,sqToPix(wQueenX)-8,sqToPix(wQueenY)-5,sqToPix(wQueenX)+8,sqToPix(wQueenY)-5);
+  ellipse(sqToPix(wQueenX),sqToPix(wQueenY)-23,5, 5);
+  ellipse(sqToPix(wQueenX)-13,sqToPix(wQueenY)-21,5, 5);
+  ellipse(sqToPix(wQueenX)+13,sqToPix(wQueenY)-21,5, 5);
+  noStroke();
+  triangle(sqToPix(wQueenX),sqToPix(wQueenY)-16,sqToPix(wQueenX)+16,sqToPix(wQueenY)+25,sqToPix(wQueenX)-16,sqToPix(wQueenY)+25); //main body
+  //KING
+  //parts order: base,collar,left trangle,right triangle,cross vertical,cross horizontal,main body
+  stroke(wPiece);
+  rect(sqToPix(wKingX)-16,sqToPix(wKingY)+21,32,3,3); //base
+  strokeWeight(1);
+  rect(sqToPix(wKingX)-12,sqToPix(wKingY)-5,24,5,3); //collar
+  triangle(sqToPix(wKingX)-13,sqToPix(wKingY)-16,sqToPix(wKingX)+13,sqToPix(wKingY)-16,sqToPix(wKingX)+9,sqToPix(wKingY)-2); //right part
+  triangle(sqToPix(wKingX)-13,sqToPix(wKingY)-16,sqToPix(wKingX)-9,sqToPix(wKingY)-2,sqToPix(wKingX)+9,sqToPix(wKingY)-2); //left part
+  strokeWeight(5); //cross
+  line(sqToPix(wKingX),sqToPix(wKingY)-16,sqToPix(wKingX),sqToPix(wKingY)-28); //0,-16,0,-26
+  line(sqToPix(wKingX)-6,sqToPix(wKingY)-22,sqToPix(wKingX)+6,sqToPix(wKingY)-22);
+  noStroke();
+  triangle(sqToPix(wKingX),sqToPix(wKingY)-16,sqToPix(wKingX)+16,sqToPix(wKingY)+25,sqToPix(wKingX)-16,sqToPix(wKingY)+25); //king main body
+  
+  
+  //STARTING SCREEN
+  if (settings=="settings") {
+    fill(100,100,100,127.5); //50% transparency alpha value
+    rect(0,0,width,height);
+    fill(241);
+    rect(50,50,width-100,height-100,50); //modal
+    fill(0);
+    text("Color Style",125,175);
+    fill(122,216,126); //default color
+    rect(300,135,100,60);
+    fill(0,199,236); //ice color
+    rect(420,135,100,60);
+    fill(230,144,74); //wood color
+    rect(540,135,100,60);
+    
+    fill(0);
+    textSize(24);
+    text("Default",308,173);
+    textSize(26);
+    text("Ice",452,174);
+    text("Wood",557,174);
+    
+    //start button
+    fill(0,135,250);
+    rect(width/2-80,533,160,60,14);
+    textSize(26);
+    fill(255);
+    text("Start",width/2-29.5,572);
+  }
+  
+  
+  
+  frames++;
+  framesAfterCastle++;
+}
+
+//FUNCTIONS (mouseX -> pixels: sqToPix(mouseToSq(mouseX))
+void movingXF() { //animates motion
+  //default value (because have to initialize variable)
+  float duration=35; //animation duration in frames
+  fill(0);
+  if (frames<duration) {
+    movingX=(1-frames/duration)*sqToPix(oldX)+(frames/duration)*newX; //smooth transition between two values
+  } else if (frames==duration) {
+    movingX=newX; //after animation done
+    if (capturing) {
+      captureX=newX;
+    }
+    pieceMoving=false;
+  }
+  //putting variable into use
+  if (pieceBeingMoved=="bPawn1") { bPawn1X=pixToSq(movingX); }
+  if (pieceBeingMoved=="bPawn2") { bPawn2X=pixToSq(movingX); }
+  if (pieceBeingMoved=="bPawn3") { bPawn3X=pixToSq(movingX); }
+  if (pieceBeingMoved=="bPawn4") { bPawn4X=pixToSq(movingX); }
+  if (pieceBeingMoved=="bPawn5") { bPawn5X=pixToSq(movingX); }
+  if (pieceBeingMoved=="bPawn6") { bPawn6X=pixToSq(movingX); }
+  if (pieceBeingMoved=="bPawn7") { bPawn7X=pixToSq(movingX); }
+  if (pieceBeingMoved=="bPawn8") { bPawn8X=pixToSq(movingX); }
+  if (pieceBeingMoved=="bRook1") { bRook1X=pixToSq(movingX); }
+  if (pieceBeingMoved=="bRook2") { bRook2X=pixToSq(movingX); }
+  if (pieceBeingMoved=="bKnight1") { bKnight1X=pixToSq(movingX); }
+  if (pieceBeingMoved=="bKnight2") { bKnight2X=pixToSq(movingX); }
+  if (pieceBeingMoved=="bBishop1") { bBishop1X=pixToSq(movingX); }
+  if (pieceBeingMoved=="bBishop2") { bBishop2X=pixToSq(movingX); }
+  if (pieceBeingMoved=="bQueen") { bQueenX=pixToSq(movingX); }
+  if (pieceBeingMoved=="bKing") { bKingX=pixToSq(movingX); }
+  if (pieceBeingMoved=="wPawn1") { wPawn1X=pixToSq(movingX); }
+  if (pieceBeingMoved=="wPawn2") { wPawn2X=pixToSq(movingX); }
+  if (pieceBeingMoved=="wPawn3") { wPawn3X=pixToSq(movingX); }
+  if (pieceBeingMoved=="wPawn4") { wPawn4X=pixToSq(movingX); }
+  if (pieceBeingMoved=="wPawn5") { wPawn5X=pixToSq(movingX); }
+  if (pieceBeingMoved=="wPawn6") { wPawn6X=pixToSq(movingX); }
+  if (pieceBeingMoved=="wPawn7") { wPawn7X=pixToSq(movingX); }
+  if (pieceBeingMoved=="wPawn8") { wPawn8X=pixToSq(movingX); }
+  if (pieceBeingMoved=="wRook1") { wRook1X=pixToSq(movingX); }
+  if (pieceBeingMoved=="wRook2") { wRook2X=pixToSq(movingX); }
+  if (pieceBeingMoved=="wKnight1") { wKnight1X=pixToSq(movingX); }
+  if (pieceBeingMoved=="wKnight2") { wKnight2X=pixToSq(movingX); }
+  if (pieceBeingMoved=="wBishop1") { wBishop1X=pixToSq(movingX); }
+  if (pieceBeingMoved=="wBishop2") { wBishop2X=pixToSq(movingX); }
+  if (pieceBeingMoved=="wQueen") { wQueenX=pixToSq(movingX); }
+  if (pieceBeingMoved=="wKing") { wKingX=pixToSq(movingX); }
+}
+void movingYF() { //animates motion
+  //default value (because have to initialize variable)
+  float duration=35; //animation duration in frames
+  fill(0);
+  if (frames<duration) {
+    movingY=(1-frames/duration)*sqToPix(oldY)+(frames/duration)*newY; //smooth transition between two values
+  } else if (frames==duration) {
+    movingY=newY; //after animation done
+    pieceMoving=false;
+    if (capturing) {
+      captureY=newY;
+    }
+    capturing=false;
+  }
+  //putting variable into use
+  if (pieceBeingMoved=="bPawn1") { bPawn1Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="bPawn2") { bPawn2Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="bPawn3") { bPawn3Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="bPawn4") { bPawn4Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="bPawn5") { bPawn5Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="bPawn6") { bPawn6Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="bPawn7") { bPawn7Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="bPawn8") { bPawn8Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="bRook1") { bRook1Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="bRook2") { bRook2Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="bKnight1") { bKnight1Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="bKnight2") { bKnight2Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="bBishop1") { bBishop1Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="bBishop2") { bBishop2Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="bQueen") { bQueenY=pixToSq(movingY); }
+  if (pieceBeingMoved=="bKing") { bKingY=pixToSq(movingY); }
+  if (pieceBeingMoved=="wPawn1") { wPawn1Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="wPawn2") { wPawn2Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="wPawn3") { wPawn3Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="wPawn4") { wPawn4Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="wPawn5") { wPawn5Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="wPawn6") { wPawn6Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="wPawn7") { wPawn7Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="wPawn8") { wPawn8Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="wRook1") { wRook1Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="wRook2") { wRook2Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="wKnight1") { wKnight1Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="wKnight2") { wKnight2Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="wBishop1") { wBishop1Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="wBishop2") { wBishop2Y=pixToSq(movingY); }
+  if (pieceBeingMoved=="wQueen") { wQueenY=pixToSq(movingY); }
+  if (pieceBeingMoved=="wKing") { wKingY=pixToSq(movingY); }
+}
+void animation(float pieceNameX,float clickedX,float pieceNameY,float clickedY,String selectedPiece) {
+  oldX=pieceNameX;
+  newX=sqToPix(clickedX);
+  oldY=pieceNameY;
+  newY=sqToPix(clickedY);
+  pieceBeingMoved=selectedPiece;
+  
+  //Always independently triggered
+  pieceMoving=true;
+  frames=0;
+}
+void option(int x, int y) { //checks move validity and highlights square if so
+  if (checkIfOccupied(x,y)==false && x<=8 && y<=8 && x>0 && y>0) { //unoccupied && in board && 
+    fill(highlightColor);
+    rect(sqToPix(x)-75/2,sqToPix(y)-75/2,75, 75); //highlighted square
+  }
+}
+void captureOption(int x, int y) { //like option() except disregards if square is occupied
+  if (x<=8 && y<=8 && x>0 && y>0 && ((canCapture(x,y)&&turn=="white")||(canCapture(x,y)&&turn=="black"))) { //opposite color
+    fill(highlightColor);
+    rect(sqToPix(x)-75/2,sqToPix(y)-75/2,75, 75); //highlighted square
+  }
+}
+void capture(float x, float y) {
+  //black
+  float spacing=0.7; //spacing between captured pieces
+  if (bPawn1X==x&&bPawn1Y==y) { bPawn1X=captureXCoord("black");bPawn1Y=captureYCoord("black",spacing); bPiecesCaptured++; }
+  if (bPawn2X==x&&bPawn2Y==y) { bPawn2X=captureXCoord("black");bPawn2Y=captureYCoord("black",spacing); bPiecesCaptured++; }
+  if (bPawn3X==x&&bPawn3Y==y) { bPawn3X=captureXCoord("black");bPawn3Y=captureYCoord("black",spacing); bPiecesCaptured++; }
+  if (bPawn4X==x&&bPawn4Y==y) { bPawn4X=captureXCoord("black");bPawn4Y=captureYCoord("black",spacing); bPiecesCaptured++; }
+  if (bPawn5X==x&&bPawn5Y==y) { bPawn5X=captureXCoord("black");bPawn5Y=captureYCoord("black",spacing); bPiecesCaptured++; }
+  if (bPawn6X==x&&bPawn6Y==y) { bPawn6X=captureXCoord("black");bPawn6Y=captureYCoord("black",spacing); bPiecesCaptured++; }
+  if (bPawn7X==x&&bPawn7Y==y) { bPawn7X=captureXCoord("black");bPawn7Y=captureYCoord("black",spacing); bPiecesCaptured++; }
+  if (bPawn8X==x&&bPawn8Y==y) { bPawn8X=captureXCoord("black");bPawn8Y=captureYCoord("black",spacing); bPiecesCaptured++; }
+  if (bRook1X==x&&bRook1Y==y) { bRook1X=captureXCoord("black");bRook1Y=captureYCoord("black",spacing); bPiecesCaptured++; }
+  if (bKnight1X==x&&bKnight1Y==y) { bKnight1X=captureXCoord("black");bKnight1Y=captureYCoord("black",spacing); bPiecesCaptured++; }
+  if (bKnight2X==x&&bKnight2Y==y) { bKnight2X=captureXCoord("black");bKnight2Y=captureYCoord("black",spacing); bPiecesCaptured++; }
+  if (bBishop1X==x&&bBishop1Y==y) { bBishop1X=captureXCoord("black");bBishop1Y=captureYCoord("black",spacing); bPiecesCaptured++; }
+  if (bBishop2X==x&&bBishop2Y==y) { bBishop2X=captureXCoord("black");bBishop2Y=captureYCoord("black",spacing); bPiecesCaptured++; }
+  if (bQueenX==x&&bQueenY==y) { bQueenX=captureXCoord("black");bQueenY=captureYCoord("black",spacing); bPiecesCaptured++; }
+  if (bKingX==x&&bKingY==y) { bKingX=captureXCoord("black");bKingY=captureYCoord("black",spacing); bPiecesCaptured++; }
+  //white
+  if (wPawn1X==x&&wPawn1Y==y) { wPawn1X=captureXCoord("white");wPawn1Y=captureYCoord("white",spacing); wPiecesCaptured++; }
+  if (wPawn2X==x&&wPawn2Y==y) { wPawn2X=captureXCoord("white");wPawn2Y=captureYCoord("white",spacing); wPiecesCaptured++; }
+  if (wPawn3X==x&&wPawn3Y==y) { wPawn3X=captureXCoord("white");wPawn3Y=captureYCoord("white",spacing); wPiecesCaptured++; }
+  if (wPawn4X==x&&wPawn4Y==y) { wPawn4X=captureXCoord("white");wPawn4Y=captureYCoord("white",spacing); wPiecesCaptured++; }
+  if (wPawn5X==x&&wPawn5Y==y) { wPawn5X=captureXCoord("white");wPawn5Y=captureYCoord("white",spacing); wPiecesCaptured++; }
+  if (wPawn6X==x&&wPawn6Y==y) { wPawn6X=captureXCoord("white");wPawn6Y=captureYCoord("white",spacing); wPiecesCaptured++; }
+  if (wPawn7X==x&&wPawn7Y==y) { wPawn7X=captureXCoord("white");wPawn7Y=captureYCoord("white",spacing); wPiecesCaptured++; }
+  if (wPawn8X==x&&wPawn8Y==y) { wPawn8X=captureXCoord("white");wPawn8Y=captureYCoord("white",spacing); wPiecesCaptured++; }
+  if (wRook1X==x&&wRook1Y==y) { wRook1X=captureXCoord("white");wRook1Y=captureYCoord("white",spacing); wPiecesCaptured++; }
+  if (wKnight1X==x&&wKnight1Y==y) { wKnight1X=captureXCoord("white");wKnight1Y=captureYCoord("white",spacing); wPiecesCaptured++; }
+  if (wBishop1X==x&&wBishop1Y==y) { wBishop1X=captureXCoord("white");wBishop1Y=captureYCoord("white",spacing); wPiecesCaptured++; }
+  if (wQueenX==x&&wQueenY==y) { wQueenX=captureXCoord("white");wQueenY=captureYCoord("white",spacing); wPiecesCaptured++; }
+  if (wKingX==x&&wKingY==y) { wKingX=captureXCoord("white");wKingY=captureYCoord("white",spacing); wPiecesCaptured++; }
+  if (wBishop2X==x&&wBishop2Y==y) { wBishop2X=captureXCoord("white");wBishop2Y=captureYCoord("white",spacing); wPiecesCaptured++; }
+  if (wKnight2X==x&&wKnight2Y==y) { wKnight2X=captureXCoord("white");wKnight2Y=captureYCoord("white",spacing); wPiecesCaptured++; }
+  if (wRook2X==x&&wRook2Y==y) { wRook2X=captureXCoord("white");wRook2Y=captureYCoord("white",spacing); wPiecesCaptured++; }
+}
+void castle(String direction) {
+  if (turn=="black") {
+    if (direction=="left") {
+      animation(bKingX,bKingX-2,bKingY,bKingY,"bKing");
+    }
+    if (direction=="right") {
+      animation(bKingX,bKingX+2,bKingY,bKingY,"bKing");
+    }
+    framesAfterCastle=0; //triggers rook movement
+    bCanCastle="no"; //can only castle once
+  } else if (turn=="white") {
+    if (direction=="left") {
+      animation(wKingX,wKingX-2,wKingY,wKingY,"wKing");
+    }
+    if (direction=="right") {
+      animation(wKingX,wKingX+2,wKingY,wKingY,"wKing");
+    }
+    framesAfterCastle=0; //triggers rook movement
+    wCanCastle="no"; //can only castle once
+  }
+}
+String colorOfPieceInSquare(float x, float y) {
+  String result="null";
+  if ((bPawn1X==x&&bPawn1Y==y)||(bPawn2Y==y&&bPawn2X==x)||(bPawn3X==x&&bPawn3Y==y)||
+    (bPawn4X==x&&bPawn4Y==y)||(bPawn5X==x&&bPawn5Y==y)||(bPawn6X==x&&bPawn6Y==y)||
+    (bPawn7X==x&&bPawn7Y==y)||(bPawn8X==x&&bPawn8Y==y)||(bRook2X==x&&bRook2Y==y)||
+    (bRook1X==x&&bRook1Y==y)||(bKnight1X==x&&bKnight1Y==y)||(bKnight2X==x&&bKnight2Y==y)||
+    (bBishop1X==x&&bBishop1Y==y)||(bBishop2X==x&&bBishop2Y==y)||(bQueenX==x&&bQueenY==y)||
+    (bKingX==x&&bKingY==y)) {
+      result="black";
+  } else if ((wPawn1X==x&&wPawn1Y==y)||(wPawn2Y==y&&wPawn2X==x)||(wPawn3X==x&&wPawn3Y==y)||
+    (wPawn4X==x&&wPawn4Y==y)||(wPawn5X==x&&wPawn5Y==y)||(wPawn6X==x&&wPawn6Y==y)||
+    (wPawn7X==x&&wPawn7Y==y)||(wPawn8X==x&&wPawn8Y==y)||(wRook2X==x&&wRook2Y==y)||
+    (wRook1X==x&&wRook1Y==y)||(wKnight1X==x&&wKnight1Y==y)||(wKnight2X==x&&wKnight2Y==y)||
+    (wBishop1X==x&&wBishop1Y==y)||(wBishop2X==x&&wBishop2Y==y)||(wQueenX==x&&wQueenY==y)||
+    (wKingX==x&&wKingY==y)) {
+    result="white";
+  }
+  return result;
+}
+float captureYCoord(String capturedPieceColor, float spacing) {
+  float result=5000; //default value because needs to be declared
+  if (capturedPieceColor=="black") {
+    if (bPiecesCaptured<=5) {
+      result=8-spacing*bPiecesCaptured;
+    } else {
+      result=9.5;
+    }
+  } else if (capturedPieceColor=="white") {
+    if (wPiecesCaptured<=5) {
+      result=1+spacing*wPiecesCaptured;
+    } else {
+      result=-0.5;
+    }
+  }
+  return result;
+}
+float captureXCoord(String capturedPieceColor) {
+  float verticalSpacing=0.6; //spacing of pieces next to each other left-right
+  float result=5000; //default value because needs to be declared
+  if (capturedPieceColor=="black") {
+    if (bPiecesCaptured<=5) {
+      result=9;
+    } else {
+      result=9-verticalSpacing*(bPiecesCaptured-5);
+    }
+  } else if (capturedPieceColor=="white") {
+    if (wPiecesCaptured<=5) {
+      result=9;
+    } else {
+      result=9-verticalSpacing*(bPiecesCaptured-5);
+    }
+  }
+  return result;
+}
+float mouseToSq(int x) { //Math.round((mouseX-32.5)/75)
+  float result = Math.round((x-32.5)/75); //x can be mouseX or mouseY
+  return result;
+}
+float pixToSq(float x) { //changes pixel to square float value 
+  float result = (x-32.5)/75;
+  return result;
+}
+float sqToPix(float x) { //square to pixel: 107.5+75*(x-1)
+  float result = (107.5+75*(x-1));
+  return result;
+}
+color colorOfSquare(float x, float y) {
+  color result;
+  if ((sqToPix(x)-0.5)%2==0.0 ^ (sqToPix(y)-0.5)%2==1.0) {//XOR operator (exclusionary or)
+    result=squareColor;
+  } else {
+    result=boardColor;
+  }
+  if (pixToSq(x)>8&&pixToSq(y)>8) {
+    result=backgroundColor;
+  }
+  return result;
+}
+int signOf(float x) {
+  int result=5000;
+  if (x>0) {
+    result=1;
+  } else if (x<0) {
+    result=-1;
+  }
+  return result;
+}
+boolean checkIfOccupied(float x, float y) { //parameters describe square coordinates (float because of animation)
+  boolean result = (((bPawn1X==x&&bPawn1Y==y)||(bPawn2Y==y&&bPawn2X==x)||(bPawn3X==x&&bPawn3Y==y)||
+    (bPawn4X==x&&bPawn4Y==y)||(bPawn5X==x&&bPawn5Y==y)||(bPawn6X==x&&bPawn6Y==y)||
+    (bPawn7X==x&&bPawn7Y==y)||(bPawn8X==x&&bPawn8Y==y)||(bRook2X==x&&bRook2Y==y)||
+    (bRook1X==x&&bRook1Y==y)||(bKnight1X==x&&bKnight1Y==y)||(bKnight2X==x&&bKnight2Y==y)||
+    (bBishop1X==x&&bBishop1Y==y)||(bBishop2X==x&&bBishop2Y==y)||(bQueenX==x&&bQueenY==y)||
+    (bKingX==x&&bKingY==y))||(((wPawn1X==x&&wPawn1Y==y)||(wPawn2Y==y&&wPawn2X==x)||(wPawn3X==x&&wPawn3Y==y)||
+    (wPawn4X==x&&wPawn4Y==y)||(wPawn5X==x&&wPawn5Y==y)||(wPawn6X==x&&wPawn6Y==y)||
+    (wPawn7X==x&&wPawn7Y==y)||(wPawn8X==x&&wPawn8Y==y)||(wRook2X==x&&wRook2Y==y)||
+    (wRook1X==x&&wRook1Y==y)||(wKnight1X==x&&wKnight1Y==y)||(wKnight2X==x&&wKnight2Y==y)||
+    (wBishop1X==x&&wBishop1Y==y)||(wBishop2X==x&&wBishop2Y==y)||(wQueenX==x&&wQueenY==y)||
+    (wKingX==x&&wKingY==y)))); //black or white piece coordinates=x, y
+  return result;
+}
+//LEGAL MOVE CHECKERS
+boolean canCapture(float x, float y) {
+  boolean result; //default is false
+  result=(checkIfOccupied(x,y) && (turn=="black"&&colorOfPieceInSquare(x,y)=="white")||(turn=="white"&&colorOfPieceInSquare(x,y)=="black")); //square is occupied and piece is opposite color of turn
+  return result;
+}
+boolean pawnMove(float pawnX,float pawnY,float clickedX,float clickedY) {
+  boolean result=false; //must be initiated
+  if (turn=="black") {
+    if (pawnY==2 && clickedY==pawnY+2 && pawnX==clickedX && !checkIfOccupied(pawnX,pawnY+1)) {;
+      result=true;
+    }
+    if (pawnX==clickedX&&pawnY+1==clickedY) {
+      result=true;
+    }
+    if ((checkIfOccupied(pawnX+1,pawnY+1)&&(colorOfPieceInSquare(pawnX+1,pawnY+1)=="black")&&(pawnX+1==clickedX&&pawnY+1==clickedY))||(checkIfOccupied(pawnX-1,pawnY+1)&&(colorOfPieceInSquare(pawnX-1,pawnY+1)=="black")&&(pawnX-1==clickedX&&pawnY+1==clickedY))) { //if opposite-color piece is one in front and to the left or right of pawn, can move their (capture)
+      result=true;
+    }
+    if (pawnX==clickedX&&pawnY==clickedY) {
+      result=false; //so that does not move when clicking itself
+    }
+  }
+  if (turn=="white") {
+    if (pawnY==7 && clickedY==pawnY-2 && pawnX==clickedX && !checkIfOccupied(pawnX,pawnY-1)) {;
+      result=true;
+    }
+    if (pawnX==clickedX&&pawnY-1==clickedY) {
+      result=true;
+    }
+    if ((checkIfOccupied(pawnX+1,pawnY-1)&&(colorOfPieceInSquare(pawnX+1,pawnY-1)=="black")&&(pawnX+1==clickedX&&pawnY-1==clickedY))||(checkIfOccupied(pawnX-1,pawnY-1)&&(colorOfPieceInSquare(pawnX-1,pawnY-1)=="white")&&(pawnX-1==clickedX&&pawnY-1==clickedY))) { //if opposite-color piece is one in front and to the left or right of pawn, can move their (capture)
+      result=true;
+    }
+    if (pawnX==clickedX&&pawnY==clickedY) {
+      result=false;
+    }
+  }
+  return result;
+}
+boolean rookMove(float rookX,float rookY,float clickedX,float clickedY) {
+  boolean result=false;
+  if (rookX==clickedX || rookY==clickedY) { //rook horizontal or vertical aisle
+    for (int n=1; n<=7; n++) { //left
+      if (!checkIfOccupied(rookX-n,rookY)) { //checks if square is occupied
+        if(rookX-n==clickedX && rookY==clickedY && !checkIfOccupied(rookX-n,rookY)) { //if that square is the clicked square, result=true (if square occupied in between, it will never reach this code)
+          result=true;
+        }
+      } else {
+        if (checkIfOccupied(rookX-n,rookY)&&canCapture(rookX-n,rookY)) {
+          capturing=true;
+          captureX=clickedX;
+          captureY=clickedY;
+        } 
+        break;
+      } //stops program if hits piece (so does not continue)
+    }
+    for (int n=1; n<=7; n++) { //left
+      if (!checkIfOccupied(rookX+n,rookY)) { //checks if square is occupied
+        if(rookX+n==clickedX && rookY==clickedY && !checkIfOccupied(rookX+n,rookY)) { //if that square is the clicked square, result=true (if square occupied in between, it will never reach this code)
+          result=true;
+        }
+      } else {
+        if (checkIfOccupied(rookX+n,rookY)&&canCapture(rookX+n,rookY)) {
+          capturing=true;
+          captureX=clickedX;
+          captureY=clickedY;
+        } 
+        break;
+      } //stops program if hits piece (so does not continue)
+    }
+    for (int n=1; n<=7; n++) { //left
+      if (!checkIfOccupied(rookX,rookY+n)) { //checks if square is occupied
+        if(rookX==clickedX && rookY+n==clickedY && !checkIfOccupied(rookX,rookY+n)) { //if that square is the clicked square, result=true (if square occupied in between, it will never reach this code)
+          result=true;
+        }
+      } else {
+        if (checkIfOccupied(rookX,rookY+n)&&canCapture(rookX,rookY+n)) {
+          capturing=true;
+          captureX=clickedX;
+          captureY=clickedY;
+        } 
+        break;
+      } //stops program if hits piece (so does not continue)
+    }
+    for (int n=1; n<=7; n++) { //left
+      if (!checkIfOccupied(rookX,rookY-n)) { //checks if square is occupied
+        if(rookX==clickedX && rookY-n==clickedY && !checkIfOccupied(rookX,rookY-n)) { //if that square is the clicked square, result=true (if square occupied in between, it will never reach this code)
+          result=true;
+        }
+      } else {
+        if (checkIfOccupied(rookX,rookY-n)&&canCapture(rookX,rookY-n)) {
+          capturing=true;
+          captureX=clickedX;
+          captureY=clickedY;
+        } 
+        break;
+      } //stops program if hits piece (so does not continue)
+    }
+  }
+  return result;
+}
+boolean knightMove(float knightX,float knightY,int clickedX,int clickedY) {
+  boolean result=false;
+  for (int n=1; n>=-1; n-=2) { //note to self: does not check if square occupied, because if piece is opposite color can move there, and if piece is same-color, it will be selected instead
+    if ((knightX+1==clickedX&&knightY+2*n==clickedY)||(knightX+2==clickedX&&knightY+1*n==clickedY)||
+    (knightX-1==clickedX&&knightY-2*n==clickedY)||(knightX-2==clickedX&&knightY-1*n==clickedY)) { //if that square is the clicked square, result=true
+      result=true;
+    }
+    if ((knightX+1==clickedX&&knightY+2*n==clickedY)||(knightX+2==clickedX&&knightY+1*n==clickedY)||
+        (knightX-1==clickedX&&knightY-2*n==clickedY)||(knightX-2==clickedX&&knightY-1*n==clickedY)) { //if that square is the clicked square, result=true
+      result=true;
+    }
+  }
+  return result;
+}
+boolean bishopMove(float bishopX,float bishopY,int clickedX,int clickedY) {
+  boolean result=false;
+  for (int n=1; n<=7; n++) {
+    if (!checkIfOccupied(bishopX+n,bishopY+n)) { //up right
+      if (bishopX+n==clickedX&&bishopY+n==clickedY) {
+        result=true;
+      }
+    } else { break; }
+  }
+  for (int n=1; n<=7; n++) {
+    if (!checkIfOccupied(bishopX-n,bishopY-n)) { //down left
+      if (bishopX-n==clickedX&&bishopY-n==clickedY) {
+        result=true;
+      }
+    } else { break; }
+  }
+  for (int n=1; n<=7; n++) {
+    if (!checkIfOccupied(bishopX-n,bishopY+n)) { //up left
+      if (bishopX-n==clickedX&&bishopY+n==clickedY) {
+        result=true;
+      }
+    } else { break; }
+  }
+  for (int n=1; n<=7; n++) {
+    if (!checkIfOccupied(bishopX+n,bishopY-n)) { //down right
+      if (bishopX+n==clickedX&&bishopY-n==clickedY) {
+        result=true;
+      }
+    } else { break; }
+  }
+  return result;
+}
+boolean queenMove(float queenX,float queenY,int clickedX,int clickedY) {
+  boolean result=false;
+  result=(bishopMove(queenX,queenY,clickedX,clickedY))||(rookMove(queenX,queenY,clickedX,clickedY)); //can move either as bishop or rook
+  return result;
+}
+boolean kingMove(float kingX,float kingY,int clickedX,int clickedY) {
+  boolean result=false;
+  for (int n=1; n>=-1; n--) {
+    if ((kingX+1==clickedX&&kingY+n==clickedY)||(kingX-1==clickedX&&kingY+n==clickedY)||(kingX==clickedX&&kingY-1==clickedY)||(kingX==clickedX&&kingY+1==clickedY)) {
+      result=true;
+    }
+  }
+  if (turn=="black") {
+    if ((clickedX==3)&&(bCanCastle=="left"||bCanCastle=="yes")&&(!checkIfOccupied(kingX-1,kingY))&&(!checkIfOccupied(kingX-2,kingY))&&(!checkIfOccupied(kingX-3,kingY))) { //nothing between king and rook
+      result=false; //cancel normal king move
+      castle("left"); //castle to right
+    }
+    if ((clickedX==7)&&(bCanCastle=="right"||bCanCastle=="yes")&&(!checkIfOccupied(kingX+1,kingY))&&(!checkIfOccupied(kingX+2,kingY))) { //nothing between king and rook
+      result=false;
+      castle("right"); //castle to left
+    }
+  } else if (turn=="white") {
+    if ((clickedX==3)&&(wCanCastle=="left"||wCanCastle=="yes")&&(!checkIfOccupied(kingX-1,kingY))&&(!checkIfOccupied(kingX-2,kingY))&&(!checkIfOccupied(kingX-3,kingY))) { //nothing between king and rook
+      result=false; //cancel normal king move
+      castle("left"); //castle to right
+    }
+    if ((clickedX==7)&&(wCanCastle=="right"||wCanCastle=="yes")&&(!checkIfOccupied(kingX+1,kingY))&&(!checkIfOccupied(kingX+2,kingY))) { //nothing between king and rook
+      result=false;
+      castle("right"); //castle to left
+    }
+  }
+  return result;
+}
+
+void mousePressed() {
+  //boolean checks if clicked square is previous square: previousSquareX==clickedX&&previousSquareY==clickedY
+  previousSquareX=clickedX;
+  previousSquareY=clickedY;
+  clickedX=int(mouseToSq(mouseX));
+  clickedY=int(mouseToSq(mouseY));
+  
+  if (((!(previousSquareX==clickedX&&previousSquareY==clickedY)||tripleClicked)) && checkIfOccupied(clickedX,clickedY)) { //if piece clicked & not piece double clicked
+    pieceSelectedBool=true;
+    tripleClicked=false;
+  } else if (clickedX>0 && clickedX<=8 && clickedY>0 && clickedY<=8) { //Moving piece if move valid & deselecting piece by changing selectedPiece to ""
+         if (pawnMove(bPawn1X,bPawn1Y,clickedX,clickedY) && selectedPiece=="bPawn1") { animation(bPawn1X,clickedX,bPawn1Y,clickedY,selectedPiece); turn="white"; } //moves pawn to clicked square
+    else if (pawnMove(bPawn2X,bPawn2Y,clickedX,clickedY) && selectedPiece=="bPawn2") { animation(bPawn2X,clickedX,bPawn2Y,clickedY,selectedPiece); turn="white"; } 
+    else if (pawnMove(bPawn3X,bPawn3Y,clickedX,clickedY) && selectedPiece=="bPawn3") { animation(bPawn3X,clickedX,bPawn3Y,clickedY,selectedPiece); turn="white"; }
+    else if (pawnMove(bPawn4X,bPawn4Y,clickedX,clickedY) && selectedPiece=="bPawn4") { animation(bPawn4X,clickedX,bPawn4Y,clickedY,selectedPiece); turn="white"; }
+    else if (pawnMove(bPawn5X,bPawn5Y,clickedX,clickedY) && selectedPiece=="bPawn5") { animation(bPawn5X,clickedX,bPawn5Y,clickedY,selectedPiece); turn="white"; }
+    else if (pawnMove(bPawn6X,bPawn6Y,clickedX,clickedY) && selectedPiece=="bPawn6") { animation(bPawn6X,clickedX,bPawn6Y,clickedY,selectedPiece); turn="white"; }
+    else if (pawnMove(bPawn7X,bPawn7Y,clickedX,clickedY) && selectedPiece=="bPawn7") { animation(bPawn7X,clickedX,bPawn7Y,clickedY,selectedPiece); turn="white"; }
+    else if (pawnMove(bPawn8X,bPawn8Y,clickedX,clickedY) && selectedPiece=="bPawn8") { animation(bPawn8X,clickedX,bPawn8Y,clickedY,selectedPiece); turn="white"; }
+    else if (rookMove(bRook1X,bRook1Y,clickedX,clickedY) && selectedPiece=="bRook1") { animation(bRook1X,clickedX,bRook1Y,clickedY,selectedPiece); if(bCanCastle=="yes"){bCanCastle="right";} if(bCanCastle=="left"){bCanCastle="no";} turn="white"; } //after rook moved, cannot castle that way
+    else if (rookMove(bRook2X,bRook2Y,clickedX,clickedY) && selectedPiece=="bRook2") { animation(bRook2X,clickedX,bRook2Y,clickedY,selectedPiece); if(bCanCastle=="yes"){bCanCastle="left";} if(bCanCastle=="right"){bCanCastle="no";} turn="white"; }
+    else if (knightMove(bKnight1X,bKnight1Y,clickedX,clickedY) && selectedPiece=="bKnight1") { animation(bKnight1X,clickedX,bKnight1Y,clickedY,selectedPiece); turn="white"; } //knight
+    else if (knightMove(bKnight2X,bKnight2Y,clickedX,clickedY) && selectedPiece=="bKnight2") { animation(bKnight2X,clickedX,bKnight2Y,clickedY,selectedPiece); turn="white"; }
+    else if (bishopMove(bBishop1X,bBishop1Y,clickedX,clickedY) && selectedPiece=="bBishop1") { animation(bBishop1X,clickedX,bBishop1Y,clickedY,selectedPiece); turn="white"; } //bishop
+    else if (bishopMove(bBishop2X,bBishop2Y,clickedX,clickedY) && selectedPiece=="bBishop2") { animation(bBishop2X,clickedX,bBishop2Y,clickedY,selectedPiece); turn="white"; }
+    else if (queenMove(bQueenX,bQueenY,clickedX,clickedY) && selectedPiece=="bQueen") { animation(bQueenX,clickedX,bQueenY,clickedY,selectedPiece); turn="white"; } //queen
+    else if (kingMove(bKingX,bKingY,clickedX,clickedY) && selectedPiece=="bKing") { animation(bKingX,clickedX,bKingY,clickedY,selectedPiece); bCanCastle="no"; turn="white"; } //cannot castle after king moves
+    
+         if (pawnMove(wPawn1X,wPawn1Y,clickedX,clickedY) && selectedPiece=="wPawn1") { animation(wPawn1X,clickedX,wPawn1Y,clickedY,selectedPiece); turn="black"; } //moves pawn to clicked square
+    else if (pawnMove(wPawn2X,wPawn2Y,clickedX,clickedY) && selectedPiece=="wPawn2") { animation(wPawn2X,clickedX,wPawn2Y,clickedY,selectedPiece); turn="black"; } 
+    else if (pawnMove(wPawn3X,wPawn3Y,clickedX,clickedY) && selectedPiece=="wPawn3") { animation(wPawn3X,clickedX,wPawn3Y,clickedY,selectedPiece); turn="black"; }
+    else if (pawnMove(wPawn4X,wPawn4Y,clickedX,clickedY) && selectedPiece=="wPawn4") { animation(wPawn4X,clickedX,wPawn4Y,clickedY,selectedPiece); turn="black"; }
+    else if (pawnMove(wPawn5X,wPawn5Y,clickedX,clickedY) && selectedPiece=="wPawn5") { animation(wPawn5X,clickedX,wPawn5Y,clickedY,selectedPiece); turn="black"; }
+    else if (pawnMove(wPawn6X,wPawn6Y,clickedX,clickedY) && selectedPiece=="wPawn6") { animation(wPawn6X,clickedX,wPawn6Y,clickedY,selectedPiece); turn="black"; }
+    else if (pawnMove(wPawn7X,wPawn7Y,clickedX,clickedY) && selectedPiece=="wPawn7") { animation(wPawn7X,clickedX,wPawn7Y,clickedY,selectedPiece); turn="black"; }
+    else if (pawnMove(wPawn8X,wPawn8Y,clickedX,clickedY) && selectedPiece=="wPawn8") { animation(wPawn8X,clickedX,wPawn8Y,clickedY,selectedPiece); turn="black"; }
+    else if (rookMove(wRook1X,wRook1Y,clickedX,clickedY) && selectedPiece=="wRook1") { animation(wRook1X,clickedX,wRook1Y,clickedY,selectedPiece); if(wCanCastle=="yes"){wCanCastle="right";} if(wCanCastle=="left"){wCanCastle="no";} turn="black"; } //after rook moved, cannot castle that way
+    else if (rookMove(wRook2X,wRook2Y,clickedX,clickedY) && selectedPiece=="wRook2") { animation(wRook2X,clickedX,wRook2Y,clickedY,selectedPiece); if(wCanCastle=="yes"){wCanCastle="left";} if(wCanCastle=="right"){wCanCastle="no";} turn="black"; }
+    else if (knightMove(wKnight1X,wKnight1Y,clickedX,clickedY) && selectedPiece=="wKnight1") { animation(wKnight1X,clickedX,wKnight1Y,clickedY,selectedPiece); turn="black"; } //knight
+    else if (knightMove(wKnight2X,wKnight2Y,clickedX,clickedY) && selectedPiece=="wKnight2") { animation(wKnight2X,clickedX,wKnight2Y,clickedY,selectedPiece); turn="black"; }
+    else if (bishopMove(wBishop1X,wBishop1Y,clickedX,clickedY) && selectedPiece=="wBishop1") { animation(wBishop1X,clickedX,wBishop1Y,clickedY,selectedPiece); turn="black"; } //bishop
+    else if (bishopMove(wBishop2X,wBishop2Y,clickedX,clickedY) && selectedPiece=="wBishop2") { animation(wBishop2X,clickedX,wBishop2Y,clickedY,selectedPiece); turn="black"; }
+    else if (queenMove(wQueenX,wQueenY,clickedX,clickedY) && selectedPiece=="wQueen") { animation(wQueenX,clickedX,wQueenY,clickedY,selectedPiece); turn="black"; } //queen
+    else if (kingMove(wKingX,wKingY,clickedX,clickedY) && selectedPiece=="wKing") { animation(wKingX,clickedX,wKingY,clickedY,selectedPiece); wCanCastle="no"; turn="black"; } //cannot castle after king moves
+    
+    pieceSelectedBool=false;
+    selectedPiece="";
+    tripleClicked=true;
+  } else { //clicked out of board
+    pieceSelectedBool=false;
+    selectedPiece="";
+  }
+  
+  
+  //SETTINGS BAR
+  if (settings=="settings") {
+    if (mouseX>300&&mouseX<300+100&&mouseY>135&&mouseY<135+60) {
+      style="default";
+    } else if (mouseX>420&&mouseX<420+100&&mouseY>135&&mouseY<135+60) {
+      style="ice";
+    } else if (mouseX>540&&mouseX<540+100&&mouseY>135&&mouseY<135+60) {
+      style="wood";
+    }
+    if (mouseX>width/2-80&&mouseX<width/2+80&&mouseY>530&&mouseY<530+60) {
+      settings="play";
+    }
+  }
+}
+        </script>
+        <canvas id="sketch"></canvas>
+    </body>
+</html>

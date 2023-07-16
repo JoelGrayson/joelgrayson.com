@@ -10,6 +10,7 @@ export default function RunProcessingInWeb() {
     const [title, setTitle]=useState<string>('');
     const [infoModalOpen, setInfoModalOpen]=useState<boolean>(false);
     const [processingCode, setProcessingCode]=useState<string>([
+        // Default code
         'void setup() {',
         '    ',
         '}',
@@ -24,6 +25,11 @@ export default function RunProcessingInWeb() {
             const res=code.match(/circle\((.*,.*,)(.*)\)/);
             if (!res) break;
             code=code.replace(res[0], `ellipse(${res[1]}${res[2]}, ${res[2]})`); //repeat the last parameter
+        }
+        while (true) { //square -> rect
+            const res=code.match(/square\((.*,.*,)(.*)\)/);
+            if (!res) break;
+            code=code.replace(res[0], `rect(${res[1]}${res[2]}, ${res[2]})`); //repeat the last parameter
         }
         return code;
     }
@@ -91,6 +97,7 @@ ${polyfillProcessingCode(processingCode)}
             <p>This tool converts your Processing code into HTML code using the <a href='https://happycoding.io/tutorials/processing/processing-js' target='_blank' className='styled'>processing.js</a> library. It polyfills the following features to fit processing.js&apos;s limited API:</p>
             <ul>
                 <li>circle()</li>
+                <li>square()</li>
             </ul>
             <p className='mt-6'>Note: due to the limitations of the processing.js library, the generated HTML code may not work for all Processing features. I recommend you code in p5js or just use the raw &lt;canvas&gt; API if you want to develop sketches for the web.</p>
         </Modal>
