@@ -35,6 +35,11 @@ app.post('/verify', require('./servers/verify/verify').verifyHandler);
 app.use('/combating-climate-change/electric-school-buses-petition', require('./servers/electric-school-buses-petition/server'));
 app.use('/homepage-stats', require('./servers/homepage-stats/server'));
 
+// 404
+app.use((req, res)=>{
+    res.status(404).redirect('/404.html');
+});
+
 
 app.listen(port, ()=>console.log(`Listening on port ${port}`));
 
