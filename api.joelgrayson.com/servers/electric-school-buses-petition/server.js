@@ -2,7 +2,7 @@ const express=require('express');
 const router=express.Router();
 const { google }=require('googleapis');
 
-router.get('/signatures', async (req, res)=>{
+router.get('/', async (req, res)=>{
     const auth=new google.auth.GoogleAuth({
         keyFile: 'private/electric-school-bus-petition-google-credentials.json',
         scopes: 'https://www.googleapis.com/auth/spreadsheets'

@@ -2,18 +2,91 @@
 <html>
 <head>
     <style>
-      #title {
-          text-align: center;
-          font-family: Helvetica;
-          background: -webkit-linear-gradient(-70deg, #db469f 0%, #2188ff 100%);
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-      }
+        #title {
+            text-align: center;
+            font-family: Helvetica;
+            background: -webkit-linear-gradient(-70deg, #db469f 0%, #2188ff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        tr {
+            border: 1px solid black;
+        }
+        td {
+            padding: 10px;
+        }
     </style>
+    <link href='https://joelgrayson.com/styles/ucjg.v3.css' rel='stylesheet'>
 </head>
 <body>
-    <h1 id='title'>Welcome to api.joelgrayson.com</h1>
-    <p>Used for API requests that cannot be done on Next.js and require using Express.js</p>
+    <div class="container">
+        <h1 id='title'>Welcome to api.joelgrayson.com</h1>
+        <p>Used for API requests that cannot be done on Next.js and require using Express.js</p>
+    
+        <h3>Webpages</h3>
+        <ul>
+            <li><a href="/combating-climate-change/electric-school-buses-petition">/combating-climate-change/electric-school-buses-petition</a></li>
+            <li><a href="/combating-climate-change/electric-school-buses-petition/signatures">/combating-climate-change/electric-school-buses-petition/signatures</a></li>
+        </ul>
+        
+        <h3>API Endpoints</h3>
+        <ul>
+            <li>GET <a href="/homepage-stats">/homepage-stats</a></li>
+            <li>
+                <p>POST <a href="/verify">/verify</a></p>
+                <table style="max-width: 830px">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <code style="width: 30vw; max-width: 400px;">
+                                    POST https://api.joelgrayson.com/verify 
+                                    <br>Content-Type: application/json
+                                    <br>
+                                    <br>{
+                                    <br>"message": "Hello world!",
+                                    <br>&emsp;"date": "11.25.2022",
+                                    <br>&emsp;"signature": "eD36chdJBHUFllp3T6w5oMiZ0+6LRGDi/2zp9ElO/YsT+Gdwv+SsFDhYGVagnkqDSbhX7oc0QLEThkseo2Nhig=="
+                                    <br>}
+                                </code>
+                            </td>
+                            <td style="width: 30px; text-align: center;">→</td>
+                            <td style="width: 30vw; max-width: 400px;">
+                                <code><pre>{
+    "status": "Success",
+    "valid": true
+}</pre></code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code style="width: 30vw; max-width: 400px;">
+                                    POST http://localhost:8080/verify 
+                                    <br>Content-Type: application/json
+                                    <br>
+                                    <br>{
+                                        <br>"message": "Hacked message.",
+                                        <br>"date": "11.25.2022",
+                                        <br>"signature": "eD36chdJBHUFllp3T6w5oMiZ0+6LRGDi/2zp9ElO/YsT+Gdwv+SsFDhYGVagnkqDSbhX7oc0QLEThkseo2Nhig=="
+                                    <br>}
+                                </code>
+                            </td>
+                            <td style="width: 30px; text-align: center;">→</td>
+                            <td style="width: 30vw; max-width: 400px;">
+                                <code><pre>{
+    "status": "Success",
+    "valid": false
+}</pre></code>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </li>
+        </ul>
+    </div>
+    <br><br>
 </body>
 </html>
