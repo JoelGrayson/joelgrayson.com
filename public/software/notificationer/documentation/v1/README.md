@@ -6,14 +6,14 @@ Make sure to set the script with `type='module'`.
 
 ```html
 <script type='module'>
-	import * as nf from 'https://w.joelgrayson.com/notificationer/notificationer.js'; //Import notificationer
+	import * as nf from 'https://joelgrayson.com/software/notificationer/notificationer.js'; //Import notificationer
 	nf.config(); //check full documentation's for config() options
 	nf.notify('Hello world');
 	nf.notify('Success', 'green');
 	nf.notify('Confirmation required <button>confirm</button>', 'red');
 </script>
 ```
-Result: <img alt='result' src='https://w.joelgrayson.com/image/quick%20start.jpg' height='100px'>
+Result: <img alt='result' src='https://joelgrayson.com/image/software/notificationer/quick%20start.jpg' height='100px'>
 
 ## Full Documentation
 * `nf.config(options?)` configures the notification space and can only be called once. Below is the options object format:
@@ -35,9 +35,9 @@ Result: <img alt='result' src='https://w.joelgrayson.com/image/quick%20start.jpg
 
 ## Demos
 #### Interactive Sandbox
-Try the code sandbox at https://w.joelgrayson.com/notificationer/sandbox/v2.html.
+Try the code sandbox at https://joelgrayson.com/software/notificationer/sandbox/v2.html.
 
-<iframe src='https://w.joelgrayson.com/notificationer/sandbox/v2.html' width='800px' height='500px'></iframe>
+<iframe src='https://joelgrayson.com/software/notificationer/sandbox/v2.html' width='800px' height='500px'></iframe>
 
 #### Example: Notify() & Close()
 ```javascript

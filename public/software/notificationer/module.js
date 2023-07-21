@@ -1,5 +1,5 @@
 let xDirection; //left or right for closing direction
-let packageUrl='https://w.joelgrayson.com/notificationer';
+let packageUrl='https://joelgrayson.com/software/notificationer';
 let notificationNum=1; //ensures each notification has unique id
 let autocloseOnOff=true;
 let autocloseDurationMillis=6000;

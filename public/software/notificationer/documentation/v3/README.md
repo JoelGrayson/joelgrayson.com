@@ -1,21 +1,21 @@
-# Notificationer V3 <button><a href='https://w.joelgrayson.com/notificationer'>Select Other Version</a></button>
+# Notificationer V3 <button><a href='https://joelgrayson.com/software/notificationer'>Select Other Version</a></button>
 > Easily notify your users from client-side JavaScript. It's as simple as `nf.notify()`
 
 ## Quick Start
 Add the following script to your HTML file **before** your own script tag(s):
 ```html
-<script src='https://w.joelgrayson.com/notificationer/notificationer-v3.js'></script>
+<script src='https://joelgrayson.com/software/notificationer/notificationer-v3.js'></script>
 ```
 Notificationer is now imported in the object `notificationer` or `nf` for short. To notify, call `nf.notify()` as many times as you want. Check out the full documentation for more functionality.
 ```html
-<script src='https://w.joelgrayson.com/notificationer/notificationer-v3.js'></script>
+<script src='https://joelgrayson.com/software/notificationer/notificationer-v3.js'></script>
 <script>
 	nf.notify('Hello world');
 	nf.notify('Success', 'lightgreen');
 	nf.notify('Confirmation required <button>confirm</button>', 'red');
 </script>
 ```
-Result: <img alt='result' src='https://w.joelgrayson.com/image/quick%20start%202.jpg' height='100px'>
+Result: <img alt='result' src='https://joelgrayson.com/image/software/notificationer/quick start 2.jpg' height='100px'>
 
 ## Full Documentation
 ### Properties
@@ -52,6 +52,6 @@ The following properties can be set using `nf.property=newValue`.
 
 
 ## Interactive Sandbox
-Try the code sandbox at https://w.joelgrayson.com/notificationer/sandbox/v3.html.
+Try the code sandbox at https://joelgrayson.com/software/notificationer/sandbox/v3.html.
 
-<iframe src='https://w.joelgrayson.com/notificationer/sandbox/v3.html' style='width: 80vw; height: 60vh'></iframe>
+<iframe src='https://joelgrayson.com/software/notificationer/sandbox/v3.html' style='width: 80vw; height: 60vh'></iframe>

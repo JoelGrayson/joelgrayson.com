@@ -242,7 +242,7 @@ window.addEventListener("DOMContentLoaded", function () {
     //Add stylesheet
     let keyboardLinkEl = document.createElement("link");
     keyboardLinkEl.rel = "stylesheet";
-    keyboardLinkEl.href = "https://w.joelgrayson.com/keyboard/v1.css";
+    keyboardLinkEl.href = "https://joelgrayson.com/software/keyboard/v1.css";
     document.head.appendChild(keyboardLinkEl);
 
     keyboard.init();

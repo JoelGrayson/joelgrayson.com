@@ -1,14 +1,14 @@
-# Notificationer V2 <button><a href='https://w.joelgrayson.com/notificationer'>Select Other Version</a></button>
+# Notificationer V2 <button><a href='https://joelgrayson.com/software/notificationer'>Select Other Version</a></button>
 > Easily notify your users from client-side JavaScript. It's as simple as calling the function `notify()`.
 
 ## Quick Start
 Add the following script to your HTML file **before** your own script tag(s):
 ```html
-<script src='https://w.joelgrayson.com/notificationer/notificationer.js'></script>
+<script src='https://joelgrayson.com/software/notificationer/notificationer.js'></script>
 ```
 Start with `config()`. Then, `notify()` as many times as you want. Check out the full documentation for more details.
 ```html
-<script src='https://w.joelgrayson.com/notificationer/notificationer.js'></script>
+<script src='https://joelgrayson.com/software/notificationer/notificationer.js'></script>
 <script>
 	config(); //check full documentation for config() options
 	notify('Hello world');
@@ -16,7 +16,7 @@ Start with `config()`. Then, `notify()` as many times as you want. Check out the
 	notify('Confirmation required <button>confirm</button>', 'red');
 </script>
 ```
-Result: <img alt='result' src='https://w.joelgrayson.com/image/quick%20start.jpg' height='100px'>
+Result: <img alt='result' src='https://joelgrayson.com/image/software/notificationer/quick%20start.jpg' height='100px'>
 
 ## Full Documentation
 * `config(options?)` configures the notification space and can only be called once. Below is the options object format. If you leave out a property, and it will be set to its default.
@@ -41,20 +41,20 @@ Result: <img alt='result' src='https://w.joelgrayson.com/image/quick%20start.jpg
 In version 1, the only way to use notificationer was by importing it with `type='module'`.
 ```html
 <script type='module'>
-	import * as nf from 'https://w.joelgrayson.com/notificationer/module.js'; //Import notificationer
+	import * as nf from 'https://joelgrayson.com/software/notificationer/module.js'; //Import notificationer
 	nf.config(); //check full documentation for config() options
 	nf.notify('Hello world');
 	nf.notify('Success', 'green');
 	nf.notify('Confirmation required <button>confirm</button>', 'red');
 </script>
 ```
-Result: <img alt='result' src='https://w.joelgrayson.com/image/quick%20start.jpg' height='100px'>
+Result: <img alt='result' src='https://joelgrayson.com/image/software/notificationer/quick%20start.jpg' height='100px'>
 </details>
 
 ## Interactive Sandbox
-Try the code sandbox at https://w.joelgrayson.com/notificationer/sandbox/v2.html.
+Try the code sandbox at https://joelgrayson.com/software/notificationer/sandbox/v2.html.
 
-<iframe src='https://w.joelgrayson.com/notificationer/sandbox/v2.html' width='800px' height='450px'></iframe>
+<iframe src='https://joelgrayson.com/software/notificationer/sandbox/v2.html' width='800px' height='450px'></iframe>
 
 ## Examples
 ### Notify() & Close()

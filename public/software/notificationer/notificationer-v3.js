@@ -1,6 +1,6 @@
 let notificationer={
     xDirection: undefined, //left or right for closing direction
-    packageUrl: 'https://w.joelgrayson.com/notificationer',
+    packageUrl: 'https://joelgrayson.com/software/notificationer',
     notificationNum: 1, //ensures each notification has unique id
     autoclose: true,
     autocloseDuration: 6, //seconds

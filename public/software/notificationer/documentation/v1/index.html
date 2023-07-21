@@ -212,21 +212,21 @@
    </head>
    <body for="html-export">
       <div class="mume markdown-preview  ">
-         <h1 class="mume-header" id="notificationer">Notificationer V1 <button><a href="https://w.joelgrayson.com/notificationer">Select Other Version</a></button></h1>
+         <h1 class="mume-header" id="notificationer">Notificationer V1 <button><a href="https://joelgrayson.com/software/notificationer">Select Other Version</a></button></h1>
          <blockquote>
             <p>Notificationer non-intrusively notifies users from client-side JavaScript.</p>
          </blockquote>
          <h2 class="mume-header" id="quick-start">Quick Start</h2>
          <p>Make sure to set the script with <code>type=&apos;module&apos;</code>.</p>
          <pre data-role="codeBlock" data-info="html" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&apos;</span>module<span class="token punctuation">&apos;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
-  <span class="token keyword module">import</span> <span class="token imports"><span class="token operator">*</span> <span class="token keyword module">as</span> nf</span> <span class="token keyword module">from</span> <span class="token string">&apos;https://w.joelgrayson.com/notificationer/notificationer.js&apos;</span><span class="token punctuation">;</span> <span class="token comment">//Import notificationer</span>
+  <span class="token keyword module">import</span> <span class="token imports"><span class="token operator">*</span> <span class="token keyword module">as</span> nf</span> <span class="token keyword module">from</span> <span class="token string">&apos;https://joelgrayson.com/software/notificationer/notificationer.js&apos;</span><span class="token punctuation">;</span> <span class="token comment">//Import notificationer</span>
   nf<span class="token punctuation">.</span><span class="token method function property-access">config</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//check full documentation&apos;s for config() options</span>
   nf<span class="token punctuation">.</span><span class="token method function property-access">notify</span><span class="token punctuation">(</span><span class="token string">&apos;Hello world&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   nf<span class="token punctuation">.</span><span class="token method function property-access">notify</span><span class="token punctuation">(</span><span class="token string">&apos;Success&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;green&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   nf<span class="token punctuation">.</span><span class="token method function property-access">notify</span><span class="token punctuation">(</span><span class="token string">&apos;Confirmation required &lt;button&gt;confirm&lt;/button&gt;&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;red&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
 </pre>
-         <p>Result: <img alt="result" src="https://w.joelgrayson.com/image/quick%20start.jpg" height="100px"></p>
+         <p>Result: <img alt="result" src="https://joelgrayson.com/image/software/notificationer/quick%20start.jpg" height="100px"></p>
          <h2 class="mume-header" id="full-documentation">Full Documentation</h2>
          <ul>
             <li>
@@ -253,8 +253,8 @@
          </ul>
          <h2 class="mume-header" id="demos">Demos</h2>
          <h4 class="mume-header" id="sandbox-interactive-demo">Interactive Sandbox</h4>
-         <p>Try the code sandbox at <a href="https://w.joelgrayson.com/notificationer/sandbox">https://w.joelgrayson.com/notificationer/sandbox</a>.</p>
-         <iframe src="https://w.joelgrayson.com/notificationer/sandbox" width="800px" height="500px"></iframe>
+         <p>Try the code sandbox at <a href="https://joelgrayson.com/software/notificationer/sandbox">https://joelgrayson.com/software/notificationer/sandbox</a>.</p>
+         <iframe src="https://joelgrayson.com/software/notificationer/sandbox" width="800px" height="500px"></iframe>
          <h4 class="mume-header" id="example-notify-close">Example: Notify() &amp; Close()</h4>
          <pre data-role="codeBlock" data-info="javascript" class="language-javascript"><span class="token keyword">let</span> errorNotificationId<span class="token operator">=</span>nf<span class="token punctuation">.</span><span class="token method function property-access">notify</span><span class="token punctuation">(</span><span class="token string">&apos;Error&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;red&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//store notification id</span>
 nf<span class="token punctuation">.</span><span class="token method function property-access">close</span><span class="token punctuation">(</span>errorNotificationId<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//close notification</span>

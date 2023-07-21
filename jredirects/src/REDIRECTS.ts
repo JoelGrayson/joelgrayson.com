@@ -1,5 +1,6 @@
 import { redirects } from './_internals/types';
 
+
 export const temporary: redirects={ //302
     '/fisher/index.html': ['/mr-fisher', '/mr. fisher', '/mister-fisher', '/paul-fisher', '/mrfisher', '/misterfisher', '/fisher'],
 
@@ -21,10 +22,20 @@ export const temporary: redirects={ //302
     'https://joelgrayson.wixsite.com/joelgrayson': ['/wix', '/old', '/wixsite']
 };
 
+
 export const permanent: redirects={ //301
     // Newest at top, oldest at bottom
     // Destination: source
 
+    'https://api.joelgrayson.com/combating-climate-change/electric-school-buses-petition/': [
+        '/electric-school-bus-petition',
+        '/electric-school-buses-petition',
+    ],
+    'https://api.joelgrayson.com/combating-climate-change/electric-school-buses-petition/signatures/': [
+        '/electric-school-bus-petition-signatures',
+        '/electric-school-buses-petition-signatures',
+    ],
+    '/software/muffin/index.html': '/muffin',
     'https://www.youtube.com/@JoelGrayson': ['/youtube', '/yt'],
     'https://github.com/JoelGrayson': '/github',
     'https://www.linkedin.com/in/joelgrayson/': '/linkedin',
@@ -70,9 +81,7 @@ export const permanent: redirects={ //301
         '/onedrive-download-generator', '/onedrive-download-generator-link'
     ],
     '/joel-case': ['/jcase', '/joelcase'],
-    'https://w.joelgrayson.com/kiosk': ['/kiosk', '/muffin'],
     '/favicon-fetcher': '/favicon',
-    'https://w.joelgrayson.com/electric-school-buses': '/electric-school-buses',
     '/dropbox-image-raw-link-generator': [
         '/dropbox-direct-raw-image-link-generator', '/dropbox-direct-raw-link-generator', '/dropbox-image-direct-link-generator',
         '/dropbox-image-direct-raw-link-generator', '/dropbox-raw-image-link-generator', '/dropbox-raw-link-generator'
@@ -84,7 +93,6 @@ export const permanent: redirects={ //301
         '/dropbox-link', '/dropbox-link-generator'
     ],
     'https://developer-merch.herokuapp.com': ['/dev-merch', '/dev-merchandise', '/developer-merch', '/developer-merchandise'],
-    'https://w.joelgrayson.com/bus-info-kiosk': '/bus-info-kiosk',
     '/box-download-link-generator': ['/box-direct-download-generator', '/box-direct-download-link-generator', '/box-download-generator', '/box-download-link', '/direct-download-link-generator-box', '/download-link-generator-box'],
     '/@jcomponents': ['/jcomponents', '/jcomponent', '/@jcomponent'],
     '/zoom-sfx': '/audio/zoom-sound-effects',
@@ -100,3 +108,4 @@ export const permanent: redirects={ //301
     '/software/canvas-circles/index.html': '/software/canvas-circles',
     '/rise/index.html': '/rise',
 };
+
