@@ -12,8 +12,9 @@ module.exports = {
     },
     plugins: [
         tailwindPlugin(({ addVariant })=>{
+            // 'mobile:red' or 'm:red' instead of 'black md:red'
             addVariant('mobile', "@media screen and (max-width: theme('screens.sm'))"); // instead of hard-coded 640px use sm breakpoint value from config. Or anything
-                // for mobile:red instead of black md:red
+            addVariant('m', "@media screen and (max-width: theme('screens.sm'))"); // instead of hard-coded 640px use sm breakpoint value from config. Or anything
         })
     ],
 };
