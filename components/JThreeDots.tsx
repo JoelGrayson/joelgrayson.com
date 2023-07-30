@@ -10,8 +10,8 @@ export default function JThreeDots() { //interactive signature
         setLoadNum(Math.random);
     };
 
-    return <Link href='/' className='block w-[55px] sm:w-[65px]'>
-        <div className='flex items-center pr-4 select-none w-[30px] sm:w-[40px] cursor-pointer'>
+    return <Link href='/' className='block w-[55px] sm:w-[65px] m:mx-auto'>
+        <div className='flex items-center pr-4 select-none w-[30px] sm:w-[40px] cursor-pointer m:mx-auto'>
             <div className='relative cursor-pointer'>
                 {/* eslint-disable */}
                     {/* Using <img> below instead of <Image> because reloads onHover */}

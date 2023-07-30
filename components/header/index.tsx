@@ -19,16 +19,17 @@ export default function Header() {
             w-full
             border-solid border-b-[1px] border-black p-3
             bg-gradient-to-b from-[#fcd98b] to-[#faca62]
+            m:pb-0
         '>
             <nav className='j_max-w mx-auto'>
                 <ul className='list-none items-center unstyled'>
                     <PathContext.Provider value={asPath}>
-                        <span className='flex w-full j_container'>
-                            <li><JThreeDots /></li>
+                        <span className='flex w-full j_container m:p-0 m:grid grid-cols-3 grid-rows-2'>
+                            <li className='m:order-3'><JThreeDots /></li>
                             
-                            <HeaderItem link='/'>Home</HeaderItem>
+                            <HeaderItem link='/' className='m:order-1'>Home</HeaderItem>
 
-                            <HeaderGroup title='Projects'>
+                            <HeaderGroup title='Projects' className='m:order-2'>
                                 <HeaderGroupItem link='/combating-climate-change'>
                                     <span style={{whiteSpace: 'nowrap', display: 'inline'}}>
                                         Climate Change&nbsp;
@@ -47,7 +48,7 @@ export default function Header() {
                                 <HeaderGroupItem link='/projects/slaphappy'>Slaphappy</HeaderGroupItem>
                             </HeaderGroup>
 
-                            <HeaderGroup title='Software' link='/software'>
+                            <HeaderGroup title='Software' link='/software' className='m:order-5'>
                                 <HeaderGroupItem link='https://buseroo.com'>Buseroo</HeaderGroupItem>
                                 <HeaderGroupItem link='https://lirongart.com'>Lirong Art</HeaderGroupItem>
                                 <HeaderGroupItem link='/zoom-timers'>Zoom Timers</HeaderGroupItem>
@@ -57,8 +58,8 @@ export default function Header() {
                                 </HeaderSubGroup>
                             </HeaderGroup>
 
-                            <HeaderItem link='/perspective'>Perspective</HeaderItem>
-                            <HeaderItem link='/contact'>Contact</HeaderItem>
+                            <HeaderItem link='/perspective' className='m:order-4'>Perspective</HeaderItem>
+                            <HeaderItem link='/contact' className='m:order-6'>Contact</HeaderItem>
                         </span>
                     </PathContext.Provider>
                 </ul>
