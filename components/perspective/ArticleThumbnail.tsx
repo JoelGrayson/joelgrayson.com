@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { article as articleT } from './types';
+import { article as articleT } from '@/data/perspective/types';
 
-export default function Article({article}: {article: articleT}) { //rectangle with thumbnail and title
+export default function ArticleThumbnail({article}: {article: articleT}) { //rectangle with thumbnail and title
     return <Link href={`/perspective/${article.hyphenatedTitle}`} style={{width: 'fit-content', margin: '0.5rem'}}>
         {/* Thumbnail Heights
             CSS Size

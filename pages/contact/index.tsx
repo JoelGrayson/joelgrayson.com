@@ -1,7 +1,7 @@
 import Page from '@/components/global/Page';
-import Talking from '@/components/pages/contact/talking/_Talking';
-import Form from '@/components/pages/contact/form/_Form';
-import Listening from '@/components/pages/contact/listening/_Listening';
+import Talking from '@/components/by-page/contact/talking/_Talking';
+import Form from '@/components/by-page/contact/form/_Form';
+import Listening from '@/components/by-page/contact/listening/_Listening';
 
 import styles from './contact.module.css';
 

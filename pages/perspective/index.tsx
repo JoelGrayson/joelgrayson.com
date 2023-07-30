@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
 import Router from 'next/router';
 import PerspectivePage from '@/components/perspective/PerspectivePage';
-import { articles } from '@/components/perspective/ArticlesList';
-import { categories, displayCategory } from '@/components/perspective/ArticlesList/types';
-import Article from '@/components/perspective/ArticlesList/Article';
+import { articles } from '@/data/perspective';
+import { categories, displayCategory } from '@/data/perspective/types';
+import ArticleThumbnail from '@/components/perspective/ArticleThumbnail';
 
 const gridStyle={
     display: 'grid',
@@ -68,14 +68,14 @@ export default function JoelsPerspective() { //List of articles
                         <h3 className='text-center bold'>{name}</h3> {/* Category name */}
                         <div style={gridStyle}> {/* Articles item */}
                             {articles.filter(a=>a.category===category).map(article=>( //get articles of a category
-                                <Article key={article.hyphenatedTitle} article={article} />
+                                <ArticleThumbnail key={article.hyphenatedTitle} article={article} />
                             ))}
                         </div>
                     </div>;
                 })
             : <div style={gridStyle}>{
                 sortedArticles.map(article=>
-                    <Article key={article.hyphenatedTitle} article={article} />
+                    <ArticleThumbnail key={article.hyphenatedTitle} article={article} />
                 )
             }</div>
         }

@@ -1,8 +1,8 @@
-import { ExposedComment } from '@/components/data/TYPES';
+import { ExposedComment } from '@/data/prisma/TYPES';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '@/components/data/client';
-import sendEmail from '@/components/sendEmail';
-import generateToken from '@/components/helpers/generate-token';
+import prisma from 'data/prisma/client';
+import sendEmail from '@/helpers/sendEmail';
+import generateToken from '@/helpers/generate-token';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<string | { views: number; comments: ExposedComment[]; }>) {
     const { name, email, comment, hyphenatedTitle }=req.body as { name?: string; email?: string; comment?: string; hyphenatedTitle?: string };

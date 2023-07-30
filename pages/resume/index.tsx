@@ -1,4 +1,4 @@
-import SEBLogo from "@/components/pages/home/parts/SEB Logo";
+import SEBLogo from "@/components/by-page/home/SEB Logo";
 import { css } from "@emotion/css";
 import Button from "@jcomponents/button";
 import Image from "next/image";
@@ -88,7 +88,7 @@ export default function Resume() {
                         <Image src='/image/ccc/electric-leaf-blowers/electric-leaf-blower.png' alt='leaf blower' width={20} height={13} className='relative bottom-[3px] mr-1 inline' />
                         <span>Electric Leaf Blowers</span>
                         <span className="date">2022</span>
-                        <div className='description indent'>Convinced my school's facilities team to switch from gas to electric leaf blowers.</div>
+                        <div className='description indent'>Convinced my school&apos;s facilities team to switch from gas to electric leaf blowers.</div>
                     </li>
                     <li>
                         <Image src='/image/ccc/stopping-bus-idling/stopping-bus-idling.png' alt='stopping-bus-idling' width={20} height={13} className='relative bottom-[3px] mr-1 inline' />

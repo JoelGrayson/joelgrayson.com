@@ -1,8 +1,8 @@
-import { machines } from '@/components/pages/machines/data';
+import { machines } from '@/components/by-page/machines/data';
 import Image from 'next/image';
 import Page from '@/components/global/Page';
 import Container from '@jcomponents/container';
-import MiscellaneousBottom from '@/components/pages/machines/MiscellaneousBottom';
+import MiscellaneousBottom from '@/components/by-page/machines/MiscellaneousBottom';
 
 export default function Machines() {
     return <Page seo={{

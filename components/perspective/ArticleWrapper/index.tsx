@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import PerspectivePage from '../PerspectivePage';
 import jdate from 'joeldate';
-import { ExposedComment } from '@/components/data/TYPES';
+import { ExposedComment } from '@/data/prisma/TYPES';
 import { Reply } from './Reply';
 import AddComment from './AddComment';
 
