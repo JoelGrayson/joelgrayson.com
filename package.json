@@ -5,19 +5,20 @@
     "license": "UCJG",
     "homepage": "https://joelgrayson.com",
     "scripts": {
+        "build": "next build && npm run jredirects && npm run prisma-generate && npm run compile-timeline",
+            "jredirects": "cd jredirects && ./build.sh",
+            "prisma-generate": "npx prisma generate --schema ./data/prisma/schema.prisma",
+            "compile-timeline": "cd public/timeline && tsc && cd ../..",
+        "start": "next start",
+
         "dev": "next dev",
         "dev-timeline": "cd public/timeline && ./dev.sh",
-        "build": "next build && npm run compile-timeline",
-        "vercel-build": "npm run prisma-generate",
-        "compile-timeline": "cd public/timeline && tsc && cd ../..",
-        "jredirects": "cd jredirects && ./build.sh",
-        "prisma-studio": "npx prisma studio --schema ./components/data/schema.prisma",
-        "prisma-generate": "npx prisma generate --schema ./components/data/schema.prisma",
-        "start": "next start",
-        "lint": "next lint",
-        "open-sitemap": "open https://docs.google.com/document/d/16YT7899bFbgKvBiruonL3wRYBa64Rj0m4cCRCL-VfAg/edit",
         "reset-data": "cd components/data && prisma db push && prisma migrate && npm run prisma-generate && ./insert-articles",
-        "test": "jest --verbose"
+        "lint": "next lint",
+        "test": "jest --verbose",
+
+        "prisma-studio": "npx prisma studio --schema ./data/prisma/schema.prisma",
+        "open-sitemap": "open https://docs.google.com/document/d/16YT7899bFbgKvBiruonL3wRYBa64Rj0m4cCRCL-VfAg/edit"
     },
     "dependencies": {
         "@emotion/css": "^11.11.2",

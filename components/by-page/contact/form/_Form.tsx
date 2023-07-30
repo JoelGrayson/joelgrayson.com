@@ -46,15 +46,15 @@ export default function Form() {
                 submitted
                 ? <div className='text-green-500 font-bold'>Message received. Thanks for getting in touch!</div>
                 : <form id='contactForm' method='POST' className='flex flex-col items-center' action='#' onSubmit={onFormSubmit(setSubmitted)}>
-                    <div className='w-full flex justify-center gap-[12px]'>
+                    <div className='w-full flex justify-center gap-[12px] pb-3'>
                         <input type='text' name='name' id='name' placeholder='Name' />
                         <input type='email' name='email' id='email' placeholder='Email' />
                     </div>
                     <textarea name='message' id='message' placeholder='Type your message here' form='contactForm'
                         cols={50} rows={8}
-                        className='mx-8 resize-none'
+                        className='mx-8 resize-none mb-[-5px]'
                     />
-                    <br/>
+                    <br />
                     {/* Captcha? */}
                     <input className='blue-btn w-fit mb-6' type='submit' value='Send' />
                 </form>
