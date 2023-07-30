@@ -2,7 +2,7 @@
 .next
 public/timeline/dist
 !public/timeline/dist/tinycolor.js
-# jredirects/dist.js
+jredirects/dist.js
 
 
 # Secrets

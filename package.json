@@ -5,7 +5,7 @@
     "license": "UCJG",
     "homepage": "https://joelgrayson.com",
     "scripts": {
-        "build": "next build && npm run jredirects && npm run prisma-generate && npm run compile-timeline",
+        "build": "npm run jredirects && npm run prisma-generate && npm run compile-timeline && next build",
             "jredirects": "cd jredirects && ./build.sh",
             "prisma-generate": "npx prisma generate --schema ./data/prisma/schema.prisma",
             "compile-timeline": "cd public/timeline && tsc && cd ../..",
