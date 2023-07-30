@@ -16,7 +16,6 @@ export default function Software() {
         <div className={grid}>
             <Subject link='/software/homework-checker'>Homework Checker</Subject>
             <Subject link='/software/focus'>Focus</Subject>
-            <Subject link='/software/event-colorer'>Event Colorer</Subject>
         </div>
 
         <h3>Resources</h3>        
@@ -36,6 +35,7 @@ export default function Software() {
         <div className={grid}>
             <Subject link='/software/edit-time'>Edit Time</Subject>
             <Subject link='/software/chess'>Chess</Subject>
+            <Subject link='/software/event-colorer'>Event Colorer</Subject>
         </div>
     </Page>;
 }

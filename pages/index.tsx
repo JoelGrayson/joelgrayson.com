@@ -42,42 +42,19 @@ export default function Home() {
         <div className='w-full p-0 m-0'>
             {/* top */}
             <div className='w-full h-[290px] p-0' style={{background: 'linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(216,216,216,1) 100%)'}}>
-                <div className='j_max-w relative mx-auto h-full'> {/* container for images same width as content */}
+                <div className='j_max-w relative mx-auto px-12 flex justify-around items-end h-full'> {/* container for images same width as content */}
                     {/* signature gif */}
-                    <div className='absolute bottom-8 left-11'>
-                        <Image src='/image/ucjg/signature.gif' alt='Joel Grayson Signature' width='371' height='149' priority />
-                    </div>
+                    <Image
+                        src='/image/ucjg/signature.gif' alt='Joel Grayson Signature' width={371*.8} height={149*.8}
+                        className='pb-14'
+                        priority
+                    />
                     {/* Portrait */}
-                    <div className='absolute p-0 bottom-0 mb-[-6px] right-24'>
-                        <span style={{
-                            display: 'inline-flex',
-                            justifyContent: 'center',
-                            position: 'relative',
-                            top: 0
-                        }}>
-                            <span style={{
-                                position: 'relative',
-                                top: 40,
-                                height: 270+60,
-                                width: 209+20,
-                                borderRadius: 10,
-                                marginLeft: 3,
-                                marginRight: 3
-                            }}>
-                                <Image
-                                    src={`/image/home/portraits/3.20.2022/Joel Grayson.png`}
-                                    height={270} width={209}
-                                    alt='Joel Grayson Profile Photo'
-                                    style={{
-                                        position: 'absolute',
-                                        left: '10px',
-                                        bottom: '40px',
-                                    }}
-                                    priority
-                                />
-                            </span>
-                        </span>
-                    </div>
+                    <Image
+                        src={`/image/home/portraits/3.20.2022/Joel Grayson.png`} alt='Joel Grayson Profile Photo' height='270' width='209'
+                        className=''
+                        priority
+                    />
                 </div>
             </div>
 
