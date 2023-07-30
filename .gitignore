@@ -1,4 +1,11 @@
-# Private Secrets
+# Built on npm run build
+.next
+public/timeline/dist
+!public/timeline/dist/tinycolor.js
+# jredirects/dist.js
+
+
+# Secrets
 **/.env
 api.joelgrayson.com/private
 api.joelgrayson.com/node_modules
@@ -6,11 +13,10 @@ api.joelgrayson.com/node_modules
 
 # Bloat
 **/node_modules
-.next
 .vscode
 
 
-# Platform-Specific
+# MacOS-Specific
 **/.DS_Store
 Icon
 
@@ -19,9 +25,4 @@ Icon
 public/combating-climate-change/Combating Climate Change.pptx
 /TODO
 *.mp4
-
-
-# Compiled Timeline (recompiled on npm run vercel-build)
-public/timeline/dist
-!public/timeline/dist/tinycolor.js
 
