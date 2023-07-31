@@ -144,7 +144,7 @@ export default function Resume() {
                 <h3>Activities</h3>
                 <div className='relative'>
                     <span className='description'>Board member of Manhattan Community Board 1.</span>
-                    <span className='date'>2023&ndash;4</span>
+                    <span className='date'>2023&ndash;24</span>
                 </div>
                 <div className='relative'>
                     <span className='description'>Researched a novel compound to be part of organic solar cells&apos; photoactive layer at Lee Lab&apos;s crystal engineering lab as part of NYU&apos;s seven-week ARISE program.</span>
@@ -169,6 +169,10 @@ export default function Resume() {
                 <div className='relative'>
                     <span className='description'><a className="styled" href='youtube.com/SonAndFather'>YouTube channel</a> with father-son comedy, project records, and clay stop motion.</span>
                     <span className='date'>2018&ndash;present</span>
+                </div>
+                <div className='relative'>
+                    <span className='description'>Learned math, solved problems, and participated in competitions at NY Math Circle.</span>
+                    <span className='date'>2020&ndash;21</span>
                 </div>
             </div>
 
