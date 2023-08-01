@@ -68,21 +68,18 @@ export default function Resume() {
                 <h4>Climate Change</h4>
                 <ul>
                     <li>
-                        <Image src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='solar panel' width={26} height={20} className='mr-1 inline bottom-1 relative' />
-                        <span>Worked to bring a 410 kW solar installation to my school.</span>    
+                        <Image src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='solar panel' width={26} height={20}
+                            className='inline bottom-1 relative'
+                            style={{ right: 4 }}
+                        />
+                        <span>Brought 410 kW solar installation to my school, enough to power 40 households.</span>    
                         <span className="date">2021&ndash;present</span>
-                        <div className="description indent">Researched solar&apos;s feasibility, collected rooftop measurements, created solar models with HelioScope, got quotes from several installers, and presented to the Head of School and Board of Trustees. It will create enough energy to power 40+ households.</div>
+                        <div className="description indent">Collected rooftop measurements, created solar models in HelioScope, gathered quotes from several installers, researched legal and financial aspects, and presented to administration and Board of Trustees.</div>
                     </li>
-                    <li>
-                        <SEBLogo size={25} inline style={{ marginLeft: 4, marginRight: 4, top: 6 }} />
-                        <span>Founded Students for Electric Buses.</span>
-                        <span className="date">2021&ndash;present</span>
-                        <div className="description indent">Organized a coalition of students and administrators to integrate electric school buses into my school&apos;s bus company&apos;s all-diesel fleet.</div>
-                    </li>
-                    <li>
-                        <span>Presented on Climate Change.</span>
-                        <span className="date">2021&ndash;23</span>
-                        <div className="description indent">Delivered talks to the Middle School and Upper School on aspects of climate change and solutions students can take. Gave a speech at the Harvard Club to Riverdale alumni.</div>
+                    <li className='mb-2'>
+                        <SEBLogo size={25} inline style={{ marginLeft: 4, marginRight: -4, top: 7, right: 4 }} />
+                        <span>Founded <a href='https://studentsforelectricbuses.org'>Students for Electric Buses</a>, multi-school coalition, to electrify bus fleets.</span>
+                        <span className="date !top-[5px]">2021&ndash;present</span>
                     </li>
                     <li>
                         <Image src='/image/ccc/electric-leaf-blowers/electric-leaf-blower.png' alt='leaf blower' width={20} height={13} className='relative bottom-[3px] mr-1 inline' />
@@ -96,6 +93,18 @@ export default function Resume() {
                         <span className="date">2022</span>
                         <div className="description indent">Wrote to bus contractor to enforce <a className='styled' href='https://portal.311.nyc.gov/article/?kanumber=KA-02222'>NYC&apos;s law banning bus idling</a>.</div>
                     </li>
+                    <li className='mb-2 mt-2'>
+                        <span>Presented to middle school, upper school, and Riverdale alumni on climate solutions.</span>
+                        <span className="date">2021&ndash;23</span>
+                    </li>
+                    <li className='mb-2'>
+                        <span>Head of Sustainability Club (member 2021&ndash;23).</span>
+                        <span className="date">2022&ndash;24</span>
+                    </li>
+                    <li>
+                        <span>Completed En-ROADS ambassador training program (climate educator).</span>
+                        <span className="date">2022&ndash;present</span>
+                    </li>
                 </ul>
             </div>
             
@@ -106,13 +115,13 @@ export default function Resume() {
                         <Image src='/image/home/buseroo-logo.png' alt='buseroo-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
                         <span><a href="https://buseroo.com" className='styled'>Buseroo.com</a></span>
                         <span className="date">2021&ndash;23</span>
-                        <div className="description indent">Kiosk and website finding the school bus going to a student&apos;s destination.</div>
+                        <div className="description indent">kiosk and website for students to find closest bus to any address.</div>
                     </li>
                     <li>
                         <Image src='/image/home/homework-checker-logo.png' alt='homework-checker-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
                         <span><a href='https://chrome.google.com/webstore/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj' className='styled'>Homework Checker</a></span>
                         <span className="date">2021&ndash;22</span>
-                        <div className="description indent">Helps 500+ students manage their homework every day.</div>
+                        <div className="description indent">Chrome extension helping 300+ students manage homework.</div>
                     </li>
                     <li>
                         <Image src='/image/home/focus-logo.png' alt='focus-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
@@ -124,7 +133,13 @@ export default function Resume() {
                         <Image src='/image/lirong-art/lirong-art.png' alt='lirongart-logo' width={16.8125} height={30} className='mr-1 inline bottom-[3px] right-[3px] relative' />
                         <span><a href='https://lirongart.com' className='styled'>LirongArt.com</a></span>
                         <span className="date">2020</span>
-                        <div className="description indent">Showcases and sells prints of my mother&apos;s paintings.</div>
+                        <div className="description indent">online gallery showcasing my mom’s paintings.</div>
+                    </li>
+                    <li>
+                        {/* TODO: icon */}
+                        <span>&emsp;&nbsp;Download link generators</span>
+                        <span className="date">2021</span>
+                        <div className="description indent">Tools for cloud storage used 17,000 times.</div>
                     </li>
                 </ul>
             </div>
@@ -143,19 +158,15 @@ export default function Resume() {
             <div className="section hover:bg-red-100">
                 <h3>Activities</h3>
                 <div className='relative'>
-                    <span className='description'>Board member of Manhattan Community Board 1.</span>
+                    <span className='description'>Manhattan Community Board 1 member: Environmental and Youth & Ed Committees.</span>
                     <span className='date'>2023&ndash;24</span>
                 </div>
                 <div className='relative'>
-                    <span className='description'>Researched a novel compound to be part of organic solar cells&apos; photoactive layer at Lee Lab&apos;s crystal engineering lab as part of NYU&apos;s seven-week ARISE program.</span>
+                    <span className='description'>Researched novel compound at Lee Lab in NYU Tandon&apos;s seven-week ARISE program.</span>
                     <span className='date relative'>2023</span>
                 </div>
                 <div className='relative'>
-                    <span className='description'>Trained as an En-ROADS Ambassador (climate educator).</span>
-                    <span className='date'>2022&ndash;present</span>
-                </div>
-                <div className='relative'>
-                    <span className='description'>Grade representative for five consecutive years in student government.</span>
+                    <span className='description'>Grade representative for five years in student government.</span>
                     <span className='date'>2019&ndash;present</span>
                 </div>
                 <div className='relative'>
@@ -167,12 +178,16 @@ export default function Resume() {
                     <span className='date'>2021</span>
                 </div>
                 <div className='relative'>
-                    <span className='description'><a className="styled" href='youtube.com/SonAndFather'>YouTube channel</a> with father-son comedy, project records, and clay stop motion.</span>
-                    <span className='date'>2018&ndash;present</span>
+                    <span className='description'>Summer courses: NY Math Circle, Center for Talented Youth, Brown, Tufts, BU.</span>
+                    <span className='date'>2015&ndash;22</span>
                 </div>
                 <div className='relative'>
-                    <span className='description'>Learned math, solved problems, and participated in competitions at NY Math Circle.</span>
-                    <span className='date'>2020&ndash;21</span>
+                    <span className='description'>Violin: Praeludium & Allegro, Spring, Bach&apos;s Concerto No. 1 recitals; Interlochen.</span>
+                    <span className='date'>2011&ndash;present</span>
+                </div>
+                <div className='relative'>
+                    <span className='description'><a className="styled" href='https://youtube.com/SonAndFather'>YouTube channel</a> with father-son comedy, project records, and claymation.</span>
+                    <span className='date'>2018&ndash;present</span>
                 </div>
             </div>
 
@@ -180,8 +195,8 @@ export default function Resume() {
             <div className="section hover:bg-yellow-100">
                 <h3>Honors</h3>
                 <div className='relative'>
-                    <span>Selected as a finalist in the Rise competition (global search for talented youth).</span>
-                    <span className='date'>2021</span>
+                    <span>Finalist in the Rise competition (global search for talented youth).</span>
+                    <span className='date'>2021&ndash;22</span>
                 </div>
             </div>            
         </div>
