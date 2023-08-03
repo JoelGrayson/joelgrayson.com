@@ -4,6 +4,7 @@ const h2='row-span-2';
 // Image path in /public/image/art/
 
 const images=[ //image path is {description}.jpg
+    '2023 Shelf Life.jpg',
     '2023 Cogito Ergo Sum.jpg',
     '2021 Vinik.jpg',
     '2021 Trump.jpg',
