@@ -15,7 +15,7 @@ const images=[ //image path is {description}.jpg
     '2021 Mitch McConnell.jpg',
     '2021 Generations.jpg',
   [ '2021 Chaotic Excitement.jpg', h2 ],
-    '2020.09.23 Zoom Tent (HQ for Impressions).jpg',
+    '2020.09.23 Zoom Tent.jpg',
     '2020.09.10 Zoom Class.jpg',
     '2020.09.08 Hand.jpg',
     '2020.06.21 Dad Eating Cereal.jpg',

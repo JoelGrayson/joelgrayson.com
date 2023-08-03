@@ -31,7 +31,7 @@ export default function Art() {
         description: 'Drawings and sculptures'
     }}>
         <h1 className='text-center'>Art</h1>
-        <p>Every child is an artist. The problem is how to remain an artist once he grows up. -Pablo Picasso</p>
+        <p>"Every child is an artist. The problem is how to remain an artist once he grows up." &mdash;Pablo Picasso</p>
 
         {/* Grid of Images to Select From */}
         <div style={{
