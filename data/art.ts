@@ -1,7 +1,10 @@
 const w2='col-span-2';
 const h2='row-span-2';
 
+// Image path in /public/image/art/
+
 const images=[ //image path is {description}.jpg
+    '2023 Cogito Ergo Sum.jpg',
     '2021 Vinik.jpg',
     '2021 Trump.jpg',
     '2021 Thoughts.jpg',
