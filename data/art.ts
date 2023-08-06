@@ -1,3 +1,4 @@
+// Attributes
 const w2='col-span-2';
 const h2='row-span-2';
 

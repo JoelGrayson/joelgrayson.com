@@ -6,6 +6,7 @@
     "homepage": "https://joelgrayson.com",
     "scripts": {
         "build": "npm run jredirects && npm run prisma-generate && npm run compile-timeline && next build",
+        "fast-build": "next build",
         "jredirects": "cd jredirects && ./build.sh",
         "prisma-generate": "npx prisma generate --schema ./data/prisma/schema.prisma",
         "compile-timeline": "cd public/timeline && tsc && cd ../..",

@@ -32,6 +32,7 @@ export default function Art() {
     }}>
         <h1 className='text-center'>Art</h1>
         <p>"Every child is an artist. The problem is how to remain an artist once he grows up." &mdash;Pablo Picasso</p>
+        <div className='row-span-2 col-span-2'></div> {/* make sure that tailwind renders row-span-2 and col-span-2 */}
 
         {/* Grid of Images to Select From */}
         <div style={{
