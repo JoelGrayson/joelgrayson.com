@@ -40,10 +40,11 @@ export default function OrganicOptoelectronics() {
         
         <br />        
         <h3>Learn More</h3>
-        {/* YouTube video to presentation at colloquium */}
-        <p>YouTube video explaining stuff in the lab to a general audience</p>
+        <p>Explaining stuff in the lab to a general audience</p>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/AuM790sAzUc" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
-        
+        <p>Presenting at the ARISE colloquium</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/kJgvV70m3Jg" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
+    
         <p>Poster</p>
         <PDF src='/research/organic-optoelectronics/Poster.pdf' height={464} />
         
