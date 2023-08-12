@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect, ReactNode } from 'react';
+import { useContext, ReactNode } from 'react';
 import Link from 'next/link';
 import { PathContext } from './PathContext';
 

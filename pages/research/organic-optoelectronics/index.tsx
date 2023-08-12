@@ -1,12 +1,12 @@
 import Page from '@/components/global/Page';
-import Button from '@jcomponents/button';
+// import Button from '@jcomponents/button';
 import Image from 'next/image';
 
 export default function OrganicOptoelectronics() {
     return <Page bottomPadding>
         <h1 className='text-center'>Twisting Crystals</h1>
 
-        <p>Studying the charge transfer complex between the CTC of bis(4-bromophenyl)amine and 4,4'-azopyridine (abbreviated as BrDPA-AzoBipy). It looks like this:</p>
+        <p>Studying the charge transfer complex between the CTC of bis(4-bromophenyl)amine and 4,4&quot;-azopyridine (abbreviated as BrDPA-AzoBipy). It looks like this:</p>
         <Image src='/research/organic-optoelectronics/BrDPA-AzoBipy Structure.png' width={150} height={230} alt='BrDPA-AzoBipy structure' />
         <br />
         

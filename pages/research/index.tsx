@@ -1,6 +1,6 @@
 import Page from '@/components/global/Page';
-import Button from '@jcomponents/button';
-import Image from 'next/image';
+// import Button from '@jcomponents/button';
+// import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Research() {

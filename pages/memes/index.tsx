@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Page from '@/components/global/Page';
 import Gallery from '@/components/gallery/Gallery';
 import memes from '@/data/memes';
@@ -6,6 +6,8 @@ import memes from '@/data/memes';
 const getDate=(name: string): Date | 'invalid date'=>{
     // name.matchAll(/\d{4}(.\d{2})?(.\d{2})?/)
     const dateStr=name.trim().split(' ')[0];
+
+    // eslint-disable-next-line no-unused-vars
     const [year, month, day]=dateStr.match(/\d{4}(.\d{2})?(.\d{2})?/) || [];
     if (year===undefined) return 'invalid date';
     const date=new Date();
@@ -27,18 +29,18 @@ export default function Memes() {
     const [galleryOpen, setGalleryOpen]=useState<boolean>(false);
     const [index, setIndex]=useState<number>(0);
 
-    useEffect(()=>{
-        const id=setInterval(()=>{
-            console.log('index', index);
-        }, 1000);
-        return ()=>clearInterval(id);
-    }, []);
+    // useEffect(()=>{
+    //     const id=setInterval(()=>{
+    //         console.log('index', index);
+    //     }, 1000);
+    //     return ()=>clearInterval(id);
+    // }, []);
 
     return <Page title='Art | Joel Grayson' seo={{
         description: 'Drawings and sculptures'
     }}>
         <h1 className='text-center'>Memes</h1>
-        <div className='row-span-2 col-span-2 text-center mt-5 p-2 p-3'></div> {/* make sure that tailwind renders row-span-2 and col-span-2 */}
+        <div className='row-span-2 col-span-2 text-center mt-5 p-3'></div> {/* make sure that tailwind renders row-span-2 and col-span-2 */}
 
         {/* Grid of Images to Select From */}
         <div style={{
@@ -98,6 +100,7 @@ export default function Memes() {
                                 className='min-w-full'
                                 data-index={index}
                                 onClick={(dataIndex=>{ //data-index doesn't work because the element clicked is inside {fullName}
+                                    // eslint-disable-next-line no-unused-vars
                                     return (e: any)=>{
                                         setIndex(dataIndex);
                                         setGalleryOpen(true);
