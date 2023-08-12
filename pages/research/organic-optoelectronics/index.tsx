@@ -1,6 +1,7 @@
 import Page from '@/components/global/Page';
 // import Button from '@jcomponents/button';
 import Image from 'next/image';
+import { Data } from './data';
 
 export default function OrganicOptoelectronics() {
     return <Page bottomPadding>
@@ -27,12 +28,7 @@ export default function OrganicOptoelectronics() {
         <p>TODO: test it in more devices like photodetectors and, if successful, organic solar cells.</p>
         <br />
 
-        <h3>Data</h3>
-        <ul>
-            <li><a className='styled' href="/research/organic-optoelectronics/microscope-photos.zip">Microscope Photos</a></li>
-            <li><a className='styled' href="/research/organic-optoelectronics/SEM-photos.zip">SEM Photos</a></li>
-            <li><a className='styled' href="/research/organic-optoelectronics/microspectroscopy-absorbance-data.zip">Microspectroscopy Absorbance Data</a></li>
-        </ul>
+        <Data />
         <br />
         
         <h3>Weekly presentations</h3>
