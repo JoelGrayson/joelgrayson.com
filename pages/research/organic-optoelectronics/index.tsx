@@ -13,7 +13,7 @@ export default function OrganicOptoelectronics() {
         
         <h3>Optimal Conditions for Twisting BrDPA-AzoBipy</h3>
         <ul>
-            <li>Additive: damar 10 wt% gum</li>
+            <li>Additive: damar 12 wt% gum</li>
             <li>Melting temperature: 140°C</li>
             <li>Cooling temperature: 70°C</li>
         </ul>
