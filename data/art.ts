@@ -1,7 +1,12 @@
+// Attributes
 const w2='col-span-2';
 const h2='row-span-2';
 
+// Image path in /public/image/art/
+
 const images=[ //image path is {description}.jpg
+    '2023 Shelf Life.jpg',
+    '2023 Cogito Ergo Sum.jpg',
     '2021 Vinik.jpg',
     '2021 Trump.jpg',
     '2021 Thoughts.jpg',
@@ -11,7 +16,7 @@ const images=[ //image path is {description}.jpg
     '2021 Mitch McConnell.jpg',
     '2021 Generations.jpg',
   [ '2021 Chaotic Excitement.jpg', h2 ],
-    '2020.09.23 Zoom Tent (HQ for Impressions).jpg',
+    '2020.09.23 Zoom Tent.jpg',
     '2020.09.10 Zoom Class.jpg',
     '2020.09.08 Hand.jpg',
     '2020.06.21 Dad Eating Cereal.jpg',

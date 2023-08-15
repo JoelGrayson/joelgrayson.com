@@ -27,6 +27,8 @@ export const permanent: redirects={ //301
     // Newest at top, oldest at bottom
     // Destination: source
 
+    'https://app.box.com/index.php?rm=box_download_shared_file&shared_name=8vr4uxd120zgw67ptebbpwq22w8gvsjm&file_id=f_1278121890609': '/research/organic-optoelectronics/microscope-photos.zip',
+    '/memes': '/meme',
     'https://api.joelgrayson.com/combating-climate-change/electric-school-buses-petition/': [
         '/electric-school-bus-petition',
         '/electric-school-buses-petition',
@@ -60,9 +62,9 @@ export const permanent: redirects={ //301
     '/sites': '/websites',
     '/perspective/mindfully-travelling-to-school': '/perspective/my-three-hour-journey-to-school',
     'https://joels-secrets-vemwxlduba-uk.a.run.app': ['/secrets', '/sign', '/secret'],
-    '/projects/art': '/art',
-    '/projects/machines': '/machines',
-    '/projects/performances': ['/performance', '/performances'],
+    '/art': ['/projects/art', '/arts', '/artwork'],
+    '/machines': ['/projects/machines', '/machine'],
+    '/performances': ['/performance', '/projects/performances', '/projects/performance'],
     'https://calendar.google.com/calendar/u/0?cid=Y182MTYxMThmYmE5ZTY1YWI0YzlkODlmZjAyZDlkMTcxNjE1ZjQ2ZTIyMzlhNTI0MWY1MDBlNjQzZTAyZmRmODRlQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20': '/software/day-number-calendar/google',
     '/software/day-number-calendar.ics': '/software/day-number-calendar/apple',
     '/software/days-until/': '/days-until',
@@ -73,7 +75,7 @@ export const permanent: redirects={ //301
     '/programs': ['/tools', '/tool'],
     '/to-be-finder/index.html': ['/to-be', '/to-be-verb', '/to-be-finder', '/to-be-verb-finder', '/be-verb'],
     '/audio': ['/sfx', '/sound', '/sound-effects', '/thelunarsquad-audio'],
-    '/projects/slaphappy': ['/Slaphappy', '/slaphappy'],
+    '/slaphappy': ['/Slaphappy', '/projects/slaphappy', '/son-and-father', '/sonandfather', '/SonAndFather'],
     '/perspective': ['/the-perspective', '/joels-perspective', '/blog'],
     '/open-in-new-tab-wix-code': ['/wix-code-new-tab', /open-in-new-tab(-using)?(-wix-code)?-velo/],
     '/onedrive-download-link-generator': [
