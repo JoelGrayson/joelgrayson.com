@@ -42,17 +42,35 @@ export default function Home() {
         <div className='w-full p-0 m-0'>
             {/* top */}
             <div className='w-full h-[290px] p-0' style={{background: 'linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(216,216,216,1) 100%)'}}>
-                <div className='j_max-w relative mx-auto px-12 flex justify-around items-end h-full'> {/* container for images same width as content */}
+                {/* container for images same width as content */}
+                <div className='
+                    j_max-w relative mx-auto px-12 flex justify-around items-end h-full
+                    m:flex-row-reverse
+                '>
                     {/* signature gif */}
-                    <Image
+                    {/* <Image
                         src='/image/ucjg/signature.gif' alt='Joel Grayson Signature' width={371*.8} height={149*.8}
-                        className='pb-14'
+                        className={`pb-14 m:w-[${371*.5}px] m:h-[${149*.5}]`}
+                        priority
+                    /> */}
+                    <Image
+                        src='/image/ucjg/signature.gif' alt='Joel Grayson Signature'
+                        width={371*.8} height={149*.8}
+                        className={`
+                            mb-14
+                            w-[297px] h-[119px]    ${''/* 80% OG size */}
+                            m:w-[185px] m:h-[74px] ${''/* 50% OG size */}
+                        `}
                         priority
                     />
                     {/* Portrait */}
                     <Image
-                        src={`/image/home/portraits/3.20.2022/Joel Grayson.png`} alt='Joel Grayson Profile Photo' height='270' width='209'
-                        className=''
+                        src={`/image/home/portraits/3.20.2022/Joel Grayson.png`} alt='Joel Grayson Profile Photo'
+                        width={209} height={270}
+                        className={`
+                            w-[209px] h-[270px]    ${''/* 100% OG size */}
+                            m:w-[146px] m:h-[118px] ${''/* 70% OG size */}
+                        `}
                         priority
                     />
                 </div>

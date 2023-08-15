@@ -2,6 +2,7 @@ import SEBLogo from "@/components/by-page/home/SEB Logo";
 import { css } from "@emotion/css";
 import Button from "@jcomponents/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Resume() {
     return <div className={css`
@@ -52,6 +53,13 @@ export default function Resume() {
     `}>
         <div id="root" className="j_container relative flex flex-col">
             <h1 className='text-center text-[46px] pt-4'>Joel Grayson</h1>
+
+            {/* Go to Site Button */}
+            <Link href="/" className="absolute top-12 left-8">
+                <Button>
+                    Go to Site
+                </Button>
+            </Link>
 
             {/* Export Button */}
             <a href="https://docs.google.com/document/d/1KQD6eFb9rgbHEaR4BImEVhEnJuohLjokrUrJYhuAgCk/export?format=pdf" target="_blank" className="absolute top-10 right-8">
