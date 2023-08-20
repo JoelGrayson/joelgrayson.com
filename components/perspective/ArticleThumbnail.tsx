@@ -21,7 +21,7 @@ export default function ArticleThumbnail({article}: {article: articleT}) { //rec
             <Image src={`/image/perspective/${article.hyphenatedTitle}/thumbnail.jpg`} alt='Article thumbnail' width='200' height='113' />
             <div className='text-center' style={{
                 fontFamily: 'AvenirMedium'
-            }}>{article.name}</div>
+            }}>{article.title}</div>
         </div>
     </Link>;
 }
