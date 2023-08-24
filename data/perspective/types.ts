@@ -8,7 +8,7 @@ export const displayCategory: Map<category, { name: string; color: string }>=new
 ]);
 
 export type article={
-    name: string;
+    title: string;
     hyphenatedTitle: string;
     date: Date;
     category: category;

@@ -43,8 +43,8 @@ export default function JoelsPerspective() { //List of articles
             case 'newest-to-oldest': return articles.sort((a, b)=>b.date.getTime()-a.date.getTime());
             case 'oldest-to-newest': return articles.sort((a, b)=>a.date.getTime()-b.date.getTime());
             case 'category':         return articles; //group later
-            case 'A-Z':              return articles.sort((a, b)=>a.name<b.name ? -1 : 1);
-            case 'Z-A':              return articles.sort((a, b)=>a.name<b.name ? 1 : -1);
+            case 'A-Z':              return articles.sort((a, b)=>a.title<b.title ? -1 : 1);
+            case 'Z-A':              return articles.sort((a, b)=>a.title<b.title ? 1 : -1);
         }
     })();
 
