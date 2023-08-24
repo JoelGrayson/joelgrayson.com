@@ -187,6 +187,7 @@ export default function Resume() {
                 </div>
                 <div className='relative'>
                     <span className='description'><a className="styled" href='https://youtube.com/SonAndFather'>YouTube channel</a> with father-son comedy, project records, and claymation.</span>
+                    {/* Wrote, acted, filmed, and edited 34 comedy videos with my father since age 11, created nine9 stop motion animations, and included other projects */}
                     <span className='date'>2018&ndash;present</span>
                 </div>
             </div>

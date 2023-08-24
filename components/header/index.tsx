@@ -11,7 +11,7 @@ import ViolinBow from './parts/ViolinBow';
 import JThreeDots from '../JThreeDots';
 
 export default function Header() {
-    const { asPath }=useRouter(); //the path (window object cannot be used)
+    const { route }=useRouter(); //the path (window object cannot be used)
     
     return (
         // Classname order: gradient, border, other
@@ -23,7 +23,7 @@ export default function Header() {
         '>
             <nav className='j_max-w mx-auto'>
                 <ul className='list-none items-center unstyled'>
-                    <PathContext.Provider value={asPath}>
+                    <PathContext.Provider value={route}>
                         <span className='flex w-full j_container m:p-0 m:grid grid-cols-3 grid-rows-2'>
                             <li className='m:order-3'><JThreeDots /></li>
                             

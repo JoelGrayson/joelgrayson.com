@@ -29,6 +29,8 @@ const data: eventT[]=[ //ordered from past to future in longest to shortest time
         +'\n✔ Sustainability x M&Ms (67%)'
         +'\n✔ NYC Gov (low)  x Building a Fusor (low)'
     ),
+    e('Industrial Revolution', { startDate: 'Jun 2023', endDate: 'Sep 2023', rangeScope: 'month' }, 'Assembled 3D Printer, Vending Machine, Slayer Exciter. Tentative: FiDi project, and real Tesla Coil'),
+    e('Supplement Factory', { startDate: 'Aug 2023', endDate: 'Sep 2023', rangeScope: 'month' }, 'Churning them out one at a time at a rate of one college per three days.'),
     
 
     // Months
