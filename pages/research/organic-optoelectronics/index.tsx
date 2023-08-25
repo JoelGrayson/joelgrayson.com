@@ -48,7 +48,7 @@ export default function OrganicOptoelectronics() {
         <p>Poster</p>
         <PDF src='/research/organic-optoelectronics/Poster.pdf' height={464} />
         
-        {/* Place to download my data */}
+        <p>This research was mentioned on <a href="https://ny1.com/nyc/all-boroughs/news/2023/08/17/students-work-on-real-world-problems-at-nyu-summer-stem-program" className='styled'>Spectrum NY1 at ny1.com/nyc/all-boroughs/news/2023/08/17/students-work-on-real-world-problems-at-nyu-summer-stem-program</a>.</p>
         <p>Research paper (coming soon)</p>
     </Page>;
 }
