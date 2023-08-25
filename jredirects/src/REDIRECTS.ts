@@ -27,6 +27,9 @@ export const permanent: redirects={ //301
     // Newest at top, oldest at bottom
     // Destination: source
 
+    // Pages
+    '/page/terms-and-conditions.html': ['/terms-and-conditions', '/terms-and-conditions/index.html'],
+
     'https://app.box.com/index.php?rm=box_download_shared_file&shared_name=8vr4uxd120zgw67ptebbpwq22w8gvsjm&file_id=f_1278121890609': '/research/organic-optoelectronics/microscope-photos.zip',
     '/memes': '/meme',
     'https://api.joelgrayson.com/combating-climate-change/electric-school-buses-petition/': [
