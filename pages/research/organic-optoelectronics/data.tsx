@@ -15,7 +15,7 @@ export function Data() {
             <li><a className='styled' href="/research/organic-optoelectronics/SEM-photos.zip">SEM Photos</a></li>
             <li><a className='styled' href="/research/organic-optoelectronics/microspectroscopy-absorbance-data.zip">Microspectroscopy Absorbance Data</a></li>
         </ul>
-        <Link href='/research/organic-optoelectronics'>See all info</Link>.
+        <Link href='/research/organic-optoelectronics' className='styled'>See all info</Link>.
     </>;
 }
 
