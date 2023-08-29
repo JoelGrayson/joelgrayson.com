@@ -43,7 +43,7 @@ export default function MemorizePi() {
         <h1 className='text-center'>MemorizePi</h1>
         {showInstructions && <div className='flex w-full justify-around mb-3'>
             <span>Start typing the digits of π. Press <kbd>?</kbd> or <kbd>tab</kbd> for the next digit if you forget.</span>
-            <Button style={{display: 'inline'}} onClick={()=>{ setShowInstructions(false); localStorage.setItem('showInstructions', 'false') }}>Hide</Button>
+            <Button style={{display: 'inline'}} onClick={()=>{ setShowInstructions(false); localStorage.setItem('showInstructions', 'false'); }}>Hide</Button>
         </div>}
         
         <div

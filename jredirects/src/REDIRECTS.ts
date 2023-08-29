@@ -28,7 +28,7 @@ export const permanent: redirects={ //301
     // Destination: source
 
     // Pages
-    '/memorize-pi': ['/memorize-the-digits-of-pi', '/memorize-digits-of-pi', '/memorize-digits-pi', '/memorize-pie', '/pi']
+    '/memorize-pi': ['/memorize-the-digits-of-pi', '/memorize-digits-of-pi', '/memorize-digits-pi', '/memorize-pie', '/pi'],
     '/page/terms-and-conditions.html': ['/terms-and-conditions', '/terms-and-conditions/index.html'],
 
     'https://app.box.com/index.php?rm=box_download_shared_file&shared_name=8vr4uxd120zgw67ptebbpwq22w8gvsjm&file_id=f_1278121890609': '/research/organic-optoelectronics/microscope-photos.zip',
