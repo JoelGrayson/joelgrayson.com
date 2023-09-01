@@ -1,6 +1,6 @@
 import Page from '@/components/global/Page';
 import Button from '@jcomponents/button';
-import styles from './btn-icon.module.css';
+import styles from '@/styles/btn-icon.module.css';
 import Link from 'next/link';
 
 export default function IcosahedronNavigation() {
