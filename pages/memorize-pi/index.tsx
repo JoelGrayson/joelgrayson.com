@@ -49,15 +49,42 @@ export default function MemorizePi() {
         <div
             onKeyUp={e=>typed(e.key)} tabIndex={0}
             style={{
-                color: lastTriggered+500>Date.now() ? 'red' : 'black'
+                color: lastTriggered+500>Date.now() ? 'red' : 'black',
+                // borderRadius: 10
             }}
             className='h-16 w-full flex items-center px-7 bg-yellow-400 break-all'
         >
             <span>
                 {content}
                 {showNextLetter && <span className='text-green-600 underline'>{digitsOfPi[numDigits+2]}</span>}
+                {/* <Cursor /> */}
             </span>
         </div>
     </Page>;
 }
 
+export function Cursor() {
+    return <>
+        <div id='cursor' className='h-1 w-1 bg-black absolute' style={{top: 0, left: 0}} />
+        <style jsx>{`
+            #cursor {
+                height: 1px;
+                width: 1px;
+                background-color: black;
+                position: absolute;
+                animation: blink 1s infinite;
+            }
+            @keyframes blink {
+                0% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+        `}</style>
+    </>;
+}
