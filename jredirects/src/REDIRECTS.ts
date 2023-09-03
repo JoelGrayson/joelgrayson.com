@@ -2,6 +2,7 @@ import { redirects } from './_internals/types';
 
 
 export const temporary: redirects={ //302
+    'https://docs.google.com/document/d/1KQD6eFb9rgbHEaR4BImEVhEnJuohLjokrUrJYhuAgCk/export?format=pdf': '/resume/download',
     '/fisher/index.html': ['/mr-fisher', '/mr. fisher', '/mister-fisher', '/paul-fisher', '/mrfisher', '/misterfisher', '/fisher'],
 
     // Polyfill the old wix website
@@ -69,7 +70,8 @@ export const permanent: redirects={ //301
     '/art': ['/projects/art', '/arts', '/artwork'],
     '/machines': ['/projects/machines', '/machine'],
     '/performances': ['/performance', '/projects/performances', '/projects/performance'],
-    'https://calendar.google.com/calendar/u/0?cid=Y182MTYxMThmYmE5ZTY1YWI0YzlkODlmZjAyZDlkMTcxNjE1ZjQ2ZTIyMzlhNTI0MWY1MDBlNjQzZTAyZmRmODRlQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20': '/software/day-number-calendar/google',
+    'https://calendar.google.com/calendar/u/0?cid=Y182MTYxMThmYmE5ZTY1YWI0YzlkODlmZjAyZDlkMTcxNjE1ZjQ2ZTIyMzlhNTI0MWY1MDBlNjQzZTAyZmRmODRlQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20': ['/software/day-number-calendar/google', '/software/day-number-calendar/calendar'],
+    'https://github.com/JoelGrayson/Day-Number-Calendar': '/software/day-number-calendar/github',
     '/software/day-number-calendar.ics': '/software/day-number-calendar/apple',
     '/software/days-until/': '/days-until',
     '/software/articlify/index.html': ['/software/articlify/'],

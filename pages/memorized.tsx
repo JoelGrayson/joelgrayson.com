@@ -1,6 +1,6 @@
 import Page from "@/components/global/Page";
 
-export default function Headers() {
+export default function Memorized() {
     return <Page bottomPadding>
         <h1 className="text-center">Memorized</h1>
         <ul>

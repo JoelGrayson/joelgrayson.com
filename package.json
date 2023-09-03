@@ -36,7 +36,7 @@
         "@jcomponents/writing-components": "^1.1.2",
         "@monaco-editor/react": "^4.5.1",
         "@mui/material": "^5.14.0",
-        "@prisma/client": "^5.1.1",
+        "@prisma/client": "^5.2.0",
         "@sendgrid/mail": "^7.7.0",
         "@types/react-latex": "^2.0.0",
         "@types/tinycolor2": "^1.4.3",
@@ -71,7 +71,7 @@
         "@types/react-dom": "18.2.7",
         "eslint": "8.45.0",
         "eslint-config-next": "13.4.10",
-        "prisma": "^5.1.1",
+        "prisma": "^5.2.0",
         "tailwindcss": "^3.3.3",
         "ts-jest": "^29.1.1",
         "typescript": "5.1.6"

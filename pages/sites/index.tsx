@@ -2,8 +2,14 @@ import React from 'react';
 import Link from 'next/link';
 import Container from '@jcomponents/container';
 
-export default function Sites() { /* bullet points of all sites */
+export default function SitesPage() {
     return <Container>
+        <Sites />
+    </Container>;
+}
+
+export function Sites() { /* bullet points of all sites */
+    return <>
         <h1 className='text-center'>Sites</h1>
         <ul>
             <Site>joelgrayson.com</Site>
@@ -19,7 +25,7 @@ export default function Sites() { /* bullet points of all sites */
             <Site>bulletbrainstorm.com</Site>
             <Site>shirtocracy.com</Site>
         </ul>
-    </Container>;
+    </>;
 }
 
 export function Site({children, href}: {children: string, href?: string}) {

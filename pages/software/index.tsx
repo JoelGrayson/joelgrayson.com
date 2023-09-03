@@ -1,6 +1,7 @@
 import Page from '@/components/global/Page';
 import { Subject } from 'pages/maths';
 import { css } from '@emotion/css';
+import Sites from 'pages/sites';
 
 export default function Software() {
     const grid=css`
@@ -9,7 +10,7 @@ export default function Software() {
         gap: 3px;
     `;
 
-    return <Page>
+    return <Page bottomPadding>
         <h1 className='text-center'>Software</h1>
 
         <h3>Extensions</h3>
@@ -37,6 +38,8 @@ export default function Software() {
             <Subject link='/software/chess'>Chess</Subject>
             <Subject link='/software/event-colorer'>Event Colorer</Subject>
         </div>
+
+        <Sites />
     </Page>;
 }
 
