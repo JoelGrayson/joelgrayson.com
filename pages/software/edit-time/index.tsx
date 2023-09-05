@@ -21,9 +21,17 @@ export default function EditTime() {
             <p className='h-fit'>1. Choose the file</p>
             <p className='h-fit'>2. Edit the file&apos;s name</p>
         </div>
+        <br />
 
         <h3>Demo</h3>
         <Image src="/software/edit-time/demo.gif" alt="Demo" width='554' height='338' />
+
+        <br />
+        <h3>Support/Bugs</h3>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSePFBfxJWYugRXSpnNXFOmJdlxzNqd4MeIxQFUkxl-rQDJBrQ/viewform?embedded=true" width="640" height="708">Loading…</iframe>
+
+        <h3>Privacy Policy</h3>
+        <p>No data is collected.</p>
     </Page>;
 }
 
