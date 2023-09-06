@@ -1,3 +1,5 @@
+/* From https://joelgrayson.com/styles/icon-close.v2.css */
+
 /* NOTE: MAKE THE PARENT OF ICON-CLOSE `position: relative` FOR THIS TO WORK */
 .icon-close {
     z-index: 1;

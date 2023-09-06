@@ -1,3 +1,5 @@
+/* From https://joelgrayson.com/styles/ucjg.v3.css */
+
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
 
 * {
@@ -9,22 +11,18 @@ p {
 }
 
 
-code {
+code { /* light code like notion */
     font-family: monospace;
     padding: .2ch;
-    border-radius: .8ch;
-    word-break: break-all;            
-    display: table;
-    padding: .7ch 1ch;
-    
-    /* Default light theme */
     color: #eb5757;
     background-color: #ededeb;
+    border-radius: .2ch;
 }
-code.dark {
+code.dark { /* dark code like sublime */
     background-color: #222;
-    color: #ff4d4d;
+    color: rgb(255, 77, 77);
 }
+
 
 
 .container {

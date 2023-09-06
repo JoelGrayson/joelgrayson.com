@@ -6,6 +6,12 @@ export const temporary: redirects={ //302
     'https://docs.google.com/document/d/1KQD6eFb9rgbHEaR4BImEVhEnJuohLjokrUrJYhuAgCk/export?format=pdf': '/resume/download',
     '/fisher/index.html': ['/mr-fisher', '/mr. fisher', '/mister-fisher', '/paul-fisher', '/mrfisher', '/misterfisher', '/fisher'],
 
+    // joelgrayson.com/styles Versioning System
+    '/styles/ucjg.v4.css': '/styles/ucjg.latest.css',
+    '/styles/button.v2.css': '/styles/button.latest.css',
+    '/styles/icon-close.v2.css': '/styles/icon-close.latest.css',
+    
+
     // Polyfill the old wix website
     'https://joelgrayson.wixsite.com/joelgrayson/onedrive-download-link-generator': '/onedrive-download-link-generator',
     'https://joelgrayson.wixsite.com/joelgrayson/drive-download-link-generator': '/drive-download-link-generator',
