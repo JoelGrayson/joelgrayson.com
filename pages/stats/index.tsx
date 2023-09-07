@@ -41,9 +41,21 @@ export default function Stats() {
     // eslint-disable-next-line
     }, []);
 
-    const [perspectiveInstalls, setPerspectiveInstalls]=useState<number | null>(null);
-    const [buserooInstalls, setBuserooInstalls]=useState<number | null>(null);
+    const [perspectiveViews, setPerspectiveViews]=useState<number | null>(null);
+    useEffect(()=>{
+        fetch('/api/perspective/total-views')
+            .then(res=>res.json())
+            .then(res=>setPerspectiveViews(res.views));
+    }, []);
+    
+    // const [buserooUsers, setBuserooUsers]=useState<number | null>(null);
     const [shanghaiDictionarySearches, setShanghaiDictionarySearches]=useState<number | null>(null);
+    useEffect(()=>{
+        fetch('https://shanghaidictionary.com/api/analytics/searches')
+            .then(res=>res.json())
+            .then(res=>setShanghaiDictionarySearches(res.searches));
+    }, []);
+
     const [ytData, setYtData]=useState<ytDataT | null>(null);
     const [hoveringYtSubscribers, setHoveringYtSubscribers]=useState<boolean>(false);
     const [hoveringYtViews, setHoveringYtViews]=useState<boolean>(false);
@@ -85,12 +97,12 @@ export default function Stats() {
                 </tr>
                 <tr>
                     <td>Perspective views</td>
-                    <td><Value>{perspectiveInstalls}</Value></td>
+                    <td><Value>{perspectiveViews}</Value></td>
                 </tr>
-                <tr>
+                {/* <tr>
                     <td>Buseroo.com users</td>
-                    <td><Value>{buserooInstalls}</Value></td>
-                </tr>
+                    <td><Value>{buserooUsers}</Value></td>
+                </tr> */}
                 <tr>
                     <td>ShanghaiDictionary.com searches</td>
                     <td><Value>{shanghaiDictionarySearches}</Value></td>
