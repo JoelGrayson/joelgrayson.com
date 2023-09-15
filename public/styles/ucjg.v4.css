@@ -142,3 +142,23 @@ button:disabled {
 .btn-green { background-color: #90ee90; }
 .btn-blue  { background-color: #aed8fc; }
 
+
+/* Table */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #555;
+}
+td, th {
+    padding: 16px;
+    border: 1px solid #555;
+}
+th {
+    text-align: center;
+    font-weight: bold;
+}
+td {
+    text-align: left;
+}
+

@@ -84,7 +84,10 @@ export default function Stats() {
     }, []);
 
     return <Page>
-        <h1>Stats</h1>
+        <h1 className='text-center'>
+            Stats
+            <svg id="Icons" width="20px" height="20px" style={{display: 'inline', marginLeft: 13, }} version="1.1" viewBox="0 0 32 32" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><style type="text/css" dangerouslySetInnerHTML={{__html: "\n\t.st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}\n" }} /><path className="st0" d="M16,24c3.6,0,7.1,0.7,10.2,2.1c1.8-2.2,2.8-5,2.8-8.1c0-7.2-5.8-13-13-13S3,10.8,3,18c0,3.1,1.1,5.9,2.8,8.1  C8.9,24.7,12.4,24,16,24z" /><line className="st0" x1={16} x2={16} y1={8} y2={10} /><line className="st0" x1="8.9" x2="10.3" y1="10.9" y2="12.3" /><line className="st0" x1={6} x2={8} y1={18} y2={18} /><line className="st0" x1={26} x2={24} y1={18} y2={18} /><line className="st0" x1="23.1" x2="21.7" y1="10.9" y2="12.3" /><line className="st0" x1={16} x2={20} y1={24} y2={16} /></svg>
+        </h1>
         <table onMouseEnter={()=>setHoveringYtSubscribers(true)} onMouseLeave={()=>setHoveringYtSubscribers(false)}>
             <tbody>
                 <tr>
@@ -104,11 +107,11 @@ export default function Stats() {
                     <td><Value>{buserooUsers}</Value></td>
                 </tr> */}
                 <tr>
-                    <td>ShanghaiDictionary.com searches</td>
+                    <td>ShanghaiDictionary.com searches&emsp;</td>
                     <td><Value>{shanghaiDictionarySearches}</Value></td>
                 </tr>
                 <tr onMouseEnter={()=>setHoveringYtSubscribers(true)} onMouseLeave={()=>setHoveringYtSubscribers(false)}>
-                    <td>Combined YouTube subscribers</td>
+                    <td>Combined YouTube subscribers&emsp;</td>
                     <td className='relative'>{ ytData
                         ? <>
                             <p>{fmt(ytData.slaphappy.subscribers+ytData.joelgrayson2.subscribers)}</p>
@@ -127,7 +130,7 @@ export default function Stats() {
                     }</td>
                 </tr>
                 <tr onMouseEnter={()=>setHoveringYtViews(true)} onMouseLeave={()=>setHoveringYtViews(false)}>
-                    <td>Combined YouTube subscribers</td>
+                    <td>Combined YouTube views</td>
                     <td className='relative'>{ ytData
                         ? <>
                             <p>{fmt(ytData.slaphappy.views+ytData.joelgrayson2.views)}</p>
