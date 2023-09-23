@@ -28,6 +28,8 @@ export default async function handler(globalReq: NextApiRequest, globalRes: Next
         fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`)
             .then(res=>res.json())
             .then(res=>{
+                if (!res.items) return {}; //error handling
+                
                 const slaphappy=res.items.find((channel: any)=>channel.id===slaphappyId);
                 const joelgrayson2=res.items.find((channel: any)=>channel.id===joelgrayson2Id);
                 return {
