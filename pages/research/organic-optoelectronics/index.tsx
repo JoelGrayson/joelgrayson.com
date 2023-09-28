@@ -25,7 +25,7 @@ export default function OrganicOptoelectronics() {
             <li>Not good for photoluminescent. Not fluorescent.</li>
             <li><a className='styled' href="/research/organic-optoelectronics/X-ray-diffraction.zip">X-Ray diffraction (from UNAM)</a></li>
         </ul>
-        <p>TODO: test it in more devices like photodetectors and, if successful, organic solar cells.</p>
+        {/* <p>TODO: test it in more devices like photodetectors and, if successful, organic solar cells.</p> */}
         <br />
 
         <Data />
@@ -50,6 +50,7 @@ export default function OrganicOptoelectronics() {
         
         <p>This research was mentioned on <a href="https://ny1.com/nyc/all-boroughs/news/2023/08/17/students-work-on-real-world-problems-at-nyu-summer-stem-program" className='styled'>Spectrum NY1 at ny1.com/nyc/all-boroughs/news/2023/08/17/students-work-on-real-world-problems-at-nyu-summer-stem-program</a>.</p>
         <p>Research paper (coming soon)</p>
+        <PDF src='/research/organic-optoelectronics/Twisting Charge Transfer Complex Crystals for Organic Optoelectronics Paper.pdf' height={700} />
     </Page>;
 }
 
