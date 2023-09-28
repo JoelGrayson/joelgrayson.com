@@ -33,9 +33,15 @@ function createGetChromeExtensionStats(url) {
         await page.waitForSelector('span[title$="users"]');
     
         const users=await page.evaluate(()=>{
-            const usersEl=document.querySelector('span[title$="users"]');
+            
+            const usersEl=document.querySelector('div.F9iKBc');
             const usersText=usersEl.innerText;
-            return parseInt(usersText.match(/(\d+) users/)?.[1] || '-1');
+            return parseInt(usersText.match(/([\d,]+) users/)?.[1]?.split(',')?.join('') || '-1');
+
+            // // Old Chrome Web Store GUI
+            // const usersEl=document.querySelector('span[title$="users"]');
+            // const usersText=usersEl.innerText;
+            // return parseInt(usersText.match(/(\d+) users/)?.[1] || '-1');
         });
         await page.close();
         await browser.close();
