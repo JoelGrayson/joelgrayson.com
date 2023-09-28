@@ -14,6 +14,7 @@ export const temporary: redirects={ //302
     
 
     // Polyfill the old wix website
+    'https://joelgrayson.wixsite.com/joelgrayson/tesseract-os': ['/tesseract', '/tesseract-os'],
     'https://joelgrayson.wixsite.com/joelgrayson/onedrive-download-link-generator': '/onedrive-download-link-generator',
     'https://joelgrayson.wixsite.com/joelgrayson/drive-download-link-generator': '/drive-download-link-generator',
     'https://joelgrayson.wixsite.com/joelgrayson/box-download-link-generator': '/box-download-link-generator',
