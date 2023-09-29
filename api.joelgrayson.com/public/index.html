@@ -13,14 +13,16 @@
         table {
             border-collapse: collapse;
         }
-        tr {
-            border: 1px solid black;
-        }
         td {
-            padding: 10px;
+            border: unset !important;
+        }
+        pre {
+            font-family: monospace;
+            text-wrap: wrap;
+            word-break: break-all;
         }
     </style>
-    <link href='https://joelgrayson.com/styles/ucjg.v3.css' rel='stylesheet'>
+    <link href='https://joelgrayson.com/styles/ucjg.v4.css' rel='stylesheet'>
 </head>
 <body>
     <div class="container">
@@ -42,19 +44,17 @@
                     <tbody>
                         <tr>
                             <td>
-                                <code style="width: 30vw; max-width: 400px;">
-                                    POST https://api.joelgrayson.com/verify 
-                                    <br>Content-Type: application/json
-                                    <br>
-                                    <br>{
-                                    <br>"message": "Hello world!",
-                                    <br>&emsp;"date": "11.25.2022",
-                                    <br>&emsp;"signature": "eD36chdJBHUFllp3T6w5oMiZ0+6LRGDi/2zp9ElO/YsT+Gdwv+SsFDhYGVagnkqDSbhX7oc0QLEThkseo2Nhig=="
-                                    <br>}
-                                </code>
+                                <code style=""><pre>POST https://api.joelgrayson.com/verify
+Content-Type: application/json
+
+{
+    "message": "Hello world!",
+    "date": "11.25.2022",
+    "signature": "eD36chdJBHUFllp3T6w5oMiZ0+6LRGDi/2zp9ElO/YsT+Gdwv+SsFDhYGVagnkqDSbhX7oc0QLEThkseo2Nhig=="
+}</pre></code>
                             </td>
-                            <td style="width: 30px; text-align: center;">→</td>
-                            <td style="width: 30vw; max-width: 400px;">
+                            <td style="">→</td>
+                            <td style="">
                                 <code><pre>{
     "status": "Success",
     "valid": true

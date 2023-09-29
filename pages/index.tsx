@@ -102,12 +102,12 @@ export default function Home() {
                             <Image alt='buseroo-logo' height={50} width={50} src='/image/home/buseroo-logo.png' />
                             <span>Buseroo.com</span>
                         </BtnIcon>
-                        <BtnIcon href='https://chrome.google.com/webstore/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf'>
+                        <BtnIcon href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf'>
                             <Image alt='focus-logo' height={50} width={50} src='/image/home/focus-logo.png' />
                             <span>Focus</span>
                             { focusInstalls!=null && <Label>{focusInstalls} installs</Label> }
                         </BtnIcon>
-                        <BtnIcon href='https://chrome.google.com/webstore/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>
+                        <BtnIcon href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>
                             <Image alt='homework-checker-logo' height={50} width={50} src='/image/home/homework-checker-logo.png' />
                             <span className='text-[0.8rem]'>Homework Checker</span>
                             { hCInstalls!=null && <Label>{hCInstalls} installs</Label> }

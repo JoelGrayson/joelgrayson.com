@@ -127,13 +127,13 @@ export default function Resume() {
                     </li>
                     <li>
                         <Image src='/image/home/homework-checker-logo.png' alt='homework-checker-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                        <span><a href='https://chrome.google.com/webstore/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj' className='styled'>Homework Checker</a></span>
+                        <span><a href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj' className='styled'>Homework Checker</a></span>
                         <span className="date">2021&ndash;22</span>
                         <div className="description indent">Chrome extension helping 300+ students manage homework.</div>
                     </li>
                     <li>
                         <Image src='/image/home/focus-logo.png' alt='focus-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                        <span><a href="https://chrome.google.com/webstore/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf" className='styled'>Focus</a></span>
+                        <span><a href="https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf" className='styled'>Focus</a></span>
                         <span className="date">2022</span>
                         <div className="description indent">Chrome extension helping 140+ people write distraction-free.</div>
                     </li>

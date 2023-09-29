@@ -3,8 +3,8 @@ const router=express.Router();
 const cacheMiddleware=require('./statCache');
 const puppeteer=require('puppeteer');
 
-const getHCInstalls=createGetChromeExtensionStats('https://chrome.google.com/webstore/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj');
-const getFocusInstalls=createGetChromeExtensionStats('https://chrome.google.com/webstore/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf');
+const getHCInstalls=createGetChromeExtensionStats('https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj');
+const getFocusInstalls=createGetChromeExtensionStats('https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf');
 
 router.get('/', cacheMiddleware, async (req, res)=>{
     const [hCInstalls, focusInstalls]=await Promise.all([
@@ -30,10 +30,9 @@ function createGetChromeExtensionStats(url) {
         const page=await browser.newPage();
     
         await page.goto(url, { waitUntil: 'domcontentloaded' });
-        await page.waitForSelector('span[title$="users"]');
+        // await page.waitForSelector('div.F9iKBc');
     
         const users=await page.evaluate(()=>{
-            
             const usersEl=document.querySelector('div.F9iKBc');
             const usersText=usersEl.innerText;
             return parseInt(usersText.match(/([\d,]+) users/)?.[1]?.split(',')?.join('') || '-1');
