@@ -16,12 +16,12 @@ export default function Home() {
     useEffect(()=>{
         if (hCInstalls!=null || focusInstalls!=null) return;
         
-        if (process.env.NODE_ENV==='development') { //skip calling api.joelgrayson.com/homepage-stats in development because of CORS error
-            console.log('skipping getting homepage-stats in development');
+        if (process.env.NODE_ENV==='development') { //skip calling api.joelgrayson.com/live-stats in development because of CORS error
+            console.log('skipping getting live-stats in development');
             setHCInstalls(-4);
             setFocusInstalls(-4);
         } else {
-            fetch('https://api.joelgrayson.com/homepage-stats')
+            fetch('https://api.joelgrayson.com/live-stats')
                 .then(res=>res.json())
                 .then((res)=>{
                     if (res.hCInstalls===-1 || !res.hCInstalls) return console.log('hCInstalls is -1');

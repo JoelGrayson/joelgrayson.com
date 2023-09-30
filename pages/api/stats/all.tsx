@@ -7,7 +7,7 @@ export default async function handler(globalReq: NextApiRequest, globalRes: Next
     const channelId=slaphappyId+','+joelgrayson2Id;
 
     const fetchRequests=[
-        fetch('https://api.joelgrayson.com/homepage-stats')
+        fetch('https://api.joelgrayson.com/live-stats')
             .then(res=>res.json())
             .then((res)=>{
                 return {

@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-const cacheMiddleware=require('./statCache');
+const cacheMiddleware=require('../../utils/cache');
 const puppeteer=require('puppeteer');
 
 const getHCInstalls=createGetChromeExtensionStats('https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj');

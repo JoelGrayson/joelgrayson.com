@@ -49,7 +49,8 @@ for (const [dest, src] of Object.entries(redirects)) {
 // ## API Page Routers
 app.post('/verify', require('./servers/verify/verify').verifyHandler);
 app.use('/combating-climate-change/electric-school-buses-petition/signatures', require('./servers/electric-school-buses-petition/server'));
-app.use('/homepage-stats', require('./servers/homepage-stats/server'));
+app.use('/live-stats', require('./servers/live-stats/server'));
+app.use('/stats-over-time', require('./servers/stats-over-time/server'));
 
 
 // ## 404
