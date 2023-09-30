@@ -1,4 +1,5 @@
-require('dotenv').config({ path: '../../.env' })
+const path=require('path');
+require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') })
 const { Client }=require('pg');
 
 module.exports=async function usePg(callback) {
@@ -11,6 +12,7 @@ module.exports=async function usePg(callback) {
     });
 
     await client.connect();
-    await callback(client);
+    const queryRes=await callback(client);
     client.end();
+    return queryRes;
 }

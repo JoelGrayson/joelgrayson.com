@@ -1,5 +1,5 @@
 const { v4: uuid }=require('uuid');
-const usePg = require('../utils/usePg');
+const usePg=require('../utils/usePg');
 require('dotenv').config({ path: '../../.env' })
 
 async function main() {

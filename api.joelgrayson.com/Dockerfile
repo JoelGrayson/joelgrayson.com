@@ -4,8 +4,9 @@ FROM ubuntu
 
 # Install Node & NPM
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y curl
+RUN apt-get install -y curl cron
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash
+# RUN sudo apt install -y Node.js npm
 RUN apt-get install -y nodejs
 # Fixing NPM to work
 RUN npm i -g npm@latest
@@ -24,6 +25,7 @@ WORKDIR /usr/src/app
 COPY . .
 ENV NODE_ENV=production
 RUN npm install --production
+RUN /usr/bin/crontab crontab
 
 
 EXPOSE 8080

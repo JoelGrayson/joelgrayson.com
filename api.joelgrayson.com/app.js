@@ -54,7 +54,7 @@ app.use('/stats-over-time', require('./servers/stats-over-time/server'));
 
 
 // ## 404
-app.use((req, res)=>{
+app.use('*', (req, res)=>{
     res.status(404).redirect('/404.html');
 });
 

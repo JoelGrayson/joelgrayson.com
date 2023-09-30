@@ -1,15 +1,16 @@
 const express=require('express');
 const router=express.Router();
 const cacheMiddleware=require('../../utils/cache');
-const { Client }=require('pg');
-require('dotenv').config({ path: '../../.env' });
+const usePg=require('../../utils/usePg');
 
-router.get('/', cacheMiddleware, async (req, res)=>{
-    const [hCInstalls, focusInstalls]=await Promise.all([
-        getHCInstalls,
-        getFocusInstalls
-    ]);
-    return res.json({ hCInstalls, focusInstalls });
+router.get('/', cacheMiddleware, async function StatsOverTime(req, res) {
+    const queryRes=await usePg(client=>{
+        return client.query(`
+            SELECT date, homeworkCheckerInstalls, focusInstalls, perspectiveViews, shanghaiDictionarySearches
+            FROM Stats;
+        `);
+    });
+    res.json(queryRes.rows);
 });
 
 module.exports=router;
