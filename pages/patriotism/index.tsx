@@ -1,15 +1,24 @@
 import Page from '@/components/global/Page';
 import { useState, useEffect, useRef } from 'react';
+import NextImage from 'next/image';
+import { PlayAudioIcon } from '@/components/Icons';
+import { Tooltip } from 'antd';
 
 const size=141;
 const poleWidth=5;
 const poleLeftOffset=3;
 
 export default function Patriotism() {
-    const [selectedFlag, setSelectedFlag]=useState<null | 'usa' | 'nyc' | 'ucjg'>(null);
+    const [selectedFlag, setSelectedFlag]=useState<null | 'usa' | 'nyc' | 'ucjg'>('nyc');
+
+    function playGraysonYes() {
+        console.log('playGraysonYes');
+        new Audio('/audio/patriotism/grayson-yes.mp3').play();
+    }
     
     return <Page>
-        <div onMouseLeave={()=>setSelectedFlag(null)}>
+        {/* <div onMouseLeave={()=>setSelectedFlag(null)}> */}
+        <div>
             <h1 className='text-center'>Patriotism</h1>
 
             <div style={{
@@ -27,17 +36,58 @@ export default function Patriotism() {
                 top: -1,
                 borderBottomLeftRadius: 15,
                 borderBottomRightRadius: 15,
+                borderTopLeftRadius: selectedFlag==='usa' ? 0 : 15,
+                borderTopRightRadius: selectedFlag==='ucjg' ? 0 : 15,
                 padding: 3
             }}>
-                {selectedFlag}
+                {
+                    selectedFlag==='usa'
+                    ? <div className='p-3 flex gap-3 items-center'>
+                        <span className='vertical'>My grandfather, Captain David Grayson, flying supplies from India over the Himalayas to China in the Hump airlift during WWII.</span>
+                        <NextImage
+                            src='/image/patriotism/David Grayson in WWII.jpg' alt='David Grayson in WWII'
+                            width='300' height='315'
+                        />
+                    </div>
+                    : selectedFlag==='nyc'
+                    ? <div className='flex items-center gap-3 p-3'>
+                        <div style={{
+                            width: '200',
+                            height: '271',
+                            position: 'relative'
+                        }}>
+                            <NextImage src='/image/patriotism/City Hall Rotunda.jpg' width='200' height='271' alt='Portrait in City Hall Rotunda' />
+                            <Tooltip title='Voting in community board'>
+                                <PlayAudioIcon
+                                    style={{
+                                        position: 'absolute',
+                                        bottom: 8,
+                                        right: 8,
+                                    }}
+                                    onClick={playGraysonYes}
+                                />
+                            </Tooltip>
+                        </div>
+                        <div>
+                            <p>I am a proud product of the Financial District of Lower Manhattan.</p>
+                        </div>
+                    </div>
+                    : selectedFlag==='ucjg'
+                    ? <div className='p-3 flex items-center flex-col gap-2'>
+                        <NextImage
+                            src='/image/patriotism/SCOTUCJG.jpg' alt='David Grayson in WWII'
+                            width='300' height='161'
+                        />
+                        Supreme Court of the United Cells of Joel Grayson
+                    </div>
+                    : null
+                }
             </div> }
         </div>
     </Page>;
 }
 
 export function Flag({ src, selected, ...props }: { src: string; selected: boolean; [key: string]: any }) {
-    // Captain David Grayson flying over the Himalaya Lift during WWII
-
     const canvasRef=useRef<HTMLCanvasElement>(null);
 
     useEffect(()=>{
@@ -82,7 +132,7 @@ export function Flag({ src, selected, ...props }: { src: string; selected: boole
         }, 80);
 
         return ()=>clearInterval(intervalId);
-    }, [canvasRef.current]);
+    }, [src]);
     
     return <canvas
         style={{

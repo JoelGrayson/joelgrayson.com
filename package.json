@@ -40,6 +40,7 @@
         "@sendgrid/mail": "^7.7.0",
         "@types/react-latex": "^2.0.0",
         "@types/tinycolor2": "^1.4.3",
+        "antd": "^5.9.4",
         "autoprefixer": "^10.4.14",
         "axios": "^1.4.0",
         "dotenv": "^16.3.1",
