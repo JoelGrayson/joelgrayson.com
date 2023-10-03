@@ -12,8 +12,7 @@ export default function NYCBudget() {
         [16.5, 'Other'],
     ];
 
-    return <Page>
-        <h1 className='text-center'>Title</h1>
+    return <Page bottomPadding>
         <style jsx>{`
             .overall-categories {
                 display: flex;
