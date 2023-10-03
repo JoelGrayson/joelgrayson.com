@@ -9,7 +9,7 @@ const poleWidth=5;
 const poleLeftOffset=3;
 
 export default function Patriotism() {
-    const [selectedFlag, setSelectedFlag]=useState<null | 'usa' | 'nyc' | 'ucjg'>('nyc');
+    const [selectedFlag, setSelectedFlag]=useState<null | 'usa' | 'nyc' | 'ucjg'>(null);
 
     function playGraysonYes() {
         console.log('playGraysonYes');
