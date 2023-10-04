@@ -10,7 +10,10 @@ export default function Software() {
         gap: 3px;
     `;
 
-    return <Page bottomPadding>
+    return <Page bottomPadding seo={{
+        title: 'Software',
+        description: 'Apps, extensions, resources, and developer tools that Joel has made'
+    }}>
         <h1 className='text-center'>Software</h1>
 
         <h3>Extensions</h3>

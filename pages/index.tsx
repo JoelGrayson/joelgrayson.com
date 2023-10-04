@@ -37,7 +37,10 @@ export default function Home() {
 
     return <Page seo={{
         title: 'Joel Grayson',
-        // TODO: description: ''
+        description: 'The official website of the United Cells of Joel Grayson',
+        og: {
+            image: '/image/home/portraits/3.20.2022/Joel Grayson.png'
+        }
     }} noPadding>
         <div className='w-full p-0 m-0'>
             {/* top */}
