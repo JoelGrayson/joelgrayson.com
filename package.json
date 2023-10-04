@@ -5,19 +5,21 @@
     "license": "UCJG",
     "homepage": "https://joelgrayson.com",
     "scripts": {
-        "build": "npm run jredirects && npm run prisma-generate && npm run compile-timeline && next build",
-        "fast-build": "next build",
+        "build": "npm run jredirects && npm run prisma-generate && npm run compile-timeline && npm run sitemap && npm run fast-build",
         "jredirects": "cd jredirects && ./build.sh",
         "prisma-generate": "npx prisma generate --schema ./data/prisma/schema.prisma",
         "compile-timeline": "cd public/timeline && tsc && cd ../..",
+        "sitemap": "node generate-sitemap",
+        "fast-build": "next build",
+
         "start": "next start",
         "dev": "next dev",
         "dev-timeline": "cd public/timeline && ./dev.sh",
         "reset-data": "cd components/data && prisma db push && prisma migrate && npm run prisma-generate && ./insert-articles",
         "lint": "next lint",
-        "test": "jest --verbose",
         "prisma-studio": "npx prisma studio --schema ./data/prisma/schema.prisma",
-        "open-sitemap": "open https://docs.google.com/document/d/16YT7899bFbgKvBiruonL3wRYBa64Rj0m4cCRCL-VfAg/edit"
+        "open-sitemap": "open https://docs.google.com/document/d/16YT7899bFbgKvBiruonL3wRYBa64Rj0m4cCRCL-VfAg/edit",
+        "test": "jest --verbose"
     },
     "dependencies": {
         "@emotion/css": "^11.11.2",

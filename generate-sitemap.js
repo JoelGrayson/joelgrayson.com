@@ -6,6 +6,8 @@ async function getXML() {
         .map(str=>str.match(/^pages\/(.*)\.(?:ts|tsx|js|jsx)$/)[1])
         .filter(str=>str.slice(3)!=='api')
         .map(str=>{
+            if (str==='index') //exception for homepage
+                return '';
             if (str.slice(-6)==='/index')
                 return str.slice(0, -6);
             else
