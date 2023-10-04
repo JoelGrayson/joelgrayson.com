@@ -54,8 +54,8 @@ export default function NYCBudget() {
         <p><a className='styled' href='https://www.nyc.gov/assets/omb/downloads/pdf/fps-jul-2023.pdf' target='_blank'>Source: July 2023 Financial Plan Statement Report 4 and 4a</a></p>
 
 
-        <h3>Capital Committments</h3>
-        <Image src='/nyc-budget/capital-committments.png' width={500} height={500} alt='Capital Committments circular packing chart' />
+        <h3>Capital Commitments</h3>
+        <Image src='/nyc-budget/capital-commitments.png' width={500} height={500} alt='Capital Commitments circular packing chart' />
         <p><a className='styled' href='https://www.nyc.gov/assets/omb/downloads/pdf/fps-jul-2023.pdf' target='_blank'>Source: July 2023 Financial Plan Statement Report 5</a></p>
 
 

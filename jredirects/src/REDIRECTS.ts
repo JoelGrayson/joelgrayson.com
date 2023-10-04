@@ -37,6 +37,7 @@ export const permanent: redirects={ //301
     // Newest at top, oldest at bottom
     // Destination: source
 
+    '/nyc-budget': ['/new-york-city-budget', '/nycbudget', '/newyorkcitybudget'],
     // Pages
     '/memorize-pi': ['/memorize-the-digits-of-pi', '/memorize-digits-of-pi', '/memorize-digits-pi', '/memorize-pie', '/pi', '/π', '/memorize-π'],
     '/page/terms-and-conditions.html': ['/terms-and-conditions', '/terms-and-conditions/index.html'],

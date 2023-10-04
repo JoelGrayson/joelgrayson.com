@@ -62,7 +62,7 @@ generate_image(pd.DataFrame({
 generate_image(pd.DataFrame({
     'Name': reversed(['Education', 'Housing', 'All Other Departments', 'Correction', 'Transit', 'Water Pollution Control', 'Economic Development', 'Highway and Streets', 'Water Supply', 'Parks', 'Police', 'Hospitals', 'Sanitation', 'Sewers', 'Water Mains, Sources & Treatment', 'Fire', 'Public Buildings', 'Highway Bridges', 'Waterway Bridges']),
     'Value': [4725.7, 4013.6, 3267.1, 3194.9, 1700, 1045.6, 827.1, 807.2, 770.6, 757.8, 504.1, 478.4, 471.6, 454.6, 410.9, 386.1, 265.8, 188.9, 28.8]
-}), 'Capital Committments', 'capital-committments.png')
+}), 'Capital Commitments', 'capital-commitments.png')
 
 '''
 TRANSIT $0.0 (C) $0.0 (C) $1,700.0 (C)
