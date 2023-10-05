@@ -1,8 +1,9 @@
 import { ReactNode } from 'react';
 import styles from '@/styles/ccc/sections.module.css';
+import { kebabCase } from 'lodash';
 
 export function Section({title, children}: {title: string, children: ReactNode}) {
-    return <section className={styles.section}>
+    return <section className={styles.section} id={kebabCase(title)}>
         <div className={styles.content}>
             <h2 className={styles['content-title']}>{title}</h2>
             {children}
@@ -11,7 +12,7 @@ export function Section({title, children}: {title: string, children: ReactNode})
 }
 
 export function Action({children, title, icon, ...props}: {children: ReactNode; title: string; icon?: React.ReactNode; [key: string]: any}) {
-    return <div {...props}>
+    return <div {...props} id={kebabCase(title)}>
         <div className={styles['action-title']}>
             <span>{title}</span>
             {icon}

@@ -60,6 +60,7 @@ export default function Home() {
                         src='/image/ucjg/signature.gif' alt='Joel Grayson Signature'
                         width={371*.8} height={149*.8}
                         className={`
+                            ml-3
                             mb-14
                             w-[297px] h-[119px]    ${''/* 80% OG size */}
                             m:w-[185px] m:h-[74px] ${''/* 50% OG size */}
@@ -68,11 +69,12 @@ export default function Home() {
                     />
                     {/* Portrait */}
                     <Image
-                        src={`/image/home/portraits/3.20.2022/Joel Grayson.png`} alt='Joel Grayson Profile Photo'
-                        width={209} height={270}
+                        src={`/image/home/portraits/4.22.2023/Joel Grayson.png`} alt='Joel Grayson Profile Photo'
+                        width={229} height={270}
                         className={`
-                            w-[209px] h-[270px]    ${''/* 100% OG size */}
-                            m:w-[146px] m:h-[118px] ${''/* 70% OG size */}
+                            mr-3
+                            w-[229px] h-[270px]    ${''/* 100% OG size */}
+                            m:w-[160px] m:h-[189px] ${''/* 70% OG size */}
                         `}
                         priority
                     />
@@ -83,7 +85,7 @@ export default function Home() {
                 <Block>
                     <h2 className='title text-center'>Climate Change Projects</h2>
                     <div className='flex justify-center'>
-                        <BtnIcon href='#'>
+                        <BtnIcon href='/combating-climate-change#solar-for-riverdale'>
                             <div style={{width: 50, height: 50, display: 'grid', placeItems: 'center'}}>
                                 <Image alt='solar' height={50} width={37.5} src='/image/ccc/solar-for-riverdale/solar-panel.png' />
                             </div>
