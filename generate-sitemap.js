@@ -16,7 +16,7 @@ async function getPagesURLs() {
 }
 
 async function getPublicURLs() {
-    const ignore=[];
+    const ignore=['/test-page.html'];
     // Get all html files and images
     return (await glob('public/**/*.{html,png,jpg,jpeg,webp,gif,svg,tif}'))
         .map(str=>str.slice(6))
