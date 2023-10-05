@@ -22,9 +22,8 @@ export default function Header() {
             m:pb-0
         '>
             <nav className='j_max-w mx-auto'>
-                <ul className='list-none items-center unstyled'>
-                    <PathContext.Provider value={route}>
-                        <span className='flex w-full j_container m:p-0 m:grid grid-cols-3 grid-rows-2'>
+                <PathContext.Provider value={route}>
+                    <ul className='unstyled flex w-full j_container m:p-0 m:grid grid-cols-3 grid-rows-2'>
                             <li className='m:order-3'><JThreeDots /></li>
                             
                             <HeaderItem link='/' className='m:order-1'>Home</HeaderItem>
@@ -61,9 +60,9 @@ export default function Header() {
 
                             <HeaderItem link='/perspective' className='m:order-4'>Perspective</HeaderItem>
                             <HeaderItem link='/contact' className='m:order-6'>Contact</HeaderItem>
-                        </span>
-                    </PathContext.Provider>
-                </ul>
+                        {/* </span> */}
+                    </ul>
+                </PathContext.Provider>
             </nav>
         </header>
     );

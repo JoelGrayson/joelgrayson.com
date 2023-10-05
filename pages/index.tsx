@@ -69,7 +69,7 @@ export default function Home() {
                     />
                     {/* Portrait */}
                     <Image
-                        src={`/image/home/portraits/4.22.2023/Joel Grayson.png`} alt='Joel Grayson Profile Photo'
+                        src={`/image/home/portraits/4.22.2023/Joel Grayson.webp`} alt='Joel Grayson Profile Photo'
                         width={229} height={270}
                         className={`
                             mr-3
