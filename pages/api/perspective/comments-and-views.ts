@@ -36,8 +36,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
     // Send data
     res.json({
-        views: data?.views || -1,
-        comments: data?.comments!
+        views: (data?.views || -1) as number,
+        comments: data?.comments as ExposedComment[]
     });
 
     try {
@@ -45,7 +45,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         await prisma.article.update({
             where: { hyphenatedTitle },
             data: {
-                views: (data?.views || 0)+1
+                views: (<number>data?.views || 0)+1
             }
         });
     } catch (e) {

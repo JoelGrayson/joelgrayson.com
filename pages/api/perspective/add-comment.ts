@@ -44,7 +44,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             email,
             content: comment,
             postedAt: new Date(),
-            articleId: article.id,
+            articleId: article.id as string,
             verified: false,
             verifyToken: token
         }
