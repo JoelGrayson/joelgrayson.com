@@ -129,10 +129,12 @@ input:focus, textarea:focus {
 .j_container {
     /* @apply w-[100%] mx-auto leading-7 py-10; */
     width: 100%;
+    max-width: 800px;
     margin: 0 auto;
     line-height: 1.75rem;
     padding: 0 2.5rem;
 }
+
 
 /* Buttons */
 .btn-red {
@@ -155,6 +157,7 @@ input:focus, textarea:focus {
 
 .j_max-w { /* page width */
     max-width: 800px;
+    margin: 0 auto;
 }
 
 /* > */

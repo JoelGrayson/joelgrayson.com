@@ -2,25 +2,36 @@ import { useState } from 'react';
 import Page from '@/components/global/Page';
 import SEBLogo from '@/components/by-page/home/SEB Logo';
 import Image from 'next/image';
-import Viewer from './Viewer';
+import styles from '@/styles/ccc/sections.module.css';
 import Link from 'next/link';
 import { Section, Action } from '@/components/by-page/combating-climate-change/helpers';
-import { viewers } from './InfoRenderer';
 import Button from '@jcomponents/button';
 import IdlingEngine from '@/components/by-page/combating-climate-change/IdlingEngine';
 import PDF from '@/components/global/PDF';
+import { Switch } from 'antd';
 
 export default function CCC() {
-    const [viewer, setViewer]=useState<viewers>(viewers.none); //viewer status
-    const wrap=(newViewerStatus: viewers)=>()=>setViewer(newViewerStatus); //wrap viewer change
+    const [showDescription, setShowDescription]=useState<boolean>(true);
 
     return <Page noPadding>
-        <Viewer status={viewer} setStatus={setViewer} />
-
+        {/* <Viewer status={viewer} setStatus={setViewer} /> */}
+        <section className={styles.section}>
+            <div className='j_container'>
+                <h1 className='text-center'>Combating Climate Change</h1>
+                <div className='d:flex d:justify-between'>
+                    <p>Here are my climate initiatives.</p>
+                    <div>
+                        <Switch defaultChecked onChange={setShowDescription} checked={showDescription} />
+                        <span className='ml-2 cursor-pointer' onClick={()=>setShowDescription(!showDescription)}>Show descriptions</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <Section title='Producing Clean Electricity'>
-            <Action title='Solar for Riverdale' onMouseEnter={wrap(viewers.solar)} icon={
+            <Action title='Solar for Riverdale' icon={
                 <Image src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='solar panel' width={26} height={20} className='ml-3 inline' />
-            }>
+            } {...{showDescription}}>
                 <p>While learning about different energy sources, I realized that my school&apos;s empty rooftops had great potential for solar energy. I measured the rooftops, created solar models in HelioScope (image below), calculated savings, and gathered quotes from two companies. I presented to the administration and board of trustees, who agreed to a 410 kW solar PPA arrangement (enough to power 40+ households) that will cover six buildings, promote renewable energy, and save the school tens of thousands of dollars every year.</p>
                 <Image src='/image/ccc/solar-for-riverdale/models.png' width={720} height={146} alt='Solar Models' />
                 <Image src='/image/ccc/solar-for-riverdale/Presenting.png' width={500} height={265} alt='Solar Models' priority />
@@ -37,21 +48,21 @@ export default function CCC() {
             </Action>
         </Section>
         <Section title='Electrification'>
-            <Action title='Students for Electric Buses' onMouseEnter={wrap(viewers.seb)} icon={
+            <Action title='Students for Electric Buses' icon={
                 <Link href='https://studentsforelectricbuses.org' target='_blank'>
                     <SEBLogo size={30} inline style={{ position: 'relative', top: 9 }} />
                 </Link>
-            }>
+            } {...{showDescription}}>
                 I formed a coalition of students, faculty, and administrators at Riverdale and Fieldston to integrate electric school buses into SuperSelby&apos;s all-diesel fleet, improving passenger health and city air quality and combating climate change.
             </Action>
-            <Action title='Electric Leaf Blowers' onMouseEnter={wrap(viewers.seb)} icon={
+            <Action title='Electric Leaf Blowers' icon={
                 <Image src='/image/ccc/electric-leaf-blowers/electric-leaf-blower.png' alt='leaf blower' width={20} height={14} className='ml-3 inline' />
-            }>
+            } {...{showDescription}}>
                 I convinced Riverdale&apos;s facilities to transition from gas to electric leaf blowers. Not only is it better for the environment, but it also reduces noise pollution and improves workers&apos; health.
             </Action>
         </Section>
         <Section title='Raising Public Awareness'>
-            <Action title='Middle School Combating Climate Change Presentation' onMouseEnter={wrap(viewers.msCCCPresentation)}>
+            <Action title='Middle School Combating Climate Change Presentation'>
                 <div className='d:flex'>
                     <div className='d:grid d:place-items-center'>
                         <Image width={380} height={205} src="/image/ccc/presenting/middle-school.jpg" alt="Presentation to the Middle School" />
@@ -67,7 +78,7 @@ export default function CCC() {
                     </div>
                 </div>
             </Action>
-            <Action title='Upper School Climate Solutions Presentation' onMouseEnter={wrap(viewers.msCCCPresentation)}>
+            <Action title='Upper School Climate Solutions Presentation'>
             <div className='flex justify-around items-center'>
                 <a className='m:hidden' href='/combating-climate-change/Climate Solutions for Riverdale.pptx'>
                     <Button>
@@ -80,41 +91,41 @@ export default function CCC() {
                 </div>
             </div>
             </Action>
-            <Action title='Petition for Electric School Buses' onMouseEnter={wrap(viewers.petitionForElectricSchoolBuses)}>
+            <Action title='Petition for Electric School Buses'>
                 Received <a href='https://api.joelgrayson.com/combating-climate-change/electric-school-buses-petition' target='_blank' className='styled'>313 petition signatures</a> for SuperSelby&apos;s adoption of electric school buses, kicking off Students for Electric Buses.
             </Action>
-            <Action title='The Need for a Nuclear Renaissance Presentation' onMouseEnter={wrap(viewers.presentationOnNuclearRenaissance)}>
+            <Action title='The Need for a Nuclear Renaissance Presentation'>
                 {/* TODO: add download link */}
                 <Link href='/combating-climate-change/the-need-for-a-nuclear-renaissance/index.html' className='styled'>
                     Presented on the need for a nuclear renaissance
                 </Link>
                 &nbsp;at Brown University.
             </Action>
-            <Action title='A Look into Climate Solutions Presentation' onMouseEnter={wrap(viewers.presentationOnNuclearRenaissance)}>
+            <Action title='A Look into Climate Solutions Presentation'>
                 {/* TODO: add download link */}
                 Presented A Look into Climate Solutions to advisors (small groups) using En-ROADS as an En-ROADS Ambassador.
             </Action>
-            <Action title='Article on Nuclear Energy' onMouseEnter={wrap(viewers.msCCCPresentation)}>
+            <Action title='Article on Nuclear Energy'>
                 {/* TODO: insert article */}
                 <Link className='styled' href='/perspective/why-we-need-nuclear-energy'>Published an article</Link> in my school&apos;s newspaper about the need for supporting nuclear energy.
             </Action>
         </Section>
         <Section title='Energy Efficiency'>
-            <Action title='Bus Idling Ban' onMouseEnter={wrap(viewers.busIdlingBan)}>
+            <Action title='Bus Idling Ban'>
                 <IdlingEngine />
                 Wrote to my school&apos;s bus contractor to enforce <a className='styled' href="https://portal.311.nyc.gov/article/?kanumber=KA-02222">NYC&apos;s law banning bus idling</a>.
             </Action>
-            <Action title='Stone House Group Internship' onMouseEnter={wrap(viewers.busIdlingBan)}>
+            <Action title='Stone House Group Internship'>
                 Researched building retrocomissioning for energy efficiency and NYC energy efficiency Local Laws.
             </Action>
-            <Action title='Buseroo' onMouseEnter={wrap(viewers.busIdlingBan)}>
+            <Action title='Buseroo'>
                 Encourages public transportation
                 Easier for students to go places
                 Students save money on car services and more equitable transportation
             </Action>
         </Section>
         <Section title='Resiliency'>
-            <Action title='Flood Resiliency' onMouseEnter={wrap(viewers.busIdlingBan)}>
+            <Action title='Flood Resiliency'>
                 Part of discussions in the planning of resiliency projects in Lower Manhattan as a member of the Environmental Protection Committee of Manhattan Community Board 1.
             </Action>
             {/* TODO: created a video explaining the resiliency projects in Lower Manhattan */}

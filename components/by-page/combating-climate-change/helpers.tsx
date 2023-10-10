@@ -11,7 +11,7 @@ export function Section({title, children}: {title: string, children: ReactNode})
     </section>;
 }
 
-export function Action({children, title, icon, ...props}: {children: ReactNode; title: string; icon?: React.ReactNode; [key: string]: any}) {
+export function Action({children, title, icon, showDescription, ...props}: {children: ReactNode; title: string; icon?: React.ReactNode; showDescription?: boolean; [key: string]: any}) {
     return <div {...props} id={kebabCase(title)} style={{
         marginBottom: '2.2rem',
         ...props.style
@@ -20,7 +20,10 @@ export function Action({children, title, icon, ...props}: {children: ReactNode; 
             <span>{title}</span>
             {icon}
         </div>
-        {children}
+        {
+            showDescription!==false //showDescription must be set in the element for it to work, not null
+            && children
+        }
     </div>;
 }
 
