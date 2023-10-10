@@ -54,7 +54,7 @@ export default function Header() {
                                 <HeaderGroupItem link='/zoom-timers'>Zoom Timers</HeaderGroupItem>
                                 <HeaderSubGroup title='Tools'>
                                     <HeaderGroupItem arrow={false} link='/drive-download-link-generator'>Drive Download Link Generator</HeaderGroupItem>
-                                    <HeaderGroupItem arrow={false} link='/chess-app'>Chess App</HeaderGroupItem>
+                                    <HeaderGroupItem arrow={false} link='/chess'>Chess</HeaderGroupItem>
                                 </HeaderSubGroup>
                             </HeaderGroup>
 
