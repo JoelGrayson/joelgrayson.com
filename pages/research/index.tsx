@@ -10,7 +10,7 @@ export default function Research() {
         <p><Link href='/research/organic-optoelectronics' className='styled'>
             Twisting Crystal Charge Transfer Complexes for Organic Optoelectronics
         </Link></p>
-        <p><Link href='/perspective/chinas-brutal-road-to-socialism' className='styled'>
+        <p><Link href='/blog/chinas-brutal-road-to-socialism' className='styled'>
             China&apos;s Brutal Road to Socialism
         </Link></p>
     </Page>;

@@ -58,7 +58,7 @@ export default function Header() {
                                 </HeaderSubGroup>
                             </HeaderGroup>
 
-                            <HeaderItem link='/perspective' className='m:order-4'>Perspective</HeaderItem>
+                            <HeaderItem link='/blog' className='m:order-4'>Blog</HeaderItem>
                             <HeaderItem link='/contact' className='m:order-6'>Contact</HeaderItem>
                         {/* </span> */}
                     </ul>

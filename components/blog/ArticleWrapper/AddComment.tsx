@@ -16,7 +16,7 @@ export default function AddComment({ hyphenatedTitle }: { hyphenatedTitle: strin
 
     function submitHandler() {
         console.log(JSON.stringify({ name, email, comment, hyphenatedTitle }));
-        fetch('/api/perspective/add-comment', {
+        fetch('/api/blog/add-comment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, comment, hyphenatedTitle })

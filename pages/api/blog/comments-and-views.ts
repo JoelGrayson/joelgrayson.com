@@ -6,7 +6,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const hyphenatedTitle=req.body.hyphenatedTitle;
     if (!hyphenatedTitle) return res.json('Invalid hyphenatedTitle');
 
-    console.log('Adding view for article with hyphenatedTitle', hyphenatedTitle);
+    // console.log('Adding view for article with hyphenatedTitle', hyphenatedTitle);
     
     let data;
     

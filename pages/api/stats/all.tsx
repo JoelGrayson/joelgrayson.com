@@ -15,10 +15,10 @@ export default async function handler(globalReq: NextApiRequest, globalRes: Next
                     focusInstalls: res.focusInstalls
                 };
             }),
-        fetch('https://joelgrayson.com/api/perspective/total-views')
+        fetch('https://joelgrayson.com/api/blog/total-views')
             .then(res=>res.json())
             .then(res=>({
-                perspectiveViews: res.views
+                blogViews: res.views
             })),
         fetch('https://shanghaidictionary.com/api/analytics/searches')
             .then(res=>res.json())

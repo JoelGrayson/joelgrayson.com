@@ -27,7 +27,6 @@ export const temporary: redirects={ //302
     'https://joelgrayson.wixsite.com/joelgrayson/joel-case': '/joel-case',
     'https://joelgrayson.wixsite.com/joelgrayson/projects': '/projects',
     'https://joelgrayson.wixsite.com/joelgrayson/big-sur-icons': '/big-sur-icons',
-    'https://joelgrayson.wixsite.com/joelgrayson/the-perspective': '/the-perspective',
     'https://joelgrayson.wixsite.com/joelgrayson/audio/*': '/audio/*',
     'https://joelgrayson.wixsite.com/joelgrayson': ['/wix', '/old', '/wixsite']
 };
@@ -75,7 +74,7 @@ export const permanent: redirects={ //301
         '/software/homeworkchecker'
     ],
     '/sites': '/websites',
-    '/perspective/mindfully-travelling-to-school': '/perspective/my-three-hour-journey-to-school',
+    '/blog/mindfully-travelling-to-school': '/blog/my-three-hour-journey-to-school',
     'https://joels-secrets-vemwxlduba-uk.a.run.app': ['/secrets', '/sign', '/secret'],
     '/art': ['/projects/art', '/arts', '/artwork'],
     '/machines': ['/projects/machines', '/machine'],
@@ -92,7 +91,8 @@ export const permanent: redirects={ //301
     '/to-be-finder/index.html': ['/to-be', '/to-be-verb', '/to-be-finder', '/to-be-verb-finder', '/be-verb'],
     '/audio': ['/sfx', '/sound', '/sound-effects', '/thelunarsquad-audio'],
     '/slaphappy': ['/Slaphappy', '/projects/slaphappy', '/son-and-father', '/sonandfather', '/SonAndFather'],
-    '/perspective': ['/the-perspective', '/joels-perspective', '/blog'],
+    '/blog': ['/the-blog', '/joels-blog', '/perspective', '/the-perspective'],
+    '/blog/*': ['/the-blog/*', '/joels-blog/*', '/perspective/*', '/the-perspective/*', '/joels-perspective/*'],
     '/open-in-new-tab-wix-code': ['/wix-code-new-tab', /open-in-new-tab(-using)?(-wix-code)?-velo/],
     '/onedrive-download-link-generator': [
         '/download-link-generator-onedrive', '/onedrive-download-link', '/onedrive-link-generator',

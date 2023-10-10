@@ -3,6 +3,6 @@ CREATE TABLE Stats(
     date DATE NOT NULL,
     homeworkCheckerInstalls INTEGER,
     focusInstalls INTEGER,
-    perspectiveViews INTEGER,
+    blogViews INTEGER,
     shanghaiDictionarySearches INTEGER
 );

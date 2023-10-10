@@ -6,10 +6,10 @@ import SEO, { SEOProps } from '@/components/global/SEO';
 
 const chomsky=localFont({ src: './chomsky-font/Chomsky.woff2' });
 
-export default function PerspectivePage({children, seo, maxWidth=800}: {children: React.ReactNode | any; seo?: SEOProps; maxWidth?: number}) {
+export default function BlogPage({children, seo, maxWidth=800}: {children: React.ReactNode | any; seo?: SEOProps; maxWidth?: number}) {
     return <div style={{backgroundColor: '#fdfdfd'}}>
         <SEO seo={{
-            title: "Joel's Perspective", //can be overridden by props.seo
+            title: "Joel's Blog", //can be overridden by props.seo
             description: 'Short blog articles about philosophy, science, climate change, and other topics',
             keywords: ['blog', 'Joel Grayson', 'articles'],
             ...seo
@@ -18,8 +18,8 @@ export default function PerspectivePage({children, seo, maxWidth=800}: {children
         <header className='relative flex justify-between items-center px-5 py-0'>
             <JThreeDots />
             <h1 className={`${chomsky.className} text-[2.5rem] sm:text-[3.4rem]`}>
-                <Link href='/perspective'>
-                    Joel&apos;s Perspective
+                <Link href='/blog'>
+                    Joel&apos;s Blog
                 </Link>
             </h1>
             <div />

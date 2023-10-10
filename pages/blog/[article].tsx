@@ -1,11 +1,11 @@
-// Perspective page custom 404 page that shows other articles to read
+// Blog page custom 404 page that shows other articles to read
 
 import { gsap } from 'gsap';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
-import { PerspectiveArticles } from '.';
-import PerspectivePage from '@/components/perspective/PerspectivePage';
+import { BlogArticles } from '.';
+import BlogPage from '@/components/blog/BlogPage';
 
 export default function ArticleNotFound() {
     const article=useRouter().query.article;
@@ -24,7 +24,7 @@ export default function ArticleNotFound() {
         });
     }, []);
 
-    return <PerspectivePage>
+    return <BlogPage>
         <div className='flex justify-center items-center pb-20'>
             <div className='left w-[500px] h-[350px] grid place-items-center'>
                 <Image ref={shrugRef} width='455' height='326' src='/image/joel/shrugging-2023.png' alt='Shrug' className='relative top-3' />
@@ -35,6 +35,6 @@ export default function ArticleNotFound() {
             </div>
         </div>
 
-        <PerspectiveArticles />
-    </PerspectivePage>;
+        <BlogArticles />
+    </BlogPage>;
 }

@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { article as articleT } from '@/data/perspective/types';
+import { article as articleT } from '@/data/blog/types';
 
 export default function ArticleThumbnail({article}: {article: articleT}) { //rectangle with thumbnail and title
-    return <Link href={`/perspective/${article.hyphenatedTitle}`} style={{width: 'fit-content', margin: '0.5rem'}}>
+    return <Link href={`/blog/${article.hyphenatedTitle}`} style={{width: 'fit-content', margin: '0.5rem'}}>
         {/* Thumbnail Heights
             CSS Size
                 image height: 113px
@@ -18,7 +18,7 @@ export default function ArticleThumbnail({article}: {article: articleT}) { //rec
             width: '250px',
         }}>
             {/* <div>{JSON.stringify(article)}</div> */}
-            <Image src={`/image/perspective/${article.hyphenatedTitle}/thumbnail.jpg`} alt='Article thumbnail' width='200' height='113' />
+            <Image src={`/image/blog/${article.hyphenatedTitle}/thumbnail.jpg`} alt='Article thumbnail' width='200' height='113' />
             <div className='text-center' style={{
                 fontFamily: 'AvenirMedium'
             }}>{article.title}</div>

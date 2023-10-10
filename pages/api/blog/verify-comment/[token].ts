@@ -25,5 +25,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         }
     });
 
-    res.redirect(`/perspective/${comment.Article.hyphenatedTitle}#comments`);
+    res.redirect(`/blog/${comment.Article.hyphenatedTitle}#comments`);
 }

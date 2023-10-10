@@ -1,4 +1,4 @@
-import ArticleWrapper from '@/components/perspective/ArticleWrapper';
+import ArticleWrapper from '@/components/blog/ArticleWrapper';
 import { P, BU } from '@jcomponents/writing-components';
 
 export default function ABetterWayToTeachMath() {

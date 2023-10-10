@@ -107,7 +107,7 @@ export default function CCC() {
             </Action>
             <Action title='Article on Nuclear Energy'>
                 {/* TODO: insert article */}
-                <Link className='styled' href='/perspective/why-we-need-nuclear-energy'>Published an article</Link> in my school&apos;s newspaper about the need for supporting nuclear energy.
+                <Link className='styled' href='/blog/why-we-need-nuclear-energy'>Published an article</Link> in my school&apos;s newspaper about the need for supporting nuclear energy.
             </Action>
         </Section>
         <Section title='Energy Efficiency'>

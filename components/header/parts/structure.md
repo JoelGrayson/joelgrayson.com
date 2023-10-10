@@ -14,7 +14,7 @@ HeaderGroup[title='Name on Button']:
 <HeaderItem link='/projects'>Projects</HeaderItem>
 <HeaderItem link='/art'>Art</HeaderItem>
 <HeaderItem link='/performances'>Performances</HeaderItem>
-<HeaderItem link='/perspective'>The Perspective</HeaderItem>
+<HeaderItem link='/blog'>The Blog</HeaderItem>
 
 // Climate Change (not used for single page instead)
 <HeaderGroup title='Combating Climate Change'>

@@ -1,4 +1,4 @@
-import ArticleWrapper from '@/components/perspective/ArticleWrapper';
+import ArticleWrapper from '@/components/blog/ArticleWrapper';
 import { Citation, Footnote, P, HangingIndent } from '@jcomponents/writing-components';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -75,7 +75,7 @@ export default function ChinasBrutalRoadToSocialism() {
 
 function Character({ name, alt }: { name: string; alt: string }) {
     return <Image
-        src={`/image/perspective/chinas-brutal-road-to-socialism/${name}.jpg`} title={alt} alt={`Calligraphic character for ${name}`}
+        src={`/image/blog/chinas-brutal-road-to-socialism/${name}.jpg`} title={alt} alt={`Calligraphic character for ${name}`}
         width={30} height={30}
         style={{
             position: 'absolute'

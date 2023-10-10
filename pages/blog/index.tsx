@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
 import Router from 'next/router';
-import PerspectivePage from '@/components/perspective/PerspectivePage';
-import { articles } from '@/data/perspective';
-import { categories, displayCategory } from '@/data/perspective/types';
-import ArticleThumbnail from '@/components/perspective/ArticleThumbnail';
+import BlogPage from '@/components/blog/BlogPage';
+import { articles } from '@/data/blog';
+import { categories, displayCategory } from '@/data/blog/types';
+import ArticleThumbnail from '@/components/blog/ArticleThumbnail';
 
 const gridStyle={
     display: 'grid',
@@ -11,13 +11,13 @@ const gridStyle={
     justifyItems: 'center',
 };
 
-export default function JoelsPerspective() { //List of articles
-    return <PerspectivePage>
-        <PerspectiveArticles />
-    </PerspectivePage>;
+export default function JoelsBlog() { //List of articles
+    return <BlogPage>
+        <BlogArticles />
+    </BlogPage>;
 }
 
-export function PerspectiveArticles() {
+export function BlogArticles() {
     // # Sort_By
     const defaultSortingMethod='newest-to-oldest';
     type sortingMethodT='newest-to-oldest' | 'oldest-to-newest' | 'category' | 'A-Z' | 'Z-A';

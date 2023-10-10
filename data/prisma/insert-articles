@@ -44,6 +44,6 @@ const prisma=new PrismaClient();
 ===Wix Views===
 Mindfully Traveling to School: 86
 Connecting with the Past: 24
-My Perspective on the Laws of Physics & Life: 35
+My Blog on the Laws of Physics & Life: 35
 Why We Need Nuclear Reactors: 58
 */

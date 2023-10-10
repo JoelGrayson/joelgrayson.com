@@ -41,11 +41,11 @@ export default function Stats() {
     // eslint-disable-next-line
     }, []);
 
-    const [perspectiveViews, setPerspectiveViews]=useState<number | null>(null);
+    const [blogViews, setBlogViews]=useState<number | null>(null);
     useEffect(()=>{
-        fetch('/api/perspective/total-views')
+        fetch('/api/blog/total-views')
             .then(res=>res.json())
-            .then(res=>setPerspectiveViews(res.views));
+            .then(res=>setBlogViews(res.views));
     }, []);
     
     // const [buserooUsers, setBuserooUsers]=useState<number | null>(null);
@@ -99,8 +99,8 @@ export default function Stats() {
                     <td><Value>{hCInstalls}</Value></td>
                 </tr>
                 <tr>
-                    <td>Perspective views</td>
-                    <td><Value>{perspectiveViews}</Value></td>
+                    <td>Blog views</td>
+                    <td><Value>{blogViews}</Value></td>
                 </tr>
                 {/* <tr>
                     <td>Buseroo.com users</td>

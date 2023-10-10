@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import PerspectivePage from '../PerspectivePage';
+import BlogPage from '../BlogPage';
 import jdate from 'joeldate';
 import { ExposedComment } from '@/data/prisma/TYPES';
 import { Reply } from './Reply';
@@ -12,7 +12,7 @@ export default function Article({ hyphenatedTitle, title, date /** published dat
     useEffect(()=>{ //load from prisma
         if (!hyphenatedTitle) return;
 
-        fetch('/api/perspective/comments-and-views', {
+        fetch('/api/blog/comments-and-views', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -29,7 +29,7 @@ export default function Article({ hyphenatedTitle, title, date /** published dat
             });
     }, [hyphenatedTitle]);
     
-    return <PerspectivePage seo={{ title: title ? `${title} | Joel's Perspective` : "Joel's Perspective" }}>
+    return <BlogPage seo={{ title: title ? `${title} | Joel's Blog` : "Joel's Blog" }}>
         {/* Title & Date */}
         {!notitle && <h1 style={{fontSize: '2.5rem', textAlign: 'center'}}>{title}</h1>}
         {!nodate && <div className='text-right' title={date && `Published on ${jdate(date)}`}>{date && jdate(date)}</div>}
@@ -47,5 +47,5 @@ export default function Article({ hyphenatedTitle, title, date /** published dat
             )}
             <AddComment {...{hyphenatedTitle}} />
         </div>
-    </PerspectivePage>;
+    </BlogPage>;
 }

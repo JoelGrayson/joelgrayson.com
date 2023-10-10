@@ -1,4 +1,4 @@
-import ArticleWrapper from '@/components/perspective/ArticleWrapper';
+import ArticleWrapper from '@/components/blog/ArticleWrapper';
 import { P } from '@jcomponents/writing-components';
 import LaTeX from '@jcomponents/latex'; //heavy package
 
