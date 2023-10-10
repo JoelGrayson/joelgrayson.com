@@ -82,43 +82,37 @@ export default function Home() {
             </div>
 
             <article className='j_container j_max-w'>
-                <Block>
-                    <h2 className='title text-center'>Climate Change Projects</h2>
-                    <div className='flex justify-center'>
-                        <BtnIcon href='/combating-climate-change#solar-for-riverdale' target='_self'>
-                            <div style={{width: 50, height: 50, display: 'grid', placeItems: 'center'}}>
-                                <Image alt='solar' height={50} width={37.5} src='/image/ccc/solar-for-riverdale/solar-panel.png' />
-                            </div>
-                            <span>Solar for Riverdale</span>
-                        </BtnIcon> {/* sunbeam going down when hover */}
-                        <BtnIcon href='https://studentsforelectricbuses.org'>
-                            <SEBLogo size={75} />
-                            <span>Students for Electric Buses</span>
-                        </BtnIcon> {/* sunbeam going down when hover */}
-                        <BtnIcon href='#'>
-                            <span>Presentations</span>
-                        </BtnIcon> {/* sunbeam going down when hover */}
-                    </div>
-                </Block>
-                <Block>
-                    <h2 className='title text-center'>Software</h2>
-                    <div className='flex justify-center'>
-                        <BtnIcon href='https://buseroo.com'>
-                            <Image alt='buseroo-logo' height={50} width={50} src='/image/home/buseroo-logo.png' />
-                            <span>Buseroo.com</span>
-                        </BtnIcon>
-                        <BtnIcon href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf'>
-                            <Image alt='focus-logo' height={50} width={50} src='/image/home/focus-logo.png' />
-                            <span>Focus</span>
-                            { focusInstalls!=null && <Label>{focusInstalls} installs</Label> }
-                        </BtnIcon>
-                        <BtnIcon href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>
-                            <Image alt='homework-checker-logo' height={50} width={50} src='/image/home/homework-checker-logo.png' />
-                            <span className='text-[0.8rem]'>Homework Checker</span>
-                            { hCInstalls!=null && <Label>{hCInstalls} installs</Label> }
-                        </BtnIcon>
-                    </div>
-                </Block>
+                <div className='flex justify-center mt-4'>
+                    <BtnIcon href='/combating-climate-change#solar-for-riverdale' target='_self'>
+                        <div style={{width: 50, height: 50, display: 'grid', placeItems: 'center'}}>
+                            <Image alt='solar' height={50} width={37.5} src='/image/ccc/solar-for-riverdale/solar-panel.png' />
+                        </div>
+                        <span>Solar for Riverdale</span>
+                    </BtnIcon> {/* sunbeam going down when hover */}
+                    <BtnIcon href='https://studentsforelectricbuses.org'>
+                        <SEBLogo size={75} />
+                        <span>Students for Electric Buses</span>
+                    </BtnIcon> {/* sunbeam going down when hover */}
+                    <BtnIcon href='#'>
+                        <span>Presentations</span>
+                    </BtnIcon> {/* sunbeam going down when hover */}
+                </div>
+                <div className='flex justify-center'>
+                    <BtnIcon href='https://buseroo.com'>
+                        <Image alt='buseroo-logo' height={50} width={50} src='/image/home/buseroo-logo.png' />
+                        <span>Buseroo.com</span>
+                    </BtnIcon>
+                    <BtnIcon href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf'>
+                        <Image alt='focus-logo' height={50} width={50} src='/image/home/focus-logo.png' />
+                        <span>Focus</span>
+                        { focusInstalls!=null && <Label>{focusInstalls} installs</Label> }
+                    </BtnIcon>
+                    <BtnIcon href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>
+                        <Image alt='homework-checker-logo' height={50} width={50} src='/image/home/homework-checker-logo.png' />
+                        <span className='text-[0.8rem]'>Homework Checker</span>
+                        { hCInstalls!=null && <Label>{hCInstalls} installs</Label> }
+                    </BtnIcon>
+                </div>
                 <br />
             </article>
         </div>
