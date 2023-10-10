@@ -1,7 +1,7 @@
 import Page from '@/components/global/Page';
-// import Button from '@jcomponents/button';
 import Image from 'next/image';
 import { Data } from './data';
+import PDF from '@/components/global/PDF';
 
 export default function OrganicOptoelectronics() {
     return <Page bottomPadding>
@@ -54,12 +54,5 @@ export default function OrganicOptoelectronics() {
         <h3>Research Paper</h3>
         <PDF src='/research/organic-optoelectronics/Twisting Charge Transfer Complex Crystals for Organic Optoelectronics Paper.pdf' height={700} />
     </Page>;
-}
-
-
-export function PDF({ src, height }: { src: string; height: any }) {
-    return <object data={src} type="application/pdf" width="100%" height={height}>
-        <p>Unable to display PDF file. <a href={src} className='styled'>Download</a> instead.</p>
-    </object>;
 }
 
