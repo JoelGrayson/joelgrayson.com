@@ -4,6 +4,7 @@ export type SEOProps={
     title?: string;
     description?: string;
     keywords?: string | string[];
+    noIndex?: boolean;
     og?: { //open graph
         title?: string;
         type?: 'website' | 'article' | string;
@@ -24,12 +25,17 @@ export default function SEO({ seo }: { seo?: SEOProps }) {
             </> }
         </> }
 
+        
+        { seo?.noIndex //Tell Google to not index certain pages (like 404 error)
+            ? <meta name="robots" content="noindex" />
+            : <meta name='robots' content='index,follow' />
+        }
+
         {/* Default SEO */}
         <meta charSet='UTF-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
         <meta name='language' content='EN' />
-        <meta name='robots' content='index,follow' />
         <meta name='author' content='Joel Grayson' />
         <meta name='og:site_name' content='joelgrayson.com' />
         <meta name='og:type' content={seo?.og?.type || 'website'} />
