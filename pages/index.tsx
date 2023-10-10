@@ -69,7 +69,7 @@ export default function Home() {
                     />
                     {/* Portrait */}
                     <Image
-                        src={`/image/home/portraits/4.22.2023/Joel Grayson.webp`} alt='Joel Grayson Profile Photo'
+                        src='/image/home/portraits/4.22.2023/Joel Grayson.webp' alt='Joel Grayson Profile Photo'
                         width={229} height={270}
                         className={`
                             mr-3
@@ -85,7 +85,7 @@ export default function Home() {
                 <Block>
                     <h2 className='title text-center'>Climate Change Projects</h2>
                     <div className='flex justify-center'>
-                        <BtnIcon href='/combating-climate-change#solar-for-riverdale'>
+                        <BtnIcon href='/combating-climate-change#solar-for-riverdale' target='_self'>
                             <div style={{width: 50, height: 50, display: 'grid', placeItems: 'center'}}>
                                 <Image alt='solar' height={50} width={37.5} src='/image/ccc/solar-for-riverdale/solar-panel.png' />
                             </div>

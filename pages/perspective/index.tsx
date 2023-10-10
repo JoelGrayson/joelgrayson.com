@@ -12,6 +12,12 @@ const gridStyle={
 };
 
 export default function JoelsPerspective() { //List of articles
+    return <PerspectivePage>
+        <PerspectiveArticles />
+    </PerspectivePage>;
+}
+
+export function PerspectiveArticles() {
     // # Sort_By
     const defaultSortingMethod='newest-to-oldest';
     type sortingMethodT='newest-to-oldest' | 'oldest-to-newest' | 'category' | 'A-Z' | 'Z-A';
@@ -47,8 +53,8 @@ export default function JoelsPerspective() { //List of articles
             case 'Z-A':              return articles.sort((a, b)=>a.title<b.title ? 1 : -1);
         }
     })();
-
-    return <PerspectivePage>
+    
+    return <>
         <div className='flex justify-end mb-3'>
             <span>Sort by: </span>
             <select name='sorting-method' id='sorting-method' value={sortingMethod} onChange={e=>setSortingMethod(e.target.value as sortingMethodT)}>
@@ -79,5 +85,5 @@ export default function JoelsPerspective() { //List of articles
                 )
             }</div>
         }
-    </PerspectivePage>;
+    </>;
 }

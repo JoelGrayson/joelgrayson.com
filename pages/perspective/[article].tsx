@@ -1,13 +1,13 @@
+// Perspective page custom 404 page that shows other articles to read
+
 import { gsap } from 'gsap';
-import Page from '@/components/global/Page';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { PerspectiveArticles } from '.';
 import PerspectivePage from '@/components/perspective/PerspectivePage';
 
-export default function Article() {
+export default function ArticleNotFound() {
     const article=useRouter().query.article;
 
     const shrugRef=useRef() as React.MutableRefObject<HTMLImageElement>;
@@ -31,7 +31,7 @@ export default function Article() {
             </div>
             <div className='right flex flex-col items-center gap-8'>
                 <h1 className='text-5xl font-bold'>Article Not Found</h1>
-                <p>The article "{article}" does not exist. Below are the list of articles.</p>
+                <p>The article &quot;{article}&quot; does not exist. Below are the list of articles.</p>
             </div>
         </div>
 

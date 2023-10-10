@@ -25,10 +25,10 @@
 
 .viewerToggleContainer {
   position: absolute;
-  top: -24px;
-  right: 0;
+  top: -22px;
+  right: 4px;
   border: 2px solid #08811a;
-  height: 8px;
+  height: 22px;
   width: 25px;
   background: #fafafa;
 }
@@ -36,5 +36,5 @@
 .viewerToggle {
   position: relative;
   right: 5px;
-  bottom: 22px;
+  bottom: 3px;
 }/*# sourceMappingURL=viewer.module.css.map */

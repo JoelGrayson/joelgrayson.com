@@ -20,8 +20,8 @@ const StyledBtnIcon=styled.button`
     }
 `;
 
-export default function BtnIcon({href, children}: {href: string; children: any}) {
-    return <Link target='_blank' href={href}>
+export default function BtnIcon({ href, children, target='_blank' }: { href: string; children: any; target?: string }) {
+    return <Link {...{href, target}}>
         <StyledBtnIcon>{children}</StyledBtnIcon>
     </Link>;
 }
