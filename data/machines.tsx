@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Machine, DefaultTemplate, Yt } from './helpers';
+import { Machine, DefaultTemplate, Yt } from '../components/by-page/machines/helpers';
 
 export const machines: Machine[]=[
     {
@@ -13,8 +13,15 @@ export const machines: Machine[]=[
             date: '7.15.2021',
             title: <>Energy T-Shirt</>,
             desc: <>
-                <Image src='/image/machines/energy-t-shirt.jpg' height='300' width='200' alt='Energy T-Shirt Photo' />
-                <div>This t-shirt makes a noise proportional to the amount of light the solar panels receive, also powering a green fan. There is a back-up battery supply for the lights.</div>
+                <div className='d:flex d:gap-9'>
+                    <div className='d:w-[50%]'>
+                        This t-shirt makes a noise proportional to the amount of light the solar panels receive, also powering a green fan. There is a back-up battery supply for the lights.
+                    </div>
+                    <div className='flex m:mt-3'>
+                        <Image src='/image/machines/energy-t-shirt.jpg' height='230' width='160' alt='Energy T-Shirt Photo' />
+                        <img src='/image/machines/energy-t-shirt2.jpg' height='230' width='243' alt='Energy T-Shirt Photo Closeup' />
+                    </div>
+                </div>
             </>
         })
     },
@@ -28,7 +35,9 @@ export const machines: Machine[]=[
             date: '7.15.2021',
             title: <>Guardbox <small>(Arduino Safe)</small></>,
             desc: <>
-                The challenge was to create and present a safe in under 24 hours using Arduino. <br/> Code: <Link className='styled'  href='https://github.com/JoelGrayson/Guardbox'>github.com/JoelGrayson/Guardbox</Link>
+                <span className='d:w-[60%]'>
+                    The challenge was to create and present a safe in under 24 hours using Arduino. <br/> Code: <Link className='styled'  href='https://github.com/JoelGrayson/Guardbox'>github.com/JoelGrayson/Guardbox</Link>
+                </span>
                 <div style={{
                     position: 'absolute',
                     left: 490,
@@ -37,8 +46,8 @@ export const machines: Machine[]=[
                     <Image src='/image/machines/eater-inner-prototype.jpg' width='300' height='200' alt='Eater Inner Prototype' style={{ borderRadius: 10 }} />
                     <p className='text-center'>Inner circuitry that connects the Arduino, number pad, lock, screen, and lights.</p>
                 </div>
+                <Yt width={320} className='mt-3'>DbfRmZZx4VA</Yt>
             </>,
-            yt: 'DbfRmZZx4VA'
         })
     },
     {
@@ -51,10 +60,21 @@ export const machines: Machine[]=[
             date: '7.12.2021',
             title: <>Eater <small>(Arduino Game)</small></>,
             desc: <>
-                Game made in C++ for the Arduino.
-                <br/> Code: <Link className='styled' href='https://github.com/JoelGrayson/Eater-Arduino-Game'>github.com/JoelGrayson/Eater-Arduino-Game</Link>
-            </>,
-            yt: 'f52mLKATghw'
+            <div className='flex relative gap-6'>
+                <div className='w-[80%]'>
+                    <div>This project depicts the dystopian world many people imagine at the thought of nuclear energy.
+                    As a nuclear proponent myself (I wrote an article on my thoughts here), I wanted to explore the fear.</div>
+                    <div>Website: <Link className='styled'  href='https://joelgrayson.github.io/Nuclear-Dystopia'>joelgrayson.github.io/Nuclear-Dystopia</Link></div>
+                    <div>Code: <Link className='styled'  href='https://github.com/JoelGrayson/Guardbox'>github.com/JoelGrayson/Guardbox</Link></div>
+                </div>
+                <Yt width={300}>f52mLKATghw</Yt>
+            </div>
+        </>
+            // desc: <>
+            //     Game made in C++ for the Arduino.
+            //     <br/> Code: <Link className='styled' href='https://github.com/JoelGrayson/Eater-Arduino-Game'>github.com/JoelGrayson/Eater-Arduino-Game</Link>
+            // </>,
+            // yt: 'f52mLKATghw'
         })
     },
     {
@@ -87,7 +107,7 @@ export const machines: Machine[]=[
             date: new Date('May 6, 2021'), //sort by date of project
             title: 'Picnic Tables' //sort alphabetically
         },
-        html: <div className='relative h-[400px]'>
+        html: <div className='relative h-[393px]'>
             <Image className='absolute top-0 rounded-xl' src='/image/machines/picnic-table.jpg' width='300' height='242' alt='Picnic Table' />
             <Image className='absolute top-48 left-64 rounded-xl' src='/image/machines/constructing-picnic-table.gif' width='237' height='164' alt='Constructing Picnic Table' />
             <div className='absolute left-[370px] top-0'>
@@ -122,23 +142,22 @@ export const machines: Machine[]=[
             date: new Date('May 30, 2020'), //sort by date of project
             title: 'Tesla Coil' //sort alphabetically
         },
-        html: <div className='relative h-[240px]'>
+        html: <div className='relative h-[270px]'>
             <Image src='/image/machines/tesla-coil.jpg' width='350' height='213' alt='Fundraising for American Red Cross' style={{
                 position: 'absolute',
                 left: 0,
-                top: 0,
+                top: 10,
                 borderRadius: 10
             }} />
             <Image src='/image/machines/building-tesla-coil.jpg' width='263' height='180' alt='Building the Tesla Coil' style={{
                 position: 'absolute',
                 left: 370,
-                top: 50,
+                top: 65,
                 borderRadius: 10
             }} />
             <div style={{
                 position: 'absolute',
-                left: 380,
-                top: -21
+                left: 380
             }}>
                 <span>5.2020</span>
                 <h3 style={{ fontSize: '1.4rem', marginTop: -5 }}>Tesla Coil</h3>
@@ -250,7 +269,9 @@ export const machines: Machine[]=[
             }}>
                 <span>2016</span>
                 <h3 style={{fontSize: '1.4rem'}}>Wooden Pinball Machine</h3>
-                <p>Made afterschool in my school&apos;s woodshop. <Link className='styled' href='https://www.youtube.com/watch?v=uZWBtcp2BMU&list=PLPq06AMW3cIGYmcroupuIOC-vkwSVSW0I'>Demo video here</Link>.</p>
+                <p>Made afterschool in my school&apos;s woodshop.</p>
+                {/* <Link className='styled' href='https://www.youtube.com/watch?v=uZWBtcp2BMU&list=PLPq06AMW3cIGYmcroupuIOC-vkwSVSW0I'>Demo video here</Link> */}
+                <Yt width={300} className='mt-1'>uZWBtcp2BMU</Yt>
             </div>
         </div>
     },
@@ -298,10 +319,10 @@ export const machines: Machine[]=[
             date: new Date('May 30, 2016'), //sort by date of project
             title: 'The Gumball Machine' //sort alphabetically
         },
-        html: <div className='relative h-[300px] flex'>
-            <Image src='/image/machines/gumball-machine.jpg' width='314' height='290' alt='Gumball Machine' style={{
+        html: <div className='relative h-[230px] flex'>
+            <Image src='/image/machines/gumball-machine.jpg' width='150' height='200' alt='Gumball Machine' style={{
                 position: 'absolute',
-                left: 0,
+                left: 120,
                 top: 0,
                 borderRadius: 10
             }} />

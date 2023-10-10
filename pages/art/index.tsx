@@ -70,7 +70,7 @@ export default function Art() {
                             }}
                         >
                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img data-index={index} src={`/image/art/${fullName}`} alt={`Artwork titled '${name}' on ${dateStr}`} title={tooltip} />
+                            <img data-index={index} src={`/image/art/${encodeURIComponent(fullName)}`} alt={`Artwork titled '${name}' on ${dateStr}`} title={tooltip} />
                         </span>
                     </span>;
                 })

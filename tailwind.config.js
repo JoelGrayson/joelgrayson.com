@@ -6,6 +6,8 @@ module.exports = {
     content: [ //all pages for compilation
         './pages/**/*.{js,ts,jsx,tsx}',
         './components/**/*.{js,ts,jsx,tsx}',
+        './data/**/*.{js,ts,jsx,tsx}',
+        './helpers/**/*.{js,ts,jsx,tsx}'
     ],
     theme: {
         extend: {}
