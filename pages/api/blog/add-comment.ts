@@ -11,16 +11,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     
     const token=generateToken();
     
-    const verificationLink=`https://joelgrayson.vercel.app/api/blog/verify-comment/${token}`;
+    const verificationLink=`https://joelgrayson.com/api/blog/verify-comment/${token}`;
     sendEmail({
         to: email,
-        from: { name: `Joel's Blog`, email: 'bot@joelgrayson.com' }, //TODO: test if this works
+        from: { name: `Joel's Blog`, email: 'bot@joelgrayson.com' },
         subject: 'Confirm Comment',
-        text: `Please go to ${verificationLink} to confirm your comment. Once confirmed, the following will be posted\n`
+        text: `Please go to ${verificationLink} to confirm your comment. Once confirmed, the following comment will be posted:\n`
         +'Name: '+name+'\n'
         +'Email: '+email+'\n'
         +'Comment: '+comment+'\n',
-        html: `<p>Please go to <a href='${verificationLink}'>this link</a> to confirm your comment. Once confirmed, the comment will be posted</p>`
+        html: `
+            <p>Please go to <a href='${verificationLink}'>this link</a> to confirm your comment. Once confirmed, the following comment will be posted:</p>
+            <p></p>
+            <p>Name: ${name}</p>
+            <p>Email: ${email}</p>
+            <p>Comment: ${comment}</p>
+        `
     });
     
     const article=await prisma.article.findFirst({
