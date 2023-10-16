@@ -7,7 +7,31 @@ export const machines: Machine[]=[
         sortBy: {
             rank: 3, //sort by best project
             date: new Date('July 15, 2021'), //sort by date of project
-            title: 'Guardbox' //sort alphabetically
+            title: '3D-Printed Chess Board' //sort alphabetically
+        },
+        html: DefaultTemplate({
+            date: '10.11.2023',
+            title: <>3D-Printed Chess Board</>,
+            desc: <>
+                <div className='d:flex d:gap-9'>
+                    <div className='d:w-[50%]'>
+                        I designed the pieces in Blender{/* TODO: and downloadable here */}.
+                        <Image src='/image/machines/playing-chess.jpg' alt='Playing Chess' width='240' height='148' />
+                    </div>
+                    <div className='flex m:mt-3'>
+                        <video src="/image/machines/Chess Board.mov" autoPlay loop width={300} />
+                        {/* <iframe onLoad={e=>console.log(e)} width={560*.6} height={315*.6} src="https://www.youtube.com/embed/9vxgMEvz2uY?si=GgPF4nxeEC7yVSSc" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen /> */}
+                        {/* <iframe src="http://www.youtube.com/v/9vxgMEvz2uY?version=3&loop=1" /> */}
+                    </div>
+                </div>
+            </>
+        })
+    },
+    {
+        sortBy: {
+            rank: 3, //sort by best project
+            date: new Date('July 15, 2021'), //sort by date of project
+            title: 'Energy T-Shirt' //sort alphabetically
         },
         html: DefaultTemplate({
             date: '7.15.2021',
