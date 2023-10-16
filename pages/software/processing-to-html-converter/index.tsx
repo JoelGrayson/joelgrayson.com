@@ -66,6 +66,8 @@ ${polyfillProcessingCode(processingCode)}
             <h1 className='text-center text-5xl py-10'>Processing to HTML Converter</h1>
             <FontAwesomeIcon icon={faCircleInfo} width={30} className='ml-4' onClick={()=>setInfoModalOpen(true)} title='About this tool' />
         </div>
+        <p>Run your Processing code in the browser.</p>
+        
         <h2>Processing Code</h2>
         <div className='flex gap-2 items-center mb-3'>
             <label htmlFor='title'>Title</label>
