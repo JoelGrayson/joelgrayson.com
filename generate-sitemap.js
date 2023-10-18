@@ -2,6 +2,8 @@ const { glob }=require('glob');
 const fs=require('fs');
 
 async function getPagesURLs() {
+    const ignore=['/dashboard'];
+
     return (await glob('pages/**/*.{ts,tsx,js,jsx}', { ignore: ['pages/_*.tsx', 'pages/api/**/*'], cwd: __dirname }))
         .map(str=>str.match(/^pages\/(.*)\.(?:ts|tsx|js|jsx)$/)[1])
         .filter(str=>str.slice(3)!=='api')
@@ -12,7 +14,8 @@ async function getPagesURLs() {
                 return str.slice(0, -6);
             else
                 return str;
-        });
+        })
+        .filter(str=>!ignore.includes(str));
 }
 
 async function getPublicURLs() {

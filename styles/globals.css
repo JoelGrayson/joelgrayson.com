@@ -166,3 +166,24 @@ input:focus, textarea:focus {
 /* Specifics */
 .MathJax>svg { display: inline; }
 /* > */
+
+
+/* Table */
+.j_table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #555;
+}
+.j_table td, .j_table th {
+    padding: 16px;
+    border: 1px solid #555;
+}
+.j_table th {
+    text-align: center;
+    font-weight: bold;
+}
+.j_table td {
+    text-align: left;
+}
+
