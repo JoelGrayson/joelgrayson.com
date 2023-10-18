@@ -7,6 +7,7 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
+// # Blog
 model User {
     id        Int      @id @default(autoincrement())
     createdAt DateTime @default(now())
@@ -34,4 +35,30 @@ model Comment {
 
     verified    Boolean @default(false) //whether or not the email has been verified
     verifyToken String  @unique
+}
+
+// # Stats (api.joelgrayson.com adds stats to this table every morning)
+model Stats {
+    id                         String   @id @default(cuid())
+    date                       DateTime @default(now())
+    homeworkCheckerInstalls    Int?
+    focusInstalls              Int?
+    blogViews                  Int?
+    shanghaiDictionarySearches Int?
+}
+
+// # Logging
+model Error {
+    id      String   @id @default(cuid())
+    date    DateTime @default(now())
+    source  String //url or backend
+    message String
+}
+
+model Contact {
+    id      String   @id @default(cuid())
+    date    DateTime @default(now())
+    name    String
+    email   String
+    message String
 }

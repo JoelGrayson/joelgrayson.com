@@ -17,6 +17,8 @@ export default function Custom404() {
             duration: 1,
             ease: 'back' //'elastic'
         });
+
+        fetch('/api/log-error/page-not-found');
     }, []);
 
     return <Page noPadding seo={{
