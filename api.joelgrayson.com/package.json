@@ -7,7 +7,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "deploy": "./deploy.sh",
-    "run-local-docker": "docker build . -t api-joelgrayson-com && open http://localhost:8080 && docker run -p 8080:8080 api-joelgrayson-com"
+    "local-docker": "docker build . -t api-joelgrayson-com -f MacDockerFile && open http://localhost:8080 && docker run -p 8080:8080 api-joelgrayson-com"
   },
   "keywords": [],
   "author": "Joel Grayson <joel@joelgrayson.com> (https://github.com/JoelGrayson)",

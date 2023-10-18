@@ -1,6 +1,5 @@
 const { v4: uuid }=require('uuid');
 const usePg=require('../utils/usePg');
-require('dotenv').config({ path: '../../.env' })
 
 async function main() {
     const statistics=await fetch('https://joelgrayson.com/api/stats/all')
