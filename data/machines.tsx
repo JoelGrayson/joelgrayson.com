@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Machine, DefaultTemplate, Yt } from '../components/by-page/machines/helpers';
+import Button from '@jcomponents/button';
 
 export const machines: Machine[]=[
     {
@@ -15,7 +16,7 @@ export const machines: Machine[]=[
             desc: <>
                 <div className='d:flex d:gap-9'>
                     <div className='d:w-[50%]'>
-                        I designed the pieces in Blender{/* TODO: and downloadable here */}.
+                        I designed the pieces in Blender. <a href='/chess/Chess Pieces.zip'><Button>Download 3D Models</Button></a>
                         <Image src='/image/machines/playing-chess.jpg' alt='Playing Chess' width='240' height='148' />
                     </div>
                     <div className='flex m:mt-3'>
