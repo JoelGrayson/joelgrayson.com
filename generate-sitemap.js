@@ -2,7 +2,7 @@ const { glob }=require('glob');
 const fs=require('fs');
 
 async function getPagesURLs() {
-    const ignore=['/dashboard'];
+    const ignore=['/dashboard', '/nyc-government'];
 
     return (await glob('pages/**/*.{ts,tsx,js,jsx}', { ignore: ['pages/_*.tsx', 'pages/api/**/*'], cwd: __dirname }))
         .map(str=>str.match(/^pages\/(.*)\.(?:ts|tsx|js|jsx)$/)[1])

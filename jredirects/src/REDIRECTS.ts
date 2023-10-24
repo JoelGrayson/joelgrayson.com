@@ -2,6 +2,7 @@ import { redirects } from './_internals/types';
 
 
 export const temporary: redirects={ //302
+    '/nyc-government/nyc-budget': '/nyc-budget',
     '/chess/index.html': '/chess',
     '/software/edit-time': '/edit-time',
     'https://docs.google.com/document/d/1KQD6eFb9rgbHEaR4BImEVhEnJuohLjokrUrJYhuAgCk/export?format=pdf': '/resume/download',
