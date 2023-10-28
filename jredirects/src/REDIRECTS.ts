@@ -2,6 +2,7 @@ import { redirects } from './_internals/types';
 
 
 export const temporary: redirects={ //302
+    '/dashboard': ['/admin', '/control-panel', '/cpanel'],
     '/nyc-government/nyc-budget': '/nyc-budget',
     '/chess/index.html': '/chess',
     '/software/edit-time': '/edit-time',
