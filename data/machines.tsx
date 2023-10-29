@@ -196,15 +196,17 @@ export const machines: Machine[]=[
             title: 'Stilts' //sort alphabetically
         },
         html: <div className='relative h-[300px]'>
-            <Yt>-McMpUTj_SQ</Yt>
-            <div style={{
-                position: 'absolute',
-                left: 500,
-                top: 0
-            }}>
+            <div>
                 <span>5.2020</span>
                 <h3 style={{fontSize: '1.4rem'}}>Stilts</h3>
                 <p>Made in maker class.</p>
+            </div>
+            <div style={{
+                position: 'absolute',
+                right: 50,
+                top: 0
+            }}>
+                <Yt>-McMpUTj_SQ</Yt>
             </div>
         </div>
     },
@@ -341,14 +343,14 @@ export const machines: Machine[]=[
     {
         sortBy: {
             rank: 3, //sort by best project
-            date: new Date('May 30, 2016'), //sort by date of project
-            title: 'The Gumball Machine' //sort alphabetically
+            date: new Date('Sep 30, 2016'), //sort by date of project
+            title: 'Pop Quiz-o-meter' //sort alphabetically
         },
         html: <div className='relative h-[230px] flex'>
-            <Image src='/image/machines/gumball-machine.jpg' width='150' height='200' alt='Gumball Machine' style={{
+            <Image src='/image/machines/pop-quiz-o-meter.gif' width='150' height='200' alt='Pop Quiz-o-meter' style={{
                 position: 'absolute',
                 left: 120,
-                top: 0,
+                top: 50,
                 borderRadius: 10
             }} />
             <div style={{
@@ -356,9 +358,29 @@ export const machines: Machine[]=[
                 left: 370
             }}>
                 <span>circa 2015</span>
+                <h3 style={{fontSize: '1.4rem'}}>Pop Quiz-o-meter</h3>
+                <p>Used throughout middle school to predict the likelihood of a pop quiz in different classes. Every time there was a class, the meter went up. When there was a quiz in class, the class knob returned to 0 and a sharpie mark indicated where the meter was. This forecast told me when I should be prepared.</p>
+            </div>
+        </div>
+    },
+    {
+        sortBy: {
+            rank: 3, //sort by best project
+            date: new Date('May 30, 2016'), //sort by date of project
+            title: 'The Gumball Machine' //sort alphabetically
+        },
+        html: <div className='relative h-[230px] flex mx-[100px]'>
+            <div>
+                <span>circa 2015</span>
                 <h3 style={{fontSize: '1.4rem'}}>The Gumball Machine</h3>
                 <p>My oldest creation. It stores marbles.</p>
             </div>
+            <Image src='/image/machines/gumball-machine.jpg' width='150' height='200' alt='Gumball Machine' style={{
+                position: 'absolute',
+                right: 50,
+                top: 0,
+                borderRadius: 10
+            }} />
         </div>
     },
 ];
