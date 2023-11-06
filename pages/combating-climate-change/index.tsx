@@ -9,6 +9,7 @@ import Button from '@jcomponents/button';
 import IdlingEngine from '@/components/by-page/combating-climate-change/IdlingEngine';
 import PDF from '@/components/global/PDF';
 import { Switch } from 'antd';
+import Info from '@/components/global/Info';
 
 export default function CCC() {
     const [showDescription, setShowDescription]=useState<boolean>(true);
@@ -34,7 +35,7 @@ export default function CCC() {
             } {...{showDescription}}>
                 <div className='relative'>
                     <p>While learning about different energy sources, I realized that my school&apos;s empty rooftops had great potential for solar energy. I measured the rooftops, created solar models in HelioScope (image below), calculated savings, and gathered quotes from two companies. I presented to the administration and board of trustees, who agreed to a 410 kW solar PPA arrangement (enough to power 40+ households) that will cover six buildings, promote renewable energy, and save the school tens of thousands of dollars every year.</p>
-                    <p>85% of New York City&apos;s electricity comes from fossil fuels. My solar installation makes NYC&apos;s electricity <span className='bold text-green-700'>0.0075%</span> more renewable.</p>
+                    <p>85% of New York City&apos;s electricity comes from fossil fuels. My solar installation makes NYC&apos;s electricity <Green>0.0075%</Green> more renewable.</p>
                 </div>
                 <Image src='/image/ccc/solar-for-riverdale/models.png' width={720} height={146} alt='Solar Models' />
                 <Image src='/image/ccc/solar-for-riverdale/Presenting.png' width={500} height={265} alt='Solar Models' priority />
@@ -62,6 +63,11 @@ export default function CCC() {
                 <Image src='/image/ccc/electric-leaf-blowers/electric-leaf-blower.png' alt='leaf blower' width={20} height={14} className='ml-3 inline' />
             } {...{showDescription}}>
                 I convinced Riverdale&apos;s facilities to transition from gas to electric leaf blowers. Not only is it better for the environment, but it also reduces noise pollution and improves workers&apos; health.
+                <br />
+                Saved around <Green>675 kg of CO<sub>2</sub> emissions</Green> per year<Info>
+                    <p>5 kg of CO2 per hour of use (<a href='https://www.quietcleanpdx.org/wp-content/uploads/2019/11/Gas-Powered-Leaf-Blower-Emissions-Factsheet-11.12.pdf'>source</a>).</p>
+                    <p>5 kg*45 days per year*3 people per hour*1 hour per day=675 kg of emissions per year</p>
+                </Info>.
             </Action>
         </Section>
         <Section title='Raising Public Awareness'>
@@ -116,7 +122,14 @@ export default function CCC() {
         <Section title='Energy Efficiency'>
             <Action title='Bus Idling Ban' {...{showDescription}}>
                 <IdlingEngine />
-                Wrote to my school&apos;s bus contractor to enforce <a className='styled' href="https://portal.311.nyc.gov/article/?kanumber=KA-02222">NYC&apos;s law banning bus idling</a>.
+                <p>Wrote to my school&apos;s bus contractor to enforce <a className='styled' href="https://portal.311.nyc.gov/article/?kanumber=KA-02222">NYC&apos;s law banning bus idling</a>. The day afterward, buses went from idling for hours to minutes.</p>
+                <br />
+                <p>Reduced emissions by <Green>6706 kg of CO<sub>2</sub> emissions</Green> per year.
+                    <Info>
+                        .0690 kg per minute*90 minutes idling per day*180 days per year*6 buses doing this per day=6706 kg of CO<sub>2</sub> emissions per year
+                        (<a href="https://natural-resources.canada.ca/energy/efficiency/communities-infrastructure/transportation/idling/4463">source</a>)
+                    </Info>
+                </p>
             </Action>
             <Action title='Stone House Group Internship' {...{showDescription}}>
                 Researched building retrocomissioning for energy efficiency and NYC energy efficiency Local Laws.
@@ -124,7 +137,7 @@ export default function CCC() {
             <Action title='Buseroo' {...{showDescription}}>
                 Encourages public transportation
                 Easier for students to go places
-                Students save money on car services and more equitable transportation
+                Students save money on car services and more equitable transportation.
             </Action>
         </Section>
         <Section title='Resiliency'>
@@ -134,4 +147,8 @@ export default function CCC() {
             {/* TODO: created a video explaining the resiliency projects in Lower Manhattan */}
         </Section>
     </Page>;
+}
+
+export function Green({children}: {children: React.ReactNode}) {
+    return <span className='bold text-green-700'>{children}</span>;
 }
