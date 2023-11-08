@@ -14,6 +14,7 @@ export function Section({title, children}: {title: string, children: ReactNode})
 export function Action({children, title, icon, showDescription, ...props}: {children: ReactNode; title: string; icon?: React.ReactNode; showDescription?: boolean; [key: string]: any}) {
     return <div {...props} id={kebabCase(title)} style={{
         marginBottom: '2.2rem',
+        position: 'relative',
         ...props.style
     }}>
         <div className={styles['action-title']}>
