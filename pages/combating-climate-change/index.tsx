@@ -89,6 +89,36 @@ export default function CCC() {
                 </Savings>
             </Action>
         </Section>
+        <Section title='Energy Efficiency'>
+            <Action title='Bus Idling Ban' {...{showDescription}}>
+                <IdlingEngine />
+                <p>Wrote to my school&apos;s bus contractor to enforce <a className='styled' href="https://portal.311.nyc.gov/article/?kanumber=KA-02222">NYC&apos;s law banning bus idling</a>. The day afterward, buses went from idling for hours to minutes.</p>
+                <br />
+                <Savings>
+                    <span>Reduces emissions by <Green>6.7 metric tons of CO<sub>2</sub> emissions</Green> per year.</span>
+                    <Info>
+                        .0690 kg per minute*90 minutes idling per day*180 days per year*6 buses doing this per day=6706 kg of CO<sub>2</sub> emissions per year
+                        (<a href="https://natural-resources.canada.ca/energy/efficiency/communities-infrastructure/transportation/idling/4463">source</a>)
+                    </Info>
+                </Savings>
+            </Action>
+            <Action title='Stone House Group Internship' {...{showDescription}}>
+                Researched building retrocomissioning for energy efficiency and NYC energy efficiency Local Laws.
+            </Action>
+            <Action title='Buseroo' {...{showDescription}}>
+                Encourages public transportation
+                Easier for students to go places
+                Students save money on car services and more equitable transportation.
+                <Savings>
+                    <span>Saves <Green>0.1 metric tons of CO₂e emissions</Green> per year</span>
+                    <Info>
+                        <p>Average MPG is 25.7 (https://www.energy.gov/eere/vehicles/articles/fotw-1177-march-15-2021-preliminary-data-show-average-fuel-economy-new-light)</p>
+                        <p>1 ride saved per week × 30 weeks per school year = 30 rides saved per year</p>
+                        <p>30 rides × 10 mile ride × 1 gallon gas/25.7 miles × 8.887 kg CO₂/gal gas × 1 metric ton/1000 kg=0.10375097 metric tons CO₂ per year</p>
+                    </Info>
+                </Savings>
+            </Action>
+        </Section>
         <Section title='Raising Public Awareness'>
             <Action title='Middle School Combating Climate Change Presentation' {...{showDescription}}>
                 <div className='d:flex'>
@@ -138,41 +168,12 @@ export default function CCC() {
                 <Link className='styled' href='/blog/why-we-need-nuclear-energy'>Published an article</Link> in my school&apos;s newspaper about the need for supporting nuclear energy.
             </Action>
         </Section>
-        <Section title='Energy Efficiency'>
-            <Action title='Bus Idling Ban' {...{showDescription}}>
-                <IdlingEngine />
-                <p>Wrote to my school&apos;s bus contractor to enforce <a className='styled' href="https://portal.311.nyc.gov/article/?kanumber=KA-02222">NYC&apos;s law banning bus idling</a>. The day afterward, buses went from idling for hours to minutes.</p>
-                <br />
-                <Savings>
-                    <span>Reduces emissions by <Green>6.7 metric tons of CO<sub>2</sub> emissions</Green> per year.</span>
-                    <Info>
-                        .0690 kg per minute*90 minutes idling per day*180 days per year*6 buses doing this per day=6706 kg of CO<sub>2</sub> emissions per year
-                        (<a href="https://natural-resources.canada.ca/energy/efficiency/communities-infrastructure/transportation/idling/4463">source</a>)
-                    </Info>
-                </Savings>
-            </Action>
-            <Action title='Stone House Group Internship' {...{showDescription}}>
-                Researched building retrocomissioning for energy efficiency and NYC energy efficiency Local Laws.
-            </Action>
-            <Action title='Buseroo' {...{showDescription}}>
-                Encourages public transportation
-                Easier for students to go places
-                Students save money on car services and more equitable transportation.
-                <Savings>
-                    <span>Saves <Green>0.1 metric tons of CO₂e emissions</Green> per year</span>
-                    <Info>
-                        <p>Average MPG is 25.7 (https://www.energy.gov/eere/vehicles/articles/fotw-1177-march-15-2021-preliminary-data-show-average-fuel-economy-new-light)</p>
-                        <p>1 ride saved per week × 30 weeks per school year = 30 rides saved per year</p>
-                        <p>30 rides × 10 mile ride × 1 gallon gas/25.7 miles × 8.887 kg CO₂/gal gas × 1 metric ton/1000 kg=0.10375097 metric tons CO₂ per year</p>
-                    </Info>
-                </Savings>
-            </Action>
-        </Section>
-        <Section title='Resiliency'>
+        <Section title={'Mitigating Climate Change\'s Effects'}>
             <Action title='Flood Resiliency' {...{showDescription}}>
                 Part of discussions in the planning of resiliency projects in Lower Manhattan as a member of the Environmental Protection Committee of Manhattan Community Board 1.
             </Action>
             {/* TODO: created a video explaining the resiliency projects in Lower Manhattan */}
+            <br /><br />
         </Section>
     </Page>;
 }
