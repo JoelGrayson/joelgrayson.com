@@ -23,9 +23,9 @@ export default function Patriotism() {
                 justifyContent: 'space-between',
                 // borderBottom: '1px solid black'
             }}>
-                <Flag src='/image/patriotism/usa-flag.jpg'  onMouseEnter={()=>setSelectedFlag('usa')}  selected={selectedFlag==='usa'} />
-                <Flag src='/image/patriotism/nyc-flag.jpg'  onMouseEnter={()=>setSelectedFlag('nyc')}  selected={selectedFlag==='nyc'} />
-                <Flag src='/image/patriotism/ucjg-flag.jpg' onMouseEnter={()=>setSelectedFlag('ucjg')} selected={selectedFlag==='ucjg'} />
+                <SelectableFlag src='/image/patriotism/usa-flag.jpg'  onMouseEnter={()=>setSelectedFlag('usa')}  selected={selectedFlag==='usa'} />
+                <SelectableFlag src='/image/patriotism/nyc-flag.jpg'  onMouseEnter={()=>setSelectedFlag('nyc')}  selected={selectedFlag==='nyc'} />
+                <SelectableFlag src='/image/patriotism/ucjg-flag.jpg' onMouseEnter={()=>setSelectedFlag('ucjg')} selected={selectedFlag==='ucjg'} />
             </div>
             { selectedFlag && <div style={{
                 border: '1px solid black',
@@ -84,3 +84,17 @@ export default function Patriotism() {
     </Page>;
 }
 
+
+export function SelectableFlag({ selected, ...props }: { selected: boolean, [key: string]: any }) {
+    return <Flag
+        src={props.src}
+        style={{
+            borderTop: selected ? '1px solid black' : '1px solid transparent',
+            borderRight: selected ? '1px solid black' : '1px solid transparent',
+            borderLeft: selected ? '1px solid black' : '1px solid transparent',
+            borderBottom: 'none',
+            backgroundColor: selected ? 'white' : undefined,
+        }}
+        {...props}
+    />
+}
