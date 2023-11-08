@@ -50,20 +50,25 @@ export default function NYCBudget() {
 
         <h3>Spending by Agency</h3>
         <p>Total: 107B</p>
-        <Image src='/nyc-budget/department-spending.png' width={500} height={500} alt='Department Spending circular packing chart' />
+        <Image src='/nyc-government/nyc-budget/department-spending.png' width={500} height={500} alt='Department Spending circular packing chart' />
         <p><a className='styled' href='https://www.nyc.gov/assets/omb/downloads/pdf/fps-jul-2023.pdf' target='_blank'>Source: July 2023 Financial Plan Statement Report 4 and 4a</a></p>
 
 
         <h3>Capital Commitments</h3>
-        <Image src='/nyc-budget/capital-commitments.png' width={500} height={500} alt='Capital Commitments circular packing chart' />
+        <Image src='/nyc-government/nyc-budget/capital-commitments.png' width={500} height={500} alt='Capital Commitments circular packing chart' />
         <p><a className='styled' href='https://www.nyc.gov/assets/omb/downloads/pdf/fps-jul-2023.pdf' target='_blank'>Source: July 2023 Financial Plan Statement Report 5</a></p>
 
 
         <br /><br />
         <p>Created in October, 2023</p>
-        <a href='/nyc-budget/main.py' target='_blank' className='styled'>
+        <a href='/nyc-government/nyc-budget/main.py' target='_blank' className='styled'>
             <CodeIcon width={30} />
             <span className='ml-3'>Download the code that generated the circular packing charts</span>
         </a>
+
+
+        <br /><br /><br />
+        <h3>From the CEC & IBO 2023 CB1 Training Session</h3>
+        <Image src='/nyc-government/nyc-budget/expense-by-budget.png' width={500} height={500} alt='Capital Commitments circular packing chart' />
     </Page>;
 }
