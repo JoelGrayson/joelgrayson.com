@@ -8,6 +8,23 @@ export const machines: Machine[]=[
         sortBy: {
             rank: 3, //sort by best project
             date: new Date('July 15, 2021'), //sort by date of project
+            title: 'Buseroo Kiosk' //sort alphabetically
+        },
+        html: DefaultTemplate({
+            date: '2021-2023',
+            title: <>Buseroo Kiosk</>,
+            desc: <>
+                <div className='d:flex d:gap-9 justify-around'>
+                    <Image src='/image/machines/kiosk.jpg' alt='Playing Chess' width='200' height='250' />
+                    <iframe src="/image/machines/kiosk.html" width='100%' height='100%' />
+                </div>
+            </>
+        })
+    },
+    {
+        sortBy: {
+            rank: 3, //sort by best project
+            date: new Date('July 15, 2021'), //sort by date of project
             title: '3D-Printed Chess Board' //sort alphabetically
         },
         html: DefaultTemplate({
@@ -20,7 +37,7 @@ export const machines: Machine[]=[
                         <Image src='/image/machines/playing-chess.jpg' alt='Playing Chess' width='240' height='148' />
                     </div>
                     <div className='flex m:mt-3'>
-                        <video src="/image/machines/Chess Board.mov" autoPlay loop width={300} />
+                        <video src="/image/machines/Chess Board.mp4" autoPlay loop width={300} />
                         {/* <iframe onLoad={e=>console.log(e)} width={560*.6} height={315*.6} src="https://www.youtube.com/embed/9vxgMEvz2uY?si=GgPF4nxeEC7yVSSc" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen /> */}
                         {/* <iframe src="http://www.youtube.com/v/9vxgMEvz2uY?version=3&loop=1" /> */}
                     </div>
