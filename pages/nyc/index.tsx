@@ -5,6 +5,13 @@ import { Tooltip } from 'antd';
 import { PlayAudioIcon } from '@/components/Icons';
 
 export default function NYC() {
+    /*
+    Community board initiatives. Resolutions:
+        maker spaces
+        Video of me speaking
+        NYC Government course (you can study)\
+        EcoVendor
+    */
     function playGraysonYes() {
         new Audio('/audio/patriotism/grayson-yes.mp3').play();
     }

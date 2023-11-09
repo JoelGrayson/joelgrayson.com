@@ -26,8 +26,14 @@ export default function Test() {
         />
         <Question
             type='text'
-            question='Through what process do zoning map changes go through?'
+            question='What process do zoning map changes go through?'
             answer={['ULURP', 'ulurp', 'Uniform Land Use Review Procedure']}
+            number={questionNumber++}
+        />
+        <Question
+            type='reveal'
+            question='What was the Act of Consolidation and why is it important?'
+            answer={['It combined the five boroughs into one city and created the borough president position.']}
             number={questionNumber++}
         />
     </Page>;

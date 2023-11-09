@@ -6,5 +6,6 @@ export default function NYCGoverment() {
         <h1 className='text-center'>NYC Government</h1>
         <p>The curriculum of NYC Government is coming soon.</p>
         <Image width={262.5} height={350} src="/nyc-government/municipal-building.jpg" alt="Municipal Building" />
+        <Image width={262.5} height={350} src="/nyc-government/joel-and-mr-kildahl.jpg" alt="Municipal Building" />
     </Page>;
 }
