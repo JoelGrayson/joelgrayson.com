@@ -10,6 +10,7 @@ import IdlingEngine from '@/components/by-page/combating-climate-change/IdlingEn
 import PDF from '@/components/global/PDF';
 import { Switch } from 'antd';
 import Info from '@/components/global/Info';
+import Markdown from 'markdown-to-jsx'
 
 export default function CCC() {
     const [showDescription, setShowDescription]=useState<boolean>(true);
@@ -52,19 +53,22 @@ export default function CCC() {
                 </div> */}
 
                 {/*
-                    # Grid Emissions
-                    Emissions from https://www.epa.gov/egrid
-                    https://bedes.lbl.gov/bedes-online/nycw
-                    https://www.epa.gov/egrid/summary-data accessed 11.8.23
-                    permanent: https://perma.cc/N7QN-QDK6
-                    817.9 lb CO2e/MWh × 1 kg / 2.2 lb × 1 MWh / 1000 kWh = 0.371 kg CO2e/kWh
-                    817.9 lb CO2e/MWh × 1 kg / 2.2 lb × 1 MWh / 1000 kWh = 0.371 kg CO2e/kWh
-                    817.9 lb CO2e/MWh × 1 metric ton / 2204.62 lb = 0.371 metric tons CO2e/MWh
-
-                    # Solar Savings
-                    442 MWh/year from solar × .371 metric tons CO₂ / MWh = 164 metric tons CO₂ / year
                 */}
-                <p className='d:absolute d:top-0 d:right-0'>Saves <Green>164 metric tons of CO₂e emissions</Green> each year.</p>
+                <p className='d:absolute d:top-0 d:right-0'>
+                    Will save ~<Green>164 metric tons of CO₂e emissions</Green> each year
+                    <Info>
+                        <Markdown>{`
+### Grid Emissions
+Emissions from [EPA egrid](https://www.epa.gov/egrid/summary-data) accessed 11.8.23
+Permanent link: https://perma.cc/N7QN-QDK6
+817.9 lb CO2e/MWh × 1 kg / 2.2 lb × 1 MWh / 1000 kWh = 0.371 kg CO2e/kWh
+817.9 lb CO2e/MWh × 1 metric ton / 2204.62 lb = 0.371 metric tons CO2e/MWh
+
+### Solar Savings
+442 MWh/year from solar × .371 metric tons CO₂ / MWh = 164 metric tons CO₂ / year
+                        `.trim()}</Markdown>
+                    </Info>
+                </p>
             </Action>
         </Section>
         <Section title='Electrification'>
@@ -74,6 +78,9 @@ export default function CCC() {
                 </Link>
             } {...{showDescription}}>
                 I formed a coalition of students, faculty, and administrators at Riverdale and Fieldston to integrate electric school buses into SuperSelby&apos;s all-diesel fleet, improving passenger health and city air quality and combating climate change.
+                <Savings>
+                    <span>Will save <Green>17 metric tons of CO<sub>2</sub> emissions</Green> per year</span>
+                </Savings>
             </Action>
             <Action title='Electric Leaf Blowers' icon={
                 <Image src='/image/ccc/electric-leaf-blowers/electric-leaf-blower.png' alt='leaf blower' width={20} height={14} className='ml-3 inline' />
@@ -81,11 +88,11 @@ export default function CCC() {
                 I convinced Riverdale&apos;s facilities to transition from gas to electric leaf blowers. Not only is it better for the environment, but it also reduces noise pollution and improves workers&apos; health.
                 <br />
                 <Savings>
-                    <span>Saves around <Green>0.675 metric tons of CO<sub>2</sub>e emissions</Green> per year</span>
+                    <span>Saves ~<Green>0.675 metric tons of CO<sub>2</sub>e emissions</Green> per year</span>
                     <Info>
                         <p>5 kg of CO2 per hour of use (<a href='https://www.quietcleanpdx.org/wp-content/uploads/2019/11/Gas-Powered-Leaf-Blower-Emissions-Factsheet-11.12.pdf'>source</a>).</p>
                         <p>5 kg*45 days per year*3 people per hour*1 hour per day=675 kg of emissions per year</p>
-                    </Info>.
+                    </Info>
                 </Savings>
             </Action>
         </Section>
@@ -95,28 +102,28 @@ export default function CCC() {
                 <p>Wrote to my school&apos;s bus contractor to enforce <a className='styled' href="https://portal.311.nyc.gov/article/?kanumber=KA-02222">NYC&apos;s law banning bus idling</a>. The day afterward, buses went from idling for hours to minutes.</p>
                 <br />
                 <Savings>
-                    <span>Reduces emissions by <Green>6.7 metric tons of CO<sub>2</sub> emissions</Green> per year.</span>
+                    <span>Saves ~<Green>6.7 metric tons of CO<sub>2</sub> emissions</Green> per year</span>
                     <Info>
                         .0690 kg per minute*90 minutes idling per day*180 days per year*6 buses doing this per day=6706 kg of CO<sub>2</sub> emissions per year
                         (<a href="https://natural-resources.canada.ca/energy/efficiency/communities-infrastructure/transportation/idling/4463">source</a>)
                     </Info>
                 </Savings>
             </Action>
-            <Action title='Stone House Group Internship' {...{showDescription}}>
-                Researched building retrocomissioning for energy efficiency and NYC energy efficiency Local Laws.
-            </Action>
             <Action title='Buseroo' {...{showDescription}}>
                 Encourages public transportation
                 Easier for students to go places
                 Students save money on car services and more equitable transportation.
                 <Savings>
-                    <span>Saves <Green>0.1 metric tons of CO₂e emissions</Green> per year</span>
+                    <span>Saves ~<Green>0.1 metric tons of CO₂e emissions</Green> per year</span>
                     <Info>
                         <p>Average MPG is 25.7 (https://www.energy.gov/eere/vehicles/articles/fotw-1177-march-15-2021-preliminary-data-show-average-fuel-economy-new-light)</p>
                         <p>1 ride saved per week × 30 weeks per school year = 30 rides saved per year</p>
                         <p>30 rides × 10 mile ride × 1 gallon gas/25.7 miles × 8.887 kg CO₂/gal gas × 1 metric ton/1000 kg=0.10375097 metric tons CO₂ per year</p>
                     </Info>
                 </Savings>
+            </Action>
+            <Action title='Stone House Group Internship' {...{showDescription}}>
+                Researched building retrocomissioning for energy efficiency and NYC energy efficiency Local Laws.
             </Action>
         </Section>
         <Section title='Raising Public Awareness'>
