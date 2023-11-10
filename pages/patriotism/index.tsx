@@ -96,5 +96,5 @@ export function SelectableFlag({ selected, ...props }: { selected: boolean, [key
             backgroundColor: selected ? 'white' : undefined,
         }}
         {...props}
-    />
+    />;
 }

@@ -10,7 +10,7 @@ import IdlingEngine from '@/components/by-page/combating-climate-change/IdlingEn
 import PDF from '@/components/global/PDF';
 import { Switch } from 'antd';
 import Info from '@/components/global/Info';
-import Markdown from 'markdown-to-jsx'
+import Markdown from 'markdown-to-jsx';
 
 export default function CCC() {
     const [showDescription, setShowDescription]=useState<boolean>(true);
