@@ -97,8 +97,11 @@ export default function Home() {
                     <SEBLogo size={75} />
                     <span>Students for Electric Buses</span>
                 </BtnIcon> {/* sunbeam going down when hover */}
-                <BtnIcon href='#'>
-                    <span>Presentations</span>
+                <BtnIcon href='/machines' target='_self'>
+                    <div style={{width: 80, height: 69, display: 'grid', placeItems: 'center'}}>
+                        <Image alt='machines' height={69} width={80} src='/image/home/machine.png' />
+                    </div>
+                    <span>Machines</span>
                 </BtnIcon> {/* sunbeam going down when hover */}
                 <BtnIcon href='https://buseroo.com'>
                     <Image alt='buseroo-logo' height={50} width={50} src='/image/home/buseroo-logo.png' />
