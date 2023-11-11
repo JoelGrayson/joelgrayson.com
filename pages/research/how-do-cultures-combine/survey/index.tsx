@@ -12,7 +12,7 @@ const theme={
     primary: '#1255cc',
     secondary: '#cfe3f3',
     note: 'text-gray-800 text-xs'
-}
+};
 
 const races=['White', 'Asian', 'Black', 'Hispanic', 'Native', 'Other'] as const;
 type Race=typeof races[number] | 'Select a Race';
@@ -55,7 +55,7 @@ Survey() {
         emailMeResults: true
     });
 
-    function formSubmit(e: any) {
+    function formSubmit() {
         // Validate that there is no missing data
         for (let culture of [data.father, data.mother, ...data.additionalCultures]) {
             if (!culture.name || !culture.race || culture.race==='Select a Race' || !culture.relation || culture.relation==='Select a Relation' || !culture.parentConnected || !culture.childConnected)
@@ -104,7 +104,7 @@ Survey() {
                         if (i==1)
                             return draft.mother;
                         return draft.additionalCultures[additionalCultureI];
-                    }
+                    };
 
                     if (!culture) return;
 
@@ -125,9 +125,11 @@ Survey() {
                             : 'Culture '+(i+1)
                         }</div>
                         { i>=2 && <>
+                            {/* eslint-disable */}
                             <link rel='stylesheet' href='/styles/icon-close.v2.css'/>
+                            {/* eslint-enable */}
                             <div className='icon-close' onClick={()=>setData(produce(data, draft=>{
-                                draft.additionalCultures.splice(additionalCultureI, 1)
+                                draft.additionalCultures.splice(additionalCultureI, 1);
                             }))} />
                         </> }
 
@@ -163,7 +165,7 @@ Survey() {
                                     const newRace=e.target.value as Race;
                                     setData(produce(data, draft=>{
                                         getCulture(draft).race=newRace;
-                                    }))
+                                    }));
                                 }}>
                                     <option value="Select a Race">---Select a Race---</option>
                                     {races.map(race=>
@@ -191,7 +193,7 @@ Survey() {
                                         const newRelation=e.target.value as Relation;
                                         setData(produce(data, draft=>{
                                             getCulture(draft).relation=newRelation;
-                                        }))
+                                        }));
                                     }}>
                                         <option value="Select a Relation">---Select a Relation---</option>
                                         {relations.map(relation=>
@@ -254,7 +256,7 @@ Survey() {
                                     4: 'your fourth'
                                 }[data.additionalCultures.length+2+1] || 'another'
                             } culture:</p>
-                            <Button color='jgreen' style={{ width: 'fit-content', margin: '0 auto' }} onClick={()=>setData(produce(data, draft=>{draft.additionalCultures.push({})}))}>+ Add Another Culture</Button>
+                            <Button color='jgreen' style={{ width: 'fit-content', margin: '0 auto' }} onClick={()=>setData(produce(data, draft=>{draft.additionalCultures.push({});}))}>+ Add Another Culture</Button>
                         </div>
                 }
 
@@ -269,12 +271,12 @@ Survey() {
                         <p className={theme.note+' text-right'}>Note: your email will stay confidential with me and will not be published with the study. I may reach out to you if I have clarifying questions about something you said.</p>
                     </div>
                     <div>
-                        <input type="email" id='email' className='h-fit w-fit' value={data.email} onChange={e=>setData(produce(data, draft=>{draft.email=e.target.value}))} />
+                        <input type="email" id='email' className='h-fit w-fit' value={data.email} onChange={e=>setData(produce(data, draft=>{draft.email=e.target.value;}))} />
                     </div>
                 </div>
 
                 <div className="flex justify-center my-3">
-                    <input type="checkbox" id='emailedResults' className='justify-self-end' checked={data.emailMeResults} onChange={e=>setData(produce(data, draft=>{draft.emailMeResults=e.target.checked}))} />
+                    <input type="checkbox" id='emailedResults' className='justify-self-end' checked={data.emailMeResults} onChange={e=>setData(produce(data, draft=>{draft.emailMeResults=e.target.checked;}))} />
                     <label className='ml-2' htmlFor='emailedResults'>I want to be emailed the the study&apos;s results (coming out in late November 2023).</label>
                 </div>
                 
@@ -316,7 +318,10 @@ Survey() {
     </Page>;
 }
 
-export function Circles({ from, to, value, setValue }: { from: number; /** lower bound */ to: number; /** upper bound */ value?: number; setValue: (newValue: number)=>void; }) {
+export function Circles({ from, to, value, setValue }: { from: number; /** lower bound */ to: number; /** upper bound */ value?: number; 
+    // eslint-disable-next-line
+    setValue: (newValue: number)=>void;
+}) {
     let indices=[];
     for (let i=from; i<=to; i++)
         indices.push(i);
