@@ -16,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         credentials: {
             "type": "service_account",
             "project_id": "joelgrayson",
-            "private_key": process.env.GOOGLE_API_PRIVATE_KEY,
+            "private_key": (process.env.GOOGLE_API_PRIVATE_KEY as string).replaceAll('\\n', '\n'),
             "client_email": process.env.GOOGLE_API_CLIENT_EMAIL,
             "client_id": process.env.GOOGLE_API_CLIENT_ID,
             "universe_domain": "googleapis.com"
@@ -48,7 +48,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     });
     
     sendEmail({
-        subject: `New Multicultural Survey Response from a ${data.race?.toUpperCase()} Person`,
+        subject: `New Single Culture Survey Response from a ${data.race} Person`,
         to: 'joelbaograyson@gmail.com',
         html: `
             <p>See responses <a href="https://docs.google.com/spreadsheets/d/1myKBPm0_4PQek0mBjPlTcxjD0lQsL4GGKBM3zTdT87g/edit?pli=1#gid=0">here</a>.</p>
@@ -57,7 +57,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             <p>${JSON.stringify(data, null, 4)}</p>
         `,
         text: 'See responses here https://docs.google.com/spreadsheets/d/1myKBPm0_4PQek0mBjPlTcxjD0lQsL4GGKBM3zTdT87g/edit?pli=1#gid=0'
-    })
+    });
 
     res.json({
         status: 'success'

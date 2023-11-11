@@ -64,7 +64,7 @@ export default function Survey() {
 
     
     return <Page bottomPadding>
-        <h1 className='text-center text-4xl my-10 mb-8'>Culture Survey</h1>
+        <h1 className='text-center text-4xl my-10 mb-8'>Single Culture Survey</h1>
         { formState!=='submitted' && <p className='mb-6'>If you are multicultural, please fill out <Link href='/research/how-do-cultures-combine/survey/multicultural' className='styled'>this survey</Link> instead.</p> }
 
         {

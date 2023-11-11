@@ -77,7 +77,7 @@ export default function Survey() {
     
     return <Page bottomPadding>
         <h1 className='text-center text-4xl my-10'>Survey for Multicultural Individuals</h1>
-        <p>This survey is part of a study of how cultures combine in multicultural families. The goal is to find out to what extent both cultures are preserved or diminished when combined.</p>
+        { formState!=='submitted' && <p>This survey is part of a study of how cultures combine in multicultural families. The goal is to find out to what extent both cultures are preserved or diminished when combined.</p> }
 
         {
             formState==='filling out' || formState==='error'
