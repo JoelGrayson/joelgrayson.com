@@ -1,15 +1,15 @@
 import { google } from 'googleapis';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { createId as cuid } from '@paralleldrive/cuid2';
-import { Culture, SurveyData } from 'pages/research/how-do-cultures-combine/survey';
+import { Culture } from 'pages/research/how-do-cultures-combine/';
+import { SurveyData } from 'pages/research/how-do-cultures-combine/survey/multicultural';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
     const data=req.body as SurveyData;
-    console.log('data', data, data.father);
 
     // Add to google sheets row so it can be exported as a CSV and used with pandas
-    const spreadsheetId='1myKBPm0_4PQek0mBjPlTcxjD0lQsL4GGKBM3zTdT87g';
-        //https://docs.google.com/spreadsheets/d/1myKBPm0_4PQek0mBjPlTcxjD0lQsL4GGKBM3zTdT87g/edit#gid=0
+    const spreadsheetId='1sBssTGqo7BogXBgTyjK8Ui1LoQSnKtWB1H_im6wfSrE';
+        //https://docs.google.com/spreadsheets/d/1sBssTGqo7BogXBgTyjK8Ui1LoQSnKtWB1H_im6wfSrE/edit#gid=0
 
     const auth=await google.auth.getClient({
         scopes: ['https://www.googleapis.com/auth/spreadsheets'],
@@ -41,13 +41,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         data.father.parentConnected,
         data.father.childConnected,
         data.father.practicedAtHome,
-        data.father?.additional || '',
+        data.father?.additional,
         data.mother.name,
         getRace(data.mother),
         data.mother.parentConnected,
         data.mother.childConnected,
         data.mother.practicedAtHome,
-        data.mother?.additional || ''
+        data.mother?.additional
     ];
     if (data.additionalCultures[0]) {
         rowsToInsert.push(
@@ -72,7 +72,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
     sheets.spreadsheets.values.append({
         spreadsheetId,
-        range: 'Sheet1!A1:AD1',
+        range: 'Sheet1!A1:K1',
         valueInputOption: 'RAW',
         requestBody: {
             values: [rowsToInsert]

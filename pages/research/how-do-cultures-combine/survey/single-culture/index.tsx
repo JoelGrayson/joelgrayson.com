@@ -7,6 +7,8 @@ import Loader from '@/components/global/Loader';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from '@jcomponents/modal';
+import { type Culture, races, type Race, relations, type Relation } from '../..';
+import Link from 'next/link';
 
 const theme={
     primary: '#1255cc',
@@ -14,57 +16,29 @@ const theme={
     note: 'text-gray-800 text-xs'
 };
 
-const races=['White', 'Asian', 'Black', 'Hispanic', 'Native', 'Other'] as const;
-type Race=typeof races[number] | 'Select a Race';
-const relations=['Father', 'Mother', 'Other'] as const; //'Father\'s Father', 'Father\'s Mother', 'Mother\'s Father', 'Mother\'s Mother'
-type Relation=typeof relations[number] | 'Select a Relation';
-export type Culture={
-    name?: string;
-    race?: Race;
-    otherRace?: string; //only filled out if 'Other' is selected for race
-    relation?: Relation;
-    parentConnected?: number;
-    childConnected?: number;
-    practicedAtHome?: string;
-    additional?: string;
-};
-export type SurveyData={
+export type SurveyData=Omit<Culture, 'relation'> & {
     dateSubmitted?: Date;
-    mother: Culture;
-    father: Culture;
-    additionalCultures: Culture[];
     email: string;
     emailMeResults: boolean;
 }
-const maxNumCultures=4;
 
-export default function 
-Survey() {
+export default function Survey() {
     const [formState, setFormState]=useState<'filling out' | 'error' | 'loading' | 'submitted'>('filling out');
     const [errorModalOpen, setErrorModalOpen]=useState(true);
 
     const [data, setData]=useState<SurveyData>({
-        mother: {
-            relation: 'Mother',
-        },
-        father: {
-            relation: 'Father',
-        },
-        additionalCultures: [],
         email: '',
         emailMeResults: true
     });
 
     function formSubmit() {
         // Validate that there is no missing data
-        for (let culture of [data.father, data.mother, ...data.additionalCultures]) {
-            if (!culture.name || !culture.race || culture.race==='Select a Race' || !culture.relation || culture.relation==='Select a Relation' || !culture.parentConnected || !culture.childConnected)
-                return handleError(null, true);
-        }
+        if (!data.name || !data.race || data.race==='Select a Race' || !data.parentConnected || !data.childConnected)
+            return handleError(null, true);
         
         
         setFormState('loading');
-        fetch('/api/research/how-do-cultures-combine/survey/submit', {
+        fetch('/api/research/how-do-cultures-combine/survey/single-culture/submit', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -90,49 +64,20 @@ Survey() {
 
     
     return <Page bottomPadding>
-        <h1 className='text-center'>Survey</h1>
+        <h1 className='text-center text-4xl my-10 mb-8'>Culture Survey</h1>
+        { formState!=='submitted' && <p className='mb-6'>If you are multicultural, please fill out <Link href='/research/how-do-cultures-combine/survey/multicultural' className='styled'>this survey</Link> instead.</p> }
 
         {
             formState==='filling out' || formState==='error'
             ? <div>
-                {[data.father, data.mother, ...data.additionalCultures].map((culture, i)=>{
-                    const id=(val: string)=>`culture-${i}-${val}`;
-                    const additionalCultureI=i-2;
-                    const getCulture=(draft: SurveyData)=>{ //gets culture from draft for editing
-                        if (i==0)
-                            return draft.father;
-                        if (i==1)
-                            return draft.mother;
-                        return draft.additionalCultures[additionalCultureI];
-                    };
+                {(()=>{
+                    const id=(val: string)=>`culture-${val}`;
 
-                    if (!culture) return;
-
-                    return <div key={i} className='mx-auto my-3 px-8 py-5 relative' style={{
+                    return <div className='mx-auto my-3 px-8 py-5 relative' style={{
                         border: '1px solid black',
                         borderRadius: 10,
-                        backgroundColor: {
-                            0: theme.secondary,
-                            1: '#f3cfcf',
-                            'other': '#f9f2b6'
-                        }[i>1 ? 'other' : i]
+                        backgroundColor: theme.secondary
                     }}>
-                        <div className='bold text-center mb-3'>{
-                            i==0
-                            ? 'Father\'s Culture'
-                            : i==1
-                            ? 'Mother\'s Culture'
-                            : 'Culture '+(i+1)
-                        }</div>
-                        { i>=2 && <>
-                            {/* eslint-disable */}
-                            <link rel='stylesheet' href='/styles/icon-close.v2.css'/>
-                            {/* eslint-enable */}
-                            <div className='icon-close' onClick={()=>setData(produce(data, draft=>{
-                                draft.additionalCultures.splice(additionalCultureI, 1);
-                            }))} />
-                        </> }
-
                         <div className='grid gap-y-3' style={{
                             gridTemplateColumns: '1fr 2fr'
                         }}>
@@ -140,31 +85,29 @@ Survey() {
                                 <label htmlFor={id('name')}>
                                     Culture Name
                                 </label>
-                                {i==0 && //detailed instructions if first
+                                {true && //detailed instructions if first
                                     <div className={`${theme.note} text-xs text-right`}>e.g. Jewish, Italian, Chinese, African American, mixed European</div>
                                 }
                             </div>
                             <div>
-                                <input type="text" id={id('name')} className='h-fit w-fit' value={culture.name || ''} onChange={e=>{
+                                <input type="text" id={id('name')} className='h-fit w-fit' value={data.name || ''} onChange={e=>{
                                     setData(produce(data, draft=>{
                                         const newName=e.target.value;
-                                        getCulture(draft).name=newName;
+                                        draft.name=newName;
                                     }));
                                 }} />
-                                { formState==='error' && !culture.name && <Missing /> }
+                                { formState==='error' && !data.name && <Missing /> }
                             </div>
                             
                             <div className='justify-self-end mr-3 flex flex-col items-end'>
                                 <label htmlFor={id('race')} className='text-right'>Race</label>
-                                {i==0 &&
-                                    <div className={`${theme.note} text-xs text-right`}>Which race is this culture?</div>
-                                }
+                                <div className={`${theme.note} text-xs text-right`}>Which race is this culture?</div>
                             </div>
                             <div>
-                                <select id={id('race')} className='border-black border-[1px] rounded w-fit h-fit' value={culture.race || 'Select a Race'} onChange={e=>{
+                                <select id={id('race')} className='border-black border-[1px] rounded w-fit h-fit' value={data.race || 'Select a Race'} onChange={e=>{
                                     const newRace=e.target.value as Race;
                                     setData(produce(data, draft=>{
-                                        getCulture(draft).race=newRace;
+                                        draft.race=newRace;
                                     }));
                                 }}>
                                     <option value="Select a Race">---Select a Race---</option>
@@ -172,67 +115,42 @@ Survey() {
                                         <option key={race} value={race}>{race}</option>
                                     )}
                                 </select>
-                                { culture.race==='Other' && <div>
+                                { data.race==='Other' && <div>
                                     {/* <span>Specify your race:</span> */}
-                                    <input type="text" placeholder='Specify your race' className='ml-1' value={culture.otherRace || ''} onChange={e=>setData(produce(data, draft=>{
-                                        getCulture(draft).otherRace=e.target.value;
+                                    <input type="text" placeholder='Specify your race' className='ml-1' value={data.otherRace || ''} onChange={e=>setData(produce(data, draft=>{
+                                        draft.otherRace=e.target.value;
                                     }))} />
                                 </div> }
-                                { formState==='error' && (!culture.race || culture.race==='Select a Race') && <Missing /> }
+                                { formState==='error' && (!data.race || data.race==='Select a Race') && <Missing /> }
                             </div>
 
-                            {i>=2 && <> {/* hide for mother and father */}
-                                <div className='justify-self-end mr-3 flex flex-col items-end'>
-                                    <label htmlFor={id('relation')} className='text-right'>Relation</label>
-                                    {i==2 &&
-                                        <div className={`${theme.note} text-right`}>Who did you inherit this culture from?<br />You can put down mother twice for both of your mother&apos;s cultures if your mother is biracial.</div>
-                                    }
-                                </div>
-                                <div>
-                                    <select id={id('relation')} className='border-black border-[1px] rounded w-fit h-fit' value={culture.relation || 'Select a Relation'} onChange={e=>{
-                                        const newRelation=e.target.value as Relation;
-                                        setData(produce(data, draft=>{
-                                            getCulture(draft).relation=newRelation;
-                                        }));
-                                    }}>
-                                        <option value="Select a Relation">---Select a Relation---</option>
-                                        {relations.map(relation=>
-                                            <option key={relation} value={relation}>{relation}</option>
-                                        )}
-                                    </select>
-                                    { formState==='error' && (!culture.relation || culture.relation==='Select a Relation') && <Missing /> }
-                                </div>
-                            </> }
-
-                            <div className='text-right'>How connected is your parent to this culture?</div>
+                            <div className='text-right'>How connected are your parents to this culture?</div>
                             <div>
-                                <Circles from={1} to={5} value={culture.parentConnected} setValue={newValue=>setData(produce(data, draft=>{
-                                    getCulture(draft).parentConnected=newValue;
+                                <Circles from={1} to={5} value={data.parentConnected} setValue={newValue=>setData(produce(data, draft=>{
+                                    draft.parentConnected=newValue;
                                 }))} />
-                                { formState==='error' && culture.parentConnected===undefined && <Missing /> }
+                                { formState==='error' && data.parentConnected===undefined && <Missing /> }
                             </div>
 
                             <div className='text-right'>How connected are you to this culture?</div>
                             <div>
-                                <Circles from={1} to={5} value={culture.childConnected} setValue={newValue=>setData(produce(data, draft=>{
-                                    getCulture(draft).childConnected=newValue;
+                                <Circles from={1} to={5} value={data.childConnected} setValue={newValue=>setData(produce(data, draft=>{
+                                    draft.childConnected=newValue;
                                 }))} />
-                                { formState==='error' && culture.childConnected===undefined && <Missing /> }
+                                { formState==='error' && data.childConnected===undefined && <Missing /> }
                             </div>
 
-                            {/* How is the culture practiced at home? Text area */}
+                            {/* How is the culture practiced in your family? Text area */}
                             <div className='justify-self-end mr-3 flex flex-col items-end'>
-                                    <label htmlFor={id('practicedAtHome')} className='text-right'>How is the culture practiced (or not) at home? <span className={theme.note}>(optional)</span></label>
-                                    {i==0 &&
-                                        <div className={`${theme.note} text-xs text-right`}>e.g. food, language, holidays, religion, etc.</div>
-                                    }
+                                <label htmlFor={id('practicedAtHome')} className='text-right'>How is the culture practiced in your family? <span className={theme.note}>(optional)</span></label>
+                                <div className={`${theme.note} text-xs text-right`}>e.g. food, language, holidays, religion, etc.</div>
                             </div>
                             <textarea id={id('practicedAtHome')}
                                 rows={3}
                                 style={{ width: '100%', maxWidth: 400}}
-                                value={culture.practicedAtHome}
+                                value={data.practicedAtHome}
                                 onChange={e=>setData(produce(data, draft=>{
-                                    getCulture(draft).practicedAtHome=e.target.value;
+                                    draft.practicedAtHome=e.target.value;
                                 }))}
                             />
 
@@ -240,25 +158,12 @@ Survey() {
                             <div className='justify-self-end mr-3 flex flex-col items-end'>
                                 <label htmlFor={id('additional')} className='text-right'>Anything else you want to say about your relationship with this culture? <span className={theme.note}>(optional)</span></label>
                             </div>
-                            <textarea id={id('additional')} style={{ width: '100%', maxWidth: 400}} rows={3} value={culture.additional} onChange={e=>setData(produce(data, draft=>{
-                                getCulture(draft).additional=e.target.value;
+                            <textarea id={id('additional')} style={{ width: '100%', maxWidth: 400}} rows={3} value={data.additional} onChange={e=>setData(produce(data, draft=>{
+                                draft.additional=e.target.value;
                             }))}/>
                         </div>
                     </div>;
-                })}
-
-                {
-                    data.additionalCultures.length<maxNumCultures-2 &&
-                        <div className="flex flex-col justify-center my-5 mt-6 gap-2">
-                            <p className={`text-center ${theme.note}`}>If there are {data.additionalCultures.length+2  +1} cultures in your household because a parent is multicultural, click below to add {
-                                {
-                                    3: 'your third',
-                                    4: 'your fourth'
-                                }[data.additionalCultures.length+2+1] || 'another'
-                            } culture:</p>
-                            <Button color='jgreen' style={{ width: 'fit-content', margin: '0 auto' }} onClick={()=>setData(produce(data, draft=>{draft.additionalCultures.push({});}))}>+ Add Another Culture</Button>
-                        </div>
-                }
+                })()}
 
                 {/* Email Survey Sign Up */}
                 <div className='grid gap-y-3 gap-6 relative' style={{
