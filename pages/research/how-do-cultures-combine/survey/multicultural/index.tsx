@@ -255,7 +255,7 @@ export default function Survey() {
                         <p className='text-right'>
                             <label htmlFor='email'>Email <span className={theme.note}>(optional)</span></label>
                         </p>
-                        <p className={theme.note+' text-right'}>Note: your email will stay confidential with me and will not be published with the study. I may reach out to you if I have clarifying questions about something you said.</p>
+                        <p className={theme.note+' text-right'}>Note: your email will stay confidential with me and will not be published with the study. I may reach out to you if I have clarifying questions about something you wrote.</p>
                     </div>
                     <div>
                         <input type="email" id='email' className='h-fit w-fit' value={data.email} onChange={e=>setData(produce(data, draft=>{draft.email=e.target.value;}))} />

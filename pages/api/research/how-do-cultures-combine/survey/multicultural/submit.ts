@@ -16,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         credentials: {
             "type": "service_account",
             "project_id": "joelgrayson",
-            "private_key": process.env.GOOGLE_API_PRIVATE_KEY,
+            "private_key": (process.env.GOOGLE_API_PRIVATE_KEY as string).replaceAll('\\n', '\n'),
             "client_email": process.env.GOOGLE_API_CLIENT_EMAIL,
             "client_id": process.env.GOOGLE_API_CLIENT_ID,
             "universe_domain": "googleapis.com"

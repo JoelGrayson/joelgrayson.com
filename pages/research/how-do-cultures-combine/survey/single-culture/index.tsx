@@ -7,7 +7,7 @@ import Loader from '@/components/global/Loader';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from '@jcomponents/modal';
-import { type Culture, races, type Race, relations, type Relation } from '../..';
+import { type Culture, races, type Race } from '../..';
 import Link from 'next/link';
 
 const theme={
@@ -173,7 +173,7 @@ export default function Survey() {
                         <p className='text-right'>
                             <label htmlFor='email'>Email <span className={theme.note}>(optional)</span></label>
                         </p>
-                        <p className={theme.note+' text-right'}>Note: your email will stay confidential with me and will not be published with the study. I may reach out to you if I have clarifying questions about something you said.</p>
+                        <p className={theme.note+' text-right'}>Note: your email will stay confidential with me and will not be published with the study. I may reach out to you if I have clarifying questions about something you wrote.</p>
                     </div>
                     <div>
                         <input type="email" id='email' className='h-fit w-fit' value={data.email} onChange={e=>setData(produce(data, draft=>{draft.email=e.target.value;}))} />
@@ -235,10 +235,10 @@ export function Circles({ from, to, value, setValue }: { from: number; /** lower
         {indices.map(i=>
             <div
                 className={
-                    'p-2 mx-1 cursor-pointer rounded-3xl w-10 h-10 inline-flex justify-center items-center'+
+                    'p-2 mx-1 cursor-pointer rounded-3xl w-10 h-10 inline-flex justify-center items-center border-[1px]'+
                     (i===value
-                        ? ` bg-[${theme.primary}] text-white`
-                        : ' '
+                        ? ` bg-[${theme.primary}] text-white border-[darkblue]`
+                        : ' border-gray-600'
                     )
                 }
                 onClick={()=>setValue(i)}
