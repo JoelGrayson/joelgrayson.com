@@ -39,4 +39,10 @@ export type Race=typeof races[number] | 'Select a Race';
 export const relations=['Father', 'Mother', 'Other'] as const; //'Father\'s Father', 'Father\'s Mother', 'Mother\'s Father', 'Mother\'s Mother'
 export type Relation=typeof relations[number] | 'Select a Relation';
 
+export const theme={
+    primary: '#1255cc',
+    secondary: '#cfe3f3',
+    note: 'text-gray-800 text-xs'
+};
+
 

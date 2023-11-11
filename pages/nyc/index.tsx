@@ -12,9 +12,11 @@ export default function NYC() {
         NYC Government course (you can study)\
         EcoVendor
     */
-    function playGraysonYes() {
-        new Audio('/audio/patriotism/grayson-yes.mp3').play();
-    }
+
+    // function playGraysonYes() {
+    //     new Audio('/audio/patriotism/grayson-yes.mp3').play();
+    // }
+    
     return <Page bottomPadding>
         <div className='flex justify-center'>
             <div className='relative w-[10ch]'>
