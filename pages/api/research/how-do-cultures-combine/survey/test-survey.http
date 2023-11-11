@@ -1,0 +1,4 @@
+POST http://localhost:3000/api/research/how-do-cultures-combine/survey/submit
+Content-Type: application/json
+
+{"mother":{"relation":"Mother","name":"Chinese","race":"Asian","parentConnected":4,"childConnected":3},"father":{"relation":"Father","name":"Jewish","race":"White","parentConnected":3,"childConnected":2,"practicedAtHome":""},"additionalCultures":[],"email":"","emailMeResults":true}
