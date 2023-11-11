@@ -15,8 +15,8 @@ export const machines: Machine[]=[
             title: <>Buseroo Kiosk</>,
             desc: <>
                 <div className='d:flex d:gap-9 justify-around'>
-                    <Image src='/image/machines/kiosk.jpg' alt='Playing Chess' width='200' height='250' />
-                    <iframe src="/image/machines/kiosk.html" width='100%' height='100%' />
+                    <Image src='/image/machines/kiosk-embed/kiosk.jpg' alt='Playing Chess' width='200' height='250' />
+                    <iframe src="/image/machines/kiosk-embed/index.html" width='100%' height='100%' />
                 </div>
             </>
         })
