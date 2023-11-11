@@ -6,6 +6,8 @@ import { produce } from 'immer';
 import Loader from '@/components/global/Loader';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Modal from '@jcomponents/modal';
+// import { Modal } from 'antd';
 
 const theme={
     primary: '#1255cc',
@@ -14,60 +16,65 @@ const theme={
 }
 
 const races=['White', 'Asian', 'Black', 'Hispanic', 'Native', 'Other'] as const;
-type raceT=typeof races[number];
+type Race=typeof races[number] | 'Select a Race';
 const relations=['Father', 'Mother', 'Grandfather', 'Grandmother', 'Other'] as const;
-type relationT=typeof relations[number];
-type culture={
+type Relation=typeof relations[number] | 'Select a Relation';
+type Culture={
     name?: string;
-    race?: raceT;
-    relation?: relationT;
+    race?: Race;
+    otherRace?: string; //only filled out if 'Other' is selected for race
+    relation?: Relation;
     parentConnected?: number;
     childConnected?: number;
     practicedAtHome?: string;
     additional?: string;
 };
+type SurveyData={
+    dateSubmitted?: Date;
+    mother: Culture;
+    father: Culture;
+    additionalCultures: Culture[];
+    email: string;
+    emailMeResults: boolean;
+}
 
 export default function Survey() {
-    // const [numberOfCultures, setNumberOfCultures]=useState<number | null>(null);
-    const [cultures, setCultures]=useState<culture[]>([
-        {
+    const [formState, setFormState]=useState<'filling out' | 'error' | 'loading' | 'submitted'>('filling out');
+    const [errorModalOpen, setErrorModalOpen]=useState(true);
+
+    const [data, setData]=useState<SurveyData>({
+        mother: {
             relation: 'Mother',
         },
-        {
+        father: {
             relation: 'Father',
-        }
-    ]);
-    const numberOfCultures=cultures.length;
-    function setNumberOfCultures(newNumberOfCultures: number) {
-        if (newNumberOfCultures<numberOfCultures)
-            setCultures(cultures.slice(0, newNumberOfCultures));
-        else {
-            const numToAdd=newNumberOfCultures-numberOfCultures;
-            let newCultures=cultures;
-            for (let i=0; i<numToAdd; i++)
-                newCultures=newCultures.concat({});
-            setCultures(newCultures);
-        }
-    }
+        },
+        additionalCultures: [],
+        email: '',
+        emailMeResults: true
+    });
 
-    const [email, setEmail]=useState<string>('');
-    const [emailMeResults, setEmailMeResults]=useState<boolean>(true);
-    
-    const [formState, setFormState]=useState<'filling out' | 'loading' | 'submitted'>('filling out');
     function formSubmit(e: any) {
-        console.log(cultures);
+        console.log(data);
+
+        // Validate that there is no missing data
+        for (let culture of [data.father, data.mother, ...data.additionalCultures]) {
+            if (!culture.name || !culture.race || culture.race==='Select a Race' || !culture.relation || culture.relation==='Select a Relation' || !culture.parentConnected || !culture.childConnected) {
+                setFormState('error');
+                setErrorModalOpen(true);
+                return;
+            }
+        }
+        
+        
         setFormState('loading');
         fetch('/api/research/how-do-cultures-combine/survey/submit', {
             method: 'POST',
-            body: JSON.stringify({
-                cultures,
-                email,
-                emailMeResults
-            })
+            body: JSON.stringify(data)
         })
             .then(res=>res.json())
             .then(res=>{
-                if (res.status!=200)
+                if (res.status==='error')
                     return handleError(res.message);
 
                 setFormState('submitted');
@@ -76,7 +83,8 @@ export default function Survey() {
             .catch(handleError);
         
         function handleError(message: any) {
-            setFormState('filling out');
+            setFormState('error');
+            setErrorModalOpen(true);
             toast.error(`Error submitting form${message ? ' ('+JSON.stringify(message)+')' : ''}. Please try again.`);
         }
     }
@@ -86,25 +94,38 @@ export default function Survey() {
         <h1 className='text-center'>Survey</h1>
 
         {
-            formState=='filling out'
+            formState==='filling out' || formState==='error'
             ? <>
-                <div>
-                    <span>Select number of cultures in your household:&emsp;</span>
-                    <div className='d:inline'>
-                        <Circles from={1} to={5} value={numberOfCultures} setValue={setNumberOfCultures} />
-                    </div>
-                    <p className={`my-3 text-xs ${theme.note} mb-6`}>If your parent is mixed, you can list their cultures separately.</p>
-                </div>
-
-                {cultures.map((culture, i)=>{
+                {[data.father, data.mother, ...data.additionalCultures].map((culture, i)=>{
                     const id=(val: string)=>`culture-${i}-${val}`;
+                    const additionalCultureI=i-2;
+                    const getCulture=(draft: SurveyData)=>{ //gets culture from draft for editing
+                        if (i==0)
+                            return draft.father;
+                        if (i==1)
+                            return draft.mother;
+                        return draft.additionalCultures[additionalCultureI];
+                    }
 
-                    return <div key={i} className='mx-auto my-3 px-8 py-5' style={{
+                    if (!culture) return;
+
+                    return <div key={i} className='mx-auto my-3 px-8 py-5 relative' style={{
                         border: '1px solid black',
                         borderRadius: 10,
-                        backgroundColor: theme.secondary
+                        backgroundColor: {
+                            0: theme.secondary,
+                            1: '#f3cfcf',
+                            'other': '#f9f2b6'
+                        }[i>1 ? 'other' : i]
                     }}>
                         <div className='bold text-center mb-3'>Culture {i+1}</div>
+                        { i>=2 && <>
+                            <link rel='stylesheet' href='/styles/icon-close.v2.css'/>
+                            <div className='icon-close' onClick={()=>setData(produce(data, draft=>{
+                                draft.additionalCultures.splice(additionalCultureI, 1)
+                            }))} />
+                        </> }
+
                         <div className='grid gap-y-3' style={{
                             gridTemplateColumns: '1fr 2fr'
                         }}>
@@ -116,12 +137,15 @@ export default function Survey() {
                                     <div className={`${theme.note} text-xs text-right`}>e.g. Jewish, Italian, Chinese, African American, mixed European</div>
                                 }
                             </div>
-                            <input type="text" id={id('name')} className='h-fit w-fit' value={culture.name || ''} onChange={e=>{
-                                setCultures(produce(cultures, draft=>{
-                                    const newName=e.target.value;
-                                    draft[i].name=newName;
-                                }));
-                            }} />
+                            <div>
+                                <input type="text" id={id('name')} className='h-fit w-fit' value={culture.name || ''} onChange={e=>{
+                                    setData(produce(data, draft=>{
+                                        const newName=e.target.value;
+                                        getCulture(draft).name=newName;
+                                    }));
+                                }} />
+                                { formState==='error' && !culture.name && <Missing /> }
+                            </div>
                             
                             <div className='justify-self-end mr-3 flex flex-col items-end'>
                                 <label htmlFor={id('race')} className='text-right'>Race</label>
@@ -129,82 +153,106 @@ export default function Survey() {
                                     <div className={`${theme.note} text-xs text-right`}>Which race is this culture?</div>
                                 }
                             </div>
-                            <select id={id('race')} className='border-black border-[1px] rounded w-fit h-fit' value={culture.race || 'Select a Race'} onChange={e=>{
-                                const newRace=e.target.value as raceT;
-                                setCultures(produce(cultures, draft=>{
-                                    draft[i].race=newRace;
-                                }))
-                            }}>
-                                <option value="Select a Race">---Select a Race---</option>
-                                {races.map(race=>
-                                    <option key={race} value={race}>{race}</option>
-                                )}
-                            </select>
-
-                            <div className='justify-self-end mr-3 flex flex-col items-end'>
-                                <label htmlFor={id('relation')} className='text-right'>Relation</label>
-                                {i==0 &&
-                                    <div className={`${theme.note} text-right`}>From whom did you inherit this culture?</div>
-                                }
+                            <div>
+                                <select id={id('race')} className='border-black border-[1px] rounded w-fit h-fit' value={culture.race || 'Select a Race'} onChange={e=>{
+                                    const newRace=e.target.value as Race;
+                                    setData(produce(data, draft=>{
+                                        getCulture(draft).race=newRace;
+                                    }))
+                                }}>
+                                    <option value="Select a Race">---Select a Race---</option>
+                                    {races.map(race=>
+                                        <option key={race} value={race}>{race}</option>
+                                    )}
+                                </select>
+                                { formState==='error' && (!culture.race || culture.race==='Select a Race') && <Missing /> }
                             </div>
-                            <select id={id('relation')} className='border-black border-[1px] rounded w-fit h-fit' value={culture.relation || 'Select a Relation'} onChange={e=>{
-                                const newRelation=e.target.value as relationT;
-                                setCultures(produce(cultures, draft=>{
-                                    draft[i].relation=newRelation;
-                                }))
-                            }}>
-                                <option value="Select a Relation">---Select a Relation---</option>
-                                {relations.map(relation=>
-                                    <option key={relation} value={relation}>{relation}</option>
-                                )}
-                            </select>
+
+                            {i>=2 && <> {/* hide for mother and father */}
+                                <div className='justify-self-end mr-3 flex flex-col items-end'>
+                                    <label htmlFor={id('relation')} className='text-right'>Relation</label>
+                                    {i==3 &&
+                                        <div className={`${theme.note} text-right`}>From whom did you inherit this culture?</div>
+                                    }
+                                </div>
+                                <div>
+                                    <select id={id('relation')} className='border-black border-[1px] rounded w-fit h-fit' value={culture.relation || 'Select a Relation'} onChange={e=>{
+                                        const newRelation=e.target.value as Relation;
+                                        setData(produce(data, draft=>{
+                                            getCulture(draft).relation=newRelation;
+                                        }))
+                                    }}>
+                                        <option value="Select a Relation">---Select a Relation---</option>
+                                        {relations.map(relation=>
+                                            <option key={relation} value={relation}>{relation}</option>
+                                        )}
+                                    </select>
+                                    { formState==='error' && (!culture.relation || culture.relation==='Select a Relation') && <Missing /> }
+                                </div>
+                            </> }
 
                             <div className='text-right'>How connected is your parent to this culture?</div>
-                            <Circles from={1} to={5} value={culture.parentConnected} setValue={newValue=>setCultures(produce(cultures, draft=>{
-                                draft[i].parentConnected=newValue;
-                            }))} />
+                            <div>
+                                <Circles from={1} to={5} value={culture.parentConnected} setValue={newValue=>setData(produce(data, draft=>{
+                                    getCulture(draft).parentConnected=newValue;
+                                }))} />
+                                { formState==='error' && culture.parentConnected===undefined && <Missing /> }
+                            </div>
 
                             <div className='text-right'>How connected are you to this culture?</div>
-                            <Circles from={1} to={5} value={culture.childConnected} setValue={newValue=>setCultures(produce(cultures, draft=>{
-                                draft[i].childConnected=newValue;
-                            }))} />
+                            <div>
+                                <Circles from={1} to={5} value={culture.childConnected} setValue={newValue=>setData(produce(data, draft=>{
+                                    getCulture(draft).childConnected=newValue;
+                                }))} />
+                                { formState==='error' && culture.childConnected===undefined && <Missing /> }
+                            </div>
 
                             {/* How is the culture practiced at home? Text area */}
                             <div className='justify-self-end mr-3 flex flex-col items-end'>
-                                    <label htmlFor={id('practicedAtHome')} className='text-right'>How is the culture practiced at home?</label>
+                                    <label htmlFor={id('practicedAtHome')} className='text-right'>How is the culture practiced at home? (optional)</label>
                                     {i==0 &&
                                         <div className={`${theme.note} text-xs text-right`}>e.g. food, language, holidays, religion, etc.</div>
                                     }
                             </div>
-                            <textarea id={id('practicedAtHome')} cols={40} rows={3} className='w-fit h-fit' value={culture.practicedAtHome} onChange={e=>setCultures(produce(cultures, draft=>{
-                                draft[i].practicedAtHome=e.target.value;
+                            <textarea id={id('practicedAtHome')} cols={40} rows={3} className='w-fit h-fit' value={culture.practicedAtHome} onChange={e=>setData(produce(data, draft=>{
+                                getCulture(draft).practicedAtHome=e.target.value;
                             }))} />
 
                             {/* Additional Notes */}
                             <div className='justify-self-end mr-3 flex flex-col items-end'>
-                                <label htmlFor={id('additional')} className='text-right'>Anything else you want to say about your relation with this culture?</label>
+                                <label htmlFor={id('additional')} className='text-right'>Anything else you want to say about your relation with this culture? (optional)</label>
                             </div>
-                            <textarea id={id('additional')} cols={40} rows={3} className='w-fit h-fit' value={culture.additional} onChange={e=>setCultures(produce(cultures, draft=>{
-                                draft[i].additional=e.target.value;
+                            <textarea id={id('additional')} cols={40} rows={3} className='w-fit h-fit' value={culture.additional} onChange={e=>setData(produce(data, draft=>{
+                                getCulture(draft).additional=e.target.value;
                             }))}/>
                         </div>
                     </div>;
                 })}
 
+                <div className="flex justify-center my-5 mt-6">
+                    <Button color='jgreen' onClick={()=>setData(produce(data, draft=>{draft.additionalCultures.push({})}))}>+ Add Culture</Button>
+                </div>
+
                 {/* Email Survey Sign Up */}
-                {cultures.length!==0 && <div>
-                    <div>
-                        <label htmlFor='email' className='mr-3'>Email (optional)</label>
-                        <input type="email" id='email' value={email} onChange={e=>setEmail(e.target.value)} />
+                <div className='grid gap-y-3 gap-6 relative' style={{
+                    gridTemplateColumns: '1fr 1fr'
+                }}>
+                    <div className='justify-self-end'>
+                        <p className='text-right'>
+                            <label htmlFor='email'>Email (optional)</label>
+                        </p>
+                        <p className={theme.note+' text-right'}>Note: your email will stay confidential with me and will not be published with the study. I may reach out to you if I have clarifying questions about something you said.</p>
                     </div>
-                    <p className={theme.note}>Note: your email will stay confidential with me and will not be published with the study. I may reach out to you if I have clarifying questions about something you said.</p>
-
                     <div>
-                        <input type="checkbox" id='emailedResults' checked={emailMeResults} onChange={e=>setEmailMeResults(e.target.checked)} />
-                        <label className='ml-2' htmlFor='emailedResults'>I want to be emailed the the study&apos;s results (coming out in late November 2023).</label>
+                        <input type="email" id='email' className='h-fit w-fit' value={data.email} onChange={e=>setData(produce(data, draft=>{draft.email=e.target.value}))} />
                     </div>
-                </div>}
+                </div>
 
+                <div className="flex justify-center my-3">
+                    <input type="checkbox" id='emailedResults' className='justify-self-end' checked={data.emailMeResults} onChange={e=>setData(produce(data, draft=>{draft.emailMeResults=e.target.checked}))} />
+                    <label className='ml-2' htmlFor='emailedResults'>I want to be emailed the the study&apos;s results (coming out in late November 2023).</label>
+                </div>
+                
                 <div className="flex justify-center">
                     <Button color={theme.secondary} onClick={formSubmit}>Submit</Button>
                 </div>
@@ -217,7 +265,7 @@ export default function Survey() {
                     <div className='text-2xl'>Thank you for your submission!</div>
                 </div>
                 {
-                    emailMeResults && <div className='text-center mt-8'>I (jgrayson24@riverdale.edu) will email you the study results in late November.</div>
+                    data.emailMeResults && <div className='text-center mt-8'>I (jgrayson24@riverdale.edu) will email you the study results in late November.</div>
                 }
             </div>
         }
@@ -225,6 +273,12 @@ export default function Survey() {
 
 
         <ToastContainer />
+        { formState==='error' &&
+            <Modal open={errorModalOpen} setOpen={setErrorModalOpen}>
+                Please fill out the missing fields and click Submit again.
+            </Modal>
+        }
+        
         {/* Make sure all Tailwind classes are enabled for theme bg color */}
         <div
             style={{ display: 'none' }}
@@ -259,5 +313,12 @@ export function Circles({ from, to, value, setValue }: { from: number; /** lower
             </div>
         )}
     </span>;
+}
+
+export function Missing() { //bouncing red box that says 'Missing'
+    return <div className='justify-self-end bg-red-500 w-fit h-fit p-2 bold rounded-2xl inline right-10 absolute animate-bounce'>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width={20} height={20} className='inline mr-2'><g><path d="M0 0h24v24H0z" fill="none"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-7v2h2v-2h-2zm0-8v6h2V7h-2z"/></g></svg>
+        Missing
+    </div>;
 }
 
