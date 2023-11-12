@@ -28,7 +28,7 @@ export default function sendEmail({ subject, text, html, to, from={} }: {
                 from: (from as {name: string; email: string})
             })
             .then(()=>{
-                // console.log(`Email sent to ${to}`);
+                console.log(`Email of title ${subject} sent to ${to}`);
                 resolve();
             })
             .catch(error=>{

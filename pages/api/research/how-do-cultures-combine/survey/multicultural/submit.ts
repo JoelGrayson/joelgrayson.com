@@ -71,7 +71,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         );
     }
 
-    sheets.spreadsheets.values.append({
+    await sheets.spreadsheets.values.append({
         spreadsheetId,
         range: 'Sheet1!A1:K1',
         valueInputOption: 'RAW',
@@ -80,7 +80,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         }
     });
     
-    sendEmail({
+    await sendEmail({
         subject: `New Multicultural Survey Response from a ${data.father.race} ${data.mother.race}`,
         to: 'joelbaograyson@gmail.com',
         html: `
