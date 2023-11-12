@@ -7,7 +7,7 @@ import Loader from '@/components/global/Loader';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from '@jcomponents/modal';
-import { type Culture, races, type Race } from '../..';
+import { type Culture, races, type Race, Circles, Missing } from '../..';
 import Link from 'next/link';
 
 const theme={
@@ -222,38 +222,3 @@ export default function Survey() {
         />
     </Page>;
 }
-
-export function Circles({ from, to, value, setValue }: { from: number; /** lower bound */ to: number; /** upper bound */ value?: number; 
-    // eslint-disable-next-line
-    setValue: (newValue: number)=>void;
-}) {
-    let indices=[];
-    for (let i=from; i<=to; i++)
-        indices.push(i);
-
-    return <span>
-        {indices.map(i=>
-            <div
-                className={
-                    'p-2 mx-1 cursor-pointer rounded-3xl w-10 h-10 inline-flex justify-center items-center border-[1px]'+
-                    (i===value
-                        ? ` bg-[${theme.primary}] text-white border-[darkblue]`
-                        : ' border-gray-600'
-                    )
-                }
-                onClick={()=>setValue(i)}
-                key={i}
-            >
-                {i}
-            </div>
-        )}
-    </span>;
-}
-
-export function Missing() { //bouncing red box that says 'Missing'
-    return <div className='justify-self-end bg-red-500 w-fit h-fit p-2 bold rounded-2xl inline right-10 absolute animate-bounce'>
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width={20} height={20} className='inline mr-2'><g><path d="M0 0h24v24H0z" fill="none"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-7v2h2v-2h-2zm0-8v6h2V7h-2z"/></g></svg>
-        Missing
-    </div>;
-}
-
