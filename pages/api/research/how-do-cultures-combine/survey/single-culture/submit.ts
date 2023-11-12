@@ -51,12 +51,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         subject: `New Single Culture Survey Response from a ${data.race} Person`,
         to: 'joelbaograyson@gmail.com',
         html: `
-            <p>See responses <a href="https://docs.google.com/spreadsheets/d/1myKBPm0_4PQek0mBjPlTcxjD0lQsL4GGKBM3zTdT87g/edit?pli=1#gid=0">here</a>.</p>
+            <p>See responses <a href="https://docs.google.com/spreadsheets/d/1sBssTGqo7BogXBgTyjK8Ui1LoQSnKtWB1H_im6wfSrE/edit#gid=0">here</a>.</p>
 
             <p><b>New response:</b></p>
             <p>${JSON.stringify(data, null, 4)}</p>
         `,
-        text: 'See responses here https://docs.google.com/spreadsheets/d/1myKBPm0_4PQek0mBjPlTcxjD0lQsL4GGKBM3zTdT87g/edit?pli=1#gid=0'
+        text: 'See responses here https://docs.google.com/spreadsheets/d/1sBssTGqo7BogXBgTyjK8Ui1LoQSnKtWB1H_im6wfSrE/edit#gid=0'
     });
 
     res.json({

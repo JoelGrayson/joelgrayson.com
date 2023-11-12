@@ -176,11 +176,14 @@ Permanent link: https://perma.cc/N7QN-QDK6
             </Action>
         </Section>
         <Section title={'Mitigating Climate Change\'s Effects'}>
+            <Action title='Urban Miniforest' {...{showDescription}}>
+                Made a Community Board <a href='https://www.nyc.gov/assets/manhattancb1/downloads/pdf/resolutions/23-09-26.pdf#page=2' className='styled' target='_blank'>resolution ammendment</a> to recommend the developers of the Holland Rotary to create a Miyawaki forest to improve air quality, lessen the urban heating effect (which saves HVAC emissions), and act as a flood resiliency measure.
+            </Action>
+            {/* TODO: created a video explaining the resiliency projects in Lower Manhattan */}
             <Action title='Flood Resiliency' {...{showDescription}}>
                 Part of discussions in the planning of resiliency projects in Lower Manhattan as a member of the Environmental Protection Committee of Manhattan Community Board 1.
             </Action>
-            {/* TODO: created a video explaining the resiliency projects in Lower Manhattan */}
-            <br /><br />
+            <br />
         </Section>
     </Page>;
 }
