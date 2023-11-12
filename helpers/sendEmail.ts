@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import sgMail from '@sendgrid/mail';
-sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
 
 export default function sendEmail({ subject, text, html, to, from={} }: {
     subject: string;
@@ -13,7 +12,9 @@ export default function sendEmail({ subject, text, html, to, from={} }: {
         email?: string;
     };
 }): Promise<void> { //including any from parameters changes sender details for that prop only
-    //Sender default values
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
+
+    // Sender default values
     from.name??='Joel Grayson';
     from.email??='bot@joelgrayson.com';
 

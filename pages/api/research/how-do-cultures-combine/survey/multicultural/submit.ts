@@ -9,8 +9,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const data=req.body as SurveyData;
 
     // Add to google sheets row so it can be exported as a CSV and used with pandas
-    const spreadsheetId='1sBssTGqo7BogXBgTyjK8Ui1LoQSnKtWB1H_im6wfSrE';
-        //https://docs.google.com/spreadsheets/d/1sBssTGqo7BogXBgTyjK8Ui1LoQSnKtWB1H_im6wfSrE/edit#gid=0
+    const spreadsheetId='1myKBPm0_4PQek0mBjPlTcxjD0lQsL4GGKBM3zTdT87g';
+        //https://docs.google.com/spreadsheets/d/1myKBPm0_4PQek0mBjPlTcxjD0lQsL4GGKBM3zTdT87g/edit#gid=0
 
     const auth=await google.auth.getClient({
         scopes: ['https://www.googleapis.com/auth/spreadsheets'],
