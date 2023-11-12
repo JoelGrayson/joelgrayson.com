@@ -69,7 +69,7 @@ export default function Survey() {
 
     
     return <Page bottomPadding>
-        <h1 className='text-center text-4xl my-10'>Survey for Multicultural Individuals</h1>
+        <h1 className='text-center my-5 text-4xl mt-8'>Survey for Multicultural Individuals</h1>
         { formState!=='submitted' && <p>This survey is part of a study of how cultures combine in multicultural families. The goal is to find out to what extent both cultures are preserved or diminished when combined.</p> }
 
         {
@@ -113,15 +113,13 @@ export default function Survey() {
                             }))} />
                         </> }
 
-                        <div className='grid gap-y-3' style={{
-                            gridTemplateColumns: '1fr 2fr'
-                        }}>
-                            <div className='mr-3 justify-self-end flex flex-col items-end'>
+                        <div className='grid gap-y-3 d:grid-cols-[1fr_2fr]'>
+                            <div className='mr-3 d:justify-self-end flex flex-col d:items-end'>
                                 <label htmlFor={id('name')}>
                                     Culture Name
                                 </label>
                                 {i==0 && //detailed instructions if first
-                                    <div className={`${theme.note} text-xs text-right`}>e.g. Jewish, Italian, Chinese, African American, mixed European</div>
+                                    <div className={`${theme.note} text-xs d:text-right`}>e.g. Jewish, Italian, Chinese, African American, mixed European</div>
                                 }
                             </div>
                             <div>
@@ -134,10 +132,10 @@ export default function Survey() {
                                 { formState==='error' && !culture.name && <Missing /> }
                             </div>
                             
-                            <div className='justify-self-end mr-3 flex flex-col items-end'>
-                                <label htmlFor={id('race')} className='text-right'>Race</label>
+                            <div className='d:justify-self-end mr-3 flex flex-col d:items-end'>
+                                <label htmlFor={id('race')} className='d:text-right'>Race</label>
                                 {i==0 &&
-                                    <div className={`${theme.note} text-xs text-right`}>Which race is this culture?</div>
+                                    <div className={`${theme.note} text-xs d:text-right`}>Which race is this culture?</div>
                                 }
                             </div>
                             <div>
@@ -162,10 +160,10 @@ export default function Survey() {
                             </div>
 
                             {i>=2 && <> {/* hide for mother and father */}
-                                <div className='justify-self-end mr-3 flex flex-col items-end'>
-                                    <label htmlFor={id('relation')} className='text-right'>Relation</label>
+                                <div className='d:justify-self-end mr-3 flex flex-col d:items-end'>
+                                    <label htmlFor={id('relation')} className='d:text-right'>Relation</label>
                                     {i==2 &&
-                                        <div className={`${theme.note} text-right`}>Who did you inherit this culture from?<br />You can put down mother twice for both of your mother&apos;s cultures if your mother is biracial.</div>
+                                        <div className={`${theme.note} d:text-right`}>Who did you inherit this culture from?<br />You can put down mother twice for both of your mother&apos;s cultures if your mother is biracial.</div>
                                     }
                                 </div>
                                 <div>
@@ -184,7 +182,7 @@ export default function Survey() {
                                 </div>
                             </> }
 
-                            <div className='text-right'>How connected is your parent to this culture?</div>
+                            <div className='d:text-right'>How connected is your parent to this culture?</div>
                             <div>
                                 <Circles from={1} to={5} value={culture.parentConnected} setValue={newValue=>setData(produce(data, draft=>{
                                     getCulture(draft).parentConnected=newValue;
@@ -192,7 +190,7 @@ export default function Survey() {
                                 { formState==='error' && culture.parentConnected===undefined && <Missing /> }
                             </div>
 
-                            <div className='text-right'>How connected are you to this culture?</div>
+                            <div className='d:text-right'>How connected are you to this culture?</div>
                             <div>
                                 <Circles from={1} to={5} value={culture.childConnected} setValue={newValue=>setData(produce(data, draft=>{
                                     getCulture(draft).childConnected=newValue;
@@ -201,10 +199,10 @@ export default function Survey() {
                             </div>
 
                             {/* How is the culture practiced in your family? Text area */}
-                            <div className='justify-self-end mr-3 flex flex-col items-end'>
-                                    <label htmlFor={id('practicedAtHome')} className='text-right'>How is the culture practiced in your family? <span className={theme.note}>(optional)</span></label>
+                            <div className='d:justify-self-end mr-3 flex flex-col d:items-end'>
+                                    <label htmlFor={id('practicedAtHome')} className='d:text-right'>How is the culture practiced in your family? <span className={theme.note}>(optional)</span></label>
                                     {i==0 &&
-                                        <div className={`${theme.note} text-xs text-right`}>e.g. food, language, holidays, religion, etc.</div>
+                                        <div className={`${theme.note} text-xs d:text-right`}>e.g. food, language, holidays, religion, etc.</div>
                                     }
                             </div>
                             <textarea id={id('practicedAtHome')}
@@ -217,8 +215,8 @@ export default function Survey() {
                             />
 
                             {/* Additional Notes */}
-                            <div className='justify-self-end mr-3 flex flex-col items-end'>
-                                <label htmlFor={id('additional')} className='text-right'>Anything else you want to say about your relationship with this culture? <span className={theme.note}>(optional)</span></label>
+                            <div className='d:justify-self-end mr-3 flex flex-col d:items-end'>
+                                <label htmlFor={id('additional')} className='d:text-right'>Anything else you want to say about your relationship with this culture? <span className={theme.note}>(optional)</span></label>
                             </div>
                             <textarea id={id('additional')} style={{ width: '100%', maxWidth: 400}} rows={3} value={culture.additional} onChange={e=>setData(produce(data, draft=>{
                                 getCulture(draft).additional=e.target.value;
@@ -244,11 +242,11 @@ export default function Survey() {
                 <div className='grid gap-y-3 gap-6 relative' style={{
                     gridTemplateColumns: '1fr 1fr'
                 }}>
-                    <div className='justify-self-end'>
-                        <p className='text-right'>
+                    <div className='d:justify-self-end'>
+                        <p className='d:text-right'>
                             <label htmlFor='email'>Email <span className={theme.note}>(optional)</span></label>
                         </p>
-                        <p className={theme.note+' text-right'}>Note: your email will stay confidential with me and will not be published with the study. I may reach out to you if I have clarifying questions about something you wrote.</p>
+                        <p className={theme.note+' d:text-right'}>Note: your email will stay confidential with me and will not be published with the study. I may reach out to you if I have clarifying questions about something you wrote.</p>
                     </div>
                     <div>
                         <input type="email" id='email' className='h-fit w-fit' value={data.email} onChange={e=>setData(produce(data, draft=>{draft.email=e.target.value;}))} />
@@ -256,7 +254,7 @@ export default function Survey() {
                 </div>
 
                 <div className="flex justify-center my-3">
-                    <input type="checkbox" id='emailedResults' className='justify-self-end' checked={data.emailMeResults} onChange={e=>setData(produce(data, draft=>{draft.emailMeResults=e.target.checked;}))} />
+                    <input type="checkbox" id='emailedResults' className='d:justify-self-end' checked={data.emailMeResults} onChange={e=>setData(produce(data, draft=>{draft.emailMeResults=e.target.checked;}))} />
                     <label className='ml-2' htmlFor='emailedResults'>I want to be emailed the the study&apos;s results (coming out in late November 2023).</label>
                 </div>
                 
