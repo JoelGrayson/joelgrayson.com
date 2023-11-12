@@ -70,6 +70,12 @@ Permanent link: https://perma.cc/N7QN-QDK6
                     </Info>
                 </p>
             </Action>
+            <Action title='Renewable Energy Research'>
+                <Image src="/research/organic-optoelectronics/Joel in the Lab.jpg" alt="Joel in the Lab" width={210} height={157.5} className='float-right' />
+                <p>
+                    I researched a novel compound for organic solar cells&apos; absorbance layer at the Lee Lab in NYU&apos;s Molecular Design Institute and wrote a 14-page lab report. I will be a coauthor on a future peer-reviewed journal publication. See more <Link href='/research/organic-optoelectronics' className='styled'>here</Link>.
+                </p>
+            </Action>
         </Section>
         <Section title='Electrification'>
             <Action title='Students for Electric Buses' icon={

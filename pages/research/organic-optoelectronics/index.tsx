@@ -12,11 +12,23 @@ export default function OrganicOptoelectronics() {
         `}</style>
         <h1 className='text-center'>Organic Optoelectronics</h1>
 
-        <p>This research studied the charge transfer complex of bis(4-bromophenyl)amine and 4,4&quot;-azopyridine (abbreviated as BrDPA-AzoBipy), shown below:</p>
-        <Image src='/research/organic-optoelectronics/BrDPA-AzoBipy Structure.png' width={150} height={230} alt='BrDPA-AzoBipy structure' />
+        <Image src='/research/organic-optoelectronics/BrDPA-AzoBipy Structure.png' width={150} height={230} alt='BrDPA-AzoBipy structure' className='float-right' />
+        <p>This research studied the charge transfer complex of bis(4-bromophenyl)amine and 4,4&quot;-azopyridine (abbreviated as BrDPA-AzoBipy), shown to the right:</p>
         <p>The goal was to find optimal twisting conditions so it can be used in organic optoelectronics&apos;s active layer.</p>
+
+        <h3>Results</h3>
+        <ul>
+            <li>Speaking at the ARISE Colloquium about Organic Optoelectronics</li>
+            <li>Feature on Spectrum NY1</li>
+            <li>Lab report</li>
+            <li>12 papers read</li>
+            <li>20 pages of notes</li>
+            <li>17 experiments</li>
+            <li>445 captured pictures</li>
+        </ul>
         
-        <h3>Optimal Conditions for Twisting BrDPA-AzoBipy</h3>
+        
+        <h3>Conclusion: Optimal Conditions for Twisting BrDPA-AzoBipy</h3>
         <ul>
             <li>Additive: damar 12 wt% gum</li>
             <li>Melting temperature: 140°C</li>
@@ -32,15 +44,7 @@ export default function OrganicOptoelectronics() {
         {/* <p>TODO: test it in more devices like photodetectors and, if successful, organic solar cells.</p> */}
         
         <Data />
-                
-        <h3>Weekly presentations</h3>
-        <PDF src='/research/organic-optoelectronics/presentations/Week 1.pdf' height={464} />
-        <PDF src='/research/organic-optoelectronics/presentations/Week 2.pdf' height={464} />
-        <PDF src='/research/organic-optoelectronics/presentations/Week 3.pdf' height={464} />
-        <PDF src='/research/organic-optoelectronics/presentations/Week 4.pdf' height={464} />
-        <PDF src='/research/organic-optoelectronics/presentations/Week 5.pdf' height={464} />
-        
-        <br />        
+
         <h3>Explaining stuff in the lab to a general audience</h3>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/AuM790sAzUc" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
         
@@ -53,6 +57,16 @@ export default function OrganicOptoelectronics() {
         
         <h3>Research Paper</h3>
         <PDF src='/research/organic-optoelectronics/Twisting Charge Transfer Complex Crystals for Organic Optoelectronics Paper.pdf' height={700} />
+        <br />
+        
+        <h3>Weekly Presentations</h3>
+        <PDF src='/research/organic-optoelectronics/presentations/Week 1.pdf' height={464} />
+        <PDF src='/research/organic-optoelectronics/presentations/Week 2.pdf' height={464} />
+        <PDF src='/research/organic-optoelectronics/presentations/Week 3.pdf' height={464} />
+        <PDF src='/research/organic-optoelectronics/presentations/Week 4.pdf' height={464} />
+        <PDF src='/research/organic-optoelectronics/presentations/Week 5.pdf' height={464} />
+        
+        <br />
     </Page>;
 }
 

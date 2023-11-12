@@ -35,7 +35,7 @@ export default function Home() {
                 });
         }
 
-        fetch('https://buseroo.com/api/overall/metrics')
+        fetch('https://buseroo.com/api/overall/stats')
             .then(res=>res.json())
             .then(res=>{
                 setBuserooSearches(res.searches);
