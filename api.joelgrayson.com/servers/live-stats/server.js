@@ -1,3 +1,5 @@
+// Necessary in api.joelgrayson.com because it uses puppeteer
+
 const express=require('express');
 const router=express.Router();
 const cacheMiddleware=require('../../utils/cache');

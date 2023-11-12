@@ -52,6 +52,7 @@ export function Subject({children, link}: {children: any; link: string}) {
         <Link href={link}>
             <div
                 className={css`
+                    text-align: center;
                     width: 300px;
                     height: 300px;
                     border: 1px solid black;

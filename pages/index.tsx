@@ -11,12 +11,15 @@ import { useEffect, useState } from 'react';
 export default function Home() {
     const [hCInstalls, setHCInstalls]=useState<number | null>(null);
     const [focusInstalls, setFocusInstalls]=useState<number | null>(null);
+    const [buserooSearches, setBuserooSearches]=useState<number | null>(null);
 
     useEffect(()=>{
         if (hCInstalls!=null || focusInstalls!=null) return;
         
+        // Need to call api.joelgrayson.com in order to use Puppeteer
         if (process.env.NODE_ENV==='development') { //skip calling api.joelgrayson.com/live-stats in development because of CORS error
             console.log('skipping getting live-stats in development');
+            setBuserooSearches(-4);
             setHCInstalls(-4);
             setFocusInstalls(-4);
         } else {
@@ -31,6 +34,12 @@ export default function Home() {
                     setFocusInstalls(res.focusInstalls);
                 });
         }
+
+        fetch('https://buseroo.com/api/overall/metrics')
+            .then(res=>res.json())
+            .then(res=>{
+                setBuserooSearches(res.searches);
+            });
     // eslint-disable-next-line
     }, []);
 
@@ -104,8 +113,9 @@ export default function Home() {
                     <span>Machines</span>
                 </BtnIcon> {/* sunbeam going down when hover */}
                 <BtnIcon href='https://buseroo.com'>
-                    <Image alt='buseroo-logo' height={50} width={50} src='/image/home/buseroo-logo.png' />
+                    <Image alt='buseroo-logo' height={48} width={48} className='mb-0.5' src='/image/home/buseroo-logo.png' />
                     <span>Buseroo.com</span>
+                    { buserooSearches!=null && <Label>{buserooSearches} searches</Label> }
                 </BtnIcon>
                 <BtnIcon href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf'>
                     <Image alt='focus-logo' height={50} width={50} src='/image/home/focus-logo.png' />
