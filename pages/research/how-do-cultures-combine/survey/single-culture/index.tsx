@@ -101,7 +101,7 @@ export default function Survey() {
                             
                             <div className='d:justify-self-end mr-3 flex flex-col d:items-end'>
                                 <label htmlFor={id('race')} className='d:text-right'>Race</label>
-                                <div className={`${theme.note} text-xs d:text-right`}>Which race is this culture?</div>
+                                <div className={`${theme.note} text-[.7rem] d:text-right`}>What race does this culture belong to?</div>
                             </div>
                             <div>
                                 <select id={id('race')} className='border-black border-[1px] rounded w-fit h-fit' value={data.race || 'Select a Race'} onChange={e=>{

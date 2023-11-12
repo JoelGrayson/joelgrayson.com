@@ -70,7 +70,7 @@ export default function Survey() {
     
     return <Page bottomPadding>
         <h1 className='text-center my-5 text-4xl mt-8'>Survey for Multicultural Individuals</h1>
-        { formState!=='submitted' && <p>This survey is part of a study of how cultures combine in multicultural families. The goal is to find out to what extent both cultures are preserved or diminished when combined.</p> }
+        { formState!=='submitted' && <p>This survey is part of a study of how cultures combine in multicultural families.{/* The goal is to find out to what extent both cultures are preserved or diminished when combined.*/}</p> }
 
         {
             formState==='filling out' || formState==='error'
@@ -135,7 +135,7 @@ export default function Survey() {
                             <div className='d:justify-self-end mr-3 flex flex-col d:items-end'>
                                 <label htmlFor={id('race')} className='d:text-right'>Race</label>
                                 {i==0 &&
-                                    <div className={`${theme.note} text-xs d:text-right`}>Which race is this culture?</div>
+                                    <div className={`${theme.note} text-[.7rem] d:text-right`}>What race does this culture belong to?</div>
                                 }
                             </div>
                             <div>

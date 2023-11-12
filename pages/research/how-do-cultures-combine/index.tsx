@@ -13,7 +13,7 @@ export default function HowDoCulturesCombine() {
             </Link>
             &nbsp;and&nbsp;
             <Link href='/research/how-do-cultures-combine/survey/single-culture' className='styled'>
-                this survey for people of a single culture
+                this survey for people from a single cultural background
             </Link>
             .
         </P>
