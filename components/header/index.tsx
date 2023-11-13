@@ -24,7 +24,7 @@ export default function Header() {
             <nav className='j_max-w mx-auto'>
                 <PathContext.Provider value={route}>
                     <ul className='unstyled flex w-full j_container m:p-0 m:grid grid-cols-3 grid-rows-2'>
-                            <li className='m:order-3'><JThreeDots /></li>
+                            <li className='m:order-3 m:relative m:bottom-[.3rem] m:right-1'><JThreeDots /></li>
                             
                             <HeaderItem link='/' className='m:order-1'>Home</HeaderItem>
 

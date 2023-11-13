@@ -33,13 +33,13 @@ export default function Home() {
                     setHCInstalls(res.hCInstalls);
                     setFocusInstalls(res.focusInstalls);
                 });
+            
+            fetch('https://buseroo.com/api/overall/stats')
+                .then(res=>res.json())
+                .then(res=>{
+                    setBuserooSearches(res.searches);
+                });
         }
-
-        fetch('https://buseroo.com/api/overall/stats')
-            .then(res=>res.json())
-            .then(res=>{
-                setBuserooSearches(res.searches);
-            });
     // eslint-disable-next-line
     }, []);
 
