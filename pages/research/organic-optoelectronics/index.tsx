@@ -4,7 +4,9 @@ import { Data } from './data';
 import PDF from '@/components/global/PDF';
 
 export default function OrganicOptoelectronics() {
-    return <Page bottomPadding>
+    return <Page bottomPadding seo={{
+        title: 'Organic Optoelectronics Research | Joel Grayson',
+    }}>
         <style jsx>{`
             h3 {
                 margin-top: 1.5rem;

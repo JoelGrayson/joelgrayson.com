@@ -17,11 +17,11 @@ export default function BlogPage({children, seo, maxWidth=800}: {children: React
         
         <header className='relative flex justify-between items-center px-5 py-0'>
             <JThreeDots />
-            <h1 className={`${chomsky.className} text-[2.5rem] sm:text-[3.4rem]`}>
+            <span className={`${chomsky.className} text-[2.5rem] sm:text-[3.4rem] mt-[10px] leading-[1.8]`}>
                 <Link href='/blog'>
                     Joel&apos;s Blog
                 </Link>
-            </h1>
+            </span>
             <div />
         </header>
 

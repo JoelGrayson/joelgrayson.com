@@ -2,6 +2,7 @@ import { redirects } from './_internals/types';
 
 
 export const temporary: redirects={ //302
+    'https://drive.google.com/uc?export=download&id=10ZMJ05tzSK1FwAXWKfX5rtCLA4K9U8Hr': '/combating-climate-change/Combating%20Climate%20Change.pptx', //because larger than 100 MB
     '/dashboard': ['/admin', '/control-panel', '/cpanel'],
     '/nyc/nyc-government/nyc-budget': '/nyc-budget',
     '/chess/index.html': '/chess',

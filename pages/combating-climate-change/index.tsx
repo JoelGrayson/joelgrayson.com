@@ -15,7 +15,9 @@ import Markdown from 'markdown-to-jsx';
 export default function CCC() {
     const [showDescription, setShowDescription]=useState<boolean>(true);
 
-    return <Page noPadding>
+    return <Page noPadding seo={{
+        title: 'Climate Change | Joel\'s Initiatives'
+    }}>
         {/* <Viewer status={viewer} setStatus={setViewer} /> */}
         <section className={styles.section}>
             <div className='j_container'>

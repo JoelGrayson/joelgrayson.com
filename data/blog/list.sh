@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Needs to be executed from the root of this github project
+# Needs to be executed from the root of this GitHub project
 
 echo '['
 list="$(ls ./pages/blog/*.tsx)"
