@@ -1,7 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next/types';
 
 export default async function handler(globalReq: NextApiRequest, globalRes: NextApiResponse<any>) {
-    const apiKey=process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
+    const apiKey=process.env.YOUTUBE_API_KEY;
+    // const apiKey=process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
     const slaphappyId='UCAwfG8BfhLuhMddFZh7z09A';
     const joelgrayson2Id='UChs2-tks6XqrAdZ6K2I0QCA';
     const channelId=slaphappyId+','+joelgrayson2Id;

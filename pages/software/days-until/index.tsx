@@ -8,6 +8,10 @@ export default function DaysUntil() { // /software/days-until?date=11.7.2022&eve
     if (!router.query.date)
         return <div className='flex gap-3 items-center flex-col mt-[5vh]'>
             <p>Specify an event below</p>
+            <SEO seo={{
+                title: 'Days Until',
+                description: 'Create an embeddable countdown to an event on a specified date'
+            }} />
 
             <form action="#" className='flex flex-col gap-3'>
                 <div>

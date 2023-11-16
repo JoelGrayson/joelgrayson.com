@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { ytVideos } from './ytVideos';
 
 export async function getServerSideProps() {
-    const url=`https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.GCLOUD_API_KEY}&part=snippet&playlistId=PLPq06AMW3cIFOA3J8Z0cd1bMaKn6TV_9K&maxResults=50`;
+    const url=`https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.YOUTUBE_API_KEY}&part=snippet&playlistId=PLPq06AMW3cIFOA3J8Z0cd1bMaKn6TV_9K&maxResults=50`;
     const buff=await fetch(url);
     const data=await buff.json();
 
@@ -17,11 +17,11 @@ export async function getServerSideProps() {
     };
 }
 
-export default function Performances({videos}: { videos: ytVideos }) {
+export default function Performances({ videos }: { videos: ytVideos }) {
     const [galleryOpen, setGalleryOpen]=useState<boolean>(false);
     const [index, setIndex]=useState<number>(0);
 
-    return <Page padding seo={{
+    return <Page bottomPadding seo={{
         keywords: ['violin', 'piano', 'recitals'],
         description: 'Playing the violin over the years'
     }}>
