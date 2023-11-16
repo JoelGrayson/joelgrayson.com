@@ -22,6 +22,7 @@ export default function Performances({ videos }: { videos: ytVideos }) {
     const [index, setIndex]=useState<number>(0);
 
     return <Page bottomPadding seo={{
+        title: 'Violin & Piano Performances',
         keywords: ['violin', 'piano', 'recitals'],
         description: 'Playing the violin over the years'
     }}>
@@ -43,6 +44,7 @@ export default function Performances({ videos }: { videos: ytVideos }) {
                         height: 111,
                         border: '2px solid #00499c'
                     }} />
+                    <div className='text-center'>{video.snippet.title}</div>
                 </div>;
             })
         }</div>
