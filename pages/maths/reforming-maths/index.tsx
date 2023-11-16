@@ -1,25 +1,34 @@
 import Page from '@/components/global/Page';
-import LaTeX from '@jcomponents/latex';
 import Script from 'next/script';
 
 export default function ReformingMath() {
-    return <Page>
-        <h1 className='text-center'>Reforming Math</h1>
+    return <Page bottomPadding>
+        <Script src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' async id="MathJax-script"></Script>
+
+        <h1 className='text-center text-4xl my-10'>Reforming Math</h1>
+        <p>Here are my suggestions for making math notation better:</p>
         <ul>
-            <li>Use <LaTeX>{String.raw`\tau`}</LaTeX> instead of <LaTeX>{String.raw`\pi`}</LaTeX> for the circle constant</li>
-            <li>⟷ or → notation for an edge, not just \(G_12\) because it looks like G of the number 12. Also in physics, don’t write a_12 to mean acceleration between points 1 and 2 because it looks like acceleration at 12.</li>
+            <li>Use \(\tau\) instead of \(\pi\) for the circle constant</li>
+            <li>Instead of writing {String.raw`\(a_{12}\)`} to mean the edge between points \(1\) and \(2\) in graph theory, write {String.raw`\(a_{1\leftrightarrow2}\)`}. Otherwise, it looks like indexing \(12\) of \(a\). When indexing a 2d-array, write {String.raw`\(a_{1,2}\)`} instead of {String.raw`\(a_{12}\)`}. In a 100x100 array, {String.raw`\(a_{12}\)`} should return a 1x100 vector (analogous to a[12]), not a number (analogous to a[1][2])</li>
             <li>
-                A big source of confusion in math is not knowing what letter variables stand for. The problem with saying <LaTeX>{String.raw`\text{charge}=\text{capacitance}\times \text{voltage}`}</LaTeX> is that it looks like
-                <LaTeX>{String.raw`
+                A big source of confusion in math is not knowing what letter variables stand for. The problem with saying {String.raw`\(\text{charge}=\text{capacitance}\times \text{voltage}\)`} is that it can be interpreted as
+                \(
                     c\times h\times a\times r\times g\times e=c\times a\times p\times a\times c\times i\times t\times a\times n\times c\times e\times v\times o\times l\times t\times a\times g\times e
-                `}</LaTeX>. The solution is to write a line over multiletter variables (inspired by the usage of the vinculum as a grouping operator).
+                \). The solution is to write a line over multiletter variables (inspired by the usage of the vinculum as a grouping operator).
                 <br />
-                Write <LaTeX>{String.raw`\overline{\text{charge as Q}}=\overline{\text{capacitance as C}}\times\overline{\text{voltage as V}}`}</LaTeX>
+                Write {String.raw`\(\overline{\text{charge}}=\overline{\text{capacitance}}\ \overline{\text{voltage}}\)`}
+                <br />
+                If you want start the equation with a multiletter variable and use single-letter variables later, you can use \(\rm as\), like so:
+                <br />
+                {String.raw`\[\overline{\text{charge as Q}}=\overline{\text{capacitance as C}}\times\overline{\text{voltage as V}}\]`}
+                {String.raw`\[V=\frac{Q}C\]`}
             </li>
             <li>
-                {/* Use arc in front of function to be inverse. Never use <LaTeX>{`^{-1}`}</LaTeX> because it should mean reciprocal if <LaTeX>{'sin^2(x)'}</LaTeX> means <LaTeX>{'(sin(x))^2'}</LaTeX>. */}
-                <LaTeX>{String.raw`\sin^2(x)`}</LaTeX> should mean <LaTeX>{String.raw`\sin(\sin(x))`}</LaTeX> and <LaTeX>{'sin^{-1}(x)'}</LaTeX> should mean <LaTeX>{'arcsin(x)'}</LaTeX> whereas <br />
-                <LaTeX>{String.raw`\sin(x)^2`}</LaTeX> should mean <LaTeX>{String.raw`\sin(x)\cdot \sin(x)`}</LaTeX> and <LaTeX>{String.raw`\sin(x)^{-1}`}</LaTeX> should mean <LaTeX>{String.raw`\frac1{\sin(x)}`}</LaTeX>
+                {String.raw`\(\sin^2(x)\)`} should mean {String.raw`\(\sin(\sin(x))\)`} and {String.raw`\(sin^{-1}(x)\)`} should mean \(arcsin(x)\) whereas <br />
+                {String.raw`\(\sin(x)^2\)`} should mean {String.raw`\(\sin(x)\cdot \sin(x)\)`} and {String.raw`\(\sin(x)^{-1}\)`} should mean {String.raw`\(\frac1{\sin(x)}\)`}
+            </li>
+            <li>
+                Make polar coordinates explicitly polar with a \(^p\) superscript, such as \((1, 1)^p\). Otherwise, they look like cartesian coordinates.
             </li>
         </ul>
     </Page>;
