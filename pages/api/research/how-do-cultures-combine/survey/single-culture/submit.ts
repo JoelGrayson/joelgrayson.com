@@ -1,15 +1,16 @@
 import { google } from 'googleapis';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { createId as cuid } from '@paralleldrive/cuid2';
-import { SurveyData } from 'pages/research/how-do-cultures-combine/survey/single-culture';
 import sendEmail from '@/helpers/sendEmail';
+import { type SingleCultureSurveyData } from '@/components/research/survey/types';
+import { getRows } from '@/components/research/survey/utils';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
-    const data=req.body as SurveyData;
+    const data=req.body as SingleCultureSurveyData;
 
     // Add to google sheets row so it can be exported as a CSV and used with pandas
     const spreadsheetId='1sBssTGqo7BogXBgTyjK8Ui1LoQSnKtWB1H_im6wfSrE';
-        //https://docs.google.com/spreadsheets/d/1sBssTGqo7BogXBgTyjK8Ui1LoQSnKtWB1H_im6wfSrE/edit#gid=0
+        // https://docs.google.com/spreadsheets/d/1sBssTGqo7BogXBgTyjK8Ui1LoQSnKtWB1H_im6wfSrE/edit#gid=0
 
     const auth=await google.auth.getClient({
         scopes: ['https://www.googleapis.com/auth/spreadsheets'],
@@ -24,18 +25,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     });
     const sheets=google.sheets({ version: 'v4', auth });
 
-    const rowsToInsert=[
+    // ID	Date Submitted	JSON	Email	Email Me the Results	Culture Name	Race	Parent Connected	Parent Connected Text	Child Connected	Child Connected Text	Child vs. Parent Connection (MORE, LESS, EQUAL)	Ways Child More Connected to Culture than Parents	Ways Child Less Connected to Culture than Parents	
+    const rowToInsert=[
         cuid(),
         new Date().toISOString(),
         JSON.stringify(data),
         data.email,
         data.emailMeResults,
-        data.name,
-        data.race,
-        data.parentConnected,
-        data.childConnected,
-        data.practicedAtHome,
-        data.additional,
+        ...getRows(data)
     ];
 
     await sheets.spreadsheets.values.append({
@@ -43,7 +40,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         range: 'Sheet1!A1:AD1',
         valueInputOption: 'RAW',
         requestBody: {
-            values: [rowsToInsert]
+            values: [rowToInsert]
         }
     });
     

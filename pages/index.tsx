@@ -47,7 +47,7 @@ export default function Home() {
         title: 'Joel Grayson',
         description: 'The official website of the United Cells of Joel Grayson',
         og: {
-            image: '/image/home/portraits/3.20.2022/Joel Grayson.png'
+            image: '/image/home/portraits/4.22.2023/Joel Grayson.webp'
         }
     }} noPadding>
         <div className='w-full p-0 m-0'>

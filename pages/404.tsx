@@ -20,7 +20,7 @@ export default function Custom404() {
 
         fetch('/api/log-error/page-not-found');
     }, []);
-
+    
     return <Page noPadding seo={{
         noIndex: true
     }}>

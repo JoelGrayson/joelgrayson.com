@@ -1,4 +1,15 @@
-POST http://localhost:3000/api/research/how-do-cultures-combine/survey/submit
+# Joel
+POST http://localhost:3000/api/research/how-do-cultures-combine/survey/multicultural/submit
 Content-Type: application/json
 
-{"mother":{"relation":"Mother","name":"Chinese","race":"Asian","parentConnected":4,"childConnected":3},"father":{"relation":"Father","name":"Jewish","race":"White","parentConnected":3,"childConnected":2,"practicedAtHome":""},"additionalCultures":[],"email":"","emailMeResults":true}
+{"mother":{"relation":"Mother","childConnectedText":"I speak Chinese. I have visited China many times","childConnected":3,"parentConnected":5,"childLessConnected":"When I go to China, people stare at me because I stand out in their homogenous society. I do not speak as good Chinese as my mom.","parentConnectedText":"Born and raised in Shanghai. Says \"we\" when talking about China.","race":"Asian","name":"Chinese"},"father":{"relation":"Father","name":"Jewish","race":"White","parentConnectedText":"Attends family gatherings for Jewish holidays.\nAlways knows when someone is Jewish or not.\nHe was mitzvahed and grew up in a Jewish community.","parentConnected":3,"childConnected":2,"childConnectedText":"I join my family in Jewish holiday gatherings like Hanukkah.\nI was not mitzvahed.","childLessConnected":"I do not feel the same connection to the Jewry as my Dad does."},"additionalCultures":[],"email":"jgrayson24@riverdale.edu","emailMeResults":true}
+
+
+###
+
+# Tricultural Test
+POST http://localhost:3000/api/research/how-do-cultures-combine/survey/multicultural/submit
+Content-Type: application/json
+
+{"mother":{"relation":"Mother","race":"Hispanic","name":"Hispanic","parentConnected":2,"childConnected":2,"parentConnectedText":"Speak Spanish.","childConnectedText":"Speak Spanish."},"father":{"relation":"Father","name":"Test","race":"Other","otherRace":"Oceanic","parentConnected":3,"childConnected":4,"childConnectedText":"I feel connected with people in the country.","parentConnectedText":"Second-generation American of Oceanic descenet.","childMoreConnected":"My Mom is trying to assimilate"},"additionalCultures":[{"race":"Black","relation":"Father","parentConnected":1,"childConnected":1,"name":"Angolan"}],"email":"test@gmail.com","emailMeResults":true}
+

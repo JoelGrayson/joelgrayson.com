@@ -7,26 +7,17 @@ import Loader from '@/components/global/Loader';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from '@jcomponents/modal';
-import { type Culture, races, type Race, Circles, Missing } from '../..';
 import Link from 'next/link';
-
-const theme={
-    primary: '#1255cc',
-    secondary: '#cfe3f3',
-    note: 'text-gray-800 text-xs'
-};
-
-export type SurveyData=Omit<Culture, 'relation'> & {
-    dateSubmitted?: Date;
-    email: string;
-    emailMeResults: boolean;
-}
+import { races, type Race, type Strength, type SingleCultureSurveyData } from '@/components/research/survey/types';
+import Missing from '@/components/research/survey/Missing';
+import Circles from '@/components/research/survey/Circles';
+import { theme } from '@/components/research/survey/config';
 
 export default function Survey() {
     const [formState, setFormState]=useState<'filling out' | 'error' | 'loading' | 'submitted'>('filling out');
     const [errorModalOpen, setErrorModalOpen]=useState(true);
 
-    const [data, setData]=useState<SurveyData>({
+    const [data, setData]=useState<SingleCultureSurveyData>({
         email: '',
         emailMeResults: true
     });
@@ -127,40 +118,77 @@ export default function Survey() {
                             <div className='d:text-right'>How connected are your parents to this culture?</div>
                             <div>
                                 <Circles from={1} to={5} value={data.parentConnected} setValue={newValue=>setData(produce(data, draft=>{
-                                    draft.parentConnected=newValue;
+                                    if ([1, 2, 3, 4, 5].includes(newValue))
+                                        draft.parentConnected=newValue as Strength;
+                                    else
+                                        console.log('Invalid parentConnected', newValue, '. It must be a strength (1, 2, 3, 4, 5).');
                                 }))} />
                                 { formState==='error' && data.parentConnected===undefined && <Missing /> }
                             </div>
 
+
+                            <div className='d:justify-self-end mr-3 flex flex-col d:items-end'>
+                                <label htmlFor={id('parentConnectedText')} className='d:text-right'>In what ways is your parent connected to this culture? <span className={theme.note}>(optional)</span></label>
+                            </div>
+                            <textarea id={id('parentConnectedText')}
+                                rows={3}
+                                style={{ width: '100%', maxWidth: 400, height: 'fit-content', transition: 'none' }}
+                                value={data.parentConnectedText}
+                                onChange={e=>setData(produce(data, draft=>{
+                                    draft.parentConnectedText=e.target.value;
+                                }))}
+                            />
+
+                            
                             <div className='d:text-right'>How connected are you to this culture?</div>
                             <div>
                                 <Circles from={1} to={5} value={data.childConnected} setValue={newValue=>setData(produce(data, draft=>{
-                                    draft.childConnected=newValue;
+                                    if ([1, 2, 3, 4, 5].includes(newValue))
+                                        draft.childConnected=newValue as Strength;
+                                    else
+                                        console.log('Invalid childConnected', newValue, '. It must be a strength (1, 2, 3, 4, 5).');
                                 }))} />
                                 { formState==='error' && data.childConnected===undefined && <Missing /> }
                             </div>
 
-                            {/* How is the culture practiced in your family? Text area */}
                             <div className='d:justify-self-end mr-3 flex flex-col d:items-end'>
-                                <label htmlFor={id('practicedAtHome')} className='d:text-right'>How is the culture practiced in your family? <span className={theme.note}>(optional)</span></label>
-                                <div className={`${theme.note} text-xs d:text-right`}>e.g. food, language, holidays, religion, etc.</div>
+                                    <label htmlFor={id('childConnectedText')} className='d:text-right'>In what ways are you connected to this culture? <span className={theme.note}>(optional)</span></label>
+                                    <div className={`${theme.note} text-xs d:text-right`}>e.g. food, language, holidays, religion, etc.</div>
                             </div>
-                            <textarea id={id('practicedAtHome')}
+                            <textarea id={id('childConnectedText')}
                                 rows={3}
-                                style={{ width: '100%', maxWidth: 400}}
-                                value={data.practicedAtHome}
+                                style={{ width: '100%', maxWidth: 400, height: 'fit-content', transition: 'none' }}
+                                value={data.childConnectedText}
                                 onChange={e=>setData(produce(data, draft=>{
-                                    draft.practicedAtHome=e.target.value;
+                                    draft.childConnectedText=e.target.value;
                                 }))}
                             />
 
-                            {/* Additional Notes */}
-                            <div className='d:justify-self-end mr-3 flex flex-col d:items-end'>
-                                <label htmlFor={id('additional')} className='d:text-right'>Anything else you want to say about your relationship with this culture? <span className={theme.note}>(optional)</span></label>
-                            </div>
-                            <textarea id={id('additional')} style={{ width: '100%', maxWidth: 400}} rows={3} value={data.additional} onChange={e=>setData(produce(data, draft=>{
-                                draft.additional=e.target.value;
-                            }))}/>
+                            { data.childConnected!==undefined && data.parentConnected!==undefined && data.childConnected!==data.parentConnected && <> {/*only if there is a difference*/}
+                                {/* In what ways are you less connected to the {culture.name e.g. Chinese} culture than your {relationship e.g. mom}? */}
+                                <div className='d:justify-self-end mr-3 flex flex-col d:items-end'>
+                                    <label htmlFor={id('childConnectedText')} className='d:text-right'>In what ways are you {data.childConnected>data.parentConnected ? 'more' : 'less'} connected to {data.name ? `the ${data.name} culture` : 'this culture' } than your parents? <span className={theme.note}>(optional)</span></label>
+                                    <div className={`${theme.note} text-xs d:text-right`}>e.g. food, language, holidays, religion, etc.</div>
+                                </div>
+                                <textarea id={id('childConnectedText')}
+                                    rows={3}
+                                    style={{ width: '100%', maxWidth: 400}}
+                                    value={(()=>{
+                                        if (data.childConnected>data.parentConnected)
+                                            return data.childMoreConnected;
+                                        if (data.childConnected<data.parentConnected)
+                                            return data.childLessConnected;
+                                    })()}
+                                    onChange={e=>setData(produce(data, draft=>{
+                                        if (data.childConnected===undefined || data.parentConnected===undefined) return; //should never happen
+                                        
+                                        if (data?.childConnected>data?.parentConnected)
+                                            draft.childMoreConnected=e.target.value;
+                                        else if (data?.childConnected<data?.parentConnected)
+                                            draft.childLessConnected=e.target.value;
+                                    }))}
+                                />
+                            </> }
                         </div>
                     </div>;
                 })()}

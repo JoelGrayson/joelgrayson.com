@@ -7,23 +7,16 @@ import Loader from '@/components/global/Loader';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from '@jcomponents/modal';
-import { type Culture, races, type Race, relations, type Relation, Circles, Missing, theme } from '../..';
-
-export type SurveyData={
-    dateSubmitted?: Date;
-    mother: Culture;
-    father: Culture;
-    additionalCultures: Culture[];
-    email: string;
-    emailMeResults: boolean;
-}
-const maxNumCultures=4;
+import { races, type Race, relations, type Relation, type Strength, type MulticulturalSurveyData } from '@/components/research/survey/types';
+import Missing from '@/components/research/survey/Missing';
+import Circles from '@/components/research/survey/Circles';
+import { theme, MAX_NUM_CULTURES } from '@/components/research/survey/config';
 
 export default function Survey() {
     const [formState, setFormState]=useState<'filling out' | 'error' | 'loading' | 'submitted'>('filling out');
     const [errorModalOpen, setErrorModalOpen]=useState(true);
 
-    const [data, setData]=useState<SurveyData>({
+    const [data, setData]=useState<MulticulturalSurveyData>({
         mother: {
             relation: 'Mother',
         },
@@ -43,6 +36,7 @@ export default function Survey() {
         }
         
         setFormState('loading');
+        console.log('Submitting', data);
         fetch('/api/research/how-do-cultures-combine/survey/multicultural/submit', {
             method: 'POST',
             body: JSON.stringify(data),
@@ -78,7 +72,7 @@ export default function Survey() {
                 {[data.father, data.mother, ...data.additionalCultures].map((culture, i)=>{
                     const id=(val: string)=>`culture-${i}-${val}`;
                     const additionalCultureI=i-2;
-                    const getCulture=(draft: SurveyData)=>{ //gets culture from draft for editing
+                    const getCulture=(draft: MulticulturalSurveyData)=>{ //gets culture from draft for editing
                         if (i==0)
                             return draft.father;
                         if (i==1)
@@ -113,7 +107,7 @@ export default function Survey() {
                             }))} />
                         </> }
 
-                        <div className='grid gap-y-3 d:grid-cols-[1fr_2fr]'>
+                        <div className='grid gap-y-3 d:grid-cols-[20fr_42fr] gap-x-2'>
                             <div className='mr-3 d:justify-self-end flex flex-col d:items-end'>
                                 <label htmlFor={id('name')}>
                                     Culture Name
@@ -185,48 +179,84 @@ export default function Survey() {
                             <div className='d:text-right'>How connected is your parent to this culture?</div>
                             <div>
                                 <Circles from={1} to={5} value={culture.parentConnected} setValue={newValue=>setData(produce(data, draft=>{
-                                    getCulture(draft).parentConnected=newValue;
+                                    getCulture(draft).parentConnected=newValue as Strength;
                                 }))} />
                                 { formState==='error' && culture.parentConnected===undefined && <Missing /> }
                             </div>
 
-                            <div className='d:text-right'>How connected are you to this culture?</div>
-                            <div>
-                                <Circles from={1} to={5} value={culture.childConnected} setValue={newValue=>setData(produce(data, draft=>{
-                                    getCulture(draft).childConnected=newValue;
-                                }))} />
-                                { formState==='error' && culture.childConnected===undefined && <Missing /> }
-                            </div>
-
-                            {/* How is the culture practiced in your family? Text area */}
                             <div className='d:justify-self-end mr-3 flex flex-col d:items-end'>
-                                    <label htmlFor={id('practicedAtHome')} className='d:text-right'>How is the culture practiced in your family? <span className={theme.note}>(optional)</span></label>
+                                    <label htmlFor={id('parentConnectedText')} className='d:text-right'>In what ways is your parent connected to this culture? <span className={theme.note}>(optional)</span></label>
                                     {i==0 &&
                                         <div className={`${theme.note} text-xs d:text-right`}>e.g. food, language, holidays, religion, etc.</div>
                                     }
                             </div>
-                            <textarea id={id('practicedAtHome')}
+                            <textarea id={id('parentConnectedText')}
                                 rows={3}
-                                style={{ width: '100%', maxWidth: 400}}
-                                value={culture.practicedAtHome}
+                                style={{ width: '100%', maxWidth: 400, height: 'fit-content', transition: 'none' }}
+                                value={culture.parentConnectedText}
                                 onChange={e=>setData(produce(data, draft=>{
-                                    getCulture(draft).practicedAtHome=e.target.value;
+                                    getCulture(draft).parentConnectedText=e.target.value;
                                 }))}
                             />
 
-                            {/* Additional Notes */}
-                            <div className='d:justify-self-end mr-3 flex flex-col d:items-end'>
-                                <label htmlFor={id('additional')} className='d:text-right'>Anything else you want to say about your relationship with this culture? <span className={theme.note}>(optional)</span></label>
+                            <div className='d:text-right'>How connected are you to this culture?</div>
+                            <div>
+                                <Circles from={1} to={5} value={culture.childConnected} setValue={newValue=>setData(produce(data, draft=>{
+                                    getCulture(draft).childConnected=newValue as Strength;
+                                }))} />
+                                { formState==='error' && culture.childConnected===undefined && <Missing /> }
                             </div>
-                            <textarea id={id('additional')} style={{ width: '100%', maxWidth: 400}} rows={3} value={culture.additional} onChange={e=>setData(produce(data, draft=>{
-                                getCulture(draft).additional=e.target.value;
-                            }))}/>
+
+                            <div className='d:justify-self-end mr-3 flex flex-col d:items-end'>
+                                    <label htmlFor={id('childConnectedText')} className='d:text-right'>In what ways are you connected to this culture? <span className={theme.note}>(optional)</span></label>
+                                    {i==0 &&
+                                        <div className={`${theme.note} text-xs d:text-right`}>e.g. food, language, holidays, religion, etc.</div>
+                                    }
+                            </div>
+                            <textarea id={id('childConnectedText')}
+                                rows={3}
+                                style={{ width: '100%', maxWidth: 400, height: 'fit-content', transition: 'none' }}
+                                value={culture.childConnectedText}
+                                onChange={e=>setData(produce(data, draft=>{
+                                    getCulture(draft).childConnectedText=e.target.value;
+                                }))}
+                            />
+
+                            { culture.childConnected!==undefined && culture.parentConnected!==undefined && culture.childConnected!==culture.parentConnected && <> {/*only if there is a difference*/}
+                                {/* In what ways are you less connected to the {culture.name e.g. Chinese} culture than your {relationship e.g. mom}? */}
+                                <div className='d:justify-self-end mr-3 flex flex-col d:items-end'>
+                                    <label htmlFor={id('childConnectedText')} className='d:text-right'>In what ways are you {culture.childConnected>culture.parentConnected ? 'more' : 'less'} connected to {culture.name ? `the ${culture.name} culture` : 'this culture' } than your {culture.relation ? culture.relation.toLowerCase() : 'parent'}? <span className={theme.note}>(optional)</span></label>
+                                    {i==0 &&
+                                        <div className={`${theme.note} text-xs d:text-right`}>e.g. food, language, holidays, religion, etc.</div>
+                                    }
+                                </div>
+                                <textarea id={id('childConnectedText')}
+                                    rows={3}
+                                    style={{ width: '100%', maxWidth: 400}}
+                                    value={(()=>{
+                                        if (culture.childConnected>culture.parentConnected)
+                                            return culture.childMoreConnected;
+                                        if (culture.childConnected<culture.parentConnected)
+                                            return culture.childLessConnected;
+                                    })()}
+                                    onChange={e=>setData(produce(data, draft=>{
+                                        if (culture.childConnected===undefined || culture.parentConnected===undefined) return; //should never happen
+                                        
+                                        if (culture?.childConnected>culture?.parentConnected)
+                                            getCulture(draft).childMoreConnected=e.target.value;
+                                        else if (culture?.childConnected<culture?.parentConnected)
+                                            getCulture(draft).childLessConnected=e.target.value;
+                                    }))}
+                                />
+                            </> }
+
+                            {/* How do you define "being connected" with a culture? How can you increase your connection with that culture? */}
                         </div>
                     </div>;
                 })}
 
                 {
-                    data.additionalCultures.length<maxNumCultures-2 &&
+                    data.additionalCultures.length<MAX_NUM_CULTURES-2 &&
                         <div className="flex flex-col justify-center my-5 mt-6 gap-2">
                             <p className={`text-center ${theme.note}`}>If there are {data.additionalCultures.length+2  +1} cultures in your household because a parent is multicultural, click below to add {
                                 {

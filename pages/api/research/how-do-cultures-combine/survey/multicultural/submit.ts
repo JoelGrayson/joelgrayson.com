@@ -1,12 +1,12 @@
 import { google } from 'googleapis';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { createId as cuid } from '@paralleldrive/cuid2';
-import { Culture } from 'pages/research/how-do-cultures-combine/';
-import { SurveyData } from 'pages/research/how-do-cultures-combine/survey/multicultural';
 import sendEmail from '@/helpers/sendEmail';
+import { type MulticulturalSurveyData } from '@/components/research/survey/types';
+import { getNumCultures, getRows } from '@/components/research/survey/utils';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
-    const data=req.body as SurveyData;
+    const data=req.body as MulticulturalSurveyData;
 
     // Add to google sheets row so it can be exported as a CSV and used with pandas
     const spreadsheetId='1myKBPm0_4PQek0mBjPlTcxjD0lQsL4GGKBM3zTdT87g';
@@ -24,59 +24,27 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         }
     });
     const sheets=google.sheets({ version: 'v4', auth });
-    
-    // const response=await sheets.spreadsheets.values.get({
-    //     spreadsheetId,
-    //     range: 'Sheet1!A1:Z1'
-    // });
-    // console.log(response.data.values);
 
-    const rowsToInsert=[// ID	Date Submitted	JSON	Email	EmailMeResults	Father Culture Name	Father Race	Father Connected to Father Culture	Child Connected to Father Culture	Father Culture Practiced At Home	Father Culture Additional Notes	Mother Culture Name	Mother Culture Name	Mother Race	Mother Connected to Mother Culture	Child Connected to Mother Culture	Mother Culture Practiced At Home	Mother Culture Additional Notes	Third Culture Name	Third Race	Third Connected to Third Culture	Child Connected to Third Culture	Third Culture Practiced At Home	Third Culture Additional Notes	Fourth Culture Name	Fourth Race	Fourth Connected to Fourth Culture	Child Connected to Fourth Culture	Fourth Culture Practiced At Home	Fourth Culture Additional Notes
+    // Spreadsheet cols: ID, Date Submitted, JSON, Email, Email Me the Results, Father Culture, Father Race, Father Connected, Father Connected Text, Child Connected to Father Culture, Child Connected to Father Culture Text, Child vs. Parent Connection (MORE, LESS, EQUAL), Ways Child More Connected to Father Culture than Father, Ways Child Less Connected to Father Culture than Father, Mother Culture, Mother Race, Mother Connected, Mother Connected Text, Child Connected to Mother Culture, Child Connected to Mother Culture Text, Child vs. Parent Connection (MORE, LESS, EQUAL), Ways Child More Connected to Mother Culture than Mother, Ways Child Less Connected to Mother Culture than Mother, Third Culture, Third Race, Third Connected, Third Connected Text, Child Connected to Third Culture, Child Connected to Third Culture Text, Child vs. Parent Connection (MORE, LESS, EQUAL), Ways Child More Connected to Third Culture than Third, Ways Child Less Connected to Third Culture than Third, Fourth Culture, Fourth Race, Fourth Connected, Fourth Connected Text, Child Connected to Fourth Culture, Child Connected to Fourth Culture Text, Child vs. Parent Connection (MORE, LESS, EQUAL), Ways Child More Connected to Fourth Culture than Fourth, Ways Child Less Connected to Fourth Culture than Fourth
+    const rowToInsert=[
         cuid(),
         new Date().toISOString(),
         JSON.stringify(data),
         data.email,
         data.emailMeResults,
-        data.father.name,
-        getRace(data.father),
-        data.father.parentConnected,
-        data.father.childConnected,
-        data.father.practicedAtHome,
-        data.father?.additional,
-        data.mother.name,
-        getRace(data.mother),
-        data.mother.parentConnected,
-        data.mother.childConnected,
-        data.mother.practicedAtHome,
-        data.mother?.additional
+        getNumCultures(data),
+        ...getRows(data.father),
+        ...getRows(data.mother),
+        ...getRows(data.additionalCultures[0], true),
+        ...getRows(data.additionalCultures[1], true)
     ];
-    if (data.additionalCultures[0]) {
-        rowsToInsert.push(
-            data.additionalCultures[0].name,
-            getRace(data.additionalCultures[0]),
-            data.additionalCultures[0].parentConnected,
-            data.additionalCultures[0].childConnected,
-            data.additionalCultures[0].practicedAtHome,
-            data.additionalCultures[0].additional
-        );
-    }
-    if (data.additionalCultures[1]) {
-        rowsToInsert.push(
-            data.additionalCultures[1].name,
-            getRace(data.additionalCultures[1]),
-            data.additionalCultures[1].parentConnected,
-            data.additionalCultures[1].childConnected,
-            data.additionalCultures[1].practicedAtHome,
-            data.additionalCultures[1].additional
-        );
-    }
 
     await sheets.spreadsheets.values.append({
         spreadsheetId,
         range: 'Sheet1!A1:K1',
         valueInputOption: 'RAW',
         requestBody: {
-            values: [rowsToInsert]
+            values: [rowToInsert]
         }
     });
     
@@ -97,9 +65,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     });
 }
 
-function getRace(culture: Culture) {
-    if (culture.race==='Other')
-        return culture.otherRace;
-    return culture.race;
-}
+
+/*
+# Get from spreadsheets
+```
+const response=await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range: 'Sheet1!A1:Z1'
+});
+console.log(response.data.values);
+```
+*/
 
