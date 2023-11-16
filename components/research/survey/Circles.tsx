@@ -9,6 +9,8 @@ export default function Circles({ from, to, value, setValue }: { from: number; /
         indices.push(i);
 
     return <span>
+        1 is not connected at all. 5 is very connected.
+        <br />
         {indices.map(i=>
             <div
                 tabIndex={0}
