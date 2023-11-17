@@ -2,16 +2,16 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { produce } from 'immer';
 import Loader from '@/components/global/Loader';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from '@jcomponents/modal';
-import { races, type Race, relations, type Relation, type Strength, type MulticulturalSurveyData } from '@/components/research/survey/types';
+import { races, relations, type Strength, type MulticulturalSurveyData } from '@/components/research/survey/types';
 import Missing from '@/components/research/survey/Missing';
 import Circles from '@/components/research/survey/Circles';
 import { theme } from '@/components/research/survey/config';
 
 export default function Survey() {
-    const [formState, setFormState]=useState<'filling out' | 'error' | 'loading' | 'submitted'>('filling out');
+    const [formState]=useState<'filling out' | 'error' | 'loading' | 'submitted'>('filling out');
     const [errorModalOpen, setErrorModalOpen]=useState(true);
 
     const [data, setData]=useState<MulticulturalSurveyData>({
@@ -27,9 +27,10 @@ export default function Survey() {
     });
 
     
-    return <div className='j_container'>
+    return <div className='j_container' style={{
+        maxWidth: 830
+    }}>
         <h1 className='text-center my-5 text-4xl mt-8'>Survey for Multicultural Individuals</h1>
-        { formState!=='submitted' && <p>This survey is part of a study of how cultures combine in multicultural families.{/* The goal is to find out to what extent both cultures are preserved or diminished when combined.*/}</p> }
 
         {
             formState==='filling out' || formState==='error'
@@ -93,17 +94,12 @@ export default function Survey() {
                                 }
                             </div>
                             <div>
-                                <select id={id('race')} className='border-black border-[1px] rounded w-fit h-fit' value={culture.race || 'Select a Race'} onChange={e=>{
-                                    const newRace=e.target.value as Race;
-                                    setData(produce(data, draft=>{
-                                        getCulture(draft).race=newRace;
-                                    }));
-                                }}>
-                                    <option value="Select a Race">---Select a Race---</option>
+                                { i==0 && <div className='ml-16'>Circle one:</div> }
+                                <div className='flex justify-between'>
                                     {races.map(race=>
-                                        <option key={race} value={race}>{race}</option>
+                                        <div key={race}>{race}</div>
                                     )}
-                                </select>
+                                </div>
                                 { culture.race==='Other' && <div>
                                     {/* <span>Specify your race:</span> */}
                                     <input type="text" placeholder='Specify your race' className='ml-1' value={culture.otherRace || ''} onChange={e=>setData(produce(data, draft=>{
@@ -121,17 +117,12 @@ export default function Survey() {
                                     }
                                 </div>
                                 <div>
-                                    <select id={id('relation')} className='border-black border-[1px] rounded w-fit h-fit' value={culture.relation || 'Select a Relation'} onChange={e=>{
-                                        const newRelation=e.target.value as Relation;
-                                        setData(produce(data, draft=>{
-                                            getCulture(draft).relation=newRelation;
-                                        }));
-                                    }}>
-                                        <option value="Select a Relation">---Select a Relation---</option>
+                                    { i==0 && <div className='ml-16'>Circle one:</div> }
+                                    <div className='flex'>
                                         {relations.map(relation=>
-                                            <option key={relation} value={relation}>{relation}</option>
+                                            <div key={relation}>{relation}</div>
                                         )}
-                                    </select>
+                                    </div>
                                     { formState==='error' && (!culture.relation || culture.relation==='Select a Relation') && <Missing /> }
                                 </div>
                             </> }
@@ -156,7 +147,7 @@ export default function Survey() {
                             </div>
                             <textarea id={id('parentConnectedText')}
                                 rows={3}
-                                style={{ width: '100%', maxWidth: 400, height: 'fit-content', transition: 'none' }}
+                                style={{ width: '100%', height: 'fit-content', transition: 'none' }}
                                 value={culture.parentConnectedText}
                                 onChange={e=>setData(produce(data, draft=>{
                                     getCulture(draft).parentConnectedText=e.target.value;
@@ -178,7 +169,7 @@ export default function Survey() {
                             </div>
                             <textarea id={id('childConnectedText')}
                                 rows={3}
-                                style={{ width: '100%', maxWidth: 400, height: 'fit-content', transition: 'none' }}
+                                style={{ width: '100%', height: 'fit-content', transition: 'none' }}
                                 value={culture.childConnectedText}
                                 onChange={e=>setData(produce(data, draft=>{
                                     getCulture(draft).childConnectedText=e.target.value;
@@ -193,7 +184,7 @@ export default function Survey() {
                             </div>
                             <textarea id={id('childConnectedText')}
                                 rows={3}
-                                style={{ width: '100%', maxWidth: 400}}
+                                style={{ width: '100%' }}
                             />
 
                             {/* How do you define "being connected" with a culture? How can you increase your connection with that culture? */}

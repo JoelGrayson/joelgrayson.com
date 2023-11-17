@@ -14,10 +14,10 @@ export default function Circles({ from, to, value, setValue, transparent=false }
             <div
                 tabIndex={0}
                 className={
-                    'p-2 mx-1 cursor-pointer rounded-3xl w-10 h-10 inline-flex justify-center items-center border-[1px]'+
+                    'p-2 mx-1 cursor-pointer rounded-3xl w-10 h-10 inline-flex justify-center items-center'+
                     (i===value
-                        ? ` bg-[${theme.primary}] text-white border-[darkblue]`
-                        : transparent ? '' : ' border-gray-600'
+                        ? ` border-[1px] bg-[${theme.primary}] text-white border-[darkblue]`
+                        : transparent ? '' : ' border-[1px] border-gray-600'
                     )
                 }
                 onClick={()=>setValue(i)}
