@@ -21,7 +21,9 @@ const StyledBtnIcon=styled.button`
 `;
 
 export default function BtnIcon({ href, children, target='_blank' }: { href: string; children: any; target?: string }) {
-    return <Link {...{href, target}}>
-        <StyledBtnIcon>{children}</StyledBtnIcon>
-    </Link>;
+    return <StyledBtnIcon role='link'>
+        <Link {...{href, target}}>
+            {children}
+        </Link>
+    </StyledBtnIcon>;
 }
