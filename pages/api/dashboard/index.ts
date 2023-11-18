@@ -10,10 +10,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             message: 'Wrong password'
         });
 
-    const errors404=await prisma.error.findMany({
+    let errors404=await prisma.error.findMany({
         where: {
             message: 'page-not-found'
+        },
+        orderBy: {
+            date: 'desc'
         }
+    });
+    errors404=errors404.filter(error=>{
+        let url=new URL(error.source);
+        if (url.hostname==='localhost') //ignore development
+            return false;
+        else
+            return true;
     });
     const otherErrors=await prisma.error.findMany({
         where: {

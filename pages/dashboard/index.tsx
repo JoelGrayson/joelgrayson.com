@@ -4,11 +4,28 @@ import Button from '@jcomponents/button';
 import { useState } from 'react';
 import { format } from 'date-fns';
 import Info from '@/components/global/Info';
+import { Error } from '@prisma/client';
+import React from 'react';
+
+function getTopItems(errors: Error[]) {
+    const out=new Map<string, number>();
+
+    for (let error of errors) {
+        if (out.has(error.source))
+            out.set(error.source, out.get(error.source)!+1);
+        else
+            out.set(error.source, 1);
+    }
+
+    return [...out.entries()].sort((a, b)=>b[1]-a[1]);
+}
 
 export default function Dashboard() {
     const [status, setStatus]=useState<'start-screen' | 'loading' | 'wrong-password' | 'authenticated'>('start-screen');
     const [password, setPassword]=useState<string>('');
     const [errors404, setErrors404]=useState<null | any>(null);
+    let topErrors404=errors404.reduce((acc: any, e: any) => acc.set(e, (acc.get(e) || 0) + 1), new Map())
+    console.log('top', topErrors404);
     const [otherErrors, setOtherErrors]=useState<null | any>(null);
 
     async function submitPassword(e: any) {
@@ -55,7 +72,18 @@ export default function Dashboard() {
                 { status==='wrong-password' && <div className='text-red-500'>Wrong password</div> }
             </>
             : <>
-                <h3>404 Errors</h3>
+                <h2>404 Errors</h2>
+                <h4>Top Results</h4>
+                <div className='grid grid-cols-[1fr_10fr] border-2 border-black'>
+                    {
+                        getTopItems(errors404).map((item: any)=>(<React.Fragment key={item[0]}>
+                            <div className='border-r-2 border-black text-right border-b-2 px-2'>{item[1]}</div>
+                            <div className='border-b-2 border-black px-2'>{item[0]}</div>
+                        </React.Fragment>))
+                    }
+                </div>
+                
+                <h4>Log</h4>
                 <table className='j_table'>
                     <thead>
                         <tr>
