@@ -24,8 +24,6 @@ export default function Dashboard() {
     const [status, setStatus]=useState<'start-screen' | 'loading' | 'wrong-password' | 'authenticated'>('start-screen');
     const [password, setPassword]=useState<string>('');
     const [errors404, setErrors404]=useState<null | any>(null);
-    let topErrors404=errors404.reduce((acc: any, e: any) => acc.set(e, (acc.get(e) || 0) + 1), new Map())
-    console.log('top', topErrors404);
     const [otherErrors, setOtherErrors]=useState<null | any>(null);
 
     async function submitPassword(e: any) {

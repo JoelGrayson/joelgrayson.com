@@ -50,85 +50,84 @@ export default function Home() {
             image: '/image/home/portraits/4.22.2023/Joel Grayson.webp'
         }
     }} noPadding>
-        <div className='w-full p-0 m-0'>
-            {/* top */}
-            <div className='w-full h-[290px] p-0' style={{background: 'linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(216,216,216,1) 100%)'}}>
-                {/* container for images same width as content */}
-                <div className='
-                    j_max-w relative mx-auto px-12 flex justify-around items-end h-full
-                    m:flex-row-reverse
-                '>
-                    {/* signature gif */}
-                    {/* <Image
-                        src='/image/ucjg/signature.gif' alt='Joel Grayson Signature' width={371*.8} height={149*.8}
-                        className={`pb-14 m:w-[${371*.5}px] m:h-[${149*.5}]`}
-                        priority
-                    /> */}
-                    <Image
-                        src='/image/ucjg/signature.gif' alt='Joel Grayson Signature'
-                        width={371*.8} height={149*.8}
-                        className={`
-                            ml-3
-                            mb-14
-                            w-[297px] h-[119px]    ${''/* 80% OG size */}
-                            m:w-[185px] m:h-[74px] ${''/* 50% OG size */}
-                        `}
-                        priority
-                    />
-                    {/* Portrait */}
-                    <Image
-                        src='/image/home/portraits/4.22.2023/Joel Grayson.webp' alt='Joel Grayson Profile Photo'
-                        width={229} height={270}
-                        className={`
-                            mr-3
-                            w-[229px] h-[270px]    ${''/* 100% OG size */}
-                            m:w-[160px] m:h-[189px] ${''/* 70% OG size */}
-                        `}
-                        priority
-                    />
-                </div>
+        {/* Profile and Signature */}
+        <div className='w-full h-[290px] m:h-[220px] p-0' style={{background: 'linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(216,216,216,1) 100%)'}}>
+            {/* container for images same width as content */}
+            <div className='
+                j_max-w relative mx-auto px-12 flex justify-around items-end h-full
+                m:flex-row-reverse
+            '>
+                {/* signature gif */}
+                {/* <Image
+                    src='/image/ucjg/signature.gif' alt='Joel Grayson Signature' width={371*.8} height={149*.8}
+                    className={`pb-14 m:w-[${371*.5}px] m:h-[${149*.5}]`}
+                    priority
+                /> */}
+                <Image
+                    src='/image/ucjg/signature.gif' alt='Joel Grayson Signature'
+                    width={371*.8} height={149*.8}
+                    className={`
+                        ml-3
+                        mb-14
+                        w-[297px] h-[119px]    ${''/* 80% OG size */}
+                        m:w-[185px] m:h-[74px] ${''/* 50% OG size */}
+                    `}
+                    priority
+                />
+                {/* Portrait */}
+                <Image
+                    src='/image/home/portraits/4.22.2023/Joel Grayson.webp' alt='Joel Grayson Profile Photo'
+                    width={229} height={270}
+                    className={`
+                        mr-3
+                        w-[229px] h-[270px]    ${''/* 100% OG size */}
+                        m:w-[160px] m:h-[189px] ${''/* 70% OG size */}
+                    `}
+                    priority
+                />
             </div>
-
-            <article className='j_container !max-w-[700px] d:gap-[20px]' style={{
-                display: 'grid',
-                marginTop: 30,
-                marginBottom: 30,
-                gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-                justifyItems: 'center',
-            }}>
-                <BtnIcon href='/combating-climate-change#solar-for-riverdale' target='_self'>
-                    <div style={{width: 50, height: 50, display: 'grid', placeItems: 'center'}}>
-                        <Image alt='solar' height={50} width={37.5} src='/image/ccc/solar-for-riverdale/solar-panel.png' />
-                    </div>
-                    <span>Solar for Riverdale</span>
-                </BtnIcon> {/* sunbeam going down when hover */}
-                <BtnIcon href='https://studentsforelectricbuses.org'>
-                    <SEBLogo size={75} />
-                    <span>Students for Electric Buses</span>
-                </BtnIcon> {/* sunbeam going down when hover */}
-                <BtnIcon href='/machines' target='_self'>
-                    <div style={{width: 80, height: 69, display: 'grid', placeItems: 'center'}}>
-                        <Image alt='machines' height={69} width={80} src='/image/home/machine.png' />
-                    </div>
-                    <span>Machines</span>
-                </BtnIcon> {/* sunbeam going down when hover */}
-                <BtnIcon href='https://buseroo.com'>
-                    <Image alt='buseroo-logo' height={48} width={48} className='mb-0.5' src='/image/home/buseroo-logo.png' />
-                    <span>Buseroo.com</span>
-                    { buserooSearches!=null && <Label>{buserooSearches} searches</Label> }
-                </BtnIcon>
-                <BtnIcon href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf'>
-                    <Image alt='focus-logo' height={50} width={50} src='/image/home/focus-logo.png' />
-                    <span>Focus</span>
-                    { focusInstalls!=null && <Label>{focusInstalls} installs</Label> }
-                </BtnIcon>
-                <BtnIcon href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>
-                    <Image alt='homework-checker-logo' height={50} width={50} src='/image/home/homework-checker-logo.png' />
-                    <span className='text-[0.8rem]'>Homework Checker</span>
-                    { hCInstalls!=null && <Label>{hCInstalls} installs</Label> }
-                </BtnIcon>
-            </article>
         </div>
+
+        {/* Icons */}
+        <article className='j_container !max-w-[700px] d:gap-[20px]' style={{
+            display: 'grid',
+            marginTop: 30,
+            paddingBottom: 30,
+            gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+            justifyItems: 'center',
+        }}>
+            <BtnIcon href='/combating-climate-change#solar-for-riverdale' target='_self'>
+                <div style={{width: 50, height: 50, display: 'grid', placeItems: 'center'}}>
+                    <Image alt='solar' height={50} width={37.5} src='/image/ccc/solar-for-riverdale/solar-panel.png' />
+                </div>
+                <span>Solar for Riverdale</span>
+            </BtnIcon> {/* sunbeam going down when hover */}
+            <BtnIcon href='https://studentsforelectricbuses.org'>
+                <SEBLogo size={75} />
+                <span>Students for Electric Buses</span>
+            </BtnIcon> {/* sunbeam going down when hover */}
+            <BtnIcon href='/machines' target='_self'>
+                <div style={{width: 80, height: 69, display: 'grid', placeItems: 'center'}}>
+                    <Image alt='machines' height={69} width={80} src='/image/home/machine.png' />
+                </div>
+                <span>Machines</span>
+            </BtnIcon> {/* sunbeam going down when hover */}
+            <BtnIcon href='https://buseroo.com'>
+                <Image alt='buseroo-logo' height={48} width={48} className='mb-0.5' src='/image/home/buseroo-logo.png' />
+                <span>Buseroo.com</span>
+                { buserooSearches!=null && <Label>{buserooSearches} searches</Label> }
+            </BtnIcon>
+            <BtnIcon href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf'>
+                <Image alt='focus-logo' height={50} width={50} src='/image/home/focus-logo.png' />
+                <span>Focus</span>
+                { focusInstalls!=null && <Label>{focusInstalls} installs</Label> }
+            </BtnIcon>
+            <BtnIcon href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>
+                <Image alt='homework-checker-logo' height={50} width={50} src='/image/home/homework-checker-logo.png' />
+                <span className='text-[0.8rem]'>Homework Checker</span>
+                { hCInstalls!=null && <Label>{hCInstalls} installs</Label> }
+            </BtnIcon>
+        </article>
     </Page>;
 }
 

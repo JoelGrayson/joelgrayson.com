@@ -10,11 +10,6 @@ const StyledBtnIcon=styled.button`
     height: 150px;
     user-select: none;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
     &:hover {
         background-color: #eee;
     }
@@ -22,7 +17,12 @@ const StyledBtnIcon=styled.button`
 
 export default function BtnIcon({ href, children, target='_blank' }: { href: string; children: any; target?: string }) {
     return <StyledBtnIcon role='link'>
-        <Link {...{href, target}}>
+        <Link {...{href, target}} style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center'
+        }}>
             {children}
         </Link>
     </StyledBtnIcon>;
