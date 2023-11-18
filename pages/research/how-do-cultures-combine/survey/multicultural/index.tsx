@@ -62,9 +62,11 @@ export default function Survey() {
     }
 
     
-    return <Page bottomPadding>
-        <h1 className='text-center my-5 text-4xl mt-8'>Survey for Multicultural Individuals</h1>
-        { formState!=='submitted' && <p>This survey is part of a study of how cultures combine in multicultural families.{/* The goal is to find out to what extent both cultures are preserved or diminished when combined.*/}</p> }
+    return <Page bottomPadding seo={{
+        title: 'Survey on Multicultural Identity',
+    }}>
+        <h1 className='text-center my-5 text-4xl mt-8'>Survey on Multicultural Identity</h1>
+        { formState!=='submitted' && <p>This survey is part of a study of how cultures combine in multicultural families. Your response is anonymous.</p> }
 
         {
             formState==='filling out' || formState==='error'
@@ -268,7 +270,7 @@ export default function Survey() {
                 }
 
                 {/* Email Survey Sign Up */}
-                <div className='grid gap-y-3 gap-6 relative' style={{
+                {/* <div className='grid gap-y-3 gap-6 relative' style={{
                     gridTemplateColumns: '1fr 1fr'
                 }}>
                     <div className='d:justify-self-end'>
@@ -285,7 +287,7 @@ export default function Survey() {
                 <div className="flex justify-center my-3">
                     <input type="checkbox" id='emailedResults' className='d:justify-self-end' checked={data.emailMeResults} onChange={e=>setData(produce(data, draft=>{draft.emailMeResults=e.target.checked;}))} />
                     <label className='ml-2' htmlFor='emailedResults'>I want to be emailed the the study&apos;s results (coming out in late November 2023).</label>
-                </div>
+                </div> */}
                 
                 <div className="flex justify-center">
                     <Button color={theme.secondary} onClick={formSubmit}>Submit</Button>
