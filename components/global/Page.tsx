@@ -1,16 +1,18 @@
 import Head from 'next/head';
 import Header from '../header';
-import Footer from '../Footer';
+import Footer from '../footer';
 import { ReactNode, useEffect } from 'react';
 import SEO, { SEOProps } from './SEO';
 import pageStyle from '@/styles/page/page.module.css';
+import Connect2GridHeader from '../header/connect2grid';
+import Connect2GridFooter from '../footer/connect2grid';
 
-export default function Page({children, noPadding, bottomPadding, seo, noHeader=false, noPageStyling=false, ...props}: {
+export default function Page({ children, noPadding, bottomPadding, seo, header='default', noPageStyling=false, ...props }: {
     children: ReactNode;
     noPadding?: boolean;
     bottomPadding?: boolean;
     seo?: SEOProps;
-    noHeader?: boolean;
+    header?: 'default' | 'connect2grid' | 'hidden' | false;
     noPageStyling?: boolean;
     [key: string]: any;
 }) {
@@ -35,7 +37,13 @@ export default function Page({children, noPadding, bottomPadding, seo, noHeader=
             <meta name="theme-color" content="#ffffff" />
         </Head>
 
-        {!noHeader && <Header />} {/* 77px */}
+        {(()=>{
+            if (header===false || header==='hidden') return;
+            if (header==='default')
+                return <Header />; //77px
+            if (header==='connect2grid')
+                return <Connect2GridHeader />;
+        })()}
 
         <main {...props} style={{
             position: 'relative',
@@ -50,6 +58,13 @@ export default function Page({children, noPadding, bottomPadding, seo, noHeader=
                 : <div id='pageNamespace' className={`j_container j_max-w ${noPageStyling ? '' : pageStyle.pageNamespace}`}>{children}</div> //if center, wrap in centering container
             }
         </main>
-        <Footer/> {/* 89px */}
+
+        {(()=>{
+            if (header===false || header==='hidden') return;
+            if (header==='default')
+                return <Footer />; //89px
+            if (header==='connect2grid')
+                return <Connect2GridFooter />;
+        })()}
     </>;
 };

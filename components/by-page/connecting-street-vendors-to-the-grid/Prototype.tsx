@@ -1,13 +1,21 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 // Config
-const START_LOC=[206, 168];
-const SPEED=[1.8, .9];
-const FREQ=300; //ms to spawn circles
+const START_LOC=[293, 197];
+const SPEED=[1.5, -.6];
+const FREQ=400; //ms to spawn circles
 
 export default function IdlingEngine() {
     const fumesRef=useRef<HTMLCanvasElement | null>(null);
+    const [showingSolution, setShowingSolution]=useState(false);
+
+    useEffect(()=>{
+        const interval=setTimeout(()=>{
+            setShowingSolution(!showingSolution);
+        }, 4000);
+        return ()=>clearTimeout(interval);
+    }, [showingSolution]);
     
     useEffect(()=>{
         const canvas=fumesRef.current as HTMLCanvasElement;
@@ -51,7 +59,7 @@ export default function IdlingEngine() {
             requestAnimationFrame(animate);
             c.clearRect(0, 0, innerWidth+200, innerHeight+200); //clear the frame
             
-            if (Date.now()-tSinceCircle>(FREQ*Math.random()*2)) { //±200
+            if (Date.now()-tSinceCircle>(FREQ*Math.random()*2)) { //frequency is randomized with mean at FREQ
                 tSinceCircle=Date.now();
                 circs.push(new FumeCircle());
                 for (let i=0; i<circs.length; i++) {
@@ -70,18 +78,47 @@ export default function IdlingEngine() {
 
 
     return <div style={{
-        // position: 'absolute'
         position: 'relative',
-        maxWidth: 500,
-        maxHeight: 500,
+        width: 480,
+        height: 256
     }}>
-        {/* Diesel Bus */}
-        <Image width={300} height={200} src="/image/ccc/stopping-bus-idling/idling.png" id="idling" alt="Idling" />
+        {/* Current */}
+        <Image
+            width={350} height={256}
+            src="/image/connecting-street-vendors-to-the-grid/current.jpg"
+            id="idling" alt="Idling"
+            className='absolute top-0 left-0'
+        />
+        {/* Oscillating with Connect2Grid */}
+        <Image
+            width={350} height={256}
+            src="/image/connecting-street-vendors-to-the-grid/with-connect2grid.jpg"
+            id="idling" alt="Idling"
+            className='absolute top-0 left-0'
+            style={{
+                opacity: showingSolution ? 1 : 0,
+                transition: 'opacity 0.5s',
+            }}
+        />
+        <p
+            className='absolute top-2  pl-3 text-white bold shadow-md shadow-white'
+            style={{
+                backgroundColor: showingSolution ? 'green' : 'black',
+                left: 80,
+                width: showingSolution ? 170 : 210,
+                borderRadius: 10,
+                transition: 'background-color 0.5s'
+            }}
+        >
+            { showingSolution ? 'Electricity from Grid' : 'Electricity from Generators' }
+        </p>
         {/* Idling Canvas */}
         <canvas width="500px" height="300px" ref={fumesRef} style={{
             position: 'absolute',
             top: '0',
-            right: '0'
+            right: '0',
+            opacity: showingSolution ? 0 : 1,
+            transition: 'opacity 0.5s'
         }} />
     </div>;
 }

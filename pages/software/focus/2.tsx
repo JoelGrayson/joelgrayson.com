@@ -4,7 +4,7 @@ import Button from '@jcomponents/button';
 import Container from '@jcomponents/container';
 
 export default function FocusOld() {
-    return <Page noHeader noPadding>
+    return <Page header={false} noPadding>
         <div style={{backgroundColor: '#e5e5e5'}}>
             <Container>
                 <h1 className='flex justify-center items-center gap-5'>
