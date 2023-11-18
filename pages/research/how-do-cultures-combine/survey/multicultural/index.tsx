@@ -301,7 +301,7 @@ export default function Survey() {
                     <div className='text-2xl'>Thank you for your submission!</div>
                 </div>
                 {
-                    data.emailMeResults && <div className='text-center mt-8'>I (jgrayson24@riverdale.edu) will email you the study results in late November.</div>
+                    // data.emailMeResults && <div className='text-center mt-8'>I (jgrayson24@riverdale.edu) will email you the study results in late November.</div>
                 }
             </div>
         }
