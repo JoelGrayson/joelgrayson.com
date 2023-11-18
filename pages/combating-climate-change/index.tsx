@@ -54,8 +54,6 @@ export default function CCC() {
                     } width={1018} height={462} />
                 </div> */}
 
-                {/*
-                */}
                 <p className='d:absolute d:top-0 d:right-0'>
                     Will save ~<Green>164 metric tons of CO₂e emissions</Green> each year
                     <Info>
