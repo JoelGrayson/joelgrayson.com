@@ -34,6 +34,10 @@ export default function NYC() {
         </div>
 
 
+        <h2>Connecting Street Vendors to the Grid</h2>
+        <p>Running an initiative to connect NYC&apos;s street vendors to the grid so they do not have to use gas generators. <Link href='/connecting-street-vendors-to-the-grid' className='styled'>Learn more</Link></p>
+
+        
         <h2>NYC Government Course</h2>
         <p>From September 2023 to January 2024, I am taking an independent study in NYC Government with Mr. Kildahl.</p>
         <p>Since I have benefited so much from resources like Khan Academy and MIT OCW, I am publishing our curriculum here.</p>
@@ -60,7 +64,6 @@ export default function NYC() {
         </div>
 
         <br />
-        <h2>Connecting Street Vendors to the Grid</h2>
 
         {/* Play Inner City Blues https://www.youtube.com/watch?v=u77d7P486Sc */}
         {/* <div className='flex items-center gap-3 p-3'>

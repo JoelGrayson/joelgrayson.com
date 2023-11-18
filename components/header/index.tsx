@@ -39,6 +39,7 @@ export default function Header() {
                                 <HeaderGroupItem link='/machines'>Machines</HeaderGroupItem>
                                 <HeaderGroupItem link='/art'>Art</HeaderGroupItem>
                                 <HeaderGroupItem link='/research'>Research</HeaderGroupItem>
+                                <HeaderGroupItem link='/nyc'>NYC</HeaderGroupItem>
                                 <HeaderGroupItem link='/performances'>
                                     <span className='relative'>
                                         Performances &emsp;&nbsp;&nbsp;
