@@ -1,7 +1,16 @@
 import { redirects } from './_internals/types';
 
+const polyfill=(link)=>({[`https://joelgrayson.wixsite.com/joelgrayson${link}`]: link});
 
 export const temporary: redirects={ //302
+    // Based on 404 errors in jg.com/dashboard
+    ...polyfill('/video/arrow'),
+    ...polyfill('/video/tesseract-green-screen'),
+    ...polyfill('/enjoy-your-download'),
+    '/': '/home',
+
+
+
     '/connecting-street-vendors-to-the-grid': '/connect2grid',
     'https://drive.google.com/uc?export=download&id=10ZMJ05tzSK1FwAXWKfX5rtCLA4K9U8Hr': '/combating-climate-change/Combating%20Climate%20Change.pptx', //because larger than 100 MB
     '/dashboard': ['/admin', '/control-panel', '/cpanel'],
