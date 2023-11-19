@@ -1,0 +1,65 @@
+html {
+    /* cursor: url('img/turnip cursor.png'), auto; */
+    overflow: hidden;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    text-align: center;
+}
+
+#sky {
+    background-color: rgb(168, 223, 245);
+    position: absolute;
+    top: 0;
+    height: 90vh;
+    width: 100%;
+    padding: 0 1.5%;
+}
+.cabbage {
+    position: absolute;
+    top: -10vh; /* 80vh is hitting soil, 90vh is hidden under soil */
+    width: 10vh;
+}
+.cabbage:hover {
+    /* cursor: url('img/turnip selected.png'), auto; */
+}
+.farmer {
+    position: absolute;
+    bottom: 10vh;
+    height: 12vh;
+    left: 0%; /* Controls X */
+}
+.farmer img {
+    height: 12vh;
+}
+#umbrellaContainer {
+    position: absolute;
+    bottom: 10vh;
+}
+.umbrella {
+    height: 15vh;
+}
+
+#muffinField {
+    position: absolute;
+    bottom: 0;
+    height: 10vh;
+    width: 100%;
+    background: rgb(156, 237, 148);
+    display: flex;
+    align-items: center;
+}
+.muffin {
+    height: 9vh;
+}
+.muffin:nth-child(1) {
+    margin-left: 30px;
+}
+.icon-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title>The Muffin Game</title>
+    <link rel='stylesheet' href='https://w.joelgrayson.com/ui/ucjg.css'>
+    <link rel='stylesheet' href='https://w.joelgrayson.com/ui/icon-close.css'>
+    <link rel='stylesheet' href='./style.css'>
+    <link rel='stylesheet' href='./modal.css'>
+</head>
+<body>
+    <div id='sky'>
+        <h1>The Muffin Game</h1>
+        <h2>Level: <span class='level'>1/5</span></h2>
+        <h2>Points: <span class='points'>0</span></h2>
+        <h2>Muffins: <span class='numMuffins'>0</span></h2>
+        <button id='shopBtn'>Shop 🛒</button>
+        <div id='cabbageContainer'></div>
+        <!-- ...<img src='img/cabbage.png' alt='cabbage'>... -->
+    </div>
+    <div id='umbrellaContainer'>
+        <!-- <img class='umbrella' src='./img/umbrella.png'></img>... -->
+    </div>
+    <div id='muffinField'>
+        <!-- ...<img src='img/muffin.png' alt='muffin'>... -->
+    </div>
+    <div id='farmers'>
+        <!-- ... -->
+    </div>
+    <div id='shopModal' style='visibility:hidden'>
+        <div id='closeBtn' class='icon-close'></div>
+        <h1>Shop</h1>
+        <h2>Level: <span class='level'>1</span></h2>
+        <h2>Points: <span class='points'>0</span></h2>
+        <h2>Muffins: <span class='numMuffins'>0</span></h2>
+        <div id='shopping-items-container'> <!-- Item -->
+            <div class='shopping-item'>
+                <img src='img/muffins/1.png' height='71px' alt='muffin'>
+                <div>Muffin</div>
+                <button id='muffinBtn'>Buy (5 points)</button>
+            </div>
+            <div class='shopping-item'>
+                <img src='img/umbrella full.png' height='71px' alt='umbrella'>
+                <div>Umbrella</div>
+                <button id='umbrellaBtn'>Buy (10 points)</button>
+            </div>
+            <div class='shopping-item'>
+                <img src='img/farmer.png' height='71px' alt='farmer'>
+                <div>Farmer</div>
+                <p>Farmers bake muffins.</p>
+                <button id='farmerBtn'>Buy (15 points)</button>
+            </div>
+        </div>
+    </div>
+    <div id='shadow'></div>
+    <div class='small-modal' id='instructionsModal'>
+        <div class="container">
+            <h1>Rules</h1>
+            <p>Protect the muffins from the cabbages</p>
+            <div style='display:flex'>
+                <p>Hover over a cabbage to destroy it&emsp;</p><img width='100px' src="./img/instructions cabbage crush.gif" alt="">
+            </div>
+            <p>Each cabbage destroyed = one point</p>
+            <p>Use points to buy muffins or farmers in the shop</p>
+            <br>
+            <button class='btn-green' id='startBtn'>Start</button>
+        </div>
+    </div>
+    <div class='small-modal' id='levelModal'>
+        <div class="container">
+            <h2>Level complete. Next level: <span class='level'></span></h2>
+            <button onclick='levelModal(false)'>Continue</button>
+        </div>
+    </div>
+
+    <script src='https://w.joelgrayson.com/notificationer/notificationer-v3.js'></script>
+    <script src='functions.js'></script>
+    <script src='game.js'></script>
+    <script src='shop.js'></script>
+</body>
+</html>
