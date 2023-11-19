@@ -49,10 +49,11 @@ model Stats {
 
 // # Logging
 model Error {
-    id      String   @id @default(cuid())
-    date    DateTime @default(now())
-    source  String //url or backend
-    message String
+    id       String   @id @default(cuid())
+    date     DateTime @default(now())
+    source   String //url or backend
+    message  String
+    resolved Boolean  @default(false)
 }
 
 model Contact {

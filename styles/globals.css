@@ -187,6 +187,24 @@ input:focus, textarea:focus {
     text-align: left;
 }
 
+/* Table No Padding */
+.j_table_no_padding {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #555;
+}
+.j_table_no_padding td, .j_table_no_padding th {
+    padding: 0 10px;
+    border: 1px solid #555;
+}
+.j_table_no_padding th {
+    text-align: center;
+    font-weight: bold;
+}
+.j_table_no_padding td {
+    text-align: left;
+}
 
 
 /* Mobile */

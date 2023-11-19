@@ -3,11 +3,12 @@ import Page from '../components/global/Page';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Custom404() {
     const shrugRef=useRef() as React.MutableRefObject<HTMLImageElement>;
 
-    useEffect(()=>{
+    useEffect(()=>{ //shrug animation
         gsap.fromTo(shrugRef.current, {
             // opacity: 0,
             zoom: 0
@@ -17,9 +18,21 @@ export default function Custom404() {
             duration: 1,
             ease: 'back' //'elastic'
         });
-
-        fetch('/api/log-error/page-not-found');
     }, []);
+
+    const router=useRouter();
+
+    useEffect(()=>{ //report error
+        if (!window || !router) return;
+        if (window.location.hostname==='localhost')
+            return console.log('not reporting because localhost');
+        if (router.query.dont_report)
+            return console.log('not reporting because dont_report in query');
+        
+        console.log('reporting error');
+        fetch('/api/log-error/page-not-found');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [typeof window, router]);
     
     return <Page noPadding seo={{
         noIndex: true
