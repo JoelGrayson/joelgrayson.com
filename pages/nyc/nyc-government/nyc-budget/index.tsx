@@ -1,4 +1,4 @@
-import { CodeIcon } from '@/components/Icons';
+import { CodeIcon } from '@/components/icons';
 import Page from '@/components/global/Page';
 import { Tooltip } from 'antd';
 import Image from 'next/image';

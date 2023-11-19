@@ -7,6 +7,7 @@ import Info from '@/components/global/Info';
 import { Error } from '@prisma/client';
 import React from 'react';
 import { Action } from 'pages/api/dashboard';
+import { ReloadIcon } from '@/components/icons';
 
 type DashboardError=Error & { ids: string[]; count: number }; //error for the dashboard
 
@@ -34,7 +35,7 @@ function getTopItems(errors: Error[]) {
 }
 
 export default function Dashboard() {
-    const [status, setStatus]=useState<'start-screen' | 'loading' | 'error' | 'authenticated'>('start-screen');
+    const [status, setStatus]=useState<'start-screen' | 'loading' | 'reloading' | 'error' | 'reloading' | 'authenticated'>('start-screen');
     const [errorMessage, setErrorMessage]=useState<string>(''); //error message to display
     const [password, setPassword]=useState<string>('');
     const [errors404, setErrors404]=useState<null | any>(null);
@@ -72,7 +73,7 @@ export default function Dashboard() {
         <h1 className='text-center'>Dashboard</h1>
 
         {
-            status!=='authenticated'
+            status==='start-screen' || status==='loading' || status==='error'
             ? <>
                 <p>Please authenticate</p>
                 <form onSubmit={(e)=>{
@@ -93,7 +94,19 @@ export default function Dashboard() {
                 { status==='loading' && <Loader /> }
                 { status==='error' && <div className='text-red-500'>{errorMessage}</div> }
             </>
-            : <>
+            : <div className='relative j_max-w'>
+                <div className='absolute right-0 top-0'>
+                    <ReloadIcon onClick={()=>{
+                        setStatus('reloading');
+                        request('GET')
+                            .then((res)=>{
+                                setErrors404(res['404Errors']);
+                                setOtherErrors(res.otherErrors);
+                                setStatus('authenticated');
+                            });
+                    }} />
+                    { status==='reloading' && <div>Reloading</div> }
+                </div>
                 <h2>404 Errors</h2>
                 <h4>Top Results</h4>
                 <div className='grid grid-cols-[1fr_10fr_1fr] border-[1px] border-black'>
@@ -206,7 +219,7 @@ export default function Dashboard() {
                     setOtherErrors([]);
                     setErrors404([]);
                 }}>Log Out</Button>
-            </>
+            </div>
         }
     </Page>;
 }
