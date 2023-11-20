@@ -23,7 +23,7 @@ export default function CCC() {
             <div className='j_container'>
                 <h1 className='text-center'>Combating Climate Change</h1>
                 <div className='d:flex d:justify-between'>
-                    <p>Here are my climate initiatives.</p>
+                    <p>Here are my climate initiatives, saving <Green>190</Green> metric tons of CO₂ equivalent.</p>
                     {/* <p>Overall, I save <Green>3</Green></p> */}
                     <div>
                         <Switch defaultChecked onChange={setShowDescription} checked={showDescription} />
@@ -85,7 +85,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
             } {...{showDescription}}>
                 I formed a coalition of students, faculty, and administrators at Riverdale and Fieldston to integrate electric school buses into SuperSelby&apos;s all-diesel fleet, improving passenger health and city air quality and combating climate change.
                 <Savings>
-                    <span>Will save <Green>17 metric tons of CO<sub>2</sub> emissions</Green> per year</span>
+                    <span>Will save <Green>17 metric tons of CO₂ emissions</Green> per year</span>
                 </Savings>
             </Action>
             <Action title='Electric Leaf Blowers' icon={
@@ -94,7 +94,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
                 I convinced Riverdale&apos;s facilities to transition from gas to electric leaf blowers. Not only is it better for the environment, but it also reduces noise pollution and improves workers&apos; health.
                 <br />
                 <Savings>
-                    <span>Saves ~<Green>0.675 metric tons of CO<sub>2</sub>e emissions</Green> per year</span>
+                    <span>Saves ~<Green>0.675 metric tons of CO₂e emissions</Green> per year</span>
                     <Info>
                         <p>5 kg of CO2 per hour of use (<a href='https://www.quietcleanpdx.org/wp-content/uploads/2019/11/Gas-Powered-Leaf-Blower-Emissions-Factsheet-11.12.pdf'>source</a>).</p>
                         <p>5 kg*45 days per year*3 people per hour*1 hour per day=675 kg of emissions per year</p>
@@ -115,9 +115,9 @@ Permanent link: https://perma.cc/N7QN-QDK6
                 <p>Wrote to my school&apos;s bus contractor to enforce <a className='styled' href="https://portal.311.nyc.gov/article/?kanumber=KA-02222">NYC&apos;s law banning bus idling</a>. The day afterward, buses went from idling for hours to minutes.</p>
                 <br />
                 <Savings>
-                    <span>Saves ~<Green>6.7 metric tons of CO<sub>2</sub> emissions</Green> per year</span>
+                    <span>Saves ~<Green>6.7 metric tons of CO₂ emissions</Green> per year</span>
                     <Info>
-                        .0690 kg per minute*90 minutes idling per day*180 days per year*6 buses doing this per day=6706 kg of CO<sub>2</sub> emissions per year
+                        .0690 kg per minute*90 minutes idling per day*180 days per year*6 buses doing this per day=6706 kg of CO₂ emissions per year
                         (<a href="https://natural-resources.canada.ca/energy/efficiency/communities-infrastructure/transportation/idling/4463">source</a>)
                     </Info>
                 </Savings>
@@ -130,8 +130,8 @@ Permanent link: https://perma.cc/N7QN-QDK6
                     <span>Saves ~<Green>0.1 metric tons of CO₂e emissions</Green> per year</span>
                     <Info>
                         <p>Average MPG is 25.7 (https://www.energy.gov/eere/vehicles/articles/fotw-1177-march-15-2021-preliminary-data-show-average-fuel-economy-new-light)</p>
-                        <p>1 ride saved per week × 30 weeks per school year = 30 rides saved per year</p>
-                        <p>30 rides × 10 mile ride × 1 gallon gas/25.7 miles × 8.887 kg CO₂/gal gas × 1 metric ton/1000 kg=0.10375097 metric tons CO₂ per year</p>
+                        <p>10 searches per day (from analytics) × 1 ride per 3 searches × 5 days per week × 30 weeks per school year = 500 rides saved per year</p>
+                        <p>500 rides × 10 mile ride × 1 gallon gas/25.7 miles × 8.887 kg CO₂/gal gas × 1 metric ton/1000 kg=1.7 metric tons CO₂ per year</p>
                     </Info>
                 </Savings>
             </Action>
