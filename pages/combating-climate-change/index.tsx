@@ -23,9 +23,12 @@ export default function CCC() {
             <div className='j_container'>
                 <h1 className='text-center'>Combating Climate Change</h1>
                 <div className='d:flex d:justify-between'>
-                    <p>Here are my climate initiatives, saving <Green>190</Green> metric tons of CO₂ equivalent.</p>
+                    <p className='pr-2'>My climate initiatives reduce emissions by at least <Green>170 metric tons</Green> of CO₂ equivalent per year—the equivalent of planting <Green>8,000 trees</Green>.</p>
                     {/* <p>Overall, I save <Green>3</Green></p> */}
-                    <div>
+                    <div style={{
+                        width: 335,
+                        marginLeft: 10
+                    }}>
                         <Switch defaultChecked onChange={setShowDescription} checked={showDescription} />
                         <span className='ml-2 cursor-pointer' onClick={()=>setShowDescription(!showDescription)}>Show descriptions</span>
                     </div>
@@ -70,7 +73,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
                     </Info>
                 </p>
             </Action>
-            <Action title='Renewable Energy Research'>
+            <Action title='Renewable Energy Research' {...{showDescription}}>
                 <Image src="/research/organic-optoelectronics/Joel in the Lab.jpg" alt="Joel in the Lab" width={210} height={157.5} className='float-right' />
                 <p>
                     I researched a novel compound for organic solar cells&apos; absorbance layer at the Lee Lab in NYU&apos;s Molecular Design Institute and wrote a 14-page lab report. I will be a coauthor on a future peer-reviewed journal publication. See more <Link href='/research/organic-optoelectronics' className='styled'>here</Link>.
@@ -83,10 +86,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
                     <SEBLogo size={30} inline style={{ position: 'relative', top: 9 }} />
                 </Link>
             } {...{showDescription}}>
-                I formed a coalition of students, faculty, and administrators at Riverdale and Fieldston to integrate electric school buses into SuperSelby&apos;s all-diesel fleet, improving passenger health and city air quality and combating climate change.
-                <Savings>
-                    <span>Will save <Green>17 metric tons of CO₂ emissions</Green> per year</span>
-                </Savings>
+                <p>I formed a coalition of students, faculty, and administrators at Riverdale and Fieldston to integrate electric school buses into SuperSelby&apos;s all-diesel fleet, improving passenger health and city air quality and combating climate change. Each bus will save <Green>17 metric tons of CO₂ emissions</Green> per year. Transitioning whole fleet will save <Green>1,428 metric tons of CO₂ emissions</Green> per year</p>
             </Action>
             <Action title='Electric Leaf Blowers' icon={
                 <Image src='/image/ccc/electric-leaf-blowers/electric-leaf-blower.png' alt='leaf blower' width={20} height={14} className='ml-3 inline' />
@@ -103,7 +103,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
             </Action>
             <Action title='Electric Ferries'
             icon={
-                <svg width="25" height="25" className='inline ml-2 relative bottom-.5' viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"> <g clip-path="url(#clip0_1_2)"> <path d="M40 42C37.22 42 34.44 41.06 32 39.35C27.12 42.77 20.88 42.77 16 39.35C13.56 41.06 10.78 42 8 42H4V46H8C10.75 46 13.48 45.31 16 44.01C21.04 46.6 26.96 46.6 32 44.01C34.52 45.3 37.25 46 40 46H44V42H40ZM7.89 38H8C11.2 38 14.05 36.24 16 34C17.95 36.24 20.8 38 24 38C27.2 38 30.05 36.24 32 34C33.96 36.24 36.79 38 40 38H40.11L43.9 24.63C44.07 24.12 44.02 23.56 43.78 23.08C43.53 22.6 43.1 22.24 42.58 22.09L40 21.24V12C40 9.79 38.21 8 36 8H30V2H18V8H12C9.79 8 8 9.79 8 12V21.24L5.43 22.08C4.91 22.24 4.48 22.59 4.23 23.07C3.98 23.55 3.94 24.11 4.11 24.62L7.89 38ZM12 12H36V19.93L24 16L12 19.93V12Z" fill="#194893"/> <path d="M22.2196 22L21 28.9H23.4365L22.2196 34L28 26.8H25.2619L27.6958 22H22.2196Z" fill="#EFCC00"/> </g> <defs> <clipPath id="clip0_1_2"> <rect width="48" height="48" fill="white"/> </clipPath> </defs> </svg>
+                <svg width="25" height="25" className='inline ml-2 relative bottom-.5' viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"> <g clipPath="url(#clip0_1_2)"> <path d="M40 42C37.22 42 34.44 41.06 32 39.35C27.12 42.77 20.88 42.77 16 39.35C13.56 41.06 10.78 42 8 42H4V46H8C10.75 46 13.48 45.31 16 44.01C21.04 46.6 26.96 46.6 32 44.01C34.52 45.3 37.25 46 40 46H44V42H40ZM7.89 38H8C11.2 38 14.05 36.24 16 34C17.95 36.24 20.8 38 24 38C27.2 38 30.05 36.24 32 34C33.96 36.24 36.79 38 40 38H40.11L43.9 24.63C44.07 24.12 44.02 23.56 43.78 23.08C43.53 22.6 43.1 22.24 42.58 22.09L40 21.24V12C40 9.79 38.21 8 36 8H30V2H18V8H12C9.79 8 8 9.79 8 12V21.24L5.43 22.08C4.91 22.24 4.48 22.59 4.23 23.07C3.98 23.55 3.94 24.11 4.11 24.62L7.89 38ZM12 12H36V19.93L24 16L12 19.93V12Z" fill="#194893"/> <path d="M22.2196 22L21 28.9H23.4365L22.2196 34L28 26.8H25.2619L27.6958 22H22.2196Z" fill="#EFCC00"/> </g> <defs> <clipPath id="clip0_1_2"> <rect width="48" height="48" fill="white"/> </clipPath> </defs> </svg>
             }
              {...{showDescription}}>
                 I advocated for electric ferries on Manhattan Community Board 1 by putting in a budget request to the DOT for electric ferries and speaking in favor of electric ferries to NYC Ferries.
@@ -127,7 +127,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
                 Easier for students to go places
                 Students save money on car services and more equitable transportation.
                 <Savings>
-                    <span>Saves ~<Green>0.1 metric tons of CO₂e emissions</Green> per year</span>
+                    <span>Saves ~<Green>1.7 metric tons of CO₂e emissions</Green> per year</span>
                     <Info>
                         <p>Average MPG is 25.7 (https://www.energy.gov/eere/vehicles/articles/fotw-1177-march-15-2021-preliminary-data-show-average-fuel-economy-new-light)</p>
                         <p>10 searches per day (from analytics) × 1 ride per 3 searches × 5 days per week × 30 weeks per school year = 500 rides saved per year</p>
@@ -206,5 +206,5 @@ export function Green({children}: { children: React.ReactNode }) {
 }
 
 export function Savings({ children }: { children: React.ReactNode }) {
-    return <p className='d:absolute d:top-0 d:right-0'>{children}</p>;
+    return <p className='d:absolute d:top-0 d:right-0 text-right'>{children}</p>;
 }
