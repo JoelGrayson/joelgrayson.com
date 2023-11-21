@@ -3,6 +3,7 @@ import { redirects } from './_internals/types';
 const polyfill=(link: string)=>({[`https://joelgrayson.wixsite.com/joelgrayson${link}`]: link});
 
 export const temporary: redirects={ //302
+    '/nyc/nyc-government/test': '/nyc/nyc-government/content/test',
     '/plan': '/agenda',
 
     // Based on 404 errors in jg.com/dashboard
