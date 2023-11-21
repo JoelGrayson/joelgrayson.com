@@ -1,6 +1,7 @@
 import Page from '@/components/global/Page';
 import { useEffect, useState } from 'react';
 import Markdown from 'markdown-to-jsx';
+import NYCPage from './NYCPage';
 
 export default function NYCMarkdownPage({ filename }: { filename: string /* string ending in .md */ }) {
     if (!filename.endsWith('.md'))
@@ -15,7 +16,7 @@ export default function NYCMarkdownPage({ filename }: { filename: string /* stri
             .catch((err)=>console.error(err));
     }, []);
 
-    return <Page bottomPadding>
+    return <NYCPage>
         <Markdown options={{
             // wrapper: 'div'
             overrides: {
@@ -41,6 +42,6 @@ export default function NYCMarkdownPage({ filename }: { filename: string /* stri
         }}>
             {markdown}
         </Markdown>
-    </Page>;
+    </NYCPage>;
 }
 
