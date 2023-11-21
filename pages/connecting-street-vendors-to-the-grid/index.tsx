@@ -1,4 +1,5 @@
 import Prototype from '@/components/by-page/connecting-street-vendors-to-the-grid/Prototype';
+import { Yt } from '@/components/by-page/machines/helpers';
 import Page from '@/components/global/Page';
 import { P, Citation, Footnote as JFootnote } from '@jcomponents/writing-components';
 
@@ -14,6 +15,7 @@ export default function ConnectingStreetVendorsToTheGrid() {
         <P>Vendors are often parked right next to street lamps, so we can install an outlet box for around $5000 with a meter. Using an app, vendors can unlock the outlets and be charged for the electricity they use. Electricians have said that this is feasible as long as DOT and ConEd approve.</P>
         <P className='mb-3'>This initiative is endorsed by the Street Vendor Project, and there are vendors eager to be in this pilot.</P>
         <Prototype />
+        <Yt>Y50nhH18HH4</Yt>
         <p>
             {/* <Image src='/image/connecting-street-vendors-to-the-grid/svp-logo.png' alt='SVP' width={25} height={25} style={{
                 borderRadius: 5,
