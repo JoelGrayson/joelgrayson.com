@@ -1,8 +1,19 @@
 import Page from '@/components/global/Page';
+import Button from '@jcomponents/button';
+import Link from 'next/link';
 import Script from 'next/script';
 
 export default function ReformingMath() {
     return <Page bottomPadding>
+        <Link href='/maths'>
+            <Button style={{
+                position: 'absolute',
+                top: '1rem',
+                left: '2rem'
+            }}>
+                ⏎ Return to all maths
+            </Button>
+        </Link>
         <Script src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' async id="MathJax-script"></Script>
 
         <h1 className='text-center text-4xl my-10'>Reforming Math</h1>
@@ -28,7 +39,10 @@ export default function ReformingMath() {
                 {String.raw`\(\sin(x)^2\)`} should mean {String.raw`\(\sin(x)\cdot \sin(x)\)`} and {String.raw`\(\sin(x)^{-1}\)`} should mean {String.raw`\(\frac1{\sin(x)}\)`}
             </li>
             <li>
-                Make polar coordinates explicitly polar with a \(^p\) superscript, such as \((1, 1)^p\). Otherwise, they look like cartesian coordinates.
+                <div>Problem: \((1, π)\) can be a cartesian or polar coordinate{/* or GCD or interval */}.</div>
+                <div>
+                    Solution: make polar coordinates explicitly polar with a \(^p\) superscript, such as \((1, π)^p\).
+                </div>
             </li>
         </ul>
     </Page>;

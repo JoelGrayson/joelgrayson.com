@@ -1,5 +1,5 @@
 import ArticleWrapper from '@/components/blog/ArticleWrapper';
-import { P } from '@jcomponents/writing-components';
+// import { P } from '@jcomponents/writing-components';
 
 export default function ConnectingWithThePast() {
     return <ArticleWrapper title='Connecting with the Past' date={new Date('Aug 10, 2021')} hyphenatedTitle='connecting-with-the-past'>

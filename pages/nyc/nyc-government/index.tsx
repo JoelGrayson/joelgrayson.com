@@ -1,6 +1,5 @@
 import Page from '@/components/global/Page';
 import Image from 'next/image';
-import { list as curriculum } from './list';
 import Link from 'next/link';
 import Flag from '@jcomponents/flag';
 

@@ -15,6 +15,9 @@ export default function Maths() {
                     gap: 3px;
                 `}
             >
+                <Subject link='/maths/reforming-maths'>
+                    <div>Reforming Maths</div>
+                </Subject>
                 <Subject link='https://youtu.be/7BqbyixlSRU'>
                     <div style={{textAlign: 'center'}}>
                         Proving the Geometric Series Formula with a

@@ -20,7 +20,7 @@ export default function Footer() {
         >
             <YoutubeIcon width={30} />
             <div className='flex items-end mr-0 relative bottom-1'>
-                <Image width='53' height='57' src={src} className='w-13 color-[#0F1CA0] hue-rotate-30 brightness-[0.5]' alt='S' />
+                <Image width='53' height='57' priority={false} src={src} className='w-13 color-[#0F1CA0] hue-rotate-30 brightness-[0.5]' alt='S' />
                 <span className='text-xl text-[#0F1CA0] relative top-[-10px]'>laphappy</span>
             </div>
         </a>

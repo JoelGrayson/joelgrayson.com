@@ -1,3 +1,5 @@
+export { default } from '.';
+
 // List (modeled after the perspective)
 export type PageT={
     title: string;

@@ -1,4 +1,3 @@
-import Page from '@/components/global/Page';
 import { useEffect, useState } from 'react';
 import Markdown from 'markdown-to-jsx';
 import NYCPage from './NYCPage';
@@ -14,7 +13,7 @@ export default function NYCMarkdownPage({ filename }: { filename: string /* stri
             .then((res)=>res.text())
             .then((text)=>setMarkdown(text))
             .catch((err)=>console.error(err));
-    }, []);
+    }, [filename]);
 
     return <NYCPage>
         <Markdown options={{
