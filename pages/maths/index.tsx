@@ -15,6 +15,9 @@ export default function Maths() {
                     gap: 3px;
                 `}
             >
+                <Subject link='/memorize-pi'>
+                    <div>Tool for Memorizing Pi</div>
+                </Subject>
                 <Subject link='/maths/reforming-maths'>
                     <div>Reforming Maths</div>
                 </Subject>
@@ -51,33 +54,31 @@ export default function Maths() {
 }
 
 export function Subject({children, link}: {children: any; link: string}) {
-    return (
-        <Link href={link}>
-            <div
-                className={css`
-                    text-align: center;
-                    width: 300px;
-                    height: 300px;
-                    border: 1px solid black;
-                    border-radius: 10px;
-                    cursor: pointer;
-                    background-color: #fefefe;
-                    &:hover {
-                        background-color: #eee;
-                    }
-                    &:active {
-                        background-color: #ccc;
-                    }
+    return <Link href={link} className='unstyled'>
+        <div
+            className={css`
+                text-align: center;
+                width: 300px;
+                height: 300px;
+                border: 1px solid black;
+                border-radius: 10px;
+                cursor: pointer;
+                background-color: #fefefe;
+                &:hover {
+                    background-color: #eee;
+                }
+                &:active {
+                    background-color: #ccc;
+                }
 
-                    display: grid;
-                    place-items: center;
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: 'Lato Semibold';
-                `}
-            >
-                {children}
-            </div>
-        </Link>
-    );
+                display: grid;
+                place-items: center;
+                font-size: 20px;
+                font-weight: bold;
+                font-family: 'Lato Semibold';
+            `}
+        >
+            {children}
+        </div>
+    </Link>;
 }

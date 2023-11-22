@@ -126,7 +126,7 @@ export default function NYCGoverment() {
             <li>The Third Law of Historical Motion: </li>
             <li>
                 There are often overlapping agencies governing the same property. Just take a look at this CB1 resolution:
-                <img src={root+'overlapping-resolution.png'} alt="Overlapping resolution" />
+                <Image src={root+'overlapping-resolution.png'} alt="Overlapping resolution" width={430} height={89} />
             </li>
         </ul>
 

@@ -17,6 +17,7 @@ export default function HeaderItem({ link /*a href's link*/, children, className
                     mobile:px-[.5rem] mobile:py-[.3rem]
                     hover:bg-[#ffe062]
                     h-fit block
+                    unstyled
                 '
                 style={{
                     backgroundColor: isCurrentPage ? '#ffe273' : undefined,

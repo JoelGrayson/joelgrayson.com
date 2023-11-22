@@ -79,13 +79,11 @@ code.dark { /* dark code like sublime */
 a {
     cursor: pointer;
 }
-a.styled, .j_link {
+a:not(.unstyled) {
     color: #0000e1;
 }
-a.styled:not(.nounderline) {
-    text-decoration: underline;
-}
-a.styled:hover, a.styled:hover *,
+a:not(.unstyled):hover,
+a:not(.unstyled):hover *,
 .gradient-text { /* gradient text onHover */
     color: #fa00f2; /* backup for browsers not supporting text gradient */
     background: -webkit-linear-gradient(45deg, #fa00f2 0%, #000acd 60%, #00299d 100%); /* blue/purple gradient text */
@@ -93,12 +91,6 @@ a.styled:hover, a.styled:hover *,
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-decoration: underline; /* does not work because of -webkit-background-clip */
-}
-a.styled>.btn-red:hover { /* .btn-red hover color is white */
-    background-clip: unset;
-    -webkit-text-fill-color: white;
-    color: white;
-    font-family: Avenir;
 }
 
 /* > */

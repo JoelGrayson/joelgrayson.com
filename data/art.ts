@@ -26,7 +26,7 @@ const images=[ //image path is {description}.jpg
     '2019.08.17 Dad Napping.jpg',
   [ '2019 Paris Bistro.jpg', w2 ],
     '2019 Hotel Pont Royale.jpg',
-    '2019 Where\'s my wig?.jpg',
+    '2019 Where\'s my wig.jpg',
     '2018 Bow.jpg',
     '2017 Pop-Quiz-o-Meter.jpg',
     '2017.07.21 The Dog Walker.jpg',

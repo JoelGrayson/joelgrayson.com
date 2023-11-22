@@ -41,10 +41,8 @@ export default function Header() {
                                 <HeaderGroupItem link='/research'>Research</HeaderGroupItem>
                                 <HeaderGroupItem link='/nyc'>NYC</HeaderGroupItem>
                                 <HeaderGroupItem link='/performances'>
-                                    <span className='relative'>
-                                        Performances &emsp;&nbsp;&nbsp;
-                                        <ViolinBow />
-                                    </span>
+                                    Performances &emsp;&nbsp;&nbsp;
+                                    <ViolinBow />
                                 </HeaderGroupItem>
                                 <HeaderGroupItem link='/slaphappy'>Slaphappy</HeaderGroupItem>
                             </HeaderGroup>
@@ -56,6 +54,7 @@ export default function Header() {
                                 <HeaderSubGroup title='Tools'>
                                     <HeaderGroupItem arrow={false} link='/drive-download-link-generator'>Drive Download Link Generator</HeaderGroupItem>
                                     <HeaderGroupItem arrow={false} link='/chess'>Chess</HeaderGroupItem>
+                                    <HeaderGroupItem arrow={false} link='/memorize-pi'>Memorize π</HeaderGroupItem>
                                 </HeaderSubGroup>
                             </HeaderGroup>
 

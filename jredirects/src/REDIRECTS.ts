@@ -107,7 +107,7 @@ export const permanent: redirects={ //301
     '/programs': ['/tools', '/tool'],
     '/to-be-finder/index.html': ['/to-be', '/to-be-verb', '/to-be-finder', '/to-be-verb-finder', '/be-verb'],
     '/audio': ['/sfx', '/sound', '/sound-effects', '/thelunarsquad-audio'],
-    '/slaphappy': ['/Slaphappy', '/projects/slaphappy', '/son-and-father', '/sonandfather', '/SonAndFather'],
+    '/slaphappy': ['/projects/slaphappy', '/son-and-father', '/sonandfather', '/SonAndFather'],
     '/blog': ['/the-blog', '/joels-blog', '/perspective', '/the-perspective'],
     '/blog/*': ['/the-blog/*', '/joels-blog/*', '/perspective/*', '/the-perspective/*', '/joels-perspective/*'],
     '/open-in-new-tab-wix-code': ['/wix-code-new-tab', /open-in-new-tab(-using)?(-wix-code)?-velo/],
