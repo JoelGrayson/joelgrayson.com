@@ -41,8 +41,11 @@ export default function ReformingMath() {
             <li>
                 <div>Problem: \((1, π)\) can be a cartesian or polar coordinate{/* or GCD or interval */}.</div>
                 <div>
-                    Solution: make polar coordinates explicitly polar with a \(^p\) superscript, such as \((1, π)^p\).
+                    Solution: make polar coordinates explicitly polar with a \(^p\) superscript, such as \((1, π)^p\). You only have to do this if it is unclear.
                 </div>
+            </li>
+            <li>
+                <div>Use == when writing a proof, so that you remember that you cannot manipulate both sides like an equation. For example, prove {String.raw`\(\frac{\cos 2x-1}{\sin 2x}==-\tan x\)`}</div>
             </li>
         </ul>
     </Page>;
