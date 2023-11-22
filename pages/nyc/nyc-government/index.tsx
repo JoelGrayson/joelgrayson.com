@@ -5,6 +5,8 @@ import Flag from '@jcomponents/flag';
 import { PDFIcon } from '@/components/icons';
 
 export default function NYCGoverment() {
+    const root='/nyc/nyc-government/';
+    
     return <Page bottomPadding>
         <div className='flex justify-center'>
             <div className='relative w-[48ch]'>
@@ -76,14 +78,15 @@ export default function NYCGoverment() {
             <li>Department of Buildings (DOB) </li>
             <li>NYC Housing Authority (NYCHA)
             </li>
+            <a href="/nyc/nyc-government/Wrapping up City Agencies.pdf" className="styled">
             <li>Department of Sanitation (DSNY)
             </li><li>NYC Police Department (NYPD)
             </li><li>Economic Development Cooperation (EDC)
             </li><li>Department of City Planning
             </li><li>Department of Housing Preservation and Development
-            </li><li><a href="https://www.nyc.gov/nyc-resources/agencies.page">nyc.gov&apos;s agency page</a>
-            </li><li>…
             </li>
+            </a>
+            <li><a href="https://www.nyc.gov/nyc-resources/agencies.page" className='styled'>nyc.gov&apos;s agency page</a></li>
         </ul>
         <p>
             Formative: Take note of which are well-funded or underfunded in addition to their importance and current issues. Why are some underfunded, and what is the effect?
@@ -94,9 +97,40 @@ export default function NYCGoverment() {
         <p>Congratulations for making it to the end of unit 1. It&apos;s time for <Link className="styled" href='/nyc/nyc-government/unit-1-test'>a quiz</Link> to see if you were paying attention!</p>
 
         <h3 id='borough'>Unit 2: Within the Borough</h3>
-        <Link href='/nyc/nyc-government/Unit 2 Essay Division of Power within NYC.pdf' className='styled'>
+        <p>Essential question: What is the interface between the community boards and the borough boards and borough presidents?</p>
+
+        <p>
+        <strong>Module 2.1: The Borough Presidents</strong>
+        </p>
+        <p>
+        Read Kivelson pages 28–30 and <a href="/nyc/nyc-government/NYC Charter Borough Presidents.pdf">Chapter 8 of the NYC Charter sections 82 and 83 <PDFIcon></PDFIcon></a> to understand the office of the borough president. Then, read <em><a href="/nyc/nyc-government/A Case for and Against the Borough President in Twenty-First Century New York City.pdf">A Case for and Against the Borough President in Twenty-First Century New York City <PDFIcon></PDFIcon></a></em>. Read the <a href="/nyc/nyc-government/Borough Presidents.pdf">biographies of the current borough presidents, Mark Levine, Vanessa Gibson, Antonio Reynoso, Donovan Richards, and Vito Fossella <PDFIcon></PDFIcon></a>.
+        </p>
+
+        <p>
+        <strong>Module 2.2: The Borough Boards</strong>
+        </p>
+        <p>
+        Learn about the issues talked about in the borough boards, including Uniform Land Use Review Procedure (ULURP), borough issues past, and conflicts between community boards. Watch a borough board meeting recording from <a href="https://www.manhattanbp.nyc.gov/resources/manhattan-borough-board/">their website</a>.
+        </p>
+
+        <br />
+        <p>Unit summative: Write a short essay evaluating the strengths and weaknesses of having NYC government separated on the city, borough, and community district levels. The audience for this essay is an engaged citizen of NYC. Here is the essay that I wrote:</p>
+        <Link href='/nyc/nyc-government/Unit 2 Essay Division of Power within NYC.pdf' className='styled inline'>
             Division of Power Essay
+            <PDFIcon></PDFIcon>
         </Link>
+
+        <h3>Overarching Observations</h3>
+        <ul>
+            <li>The Wendy Chapman Rule: all City Hall officials move at once. You may go from getting &quot;no&quot;s or no responses for years from different officials to all of a sudden one day they all say &quot;yes.&quot;</li>
+            <li>The Third Law of Historical Motion: </li>
+            <li>
+                There are often overlapping agencies governing the same property. Just take a look at this CB1 resolution:
+                <img src={root+'overlapping-resolution.png'} alt="Overlapping resolution" />
+            </li>
+        </ul>
+
+
 
 
         {/* <h2>About</h2> */}

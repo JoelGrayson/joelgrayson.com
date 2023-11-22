@@ -85,9 +85,8 @@ a.styled, .j_link {
 a.styled:not(.nounderline) {
     text-decoration: underline;
 }
-a.styled:hover,
-.gradient-text,
-.gradient-text * { /* gradient text onHover */
+a.styled:hover, a.styled:hover *,
+.gradient-text { /* gradient text onHover */
     color: #fa00f2; /* backup for browsers not supporting text gradient */
     background: -webkit-linear-gradient(45deg, #fa00f2 0%, #000acd 60%, #00299d 100%); /* blue/purple gradient text */
     font-family: AvenirMedium;
