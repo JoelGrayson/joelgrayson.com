@@ -24,7 +24,7 @@ export default function NYCGoverment() {
             </div>
         </div>
 
-        <h2>Rationale</h2>
+        <h3>Rationale</h3>
         {/* TODO: overarching course material */}
         <p>
             This course covers NYC government&apos;s organization and processes. I created it as a senior at Riverdale Country School in order to be a better informed citizen and community board member.
@@ -257,6 +257,8 @@ export default function NYCGoverment() {
         Summative: Write an essay answering the following prompt: Why do non-governmental agencies exist? How do they organize themselves and interact with the government?
         </p>
 
+        {/* TODO: insert course notes https://drive.google.com/drive/folders/14nZ9QgbKep7FxUL_hEuR81PILg49WHpl */}
+        {/* TODO: insert my writing and initial reflection */}
         {/* TODO: insert materials in overview so people know what Kivelson is */}
         {/* TODO: city budget
         https://drive.google.com/open?id=1xBsZGSgMYFJD213ziwKnpi0hghOMXKgeksAXRz9kh2o&usp=drive_copy
@@ -265,7 +267,8 @@ export default function NYCGoverment() {
 
         {/* <h2>About</h2> */}
         {/* <Image width={262.5} height={350} src="/nyc/nyc-government/municipal-building.jpg" alt="Municipal Building" className='inline' /> */}
-        <h3>Attribution</h3>
+        <h3>Logistics</h3>
+        <p>We met twice a week in the fall of 2023 for a total of 25 classes.</p>
         <p>Thank you, Mr. Kildahl.</p>
         <Image width={262.5} height={350} src="/nyc/nyc-government/joel-and-mr-kildahl.jpg" alt="Municipal Building" />
 
