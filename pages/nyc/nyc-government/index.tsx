@@ -33,8 +33,8 @@ export default function NYCGoverment() {
 
         <h3>Unit 0: Overview</h3>
         <p>This broad overview will help with making connections throughout the course.
-        Take at <a className='styled' href='/nyc/nyc-government/NYC Government Structure.pdf'>this overview of NYC&apos;s goverment structure <PDFIcon /></a> and <a href="/nyc/nyc-government/NYS Government Structure.pdf" className="styled">this overview of the state&apos;s government structure <PDFIcon /></a>. Next, skim over <Link href='/nyc/nyc-government/timeline' className='styled'>this timeline of NYC <PDFIcon /></Link>.</p>
-        <p>NYC&apos;s laws and rules are included in the Charter, Administrative Code, and Rules <a href="https://codelibrary.amlegal.com/codes/newyorkcity/latest/overview" className="styled" target="_blank">published here</a>. The state&apos;s laws are part of the <a className='styled' href='https://www.nysenate.gov/legislation/laws/CONSOLIDATED' target='_blank'>Consolidated Laws of New York</a>.</p>
+        Take at <a href='/nyc/nyc-government/NYC Government Structure.pdf'>this overview of NYC&apos;s goverment structure <PDFIcon /></a> and <a href="/nyc/nyc-government/NYS Government Structure.pdf">this overview of the state&apos;s government structure <PDFIcon /></a>. Next, skim over <Link href='/nyc/nyc-government/timeline'>this timeline of NYC <PDFIcon /></Link>.</p>
+        <p>NYC&apos;s laws and rules are included in the Charter, Administrative Code, and Rules <a href="https://codelibrary.amlegal.com/codes/newyorkcity/latest/overview" target="_blank">published here</a>. The state&apos;s laws are part of the <a href='https://www.nysenate.gov/legislation/laws/CONSOLIDATED' target='_blank'>Consolidated Laws of New York</a>.</p>
         
         
 
@@ -47,7 +47,7 @@ export default function NYCGoverment() {
             <strong>Module 1.1: Mayorship</strong>
         </p>
         <div>
-            Learn about the mayor&apos;s powers, which include appointing and overseeing departments, acting during states of emergencies, and representing NYC outside of the city (e.g., Conference of Mayors). Read pages 19–24 in Kivelson on the roles of the mayor. Then, the mayoralties of Adams, De Blasio, Bloomberg, Giuliani, Dinkins, Koch, Beame, Lindsay, Wagner Jr., and La Guardia <a className='styled' href="/nyc/nyc-government/Meet the Mayors.pdf">in this compilation <PDFIcon /></a>. As you read, see if you can find examples of the Third Law of Historical Motion (i.e., which mayors succeeded each other because of a campaign contrasting their predecessor). When you have finished, 
+            Learn about the mayor&apos;s powers, which include appointing and overseeing departments, acting during states of emergencies, and representing NYC outside of the city (e.g., Conference of Mayors). Read pages 19–24 in Kivelson on the roles of the mayor. Then, the mayoralties of Adams, De Blasio, Bloomberg, Giuliani, Dinkins, Koch, Beame, Lindsay, Wagner Jr., and La Guardia <a href="/nyc/nyc-government/Meet the Mayors.pdf">in this compilation <PDFIcon /></a>. As you read, see if you can find examples of the Third Law of Historical Motion (i.e., which mayors succeeded each other because of a campaign contrasting their predecessor). When you have finished, 
             <details>
                 <summary className='cursor-pointer'>click here for the examples we found</summary>
                 <ul>
@@ -59,7 +59,7 @@ export default function NYCGoverment() {
                 </ul>
             </details>
         </div>
-        <div>Skim over the mayor&apos;s <a href="https://www.nyc.gov/assets/omb/downloads/pdf/typ4-23.pdf" className='styled'>ten-year capital budget</a>.</div>
+        <div>Skim over the mayor&apos;s <a href="https://www.nyc.gov/assets/omb/downloads/pdf/typ4-23.pdf">ten-year capital budget</a>.</div>
         
         <br />
         <p>
@@ -72,13 +72,13 @@ export default function NYCGoverment() {
             Read through the about pages of departments and agencies and learn how the mayor oversees and interacts with them:
         </p>
         <ul>
-            <li><a href="/nyc/nyc-government/Department of Education.pdf" className="styled">Department of Education (DOE) <PDFIcon /></a></li>
-            <li><a href="/nyc/nyc-government/NYC DOT.pdf" className="styled">Department of Transportation (DOT) <PDFIcon /></a></li>
-            <li><a href="/nyc/nyc-government/NYC Parks.pdf" className="styled">NYC Parks &amp; Recreation <PDFIcon /></a></li>
+            <li><a href="/nyc/nyc-government/Department of Education.pdf">Department of Education (DOE) <PDFIcon /></a></li>
+            <li><a href="/nyc/nyc-government/NYC DOT.pdf">Department of Transportation (DOT) <PDFIcon /></a></li>
+            <li><a href="/nyc/nyc-government/NYC Parks.pdf">NYC Parks &amp; Recreation <PDFIcon /></a></li>
             <li>Department of Buildings (DOB) </li>
             <li>NYC Housing Authority (NYCHA)
             </li>
-            <a href="/nyc/nyc-government/Wrapping up City Agencies.pdf" className="styled">
+            <a href="/nyc/nyc-government/Wrapping up City Agencies.pdf">
             <li>Department of Sanitation (DSNY)
             </li><li>NYC Police Department (NYPD)
             </li><li>Economic Development Cooperation (EDC)
@@ -86,7 +86,7 @@ export default function NYCGoverment() {
             </li><li>Department of Housing Preservation and Development
             </li>
             </a>
-            <li><a href="https://www.nyc.gov/nyc-resources/agencies.page" className='styled'>nyc.gov&apos;s agency page</a></li>
+            <li><a href="https://www.nyc.gov/nyc-resources/agencies.page">nyc.gov&apos;s agency page</a></li>
         </ul>
         <p>
             Formative: Take note of which are well-funded or underfunded in addition to their importance and current issues. Why are some underfunded, and what is the effect?
@@ -94,7 +94,7 @@ export default function NYCGoverment() {
         </div>
 
         
-        <p>Congratulations for making it to the end of unit 1. It&apos;s time for <Link className="styled" href='/nyc/nyc-government/unit-1-test'>a quiz</Link> to see if you were paying attention!</p>
+        <p>Congratulations for making it to the end of unit 1. It&apos;s time for <Link href='/nyc/nyc-government/unit-1-test'>a quiz</Link> to see if you were paying attention!</p>
 
         <h3 id='borough'>Unit 2: Within the Borough</h3>
         <p>Essential question: What is the interface between the community boards and the borough boards and borough presidents?</p>
@@ -115,7 +115,7 @@ export default function NYCGoverment() {
 
         <br />
         <p>Unit summative: Write a short essay evaluating the strengths and weaknesses of having NYC government separated on the city, borough, and community district levels. The audience for this essay is an engaged citizen of NYC. Here is the essay that I wrote:</p>
-        <Link href='/nyc/nyc-government/Unit 2 Essay Division of Power within NYC.pdf' className='styled inline'>
+        <Link href='/nyc/nyc-government/Unit 2 Essay Division of Power within NYC.pdf' className='inline'>
             Division of Power Essay
             <PDFIcon></PDFIcon>
         </Link>
@@ -143,7 +143,7 @@ export default function NYCGoverment() {
 }
 
 export function Markdown({ title, hyphenatedTitle }: { title: string, hyphenatedTitle: string }) {
-    return <Link href={`/nyc/nyc-government/${hyphenatedTitle}`} className='styled'>
+    return <Link href={`/nyc/nyc-government/${hyphenatedTitle}`}>
         {title}
     </Link>;
 }

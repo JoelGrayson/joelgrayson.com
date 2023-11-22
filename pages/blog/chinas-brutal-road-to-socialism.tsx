@@ -65,9 +65,9 @@ export default function ChinasBrutalRoadToSocialism() {
 
         <h3 className='text-center' id='bibliography'>Bibliography</h3>
         <HangingIndent>Eckstein, Alexander. <i>China’s Economic Revolution</i>. Riverdale Country School Boocock Library: Cambridge University Press, 1977.</HangingIndent>
-        <HangingIndent>Han, Donping. “Farmers, Mao, and Discontent in China,” <i>Monthly Review</i> 61.7 (Dec 2009): 20-36, <Link href='/file/farmers.pdf' target='_blank' className='styled'>joelgrayson.com/file/farmers.pdf</Link>.</HangingIndent>
-        <HangingIndent>Hinton, William. “On the Role of Mao Zedong.” <i>Monthly Review</i>, no. 4 (Sept 2004): 50-59, <Link href='https://monthlyreview.org/2004/09/01/on-the-role-of-mao-zedong' target='_blank' className='styled'>monthlyreview.org/2004/09/01/on-the-role-of-mao-zedong</Link>.</HangingIndent>
-        <HangingIndent>Li, Xing. “The Chinese Cultural Revolution Revisited.” <i>China Review</i>, no. 1 (2001): 137–65, <Link href='https://www.jstor.org/stable/23461931' target='_blank' className='styled'>www.jstor.org/stable/23461931</Link>.</HangingIndent>
+        <HangingIndent>Han, Donping. “Farmers, Mao, and Discontent in China,” <i>Monthly Review</i> 61.7 (Dec 2009): 20-36, <Link href='/file/farmers.pdf' target='_blank'>joelgrayson.com/file/farmers.pdf</Link>.</HangingIndent>
+        <HangingIndent>Hinton, William. “On the Role of Mao Zedong.” <i>Monthly Review</i>, no. 4 (Sept 2004): 50-59, <Link href='https://monthlyreview.org/2004/09/01/on-the-role-of-mao-zedong' target='_blank'>monthlyreview.org/2004/09/01/on-the-role-of-mao-zedong</Link>.</HangingIndent>
+        <HangingIndent>Li, Xing. “The Chinese Cultural Revolution Revisited.” <i>China Review</i>, no. 1 (2001): 137–65, <Link href='https://www.jstor.org/stable/23461931' target='_blank'>www.jstor.org/stable/23461931</Link>.</HangingIndent>
         <HangingIndent>Schram, Stuart. <i>The Thought of Mao Tse-Tung</i>. New York: Cambridge University Press, 1989.</HangingIndent>
         <HangingIndent>Spence, Jonathan D. <i>The Search for Modern China</i>, 2nd ed. New York: W. W. Norton & Company, 1999.</HangingIndent>
     </ArticleWrapper>;

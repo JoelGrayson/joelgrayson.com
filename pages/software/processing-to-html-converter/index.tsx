@@ -96,7 +96,7 @@ ${polyfillProcessingCode(processingCode)}
 
         <Modal open={infoModalOpen} setOpen={setInfoModalOpen}>
             <h2 className='text-center'>About</h2>
-            <p>This tool converts your Processing code into HTML code using the <a href='https://happycoding.io/tutorials/processing/processing-js' target='_blank' className='styled'>processing.js</a> library. It polyfills the following features to fit processing.js&apos;s limited API:</p>
+            <p>This tool converts your Processing code into HTML code using the <a href='https://happycoding.io/tutorials/processing/processing-js' target='_blank'>processing.js</a> library. It polyfills the following features to fit processing.js&apos;s limited API:</p>
             <ul>
                 <li>circle()</li>
                 <li>square()</li>

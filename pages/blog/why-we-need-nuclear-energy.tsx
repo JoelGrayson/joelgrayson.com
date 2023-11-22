@@ -30,16 +30,16 @@ export default function WhyWeNeedNuclearEnergy() {
         
         <div> {/* Footnotes */}
             <Footnote number='1'>
-                <i>For First Time, Majority in U.S. Oppose Nuclear Energy. (n.d.). Retrieved May 27, 2021, from <Link className='styled' href='https://news.gallup.com/poll/190064/first-time-majority-oppose-nuclear-energy.aspx'>https://news.gallup.com/poll/190064/first-time-majority-oppose-nuclear-energy.aspx</Link></i>
+                <i>For First Time, Majority in U.S. Oppose Nuclear Energy. (n.d.). Retrieved May 27, 2021, from <Link href='https://news.gallup.com/poll/190064/first-time-majority-oppose-nuclear-energy.aspx'>https://news.gallup.com/poll/190064/first-time-majority-oppose-nuclear-energy.aspx</Link></i>
             </Footnote>
             <Footnote number='2'>
-                <i>Lessons from catastrophic dam failures in August 1975 in Zhumadian, China—HKUST SPD | The Institutional Repository.</i> (n.d.). Retrieved May 27, 2021, from <Link href='https://repository.ust.hk/ir/Record/1783.1-20080' className='styled'>https://repository.ust.hk/ir/Record/1783.1-20080</Link>
+                <i>Lessons from catastrophic dam failures in August 1975 in Zhumadian, China—HKUST SPD | The Institutional Repository.</i> (n.d.). Retrieved May 27, 2021, from <Link href='https://repository.ust.hk/ir/Record/1783.1-20080'>https://repository.ust.hk/ir/Record/1783.1-20080</Link>
             </Footnote>
             <Footnote number='3'>Nuclear Energy Institute (NEI)</Footnote>
             <Footnote number='4'> National Council on Radiation Protection and Measurements</Footnote>
-            <Footnote number='5'>Prevented Mortality and Greenhouse Gas Emissions from Historical and Projected Nuclear Power | Environmental Science & Technology <Link href='https://pubs.acs.org/doi/abs/10.1021/es3051197' className='styled'>https://pubs.acs.org/doi/abs/10.1021/es3051197</Link> (accessed May 27, 2021).</Footnote>
+            <Footnote number='5'>Prevented Mortality and Greenhouse Gas Emissions from Historical and Projected Nuclear Power | Environmental Science & Technology <Link href='https://pubs.acs.org/doi/abs/10.1021/es3051197'>https://pubs.acs.org/doi/abs/10.1021/es3051197</Link> (accessed May 27, 2021).</Footnote>
             <Footnote number='6'>Note: mining uranium alters the environment, but the reactors themselves do not.</Footnote>
-            <Footnote number='7'><i>U.S. energy capacity factors by source 2020 | Statista.</i> (n.d.). Retrieved May 27, 2021, from <Link href='https://www.statista.com/statistics/183680/' className='styled'>https://www.statista.com/statistics/183680/us-average-capacity-factors-by-selected-energy-source-since-1998/</Link></Footnote>
+            <Footnote number='7'><i>U.S. energy capacity factors by source 2020 | Statista.</i> (n.d.). Retrieved May 27, 2021, from <Link href='https://www.statista.com/statistics/183680/'>https://www.statista.com/statistics/183680/us-average-capacity-factors-by-selected-energy-source-since-1998/</Link></Footnote>
             <Footnote number='8'>Data from the Illinois Energy Professor&apos;s calculations.</Footnote>
         </div>
     </ArticleWrapper>;

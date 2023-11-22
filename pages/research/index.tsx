@@ -10,7 +10,7 @@ export default function Research() {
             <p className='bold text-lg'>Study</p>
             <p>Anthropology</p>
             <p>
-                <Link href='/research/how-do-cultures-combine' className='styled'>How Do Cultures Combine?</Link>
+                <Link href='/research/how-do-cultures-combine'>How Do Cultures Combine?</Link>
                 <span className='ml-3 px-2 py-0' style={{
                     backgroundColor: '#db4343',
                     color: 'white',
@@ -18,11 +18,11 @@ export default function Research() {
                 }}>In Progress</span>
             </p>
             <p>Renewable Energy</p>
-            <p><Link href='/research/organic-optoelectronics' className='styled'>
+            <p><Link href='/research/organic-optoelectronics'>
                 Twisting Crystal Charge Transfer Complexes for Organic Optoelectronics
             </Link></p>
             <p>History</p>
-            <p><Link href='/blog/chinas-brutal-road-to-socialism' className='styled'>
+            <p><Link href='/blog/chinas-brutal-road-to-socialism'>
                 China&apos;s Brutal Road to Socialism
             </Link></p>
         </div>

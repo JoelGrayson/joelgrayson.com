@@ -32,7 +32,7 @@ export default function EventColorer() {
         <br />
         
         <h3>Support</h3>
-        <p>For any questions or bug reports, please submit through <Link href='https://forms.gle/sgyM7G5c2wrXBu4A7' className='styled'>this google form</Link>.</p>
+        <p>For any questions or bug reports, please submit through <Link href='https://forms.gle/sgyM7G5c2wrXBu4A7'>this google form</Link>.</p>
 
         <h3>Terms of Service</h3>
         <p>Do not use this extension for illegal purposes. We are not responsible for any damages caused by this extension. You are allowed to modify the code and use it in your own projects, but do not simply republish this extension as your own.</p>

@@ -11,7 +11,7 @@ export default function HideShowDesktopIcons() {
         </a>
         
         <h3>How to Use</h3>
-        <p><a href="/software/hide desktop.command" className='styled'>Download</a> the <code>hide desktop.command</code> & move it to your Desktop.</p>
+        <p><a href="/software/hide desktop.command">Download</a> the <code>hide desktop.command</code> & move it to your Desktop.</p>
         <p>Double click the `hide desktop` executable to hide desktop icons.</p>
         <p>After doing so, a `show desktop` file will appear in your downloads folder. Double click this file to restore the desktop icons.</p>
 

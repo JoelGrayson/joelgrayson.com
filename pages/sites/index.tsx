@@ -18,7 +18,7 @@ export function Sites() { /* bullet points of all sites */
             <Site>studentsforelectricbuses.org</Site>
             <Site>luxpremierllc.com</Site>
             <Site>memorizethepresidents.com</Site>
-            <li><a className='styled' target='_blank' href='https://joelgrayson.wixsite.com/geography'>Geography learning site</a> (my first site)</li>
+            <li><a target='_blank' href='https://joelgrayson.wixsite.com/geography'>Geography learning site</a> (my first site)</li>
 
             <br />
             <h3>Coming Soon</h3>
@@ -30,6 +30,6 @@ export function Sites() { /* bullet points of all sites */
 
 export function Site({children, href}: {children: string, href?: string}) {
     return <li>
-        <a href={href || `https://${children}`} className='styled' target='_blank'>{children}</a>
+        <a href={href || `https://${children}`} target='_blank'>{children}</a>
     </li>;
 }

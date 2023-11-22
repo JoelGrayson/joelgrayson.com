@@ -48,7 +48,7 @@ export default function ConnectingStreetVendorsToTheGrid() {
 export function Footnote({ number, title, href } :{ number: string | number; title?: string; href?: string }) {
     if (href)
         return <JFootnote number={number}>
-            <a href={href} target='_blank' className='styled'>{title || href}</a>
+            <a href={href} target='_blank'>{title || href}</a>
         </JFootnote>;
     else
         return <JFootnote number={number}>{title}</JFootnote>;

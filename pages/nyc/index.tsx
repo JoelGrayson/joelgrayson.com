@@ -35,7 +35,7 @@ export default function NYC() {
 
 
         <h2>Connecting Street Vendors to the Grid</h2>
-        <p>Running an initiative to connect NYC&apos;s street vendors to the grid so they do not have to use gas generators. <Link href='/connecting-street-vendors-to-the-grid' className='styled'>Learn more</Link></p>
+        <p>Running an initiative to connect NYC&apos;s street vendors to the grid so they do not have to use gas generators. <Link href='/connecting-street-vendors-to-the-grid'>Learn more</Link></p>
 
         
         <h2>NYC Government Course</h2>
@@ -53,7 +53,7 @@ export default function NYC() {
         <ul>
             <li>Created a resolution to add maker spaces to middle schools in my district</li>
             <li>Wrote to the DOT about electric ferries and made a budget request for electric ferries to the EDC (Budget Request for Electric Ferries.jpg)</li>
-            <li>Advocated for Miyawaki forests in the resolution about the rotary tunnel (mentioned in <a href='https://www.ebroadsheet.com/throwing-in-the-sponge/' className='styled'>this Broadsheet article</a>)</li>
+            <li>Advocated for Miyawaki forests in the resolution about the rotary tunnel (mentioned in <a href='https://www.ebroadsheet.com/throwing-in-the-sponge/'>this Broadsheet article</a>)</li>
             <li>Advocated to five elected officials for private school e-bus funds.</li>
         </ul>
         <Yt>stwfwzbFqQE</Yt>

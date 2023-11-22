@@ -99,7 +99,7 @@ export default function Resume() {
                         <Image src='/image/ccc/stopping-bus-idling/stopping-bus-idling.png' alt='stopping-bus-idling' width={20} height={13} className='relative bottom-[3px] mr-1 inline' />
                         <span>Stopping Bus Idling</span>
                         <span className="date">2022</span>
-                        <div className="description indent">Wrote to bus contractor to enforce <a className='styled' href='https://portal.311.nyc.gov/article/?kanumber=KA-02222'>NYC&apos;s law banning bus idling</a>.</div>
+                        <div className="description indent">Wrote to bus contractor to enforce <a href='https://portal.311.nyc.gov/article/?kanumber=KA-02222'>NYC&apos;s law banning bus idling</a>.</div>
                     </li>
                     <li className='mb-2 mt-2'>
                         <span>Presented to middle school, upper school, and Riverdale alumni on climate solutions.</span>
@@ -121,25 +121,25 @@ export default function Resume() {
                 <ul>
                     <li>
                         <Image src='/image/home/buseroo-logo.png' alt='buseroo-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                        <span><a href="https://buseroo.com" className='styled'>Buseroo.com</a></span>
+                        <span><a href="https://buseroo.com">Buseroo.com</a></span>
                         <span className="date">2021&ndash;23</span>
                         <div className="description indent">kiosk and website for students to find closest bus to any address.</div>
                     </li>
                     <li>
                         <Image src='/image/home/homework-checker-logo.png' alt='homework-checker-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                        <span><a href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj' className='styled'>Homework Checker</a></span>
+                        <span><a href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>Homework Checker</a></span>
                         <span className="date">2021&ndash;22</span>
                         <div className="description indent">Chrome extension helping 300+ students manage homework.</div>
                     </li>
                     <li>
                         <Image src='/image/home/focus-logo.png' alt='focus-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                        <span><a href="https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf" className='styled'>Focus</a></span>
+                        <span><a href="https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf">Focus</a></span>
                         <span className="date">2022</span>
                         <div className="description indent">Chrome extension helping 140+ people write distraction-free.</div>
                     </li>
                     <li>
                         <Image src='/image/lirong-art/lirong-art.png' alt='lirongart-logo' width={16.8125} height={30} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                        <span><a href='https://lirongart.com' className='styled'>LirongArt.com</a></span>
+                        <span><a href='https://lirongart.com'>LirongArt.com</a></span>
                         <span className="date">2020</span>
                         <div className="description indent">online gallery showcasing my mom’s paintings.</div>
                     </li>
@@ -194,7 +194,7 @@ export default function Resume() {
                     <span className='date'>2011&ndash;present</span>
                 </div>
                 <div className='relative'>
-                    <span className='description'><a className="styled" href='https://youtube.com/SonAndFather'>YouTube channel</a> with father-son comedy, project records, and claymation.</span>
+                    <span className='description'><a href='https://youtube.com/SonAndFather'>YouTube channel</a> with father-son comedy, project records, and claymation.</span>
                     {/* Wrote, acted, filmed, and edited 34 comedy videos with my father since age 11, created nine9 stop motion animations, and included other projects */}
                     <span className='date'>2018&ndash;present</span>
                 </div>
