@@ -103,14 +103,43 @@ export default function NYCGoverment() {
         <strong>Module 2.1: The Borough Presidents</strong>
         </p>
         <p>
-        Read Kivelson pages 28–30 and <a href="/nyc/nyc-government/NYC Charter Borough Presidents.pdf">Chapter 8 of the NYC Charter sections 82 and 83 <PDFIcon></PDFIcon></a> to understand the office of the borough president. Then, read <em><a href="/nyc/nyc-government/A Case for and Against the Borough President in Twenty-First Century New York City.pdf">A Case for and Against the Borough President in Twenty-First Century New York City <PDFIcon></PDFIcon></a></em>. Read the <a href="/nyc/nyc-government/Borough Presidents.pdf">biographies of the current borough presidents, Mark Levine, Vanessa Gibson, Antonio Reynoso, Donovan Richards, and Vito Fossella <PDFIcon></PDFIcon></a>.
+            Read Kivelson pages 28–30 and <a href="/nyc/nyc-government/NYC Charter Borough Presidents.pdf">Chapter 8 of the NYC Charter sections 82 and 83 <PDFIcon></PDFIcon></a> to understand the office of the borough president. Read the <a href="/nyc/nyc-government/Borough Presidents.pdf">biographies of the current borough presidents, Mark Levine, Vanessa Gibson, Antonio Reynoso, Donovan Richards, and Vito Fossella <PDFIcon></PDFIcon></a>.
+            Next, read <em><a href="/nyc/nyc-government/A Case for and Against the Borough President in Twenty-First Century New York City.pdf">A Case for and Against the Borough President in Twenty-First Century New York City <PDFIcon></PDFIcon></a></em>. This is a note by a Fordham law student. A note is shorter than an article and provides a summary and analysis of a subject that an uninformed reader should be able to understand.
         </p>
+        <details>
+            <summary>Here are my thoughts on the Berg reading</summary>
+            <ul>
+            
+            <li>The City Council is actually less citywide than I thought. It is more parochial whereas the mayor and departments are citywide.</li>
+                
+            <li>We saw federalism government interplay between the city and federal government in Berg 234. The city government defaults to the mayor&apos;s authority when it comes to federal matters because the mayor has more experience and has existed for longer and represents the city outside of the city. He (or she) also has a citywide view as opposed to the representatives, which are concerned about both their districts and the entire city.</li>
+                
+            <li>Resolutions allow the council to send requests to the federal government. I know the mayor has called on the federal government to prevent the migration influx in NYC, but I wonder if the council has taken any action around this issue? Resolutions to the state and federal government are suggestions, but carry no real weight.</li>
+                
+            <li>Home rule messages ask the state for the granting of more rights to the city. For example, all taxes besides property taxes require home rule provisions.</li>
+                
+            <li>The mayor has better staff and media coverage than the council. The mayor is more powerful than the council.
+            </li>  
+            </ul>
+        </details>
 
         <p>
         <strong>Module 2.2: The Borough Boards</strong>
         </p>
         <p>
         Learn about the issues talked about in the borough boards, including Uniform Land Use Review Procedure (ULURP), borough issues past, and conflicts between community boards. Watch a borough board meeting recording from <a href="https://www.manhattanbp.nyc.gov/resources/manhattan-borough-board/">their website</a>.
+        </p>
+
+
+
+        <p>
+        <strong>Module 2.3: The Community Boards</strong>
+        </p>
+        <p>
+        Read CB1&apos;s monthly minutes, reports, resolutions, and other online archives. Read <a href="https://drive.google.com/file/d/1HB2eJ6d1wxKb1sUSAcVZgLWQe0bhJGZg/view?usp=drive_link">Fordham Urban Law Journal&apos;s review of community boards&apos; history, present, and future <PDFIcon></PDFIcon></a>.
+        </p>
+        <p>
+        Read <a href="https://www.nyc.gov/assets/planning/download/pdf/applicants/applicant-portal/lur.pdf">this chart</a> summarizing how ULURP works.
         </p>
 
         <br />
@@ -128,9 +157,110 @@ export default function NYCGoverment() {
                 There are often overlapping agencies governing the same property. Just take a look at this CB1 resolution:
                 <Image src={root+'overlapping-resolution.png'} alt="Overlapping resolution" width={430} height={89} />
             </li>
+            <li>
+                Is CB1 what replaced congregations for me since I am an atheist? Perhaps, because we meet regularly as a parochial entity. The definition of &quot;church&quot; can be more flexible for modern context. Mr. Kildahl sees Riverdale as a church because it is one of the sources of his faith.
+            </li>
         </ul>
 
+        <h3>Unit 3: City Council</h3>
 
+
+        <p>
+        Essential question: What is the purpose of the City Council, and how does it integrate with the executive positions (Mayor and Borough Presidents)?
+        </p>
+        <p>
+        <strong>Module 3.1: Election Process</strong>
+        </p>
+        <p>
+        Learn about term limits and how elections are conducted. Analyze the 2023 City Council election.
+        </p>
+        <p>
+        <strong>Module 3.2: Field Trip</strong>
+        </p>
+        <p>
+        Watch a virtual City Council stated meeting from the <a href="https://legistar.council.nyc.gov/Calendar.aspx">calendar</a>. Then, attend a City Council stated meeting in person on the Chambers’ Observatory Mezzanine. Just ike in British Parliament, you can sit above the council to watch it proceed. Write a reflection on what you notice and find interesting.
+        </p>
+        <p>
+        Here is my reflection.
+        </p>
+        <p>
+        <a href={root+'11_2_2023 City Stated Council Meeting (Watched Recording).pdf'}>11/2/2023 City Stated Council Meeting (Watched Recording) <PDFIcon></PDFIcon></a>
+        </p>
+        <p>
+        <a href={root+'11_15_23 City Council Stated Meeting.pdf'}>11/15/23 City Council Stated Meeting <PDFIcon></PDFIcon></a>
+        </p>
+        <p>
+        Attend a City Council meeting publicly (either in-person or remotely). Read parts of the NYC administrative code to see examples of passed regulations.
+        </p>
+        <p>
+        <strong>Module 3.3: City Council Rules</strong>
+        </p>
+        <p>
+        Read Chapter 8 of Berg on council rules.
+        </p>
+
+
+        <br />
+        <p>We have seen the names of many people repeated. Take a look at <a href={root+"names-of-positions"}>this list of names and positions
+        </a>.</p>
+
+        <h3>Unit 4: Public Advocate (Ombudsman)</h3>
+
+
+        <p>
+        <strong>Module 4.1: Public Advocate Office</strong>
+        </p>
+        <p>
+        Read Kivelson pages 24–25 on the public advocate. Find issues that former public advocates have brought up.
+        </p>
+        <p>
+        <strong>Module 4.2: Jumaane Williams</strong>
+        </p>
+        <p>
+        Read about Jumaane Williams, what his main issues are, and what he has done while in office.
+        </p>
+        <p>
+        Formative: Write a paragraph about the importance of the public advocate. What has this role achieved? Is it too weak? Then, write a paragraph about the relationship between the public advocate and the Mayor and City Council. 
+        </p>
+
+
+
+        <h3>Unit 5: Non-Government Organizations</h3>
+
+
+        <p>
+        Read page 56 of Kivelson to learn about the procurement process. Then, learn about the NGOs, union, and advocacy groups, including:
+        </p>
+        <ul>
+
+        <li>Downtown Alliance</li>
+
+        <li>Battery Park City Authority (BPCA)</li>
+
+        <li>NY Public Library (NYPL)</li>
+
+        <li>NYC Economic Development Corporation (EDC)</li>
+
+        <li>Robin Hood Foundation</li>
+
+        <li>City Harvest</li>
+
+        <li>NY Immigration Coalition (NYIC)</li>
+
+        <li>Rocking the Boat (founded as a Riverdale middle school club)
+        </li>
+        </ul>
+        <p>
+        Keep a Google document log of government agencies with a summary of their impact.
+        </p>
+        <p>
+        Summative: Write an essay answering the following prompt: Why do non-governmental agencies exist? How do they organize themselves and interact with the government?
+        </p>
+
+        {/* TODO: insert materials in overview so people know what Kivelson is */}
+        {/* TODO: city budget
+        https://drive.google.com/open?id=1xBsZGSgMYFJD213ziwKnpi0hghOMXKgeksAXRz9kh2o&usp=drive_copy
+        */}
 
 
         {/* <h2>About</h2> */}
