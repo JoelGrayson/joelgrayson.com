@@ -8,7 +8,8 @@ export const agendas={
     Solar: '1WQnU_U1rG955NcYjRCCz7fBeK8wEZ2KxW7_JBN7mmS4',
     'Students for Electric Buses': '1hjc1ZM9gfHd7VsPnQcnHtzrVOx8RguzEajhax7rk7Ww',
     'Vending Machine': '17fWXdeUmfWz0W7UqSDC0tmr5TaMrz6L7O2S9Uu6iS34',
-    'Learning': '15TW1rDATUrihnRX3cuLSuL-Q6fZZR1JwRtd_uQHE9A4'
+    Shirtocracy: '14J4rPtrke6MRDxecwxdG2YTkROGXuB_ccRHyH7xW9-g',
+    Learning: '15TW1rDATUrihnRX3cuLSuL-Q6fZZR1JwRtd_uQHE9A4'
 };
 
 export default function Plan() {
