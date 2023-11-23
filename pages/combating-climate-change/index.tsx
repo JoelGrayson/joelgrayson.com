@@ -42,7 +42,8 @@ export default function CCC() {
             } {...{showDescription}}>
                 <div className='relative'>
                     <p>While learning about different energy sources, I realized that my school&apos;s empty rooftops had great potential for solar energy. I measured the rooftops, created solar models in HelioScope (image below), calculated savings, and gathered quotes from two companies. I presented to the administration and board of trustees, who agreed to a 410 kW solar PPA arrangement (enough to power 40+ households) that will cover six buildings, promote renewable energy, and save the school tens of thousands of dollars every year.</p>
-                    <p>85% of New York City&apos;s electricity comes from fossil fuels. My solar installation makes NYC&apos;s electricity <Green>0.0075%</Green> more renewable.</p>
+                    <p>85% of New York City&apos;s electricity comes from fossil fuels. This installation will generate 442 megawatt-hours of clean electricity per year.</p>
+                        {/* My solar installation makes NYC&apos;s electricity <Green>0.0075%</Green> more renewable.</p> */}
                 </div>
                 <Image src='/image/ccc/solar-for-riverdale/models.png' width={720} height={146} alt='Solar Models' />
                 <Image src='/image/ccc/solar-for-riverdale/Presenting.png' width={500} height={265} alt='Solar Models' priority />
