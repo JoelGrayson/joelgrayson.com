@@ -211,3 +211,15 @@ input:focus, textarea:focus {
     h6 { font-size: 1.1rem; margin-top: 4px; }
 }
 
+
+/* Animating */
+@keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.animate-blink {
+    animation: blink 1s infinite;
+}
+
