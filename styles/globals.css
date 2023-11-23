@@ -73,33 +73,27 @@ code.dark { /* dark code like sublime */
     color: rgb(255, 77, 77);
     border-radius: .3ch;
 }
-
+details>summary {
+    cursor: pointer;
+    font-family: AvenirMedium;
+}
 
 /* Links */
-a {
+a, details>summary {
     cursor: pointer;
 }
-a.styled, .j_link {
+a:not(.unstyled) {
     color: #0000e1;
 }
-a.styled:not(.nounderline) {
-    text-decoration: underline;
-}
-a.styled:hover,
-.gradient-text,
-.gradient-text * { /* gradient text onHover */
+a:not(.unstyled):hover,
+a:not(.unstyled):hover *,
+.gradient-text { /* gradient text onHover */
     color: #fa00f2; /* backup for browsers not supporting text gradient */
     background: -webkit-linear-gradient(45deg, #fa00f2 0%, #000acd 60%, #00299d 100%); /* blue/purple gradient text */
     font-family: AvenirMedium;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-decoration: underline; /* does not work because of -webkit-background-clip */
-}
-a.styled>.btn-red:hover { /* .btn-red hover color is white */
-    background-clip: unset;
-    -webkit-text-fill-color: white;
-    color: white;
-    font-family: Avenir;
 }
 
 /* > */

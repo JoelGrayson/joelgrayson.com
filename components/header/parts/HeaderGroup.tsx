@@ -8,7 +8,7 @@ export default function HeaderGroup({ title, children, link, className }: { titl
     
     return <li onMouseLeave={()=>setOpen(false)} className={className}>
         {/* Active is when mouseDown on button */}
-        <Link href={link || ''}>
+        <Link href={link || ''} className='unstyled'>
             <button
                 className={`
                     flex items-center text-black font-[15px] mx-[9px] bg-white rounded-[13px] py-[0.6rem] px-7 select-none

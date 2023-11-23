@@ -8,11 +8,11 @@ export default function HowDoCulturesCombine() {
         <P>The U.S. population has and will become more and more mixed race. I propose conducting a research project on how cultures combine in multiracial households as a way of exploring the trajectory of American culture. To what extent are both cultures preserved or diminished? Are some races&apos; cultures more compatible with each other?</P>
         <P>
             Data will be collected in&nbsp;
-            <Link href='/research/how-do-cultures-combine/survey/multicultural' className='styled'>
+            <Link href='/research/how-do-cultures-combine/survey/multicultural'>
                 this survey for multicultural people
             </Link>
             &nbsp;and&nbsp;
-            <Link href='/research/how-do-cultures-combine/survey/single-culture' className='styled'>
+            <Link href='/research/how-do-cultures-combine/survey/single-culture'>
                 this survey for people from a single cultural background
             </Link>
             .

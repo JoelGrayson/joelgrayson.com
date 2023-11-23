@@ -78,7 +78,7 @@ export const machines: Machine[]=[
             title: <>Guardbox <small>(Arduino Safe)</small></>,
             desc: <>
                 <span className='d:w-[60%]'>
-                    The challenge was to create and present a safe in under 24 hours using Arduino. <br/> Code: <Link className='styled'  href='https://github.com/JoelGrayson/Guardbox'>github.com/JoelGrayson/Guardbox</Link>
+                    The challenge was to create and present a safe in under 24 hours using Arduino. <br/> Code: <Link  href='https://github.com/JoelGrayson/Guardbox'>github.com/JoelGrayson/Guardbox</Link>
                 </span>
                 <div style={{
                     position: 'absolute',
@@ -106,15 +106,15 @@ export const machines: Machine[]=[
                 <div className='w-[80%]'>
                     <div>This project depicts the dystopian world many people imagine at the thought of nuclear energy.
                     As a nuclear proponent myself (I wrote an article on my thoughts here), I wanted to explore the fear.</div>
-                    <div>Website: <Link className='styled'  href='https://joelgrayson.github.io/Nuclear-Dystopia'>joelgrayson.github.io/Nuclear-Dystopia</Link></div>
-                    <div>Code: <Link className='styled'  href='https://github.com/JoelGrayson/Guardbox'>github.com/JoelGrayson/Guardbox</Link></div>
+                    <div>Website: <Link  href='https://joelgrayson.github.io/Nuclear-Dystopia'>joelgrayson.github.io/Nuclear-Dystopia</Link></div>
+                    <div>Code: <Link  href='https://github.com/JoelGrayson/Guardbox'>github.com/JoelGrayson/Guardbox</Link></div>
                 </div>
                 <Yt width={300}>f52mLKATghw</Yt>
             </div>
         </>
             // desc: <>
             //     Game made in C++ for the Arduino.
-            //     <br/> Code: <Link className='styled' href='https://github.com/JoelGrayson/Eater-Arduino-Game'>github.com/JoelGrayson/Eater-Arduino-Game</Link>
+            //     <br/> Code: <Link href='https://github.com/JoelGrayson/Eater-Arduino-Game'>github.com/JoelGrayson/Eater-Arduino-Game</Link>
             // </>,
             // yt: 'f52mLKATghw'
         })
@@ -133,10 +133,10 @@ export const machines: Machine[]=[
                     <div className='w-[80%]'>
                         <div>This project depicts the dystopian world many people imagine at the thought of nuclear energy.
                         As a nuclear proponent myself (I wrote an article on my thoughts here), I wanted to explore the fear.</div>
-                        <div>Website: <Link className='styled'  href='https://joelgrayson.github.io/Nuclear-Dystopia'>joelgrayson.github.io/Nuclear-Dystopia</Link></div>
-                        <div>Code: <Link className='styled'  href='https://github.com/JoelGrayson/Guardbox'>github.com/JoelGrayson/Guardbox</Link></div>
+                        <div>Website: <Link  href='https://joelgrayson.github.io/Nuclear-Dystopia'>joelgrayson.github.io/Nuclear-Dystopia</Link></div>
+                        <div>Code: <Link  href='https://github.com/JoelGrayson/Guardbox'>github.com/JoelGrayson/Guardbox</Link></div>
                     </div>
-                    <Link className='styled'  href='https://joelgrayson.github.io/Nuclear-Dystopia/' target='_blank'>
+                    <Link  href='https://joelgrayson.github.io/Nuclear-Dystopia/' target='_blank'>
                         <Image width='170' height='154' className='hover:shadow-xl hover:outline-2 outline-double transition-none outline-0' src='/image/machines/nuclear-dystopia-thumbnail.jpg' alt='Thumbnail' />
                     </Link>
                 </div>
@@ -314,7 +314,7 @@ export const machines: Machine[]=[
                 <span>2016</span>
                 <h3 style={{fontSize: '1.4rem'}}>Wooden Pinball Machine</h3>
                 <p>Made afterschool in my school&apos;s woodshop.</p>
-                {/* <Link className='styled' href='https://www.youtube.com/watch?v=uZWBtcp2BMU&list=PLPq06AMW3cIGYmcroupuIOC-vkwSVSW0I'>Demo video here</Link> */}
+                {/* <Link href='https://www.youtube.com/watch?v=uZWBtcp2BMU&list=PLPq06AMW3cIGYmcroupuIOC-vkwSVSW0I'>Demo video here</Link> */}
                 <Yt width={300} className='mt-1'>uZWBtcp2BMU</Yt>
             </div>
         </div>

@@ -35,17 +35,17 @@ export default function NYC() {
 
 
         <h2>Connecting Street Vendors to the Grid</h2>
-        <p>Running an initiative to connect NYC&apos;s street vendors to the grid so they do not have to use gas generators. <Link href='/connecting-street-vendors-to-the-grid' className='styled'>Learn more</Link></p>
+        <p>Running an initiative to connect NYC&apos;s street vendors to the grid so they do not have to use gas generators. <Link href='/connecting-street-vendors-to-the-grid'>Learn more</Link></p>
 
         
         <h2>NYC Government Course</h2>
         <p>From September 2023 to January 2024, I am taking an independent study in NYC Government with Mr. Kildahl.</p>
         <p>Since I have benefited so much from resources like Khan Academy and MIT OCW, I am publishing our curriculum here.</p>
-        <Link href='/nyc/nyc-government'>
-            <Button>
+        <Button>
+            <Link href='/nyc/nyc-government' className='unstyled'>
                 Go to NYC Government Self-Paced Course
-            </Button>
-        </Link>
+            </Link>
+        </Button>
 
         <h2>Manhattan Community Board 1 Member</h2>
         <p>Being a community board member has been an exciting and rewarding experience. I have enjoyed learning how NYC Government works, talking with different department liaisons, making friends with other board members, and am grateful to be a part of a group of inspiring involved community members.</p>
@@ -53,7 +53,7 @@ export default function NYC() {
         <ul>
             <li>Created a resolution to add maker spaces to middle schools in my district</li>
             <li>Wrote to the DOT about electric ferries and made a budget request for electric ferries to the EDC (Budget Request for Electric Ferries.jpg)</li>
-            <li>Advocated for Miyawaki forests in the resolution about the rotary tunnel (mentioned in <a href='https://www.ebroadsheet.com/throwing-in-the-sponge/' className='styled'>this Broadsheet article</a>)</li>
+            <li>Advocated for Miyawaki forests in the resolution about the rotary tunnel (mentioned in <a href='https://www.ebroadsheet.com/throwing-in-the-sponge/'>this Broadsheet article</a>)</li>
             <li>Advocated to five elected officials for private school e-bus funds.</li>
         </ul>
         <Yt>stwfwzbFqQE</Yt>

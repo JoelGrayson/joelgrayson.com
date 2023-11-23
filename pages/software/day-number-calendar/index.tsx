@@ -30,8 +30,8 @@ export default function DayNumberCalendar() {
             </div>
             <div className='w-[50%]'> {/* Apple */}
                 <h3>Add to Apple Calendar</h3>
-                <p>On an iPhone: Tap Add Calendar, Add Subscription Calendar, and paste in this url: <a className='styled' href='https://joelgrayson.com/software/day-number-calendar/apple'>joelgrayson.com/software/day-number-calendar/apple</a></p>
-                <p>On a Mac: Click File, New Calendar Subscription, and paste in the same url: <a className='styled' href='https://joelgrayson.com/software/day-number-calendar/apple'>joelgrayson.com/software/day-number-calendar/apple</a></p>
+                <p>On an iPhone: Tap Add Calendar, Add Subscription Calendar, and paste in this url: <a href='https://joelgrayson.com/software/day-number-calendar/apple'>joelgrayson.com/software/day-number-calendar/apple</a></p>
+                <p>On a Mac: Click File, New Calendar Subscription, and paste in the same url: <a href='https://joelgrayson.com/software/day-number-calendar/apple'>joelgrayson.com/software/day-number-calendar/apple</a></p>
             </div>
         </div>
         <br /><br />

@@ -14,7 +14,7 @@ export default function Footer() {
         <a href="https://github.com/JoelGrayson" target='_blank' className='flex' aria-label='GitHub Profile'>
             <GithubIcon width={30} />
         </a>
-        <a href='https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A' className='no-underline flex justify-center items-center'
+        <a href='https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A' className='unstyled flex justify-center items-center'
             onMouseEnter={()=>setSrc(wigglingSrc)}
             onMouseLeave={()=>setSrc(stillSrc)}
         >

@@ -77,7 +77,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
             <Action title='Renewable Energy Research' {...{showDescription}}>
                 <Image src="/research/organic-optoelectronics/Joel in the Lab.jpg" alt="Joel in the Lab" width={210} height={157.5} className='float-right' />
                 <p>
-                    I researched a novel compound for organic solar cells&apos; absorbance layer at the Lee Lab in NYU&apos;s Molecular Design Institute and wrote a 14-page lab report. I will be a coauthor on a future peer-reviewed journal publication. See more <Link href='/research/organic-optoelectronics' className='styled'>here</Link>.
+                    I researched a novel compound for organic solar cells&apos; absorbance layer at the Lee Lab in NYU&apos;s Molecular Design Institute and wrote a 14-page lab report. I will be a coauthor on a future peer-reviewed journal publication. See more <Link href='/research/organic-optoelectronics'>here</Link>.
                 </p>
             </Action>
         </Section>
@@ -113,7 +113,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
         <Section title='Energy Efficiency'>
             <Action title='Bus Idling Ban' {...{showDescription}}>
                 <IdlingEngine />
-                <p>Wrote to my school&apos;s bus contractor to enforce <a className='styled' href="https://portal.311.nyc.gov/article/?kanumber=KA-02222">NYC&apos;s law banning bus idling</a>. The day afterward, buses went from idling for hours to minutes.</p>
+                <p>Wrote to my school&apos;s bus contractor to enforce <a href="https://portal.311.nyc.gov/article/?kanumber=KA-02222">NYC&apos;s law banning bus idling</a>. The day afterward, buses went from idling for hours to minutes.</p>
                 <br />
                 <Savings>
                     <span>Saves ~<Green>6.7 metric tons of CO₂ emissions</Green> per year</span>
@@ -171,11 +171,11 @@ Permanent link: https://perma.cc/N7QN-QDK6
                 </div>
             </Action>
             <Action title='Petition for Electric School Buses' {...{showDescription}}>
-                Received <a href='https://api.joelgrayson.com/combating-climate-change/electric-school-buses-petition' target='_blank' className='styled'>313 petition signatures</a> for SuperSelby&apos;s adoption of electric school buses, kicking off Students for Electric Buses.
+                Received <a href='https://api.joelgrayson.com/combating-climate-change/electric-school-buses-petition' target='_blank'>313 petition signatures</a> for SuperSelby&apos;s adoption of electric school buses, kicking off Students for Electric Buses.
             </Action>
             <Action title='The Need for a Nuclear Renaissance Presentation' {...{showDescription}}>
                 {/* TODO: add download link */}
-                <Link href='/combating-climate-change/the-need-for-a-nuclear-renaissance/index.html' className='styled'>
+                <Link href='/combating-climate-change/the-need-for-a-nuclear-renaissance/index.html'>
                     Presented on the need for a nuclear renaissance
                 </Link>
                 &nbsp;at Brown University.
@@ -186,12 +186,12 @@ Permanent link: https://perma.cc/N7QN-QDK6
             </Action>
             <Action title='Article on Nuclear Energy' {...{showDescription}}>
                 {/* TODO: insert article */}
-                <Link className='styled' href='/blog/why-we-need-nuclear-energy'>Published an article</Link> in my school&apos;s newspaper about the need for supporting nuclear energy.
+                <Link href='/blog/why-we-need-nuclear-energy'>Published an article</Link> in my school&apos;s newspaper about the need for supporting nuclear energy.
             </Action>
         </Section>
         <Section title={'Mitigating Climate Change\'s Effects'}>
             <Action title='Urban Miniforest' {...{showDescription}}>
-                Made a Community Board <a href='https://www.nyc.gov/assets/manhattancb1/downloads/pdf/resolutions/23-09-26.pdf#page=2' className='styled' target='_blank'>resolution ammendment</a> to recommend the developers of the Holland Rotary to create a Miyawaki forest to improve air quality, lessen the urban heating effect (which saves HVAC emissions), and act as a flood resiliency measure.
+                Made a Community Board <a href='https://www.nyc.gov/assets/manhattancb1/downloads/pdf/resolutions/23-09-26.pdf#page=2' target='_blank'>resolution ammendment</a> to recommend the developers of the Holland Rotary to create a Miyawaki forest to improve air quality, lessen the urban heating effect (which saves HVAC emissions), and act as a flood resiliency measure.
             </Action>
             {/* TODO: created a video explaining the resiliency projects in Lower Manhattan */}
             <Action title='Flood Resiliency' {...{showDescription}}>
