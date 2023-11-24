@@ -313,7 +313,7 @@ export const machines: Machine[]=[
             }}>
                 <span>2016</span>
                 <h3 style={{fontSize: '1.4rem'}}>Wooden Pinball Machine</h3>
-                <p>Made afterschool in my school&apos;s woodshop.</p>
+                <p>Made after school in my school&apos;s woodshop.</p>
                 {/* <Link href='https://www.youtube.com/watch?v=uZWBtcp2BMU&list=PLPq06AMW3cIGYmcroupuIOC-vkwSVSW0I'>Demo video here</Link> */}
                 <Yt width={300} className='mt-1'>uZWBtcp2BMU</Yt>
             </div>

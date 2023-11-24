@@ -131,8 +131,8 @@ Permanent link: https://perma.cc/N7QN-QDK6
                     <span>Saves ~<Green>1.7 metric tons of CO₂e emissions</Green> per year</span>
                     <Info>
                         <p>Average MPG is 25.7 (https://www.energy.gov/eere/vehicles/articles/fotw-1177-march-15-2021-preliminary-data-show-average-fuel-economy-new-light)</p>
-                        <p>10 searches per day (from analytics) × 1 ride per 3 searches × 5 days per week × 30 weeks per school year = 500 rides saved per year</p>
-                        <p>500 rides × 10 mile ride × 1 gallon gas/25.7 miles × 8.887 kg CO₂/gal gas × 1 metric ton/1000 kg=1.7 metric tons CO₂ per year</p>
+                        <p>10 searches per day (from analytics) × 5 days per week × 36 weeks per school year × 1 ride per 3 searches = 600 rides saved per year</p>
+                        <p>600 rides × 10 mile ride × 1 gallon gas/25.7 miles × 8.887 kg CO₂/gal gas × 1 metric ton/1000 kg=2.1 metric tons CO₂ per year</p>
                     </Info>
                 </Savings>
             </Action>
@@ -191,7 +191,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
         </Section>
         <Section title={'Mitigating Climate Change\'s Effects'}>
             <Action title='Urban Miniforest' {...{showDescription}}>
-                Made a Community Board <a href='https://www.nyc.gov/assets/manhattancb1/downloads/pdf/resolutions/23-09-26.pdf#page=2' target='_blank'>resolution ammendment</a> to recommend the developers of the Holland Rotary to create a Miyawaki forest to improve air quality, lessen the urban heating effect (which saves HVAC emissions), and act as a flood resiliency measure.
+                Made a Community Board <a href='https://www.nyc.gov/assets/manhattancb1/downloads/pdf/resolutions/23-09-26.pdf#page=2' target='_blank'>resolution amendment</a> to recommend the developers of the Holland Rotary to create a Miyawaki forest to improve air quality, lessen the urban heating effect (which saves HVAC emissions), and act as a flood resiliency measure.
             </Action>
             {/* TODO: created a video explaining the resiliency projects in Lower Manhattan */}
             <Action title='Flood Resiliency' {...{showDescription}}>
