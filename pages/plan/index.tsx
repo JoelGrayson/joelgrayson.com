@@ -9,7 +9,8 @@ export const agendas={
     'Students for Electric Buses': '1hjc1ZM9gfHd7VsPnQcnHtzrVOx8RguzEajhax7rk7Ww',
     'Vending Machine': '17fWXdeUmfWz0W7UqSDC0tmr5TaMrz6L7O2S9Uu6iS34',
     Shirtocracy: '14J4rPtrke6MRDxecwxdG2YTkROGXuB_ccRHyH7xW9-g',
-    Learning: '15TW1rDATUrihnRX3cuLSuL-Q6fZZR1JwRtd_uQHE9A4'
+    College: '12i0EDe2CCYE81ssbm0KpF7KBPd8Z7gzi5agNGslU7Dk',
+    Learning: '15TW1rDATUrihnRX3cuLSuL-Q6fZZR1JwRtd_uQHE9A4',
 };
 
 export default function Plan() {
