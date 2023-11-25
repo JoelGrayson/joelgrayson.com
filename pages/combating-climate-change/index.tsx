@@ -14,6 +14,7 @@ import Markdown from 'markdown-to-jsx';
 
 export default function CCC() {
     const [showDescription, setShowDescription]=useState<boolean>(true);
+    let emissionsSaved=243+.675+6.7+1.7;
 
     return <Page noPadding seo={{
         title: 'Climate Change | Joel\'s Initiatives'
@@ -23,8 +24,7 @@ export default function CCC() {
             <div className='j_container'>
                 <h1 className='text-center'>Combating Climate Change</h1>
                 <div className='d:flex d:justify-between'>
-                    <p className='pr-2'>My climate initiatives reduce emissions by at least <Green>170 metric tons</Green> of CO₂ equivalent per year—the equivalent of planting <Green>8,000 trees</Green>.</p>
-                    {/* <p>Overall, I save <Green>3</Green></p> */}
+                    <p className='pr-2'>My climate initiatives reduce emissions by an estimated <Green>{Math.round(emissionsSaved)} metric tons of CO₂ equivalent</Green> (MTCO₂e) per year.</p>
                     <div style={{
                         width: 335,
                         marginLeft: 10
@@ -42,7 +42,7 @@ export default function CCC() {
             } {...{showDescription}}>
                 <div className='relative'>
                     <p>While learning about different energy sources, I realized that my school&apos;s empty rooftops had great potential for solar energy. I measured the rooftops, created solar models in HelioScope (image below), calculated savings, and gathered quotes from two companies. I presented to the administration and board of trustees, who agreed to a 410 kW solar PPA arrangement (enough to power 40+ households) that will cover six buildings, promote renewable energy, and save the school tens of thousands of dollars every year.</p>
-                    <p>85% of New York City&apos;s electricity comes from fossil fuels. This installation will generate 442 megawatt-hours of clean electricity per year.</p>
+                    <p>85% of New York City&apos;s electricity comes from fossil fuels. This installation will generate 610 megawatt-hours of clean electricity per year.</p>
                         {/* My solar installation makes NYC&apos;s electricity <Green>0.0075%</Green> more renewable.</p> */}
                 </div>
                 <Image src='/image/ccc/solar-for-riverdale/models.png' width={720} height={146} alt='Solar Models' />
@@ -59,7 +59,7 @@ export default function CCC() {
                 </div> */}
 
                 <p className='d:absolute d:top-0 d:right-0'>
-                    Will save ~<Green>164 metric tons of CO₂e emissions</Green> each year
+                    Will save ~<Green>243 MTCO₂e</Green> each year
                     <Info>
                         <Markdown>{`
 ### Grid Emissions
@@ -69,7 +69,10 @@ Permanent link: https://perma.cc/N7QN-QDK6
 817.9 lb CO2e/MWh × 1 metric ton / 2204.62 lb = 0.371 metric tons CO2e/MWh
 
 ### Solar Savings
-442 MWh/year from solar × .371 metric tons CO₂ / MWh = 164 metric tons CO₂ / year
+410 kw installation × 4.08 hours/day (average sunlight in NYC from [this source](https://perma.cc/GP5Z-YUD3)) × 365 days per year × 1 MWh/1000 kWh = 610 MWh/year
+610 MWh/year from solar × .371 metric tons CO₂ / MWh = 226 metric tons CO₂ / year
+
+Including the 30 kW solar installation I got fixed, it saves 243 MTCO2e per year
                         `.trim()}</Markdown>
                     </Info>
                 </p>
@@ -87,7 +90,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
                     <SEBLogo size={30} inline style={{ position: 'relative', top: 9 }} />
                 </Link>
             } {...{showDescription}}>
-                <p>I formed a coalition of students, faculty, and administrators at Riverdale and Fieldston to integrate electric school buses into SuperSelby&apos;s all-diesel fleet, improving passenger health and city air quality and combating climate change. Each bus will save <Green>17 metric tons of CO₂ emissions</Green> per year. Transitioning whole fleet will save <Green>1,428 metric tons of CO₂ emissions</Green> per year</p>
+                <p>I formed a coalition of students, faculty, and administrators at Riverdale and Fieldston to integrate electric school buses into SuperSelby&apos;s all-diesel fleet, improving passenger health and city air quality and combating climate change. Each bus will save <Green>17 MTCO₂e</Green> per year. Transitioning whole fleet will save <Green>1,428 MTCO₂e</Green> per year</p>
             </Action>
             <Action title='Electric Leaf Blowers' icon={
                 <Image src='/image/ccc/electric-leaf-blowers/electric-leaf-blower.png' alt='leaf blower' width={20} height={14} className='ml-3 inline' />
@@ -95,7 +98,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
                 I convinced Riverdale&apos;s facilities to transition from gas to electric leaf blowers. Not only is it better for the environment, but it also reduces noise pollution and improves workers&apos; health.
                 <br />
                 <Savings>
-                    <span>Saves ~<Green>0.675 metric tons of CO₂e emissions</Green> per year</span>
+                    <span>Saves ~<Green>0.675 MTCO₂e</Green> per year</span>
                     <Info>
                         <p>5 kg of CO2 per hour of use (<a href='https://www.quietcleanpdx.org/wp-content/uploads/2019/11/Gas-Powered-Leaf-Blower-Emissions-Factsheet-11.12.pdf'>source</a>).</p>
                         <p>5 kg*45 days per year*3 people per hour*1 hour per day=675 kg of emissions per year</p>
@@ -116,7 +119,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
                 <p>Wrote to my school&apos;s bus contractor to enforce <a href="https://portal.311.nyc.gov/article/?kanumber=KA-02222">NYC&apos;s law banning bus idling</a>. The day afterward, buses went from idling for hours to minutes.</p>
                 <br />
                 <Savings>
-                    <span>Saves ~<Green>6.7 metric tons of CO₂ emissions</Green> per year</span>
+                    <span>Saves ~<Green>6.7 MTCO₂e</Green> per year</span>
                     <Info>
                         .0690 kg per minute*90 minutes idling per day*180 days per year*6 buses doing this per day=6706 kg of CO₂ emissions per year
                         (<a href="https://natural-resources.canada.ca/energy/efficiency/communities-infrastructure/transportation/idling/4463">source</a>)
@@ -128,7 +131,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
                 Easier for students to go places
                 Students save money on car services and more equitable transportation.
                 <Savings>
-                    <span>Saves ~<Green>1.7 metric tons of CO₂e emissions</Green> per year</span>
+                    <span>Saves ~<Green>1.7 MTCO₂e</Green> per year</span>
                     <Info>
                         <p>Average MPG is 25.7 (https://www.energy.gov/eere/vehicles/articles/fotw-1177-march-15-2021-preliminary-data-show-average-fuel-economy-new-light)</p>
                         <p>10 searches per day (from analytics) × 5 days per week × 36 weeks per school year × 1 ride per 3 searches = 600 rides saved per year</p>
