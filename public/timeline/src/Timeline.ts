@@ -398,7 +398,7 @@ export default class Timeline extends JGraphicsLibrary {
         this.eventEl.style.color=blackOrWhiteTextColor(e.color);
         (this.eventEl.querySelector('.date-string') as HTMLParagraphElement).innerText=e.dateString;
         (this.eventEl.querySelector('.title') as HTMLParagraphElement).innerText=e.title;
-        (this.eventEl.querySelector('.description') as HTMLParagraphElement).innerHTML=e.note ? '' : e.note;
+        (this.eventEl.querySelector('.description') as HTMLParagraphElement).innerHTML=e.note || '';
     }
     
 
