@@ -1,4 +1,4 @@
-import Page from "@/components/global/Page";
+import Page from "@/components/page/DefaultPage";
 
 function NotePage({ children }: any) {
     return <Page>{children}</Page>;

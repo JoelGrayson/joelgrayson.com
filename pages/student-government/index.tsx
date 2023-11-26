@@ -1,4 +1,4 @@
-import Page from '@/components/global/Page';
+import Page from '@/components/page/DefaultPage';
 import Table from '@jcomponents/table';
 import Image from 'next/image';
 

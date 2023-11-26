@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Page from '@/components/global/Page';
+import Page from '@/components/page/DefaultPage';
 
 import SEBLogo from '@/components/by-page/home/SEB Logo';
 import BtnIcon from '@/components/by-page/home/BtnIcon';

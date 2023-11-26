@@ -1,4 +1,4 @@
-import Page from '@/components/global/Page';
+import Page from '@/components/page/DefaultPage';
 import Button from '@jcomponents/button';
 import { dateRegex, SignedMessage } from '@/helpers/verify';
 import React, { useState, useCallback, useEffect } from 'react';

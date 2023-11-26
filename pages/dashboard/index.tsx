@@ -1,5 +1,5 @@
 import Loader from '@/components/global/Loader';
-import Page from '@/components/global/Page';
+import Page from '@/components/page/DefaultPage';
 import Button from '@jcomponents/button';
 import { useState } from 'react';
 import { format } from 'date-fns';

@@ -1,6 +1,6 @@
 import Prototype from '@/components/by-page/connecting-street-vendors-to-the-grid/Prototype';
 import { Yt } from '@/components/by-page/machines/helpers';
-import Page from '@/components/global/Page';
+import Page from '@/components/page/DefaultPage';
 import { P, Citation, Footnote as JFootnote } from '@jcomponents/writing-components';
 
 export default function ConnectingStreetVendorsToTheGrid() {

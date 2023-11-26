@@ -1,4 +1,4 @@
-import Page from '@/components/global/Page';
+import Page from '@/components/page/DefaultPage';
 import Link from 'next/link';
 
 export default function DataPage() {

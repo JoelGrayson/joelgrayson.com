@@ -1,4 +1,4 @@
-import Page from '@/components/global/Page';
+import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
 import Button from '@jcomponents/button';
 import { gsap } from 'gsap';

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Page from '@/components/global/Page';
+import Page from '@/components/page/DefaultPage';
 import Button from '@jcomponents/button';
 import Image from 'next/image';
 import { produce } from 'immer';

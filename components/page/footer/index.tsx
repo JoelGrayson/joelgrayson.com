@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import { GithubIcon, YoutubeIcon } from '../icons';
+import { GithubIcon, YoutubeIcon } from '../../icons';
 
 const wigglingSrc='/image/slaphappy/s tipping hat.gif';
 const stillSrc='/image/slaphappy/still s tipping hat.png';

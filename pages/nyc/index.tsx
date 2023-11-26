@@ -1,4 +1,4 @@
-import Page from '@/components/global/Page';
+import Page from '@/components/page/DefaultPage';
 import Flag from '@jcomponents/flag';
 import { Yt } from '@/components/by-page/machines/helpers';
 import Button from '@jcomponents/button';

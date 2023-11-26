@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import Header from '../header';
-import Footer from '../footer';
+import Footer from './footer';
 import { ReactNode, useEffect } from 'react';
-import SEO, { SEOProps } from './SEO';
+import SEO, { SEOProps } from '../global/SEO';
 import pageStyle from '@/styles/page/page.module.css';
 import Connect2GridHeader from '../header/connect2grid';
-import Connect2GridFooter from '../footer/connect2grid';
+import Connect2GridFooter from './footer/connect2grid';
 
 export default function Page({ children, noPadding, bottomPadding, seo, header='default', noPageStyling=false, ...props }: {
     children: ReactNode;
