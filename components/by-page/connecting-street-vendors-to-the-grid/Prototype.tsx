@@ -6,7 +6,7 @@ const START_LOC=[293, 197];
 const SPEED=[1.5, -.6];
 const FREQ=400; //ms to spawn circles
 
-export default function IdlingEngine() {
+export default function Prototype({ className, style }: { className?: string; style?: React.CSSProperties }) {
     const fumesRef=useRef<HTMLCanvasElement | null>(null);
     const [showingSolution, setShowingSolution]=useState(false);
 
@@ -80,8 +80,9 @@ export default function IdlingEngine() {
     return <div style={{
         position: 'relative',
         width: 480,
-        height: 256
-    }}>
+        height: 256,
+        ...style
+    }} className={className}>
         {/* Current */}
         <Image
             width={350} height={256}

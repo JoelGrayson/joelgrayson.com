@@ -11,6 +11,7 @@ import PDF from '@/components/global/PDF';
 import { Switch } from 'antd';
 import Info from '@/components/global/Info';
 import Markdown from 'markdown-to-jsx';
+import Prototype from '@/components/by-page/connecting-street-vendors-to-the-grid/Prototype';
 
 export default function CCC() {
     const [showDescription, setShowDescription]=useState<boolean>(true);
@@ -90,7 +91,10 @@ Including the 30 kW solar installation I got fixed, it saves 243 MTCO2e per year
                     <SEBLogo size={30} inline style={{ position: 'relative', top: 9 }} />
                 </Link>
             } {...{showDescription}}>
-                <p>I formed a coalition of students, faculty, and administrators at Riverdale and Fieldston to integrate electric school buses into SuperSelby&apos;s all-diesel fleet, improving passenger health and city air quality and combating climate change. Each bus will save <Green>17 MTCO₂e</Green> per year. Transitioning whole fleet will save <Green>1,428 MTCO₂e</Green> per year</p>
+                <p>I formed a coalition of students, faculty, and administrators at Riverdale and Fieldston to integrate electric school buses into SuperSelby&apos;s all-diesel fleet, improving passenger health and city air quality and combating climate change. Each bus will save <Green>17 MTCO₂e</Green> per year. Transitioning whole fleet will save <Green>1,428 MTCO₂e</Green> per year.</p>
+                {/* <Savings>
+                    Will save <Green>17 MTCO₂e</Green> per year per bus
+                </Savings> */}
             </Action>
             <Action title='Electric Leaf Blowers' icon={
                 <Image src='/image/ccc/electric-leaf-blowers/electric-leaf-blower.png' alt='leaf blower' width={20} height={14} className='ml-3 inline' />
@@ -103,6 +107,16 @@ Including the 30 kW solar installation I got fixed, it saves 243 MTCO2e per year
                         <p>5 kg of CO2 per hour of use (<a href='https://www.quietcleanpdx.org/wp-content/uploads/2019/11/Gas-Powered-Leaf-Blower-Emissions-Factsheet-11.12.pdf'>source</a>).</p>
                         <p>5 kg*45 days per year*3 people per hour*1 hour per day=675 kg of emissions per year</p>
                     </Info>
+                </Savings>
+            </Action>
+            <Action title='Connecting Street Vendors to the Grid'
+            {...{showDescription}}>
+                <Prototype className='m:hidden' style={{ zoom: .7, marginLeft: -50, float: 'right', position: 'relative', right: -100 }} />
+                There are thousands of street vendors in NYC using gas generators for their electricity. Each vendor burns 2000 gallons of gas per year on average, releasing 18 MTCO₂e. I am attempting to connect street vendors to the grid with the support of the Street Vendor Project. Each vendor connected to the grid will save 18 MTCO₂e per year. If all vendors connected to grid, we would save <Green>18,000 MTCO₂e</Green> per year.<Info>Assuming half of vendors use generators and there are 20,000 street vendors</Info>
+                <br />
+                <Link href='/connecting-street-vendors-to-the-grid'>Learn more</Link>.
+                <Savings>
+                    Will save <Green>18 MTCO₂e</Green> per year
                 </Savings>
             </Action>
             <Action title='Electric Ferries'
