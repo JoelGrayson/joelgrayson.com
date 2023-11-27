@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Page from '@/components/page/DefaultPage';
+// import Page from '@/components/page/DefaultPage';
 import Button from '@jcomponents/button';
 import Image from 'next/image';
 import { produce } from 'immer';
@@ -55,7 +55,9 @@ export default function Survey() {
     }
 
     
-    return <BlankPage bottomPadding>
+    return <BlankPage bottomPadding seo={{
+        title: 'Survey on Cultural Identity'
+    }}>
         <h1 className='text-center text-4xl my-10 mb-8'>Single Culture Survey</h1>
         { formState!=='submitted' && <p className='mb-6'>If you are multicultural, please fill out <Link href='/research/how-do-cultures-combine/survey/multicultural'>this survey</Link> instead.</p> }
 
@@ -168,10 +170,10 @@ export default function Survey() {
                             { data.childConnected!==undefined && data.parentConnected!==undefined && data.childConnected!==data.parentConnected && <> {/*only if there is a difference*/}
                                 {/* In what ways are you less connected to the {culture.name e.g. Chinese} culture than your {relationship e.g. mom}? */}
                                 <div className='d:justify-self-end mr-3 flex flex-col d:items-end'>
-                                    <label htmlFor={id('childConnectedText')} className='d:text-right'>In what ways are you {data.childConnected>data.parentConnected ? 'more' : 'less'} connected to {data.name ? `the ${data.name} culture` : 'this culture' } than your parents? <span className={theme.note}>(optional)</span></label>
+                                    <label htmlFor={id('childMoreOrLessConnected')} className='d:text-right'>In what ways are you {data.childConnected>data.parentConnected ? 'more' : 'less'} connected to {data.name ? `the ${data.name} culture` : 'this culture' } than your parents? <span className={theme.note}>(optional)</span></label>
                                     <div className={`${theme.note} text-xs d:text-right`}>e.g. food, language, holidays, religion, etc.</div>
                                 </div>
-                                <textarea id={id('childConnectedText')}
+                                <textarea id={id('childMoreOrLessConnected')}
                                     rows={3}
                                     style={{ width: '100%', maxWidth: 400}}
                                     value={(()=>{

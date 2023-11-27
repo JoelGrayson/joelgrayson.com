@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import Page from '@/components/page/DefaultPage';
-import Button from '@jcomponents/button';
+// import Page from '@/components/page/DefaultPage';
+// import Button from '@jcomponents/button';
 import Image from 'next/image';
 import { produce } from 'immer';
 import Loader from '@/components/global/Loader';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from '@jcomponents/modal';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { races, type Race, type Strength, type SingleCultureSurveyData } from '@/components/research/survey/types';
 import Missing from '@/components/research/survey/Missing';
 import Circles from '@/components/research/survey/Circles';
@@ -57,8 +57,7 @@ export default function PrintableSurvey() {
     
     return <BlankPage bottomPadding>
         <h1 className='text-center text-4xl my-10 mb-8'>Single Culture Survey</h1>
-        { formState!=='submitted' && <p className='mb-6'>If you are multicultural, please fill out <Link href='/research/how-do-cultures-combine/survey/multicultural'>this survey</Link> instead.</p> }
-
+        
         {
             formState==='filling out' || formState==='error'
             ? <div>
@@ -68,7 +67,6 @@ export default function PrintableSurvey() {
                     return <div className='mx-auto my-3 px-8 py-5 relative' style={{
                         border: '1px solid black',
                         borderRadius: 10,
-                        backgroundColor: theme.secondary
                     }}>
                         <div className='d:grid gap-y-3' style={{
                             gridTemplateColumns: '1fr 2fr'
@@ -118,6 +116,7 @@ export default function PrintableSurvey() {
 
                             <div className='d:text-right'>How connected are your parents to this culture?</div>
                             <div>
+                                <div className='ml-16'>Circle one:</div>
                                 <Circles from={1} to={5} value={data.parentConnected} setValue={newValue=>setData(produce(data, draft=>{
                                     if ([1, 2, 3, 4, 5].includes(newValue))
                                         draft.parentConnected=newValue as Strength;
@@ -143,6 +142,7 @@ export default function PrintableSurvey() {
                             
                             <div className='d:text-right'>How connected are you to this culture?</div>
                             <div>
+                                <div className='ml-16'>Circle one:</div>
                                 <Circles from={1} to={5} value={data.childConnected} setValue={newValue=>setData(produce(data, draft=>{
                                     if ([1, 2, 3, 4, 5].includes(newValue))
                                         draft.childConnected=newValue as Strength;
@@ -165,39 +165,20 @@ export default function PrintableSurvey() {
                                 }))}
                             />
 
-                            { data.childConnected!==undefined && data.parentConnected!==undefined && data.childConnected!==data.parentConnected && <> {/*only if there is a difference*/}
+
                                 {/* In what ways are you less connected to the {culture.name e.g. Chinese} culture than your {relationship e.g. mom}? */}
                                 <div className='d:justify-self-end mr-3 flex flex-col d:items-end'>
-                                    <label htmlFor={id('childConnectedText')} className='d:text-right'>In what ways are you {data.childConnected>data.parentConnected ? 'more' : 'less'} connected to {data.name ? `the ${data.name} culture` : 'this culture' } than your parents? <span className={theme.note}>(optional)</span></label>
+                                    <label htmlFor={id('childConnectedText')} className='d:text-right'>In what ways are you more or less connected to this culture than your parents? <span className={theme.note}>(optional)</span></label>
                                     <div className={`${theme.note} text-xs d:text-right`}>e.g. food, language, holidays, religion, etc.</div>
                                 </div>
                                 <textarea id={id('childConnectedText')}
                                     rows={3}
                                     style={{ width: '100%', maxWidth: 400}}
-                                    value={(()=>{
-                                        if (data.childConnected>data.parentConnected)
-                                            return data.childMoreConnected;
-                                        if (data.childConnected<data.parentConnected)
-                                            return data.childLessConnected;
-                                    })()}
-                                    onChange={e=>setData(produce(data, draft=>{
-                                        if (data.childConnected===undefined || data.parentConnected===undefined) return; //should never happen
-                                        
-                                        if (data?.childConnected>data?.parentConnected)
-                                            draft.childMoreConnected=e.target.value;
-                                        else if (data?.childConnected<data?.parentConnected)
-                                            draft.childLessConnected=e.target.value;
-                                    }))}
                                 />
-                            </> }
                         </div>
                     </div>;
                 })()}
 
-                
-                <div className="flex justify-center">
-                    <Button color={theme.secondary} onClick={formSubmit}>Submit</Button>
-                </div>
             </div>
             : formState==='loading'
             ? <Loader />
