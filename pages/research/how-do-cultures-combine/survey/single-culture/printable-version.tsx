@@ -14,7 +14,7 @@ import Circles from '@/components/research/survey/Circles';
 import { theme } from '@/components/research/survey/config';
 import BlankPage from '@/components/page/BlankPage';
 
-export default function Survey() {
+export default function PrintableSurvey() {
     const [formState, setFormState]=useState<'filling out' | 'error' | 'loading' | 'submitted'>('filling out');
     const [errorModalOpen, setErrorModalOpen]=useState(true);
 

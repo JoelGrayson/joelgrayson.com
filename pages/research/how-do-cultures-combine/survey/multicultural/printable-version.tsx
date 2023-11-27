@@ -10,7 +10,7 @@ import Missing from '@/components/research/survey/Missing';
 import Circles from '@/components/research/survey/Circles';
 import { theme } from '@/components/research/survey/config';
 
-export default function Survey() {
+export default function PrintableSurvey() {
     const [formState]=useState<'filling out' | 'error' | 'loading' | 'submitted'>('filling out');
     const [errorModalOpen, setErrorModalOpen]=useState(true);
 
