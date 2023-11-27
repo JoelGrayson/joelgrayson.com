@@ -5,7 +5,7 @@ import { GithubIcon, YoutubeIcon } from '../../icons';
 const wigglingSrc='/image/slaphappy/s tipping hat.gif';
 const stillSrc='/image/slaphappy/still s tipping hat.png';
 
-export default function Footer() {
+export default function DefaultFooter() {
     const [src, setSrc]=useState<string>(stillSrc);
 
     return <footer className='bg-[#facb62] flex justify-center p-4 gap-5'>

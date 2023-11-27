@@ -8,9 +8,9 @@ import HeaderGroupItem from './parts/HeaderGroupItem';
 import HeaderSubGroup from './parts/HeaderSubGroup';
 
 import ViolinBow from './parts/ViolinBow';
-import JThreeDots from '../JThreeDots';
+import JThreeDots from './parts/JThreeDots';
 
-export default function Header() {
+export default function DefaultHeader() {
     const { route }=useRouter(); //the path (window object cannot be used)
     
     return (
@@ -67,3 +67,4 @@ export default function Header() {
         </header>
     );
 }
+

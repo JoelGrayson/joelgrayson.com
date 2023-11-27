@@ -1,13 +1,13 @@
-import Page from '@/components/page/DefaultPage';
+import BlankPage from '@/components/page/BlankPage';
 import Image from 'next/image';
 import Button from '@jcomponents/button';
 import Container from '@jcomponents/container';
 
 export default function FocusOld() {
-    return <Page header={false} noPadding>
+    return <BlankPage noPadding>
         <div style={{backgroundColor: '#e5e5e5'}}>
             <Container>
-                <h1 className='flex justify-center items-center gap-5'>
+                <h1 className='flex justify-center items-center gap-5 m-0'>
                     Focus
                     <Image alt='logo' src='/software/focus/logo.png' width={55} height={55} />
                 </h1>
@@ -39,5 +39,5 @@ export default function FocusOld() {
                 <br /><br />
             </Container>
         </div>
-    </Page>;
+    </BlankPage>;
 }

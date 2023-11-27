@@ -1,10 +1,10 @@
 import Prototype from '@/components/by-page/connecting-street-vendors-to-the-grid/Prototype';
 import { Yt } from '@/components/by-page/machines/helpers';
-import Page from '@/components/page/DefaultPage';
+import ConnectingStreetVendorstotheGridPage from '@/components/page/ConnectingStreetVendorstotheGridPage';
 import { P, Citation, Footnote as JFootnote } from '@jcomponents/writing-components';
 
 export default function ConnectingStreetVendorsToTheGrid() {
-    return <Page bottomPadding header='connect2grid' seo={{
+    return <ConnectingStreetVendorstotheGridPage bottomPadding seo={{
         title: 'Connecting Street Vendors to the Grid',
         keywords: ['food vendor', 'street vendor']
     }}>
@@ -42,7 +42,7 @@ export default function ConnectingStreetVendorsToTheGrid() {
         <Footnote number={1} title={`12 hours × 3 kWh × 300 days a year = 10,800 kWh × 0.00171 MTCO₂e / kWh →
 18.5 MTCO₂e saved per converted vendor per year`} />
         <Footnote number={2} title='New York State Department of Environmental Conservation' href='https://www.dec.ny.gov/energy/99223.html' />
-    </Page>;
+    </ConnectingStreetVendorstotheGridPage>;
 }
 
 export function Footnote({ number, title, href } :{ number: string | number; title?: string; href?: string }) {
