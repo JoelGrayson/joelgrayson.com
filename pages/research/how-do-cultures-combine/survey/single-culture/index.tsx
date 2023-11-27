@@ -12,6 +12,7 @@ import { races, type Race, type Strength, type SingleCultureSurveyData } from '@
 import Missing from '@/components/research/survey/Missing';
 import Circles from '@/components/research/survey/Circles';
 import { theme } from '@/components/research/survey/config';
+import BlankPage from '@/components/page/BlankPage';
 
 export default function Survey() {
     const [formState, setFormState]=useState<'filling out' | 'error' | 'loading' | 'submitted'>('filling out');
@@ -54,7 +55,7 @@ export default function Survey() {
     }
 
     
-    return <Page bottomPadding>
+    return <BlankPage bottomPadding>
         <h1 className='text-center text-4xl my-10 mb-8'>Single Culture Survey</h1>
         { formState!=='submitted' && <p className='mb-6'>If you are multicultural, please fill out <Link href='/research/how-do-cultures-combine/survey/multicultural'>this survey</Link> instead.</p> }
 
@@ -248,5 +249,5 @@ export default function Survey() {
             style={{ display: 'none' }}
             className='text-white'
         />
-    </Page>;
+    </BlankPage>;
 }
