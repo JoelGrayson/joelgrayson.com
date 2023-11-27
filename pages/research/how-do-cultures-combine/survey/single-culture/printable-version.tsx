@@ -22,38 +22,6 @@ export default function PrintableSurvey() {
         email: '',
         emailMeResults: true
     });
-
-    function formSubmit() {
-        // Validate that there is no missing data
-        if (!data.name || !data.race || data.race==='Select a Race' || !data.parentConnected || !data.childConnected)
-            return handleError(null, true);
-        
-        
-        setFormState('loading');
-        fetch('/api/research/how-do-cultures-combine/survey/single-culture/submit', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(res=>res.json())
-            .then(res=>{
-                if (res.status==='error')
-                    return handleError(res.message);
-
-                setFormState('submitted');
-            })
-            .catch(handleError);
-        
-        function handleError(message: any, quiet=false) {
-            setFormState('error');
-            setErrorModalOpen(true);
-            if (!quiet)
-                toast.error(`Error submitting form${message ? ' ('+JSON.stringify(message)+')' : ''}. Please try again.`);
-        }
-    }
-
     
     return <BlankPage bottomPadding>
         <h1 className='text-center text-4xl my-10 mb-8'>Single Culture Survey</h1>
