@@ -6,7 +6,7 @@ const START_LOC=[206, 168];
 const SPEED=[1.8, .9];
 const FREQ=300; //ms to spawn circles
 
-export default function IdlingEngine() {
+export default function IdlingEngine(props: any) {
     const fumesRef=useRef<HTMLCanvasElement | null>(null);
     
     useEffect(()=>{
@@ -69,12 +69,16 @@ export default function IdlingEngine() {
     
 
 
-    return <div style={{
-        // position: 'absolute'
-        position: 'relative',
-        maxWidth: 500,
-        maxHeight: 500,
-    }}>
+    return <div
+        {...props}
+        style={{
+            // position: 'absolute'
+            position: 'relative',
+            maxWidth: 500,
+            maxHeight: 500,
+            ...props.style
+        }}
+    >
         {/* Diesel Bus */}
         <Image width={300} height={200} src="/image/ccc/stopping-bus-idling/idling.png" id="idling" alt="Idling" />
         {/* Idling Canvas */}

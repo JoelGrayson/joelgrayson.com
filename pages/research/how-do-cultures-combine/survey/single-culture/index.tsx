@@ -59,7 +59,7 @@ export default function Survey() {
         title: 'Survey on Cultural Identity'
     }}>
         <h1 className='text-center text-4xl my-10 mb-8'>Single Culture Survey</h1>
-        { formState!=='submitted' && <p className='mb-6'>If you are multicultural, please fill out <Link href='/research/how-do-cultures-combine/survey/multicultural'>this survey</Link> instead.</p> }
+        {/* { formState!=='submitted' && <p className='mb-6'>If you are multicultural, please fill out <Link href='/research/how-do-cultures-combine/survey/multicultural'>this survey</Link> instead.</p> } */}
 
         {
             formState==='filling out' || formState==='error'
