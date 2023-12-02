@@ -5,6 +5,7 @@ const polyfill=(link: string)=>({[`https://joelgrayson.wixsite.com/joelgrayson${
 export const temporary: redirects={ //302
     '/nyc/nyc-government/test': '/nyc/nyc-government/content/test',
     '/plan': '/agenda',
+    'https://us06web.zoom.us/j/5482667091?pwd=Vnk1bXpuMkx3ZzRGNDA1THJSNHRCQT09': '/zoom',
 
     // Based on 404 errors in jg.com/dashboard
     ...polyfill('/video/arrow'),

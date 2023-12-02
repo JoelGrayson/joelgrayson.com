@@ -205,6 +205,7 @@ Including the 30 kW solar installation I got fixed, it saves 243 MTCO2e per year
                 {/* TODO: insert article */}
                 <Link href='/blog/why-we-need-nuclear-energy'>Published an article</Link> in my school&apos;s newspaper about the need for supporting nuclear energy.
             </Action>
+            {/* <Action title='Cohead of Riverdale Sustainability Club'> </Action> */}
         </Section>
         <Section title={'Mitigating Climate Change\'s Effects'}>
             <Action title='Urban Miniforest' {...{showDescription}}>
