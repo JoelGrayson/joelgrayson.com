@@ -5,8 +5,8 @@ import Gallery from '@/components/gallery/Gallery';
 import { useState } from 'react';
 import { ytVideos } from './ytVideos';
 
-export async function getServerSideProps() {
-    const url=`https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.YOUTUBE_API_KEY}&part=snippet&playlistId=PLPq06AMW3cIFOA3J8Z0cd1bMaKn6TV_9K&maxResults=50`;
+export async function getStaticProps() {
+    const url=`https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&part=snippet&playlistId=PLPq06AMW3cIFOA3J8Z0cd1bMaKn6TV_9K&maxResults=50`;
     const buff=await fetch(url);
     const data=await buff.json();
 
@@ -21,6 +21,8 @@ export default function Performances({ videos }: { videos: ytVideos }) {
     const [galleryOpen, setGalleryOpen]=useState<boolean>(false);
     const [index, setIndex]=useState<number>(0);
 
+    console.log('Videos', videos);
+    
     return <Page bottomPadding seo={{
         title: 'Violin & Piano Performances',
         keywords: ['violin', 'piano', 'recitals'],

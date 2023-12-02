@@ -5,7 +5,10 @@ export default function Survey() {
     const box='p-10 h-80 text-xl border-2 border-black rounded-md flex items-center justify-center cursor-pointer hover:bg-gray-300 text-center';
 
     return <BlankPage bottomPadding seo={{
-        title: 'Survey on Cultural Identity'
+        title: 'Survey on Cultural Identity',
+        og: {
+            image: '/image/ucjg/joel-forms.png'
+        }
     }}>
         <h1 className='text-center text-4xl my-10'>Survey</h1>
         <p className='text-center mb-6'>Select below:</p>

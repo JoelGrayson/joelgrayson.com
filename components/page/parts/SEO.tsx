@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Favicons from './Favicons';
 
 export type SEOProps={
     title?: string;
@@ -39,5 +40,11 @@ export default function SEO({ seo }: { seo?: SEOProps }) {
         <meta name='author' content='Joel Grayson' />
         <meta name='og:site_name' content='joelgrayson.com' />
         <meta name='og:type' content={seo?.og?.type || 'website'} />
+
+        {/* Favicons */}
+        { seo?.og?.image
+            ? <link rel="shortcut icon" href={seo.og.image} />
+            : <Favicons />
+        }
     </Head>;
 }

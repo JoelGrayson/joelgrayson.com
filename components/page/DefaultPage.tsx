@@ -2,7 +2,6 @@ import Header from './headers/DefaultHeader';
 import Footer from './footers/DefaultFooter';
 import SEO, { SEOProps } from './parts/SEO';
 import pageStyle from '@/styles/page/page.module.css';
-import Favicons from './parts/Favicons';
 import RedirectFromVercelAppToCom from './parts/RedirectFromVercelAppToCom';
 
 export default function Page({ children, noPadding, bottomPadding, seo, noPageStyling=false, ...props }: {
@@ -15,7 +14,6 @@ export default function Page({ children, noPadding, bottomPadding, seo, noPageSt
 }) {
     return <>
         <SEO seo={seo} />
-        <Favicons />
         <RedirectFromVercelAppToCom />
 
         <Header /> {/* 77px */}

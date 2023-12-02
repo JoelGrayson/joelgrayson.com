@@ -7,7 +7,6 @@ import Loader from '@/components/global/Loader';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from '@jcomponents/modal';
-import Link from 'next/link';
 import { races, type Race, type Strength, type SingleCultureSurveyData } from '@/components/research/survey/types';
 import Missing from '@/components/research/survey/Missing';
 import Circles from '@/components/research/survey/Circles';

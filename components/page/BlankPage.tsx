@@ -1,4 +1,3 @@
-import Favicons from "./parts/Favicons";
 import RedirectFromVercelAppToCom from "./parts/RedirectFromVercelAppToCom";
 import SEO, { type SEOProps } from "./parts/SEO";
 import pageStyle from '@/styles/page/page.module.css';
@@ -13,7 +12,6 @@ export default function BlankPage({ children, noPadding, bottomPadding, seo, noP
 }) {
     return <>
         <SEO seo={seo} />
-        <Favicons />
         <RedirectFromVercelAppToCom />
 
         <main {...props} style={{
