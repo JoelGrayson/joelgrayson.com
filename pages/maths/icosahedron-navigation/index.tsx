@@ -2,18 +2,11 @@ import Page from '@/components/page/DefaultPage';
 import Button from '@jcomponents/button';
 import styles from '@/styles/btn-icon.module.css';
 import Link from 'next/link';
+import MathsReturnButton from '@/components/MathsReturnButton';
 
 export default function IcosahedronNavigation() {
     return <Page bottomPadding>
-        <Link href='/maths'>
-            <Button style={{
-                position: 'absolute',
-                top: '1rem',
-                left: '2rem'
-            }}>
-                ⏎ Return to all maths
-            </Button>
-        </Link>
+        <MathsReturnButton />
 
         <h1 className='text-center pt-8'>Icosahedron Navigation</h1>
         

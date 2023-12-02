@@ -38,7 +38,7 @@ export default function Plan() {
                 height: 500,
             }}>
                 <ul className="mt-8 text-lg">
-                    <li>Shirtocracy.com</li>
+                    <li>Vending Machine</li>
                     <li>BulletBrainstorm.com</li>
                     <li>MemorizeThePresidents.com</li>
                 </ul>

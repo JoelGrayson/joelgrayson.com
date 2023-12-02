@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { PathContext } from './parts/PathContext';
 import HeaderItem from './parts/HeaderItem';
 
-export default function Connect2GridHeader() {
+export default function ConnectingStreetVendorstotheGridHeader() {
     const { route }=useRouter(); //the path (window object cannot be used)
     
     return (

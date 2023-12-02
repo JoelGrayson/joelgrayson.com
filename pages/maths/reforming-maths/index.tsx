@@ -1,19 +1,11 @@
+import MathsReturnButton from '@/components/MathsReturnButton';
 import Page from '@/components/page/DefaultPage';
-import Button from '@jcomponents/button';
-import Link from 'next/link';
 import Script from 'next/script';
 
 export default function ReformingMath() {
     return <Page bottomPadding>
-        <Link href='/maths'>
-            <Button style={{
-                position: 'absolute',
-                top: '1rem',
-                left: '2rem'
-            }}>
-                ⏎ Return to all maths
-            </Button>
-        </Link>
+        <MathsReturnButton />
+        
         <Script src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' async id="MathJax-script"></Script>
 
         <h1 className='text-center text-4xl my-10'>Reforming Math</h1>

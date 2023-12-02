@@ -1,11 +1,10 @@
-import Header from './headers/DefaultHeader';
-import Footer from './footers/DefaultFooter';
 import SEO, { SEOProps } from './parts/SEO';
+import ConnectingStreetVendorstotheGridHeader from "./headers/ConnectingStreetVendorstotheGridHeader";
+import ConnectingStreetVendorstotheGridFooter from "./footers/ConnectingStreetVendorstotheGridFooter";
 import pageStyle from '@/styles/page/page.module.css';
-import Favicons from './parts/Favicons';
 import RedirectFromVercelAppToCom from './parts/RedirectFromVercelAppToCom';
 
-export default function Page({ children, noPadding, bottomPadding, seo, noPageStyling=false, ...props }: {
+export default function ConnectingStreetVendorstotheGridPage({ children, noPadding, bottomPadding, seo, noPageStyling=false, ...props }: {
     children: any;
     noPadding?: boolean;
     bottomPadding?: boolean;
@@ -15,11 +14,9 @@ export default function Page({ children, noPadding, bottomPadding, seo, noPageSt
 }) {
     return <>
         <SEO seo={seo} />
-        <Favicons />
         <RedirectFromVercelAppToCom />
 
-        <Header /> {/* 77px */}
-
+        <ConnectingStreetVendorstotheGridHeader />
         <main {...props} style={{
             position: 'relative',
             padding: 0, margin: 0,
@@ -33,7 +30,6 @@ export default function Page({ children, noPadding, bottomPadding, seo, noPageSt
                 : <div id='pageNamespace' className={`j_container j_max-w ${noPageStyling ? '' : pageStyle.pageNamespace}`}>{children}</div> //if center, wrap in centering container
             }
         </main>
-
-        <Footer />
+        <ConnectingStreetVendorstotheGridFooter />
     </>;
-};
+}

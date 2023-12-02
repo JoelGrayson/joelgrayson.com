@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import UpDownArrow from '../../UpDownArrow';
+import UpDownArrow from '../../../UpDownArrow';
 import Link from 'next/link';
 
 export default function HeaderGroup({ title, children, link, className }: { title: string; children: any; link?: string; className?: any }) {

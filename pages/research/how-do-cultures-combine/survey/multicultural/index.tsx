@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Page from '@/components/page/DefaultPage';
+// import Page from '@/components/page/DefaultPage';
 import Button from '@jcomponents/button';
 import Image from 'next/image';
 import { produce } from 'immer';
@@ -11,6 +11,7 @@ import { races, type Race, relations, type Relation, type Strength, type Multicu
 import Missing from '@/components/research/survey/Missing';
 import Circles from '@/components/research/survey/Circles';
 import { theme, MAX_NUM_CULTURES } from '@/components/research/survey/config';
+import BlankPage from '@/components/page/BlankPage';
 
 export default function Survey() {
     const [formState, setFormState]=useState<'filling out' | 'error' | 'loading' | 'submitted'>('filling out');
@@ -62,7 +63,7 @@ export default function Survey() {
     }
 
     
-    return <Page bottomPadding seo={{
+    return <BlankPage bottomPadding seo={{
         title: 'Survey on Multicultural Identity',
     }}>
         <h1 className='text-center my-5 text-4xl mt-8'>Survey on Multicultural Identity</h1>
@@ -226,12 +227,12 @@ export default function Survey() {
                             { culture.childConnected!==undefined && culture.parentConnected!==undefined && culture.childConnected!==culture.parentConnected && <> {/*only if there is a difference*/}
                                 {/* In what ways are you less connected to the {culture.name e.g. Chinese} culture than your {relationship e.g. mom}? */}
                                 <div className='d:justify-self-end mr-3 flex flex-col d:items-end'>
-                                    <label htmlFor={id('childConnectedText')} className='d:text-right'>In what ways are you {culture.childConnected>culture.parentConnected ? 'more' : 'less'} connected to {culture.name ? `the ${culture.name} culture` : 'this culture' } than your {culture.relation ? culture.relation.toLowerCase() : 'parent'}?</label>
+                                    <label htmlFor={id('childMoreOrLessConnected')} className='d:text-right'>In what ways are you {culture.childConnected>culture.parentConnected ? 'more' : 'less'} connected to {culture.name ? `the ${culture.name} culture` : 'this culture' } than your {culture.relation ? culture.relation.toLowerCase() : 'parent'}?</label>
                                     {i==0 &&
                                         <div className={`${theme.note} text-xs d:text-right`}>e.g. food, language, holidays, religion, etc.</div>
                                     }
                                 </div>
-                                <textarea id={id('childConnectedText')}
+                                <textarea id={id('childMoreOrLessConnected')}
                                     rows={3}
                                     style={{ width: '100%', maxWidth: 400}}
                                     value={(()=>{
@@ -324,5 +325,5 @@ export default function Survey() {
             style={{ display: 'none' }}
             className='text-white'
         />
-    </Page>;
+    </BlankPage>;
 }
