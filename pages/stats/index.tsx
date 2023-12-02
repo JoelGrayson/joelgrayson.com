@@ -53,21 +53,43 @@ export default function Stats() {
     useEffect(()=>{
         fetch('https://shanghaidictionary.com/api/analytics/searches')
             .then(res=>res.json())
-            .then(res=>setShanghaiDictionarySearches(res.searches));
+            .then(res=>{
+                if (!res.searches)
+                    return console.error('ShanghaiDictionary.com API error:', res);
+                setShanghaiDictionarySearches(res.searches);
+            })
+            .catch(err=>{
+                console.error('Caught shanghaiDictionary.com API error:', err);
+                setShanghaiDictionarySearches(-4);
+            });
     }, []);
 
     const [ytData, setYtData]=useState<ytDataT | null>(null);
     const [hoveringYtSubscribers, setHoveringYtSubscribers]=useState<boolean>(false);
     const [hoveringYtViews, setHoveringYtViews]=useState<boolean>(false);
     useEffect(()=>{
-        const apiKey=process.env.NODE_ENV==='development' ? process.env.NEXT_PUBLIC_DEVELOPMENT_YOUTUBE_API_KEY : process.env.NEXT_PUBLIC_PRODUCTION_YOUTUBE_API_KEY;
+        const apiKey=process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
         const slaphappyId='UCAwfG8BfhLuhMddFZh7z09A';
         const joelgrayson2Id='UChs2-tks6XqrAdZ6K2I0QCA';
         const channelId=slaphappyId+','+joelgrayson2Id;
+        console.log({ channelId, apiKey });
         fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`)
             .then(res=>res.json())
             .then(res=>{
                 console.log(res.items);
+                if (!res.items) {
+                    setYtData({
+                        slaphappy: {
+                            subscribers: -4,
+                            views: -4
+                        },
+                        joelgrayson2: {
+                            subscribers: -4,
+                            views: -4
+                        }
+                    });
+                    return console.error('YouTube API error:', res);
+                }
                 const slaphappy=res.items.find((channel: any)=>channel.id===slaphappyId);
                 const joelgrayson2=res.items.find((channel: any)=>channel.id===joelgrayson2Id);
                 setYtData({
@@ -150,6 +172,18 @@ export default function Stats() {
                 </tr>
             </tbody>
         </table>
+
+        {
+            hCInstalls && focusInstalls && blogViews && shanghaiDictionarySearches && ytData && <div>
+                Every day,
+                <ul>
+                    <li>20 people watch my YouTube channels</li>
+                    <li>500 pounds of CO<sub>2</sub> is saved</li>
+                    <li>900 people use Homework Checker</li>
+                    <li>900 students use Homework Checker</li>
+                </ul>
+            </div>
+        }
     </Page>;
 }
 

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { produce } from 'immer';
 import Loader from '@/components/global/Loader';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from '@jcomponents/modal';
 // import Link from 'next/link';
@@ -15,7 +15,7 @@ import { theme } from '@/components/research/survey/config';
 import BlankPage from '@/components/page/BlankPage';
 
 export default function PrintableSurvey() {
-    const [formState, setFormState]=useState<'filling out' | 'error' | 'loading' | 'submitted'>('filling out');
+    const [formState]=useState<'filling out' | 'error' | 'loading' | 'submitted'>('filling out');
     const [errorModalOpen, setErrorModalOpen]=useState(true);
 
     const [data, setData]=useState<SingleCultureSurveyData>({
