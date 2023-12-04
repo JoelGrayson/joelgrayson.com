@@ -5,7 +5,7 @@ import Gallery from '@/components/gallery/Gallery';
 import { useState } from 'react';
 import { ytVideos } from './ytVideos';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const url=`https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&part=snippet&playlistId=PLPq06AMW3cIFOA3J8Z0cd1bMaKn6TV_9K&maxResults=50`;
     const buff=await fetch(url);
     const data=await buff.json();
