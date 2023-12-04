@@ -3,11 +3,17 @@ import HeaderSubGroupArrow from './HeaderSubGroupArrow';
 
 export default function HeaderSubGroup({title, children}: {title: string, children: any}) {
     const [hovered, setHovered]=useState(false); //hovered & open
+    // const [hovered, setHovered]=[true, (e: any)=>{}]; //always open for testing
 
-    return <div className='relative w-full items-center'
+    return <button className='relative w-full items-center p-0 m-0 flex'
         onMouseEnter={()=>setHovered(true)}
         onMouseLeave={()=>setHovered(false)}
         style={{ height: '24px' }}
+        tabIndex={0}
+        onClick={(e)=>{
+            console.log('hi');
+            setHovered(true);
+        }}
     >
         {/* --> Left Arrow (onhover increases arrow length) */}
         <svg className='inline pr-2' width='33px' height='15px' viewBox='0 0 33 15' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -37,5 +43,5 @@ export default function HeaderSubGroup({title, children}: {title: string, childr
                 <span style={{whiteSpace: 'nowrap', userSelect: 'none'}}>{children}</span>
             </div>
         }
-    </div>;
+    </button>;
 }

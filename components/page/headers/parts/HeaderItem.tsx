@@ -23,6 +23,7 @@ export default function HeaderItem({ link /*a href's link*/, children, className
                     backgroundColor: isCurrentPage ? '#ffe273' : undefined,
                     fontFamily: 'AvenirMedium'
                 }}
+                tabIndex={0}
             >
                 {children}
             </Link>

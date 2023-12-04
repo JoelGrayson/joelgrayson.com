@@ -5,9 +5,10 @@ export default function HeaderGroupItem({link, children, arrow=true /* bool to s
     const [hovered, setHovered]=useState(false); //hovered & open
     
     return <Link
-        className='unstyled relative'
+        className='unstyled relative flex'
         href={link || '#'}
         target={link?.trim()?.slice(0, 4)==='http' ? '_blank' : undefined} //open in new tab if external link
+        tabIndex={0}
     >
         <div
             onMouseEnter={()=>setHovered(true)}

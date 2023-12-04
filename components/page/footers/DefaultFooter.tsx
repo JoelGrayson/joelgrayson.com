@@ -11,12 +11,17 @@ export default function DefaultFooter() {
     return <footer className='bg-[#facb62] flex justify-center p-4 gap-5'>
         {/* Image wiggles onHover by changing its source from the wiggling.gif to the still.png */}
         {/* eslint-disable */}
-        <a href="https://github.com/JoelGrayson" target='_blank' className='flex' aria-label='GitHub Profile'>
+        <a href="https://github.com/JoelGrayson" target='_blank' className='flex' aria-label='GitHub Profile' tabIndex={0}>
             <GithubIcon width={30} />
         </a>
-        <a href='https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A' className='unstyled flex justify-center items-center'
+        <a
+            href='https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A'
+            className='unstyled flex justify-center items-center'
             onMouseEnter={()=>setSrc(wigglingSrc)}
             onMouseLeave={()=>setSrc(stillSrc)}
+            target='_blank'
+            tabIndex={0}
+            aria-label='Slaphappy YouTube Channel'
         >
             <YoutubeIcon width={30} />
             <div className='flex items-end mr-0 relative bottom-1'>

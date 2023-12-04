@@ -16,8 +16,8 @@ export default function BlogPage({children, seo, maxWidth=800}: {children: React
         }} />
         
         <header className='relative flex justify-between items-center px-5 py-0'>
-            <JThreeDots />
-            <span className={`${chomsky.className} text-[2.5rem] sm:text-[3.4rem] mt-[10px] leading-[1.8]`}>
+            <JThreeDots tabIndex={0} />
+            <span className={`${chomsky.className} text-[2.5rem] sm:text-[3.4rem] mt-[10px] leading-[1.8]`} tabIndex={0}>
                 <Link href='/blog' className='unstyled'>
                     Joel&apos;s Blog
                 </Link>

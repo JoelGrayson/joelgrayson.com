@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 
-export default function JThreeDots() { //interactive signature
+export default function JThreeDots(props: any) { //interactive signature
     const [loadNum, setLoadNum]=useState<number>(0);
     const lastReloaded=useRef<number>(Date.now());
     const reload=()=>{
@@ -10,7 +10,7 @@ export default function JThreeDots() { //interactive signature
         setLoadNum(Math.random);
     };
 
-    return <Link href='/' className='block w-[55px] sm:w-[65px] m:mx-auto'>
+    return <Link href='/' className='block w-[55px] sm:w-[65px] m:mx-auto' {...props} aria-label='Joel Logo'>
         <div className='flex items-center pr-4 select-none w-[30px] sm:w-[40px] cursor-pointer m:mx-auto'>
             <div className='relative cursor-pointer'>
                 {/* eslint-disable */}
