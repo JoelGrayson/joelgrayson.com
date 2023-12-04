@@ -30,8 +30,8 @@ export default function CCC() {
                         width: 335,
                         marginLeft: 10
                     }}>
-                        <Switch defaultChecked onChange={setShowDescription} checked={showDescription} />
-                        <span className='ml-2 cursor-pointer' onClick={()=>setShowDescription(!showDescription)}>Show descriptions</span>
+                        <Switch defaultChecked onChange={setShowDescription} checked={showDescription} id='showDescriptions' />
+                        <label htmlFor='showDescriptions' className='ml-2 cursor-pointer' onClick={()=>setShowDescription(!showDescription)}>Show descriptions</label>
                     </div>
                 </div>
             </div>

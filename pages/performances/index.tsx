@@ -10,9 +10,6 @@ export async function getServerSideProps() {
     const buff=await fetch(url);
     const data=await buff.json();
 
-    console.log('URL', url);
-    console.log('Videos', data);
-    
     return {
         props: {
             videos: data,
