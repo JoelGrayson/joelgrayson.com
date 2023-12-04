@@ -10,6 +10,9 @@ export async function getStaticProps() {
     const buff=await fetch(url);
     const data=await buff.json();
 
+    console.log('URL', url);
+    console.log('Videos', data);
+    
     return {
         props: {
             videos: data,
@@ -20,7 +23,7 @@ export async function getStaticProps() {
 export default function Performances({ videos }: { videos: ytVideos }) {
     const [galleryOpen, setGalleryOpen]=useState<boolean>(false);
     const [index, setIndex]=useState<number>(0);
-
+    
     return <Page bottomPadding seo={{
         title: 'Violin & Piano Performances',
         keywords: ['violin', 'piano', 'recitals'],
@@ -34,7 +37,7 @@ export default function Performances({ videos }: { videos: ytVideos }) {
             gap: 10,
             marginBottom: 50
         }}>{
-            videos.items.map((video, index)=>{
+            videos?.items?.map((video, index)=>{
                 const thumbnailUrl=video.snippet.thumbnails.high.url;
 
                 return <div key={video.id} onClick={()=>{setIndex(index); setGalleryOpen(true);}} className='cursor-pointer my-1 mx-.5'>
@@ -50,7 +53,7 @@ export default function Performances({ videos }: { videos: ytVideos }) {
         }</div>
 
         <Gallery
-            images={videos.items.map(video=>({ videoId: video.snippet.resourceId.videoId, title: video.snippet.title }))} renderChildren={({videoId, title})=><div className='flex justify-center items-center h-full flex-col'>
+            images={videos?.items?.map(video=>({ videoId: video.snippet.resourceId.videoId, title: video.snippet.title }))} renderChildren={({videoId, title})=><div className='flex justify-center items-center h-full flex-col'>
                 <iframe width='560' height='315' src={`https://www.youtube.com/embed/${videoId}`} title='YouTube video player' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowFullScreen></iframe>
                 <div className='text-xl font-bold mt-5 flex gap-3 items-center'>
                     <span>{title}</span>
