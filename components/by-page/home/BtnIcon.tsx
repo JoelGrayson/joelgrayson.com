@@ -16,13 +16,13 @@ const StyledBtnIcon=styled.button`
 `;
 
 export default function BtnIcon({ href, children, target='_blank' }: { href: string; children: any; target?: string }) {
-    return <StyledBtnIcon role='link'>
+    return <StyledBtnIcon role='link' tabIndex={-1}>
         <Link {...{href, target}} className='unstyled' style={{
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center'
-        }}>
+        }} tabIndex={0}>
             {children}
         </Link>
     </StyledBtnIcon>;

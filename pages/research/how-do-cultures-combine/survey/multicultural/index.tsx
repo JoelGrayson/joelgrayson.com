@@ -65,6 +65,7 @@ export default function Survey() {
     
     return <BlankPage bottomPadding seo={{
         title: 'Survey on Multicultural Identity',
+        favicon: '/image/ucjg/joel-forms.png'
     }}>
         <h1 className='text-center my-5 text-4xl mt-8'>Survey on Multicultural Identity</h1>
         { formState!=='submitted' && <p>This survey is part of a study of how cultures combine in multicultural families. Your response is anonymous.</p> }
