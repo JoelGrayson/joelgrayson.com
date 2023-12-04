@@ -10,8 +10,7 @@ export default function HeaderSubGroup({title, children}: {title: string, childr
         onMouseLeave={()=>setHovered(false)}
         style={{ height: '24px' }}
         tabIndex={0}
-        onClick={(e)=>{
-            console.log('hi');
+        onClick={()=>{
             setHovered(true);
         }}
     >

@@ -70,7 +70,7 @@ export default function Gallery({ images, renderChildren, galleryOpen, setGaller
                 justifyContent: 'center',
                 alignItems: 'center',
                 fontSize: '36px'
-            }} color='jred'>&times;</Button>
+            }} color='jred' aria-label='Close'>&times;</Button>
             
             {/* <- Artwork -> */}
             <div style={{
@@ -79,7 +79,7 @@ export default function Gallery({ images, renderChildren, galleryOpen, setGaller
                 alignItems: 'center',
                 height: '100%'
             }}>
-                <Button style={{ width: '40px', height: '40px', textAlign: 'center', verticalAlign: 'center' }} onClick={galleryLeft}>&lt;</Button>
+                <Button style={{ width: '40px', height: '40px', textAlign: 'center', verticalAlign: 'center' }} onClick={galleryLeft} aria-label='Previous Artwork'>&lt;</Button>
 
                 <div className='px-3 py-2 mx-6' style={{ //Image
                     width: '60vw',
@@ -90,7 +90,7 @@ export default function Gallery({ images, renderChildren, galleryOpen, setGaller
                     {renderChildren(imagePath)}
                 </div>
 
-                <Button style={{ width: '40px', height: '40px', textAlign: 'center', verticalAlign: 'center' }} onClick={galleryRight}>&gt;</Button>
+                <Button style={{ width: '40px', height: '40px', textAlign: 'center', verticalAlign: 'center' }} onClick={galleryRight} aria-label='Next Artwork'>&gt;</Button>
             </div>
         </div>
     }</div>;

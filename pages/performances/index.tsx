@@ -21,8 +21,6 @@ export default function Performances({ videos }: { videos: ytVideos }) {
     const [galleryOpen, setGalleryOpen]=useState<boolean>(false);
     const [index, setIndex]=useState<number>(0);
 
-    console.log('Videos', videos);
-    
     return <Page bottomPadding seo={{
         title: 'Violin & Piano Performances',
         keywords: ['violin', 'piano', 'recitals'],
