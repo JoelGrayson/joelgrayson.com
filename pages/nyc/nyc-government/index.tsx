@@ -160,6 +160,7 @@ export default function NYCGoverment() {
             <li>
                 Is CB1 what replaced congregations for me since I am an atheist? Perhaps, because we meet regularly as a parochial entity. The definition of &quot;church&quot; can be more flexible for modern context. Mr. Kildahl sees Riverdale as a church because it is one of the sources of his faith.
             </li>
+            <li>Assemblyman Ron Kim said that it is easier to make your opponent&apos;s voters not turn out to vote than it is to excite voters to vote for you. I have noticed this in my council district&apos;s 2023 election. There were 23,212 voters in 2021 for Manhattan Council District 1 but only 12,486 in 2023 (<a href='https://ballotpedia.org/Christopher_Marte'>source</a>). This low turnout occurred after attack ads against the incument Councilmember Marte from Susan Lee in the primary and Helen Qiu in the general election were put all over the district: on the buildings, in shops, and in the mail. Turnout went down by about half, likely because these ads made Marte supporters not want to vote.</li>
         </ul>
 
         <h3>Unit 3: City Council</h3>
