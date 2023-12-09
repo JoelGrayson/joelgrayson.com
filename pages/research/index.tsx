@@ -9,15 +9,10 @@ export default function Research() {
             <p className='bold text-lg'>Subject</p>
             <p className='bold text-lg'>Study</p>
             <p>Social Science</p>
-            <p>
-                <Link href='/research/how-do-cultures-combine'>How Do Cultures Combine?</Link>
-                <span className='ml-3 px-2 py-0' style={{
-                    backgroundColor: '#db4343',
-                    color: 'white',
-                    borderRadius: '4px',
-                }}>In Progress</span>
-            </p>
-            <p>Renewable Energy</p>
+            <p><Link href='/research/how-do-cultures-combine/How Cultures Combine in Mixed-Race Families.pdf'>
+                How Do Cultures Combine?
+            </Link></p>
+            <p>Material Science</p>
             <p><Link href='/research/organic-optoelectronics'>
                 Twisting Crystal Charge Transfer Complexes for Organic Optoelectronics
             </Link></p>
