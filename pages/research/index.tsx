@@ -10,7 +10,7 @@ export default function Research() {
             <p className='bold text-lg'>Study</p>
             <p>Social Science</p>
             <p><Link href='/research/how-do-cultures-combine/How Cultures Combine in Mixed-Race Families.pdf'>
-                How Do Cultures Combine?
+                How Do Cultures Combine in Mixed-Race Families?
             </Link></p>
             <p>Material Science</p>
             <p><Link href='/research/organic-optoelectronics'>

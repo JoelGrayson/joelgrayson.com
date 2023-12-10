@@ -10,20 +10,20 @@ module.exports={
         locales: ['en'],
         defaultLocale: 'en'
     },
+    images: {
+        unoptimized: true, //comment out this line to export as HTML
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'i.ytimg.com',
+                pathname: '/vi/**',
+            }
+        ]
+    },
 
     // Uncomment below in order to export as HTML
     // output: 'export',
     // basePath: '/joelgrayson.com',
     // assetPath: '/joelgrayson.com',
-    // images: {
-    //     unoptimized: true,
-    //     remotePatterns: [
-    //         {
-    //             protocol: 'https',
-    //             hostname: 'i.ytimg.com',
-    //             pathname: '/vi/**',
-    //         }
-    //     ]
-    // },
 };
 

@@ -108,7 +108,7 @@ export default function Home() {
             </BtnIcon> {/* sunbeam going down when hover */}
             <BtnIcon href='/machines' target='_self'>
                 <div style={{width: 80, height: 69, display: 'grid', placeItems: 'center'}}>
-                    <Image alt='Combination Safe Machine' height={69} width={80} src='/image/home/machine.png' />
+                    <Image alt='Combination Safe Machine' height={71} width={80} src='/image/home/machine.png' />
                 </div>
                 <span>Machines</span>
             </BtnIcon> {/* sunbeam going down when hover */}
