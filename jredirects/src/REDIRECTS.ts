@@ -3,6 +3,7 @@ import { redirects } from './_internals/types';
 const polyfill=(link: string)=>({[`https://joelgrayson.wixsite.com/joelgrayson${link}`]: link});
 
 export const temporary: redirects={ //302
+    '/learn/pi': ['/memorize-pi', '/memorize-the-digits-of-pi', '/memorize-digits-of-pi', '/memorize-digits-pi', '/memorize-pie', '/pi', '/π', '/memorize-π'],
     '/nyc/nyc-government/test': '/nyc/nyc-government/content/test',
     '/plan': '/agenda',
     'https://us06web.zoom.us/j/5482667091?pwd=Vnk1bXpuMkx3ZzRGNDA1THJSNHRCQT09': '/zoom',
@@ -56,7 +57,6 @@ export const permanent: redirects={ //301
 
     '/nyc-budget': ['/new-york-city-budget', '/nycbudget', '/newyorkcitybudget'],
     // Pages
-    '/memorize-pi': ['/memorize-the-digits-of-pi', '/memorize-digits-of-pi', '/memorize-digits-pi', '/memorize-pie', '/pi', '/π', '/memorize-π'],
     '/page/terms-and-conditions.html': ['/terms-and-conditions', '/terms-and-conditions/index.html'],
 
     'https://app.box.com/index.php?rm=box_download_shared_file&shared_name=8vr4uxd120zgw67ptebbpwq22w8gvsjm&file_id=f_1278121890609': '/research/organic-optoelectronics/microscope-photos.zip',
