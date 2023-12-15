@@ -10,6 +10,7 @@ export default function Learn() {
             <li><Link href='/learn/pi'>Memorize the Digits of Pi</Link></li>
             <li><a href='https://memorizethepresidents.com'>Memorize the Presidents of the United States</a></li>
             <li><Link href='/learn/physics'>Physics</Link></li>
+            {/* Notion page on MLA citations */}
             
             {/* STEM videos from Slaphappy */}
             <div className="d:grid grid-cols-2 gap-2 place-content-center">
@@ -19,5 +20,5 @@ export default function Learn() {
                 <Yt width={300}>F0ameJ2K3_0</Yt>
             </div>
         </ul>
-    </Page>
+    </Page>;
 }
