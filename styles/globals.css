@@ -34,10 +34,19 @@ input[type='submit'] {
 /**|| <DOMElements */
 /* Headers */
 h1, h2, h3, h4, h5 {
-    font-family: AvenirMedium;
     line-height: 1.8;
 }
-h1 { font-size: 3.4rem; font-family: Myriad; margin-top: 10px; }
+h1 { font-size: 3.4rem; margin-top: 10px; }
+h1:not(.custom-font) {
+    font-family: Myriad;
+}
+h2:not(.custom-font),
+h3:not(.custom-font),
+h4:not(.custom-font),
+h5:not(.custom-font) {
+    font-family: AvenirMedium;
+}
+
 h2 { font-size: 2.1rem; margin-top: 8px; }
 h3 { font-size: 1.6rem; margin-top: 7px; }
 h4 { font-size: 1.3rem; margin-top: 6px; }
