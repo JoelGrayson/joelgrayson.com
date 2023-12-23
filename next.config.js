@@ -10,6 +10,12 @@ module.exports={
         locales: ['en'],
         defaultLocale: 'en'
     },
+    transpilePackages: [
+        '@mui/material',
+        '@ant-design/icons',
+        '@ant-design/icons-svg',
+        "rc-util"
+    ],
     images: {
         unoptimized: true, //comment out this line to export as HTML
         remotePatterns: [
