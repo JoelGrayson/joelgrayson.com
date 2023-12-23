@@ -1,0 +1,73 @@
+import LearnPage from "@/components/page/LearnPage";
+export default function LearningContent({children}) {
+	return <LearnPage markdown bottomPadding>{children}</LearnPage>;
+}
+
+
+# Docker
+
+## Commands
+- Basic for deploying
+    - `docker build . -t studentsforelectricbuses` - build directory into container
+        - -t tags with a name or name:tag with :tag defaulting to :latest
+    - `docker run -p 8080:3000 studentsforelectricbuses` - run a container
+    - `gcloud run deploy {deployment-name} --source .` - deploy container to gcloud (select the right project in advance)
+- Running a Docker Image
+    - `docker pull ubuntu`  #download image from docker registry (docker hub)
+    - `docker run -it ubuntu`  #create docker container based on image
+        - `docker run --publish (-p) {host port}:{container port}`
+        - `-d`/`--detach` to not have current terminal connected to output
+        - `--name {container name}` to set your own name
+    - `docker stop {container_name}` sends a SIGTERM signal (time for cleaning up processes)
+    - `docker kill {container_name}` sends a SIGKILL signal
+- More
+    - `docker ps` lists running containers (ps stands for process status)
+        - `docker ps -a`/`-all` lists all containers (started or stopped)
+    - `docker images`
+    - `docker rmi name:tag`
+    - `docker start/stop/restart {container_name}`
+    - `docker rm {container_name}`
+
+
+## Dockerfile
+
+### Simple Node Application
+```docker
+# Alpine is light-weight
+FROM node:16-alpine
+WORKDIR /
+COPY . .
+RUN npm install
+CMD ["npm", "start"]
+```
+
+### Ubuntu Application Running Node
+If you need to use linux commands or install certain packages like puppeteer, using Ubuntu with Node.js installed is a better option.
+```docker
+# Support for many frameworks
+FROM ubuntu:latest
+RUN apt-get update -y
+RUN apt-get upgrade -y
+
+# <Install Node & NPM
+RUN apt-get install -y curl
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash
+RUN apt-get install -y nodejs
+
+# Fixing NPM to work
+RUN npm i -g npm@latest
+RUN npm i -g node-gyp
+# />
+
+WORKDIR /home/app
+COPY . .
+
+RUN npm i
+# Makes sure node is running in production mode
+RUN export NODE_ENV=production
+
+EXPOSE 8080
+# RUN cd dist
+CMD ["npm", "start"]
+```
+

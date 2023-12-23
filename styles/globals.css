@@ -63,6 +63,16 @@ ul:not(.unstyled) li {
     margin-left: 1.5rem;
     list-style-type: disc;
 }
+ul:not(.unstyled) li {
+    list-style-type: disc;
+}
+ul:not(.unstyled) li ul:not(.unstyled) li {
+    list-style-type: circle;
+}
+ul:not(.unstyled) li ul:not(.unstyled) li ul:not(.unstyled) li {
+    list-style-type: square;
+}
+
 
 code.light { /* light code like notion */
     font-family: monospace;
@@ -230,5 +240,18 @@ input:focus, textarea:focus {
 
 .animate-blink {
     animation: blink 1s infinite;
+}
+
+
+
+/* Markdown Container */
+.markdown-container h1 {
+    text-align: center;
+}
+
+.markdown-container code {
+    background-color: #eee;
+    padding: 2px 4px;
+    border-radius: 4px;
 }
 

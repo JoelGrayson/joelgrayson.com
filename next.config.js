@@ -1,11 +1,13 @@
 /** @type {import('next').NextConfig} */
 
+const withMDX=require('@next/mdx')();
 const jredirects=require('./jredirects/dist');
 
-module.exports={
+const nextConfig={
     reactStrictMode: true,
     swcMinify: true,
     redirects: jredirects,
+    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
     i18n: {
         locales: ['en'],
         defaultLocale: 'en'
@@ -33,3 +35,4 @@ module.exports={
     // assetPath: '/joelgrayson.com',
 };
 
+module.exports=withMDX(nextConfig);
