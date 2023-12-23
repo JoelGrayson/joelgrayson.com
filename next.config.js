@@ -2,6 +2,7 @@
 
 const withMDX=require('@next/mdx')();
 const jredirects=require('./jredirects/dist');
+const { withPlausibleProxy }=require('next-plausible')
 
 const nextConfig={
     reactStrictMode: true,
@@ -35,4 +36,4 @@ const nextConfig={
     // assetPath: '/joelgrayson.com',
 };
 
-module.exports=withMDX(nextConfig);
+module.exports=withMDX(withPlausibleProxy()(nextConfig));
