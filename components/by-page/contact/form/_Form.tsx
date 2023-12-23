@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import onFormSubmit from './onFormSubmit';
+import { usePlausible } from "next-plausible";
 
 export default function Form() {
     const [submitted, setSubmitted]=useState(false);
+    const plausible=usePlausible();
 
     return <>
         <style jsx>{`
@@ -45,7 +46,7 @@ export default function Form() {
             {
                 submitted
                 ? <div className='text-green-500 font-bold'>Message received. Thanks for getting in touch!</div>
-                : <form id='contactForm' method='POST' className='flex flex-col items-center' action='#' onSubmit={onFormSubmit(setSubmitted)}>
+                : <form id='contactForm' method='POST' className='flex flex-col items-center' action='#' onSubmit={handleSubmit}>
                     <div className='w-full flex justify-center gap-[12px] pb-3'>
                         <input type='text' name='name' id='name' placeholder='Name' />
                         <input type='email' name='email' id='email' placeholder='Email' />
@@ -61,4 +62,29 @@ export default function Form() {
             }
         </div>
     </>;
+
+    function handleSubmit(e: any) {
+        e.preventDefault();
+        
+        plausible('contactFormSubmitted');
+        
+        const values={
+            name: e.target[0].value,
+            email: e.target[1].value,
+            message: e.target[2].value
+        };
+
+        fetch('/api/contact/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(values)
+        })
+            .then(res=>res.json())
+            .then(res=>{
+                console.log('form submitted:', res);
+                setSubmitted(true);
+            });
+    }
 }
