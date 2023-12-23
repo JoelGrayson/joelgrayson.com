@@ -10,6 +10,7 @@ export default function Learn() {
             <li><Link href='/learn/pi'>Memorize the Digits of Pi</Link></li>
             <li><a href='https://memorizethepresidents.com'>Memorize the Presidents of the United States</a></li>
             <li><Link href='/learn/physics'>Physics</Link></li>
+            <li><Link href='/learn/docker'>Docker</Link></li>
             {/* Notion page on MLA citations */}
             
             {/* STEM videos from Slaphappy */}
