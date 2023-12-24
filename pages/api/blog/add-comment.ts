@@ -1,13 +1,15 @@
-import { ExposedComment } from '@/data/prisma/TYPES';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/data/prisma/client';
 import sendEmail from '@/helpers/sendEmail';
 import generateToken from '@/helpers/generate-token';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<string | { views: number; comments: ExposedComment[]; }>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<{ type: 'error' | 'success'; message?: string }>) {
     const { name, email, comment, hyphenatedTitle }=req.body as { name?: string; email?: string; comment?: string; hyphenatedTitle?: string };
     
-    if (!name || !email || !comment || !hyphenatedTitle) return res.json('No name, email, or comment provided');
+    if (!name || !email || !comment || !hyphenatedTitle) return res.status(403).json({
+        type: 'error',
+        message: 'No name, email, or comment provided'
+    });
     
     const token=generateToken();
     
@@ -42,7 +44,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             } },
         }
     });
-    if (!article) return res.send('No article found for name'+hyphenatedTitle);
+    if (!article) return res.status(403).send({
+        type: 'error',
+        message: 'No article found for name'+hyphenatedTitle
+    });
     
     await prisma.comment.create({
         data: {
@@ -56,5 +61,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         }
     });
 
-    res.send('Success');
+    res.status(200).send({
+        type: 'success',
+    });
 }
