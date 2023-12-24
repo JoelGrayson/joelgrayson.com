@@ -23,11 +23,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         +'Email: '+email+'\n'
         +'Comment: '+comment+'\n',
         html: `
-            <p>Please go to <a href='${verificationLink}'>this link</a> to confirm your comment. Once confirmed, the following comment will be posted:</p>
-            <p></p>
-            <p>Name: ${name}</p>
-            <p>Email: ${email}</p>
-            <p>Comment: ${comment}</p>
+            <p><a href='${verificationLink}'><button>Click here</button></a> to post the following comment:</p>
+            <br />
+            <fieldset>
+                <legend>${name} wrote</legend>
+                <p>${comment}</p>
+            </fieldset>
         `
     });
     

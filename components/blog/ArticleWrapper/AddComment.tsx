@@ -45,11 +45,11 @@ export default function AddComment({ hyphenatedTitle }: { hyphenatedTitle: strin
             <div>
                 <div id='row1' style={{ display: 'flex', gap: 5, marginBottom: 5 }}>
                     <div className='w-[50%]'>
-                        <label htmlFor="name">Name (public)</label>
+                        <label htmlFor="name">Name (Public)</label>
                         <input type='text' id='name' name='name' placeholder='Name'  value={name} onChange={e=>setName(e.target.value)} className='w-full' />
                     </div>
                     <div className='w-[50%]'>
-                        <label htmlFor="email">Email (for verification, will not be shown)</label>
+                        <label htmlFor="email">Email (Not public. For verification purposes)</label>
                         <input type='email' id='email' name='email' placeholder='Email' value={email} onChange={e=>setEmail(e.target.value)} className='w-full' />
                     </div>
                 </div>
