@@ -26,5 +26,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         }
     });
 
-    res.redirect(`/blog/${comment.Article.hyphenatedTitle}?state=verifiedComment&commentId=${comment.id}#id=comment-${encodeURIComponent(comment.id)}`);
+    res.redirect(`/blog/${comment.Article.hyphenatedTitle}?state=verifiedComment&commentId=${comment.id}#comment-${encodeURIComponent(comment.id)}`);
 }

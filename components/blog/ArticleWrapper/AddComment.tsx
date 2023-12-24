@@ -88,7 +88,7 @@ export default function AddComment({ hyphenatedTitle }: { hyphenatedTitle: strin
                     </div>
                     <div id='row2' style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column',  }}>
                         <label htmlFor="comment">Comment</label>
-                        <textarea name='comment' id='comment' className='mb-2' placeholder='Leave a comment...' value={comment} rows={1} onChange={e=>setComment(e.target.value)} />
+                        <textarea name='comment' id='comment' className='mb-2' placeholder='Leave a comment...' value={comment} rows={3} onChange={e=>setComment(e.target.value)} />
                     </div>
                 </div>
                 <Button onClick={submitHandler} color='jblue'>

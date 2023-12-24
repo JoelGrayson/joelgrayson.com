@@ -53,7 +53,7 @@ export default function Article({ hyphenatedTitle, title, date /** published dat
         <div id='comments'>
             <h3>Comments</h3>
             {comments.map(comment=>
-                <Reply key={comment.id} id={comment.id} author={comment.author} date={jdate(new Date(comment.postedAt))} highlighted={comment.id===commentId}>{comment.content}</Reply>
+                <Reply key={comment.id} id={comment.id} author={comment.author} date={jdate(new Date(comment.postedAt))} selected={comment.id===commentId}>{comment.content}</Reply>
             )}
             <AddComment {...{hyphenatedTitle}} />
         </div>
