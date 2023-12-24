@@ -8,7 +8,7 @@ async function main() {
 
     usePg(async client=>{
         const queryRes=await client.query(`
-            INSERT INTO Stats (id, date, homeworkCheckerInstalls, focusInstalls, blogViews, shanghaiDictionarySearches)
+            INSERT INTO "Stats" ("id", "date", "homeworkCheckerInstalls", "focusInstalls", "blogViews", "shanghaiDictionarySearches")
             VALUES
                 ('${uuid()}', '${new Date().toISOString()}', ${homeworkCheckerInstalls}, ${focusInstalls}, ${blogViews}, ${shanghaiDictionarySearches});
         `);
