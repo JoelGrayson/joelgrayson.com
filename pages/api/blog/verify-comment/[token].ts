@@ -9,6 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const comment=await prisma.comment.findFirst({
         where: { verifyToken: <string>token },
         select: {
+            id: true,
             Article: {
                 select: {
                     hyphenatedTitle: true
@@ -25,5 +26,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         }
     });
 
-    res.redirect(`/blog/${comment.Article.hyphenatedTitle}#comments`);
+    res.redirect(`/blog/${comment.Article.hyphenatedTitle}?state=verifiedComment&commentId=${comment.id}#id=comment-${encodeURIComponent(comment.id)}`);
 }

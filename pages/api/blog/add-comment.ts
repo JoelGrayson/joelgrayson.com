@@ -14,6 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const token=generateToken();
     
     const verificationLink=`https://joelgrayson.com/api/blog/verify-comment/${token}`;
+    // Old button style: padding: 3px 8px; cursor: pointer; background-color: #f9c44d;
     sendEmail({
         to: email,
         from: { name: `Joel's Blog`, email: 'bot@joelgrayson.com' },
@@ -23,7 +24,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         +'Email: '+email+'\n'
         +'Comment: '+comment+'\n',
         html: `
-            <p><a href='${verificationLink}'><button>Click here</button></a> to post the following comment:</p>
+            <p>
+                <a
+                    href='${verificationLink}'
+                    style='border: 1.1px solid #000; border-radius: 3px; padding: 5px 10px; background: #e9e9e9; position: relative; top: 0; user-select: none; transition: top; transition-duration: .1s; text-decoration: none; color: blue;'
+                >
+                    Click here
+                </a>
+                <span style='color:black'>&nbsp;to post the following comment:</span>
+            </p>
             <br />
             <fieldset>
                 <legend>${name} wrote</legend>

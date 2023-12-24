@@ -4,14 +4,17 @@ import jdate from 'joeldate';
 import { ExposedComment } from '@/data/prisma/TYPES';
 import { Reply } from './Reply';
 import AddComment from './AddComment';
+import { useRouter } from 'next/router';
 
 export default function Article({ hyphenatedTitle, title, date /** published date */, children, notitle=false, nodate=false }: { hyphenatedTitle: string; title: string; date: Date; children: React.ReactNode; notitle?: boolean; nodate?: boolean }) {
     const [comments, setComments]=useState<ExposedComment[]>([]);
     const [views, setViews]=useState<null | number>(null);
+    const [commentId, setCommentId]=useState<null | string>(null);
+    const router=useRouter();
     
     useEffect(()=>{ //load from prisma
         if (!hyphenatedTitle) return;
-
+        
         fetch('/api/blog/comments-and-views', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -27,7 +30,14 @@ export default function Article({ hyphenatedTitle, title, date /** published dat
                 setViews(res.views);
                 setComments(res.comments);
             });
-    }, [hyphenatedTitle]);
+
+        if (router.query.state==='verifiedComment') {
+            const commentId=router.query.commentId;
+            if (!commentId) return;
+
+            setCommentId(commentId as string);
+        }
+    }, [hyphenatedTitle, router.query.commentId, router.query.state]);
     
     return <BlogPage seo={{ title: title ? `${title} | Joel's Blog` : "Joel's Blog" }}>
         {/* Title & Date */}
@@ -43,7 +53,7 @@ export default function Article({ hyphenatedTitle, title, date /** published dat
         <div id='comments'>
             <h3>Comments</h3>
             {comments.map(comment=>
-                <Reply key={comment.id} author={comment.author} date={jdate(new Date(comment.postedAt))}>{comment.content}</Reply>
+                <Reply key={comment.id} id={comment.id} author={comment.author} date={jdate(new Date(comment.postedAt))} highlighted={comment.id===commentId}>{comment.content}</Reply>
             )}
             <AddComment {...{hyphenatedTitle}} />
         </div>
