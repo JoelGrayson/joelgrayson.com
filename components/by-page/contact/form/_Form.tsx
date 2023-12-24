@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { usePlausible } from "next-plausible";
+import Loader from '@/components/global/Loader';
 
 export default function Form() {
-    const [submitted, setSubmitted]=useState(false);
+    const [state, setState]=useState<'not_submitted' | 'loading' | 'submitted'>('not_submitted');
     const plausible=usePlausible();
 
     return <>
@@ -44,9 +45,8 @@ export default function Form() {
             <h2 className='pt-6'>I&apos;d Love to Talk with You</h2>
             <p>Fill out the form below or email <a href='mailto:joel@joelgrayson.com'>joel@joelgrayson.com</a></p>
             {
-                submitted
-                ? <div className='text-green-500 font-bold'>Message received. Thanks for getting in touch!</div>
-                : <form id='contactForm' method='POST' className='flex flex-col items-center' action='#' onSubmit={handleSubmit}>
+                state==='not_submitted'
+                ? <form id='contactForm' method='POST' className='flex flex-col items-center' action='#' onSubmit={handleSubmit}>
                     <div className='w-full flex justify-center gap-[12px] pb-3'>
                         <input type='text' name='name' id='name' placeholder='Name' />
                         <input type='email' name='email' id='email' placeholder='Email' />
@@ -59,6 +59,10 @@ export default function Form() {
                     {/* Captcha? */}
                     <input className='blue-btn w-fit mb-6' type='submit' value='Send' />
                 </form>
+                : state==='loading'
+                ? <Loader />
+                : state==='submitted'
+                && <div className='text-green-500 font-bold'>Message received. Thanks for getting in touch!</div>
             }
         </div>
     </>;
@@ -74,6 +78,8 @@ export default function Form() {
             message: e.target[2].value
         };
 
+        setState('loading');
+        
         fetch('/api/contact/', {
             method: 'POST',
             headers: {
@@ -84,7 +90,7 @@ export default function Form() {
             .then(res=>res.json())
             .then(res=>{
                 console.log('form submitted:', res);
-                setSubmitted(true);
+                setState('submitted');
             });
     }
 }

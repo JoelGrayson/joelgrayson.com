@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Client } from 'pg';
-import date2Timestamp from '../../../helpers/date2Timestamp';
 import notifyJoel from '../../../helpers/notifyJoel';
+import prisma from '@/data/prisma/client';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<{message: string, queryRes?: any}>) {
     const { name, email, message }=req.body;
@@ -25,24 +25,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     });
     await client.connect();
 
-    try {
-        const queryRes=await client.query(`
-            INSERT INTO contact_form (date_submitted, name, email, message)
-            VALUES
-                ('${date2Timestamp(new Date())}', '${name}', '${email}', '${message}');
-        `);
+    await prisma.contact.create({
+        data: {
+            date: new Date(),
+            name,
+            email,
+            message,
+        }
+    });
 
-        res.status(200).json({
-            message: `Thanks, ${name}! We will reach out to you soon.`,
-            queryRes
-        });
-    }
-    catch (e: any) {
-        res.json({
-            message: e.toString()
-        });
-    }
-    finally {
-        client.end();
-    }
+    res.status(200).json({
+        message: `Thanks, ${name}! We will reach out to you soon.`
+    });
 }
