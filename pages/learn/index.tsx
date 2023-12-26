@@ -11,6 +11,7 @@ export default function Learn() {
             <li><a href='https://memorizethepresidents.com'>Memorize the Presidents of the United States</a></li>
             <li><Link href='/learn/physics'>Physics</Link></li>
             <li><Link href='/learn/docker'>Docker</Link></li>
+            <li><Link href='/learn/daylight-saving-time'>Daylight Savings Time</Link></li>
             {/* Notion page on MLA citations */}
             
             {/* STEM videos from Slaphappy */}
