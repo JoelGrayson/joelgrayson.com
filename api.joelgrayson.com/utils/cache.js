@@ -2,9 +2,10 @@ const NodeCache=require('node-cache');
 const cache=new NodeCache();
 
 const middleware=duration=>(req, res, next)=>{
-    let cacheKey=req.originalUrl; //each request URL gets its own cache key
+    const cacheKey=req.originalUrl; //each request URL gets its own cache key
     const cacheResponse=cache.get(cacheKey);
-    if (cacheResponse) {
+    
+    if (cacheResponse && !req.query.no_cache) { // make sure no ?no_cache=true in the URL
         console.log('Cache hit');
         res.send(cacheResponse);
     } else {
