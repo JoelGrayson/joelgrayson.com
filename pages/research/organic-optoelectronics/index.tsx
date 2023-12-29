@@ -52,7 +52,7 @@ export default function OrganicOptoelectronics() {
         
         <h3>Presenting at the ARISE colloquium</h3>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/kJgvV70m3Jg" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
-        <p>This research was featured on <a href="https://ny1.com/nyc/all-boroughs/news/2023/08/17/students-work-on-real-world-problems-at-nyu-summer-stem-program">Spectrum NY1&apos; local news</a>.</p>
+        <p>This research was featured on <a href="https://ny1.com/nyc/all-boroughs/news/2023/08/17/students-work-on-real-world-problems-at-nyu-summer-stem-program">Spectrum NY1&apos;s local news</a>.</p>
     
         <h3>Poster</h3>
         <PDF src='/research/organic-optoelectronics/Poster.pdf' height={464} />
