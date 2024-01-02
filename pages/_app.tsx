@@ -7,7 +7,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     useEffect(printLogo, []);
 
     return <>
-        <PlausibleProvider domain='joelgrayson.com' trackLocalhost enabled>
+        <PlausibleProvider domain='joelgrayson.com' enabled>
             <Component {...pageProps} />
         </PlausibleProvider>
     </>;
