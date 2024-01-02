@@ -3,27 +3,21 @@ import { Client } from 'pg';
 import notifyJoel from '../../../helpers/notifyJoel';
 import prisma from '@/data/prisma/client';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<{message: string, queryRes?: any}>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<{message: string, queryRes?: any; origin?: string}>) {
     const { name, email, message }=req.body;
+    // origin
+    const origin=req.headers.origin || 'joelgrayson.com';
 
     const notifyJoelMsg=`${name} <${email}> wrote:\n${message}`;
     notifyJoel({ //notify Joel of contact form submission
         email: {
-            subject: `${name} <${email}> contacted you through joelgrayson.com/contact`,
+            subject: `${name} <${email}> contacted you through ${origin}`,
             replyTo: email,
             body: notifyJoelMsg
         },
         text: `---New joelgrayson.com Contact Form Submission---\n${notifyJoelMsg}`
     });
 
-    const client=new Client({
-        host: process.env.PG_HOST,
-        user: process.env.PG_USER,
-        port: 5432,
-        password: process.env.PG_PSWD,
-        database: 'joelgrayson'
-    });
-    await client.connect();
 
     await prisma.contact.create({
         data: {
@@ -31,10 +25,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             name,
             email,
             message,
+            origin
         }
     });
 
     res.status(200).json({
-        message: `Thanks, ${name}! We will reach out to you soon.`
+        message: `Thanks, ${name}! We will reach out to you soon.`,
+        origin
     });
 }

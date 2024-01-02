@@ -62,4 +62,5 @@ model Contact {
     name    String
     email   String
     message String
+    origin  String
 }
