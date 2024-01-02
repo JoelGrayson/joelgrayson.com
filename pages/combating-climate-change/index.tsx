@@ -134,7 +134,7 @@ Including the 30 kW solar installation I got fixed, it saves 243 MTCO2e per year
             </Action>
         </Section>
         <Section title='Energy Efficiency'>
-            <Action title='Bus Idling Ban' {...{showDescription}}>
+            <Action title='Stopped Bus Idling' {...{showDescription}}>
                 <IdlingEngine />
                 <p>Wrote to my school&apos;s bus contractor to enforce <a href="https://portal.311.nyc.gov/article/?kanumber=KA-02222">NYC&apos;s law banning bus idling</a>. The day afterward, buses went from idling for hours to minutes.</p>
                 <br />
