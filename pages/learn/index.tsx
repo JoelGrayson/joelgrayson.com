@@ -12,6 +12,7 @@ export default function Learn() {
             <li><Link href='/learn/physics'>Physics</Link></li>
             <li><Link href='/learn/docker'>Docker</Link></li>
             <li><Link href='/learn/daylight-saving-time'>Daylight Savings Time</Link></li>
+            <li><Link href='/learn/using-tokens-to-push-to-github'>Using Tokens to Push to GitHub</Link></li>
             {/* Notion page on MLA citations */}
             
             {/* STEM videos from Slaphappy */}

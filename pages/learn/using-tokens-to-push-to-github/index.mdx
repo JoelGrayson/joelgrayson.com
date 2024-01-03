@@ -1,0 +1,16 @@
+import LearnPage from "@/components/page/LearnPage";
+export default function LearningContent({children}) {
+	return <LearnPage markdown bottomPadding>{children}</LearnPage>;
+}
+
+
+# Using Tokens to Push to GitHub
+```sh
+git add .
+git commit -m "Message"
+git remote add origin https://<USERNAME>:<MYTOKEN>@github.com/<USERNAME>/<REPO>.git
+git push origin main
+```
+
+You can generate a GitHub personal access token [here](https://github.com/settings/tokens)
+

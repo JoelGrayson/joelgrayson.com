@@ -247,6 +247,7 @@ input:focus, textarea:focus {
 /* Markdown Container */
 .markdown-container h1 {
     text-align: center;
+    font-size: 2.5rem;
 }
 
 .markdown-container code {
