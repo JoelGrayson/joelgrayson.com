@@ -10,6 +10,7 @@ import IdlingEngine from '@/components/by-page/combating-climate-change/IdlingEn
 import PDF from '@/components/global/PDF';
 import { Switch } from 'antd';
 import Info from '@/components/global/Info';
+import CalculationInfo from '@/components/global/CalculationInfo';
 import Markdown from 'markdown-to-jsx';
 import Prototype from '@/components/by-page/connecting-street-vendors-to-the-grid/Prototype';
 
@@ -25,7 +26,10 @@ export default function CCC() {
             <div className='j_container'>
                 <h1 className='text-center'>Combating Climate Change</h1>
                 <div className='d:flex d:justify-between'>
-                    <p className='pr-2'>My climate initiatives reduce emissions by an estimated <Green>{Math.round(emissionsSaved)} metric tons of CO₂ equivalent</Green> (MTCO₂e) per year.</p>
+                    <div>
+                        <p className='pr-2'>My climate initiatives reduce emissions by an estimated <Green>{Math.round(emissionsSaved)} metric tons of CO₂ equivalent</Green> (MTCO₂e) per year.</p>
+                        <p>Hover over <svg viewBox="0 0 24 24" style={{ display: 'inline', width: 20, height: 20, marginLeft: 5, marginRight: 5 }} xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Calculator"><path style={{fill:'#9293a5'}} d="M5.25,2H18.47a.89.89,0,0,1,.89.89V21.11a.89.89,0,0,1-.89.89H5.25a.89.89,0,0,1-.89-.89V2.89A.89.89,0,0,1,5.25,2" /><path style={{fill:'#6f7188'}} d="M15,2V22h3.46a.89.89,0,0,0,.89-.89V2.89A.89.89,0,0,0,18.47,2Z" /><rect style={{fill:'#eae2f9'}} height="9.34" width="11.44" x="6.14" y="10.83" /><rect style={{fill:'#eae2f9'}} height="4.71" width="11.44" x="6.14" y={4} /><rect style={{fill:'#f94060'}} height="9.34" width="2.57" x="15.01" y="10.83" /><rect style={{fill:'#c0c3ee'}} height="4.71" width="2.57" x="15.01" y={4} /><path d="M5.25,22.5H18.47a1.39,1.39,0,0,0,1.39-1.39V2.89A1.39,1.39,0,0,0,18.47,1.5H5.25A1.4,1.4,0,0,0,3.86,2.89V21.11A1.39,1.39,0,0,0,5.25,22.5ZM4.86,2.89a.4.4,0,0,1,.39-.39H18.47a.39.39,0,0,1,.39.39V21.11a.39.39,0,0,1-.39.39H5.25a.4.4,0,0,1-.39-.39Z" /><path d="M6.14,20.67H17.58a.5.5,0,0,0,.5-.5V10.83a.5.5,0,0,0-.5-.5H6.14a.5.5,0,0,0-.5.5v9.34A.5.5,0,0,0,6.14,20.67Zm9.37-9.34h1.57v3.83H15.51Zm0,4.83h1.57v3.51H15.51Zm-2.89-4.83h1.89v2.15H12.62Zm0,3.15h1.89v2H12.62Zm0,3h1.89v2.15H12.62Zm-3-6.19h2v2.15h-2Zm0,3.15h2v2h-2Zm0,3h2v2.15h-2ZM6.64,11.33H8.58v2.15H6.64Zm0,3.15H8.58v2H6.64Zm0,3H8.58v2.15H6.64Z" /><path d="M6.14,9.21H17.58a.5.5,0,0,0,.5-.5V4a.5.5,0,0,0-.5-.5H6.14a.5.5,0,0,0-.5.5V8.71A.5.5,0,0,0,6.14,9.21Zm.5-4.71H17.08V8.21H6.64Z" /><path d="M15.65,6.77h-.51a.5.5,0,0,0-.5.5.5.5,0,0,0,.5.5h.51a.5.5,0,0,0,.5-.5A.51.51,0,0,0,15.65,6.77Z" /></g></svg> to see calculations.</p>
+                    </div>
                     <div style={{
                         width: 335,
                         marginLeft: 10
@@ -67,7 +71,7 @@ export default function CCC() {
 
                 <p className='d:absolute d:top-0 d:right-0'>
                     Will save ~<Green>331 MTCO₂e</Green> each year
-                    <Info>
+                    <CalculationInfo>
                         <Markdown>{`
 ### Grid Emissions
 Emissions from [EPA egrid](https://www.epa.gov/egrid/summary-data) accessed 11.8.23
@@ -80,7 +84,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
 867 MWh/year from solar × .371 metric tons CO₂ / MWh = 322 metric tons CO₂ / year
 
                         `.trim()}</Markdown>
-                    </Info>
+                    </CalculationInfo>
                 </p>
             </Action>
             <Action title='Renewable Energy Research' {...{showDescription}}>
@@ -108,10 +112,10 @@ Permanent link: https://perma.cc/N7QN-QDK6
                 <br />
                 <Savings>
                     <span>Saves ~<Green>0.675 MTCO₂e</Green> per year</span>
-                    <Info>
+                    <CalculationInfo>
                         <p>5 kg of CO2 per hour of use (<a href='https://www.quietcleanpdx.org/wp-content/uploads/2019/11/Gas-Powered-Leaf-Blower-Emissions-Factsheet-11.12.pdf'>source</a>).</p>
                         <p>5 kg*45 days per year*3 people per hour*1 hour per day=675 kg of emissions per year</p>
-                    </Info>
+                    </CalculationInfo>
                 </Savings>
             </Action>
             <Action title='Connecting Street Vendors to the Grid'
@@ -139,10 +143,10 @@ Permanent link: https://perma.cc/N7QN-QDK6
                 <br />
                 <Savings>
                     <span>Saves ~<Green>6.7 MTCO₂e</Green> per year</span>
-                    <Info>
+                    <CalculationInfo>
                         .0690 kg per minute*90 minutes idling per day*180 days per year*6 buses doing this per day=6706 kg of CO₂ emissions per year
                         (<a href="https://natural-resources.canada.ca/energy/efficiency/communities-infrastructure/transportation/idling/4463">source</a>)
-                    </Info>
+                    </CalculationInfo>
                 </Savings>
             </Action>
             <Action title='Buseroo' {...{showDescription}}>
@@ -151,12 +155,12 @@ Permanent link: https://perma.cc/N7QN-QDK6
                 Students save money on car services and more equitable transportation.
                 <Savings>
                     <span>Saves ~<Green>1.7 MTCO₂e</Green> per year</span>
-                    <Info>
+                    <CalculationInfo>
                         <p>Average MPG is 25.7 (https://www.energy.gov/eere/vehicles/articles/fotw-1177-march-15-2021-preliminary-data-show-average-fuel-economy-new-light)</p>
                         <p>10 searches per day (from analytics) × 5 days per week × 36 weeks per school year × 1 ride per 3 searches = 600 rides saved per year</p>
                         <p>600 rides × 10 mile ride × 1 gallon gas/25.7 miles × 8.887 kg CO₂/gal gas × 1 metric ton/1000 kg=2.1 metric tons CO₂ per year</p>
                         {/* 469 searches × 1 ride/3 searches = 156 rides */}
-                    </Info>
+                    </CalculationInfo>
                 </Savings>
             </Action>
             <Action title='Stone House Group Internship' {...{showDescription}}>
