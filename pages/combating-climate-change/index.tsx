@@ -15,7 +15,7 @@ import Prototype from '@/components/by-page/connecting-street-vendors-to-the-gri
 
 export default function CCC() {
     const [showDescription, setShowDescription]=useState<boolean>(true);
-    let emissionsSaved=243+.675+6.7+1.7;
+    let emissionsSaved=331+.675+6.7+1.7;
 
     return <Page noPadding seo={{
         title: 'Climate Change | Joel\'s Initiatives'
@@ -42,8 +42,8 @@ export default function CCC() {
                 <Image src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='solar panel' width={26} height={20} className='ml-3 inline' />
             } {...{showDescription}}>
                 <div className='relative'>
-                    <p>While learning about different energy sources, I realized that my school&apos;s empty rooftops had great potential for solar energy. I measured the rooftops, created solar models in HelioScope (image below), calculated savings, and gathered quotes from two companies. I presented to the administration and board of trustees, who agreed to a 410 kW solar PPA arrangement (enough to power 40+ households) that will cover six buildings, promote renewable energy, and save the school tens of thousands of dollars every year.</p>
-                    <p>85% of New York City&apos;s electricity comes from fossil fuels. This installation will generate 610 megawatt-hours of clean electricity per year.</p>
+                    <p>While learning about different energy sources, I realized that my school&apos;s empty rooftops had great potential for solar energy. I measured the rooftops, created solar models in HelioScope (image below), calculated savings, and gathered quotes from two companies. I presented to the administration and board of trustees, who agreed to a 582 kW solar PPA arrangement (enough to power 55 households) that will cover six buildings, promote renewable energy, and save the school tens of thousands of dollars every year.</p>
+                    <p>85% of New York City&apos;s electricity comes from fossil fuels. This installation will generate 867 megawatt-hours of clean electricity per year.</p>
                         {/* My solar installation makes NYC&apos;s electricity <Green>0.0075%</Green> more renewable.</p> */}
                     <b>Cobenefits:</b>
                     <ul>
@@ -66,7 +66,7 @@ export default function CCC() {
                 </div> */}
 
                 <p className='d:absolute d:top-0 d:right-0'>
-                    Will save ~<Green>243 MTCO₂e</Green> each year
+                    Will save ~<Green>331 MTCO₂e</Green> each year
                     <Info>
                         <Markdown>{`
 ### Grid Emissions
@@ -76,10 +76,9 @@ Permanent link: https://perma.cc/N7QN-QDK6
 817.9 lb CO2e/MWh × 1 metric ton / 2204.62 lb = 0.371 metric tons CO2e/MWh
 
 ### Solar Savings
-410 kw installation × 4.08 hours/day (average sunlight in NYC from [this source](https://perma.cc/GP5Z-YUD3)) × 365 days per year × 1 MWh/1000 kWh = 610 MWh/year
-610 MWh/year from solar × .371 metric tons CO₂ / MWh = 226 metric tons CO₂ / year
+582 kW installation × 4.08 hours/day (average sunlight in NYC from [this source](https://perma.cc/GP5Z-YUD3)) × 365 days per year × 1 MWh/1000 kWh = 867 MWh/year
+867 MWh/year from solar × .371 metric tons CO₂ / MWh = 322 metric tons CO₂ / year
 
-Including the 30 kW solar installation I got fixed, it saves 243 MTCO2e per year
                         `.trim()}</Markdown>
                     </Info>
                 </p>
@@ -118,12 +117,12 @@ Including the 30 kW solar installation I got fixed, it saves 243 MTCO2e per year
             <Action title='Connecting Street Vendors to the Grid'
             {...{showDescription}}>
                 <Prototype className='m:hidden' style={{ zoom: .7, marginLeft: -50, float: 'right', position: 'relative', right: -100 }} />
-                There are thousands of street vendors in NYC using gas generators for their electricity. Each vendor burns 2000 gallons of gas per year on average, releasing 18 MTCO₂e. I am attempting to connect street vendors to the grid with the support of the Street Vendor Project. Each vendor connected to the grid will save 18 MTCO₂e per year. If all vendors connected to grid, we would save <Green>18,000 MTCO₂e</Green> per year.<Info>Assuming half of vendors use generators and there are 20,000 street vendors</Info>
+                There are thousands of street vendors in NYC using gas generators for their electricity. Each vendor burns 450 gallons of gas per year on average, releasing 4 MTCO₂e. I am attempting to connect street vendors to the grid with the support of the Street Vendor Project. Each vendor connected to the grid will save 4 MTCO₂e per year. If all vendors connected to grid, we would save <Green>40,000 MTCO₂e</Green> per year.<Info>Assuming half of vendors use generators and there are 20,000 street vendors</Info>
                 <br />
                 <Link href='/connecting-street-vendors-to-the-grid'>Learn more</Link>.
-                <Savings>
-                    Will save <Green>18 MTCO₂e</Green> per year
-                </Savings>
+                {/* <Savings>
+                    Will save <Green>4 MTCO₂e</Green> per vendor per year
+                </Savings> */}
             </Action>
             <Action title='Electric Ferries'
             icon={
@@ -156,6 +155,7 @@ Including the 30 kW solar installation I got fixed, it saves 243 MTCO2e per year
                         <p>Average MPG is 25.7 (https://www.energy.gov/eere/vehicles/articles/fotw-1177-march-15-2021-preliminary-data-show-average-fuel-economy-new-light)</p>
                         <p>10 searches per day (from analytics) × 5 days per week × 36 weeks per school year × 1 ride per 3 searches = 600 rides saved per year</p>
                         <p>600 rides × 10 mile ride × 1 gallon gas/25.7 miles × 8.887 kg CO₂/gal gas × 1 metric ton/1000 kg=2.1 metric tons CO₂ per year</p>
+                        {/* 469 searches × 1 ride/3 searches = 156 rides */}
                     </Info>
                 </Savings>
             </Action>
