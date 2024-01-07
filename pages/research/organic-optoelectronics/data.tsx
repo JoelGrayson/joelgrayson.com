@@ -4,6 +4,7 @@ import Link from 'next/link';
 export default function DataPage() {
     return <Page>
         <Data />
+        <Link href='/research/organic-optoelectronics'>See all info</Link>.
     </Page>;
 }
 
@@ -15,7 +16,6 @@ export function Data() {
             <li><a href="/research/organic-optoelectronics/SEM-photos.zip">SEM Photos</a></li>
             <li><a href="/research/organic-optoelectronics/microspectroscopy-absorbance-data.zip">Microspectroscopy Absorbance Data</a></li>
         </ul>
-        <Link href='/research/organic-optoelectronics'>See all info</Link>.
     </>;
 }
 

@@ -258,6 +258,8 @@ export default function NYCGoverment() {
         Summative: Write an essay answering the following prompt: Why do non-governmental agencies exist? How do they organize themselves and interact with the government?
         </p>
 
+        {/* <p>Watch <a href='https://www.kanopy.com/en/product/my-brooklyn-demystifying-gentrification' target='_blank'>My Brooklyn</a>, a film about gentrification in Downtown Brooklyn.</p> */}
+
         {/* TODO: insert course notes https://drive.google.com/drive/folders/14nZ9QgbKep7FxUL_hEuR81PILg49WHpl */}
         {/* TODO: insert my writing and initial reflection */}
         {/* TODO: insert materials in overview so people know what Kivelson is */}
@@ -268,6 +270,20 @@ export default function NYCGoverment() {
 
         {/* <h2>About</h2> */}
         {/* <Image width={262.5} height={350} src="/nyc/nyc-government/municipal-building.jpg" alt="Municipal Building" className='inline' /> */}
+        <h3>Resources</h3>
+        <ul>
+            <li><a target='_blank' href='https://nycadmincode.readthedocs.io'>Administrative Code</a></li>
+            <li><a target='_blank' href='https://intro.nyc/local-laws'>Local Laws</a></li>
+            <li><a href="https://www.nyc.gov/site/civicengagement/our-programs/community-boards.page">Civic Engagement Commission’s Resources</a></li>
+            <li><a href="https://www.amazon.com/What-Makes-New-York-City-ebook/dp/B07JDGMY7L/ref=sr_1_11?crid=140T8B2PSDWSH&keywords=new+york+city+government&qid=1680284825&s=books&sprefix=new+york+city+gove%2Cstripbooks%2C92&sr=1-11">What Makes New York City Run?: A Citizen&apos;s Guide to How City Government Works</a> by Adrienne Kivelson (2018) </li>
+            <li>Adrienne Kivelson - City Affairs Chair of NYC League of Women Voters </li> 
+            <li><a href="https://www.rutgersuniversitypress.org/new-york-city-politics/9780813586663">New York City Politics: Governing Gotham</a> by Bruce F. Berg (2018)</li>
+            <li><a href="https://codelibrary.amlegal.com/codes/newyorkcity/latest/overview">AMLegal</a> - Administrative Code, Charter, and Rules</li>
+            <li>CB1 monthly minutes, reports, resolutions, and other online archives </li>
+        </ul>
+
+
+        
         <h3>Logistics</h3>
         <p>We met twice a week in the fall of 2023 for a total of 25 classes.</p>
         <p>Thank you, Mr. Kildahl.</p>
