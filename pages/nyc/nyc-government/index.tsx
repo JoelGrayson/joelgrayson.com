@@ -7,7 +7,9 @@ import { PDFIcon } from '@/components/icons';
 export default function NYCGoverment() {
     const root='/nyc/nyc-government/';
     
-    return <Page bottomPadding>
+    return <Page bottomPadding seo={{
+        title: 'NYC Government Curriculum'
+    }}>
         <div className='flex justify-center'>
             <div className='relative w-[48ch]'>
                 <h1 className='m:text-4xl my-3'>NYC Government</h1>

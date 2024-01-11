@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Client } from 'pg';
 import notifyJoel from '../../../helpers/notifyJoel';
 import prisma from '@/data/prisma/client';
 

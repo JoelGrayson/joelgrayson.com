@@ -1,7 +1,6 @@
 import Page from '@/components/page/DefaultPage';
 import Flag from '@jcomponents/flag';
 import { Yt } from '@/components/by-page/machines/helpers';
-import Button from '@jcomponents/button';
 import Link from 'next/link';
 
 export default function NYC() {
@@ -41,11 +40,9 @@ export default function NYC() {
         <h2>NYC Government Course</h2>
         <p>From September 2023 to January 2024, I am taking an independent study in NYC Government with Mr. Kildahl.</p>
         <p>Since I have benefited so much from resources like Khan Academy and MIT OCW, I am publishing our curriculum here.</p>
-        <Button>
-            <Link href='/nyc/nyc-government' className='unstyled'>
-                Go to NYC Government Self-Paced Course
-            </Link>
-        </Button>
+        <Link href='/nyc/nyc-government' className='button'>
+            Go to NYC Government Self-Paced Course
+        </Link>
 
         <h2>Manhattan Community Board 1 Member</h2>
         <p>Being a community board member has been an exciting and rewarding experience. I have enjoyed learning how NYC Government works, talking with different department liaisons, making friends with other board members, and am grateful to be a part of a group of inspiring involved community members.</p>
