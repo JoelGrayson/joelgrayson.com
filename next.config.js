@@ -2,7 +2,7 @@
 
 const withMDX=require('@next/mdx')();
 const jredirects=require('./jredirects/dist');
-const { withPlausibleProxy }=require('next-plausible')
+const { withPlausibleProxy }=require('next-plausible');
 
 const nextConfig={
     reactStrictMode: true,

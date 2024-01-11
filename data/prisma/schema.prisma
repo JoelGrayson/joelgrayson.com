@@ -64,3 +64,10 @@ model Contact {
     message String
     origin  String
 }
+
+model LirongArtEmailList {
+    id        String   @id @default(cuid())
+    email     String   @unique
+    name      String
+    dateAdded DateTime @default(now())
+}
