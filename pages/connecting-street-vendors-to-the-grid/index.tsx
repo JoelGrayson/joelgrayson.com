@@ -2,6 +2,7 @@ import Prototype from '@/components/by-page/connecting-street-vendors-to-the-gri
 import { Yt } from '@/components/by-page/machines/helpers';
 import ConnectingStreetVendorstotheGridPage from '@/components/page/ConnectingStreetVendorstotheGridPage';
 import { P, Citation, Footnote as JFootnote } from '@jcomponents/writing-components';
+import Image from 'next/image';
 
 export default function ConnectingStreetVendorsToTheGrid() {
     return <ConnectingStreetVendorstotheGridPage bottomPadding seo={{
@@ -31,11 +32,14 @@ export default function ConnectingStreetVendorsToTheGrid() {
         <ul>
             <li>10/23/23 Feasibility assessed with electricians</li>
             <li>10/31/23 Meeting Mohamed Attia (Street Vendor Project&apos;s Managing Director)</li>
-            {/* <li>11/16 Spoke with Council Member Krishnan</li> */}
             <li>Meeting with MOCEJ</li>
             <li>12/18/23 Manhattan Community Board 1 Environmental Protection Committee meeting with DOT, ConEdison, and MOCEJ</li>
-            <li>2024 Pilot program</li>
+            <li>
+                12/1/2023 Speaking with vendors and Councilmember Krishnan&apos;s office in Jackson Heights, Queens
+                <Image src='/image/connecting-street-vendors-to-the-grid/speaking-with-vendors.jpg' alt='Connecting Street Vendors to the Grid' width={280} height={210} />
+            </li>
         </ul>
+
 
 
         <h3 className='mt-12'>Citations</h3>
