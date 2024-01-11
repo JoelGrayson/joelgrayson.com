@@ -70,4 +70,5 @@ model LirongArtEmailList {
     email     String   @unique
     name      String
     dateAdded DateTime @default(now())
+    origin    String?
 }
