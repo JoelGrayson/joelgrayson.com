@@ -8,6 +8,7 @@ export default function Maths() {
     return (
         <Page>
             <h1 className='text-center'>Maths</h1>
+
             <div
                 className={css`
                     display: grid;
@@ -49,6 +50,8 @@ export default function Maths() {
                     <div>Crustless Pizza Pieces Recurrence Problem</div>
                 </Subject>
             </div>
+
+            <Image src="/maths/elevator-pi.jpg" alt="Elevator with Digits of Pi" width='150' height='168' className='mx-auto my-10' />
         </Page>
     );
 }
