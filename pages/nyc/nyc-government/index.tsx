@@ -151,20 +151,7 @@ export default function NYCGoverment() {
             <PDFIcon></PDFIcon>
         </Link>
 
-        <h3>Overarching Observations</h3>
-        <ul>
-            <li>The Wendy Chapman Rule: all City Hall officials move at once. You may go from getting &quot;no&quot;s or no responses for years from different officials to all of a sudden one day they all say &quot;yes.&quot;</li>
-            <li>The Third Law of Historical Motion: </li>
-            <li>
-                There are often overlapping agencies governing the same property. Just take a look at this CB1 resolution:
-                <Image src={root+'overlapping-resolution.png'} alt="Overlapping resolution" width={430} height={89} />
-            </li>
-            <li>
-                Is CB1 what replaced congregations for me since I am an atheist? Perhaps, because we meet regularly as a parochial entity. The definition of &quot;church&quot; can be more flexible for modern context. Mr. Kildahl sees Riverdale as a church because it is one of the sources of his faith.
-            </li>
-            <li>Assemblyman Ron Kim said that it is easier to make your opponent&apos;s voters not turn out to vote than it is to excite voters to vote for you. I have noticed this in my council district&apos;s 2023 election. There were 23,212 voters in 2021 for Manhattan Council District 1 but only 12,486 in 2023 (<a href='https://ballotpedia.org/Christopher_Marte'>source</a>). This low turnout occurred after attack ads against the incument Councilmember Marte from Susan Lee in the primary and Helen Qiu in the general election were put all over the district: on the buildings, in shops, and in the mail. Turnout went down by about half, likely because these ads made Marte supporters not want to vote.</li>
-        </ul>
-
+        
         <h3>Unit 3: City Council</h3>
 
 
@@ -181,7 +168,7 @@ export default function NYCGoverment() {
         <strong>Module 3.2: Field Trip</strong>
         </p>
         <p>
-        Watch a virtual City Council stated meeting from the <a href="https://legistar.council.nyc.gov/Calendar.aspx">calendar</a>. Then, attend a City Council stated meeting in person on the Chambers’ Observatory Mezzanine. Just ike in British Parliament, you can sit above the council to watch it proceed. Write a reflection on what you notice and find interesting.
+        Watch a virtual City Council stated meeting from the <a href="https://legistar.council.nyc.gov/Calendar.aspx">calendar</a>. Then, attend a City Council stated meeting in person on the Chambers’ Observatory Mezzanine. Just like in British Parliament, you can sit above the council to watch it proceed. Write a reflection on what you notice and find interesting.
         </p>
         <p>
         Here is my reflection.
@@ -259,6 +246,21 @@ export default function NYCGoverment() {
         <p>
         Summative: Write an essay answering the following prompt: Why do non-governmental agencies exist? How do they organize themselves and interact with the government?
         </p>
+
+
+        <h3>Overarching Observations</h3>
+        <ul>
+            <li>The Wendy Chapman Rule: all City Hall officials move at once. You may go from getting &quot;no&quot;s or no responses for years from different officials to all of a sudden one day they all say &quot;yes.&quot;</li>
+            <li>The Third Law of Historical Motion: </li>
+            <li>
+                There are often overlapping agencies governing the same property. Just take a look at this CB1 resolution:
+                <Image src={root+'overlapping-resolution.png'} alt="Overlapping resolution" width={430} height={89} />
+            </li>
+            <li>
+                Is CB1 what replaced congregations for me since I am an atheist? Perhaps, because we meet regularly as a parochial entity. The definition of &quot;church&quot; can be more flexible for modern context. Mr. Kildahl sees Riverdale as a church because it is one of the sources of his faith.
+            </li>
+            <li>Assemblyman Ron Kim said that it is easier to make your opponent&apos;s voters not turn out to vote than it is to excite voters to vote for you. I have noticed this in my council district&apos;s 2023 election. There were 23,212 voters in 2021 for Manhattan Council District 1 but only 12,486 in 2023 (<a href='https://ballotpedia.org/Christopher_Marte'>source</a>). This low turnout occurred after attack ads against the incument Councilmember Marte from Susan Lee in the primary and Helen Qiu in the general election were put all over the district: on the buildings, in shops, and in the mail. Turnout went down by about half, likely because these ads made Marte supporters not want to vote.</li>
+        </ul>
 
         {/* <p>Watch <a href='https://www.kanopy.com/en/product/my-brooklyn-demystifying-gentrification' target='_blank'>My Brooklyn</a>, a film about gentrification in Downtown Brooklyn.</p> */}
 
