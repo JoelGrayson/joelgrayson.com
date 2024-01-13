@@ -1,0 +1,41 @@
+import LearnPage from "@/components/page/LearnPage";
+export default function LearningContent({children}) {
+	return <LearnPage markdown bottomPadding>{children}</LearnPage>;
+}
+
+# CSS Grid
+
+Create responsive CSS grid that changes the number of columns upon resizing.
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-items: center;
+    align-items: center;
+    gap: 1rem;
+}
+```
+
+```html
+<h1>Photo Gallery</h1>
+<div class="grid-container">
+    <img width="200px" src="https://picsum.photos/300/300" />
+    <img width="200px" src="https://picsum.photos/300/300" />
+    <img width="200px" src="https://picsum.photos/300/300" />
+    <img width="200px" src="https://picsum.photos/300/300" />
+    <img width="200px" src="https://picsum.photos/300/300" />
+    <img width="200px" src="https://picsum.photos/300/300" />
+</div>
+```
+
+
+<h1>Photo Gallery</h1>
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', justifyItems: 'center', alignItems: 'center', gap: '1rem'}}>
+    <img width="200px" src="https://picsum.photos/300/300" />
+    <img width="200px" src="https://picsum.photos/300/300" />
+    <img width="200px" src="https://picsum.photos/300/300" />
+    <img width="200px" src="https://picsum.photos/300/300" />
+    <img width="200px" src="https://picsum.photos/300/300" />
+    <img width="200px" src="https://picsum.photos/300/300" />
+</div>

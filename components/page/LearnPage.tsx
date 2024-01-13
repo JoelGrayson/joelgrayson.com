@@ -7,13 +7,14 @@ import Favicons from './parts/Favicons';
 import Button from '@jcomponents/button';
 import Link from 'next/link';
 
-export default function LearnPage({ children, noPadding, bottomPadding, seo, noPageStyling=false, markdown, ...props }: {
+export default function LearnPage({ children, noPadding, bottomPadding, seo, noPageStyling=false, markdown, noContainer=false, ...props }: {
     children: any;
     noPadding?: boolean;
     bottomPadding?: boolean;
     seo?: SEOProps;
     noPageStyling?: boolean;
     markdown?: boolean;
+    noContainer?: boolean;
     [key: string]: any;
 }) {
     return <>
@@ -37,7 +38,7 @@ export default function LearnPage({ children, noPadding, bottomPadding, seo, noP
         }}>
             { noPadding
                 ? children
-                : <div id='pageNamespace' className={`j_container j_max-w ${noPageStyling ? '' : pageStyle.pageNamespace}`}>
+                : <div id='pageNamespace' className={`${noContainer ? '': 'j_container j_max-w'} ${noPageStyling ? '' : pageStyle.pageNamespace}`}>
                     <Link href='/learn'>
                         <Button>↳ Return to Learn</Button>
                     </Link>
