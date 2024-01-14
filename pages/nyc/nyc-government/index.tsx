@@ -138,8 +138,9 @@ export default function NYCGoverment() {
         <strong>Module 2.3: The Community Boards</strong>
         </p>
         <p>
-        Read CB1&apos;s monthly minutes, reports, resolutions, and other online archives. Read <a href="https://drive.google.com/file/d/1HB2eJ6d1wxKb1sUSAcVZgLWQe0bhJGZg/view?usp=drive_link">Fordham Urban Law Journal&apos;s review of community boards&apos; history, present, and future <PDFIcon></PDFIcon></a>.
+        Read <a href={root+'Reimagining Community Input_ Past Present and Future of New York.pdf'}>Fordham Urban Law Journal&apos;s review of community boards&apos; history, present, and future <PDFIcon></PDFIcon></a>.
         </p>
+        <p>We met the author, Egor Shaknovskiy to ask him questions and learn more.</p>
         <p>
         Read <a href="https://www.nyc.gov/assets/planning/download/pdf/applicants/applicant-portal/lur.pdf">this chart</a> summarizing how ULURP works.
         </p>
@@ -194,11 +195,11 @@ export default function NYCGoverment() {
         <p>We have seen the names of many people repeated. Take a look at <a href={root+"names-of-positions"}>this list of names and positions
         </a>.</p>
 
-        <h3>Unit 4: Public Advocate (Ombudsman)</h3>
+        <h3>Unit 4: Accountability</h3>
 
 
         <p>
-        <strong>Module 4.1: Public Advocate Office</strong>
+        <strong>Module 4.1: Public Advocate (Ombudsman)</strong>
         </p>
         <p>
         Read Kivelson pages 24–25 on the public advocate. Find issues that former public advocates have brought up.
@@ -213,11 +214,21 @@ export default function NYCGoverment() {
         Formative: Write a paragraph about the importance of the public advocate. What has this role achieved? Is it too weak? Then, write a paragraph about the relationship between the public advocate and the Mayor and City Council. 
         </p>
 
+        <strong>Module 4.3: Budgeting Process</strong>
+        <p>Read&nbsp;
+            <a href="/nyc/nyc-government/How Budget Process Works.pdf">How Budget Process Works</a>
+            &nbsp;and&nbsp;
+            <a href="/nyc/nyc-government/Understanding the Budget.pdf">Understanding the Budget</a>
+            .
+        </p>
+        
 
+        <strong>Module 4.4: Comptroller</strong>
+        <p>Read Kivelson pages 25–27 to learn about the comptroller.</p>
+
+        
 
         <h3>Unit 5: Non-Government Organizations</h3>
-
-
         <p>
         Read page 56 of Kivelson to learn about the procurement process. Then, learn about the NGOs, union, and advocacy groups, including:
         </p>
@@ -239,11 +250,118 @@ export default function NYCGoverment() {
 
         <li>Rocking the Boat (founded as a Riverdale middle school club)
         </li>
+
         </ul>
+        <p>Keep a Google document log of government agencies with a summary of their impact.</p>
+        <a href={root+'NGOs.pdf'}>Here is our document</a>.
+        
+
+
+        <h3>Unit 6: State Court System</h3>
+        <div>
+        <strong>Module 6.1: State Courts</strong>
+        <p>In this unit, learn the functions and divisions of the different New York State courts, of which NYC is a part. Read:</p>
+        <ul>
+            <li><a href="https://video.dos.ny.gov/lg/handbook/html/the_judicial_system.html">The Judicial System · GitBook</a>
+            </li><li><a href={root+'NY Courts-Intro Guide.pdf'}>NY Courts-Intro Guide.pdf</a>
+            </li><li><a href="https://spectrumlocalnews.com/nys/central-ny/news/2022/03/01/covid-impact-on-ny-courts-still-felt--two-years-later">COVID impact on NY courts still felt, two years later</a>
+            </li><li><a href="https://www.findlaw.com/litigation/filing-a-lawsuit/civil-cases-vs-criminal-cases-key-differences.html">Civil Cases vs. Criminal Cases: Key Differences - FindLaw</a>
+            </li>
+        </ul>
+        </div>
+        <p>Notes were taken in <a href={root+'NYS Courts.pdf'}>this document</a>.</p>
+
+
+        
+        <h3>Unit 8: Federalism</h3>
+        <div>
         <p>
-        Keep a Google document log of government agencies with a summary of their impact.
+            <strong>Module 8.1: Relationship to the NY State Government</strong>
         </p>
         <p>
+            Just like city budget proposals go to the state government, many other agencies and processes are shared with the state government. How does the MTA operate? How do the city and state collaborate to run the MTA? Why did DeBlasio and Cuomo bicker all the time and over what? How do NYC and NYS courts relate? Read Chapter 3 of Berg.
+        </p>
+        <p>
+            Meet Assemblyman Ron Kim, Riverdale graduate. Prepared questions and took notes <a href={root+"Meeting Ron Kim.pdf"}>in this document</a>.
+        </p>
+        <p>
+            <strong>Module 8.2: Relationship to the Federal Government</strong>
+        </p>
+        <ul>
+            <li>How do projects receive federal funding? Learn about grants.
+            </li><li>Learn about the U.S. Army Corps and the role it is playing in coastal resiliency and other civil engineering projects.
+            </li><li>Read Chapter 4 of Berg.
+            </li></ul></div>
+
+        
+
+
+            <h3>Unit 9: Current Issues (Optional)</h3>
+            <div>
+            <p>
+                Depending on how much time this course takes, this unit can be skipped. Reports from the mayor or departments can be found <a href="https://www.nyc.gov/site/operations/performance/mmr.page">here</a>.
+            </p>
+            <p>
+                <strong>Module 9.1: Climate Resiliency</strong>
+            </p>
+            <p>
+                Read <a href="https://www.nyc.gov/assets/orr/pdf/publications/Coastal-Protection-Guidance.pdf">Coastal Protection Guidance</a> written partly by Jeff Galloway of MCB1. Then, read the United States Army Corps’ (USACE) NY-NJ HATS plan and think about the pros (preventing flooding) and cons (blocking views of the river).
+            </p>
+            <p>
+                Summative: Write an essay answering the prompt: Is USACE’s plan a good idea, and how does USACE compare to Lower Manhattan’s coastal resiliency?
+            </p>
+            <p>
+                <strong>Module 9.2: Local Laws</strong>
+            </p>
+            <p>
+                Learn how the local laws help fight climate change, such as local law 60, 64, and 97.
+            </p>
+            <p>
+                <strong>Module 9.2: Housing Crisis</strong>
+            </p>
+            <p>
+                Why has the construction of new housing been so scarce since the 1930s? In what ways are poor zoning regulations contributing to this (i.e., the Garment District only permits manufacturing buildings)? How is public housing created? Read pages 337–383 of the 2022 Mayor’s Management Report.
+            </p>
+            <p>
+                <strong>Module 9.3: Storefront Vacancies</strong>
+            </p>
+            <p>
+                Formative assessment: A vacancy tax has been thrown around as a way to prevent overly high tenant rates by taxing landlords for storefront vacancies. Write a paragraph or two in favor of or against enacting this policy.
+            </p>
+            <p>
+                <strong>Module 9.4: Immigration</strong>
+            </p>
+            <p>
+                NYC has committed to taking care of refugees, including those being bused in from Texas right now. How are immigrants and refugees supported and integrated into society by the government or NGOs?
+            </p>
+            <p>
+                <strong>Module 9.5: Homelessness</strong>
+            </p>
+            <p>
+                How does the government help homeless people? Read the <a href="https://www.nyc.gov/site/hpd/about/housing-blueprint.page">Housing Blueprint</a> government report.
+            </p>
+            <p>
+                <strong>Module 9.6: Prisons</strong>
+            </p>
+            <p>
+                How does the NYCDOC operate? How are the new prisons being built to replace Riker’s Island more humane? What sort of mental health services are available in the city?
+            </p>
+            <h3>Unit 10: Wrapping Up</h3>
+            <p>
+                <strong>Module 10.1: Reflection</strong>
+            </p>
+            <p>
+                Write a reflection about what your thoughts are on what the course covered. What are your recommendations for changing the structure of NYC’s government? Where is the city government underfunded or overfunded?
+            </p>
+            <p>
+                <strong>Module 10.2: Party</strong>
+            </p>
+            <p>
+                Play Inner City Blues by Joe Cocker. It embodies the passion that community board members have at addressing the city’s issues.
+            </p>
+            </div>
+
+        {/* TODO: insert coursework */}
         Summative: Write an essay answering the following prompt: Why do non-governmental agencies exist? How do they organize themselves and interact with the government?
         </p>
 
@@ -291,7 +409,8 @@ export default function NYCGoverment() {
         <h3>Logistics</h3>
         <p>We met twice a week in the fall of 2023 for a total of 25 classes.</p>
         <p>Thank you, Mr. Kildahl.</p>
-        <Image width={262.5} height={350} src="/nyc/nyc-government/joel-and-mr-kildahl.jpg" alt="Municipal Building" />
+        <Image width={325} height={350} src="/nyc/nyc-government/joel-and-mr-kildahl.jpg" alt="Joel and Mr. Kildahl" className='inline mx-3' />
+        <Image width={262.5} height={350} src="/nyc/nyc-government/municipal-building.jpg" alt="Municipal Building" className='inline' />
 
     </Page>;
 }
