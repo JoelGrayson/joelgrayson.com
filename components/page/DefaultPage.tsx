@@ -28,7 +28,13 @@ export default function Page({ children, noPadding, bottomPadding, seo, noPageSt
             position: 'relative',
             padding: 0, margin: 0,
             width: '100%',
-            minHeight: 'calc(100vh - 77px - 89px)', // fills the entire page (minus footer and header's heights)
+            // Fills the entire page (minus footer and header's heights)
+            minHeight: `calc(
+                100vh
+                - 77px ${/*header*/''}
+                - 129px ${/*footer*/''}
+                - 10px ${/*just in case*/''}
+            )`,
             paddingBottom: bottomPadding ? 60 : 0,
             ...props.style
         }}>
