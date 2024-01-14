@@ -12,8 +12,8 @@ export function Sites() { /* bullet points of all sites */
         <h1 className='text-center'>Sites</h1>
         <ul>
             <Site>joelgrayson.com</Site>
-            <Site>buseroo.com</Site>
-            <Site>lirongart.com</Site>
+            <Site>buseroo.com (startup)</Site>
+            <Site>lirongart.com (startup)</Site>
             <Site href='https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A'>youtube.com/@JoelGrayson (Slaphappy)</Site>
             <Site>studentsforelectricbuses.org</Site>
             <Site>luxpremierllc.com</Site>
@@ -22,8 +22,8 @@ export function Sites() { /* bullet points of all sites */
 
             <br />
             <h3>Coming Soon</h3>
-            <Site>bulletbrainstorm.com</Site>
-            <Site>shirtocracy.com</Site>
+            <Site>bulletbrainstorm.com (startup)</Site>
+            <Site>shirtocracy.com (startup)</Site>
         </ul>
     </>;
 }

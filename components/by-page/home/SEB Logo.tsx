@@ -10,14 +10,14 @@ export default function SEBLogo({ size=80, inline=false, style={} }: { size?: nu
         // onMouseLeave={()=>setRotating(true)}
     >
         <div className={styles.entire} style={{height: size, width: size}}>
-            <Image src='/image/home/seb-logo/entire.png' alt='Logo' height={80} width={80} />
+            <Image src='/image/home/seb-logo/entire.png' alt='Students for Electric Buses Logo' height={80} width={80} />
         </div>
         <div className={styles.inner} style={{height: size, width: size}}>
-            <Image alt='Outer logo' height={size} width={size} src='/image/home/seb-logo/inner.png' />
+            <Image alt='Inner Logo Piece' height={size} width={size} src='/image/home/seb-logo/inner.png' />
         </div>
         {/* <div className={rotating ? styles.rotatingOuter : styles.outer}> */}
         <div className={styles.rotatingOuter} style={{height: size, width: size}}>
-            <Image alt='Inner logo' height={size} width={size} src='/image/home/seb-logo/outer.png' />
+            <Image alt='Spinning Outer logo Piece' height={size} width={size} src='/image/home/seb-logo/outer.png' />
         </div>
     </div>;
 }
