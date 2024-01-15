@@ -1,16 +1,12 @@
 import Header from './headers/DefaultHeader';
 import Footer from './footers/DefaultFooter';
-import SEO, { SEOProps } from './parts/SEO';
 import pageStyle from '@/styles/page/page.module.css';
-import RedirectFromVercelAppToCom from './parts/RedirectFromVercelAppToCom';
-import Favicons from './parts/Favicons';
 
-export default function Page({ children, pathname='', noPadding, bottomPadding, seo, noPageStyling=false, ...props }: {
+export default function Page({ children, pathname='', noPadding, bottomPadding, noPageStyling=false, ...props }: {
     children: any;
     pathname?: string;
     noPadding?: boolean;
     bottomPadding?: boolean;
-    seo?: SEOProps;
     noPageStyling?: boolean;
     [key: string]: any;
 }) {

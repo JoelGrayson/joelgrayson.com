@@ -1,5 +1,5 @@
 import { gsap } from 'gsap';
-import Page from '../components/page-client/DefaultPage';
+import Page from '@/components/page-client/DefaultPage';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { BlogArticles } from '.';
-import BlogPage from 'src/components/blog/BlogPage';
+import BlogPage from '@/components/blog/BlogPage';
 
 export default function ArticleNotFound() {
     const article=useRouter().query.article;

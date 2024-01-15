@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Page from '@/components/page-client/DefaultPage';
 
 import SEBLogo from 'src/components/by-page/home/SEB Logo';
 import BtnIcon from 'src/components/by-page/home/BtnIcon';
