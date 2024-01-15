@@ -1,0 +1,27 @@
+import LearnPage from "@/components/page-client/LearnPage";
+export default function LearningContent({children}) {
+	return <LearnPage markdown bottomPadding>{children}</LearnPage>;
+}
+
+# How to Set up Plausible Analytics with Next.js
+1. `npm i next-plausible`
+2. Configure next.config.js like so:
+```js
+const { withPlausibleProxy }=require('next-plausible');
+const nextConfig={
+    ...
+};
+module.exports=withPlausibleProxy()(nextConfig);
+```
+3. Add \<PlausibleProxy\> to `_app.tsx`:
+```tsx
+import PlausibleProvider from 'next-plausible';
+import type { AppProps } from 'next/app';
+
+export default function MyApp({ Component, pageProps }: AppProps) {
+    return <PlausibleProvider domain='joelgrayson.com' enabled>
+        <Component {...pageProps} />
+    </PlausibleProvider>;
+}
+```
+4. Add the website to your dashboard on [plausible.io](https://plausible.io/sites)
