@@ -13,25 +13,25 @@ export default function Page({ children, pathname='', noPadding, bottomPadding, 
     return <>
         {/* <RedirectFromVercelAppToCom /> */}
 
-        <Header pathname={pathname} /> {/* 77px */}
+        <Header pathname={pathname} /> {/* 52+12+12+1=77px */}
 
         <main {...props} style={{
             position: 'relative',
-            padding: 0, margin: 0,
+            padding: 0,
+            margin: 0,
             width: '100%',
             // Fills the entire page (minus footer and header's heights)
             minHeight: `calc(
                 100dvh
                 - 77px ${/*header*/''}
                 - 129px ${/*footer*/''}
-                - 10px ${/*just in case*/''}
             )`,
             paddingBottom: bottomPadding ? 60 : 0,
             ...props.style
         }}>
             { noPadding
                 ? children
-                : <div id='pageNamespace' className={`j_container j_max-w ${noPageStyling ? '' : pageStyle.pageNamespace}`}>{children}</div> //if center, wrap in centering container
+                : <div id='pageNamespace' className={`j_container ${noPageStyling ? '' : pageStyle.pageNamespace}`}>{children}</div> //if center, wrap in centering container
             }
         </main>
 

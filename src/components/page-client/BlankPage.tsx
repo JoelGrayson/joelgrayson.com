@@ -29,7 +29,7 @@ export default function BlankPage({ children, noPadding, bottomPadding, seo, noP
         }}>
             { noPadding
                 ? children
-                : <div id='pageNamespace' className={`j_container j_max-w ${noPageStyling ? '' : pageStyle.pageNamespace}`}>{children}</div> //if center, wrap in centering container
+                : <div id='pageNamespace' className={`j_container ${noPageStyling ? '' : pageStyle.pageNamespace}`}>{children}</div> //if center, wrap in centering container
             }
         </main>
     </>;

@@ -38,7 +38,7 @@ export default function LearnPage({ children, noPadding, bottomPadding, seo, noP
         }}>
             { noPadding
                 ? children
-                : <div id='pageNamespace' className={`${noContainer ? '': 'j_container j_max-w'} ${noPageStyling ? '' : pageStyle.pageNamespace}`}>
+                : <div id='pageNamespace' className={`${noContainer ? '': 'j_container'} ${noPageStyling ? '' : pageStyle.pageNamespace}`}>
                     <Link href='/learn'>
                         <Button>↳ Return to Learn</Button>
                     </Link>

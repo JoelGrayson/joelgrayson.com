@@ -33,14 +33,13 @@ export default function Page({ children, noPadding, bottomPadding, seo, noPageSt
                 100dvh
                 - 77px ${/*header*/''}
                 - 129px ${/*footer*/''}
-                - 10px ${/*just in case*/''}
             )`,
             paddingBottom: bottomPadding ? 60 : 0,
             ...props.style
         }}>
             { noPadding
                 ? children
-                : <div id='pageNamespace' className={`j_container j_max-w ${noPageStyling ? '' : pageStyle.pageNamespace}`}>{children}</div> //if center, wrap in centering container
+                : <div id='pageNamespace' className={`j_container ${noPageStyling ? '' : pageStyle.pageNamespace}`}>{children}</div> //if center, wrap in centering container
             }
         </main>
 
