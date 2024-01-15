@@ -1,4 +1,4 @@
-import Page from 'src/components/page/DefaultPage';
+import Page from '@/components/page-client/DefaultPage';
 // import { Subject } from 'pages/maths';
 // import { css } from '@emotion/css';
 // import Sites from 'pages/sites';

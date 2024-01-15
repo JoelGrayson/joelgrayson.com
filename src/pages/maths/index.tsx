@@ -1,4 +1,4 @@
-import Page from 'src/components/page/DefaultPage';
+import Page from '@/components/page-client/DefaultPage';
 import Link from 'next/link';
 import { css } from '@emotion/css';
 import Image from 'next/image';

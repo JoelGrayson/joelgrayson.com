@@ -1,4 +1,4 @@
-import SEO from 'src/components/page/parts/SEO';
+import SEO from '@/components/page-client/parts/SEO';
 import { useRouter } from 'next/router';
 
 export default function DaysUntil() { // /software/days-until?date=11.7.2022&event=test

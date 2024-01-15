@@ -1,5 +1,5 @@
 import { Yt } from "src/components/by-page/machines/helpers";
-import Page from "src/components/page/DefaultPage";
+import Page from "@/components/page-client/DefaultPage";
 import Link from "next/link";
 
 export default function Learn() {

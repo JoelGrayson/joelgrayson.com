@@ -1,4 +1,4 @@
-import Page from 'src/components/page/DefaultPage';
+import Page from '@/components/page-client/DefaultPage';
 import { P } from '@jcomponents/writing-components';
 import Link from 'next/link';
 

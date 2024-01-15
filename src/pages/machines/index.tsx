@@ -1,6 +1,6 @@
 import { machines } from 'src/data/machines';
 import Image from 'next/image';
-import Page from 'src/components/page/DefaultPage';
+import Page from '@/components/page-client/DefaultPage';
 import Container from '@jcomponents/container';
 import MiscellaneousBottom from 'src/components/by-page/machines/MiscellaneousBottom';
 

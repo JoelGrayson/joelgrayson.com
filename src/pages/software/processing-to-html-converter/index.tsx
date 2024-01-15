@@ -1,4 +1,4 @@
-import Page from 'src/components/page/DefaultPage';
+import Page from '@/components/page-client/DefaultPage';
 import Button from '@jcomponents/button';
 import { useState } from 'react';
 import Editor from '@monaco-editor/react';

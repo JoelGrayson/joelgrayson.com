@@ -1,8 +1,8 @@
 import localFont from 'next/font/local';
 import Link from 'next/link';
-import JThreeDots from 'src/components/page/headers/parts/JThreeDots';
+import JThreeDots from '@/components/page-client/headers/parts/JThreeDots';
 import Container from '@jcomponents/container';
-import SEO, { SEOProps } from 'src/components/page/parts/SEO';
+import SEO, { SEOProps } from '@/components/page-client/parts/SEO';
 
 const chomsky=localFont({ src: './chomsky-font/Chomsky.woff2' });
 

@@ -1,4 +1,4 @@
-import Page from 'src/components/page/DefaultPage';
+import Page from '@/components/page-client/DefaultPage';
 import Question from 'src/components/nyc-government/TestQuestion';
 
 export default function Unit1Quiz() {

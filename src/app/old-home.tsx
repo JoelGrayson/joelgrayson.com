@@ -1,12 +1,18 @@
 import Image from 'next/image';
-import Page from 'src/components/page/DefaultPage';
+import Page from '@/components/page-client/DefaultPage';
 
-import SEBLogo from 'src/components/by-page/home/SEB Logo';
-import BtnIcon from 'src/components/by-page/home/BtnIcon';
+import SEBLogo from '@/components/by-page/home/SEB Logo';
+import BtnIcon from '@/components/by-page/home/BtnIcon';
 import { useEffect, useState } from 'react';
+import { Metadata } from 'next';
 
 // TODO: add shadow to boxes
 // TODO: add shading gradient in boxes
+
+export const metadata: Metadata={
+    title: 'Joel Grayson',
+    description: 'The official website of the United Cells of Joel Grayson'
+};
 
 export default function Home() {
     const [hCInstalls, setHCInstalls]=useState<number | null>(null);
@@ -43,13 +49,7 @@ export default function Home() {
     // eslint-disable-next-line
     }, []);
 
-    return <Page seo={{
-        title: 'Joel Grayson',
-        description: 'The official website of the United Cells of Joel Grayson',
-        og: {
-            image: '/image/home/portraits/4.22.2023/Joel Grayson.webp'
-        }
-    }} noPadding>
+    return <Page noPadding>
         {/* Profile and Signature */}
         <div className='w-full h-[290px] m:h-[220px] p-0' style={{background: 'linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(216,216,216,1) 100%)'}}>
             {/* container for images same width as content */}

@@ -1,5 +1,5 @@
 import Cursor from 'src/components/Cursor';
-import Page from 'src/components/page/DefaultPage';
+import Page from '@/components/page-client/DefaultPage';
 import Button from '@jcomponents/button';
 import { useEffect, useMemo, useState } from 'react';
 // import Modal from '@jcomponents/modal';

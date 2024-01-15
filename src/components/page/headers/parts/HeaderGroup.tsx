@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import UpDownArrow from '../../../UpDownArrow';
 import Link from 'next/link';
@@ -11,6 +13,7 @@ export default function HeaderGroup({ title, children, link, className }: { titl
         <Link href={link || ''} className='unstyled'>
             <button
                 className={`
+                    unstyled
                     flex items-center text-black font-[15px] mx-[9px] bg-white rounded-[13px] py-[0.6rem] px-7 select-none
                     border-solid border-[#11111130] border-[0.2px] hover:bg-[#ffe062]  ${'' /* active: #ffd13c */}
                     mobile:px-[.5rem] mobile:py-[.3rem]

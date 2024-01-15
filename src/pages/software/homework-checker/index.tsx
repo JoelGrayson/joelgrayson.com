@@ -1,4 +1,4 @@
-import Page from 'src/components/page/DefaultPage';
+import Page from '@/components/page-client/DefaultPage';
 import Button from '@jcomponents/button';
 import Image from 'next/image';
 import Link from 'next/link';

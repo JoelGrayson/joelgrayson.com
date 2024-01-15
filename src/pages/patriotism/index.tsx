@@ -1,4 +1,4 @@
-import Page from 'src/components/page/DefaultPage';
+import Page from '@/components/page-client/DefaultPage';
 import { useState } from 'react';
 import NextImage from 'next/image';
 import { PlayAudioIcon } from 'src/components/icons';

@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import HeaderSubGroupArrow from './HeaderSubGroupArrow';
 
@@ -5,7 +7,7 @@ export default function HeaderSubGroup({title, children}: {title: string, childr
     const [hovered, setHovered]=useState(false); //hovered & open
     // const [hovered, setHovered]=[true, (e: any)=>{}]; //always open for testing
 
-    return <button className='relative w-full items-center p-0 m-0 flex'
+    return <button className='unstyled relative w-full items-center p-0 m-0 flex'
         onMouseEnter={()=>setHovered(true)}
         onMouseLeave={()=>setHovered(false)}
         style={{ height: '24px' }}

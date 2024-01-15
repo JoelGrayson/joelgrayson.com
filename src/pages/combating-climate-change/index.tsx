@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Page from 'src/components/page/DefaultPage';
+import Page from '@/components/page-client/DefaultPage';
 import SEBLogo from 'src/components/by-page/home/SEB Logo';
 import Image from 'next/image';
 import styles from '@/styles/ccc/sections.module.css';

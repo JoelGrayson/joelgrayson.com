@@ -1,4 +1,4 @@
-import LearnPage from "src/components/page/LearnPage";
+import LearnPage from "@/components/page-client/LearnPage";
 import Button from "@jcomponents/button";
 export default function LearningContent() {
 	return <LearnPage markdown bottomPadding>

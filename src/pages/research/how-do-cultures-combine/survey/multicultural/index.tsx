@@ -11,7 +11,7 @@ import { races, type Race, relations, type Relation, type Strength, type Multicu
 import Missing from 'src/components/research/survey/Missing';
 import Circles from 'src/components/research/survey/Circles';
 import { theme, MAX_NUM_CULTURES } from 'src/components/research/survey/config';
-import BlankPage from 'src/components/page/BlankPage';
+import BlankPage from '@/components/page-client/BlankPage';
 
 export default function Survey() {
     const [formState, setFormState]=useState<'filling out' | 'error' | 'loading' | 'submitted'>('filling out');
