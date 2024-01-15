@@ -1,6 +1,6 @@
 #notifications-container {
     width: 315px;
-    height: 98vh;
+    height: 98dvh;
     position: absolute;
     pointer-events: none; /* Allows interaction with elements below notification-container */
     overflow-x: hidden;

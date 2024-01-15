@@ -31,7 +31,7 @@ export default function IcosahedronNavigation() {
             </span></Link>
         </div>
 
-        <iframe src='/maths/icosahedron-navigation/Icosahedron Navigation.pdf' width='100%' style={{height: '90vh'}} />
+        <iframe src='/maths/icosahedron-navigation/Icosahedron Navigation.pdf' width='100%' style={{height: '90dvh'}} />
         
     </Page>;
 }

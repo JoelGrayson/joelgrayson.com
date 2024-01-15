@@ -51,7 +51,7 @@ export default function Gallery({ images, renderChildren, galleryOpen, setGaller
             top: 0,
             left: 0,
             width: '100vw',
-            height: '100vh',
+            height: '100dvh',
             backgroundColor: 'white',
             zIndex: 1,
             overflow: 'hidden'

@@ -14,46 +14,46 @@ h1 {
     background-color: rgb(168, 223, 245);
     position: absolute;
     top: 0;
-    height: 90vh;
+    height: 90dvh;
     width: 100%;
     padding: 0 1.5%;
 }
 .cabbage {
     position: absolute;
-    top: -10vh; /* 80vh is hitting soil, 90vh is hidden under soil */
-    width: 10vh;
+    top: -10dvh; /* 80dvh is hitting soil, 90dvh is hidden under soil */
+    width: 10dvh;
 }
 .cabbage:hover {
     /* cursor: url('img/turnip selected.png'), auto; */
 }
 .farmer {
     position: absolute;
-    bottom: 10vh;
-    height: 12vh;
+    bottom: 10dvh;
+    height: 12dvh;
     left: 0%; /* Controls X */
 }
 .farmer img {
-    height: 12vh;
+    height: 12dvh;
 }
 #umbrellaContainer {
     position: absolute;
-    bottom: 10vh;
+    bottom: 10dvh;
 }
 .umbrella {
-    height: 15vh;
+    height: 15dvh;
 }
 
 #muffinField {
     position: absolute;
     bottom: 0;
-    height: 10vh;
+    height: 10dvh;
     width: 100%;
     background: rgb(156, 237, 148);
     display: flex;
     align-items: center;
 }
 .muffin {
-    height: 9vh;
+    height: 9dvh;
 }
 .muffin:nth-child(1) {
     margin-left: 30px;

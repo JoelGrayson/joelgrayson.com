@@ -23,7 +23,7 @@ export default function BlankPage({ children, noPadding, bottomPadding, seo, noP
             position: 'relative',
             padding: 0, margin: 0,
             width: '100%',
-            minHeight: 'calc(100vh - 77px - 89px)', // fills the entire page (minus footer and header's heights)
+            minHeight: 'calc(100dvh - 77px - 89px)', // fills the entire page (minus footer and header's heights)
             paddingBottom: bottomPadding ? 60 : 0,
             ...props.style
         }}>

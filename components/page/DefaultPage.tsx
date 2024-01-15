@@ -30,7 +30,7 @@ export default function Page({ children, noPadding, bottomPadding, seo, noPageSt
             width: '100%',
             // Fills the entire page (minus footer and header's heights)
             minHeight: `calc(
-                100vh
+                100dvh
                 - 77px ${/*header*/''}
                 - 129px ${/*footer*/''}
                 - 10px ${/*just in case*/''}

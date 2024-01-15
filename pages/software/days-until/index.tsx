@@ -6,7 +6,7 @@ export default function DaysUntil() { // /software/days-until?date=11.7.2022&eve
 
     const labelClass='w-[11ch] inline-block';
     if (!router.query.date)
-        return <div className='flex gap-3 items-center flex-col mt-[5vh]'>
+        return <div className='flex gap-3 items-center flex-col mt-[5dvh]'>
             <p>Specify an event below</p>
             <SEO seo={{
                 title: 'Days Until',
@@ -29,7 +29,7 @@ export default function DaysUntil() { // /software/days-until?date=11.7.2022&eve
     const event=router.query.event || 'event';
     const daysLeft=calculateDaysLeftUntil(new Date(`${router.query.date}`));
 
-    return <div className='flex justify-center items-center' style={{height: '100vh'}}>
+    return <div className='flex justify-center items-center' style={{height: '100dvh'}}>
         <SEO seo={{
             title: event ? `Days Until ${event}` : 'Days Until',
             description: 'Create an embeddable countdown to an event on a specified date'

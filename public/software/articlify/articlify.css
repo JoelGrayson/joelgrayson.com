@@ -15,7 +15,7 @@ body {
     background-color: white;
     padding: 0.3rem 1rem;
     margin-top: 1rem;
-    min-height: calc(100vh - .5rem - 1rem - 1rem);
+    min-height: calc(100dvh - .5rem - 1rem - 1rem);
 }
 
 code.light {
