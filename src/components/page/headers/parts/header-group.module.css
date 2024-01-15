@@ -1,0 +1,17 @@
+.header-group
+.header-group-content {
+    display: none;
+}
+.header-group:hover
+.header-group-content {
+    display: block;
+}
+
+.header-group
+.header-group-up-down-arrow {
+    transform: scaleY(1);
+}
+.header-group:hover
+.header-group-up-down-arrow {
+    transform: scaleY(-1);
+}
