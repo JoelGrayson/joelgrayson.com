@@ -1,0 +1,18 @@
+.header-group-item
+.left-arrow {
+    width: 37px;
+}
+.header-group-item:hover
+.left-arrow {
+    width: 33px;
+}
+
+.header-group-item:hover
+.header-group-item-text {
+    color: #fa00f2; /* backup for browsers not supporting text gradient */
+    background: -webkit-linear-gradient(45deg, #fa00f2 0%, #000acd 60%, #00299d 100%); /* blue/purple gradient text */
+    font-family: AvenirMedium;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: underline; /* does not work because of -webkit-background-clip */
+}

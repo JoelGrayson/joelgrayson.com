@@ -113,7 +113,8 @@ a:not(.unstyled) {
 }
 a:not(.unstyled):hover,
 a:not(.unstyled):hover *,
-.gradient-text {
+.gradient-text,
+.gradient-text-on-hover:hover {
     color: #fa00f2; /* backup for browsers not supporting text gradient */
     background: -webkit-linear-gradient(45deg, #fa00f2 0%, #000acd 60%, #00299d 100%); /* blue/purple gradient text */
     font-family: AvenirMedium;

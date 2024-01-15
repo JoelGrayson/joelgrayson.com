@@ -16,7 +16,7 @@ const StyledBtnIcon=styled.button`
 `;
 
 export default function BtnIcon({ href, children, target='_blank' }: { href: string; children: any; target?: string }) {
-    return <StyledBtnIcon role='link' tabIndex={-1} className='unstyled'>
+    return <StyledBtnIcon role='link' tabIndex={-1} className='unstyled relative'>
         <Link {...{href, target}} className='unstyled' style={{
             display: 'flex',
             flexDirection: 'column',

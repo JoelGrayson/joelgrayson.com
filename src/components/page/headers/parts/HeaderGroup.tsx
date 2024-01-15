@@ -1,14 +1,8 @@
-// 'use client';
-
 import UpDownArrow from './UpDownArrow';
-// import UpDownArrow from '../../../UpDownArrow';
 import styles from './header-group.module.css';
 import Link from 'next/link';
 
 export default function HeaderGroup({ pathname, title, children, link, className }: { pathname?: string; title: string; children: any; link?: string; className?: any }) {
-    // const [open, setOpen]=useState(false);
-    // const [open, setOpen]=[true, (_: any)=>{}]; //always open (for testing)
-    
     return <li className={`${className} header-group ${styles['header-group']}`}>
         {/* Active is when mouseDown on button */}
         <Link href={link || ''} className='unstyled'>
@@ -20,19 +14,10 @@ export default function HeaderGroup({ pathname, title, children, link, className
                     mobile:px-[.5rem] mobile:py-[.3rem]
                 `}
                 style={{fontFamily: 'AvenirMedium'}}
-                // onMouseEnter={()=>setOpen(true)}
                 tabIndex={0}
-                // onClick={e=>{
-                //     // setOpen(!open);
-                //     if (e.screenX===0 && e.screenY===0) { //User clicked enter after tabbing over. Attribution: https://stackoverflow.com/questions/61323376/how-to-know-that-a-onclick-event-is-called-from-mouseclick-or-pressing-the-enterd
-                //         e.preventDefault(); //prevent from going to the page itself, just open the dropdown
-                //     }
-                // }}
             >
                 {title}
-                {/* v    down arrow      ^ up arrow onHover */}
-                {/* <UpDownArrow dir={(open ? 'up' : 'down')} /> */}
-                <UpDownArrow dir={('down')} />
+                <UpDownArrow />
             </button>
         </Link>
 

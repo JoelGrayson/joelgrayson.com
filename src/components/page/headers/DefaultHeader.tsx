@@ -6,6 +6,7 @@ import HeaderSubGroup from './parts/HeaderSubGroup';
 
 import ViolinBow from './parts/ViolinBow';
 import JThreeDots from './parts/JThreeDots';
+import HeaderSubGroupItem from './parts/HeaderSubGroupItem';
 
 export default function DefaultHeader({ pathname='' }: { pathname?: string }) {
     return <header className={`
@@ -45,9 +46,9 @@ export default function DefaultHeader({ pathname='' }: { pathname?: string }) {
                     <HeaderGroupItem pathname={pathname} link='https://lirongart.com'>Lirong Art</HeaderGroupItem>
                     <HeaderGroupItem pathname={pathname} link='/zoom-timers'>Zoom Timers</HeaderGroupItem>
                     <HeaderSubGroup pathname={pathname} title='Tools'>
-                        <HeaderGroupItem pathname={pathname} arrow={false} link='/drive-download-link-generator'>Drive Download Link Generator</HeaderGroupItem>
-                        <HeaderGroupItem pathname={pathname} arrow={false} link='/chess'>Chess</HeaderGroupItem>
-                        <HeaderGroupItem pathname={pathname} arrow={false} link='/memorize-pi'>Memorize π</HeaderGroupItem>
+                        <HeaderSubGroupItem pathname={pathname} link='/drive-download-link-generator'>Drive Download Link Generator</HeaderSubGroupItem>
+                        <HeaderSubGroupItem pathname={pathname} link='/chess'>Chess</HeaderSubGroupItem>
+                        <HeaderSubGroupItem pathname={pathname} link='/memorize-pi'>Memorize π</HeaderSubGroupItem>
                     </HeaderSubGroup>
                 </HeaderGroup>
 

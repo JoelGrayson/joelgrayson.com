@@ -1,5 +1,6 @@
 .header-group
 .header-group-content {
+    /* Comment out the line below to always show it (in dev mode) */
     display: none;
 }
 .header-group:hover
