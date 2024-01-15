@@ -1,10 +1,8 @@
-/* <Tailwind */
+/* # Imports */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* > */
 
-/**|| <Font (sorted by boldness) */
 @font-face {
     font-family: Avenir;
     src: url('../public/styles/fonts/Avenir\ Book.ttf');
@@ -17,15 +15,16 @@
     font-family: Myriad;
     src: url('../public/styles/fonts/Myriad\ Pro\ Bold.ttf');
 }
-/* > */
 
-/**|| <DOMElements */
+
+/* # DOM Elements */
 html, body {
     padding: 0;  
     margin: 0;
     font-family: Avenir, AvenirMedium, Myriad Segoe UI, Roboto, Helvetica Neue, sans-serif;
 }
 
+/* ## Headers */
 h1, h2, h3, h4, h5 {
     line-height: 1.8;
 }
@@ -46,13 +45,28 @@ h4 { font-size: 1.3rem; margin-top: 6px; }
 h5 { font-size: 1.2rem; margin-top: 5px; }
 h6 { font-size: 1.1rem; margin-top: 4px; }
 
+/* ### Mobile-Friendly Headers */
+@media only screen and (max-width: 640px) {
+    h1 { font-size: 2.8rem; font-family: Myriad; margin-top: 10px; }
+    h2 { font-size: 2.0rem; margin-top: 8px; }
+    h3 { font-size: 1.6rem; margin-top: 7px; }
+    h4 { font-size: 1.3rem; margin-top: 6px; }
+    h5 { font-size: 1.2rem; margin-top: 5px; }
+    h6 { font-size: 1.1rem; margin-top: 4px; }
+}
+
+
+/* ## Formatting Tags */
 b, .bold {
     font-family: Myriad;
 }
+
 small {
     font-size: 65%;
 }
 
+
+/* ## List */
 ul:not(.unstyled) li {
     margin-left: 1.5rem;
     list-style-type: disc;
@@ -64,6 +78,7 @@ ul:not(.unstyled) li ul:not(.unstyled) li ul:not(.unstyled) li {
     list-style-type: square;
 }
 
+/* ## Code */
 code.light { /* light code like notion */
     font-family: monospace;
     display: flex;
@@ -88,11 +103,8 @@ details>summary {
     font-family: AvenirMedium;
 }
 
-input[type='submit'] {
-    cursor: pointer;
-}
 
-/* Links */
+/* ## Links */
 a, details>summary {
     cursor: pointer;
 }
@@ -110,9 +122,7 @@ a:not(.unstyled):hover *,
     text-decoration: underline; /* does not work because of -webkit-background-clip */
 }
 
-/* > */
-
-/* Form */
+/* ## Forms */
 input, textarea {
     border: 1px solid black;
     background-color: #dde5ff;
@@ -132,8 +142,14 @@ input:focus, textarea:focus {
     background-color: #d4e0fd;
 }
 
+input[type='submit'] {
+    cursor: pointer;
+}
 
-/**|| Custom Class Elements */
+
+/* # Custom Components */
+
+/* ## Container */
 .j_container, .container {
     /* @apply w-[100%] mx-auto leading-7 py-10; */
     width: 100%;
@@ -149,10 +165,7 @@ input:focus, textarea:focus {
 }
 
 
-/* > *
-
-
-/* Table */
+/* ## Table */
 .j_table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -171,7 +184,7 @@ input:focus, textarea:focus {
     text-align: left;
 }
 
-/* Table No Padding */
+/* ### Table No Padding */
 .j_table_no_padding {
     border-collapse: collapse;
     border-spacing: 0;
@@ -191,18 +204,8 @@ input:focus, textarea:focus {
 }
 
 
-/* Mobile */
-@media only screen and (max-width: 640px) {
-    h1 { font-size: 2.8rem; font-family: Myriad; margin-top: 10px; }
-    h2 { font-size: 2.0rem; margin-top: 8px; }
-    h3 { font-size: 1.6rem; margin-top: 7px; }
-    h4 { font-size: 1.3rem; margin-top: 6px; }
-    h5 { font-size: 1.2rem; margin-top: 5px; }
-    h6 { font-size: 1.1rem; margin-top: 4px; }
-}
 
-
-/* Animating */
+/* Animations */
 @keyframes blink {
     0% { opacity: 0; }
     50% { opacity: 1; }
@@ -266,14 +269,14 @@ button:not(.unstyled):disabled, .btn:disabled, .button:disabled {
 }
 
 
-/* Specifics for other libraries */
+/* # Specifics for other libraries */
 .MathJax>svg { display: inline; }
 
 .ant-segmented-item-selected {
     background-color: #ffd981 !important;
 }
 
-/* Markdown Container */
+/* ## Markdown Container */
 .markdown-container h1 {
     text-align: center;
     font-size: 2.5rem;
@@ -285,4 +288,3 @@ button:not(.unstyled):disabled, .btn:disabled, .button:disabled {
     border-radius: 4px;
 }
 
-/* > */
