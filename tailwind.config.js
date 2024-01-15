@@ -12,6 +12,9 @@ module.exports = {
     theme: {
         extend: {}
     },
+    blocklist: [
+        'container'
+    ],
     plugins: [
         tailwindPlugin(({ addVariant })=>{
             // 'mobile:red' or 'm:red' instead of 'black md:red'
