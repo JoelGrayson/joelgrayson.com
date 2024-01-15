@@ -1,10 +1,8 @@
-import { useContext, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import Link from 'next/link';
-import { PathContext } from './PathContext';
 
-export default function HeaderItem({ link /*a href's link*/, children, className }: { link: string, children: ReactNode; className?: any }) { //highlighted if is current page
-    const asPath=useContext(PathContext);
-    const isCurrentPage=link===asPath; //always yellow
+export default function HeaderItem({ pathname, link /*a href's link*/, children, className }: { pathname?: string; link: string, children: ReactNode; className?: any }) { //highlighted if is current page
+    const isCurrentPage=link===pathname; //always yellow
     
     return <li className={`m:flex m:justify-center ${className || ''}`}>
             {/* Active is when mouseDown on button */}

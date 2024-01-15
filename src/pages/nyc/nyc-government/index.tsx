@@ -5,7 +5,7 @@ import Flag from '@jcomponents/flag';
 import { PDFIcon } from 'src/components/icons';
 
 export default function NYCGoverment() {
-    const root = '/nyc/nyc-government/';
+    const root='/nyc/nyc-government/';
 
     return <Page bottomPadding seo={{
         title: 'NYC Government Curriculum'

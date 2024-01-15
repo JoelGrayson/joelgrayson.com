@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
-export default function HeaderGroupItem({link, children, arrow=true /* bool to show arrow */}: {children: any, link?: string, arrow?: boolean}) {
+export default function HeaderGroupItem({ pathname, link, children, arrow=true /* bool to show arrow */ }: { pathname?: string; children: any, link?: string, arrow?: boolean }) {
     const [hovered, setHovered]=useState(false); //hovered & open
     
     return <Link

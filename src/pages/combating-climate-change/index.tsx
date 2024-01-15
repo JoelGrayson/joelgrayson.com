@@ -76,12 +76,12 @@ export default function CCC() {
 ### Grid Emissions
 Emissions from [EPA egrid](https://www.epa.gov/egrid/summary-data) accessed 11.8.23
 Permanent link: https://perma.cc/N7QN-QDK6
-817.9 lb CO2e/MWh × 1 kg / 2.2 lb × 1 MWh / 1000 kWh = 0.371 kg CO2e/kWh
-817.9 lb CO2e/MWh × 1 metric ton / 2204.62 lb = 0.371 metric tons CO2e/MWh
+817.9 lb CO2e/MWh × 1 kg / 2.2 lb × 1 MWh / 1000 kWh=0.371 kg CO2e/kWh
+817.9 lb CO2e/MWh × 1 metric ton / 2204.62 lb=0.371 metric tons CO2e/MWh
 
 ### Solar Savings
-582 kW installation × 4.08 hours/day (average sunlight in NYC from [this source](https://perma.cc/GP5Z-YUD3)) × 365 days per year × 1 MWh/1000 kWh = 867 MWh/year
-867 MWh/year from solar × .371 metric tons CO₂ / MWh = 322 metric tons CO₂ / year
+582 kW installation × 4.08 hours/day (average sunlight in NYC from [this source](https://perma.cc/GP5Z-YUD3)) × 365 days per year × 1 MWh/1000 kWh=867 MWh/year
+867 MWh/year from solar × .371 metric tons CO₂ / MWh=322 metric tons CO₂ / year
 
                         `.trim()}</Markdown>
                     </CalculationInfo>
@@ -157,9 +157,9 @@ Permanent link: https://perma.cc/N7QN-QDK6
                     <span>Saves ~<Green>1.7 MTCO₂e</Green> per year</span>
                     <CalculationInfo>
                         <p>Average MPG is 25.7 (https://www.energy.gov/eere/vehicles/articles/fotw-1177-march-15-2021-preliminary-data-show-average-fuel-economy-new-light)</p>
-                        <p>10 searches per day (from analytics) × 5 days per week × 36 weeks per school year × 1 ride per 3 searches = 600 rides saved per year</p>
+                        <p>10 searches per day (from analytics) × 5 days per week × 36 weeks per school year × 1 ride per 3 searches=600 rides saved per year</p>
                         <p>600 rides × 10 mile ride × 1 gallon gas/25.7 miles × 8.887 kg CO₂/gal gas × 1 metric ton/1000 kg=2.1 metric tons CO₂ per year</p>
-                        {/* 469 searches × 1 ride/3 searches = 156 rides */}
+                        {/* 469 searches × 1 ride/3 searches=156 rides */}
                     </CalculationInfo>
                 </Savings>
             </Action>

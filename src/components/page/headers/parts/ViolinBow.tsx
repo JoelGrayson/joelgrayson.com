@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import { useRef, useLayoutEffect } from 'react';
@@ -9,7 +11,7 @@ export default function ViolinBow() {
         const offset=1;
         const dist=7;
         
-        const from = {
+        const from={
             x: -1*dist+offset,
             y: -1*dist+offset
         };

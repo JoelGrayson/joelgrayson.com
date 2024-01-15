@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import '../styles/globals.css';
 
-export const metadata: Metadata = {
+export const metadata: Metadata={
     title: 'Joel Grayson',
     description: 'Welcome to the United Cells of Joel Grayson',
     metadataBase: new URL('https://joelgrayson.com')

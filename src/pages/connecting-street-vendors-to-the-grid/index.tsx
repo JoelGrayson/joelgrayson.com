@@ -43,7 +43,7 @@ export default function ConnectingStreetVendorsToTheGrid() {
 
 
         <h3 className='mt-12'>Citations</h3>
-        <Footnote number={1} title={`12 hours × 3 kWh × 300 days a year = 10,800 kWh × 0.00171 MTCO₂e / kWh →
+        <Footnote number={1} title={`12 hours × 3 kWh × 300 days a year=10,800 kWh × 0.00171 MTCO₂e / kWh →
 18.5 MTCO₂e saved per converted vendor per year`} />
         <Footnote number={2} title='New York State Department of Environmental Conservation' href='https://www.dec.ny.gov/energy/99223.html' />
     </ConnectingStreetVendorstotheGridPage>;

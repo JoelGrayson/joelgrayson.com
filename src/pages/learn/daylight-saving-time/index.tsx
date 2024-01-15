@@ -32,7 +32,7 @@ interface Props {
 }
 
 /* @figmaId 1:47 */
-export const Diagram: FC<Props> = memo(function Diagram() {
+export const Diagram: FC<Props>=memo(function Diagram() {
   return (
     <div className={`${classes.root}`}>
       <div className={classes.rectangle1}></div>
