@@ -55,7 +55,7 @@ export default function Content() {
         }}>
             <BtnIcon href='/combating-climate-change#solar-for-riverdale' target='_self'>
                 <div style={{width: 50, height: 50, display: 'grid', placeItems: 'center'}}>
-                    <Image alt='solar' height={50} width={37.5} src='/image/ccc/solar-for-riverdale/solar-panel.png' />
+                    <Image alt='solar' height={50} width={37.5} src='/image/home/optimized/solar-for-riverdale.avif' />
                 </div>
                 <span>Solar for Riverdale</span>
             </BtnIcon> {/* sunbeam going down when hover */}
@@ -65,22 +65,22 @@ export default function Content() {
             </BtnIcon> {/* sunbeam going down when hover */}
             <BtnIcon href='/machines' target='_self'>
                 <div style={{width: 80, height: 69, display: 'grid', placeItems: 'center'}}>
-                    <Image alt='Combination Safe Machine' height={71} width={80} src='/image/home/machine.png' />
+                    <Image alt='Combination Safe Machine' height={80} width={71.3} src='/image/home/optimized/machine.avif' />
                 </div>
                 <span>Machines</span>
             </BtnIcon> {/* sunbeam going down when hover */}
             <BtnIcon href='https://buseroo.com'>
-                <Image alt='buseroo-logo' height={48} width={48} className='mb-0.5' src='/image/home/buseroo-logo.png' />
+                <Image alt='buseroo-logo' height={48} width={48} className='mb-0.5' src='/image/home/optimized/buseroo-logo.avif' />
                 <span>Buseroo.com</span>
                 { buserooSearches!=null && <Label>{buserooSearches} searches</Label> }
             </BtnIcon>
             <BtnIcon href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf'>
-                <Image alt='focus-logo' height={50} width={50} src='/image/home/focus-logo.png' />
+                <Image alt='focus-logo' height={50} width={50} src='/image/home/optimized/focus-logo.avif' />
                 <span>Focus</span>
                 { focusInstalls!=null && <Label>{focusInstalls} installs</Label> }
             </BtnIcon>
             <BtnIcon href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>
-                <Image alt='Homework Checker Logo' height={50} width={50} src='/image/home/homework-checker-logo.png' />
+                <Image alt='Homework Checker Logo' height={50} width={50} src='/image/home/optimized/homework-checker-logo.avif' />
                 <span className='text-[0.8rem]'>Homework Checker</span>
                 { hCInstalls!=null && <Label>{hCInstalls} installs</Label> }
             </BtnIcon>
@@ -89,6 +89,6 @@ export default function Content() {
 }
 
 function Label({children}: {children: any}) {
-    return <div className='bg-[#ffd166] px-1.5 text-sm py-0.5 rounded-lg border border-[#ecb715]'>{children}</div>;
+    return <div className='absolute bottom-2 bg-[#ffd166] px-1.5 text-sm py-0.5 rounded-lg border border-[#ecb715]'>{children}</div>;
 }
 

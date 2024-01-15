@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
+// import { NextConfig } from "next/types";
 
 const withMDX=require('@next/mdx')();
 const jredirects=require('./jredirects/dist');
 const { withPlausibleProxy }=require('next-plausible');
 
+// const nextConfig: NextConfig={
 const nextConfig={
     reactStrictMode: true,
     swcMinify: true,

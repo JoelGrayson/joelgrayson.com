@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from './header-group-item.module.css'
+import styles from './header-group-item.module.css';
 
 export default function HeaderGroupItem({ pathname, link, children }: { pathname?: string; children: any; link?: string }) {
     return <Link
