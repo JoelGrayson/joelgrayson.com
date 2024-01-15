@@ -11,6 +11,7 @@
 .header-group
 .header-group-up-down-arrow {
     transform: scaleY(1);
+    transition: transform .3s;
 }
 .header-group:hover
 .header-group-up-down-arrow {

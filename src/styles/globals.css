@@ -22,6 +22,7 @@ html, body {
     padding: 0;  
     margin: 0;
     font-family: Avenir, AvenirMedium, Myriad Segoe UI, Roboto, Helvetica Neue, sans-serif;
+    transition: all .3s ease;
 }
 
 /* ## Headers */
