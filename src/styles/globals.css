@@ -1,0 +1,290 @@
+/* # Imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: Avenir;
+    src: url('./fonts/Avenir\ Book.ttf');
+}
+@font-face {
+    font-family: AvenirMedium;
+    src: url('./fonts/Avenir\ Medium.ttf');
+}
+@font-face {
+    font-family: Myriad;
+    src: url('./fonts/Myriad\ Pro\ Bold.ttf');
+}
+
+
+/* # DOM Elements */
+html, body {
+    padding: 0;  
+    margin: 0;
+    font-family: Avenir, AvenirMedium, Myriad Segoe UI, Roboto, Helvetica Neue, sans-serif;
+}
+
+/* ## Headers */
+h1, h2, h3, h4, h5 {
+    line-height: 1.8;
+}
+h1 { font-size: 3.4rem; margin-top: 10px; }
+h1:not(.custom-font) {
+    font-family: Myriad;
+}
+h2:not(.custom-font),
+h3:not(.custom-font),
+h4:not(.custom-font),
+h5:not(.custom-font) {
+    font-family: AvenirMedium;
+}
+
+h2 { font-size: 2.1rem; margin-top: 8px; }
+h3 { font-size: 1.6rem; margin-top: 7px; }
+h4 { font-size: 1.3rem; margin-top: 6px; }
+h5 { font-size: 1.2rem; margin-top: 5px; }
+h6 { font-size: 1.1rem; margin-top: 4px; }
+
+/* ### Mobile-Friendly Headers */
+@media only screen and (max-width: 640px) {
+    h1 { font-size: 2.8rem; font-family: Myriad; margin-top: 10px; }
+    h2 { font-size: 2.0rem; margin-top: 8px; }
+    h3 { font-size: 1.6rem; margin-top: 7px; }
+    h4 { font-size: 1.3rem; margin-top: 6px; }
+    h5 { font-size: 1.2rem; margin-top: 5px; }
+    h6 { font-size: 1.1rem; margin-top: 4px; }
+}
+
+
+/* ## Formatting Tags */
+b, .bold {
+    font-family: Myriad;
+}
+
+small {
+    font-size: 65%;
+}
+
+
+/* ## List */
+ul:not(.unstyled) li {
+    margin-left: 1.5rem;
+    list-style-type: disc;
+}
+ul:not(.unstyled) li ul:not(.unstyled) li {
+    list-style-type: circle;
+}
+ul:not(.unstyled) li ul:not(.unstyled) li ul:not(.unstyled) li {
+    list-style-type: square;
+}
+
+/* ## Code */
+code.light { /* light code like notion */
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    padding: .5ch;
+    color: #eb5757;
+    background-color: #ededeb;
+    border-radius: .3ch;
+}
+code.dark { /* dark code like sublime */
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    padding: .5ch;
+    background-color: #222;
+    color: rgb(255, 77, 77);
+    border-radius: .3ch;
+}
+
+details>summary {
+    cursor: pointer;
+    font-family: AvenirMedium;
+}
+
+
+/* ## Links */
+a, details>summary {
+    cursor: pointer;
+}
+a:not(.unstyled) {
+    color: #0000e1;
+}
+a:not(.unstyled):hover,
+a:not(.unstyled):hover *,
+.gradient-text {
+    color: #fa00f2; /* backup for browsers not supporting text gradient */
+    background: -webkit-linear-gradient(45deg, #fa00f2 0%, #000acd 60%, #00299d 100%); /* blue/purple gradient text */
+    font-family: AvenirMedium;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: underline; /* does not work because of -webkit-background-clip */
+}
+
+/* ## Forms */
+input, textarea {
+    border: 1px solid black;
+    background-color: #dde5ff;
+    border-radius: 0.4rem;
+    padding: 0.2rem 0.8rem;
+}
+
+input:invalid, textarea:invalid {
+    background-color: #fde2f0;
+}
+  
+input:hover, textarea:hover {
+    background-color: #c4c9f2;
+}
+  
+input:focus, textarea:focus {
+    background-color: #d4e0fd;
+}
+
+input[type='submit'] {
+    cursor: pointer;
+}
+
+
+/* # Custom Components */
+
+/* ## Container */
+.j_container, .container {
+    /* @apply w-[100%] mx-auto leading-7 py-10; */
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.75rem;
+    padding: 0 2.5rem;
+}
+
+.j_max-w { /* page width */
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
+/* ## Table */
+.j_table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #555;
+}
+.j_table td, .j_table th {
+    padding: 16px;
+    border: 1px solid #555;
+}
+.j_table th {
+    text-align: center;
+    font-weight: bold;
+}
+.j_table td {
+    text-align: left;
+}
+
+/* ### Table No Padding */
+.j_table_no_padding {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #555;
+}
+.j_table_no_padding td, .j_table_no_padding th {
+    padding: 0 10px;
+    border: 1px solid #555;
+}
+.j_table_no_padding th {
+    text-align: center;
+    font-weight: bold;
+}
+.j_table_no_padding td {
+    text-align: left;
+}
+
+
+
+/* Animations */
+@keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.animate-blink {
+    animation: blink 1s infinite;
+}
+
+
+/* From https://joelgrayson.com/styles/button.v2.css */
+
+button:not(.unstyled), .btn, .button {
+    border: 1.1px solid #000;
+    border-radius: 3px;
+    padding: 5px 10px;
+    background-color: #e9e9e9;
+    position: relative;
+    top: 0;
+    user-select: none;
+
+    transition: top;
+    transition-duration: .1s;
+}
+button:not(.unstyled):hover, .btn:hover, .button:hover {
+    outline: 2.1px solid #111;
+    outline-offset: -2px;
+    filter: brightness(0.85) saturate(1.4);
+}
+button:not(.unstyled):active, .btn:active, .button:active {
+    border-radius: 2px;
+	top: 1.1px;
+    filter: brightness(0.8) saturate(1.4);
+}
+button:not(.unstyled):disabled, .btn:disabled, .button:disabled {
+    outline: none;
+}
+.btn-red,    .button-red    { background-color: #ff8f8f !important; }
+.btn-yellow, .button-yellow { background-color: #ffd472 !important; }
+.btn-green,  .button-green  { background-color: #90ee90 !important; }
+.btn-blue,   .button-blue   { background-color: #aed8fc !important; }
+
+
+.btn-red {
+    background-color: #E21C21; /* red */
+    color: white;
+
+    /*border*/
+    border: 2px solid #ED3A1E; /* slightly lighter */
+    border-radius: 14px;
+    font-size: 16px;
+    padding: 8px 17px;
+}
+.btn-red:hover {
+    background-color: #f9c44d;
+    border-color: #ffd779;
+}
+.btn-red:active {
+    background-color: #ffd064;
+}
+
+
+/* # Specifics for other libraries */
+.MathJax>svg { display: inline; }
+
+.ant-segmented-item-selected {
+    background-color: #ffd981 !important;
+}
+
+/* ## Markdown Container */
+.markdown-container h1 {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.markdown-container code {
+    background-color: #eee;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+

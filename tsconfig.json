@@ -9,16 +9,16 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": [
-        "./components/*"
+        "src/components/*"
       ],
       "@/styles/*": [
-        "./styles/*"
+        "src/styles/*"
       ],
       "@/helpers/*": [
-        "./helpers/*"
+        "src/helpers/*"
       ],
       "@/data/*": [
-        "./data/*"
+        "src/data/*"
       ]
     },
     "allowJs": true,
