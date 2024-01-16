@@ -3,25 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-    font-family: Avenir;
-    src: url('./fonts/Avenir\ Book.ttf');
-}
-@font-face {
-    font-family: AvenirMedium;
-    src: url('./fonts/Avenir\ Medium.ttf');
-}
-@font-face {
-    font-family: Myriad;
-    src: url('./fonts/Myriad\ Pro\ Bold.ttf');
-}
-
 
 /* # DOM Elements */
 html, body {
     padding: 0;  
     margin: 0;
-    font-family: Avenir, AvenirMedium, Myriad Segoe UI, Roboto, Helvetica Neue, sans-serif;
+    font-family: var(--font), AvenirMedium, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+}
+* {
     transition: all .3s ease;
 }
 
@@ -29,26 +18,16 @@ html, body {
 h1, h2, h3, h4, h5 {
     line-height: 1.8;
 }
-h1 { font-size: 3.4rem; margin-top: 10px; }
-h1:not(.custom-font) {
-    font-family: Myriad;
-}
-h2:not(.custom-font),
-h3:not(.custom-font),
-h4:not(.custom-font),
-h5:not(.custom-font) {
-    font-family: AvenirMedium;
-}
-
-h2 { font-size: 2.1rem; margin-top: 8px; }
-h3 { font-size: 1.6rem; margin-top: 7px; }
-h4 { font-size: 1.3rem; margin-top: 6px; }
-h5 { font-size: 1.2rem; margin-top: 5px; }
-h6 { font-size: 1.1rem; margin-top: 4px; }
+h1 { font-size: 3.4rem; margin-top: 10px; font-weight: 800; }
+h2 { font-size: 2.1rem; margin-top: 8px;  font-weight: 800; }
+h3 { font-size: 1.6rem; margin-top: 7px;  font-weight: 600; }
+h4 { font-size: 1.3rem; margin-top: 6px;  font-weight: 600; }
+h5 { font-size: 1.2rem; margin-top: 5px;  font-weight: 600; }
+h6 { font-size: 1.1rem; margin-top: 4px;  font-weight: 600; }
 
 /* ### Mobile-Friendly Headers */
 @media only screen and (max-width: 640px) {
-    h1 { font-size: 2.8rem; font-family: Myriad; margin-top: 10px; }
+    h1 { font-size: 2.8rem; margin-top: 10px; }
     h2 { font-size: 2.0rem; margin-top: 8px; }
     h3 { font-size: 1.6rem; margin-top: 7px; }
     h4 { font-size: 1.3rem; margin-top: 6px; }
@@ -59,7 +38,10 @@ h6 { font-size: 1.1rem; margin-top: 4px; }
 
 /* ## Formatting Tags */
 b, .bold {
-    font-family: Myriad;
+    font-weight: 800;
+}
+.semibold {
+    font-weight: 600;
 }
 
 small {
@@ -101,7 +83,6 @@ code.dark { /* dark code like sublime */
 
 details>summary {
     cursor: pointer;
-    font-family: AvenirMedium;
 }
 
 
@@ -118,7 +99,6 @@ a:not(.unstyled):hover *,
 .gradient-text-on-hover:hover {
     color: #fa00f2; /* backup for browsers not supporting text gradient */
     background: -webkit-linear-gradient(45deg, #fa00f2 0%, #000acd 60%, #00299d 100%); /* blue/purple gradient text */
-    font-family: AvenirMedium;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-decoration: underline; /* does not work because of -webkit-background-clip */

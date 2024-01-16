@@ -21,7 +21,6 @@ export default function HeaderItem({ link /*a href's link*/, children, className
                 '
                 style={{
                     backgroundColor: isCurrentPage ? '#ffe273' : undefined,
-                    fontFamily: 'AvenirMedium'
                 }}
                 tabIndex={0}
             >

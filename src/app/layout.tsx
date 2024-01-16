@@ -11,21 +11,22 @@ export const metadata: Metadata={
     metadataBase: new URL('https://joelgrayson.com'),
 };
 
-const myriadPro=localFont({
-    variable: '--font-myriad-pro',
+const font=localFont({
+    variable: '--font',
     src: [
         {
-            path: '../styles/fonts/myriad-pro/MyriadProRegular.woff2',
+            path: '../styles/fonts/AvenirBook.woff2',
             weight: '400',
             style: 'normal'
         },
         {
-            path: '../styles/fonts/myriad-pro/MyriadProSemibold.woff2',
+            path: '../styles/fonts/AvenirMedium.woff2',
+            // path: '../styles/fonts/MyriadProSemibold.woff2',
             weight: '600',
             style: 'semibold'
         },
         {
-            path: '../styles/fonts/myriad-pro/MyriadProBold.woff2',
+            path: '../styles/fonts/MyriadProBold.woff2',
             weight: '800',
             style: 'bold'
         },
@@ -35,7 +36,7 @@ const myriadPro=localFont({
 export default function RootLayout({ children, }: { children: React.ReactNode }) {
     // TODO: plausible and printLogo
     return <html lang="en">
-        <body className={myriadPro.className}>{children}</body>
+        <body className={font.className}>{children}</body>
     </html>;
 }
 

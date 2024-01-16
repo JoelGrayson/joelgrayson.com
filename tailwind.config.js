@@ -11,7 +11,11 @@ module.exports = {
         './src/app/**/*.{js,ts,jsx,tsx}'
     ],
     theme: {
-        extend: {}
+        extend: {
+            fontFamily: {
+                font: ['var(--font)']
+            }
+        }
     },
     blocklist: [
         'container'

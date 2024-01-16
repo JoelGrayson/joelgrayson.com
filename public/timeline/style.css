@@ -22,7 +22,7 @@ body {
 
 #title {
     text-align: center;
-    font-family: Myriad;
+    font-weight: 800;
     user-select: none;
     position: absolute;
     top: 20px;

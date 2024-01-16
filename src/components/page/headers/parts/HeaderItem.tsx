@@ -16,10 +16,10 @@ export default function HeaderItem({ pathname, link /*a href's link*/, children,
                     hover:bg-[#ffe062]
                     h-fit block
                     unstyled
+                    semibold
                 '
                 style={{
                     backgroundColor: isCurrentPage ? '#ffe273' : undefined,
-                    fontFamily: 'AvenirMedium'
                 }}
                 tabIndex={0}
             >

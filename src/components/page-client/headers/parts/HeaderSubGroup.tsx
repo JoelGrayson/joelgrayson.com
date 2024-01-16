@@ -21,7 +21,6 @@ export default function HeaderSubGroup({title, children}: {title: string, childr
         
         <span
             className='inline'
-            style={{ fontFamily: 'AvenirMedium' }}
             onMouseEnter={()=>setHovered(true)}
         >
             <span className={hovered ? 'gradient-text' : ''}>{title}</span>

@@ -16,7 +16,6 @@ export default function HeaderGroup({ title, children, link, className }: { titl
                     border-solid border-[#11111130] border-[0.2px] hover:bg-[#ffe062]  ${'' /* active: #ffd13c */}
                     mobile:px-[.5rem] mobile:py-[.3rem]
                 `}
-                style={{fontFamily: 'AvenirMedium'}}
                 onMouseEnter={()=>setOpen(true)}
                 tabIndex={0}
                 onClick={e=>{

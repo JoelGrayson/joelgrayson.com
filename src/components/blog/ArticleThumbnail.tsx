@@ -19,9 +19,7 @@ export default function ArticleThumbnail({article}: {article: articleT}) { //rec
         }}>
             {/* <div>{JSON.stringify(article)}</div> */}
             <Image src={`/image/blog/${article.hyphenatedTitle}/thumbnail.jpg`} alt='Article thumbnail' width='200' height='113' />
-            <div className='text-center' style={{
-                fontFamily: 'AvenirMedium'
-            }}>{article.title}</div>
+            <div className='text-center semibold'>{article.title}</div>
         </div>
     </Link>;
 }

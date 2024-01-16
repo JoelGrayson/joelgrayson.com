@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import HeaderSubGroupArrow from './HeaderSubGroupArrow';
 
-export default function HeaderSubGroup({ title, children }: { title: string, children: any }) {
+export default function HeaderSubGroup({ pathname, title, children }: { pathname?: string; title: string, children: any }) {
     const [hovered, setHovered]=useState(false); //hovered & open
     // const [hovered, setHovered]=[true, (e: any)=>{}]; //always open for testing
 
@@ -23,10 +23,9 @@ export default function HeaderSubGroup({ title, children }: { title: string, chi
         
         <span
             className='inline'
-            style={{ fontFamily: 'AvenirMedium' }}
             onMouseEnter={()=>setHovered(true)}
         >
-            <span className={hovered ? 'gradient-text' : ''}>{title}</span>
+            <span className={hovered ? 'gradient-text semibold' : ''}>{title}</span>
             {/* side arrow > which becomes --> on hover */}
             <HeaderSubGroupArrow open={hovered} />
         </span>

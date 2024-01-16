@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styles from './header-group-item.module.css';
 
-export default function HeaderGroupItem({ link, children }: { children: any; link?: string }) {
+export default function HeaderGroupItem({ pathname, link, children }: { pathname?: string; children: any; link?: string }) {
     return <Link
         className='unstyled relative flex'
         href={link || '#'}
