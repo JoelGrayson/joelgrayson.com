@@ -6,6 +6,7 @@ import Favicons from './parts/Favicons';
 
 export function PagesPage({ seo, children, pathname='', noPadding, bottomPadding, noPageStyling=false, ...props }: {
     children: any;
+    pathname?: string;
     noPadding?: boolean;
     bottomPadding?: boolean;
     seo?: SEOProps;
@@ -27,6 +28,7 @@ export default PagesPage;
 
 export function AppPage({ children, pathname='', noPadding, bottomPadding, noPageStyling=false, ...props }: {
     children: any;
+    pathname?: string;
     noPadding?: boolean;
     bottomPadding?: boolean;
     noPageStyling?: boolean;

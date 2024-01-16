@@ -7,6 +7,10 @@ export default function HeaderGroupItem({ pathname, link, children }: { pathname
         href={link || '#'}
         target={link?.trim()?.slice(0, 4)==='http' ? '_blank' : undefined} //open in new tab if external link
         tabIndex={0}
+        style={{
+            backgroundColor: pathname===link ? '#ffe273' : undefined,
+            borderRadius: 10
+        }}
     >
         <div className={`${styles['header-group-item']} w-full`}>
             {/* --> Left Arrow (onhover increases arrow length) */}
@@ -15,7 +19,7 @@ export default function HeaderGroupItem({ pathname, link, children }: { pathname
             </svg>
 
             {/* Content */}
-            <span className={`${styles['header-group-item-text']}`}>{children}</span>
+            <span className={styles['header-group-item-text']}>{children}</span>
         </div>
     </Link>;
 }

@@ -5,10 +5,14 @@ import Container from '@jcomponents/container';
 import MiscellaneousBottom from 'src/components/by-page/machines/MiscellaneousBottom';
 
 export default function Machines() {
-    return <Page seo={{
-        title: 'Machines | Joel Grayson',
-        description: `Ever since I can remember, I've always loved to build. Here are some machines I've created over the years (including pinball machines, vending machines, and a Tesla coil).`
-    }} noPadding bottomPadding>
+    return <Page
+        pathname='/machines'
+        seo={{
+            title: 'Machines | Joel Grayson',
+            description: `Ever since I can remember, I've always loved to build. Here are some machines I've created over the years (including pinball machines, vending machines, and a Tesla coil).`
+        }}
+        noPadding bottomPadding
+    >
         <div id='paralax' style={{
             backgroundImage: `url('/image/machines/banner.jpg')`,
             backgroundAttachment: 'fixed',

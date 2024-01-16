@@ -10,7 +10,8 @@ export default function HeaderGroup({ pathname, title, children, link, className
                 className={`
                     unstyled
                     flex items-center text-black font-[15px] mx-[9px] bg-white rounded-[13px] py-[0.6rem] px-7 select-none
-                    border-solid border-[#11111130] border-[0.2px] hover:bg-[#ffe062]  ${'' /* active: #ffd13c */}
+                    border-solid border-[#11111130] border-[0.2px] hover:bg-[#ffe062] active:bg-[#ffd13c]
+                    ${pathname===link ? 'bg-[#ffe273]' : ''}
                     mobile:px-[.5rem] mobile:py-[.3rem]
                     semibold
                 `}

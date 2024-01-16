@@ -27,7 +27,7 @@ export default function Art() {
     const [galleryOpen, setGalleryOpen]=useState<boolean>(false);
     const [index, setIndex]=useState<number>(0);
 
-    return <Page title='Art | Joel Grayson' seo={{
+    return <Page title='Art | Joel Grayson' pathname='/art' seo={{
         description: 'Drawings and sculptures'
     }}>
         <h1 className='text-center'>Art</h1>

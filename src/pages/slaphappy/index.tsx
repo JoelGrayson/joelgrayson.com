@@ -18,7 +18,12 @@ export default function Slaphappy() {
         );
     }, []);
     
-    return <Page seo={{ title: 'Art' }} style={{overflow: 'hidden'}} noPadding bottomPadding>
+    return <Page
+        seo={{ title: 'Slaphappy | Joel Grayson' }}
+        style={{overflow: 'hidden'}}
+        pathname='/slaphappy'
+        noPadding bottomPadding
+    >
         {/* eslint-disable */}
         {/* Curtain background image */}
         <img src='/image/slaphappy/curtains.png' ref={curtainsRef} alt='Curtains' style={{
@@ -67,7 +72,6 @@ export default function Slaphappy() {
         <div style={{width: '60%', maxWidth: 800, margin: '0 auto', marginTop: 14}}>
             <p>Slaphappy shows videos my Dad and I have made together since I was 11. If you find them funny, our names are Joel Grayson and Paul Grayson. If not, they are anonymous. The channel has separate sections for stop motion animation and my various projects. I am not a professional trumpet player.</p>
         </div>
-        
         
     </Page>;
 }

@@ -10,10 +10,13 @@ export default function Software() {
     //     gap: 3px;
     // `;
 
-    return <Page bottomPadding seo={{
-        title: 'Software',
-        description: 'Apps, extensions, resources, and developer tools that Joel has made'
-    }}>
+    return <Page bottomPadding
+        seo={{
+            title: 'Software',
+            description: 'Apps, extensions, resources, and developer tools that Joel has made'
+        }}
+        pathname='/software'
+    >
         <h1 className='text-center'>Software</h1>
 
         {/* TODO: create with bulletbrainstorm.com */}

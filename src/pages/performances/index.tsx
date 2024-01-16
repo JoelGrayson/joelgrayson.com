@@ -21,11 +21,15 @@ export default function Performances({ videos }: { videos: ytVideos }) {
     const [galleryOpen, setGalleryOpen]=useState<boolean>(false);
     const [index, setIndex]=useState<number>(0);
     
-    return <Page bottomPadding seo={{
-        title: 'Violin & Piano Performances',
-        keywords: ['violin', 'piano', 'recitals'],
-        description: 'Playing the violin over the years'
-    }}>
+    return <Page
+        pathname='/performances'
+        seo={{
+            title: 'Violin & Piano Performances',
+            keywords: ['violin', 'piano', 'recitals'],
+            description: 'Playing the violin over the years'
+        }}
+        bottomPadding
+    >
         <h1 className='text-center'>Performances</h1>
         
         <div style={{

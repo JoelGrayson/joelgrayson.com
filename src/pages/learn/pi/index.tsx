@@ -44,11 +44,15 @@ export default function MemorizePi() {
         setShowNextLetter(false);
     }
     
-    return <Page noPageStyling seo={{
-        title: 'Memorize π',
-        description: 'Tool for memorizing the digits of pi',
-        keywords: ['pi', 'math']
-    }}>
+    return <Page
+        pathname='/learn/pi'
+        seo={{
+            title: 'Memorize π',
+            description: 'Tool for memorizing the digits of pi',
+            keywords: ['pi', 'math']
+        }}
+        noPageStyling
+    >
         <h1 className='text-center'>Memorize π</h1>
         {showInstructions && <div className='flex w-full justify-around mb-3'>
             <span>Start typing the digits of π. Press <kbd>tab</kbd> for the next digit if you forget.</span>

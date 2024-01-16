@@ -6,7 +6,7 @@ import Listening from '@/components/by-page/contact/Listening';
 import styles from './contact.module.css';
 
 export default function Contact() {
-    return <Page noPadding seo={{
+    return <Page noPadding pathname='/contact' seo={{
         title: 'Contact Joel Grayson',
         description: 'Fill out this contact form to reach Joel',
         og: {

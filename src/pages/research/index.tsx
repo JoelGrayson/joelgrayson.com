@@ -2,7 +2,7 @@ import Page from '@/components/page/DefaultPage';
 import Link from 'next/link';
 
 export default function Research() {
-    return <Page bottomPadding>
+    return <Page bottomPadding pathname='/research'>
         <h1 className='text-center'>Research</h1>
 
         <div className='grid grid-cols-[1fr_3fr]'>

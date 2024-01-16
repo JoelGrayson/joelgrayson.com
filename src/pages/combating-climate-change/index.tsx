@@ -18,9 +18,13 @@ export default function CCC() {
     const [showDescription, setShowDescription]=useState<boolean>(true);
     let emissionsSaved=331+.675+6.7+1.7;
 
-    return <Page noPadding seo={{
-        title: 'Climate Change | Joel\'s Initiatives'
-    }}>
+    return <Page
+        seo={{
+            title: 'Climate Change | Joel\'s Initiatives'
+        }}
+        pathname='/combating-climate-change'
+        noPadding
+    >
         {/* <Viewer status={viewer} setStatus={setViewer} /> */}
         <section className={styles.section}>
             <div className='j_container'>

@@ -16,7 +16,7 @@ export default function NYC() {
     //     new Audio('/audio/patriotism/grayson-yes.mp3').play();
     // }
     
-    return <Page bottomPadding>
+    return <Page bottomPadding pathname='/nyc'>
         <div className='flex justify-center'>
             <div className='relative w-[10ch]'>
                 <h1>NYC</h1>

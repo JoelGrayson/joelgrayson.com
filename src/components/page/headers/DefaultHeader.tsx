@@ -48,7 +48,7 @@ export default function DefaultHeader({ pathname='' }: { pathname?: string }) {
                     <HeaderSubGroup pathname={pathname} title='Tools'>
                         <HeaderSubGroupItem pathname={pathname} link='/drive-download-link-generator'>Drive Download Link Generator</HeaderSubGroupItem>
                         <HeaderSubGroupItem pathname={pathname} link='/chess'>Chess</HeaderSubGroupItem>
-                        <HeaderSubGroupItem pathname={pathname} link='/memorize-pi'>Memorize π</HeaderSubGroupItem>
+                        <HeaderSubGroupItem pathname={pathname} link='/learn/pi'>Memorize π</HeaderSubGroupItem>
                     </HeaderSubGroup>
                 </HeaderGroup>
 
