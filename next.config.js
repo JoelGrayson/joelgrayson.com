@@ -1,11 +1,12 @@
-/** @type {import('next').NextConfig} */
-// import { NextConfig } from "next/types";
+const withBundleAnalyzer=require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE==='true',
+});
 
 const withMDX=require('@next/mdx')();
 const jredirects=require('./jredirects/dist');
 const { withPlausibleProxy }=require('next-plausible');
 
-// const nextConfig: NextConfig={
+/** @type {import('next').NextConfig} */
 const nextConfig={
     reactStrictMode: true,
     swcMinify: true,
@@ -60,4 +61,4 @@ const nextConfig={
     // assetPath: '/joelgrayson.com',
 };
 
-module.exports=withMDX(withPlausibleProxy()(nextConfig));
+module.exports=withBundleAnalyzer(withMDX(withPlausibleProxy()(nextConfig)));

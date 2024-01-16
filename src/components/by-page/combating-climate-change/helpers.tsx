@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import styles from '@/styles/ccc/sections.module.css';
-import { kebabCase } from 'lodash';
+import kebabCase from 'lodash/kebabCase';
 
 export function Section({title, children}: {title: string, children: ReactNode}) {
     return <section className={styles.section} id={kebabCase(title)}>

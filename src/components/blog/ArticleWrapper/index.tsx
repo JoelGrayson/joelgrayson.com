@@ -42,8 +42,8 @@ export default function Article({ hyphenatedTitle, title, date /** published dat
     return <BlogPage seo={{ title: title ? `${title} | Joel's Blog` : "Joel's Blog" }}>
         {/* Title & Date */}
         {!notitle && <h1 style={{fontSize: '2.5rem', textAlign: 'center'}}>{title}</h1>}
-        {!nodate && <div className='text-right' title={date && `Published on ${jdate(date)}`}>{date && jdate(date)}</div>}
-        <div className='text-right mb-6'>{views ? `${views} views` : ''}</div>
+        <div className='text-right' title={date && `Published on ${jdate(date)}`}>{!nodate && date && jdate(date)}</div>
+        <div className='text-right mb-6'>{views ? `${views} views` : <>&emsp;</>}</div>
 
         {/* Article Content */}
         {children}
