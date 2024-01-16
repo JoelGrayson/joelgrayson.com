@@ -22,7 +22,7 @@ export default function DefaultHeader({ pathname='' }: { pathname?: string }) {
                 
                 <HeaderItem pathname={pathname} link='/' className='m:order-1'>Home</HeaderItem>
 
-                <HeaderGroup pathname={pathname} title='Projects' className='m:order-2'>
+                <HeaderGroup pathname={pathname} title='Projects' className='m:order-2' pixelOffset={0}>
                     <HeaderGroupItem pathname={pathname} link='/combating-climate-change'>
                         <span style={{whiteSpace: 'nowrap', display: 'inline'}}>
                             Climate Change&nbsp;
@@ -41,7 +41,7 @@ export default function DefaultHeader({ pathname='' }: { pathname?: string }) {
                     <HeaderGroupItem pathname={pathname} link='/slaphappy'>Slaphappy</HeaderGroupItem>
                 </HeaderGroup>
 
-                <HeaderGroup pathname={pathname} title='Software' link='/software' className='m:order-5'>
+                <HeaderGroup pathname={pathname} title='Software' link='/software' className='m:order-5' pixelOffset={1}>
                     <HeaderGroupItem pathname={pathname} link='https://buseroo.com'>Buseroo</HeaderGroupItem>
                     <HeaderGroupItem pathname={pathname} link='https://lirongart.com'>Lirong Art</HeaderGroupItem>
                     <HeaderGroupItem pathname={pathname} link='/zoom-timers'>Zoom Timers</HeaderGroupItem>
