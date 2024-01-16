@@ -12,8 +12,8 @@ export default function Headers() {
             <button>Button</button>
         </div>
         <div>
-            <button className='btn-red'>Btn-red</button>
+            <button className='btn-red unstyled'>Btn-red</button>
         </div>
-        <div><a href='#'><button className='btn-red'>Button Red Link</button></a></div>
+        <div><a href='#' className="unstyled btn-red">Button Red Link</a></div>
     </>;
 }
