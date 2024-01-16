@@ -1,4 +1,4 @@
-import Page from '@/components/page-client/DefaultPage';
+import Page from '@/components/page/DefaultPage';
 import Button from '@jcomponents/button';
 import localFont from 'next/font/local';
 

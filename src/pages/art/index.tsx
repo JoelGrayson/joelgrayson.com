@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Page from '@/components/page-client/DefaultPage';
+import Page from '@/components/page/DefaultPage';
 import Gallery from 'src/components/gallery/Gallery';
 import images from 'src/data/art';
 

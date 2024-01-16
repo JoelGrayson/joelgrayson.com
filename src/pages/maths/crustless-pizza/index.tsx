@@ -1,5 +1,5 @@
 import MathsReturnButton from 'src/components/MathsReturnButton';
-import Page from '@/components/page-client/DefaultPage';
+import Page from '@/components/page/DefaultPage';
 
 export default function CrustlessPizza() {
     return <Page>

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import Page from '@/components/page/DefaultPage';
+import { AppPage as Page } from '@/components/page/DefaultPage';
 import Content from './Content';
 
 export const metadata: Metadata={
@@ -18,11 +18,6 @@ export default function Home() {
                 m:flex-row-reverse
             '>
                 {/* signature gif */}
-                {/* <Image
-                    src='/image/ucjg/signature.gif' alt='Joel Grayson Signature' width={371*.8} height={149*.8}
-                    className={`pb-14 m:w-[${371*.5}px] m:h-[${149*.5}]`}
-                    priority
-                /> */}
                 <Image
                     src='/image/ucjg/signature.gif' alt='Joel Grayson Signature'
                     width={371*.8} height={149*.8}

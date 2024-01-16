@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Page from '@/components/page-client/DefaultPage';
+import Page from '@/components/page/DefaultPage';
 // import Button from '@jcomponents/button';
 
 export default function EditTime() {

@@ -1,4 +1,4 @@
-import Page from '@/components/page-client/DefaultPage';
+import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
 import { Data } from './data';
 import PDF from 'src/components/global/PDF';

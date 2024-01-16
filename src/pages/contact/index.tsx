@@ -1,4 +1,4 @@
-import Page from '@/components/page-client/DefaultPage';
+import Page from '@/components/page/DefaultPage';
 import Talking from 'src/components/by-page/contact/talking/_Talking';
 import Form from 'src/components/by-page/contact/form/_Form';
 import Listening from 'src/components/by-page/contact/listening/_Listening';

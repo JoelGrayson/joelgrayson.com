@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Page from '@/components/page-client/DefaultPage';
+import Page from '@/components/page/DefaultPage';
 import Loader from 'src/components/global/Loader';
 
 type ytDataT={

@@ -1,10 +1,32 @@
 import Header from './headers/DefaultHeader';
 import Footer from './footers/DefaultFooter';
 import pageStyle from '@/styles/page/page.module.css';
+import SEO, { SEOProps } from './parts/SEO';
+import Favicons from './parts/Favicons';
 
-export default function Page({ children, pathname='', noPadding, bottomPadding, noPageStyling=false, ...props }: {
+export function PagesPage({ seo, children, pathname='', noPadding, bottomPadding, noPageStyling=false, ...props }: {
     children: any;
-    pathname?: string;
+    noPadding?: boolean;
+    bottomPadding?: boolean;
+    seo?: SEOProps;
+    noPageStyling?: boolean;
+    [key: string]: any;
+}) {
+    return <>
+        <AppPage {...{children, pathname, noPadding, bottomPadding, noPageStyling, ...props}} />
+        <SEO seo={seo} />
+        {/* Favicons */}
+        { seo?.favicon
+            ? <link rel="shortcut icon" href={seo.favicon} />
+            : <Favicons />
+        }
+    </>;
+}
+
+export default PagesPage;
+
+export function AppPage({ children, pathname='', noPadding, bottomPadding, noPageStyling=false, ...props }: {
+    children: any;
     noPadding?: boolean;
     bottomPadding?: boolean;
     noPageStyling?: boolean;

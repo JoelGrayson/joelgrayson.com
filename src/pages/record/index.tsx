@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Page from "@/components/page-client/DefaultPage";
+import Page from "@/components/page/DefaultPage";
 import Table from "@jcomponents/table";
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';

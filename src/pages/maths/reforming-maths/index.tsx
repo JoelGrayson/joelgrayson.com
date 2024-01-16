@@ -1,5 +1,5 @@
 import MathsReturnButton from 'src/components/MathsReturnButton';
-import Page from '@/components/page-client/DefaultPage';
+import Page from '@/components/page/DefaultPage';
 import Script from 'next/script';
 
 export default function ReformingMath() {

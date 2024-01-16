@@ -1,4 +1,4 @@
-import Page from '@/components/page/DefaultPage';
+import { AppPage as Page } from '@/components/page/DefaultPage';
 import Link from 'next/link';
 import ShruggingJoel from './404/ShruggingJoel';
 import ReportError from './404/ReportError';

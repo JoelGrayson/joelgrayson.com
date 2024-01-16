@@ -1,4 +1,4 @@
-import Page from '@/components/page-client/DefaultPage';
+import Page from '@/components/page/DefaultPage';
 
 export default function index() {
     return <Page>

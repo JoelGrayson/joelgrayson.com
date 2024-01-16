@@ -1,4 +1,4 @@
-import BlankPage from '@/components/page-client/BlankPage';
+import BlankPage from '@/components/page/BlankPage';
 import Image from 'next/image';
 import Button from '@jcomponents/button';
 import Container from '@jcomponents/container';

@@ -1,4 +1,4 @@
-import BlankPage from '@/components/page-client/BlankPage';
+import BlankPage from '@/components/page/BlankPage';
 import Link from 'next/link';
 
 export default function Survey() {

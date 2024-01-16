@@ -1,5 +1,5 @@
 import { CodeIcon } from 'src/components/icons';
-import Page from '@/components/page-client/DefaultPage';
+import Page from '@/components/page/DefaultPage';
 import { Tooltip } from 'antd';
 import Image from 'next/image';
 

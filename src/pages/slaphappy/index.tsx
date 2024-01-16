@@ -1,4 +1,4 @@
-import Page from '@/components/page-client/DefaultPage';
+import Page from '@/components/page/DefaultPage';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRef, useLayoutEffect } from 'react';

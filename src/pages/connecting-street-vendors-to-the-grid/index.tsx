@@ -1,6 +1,6 @@
 import Prototype from 'src/components/by-page/connecting-street-vendors-to-the-grid/Prototype';
 import { Yt } from 'src/components/by-page/machines/helpers';
-import ConnectingStreetVendorstotheGridPage from '@/components/page-client/ConnectingStreetVendorstotheGridPage';
+import ConnectingStreetVendorstotheGridPage from '@/components/page/ConnectingStreetVendorstotheGridPage';
 import { P, Citation, Footnote as JFootnote } from '@jcomponents/writing-components';
 import Image from 'next/image';
 

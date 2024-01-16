@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import Page from '@/components/page-client/DefaultPage';
+// import Page from '@/components/page/DefaultPage';
 import Button from '@jcomponents/button';
 import Image from 'next/image';
 import { produce } from 'immer';
@@ -11,7 +11,7 @@ import { races, type Race, relations, type Relation, type Strength, type Multicu
 import Missing from 'src/components/research/survey/Missing';
 import Circles from 'src/components/research/survey/Circles';
 import { theme, MAX_NUM_CULTURES } from 'src/components/research/survey/config';
-import BlankPage from '@/components/page-client/BlankPage';
+import BlankPage from '@/components/page/BlankPage';
 
 export default function Survey() {
     const [formState, setFormState]=useState<'filling out' | 'error' | 'loading' | 'submitted'>('filling out');

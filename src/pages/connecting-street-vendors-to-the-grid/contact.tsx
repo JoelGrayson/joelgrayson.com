@@ -1,4 +1,4 @@
-import ConnectingStreetVendorstotheGridPage from '@/components/page-client/ConnectingStreetVendorstotheGridPage';
+import ConnectingStreetVendorstotheGridPage from '@/components/page/ConnectingStreetVendorstotheGridPage';
 
 export default function ConnectingStreetVendorsToTheGrid() {
     return <ConnectingStreetVendorstotheGridPage seo={{

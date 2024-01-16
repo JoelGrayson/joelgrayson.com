@@ -1,4 +1,4 @@
-import Page from '@/components/page-client/DefaultPage';
+import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
 import Link from 'next/link';
 import Gallery from 'src/components/gallery/Gallery';
