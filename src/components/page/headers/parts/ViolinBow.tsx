@@ -2,12 +2,12 @@
 
 import Image from 'next/image';
 import { gsap } from 'gsap';
-import { useRef, useLayoutEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 export default function ViolinBow() {
     const bowRef=useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement> ;
 
-    useLayoutEffect(()=>{ //violin bow animation back and forth
+    useEffect(()=>{ //violin bow animation back and forth
         const offset=1;
         const dist=7;
         

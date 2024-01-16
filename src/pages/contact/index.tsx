@@ -1,14 +1,14 @@
 import Page from '@/components/page/DefaultPage';
-import Talking from 'src/components/by-page/contact/talking/_Talking';
-import Form from 'src/components/by-page/contact/form/_Form';
-import Listening from 'src/components/by-page/contact/listening/_Listening';
+import Talking from '@/components/by-page/contact/Talking';
+import Form from '@/components/by-page/contact/Form';
+import Listening from '@/components/by-page/contact/Listening';
 
 import styles from './contact.module.css';
 
 export default function Contact() {
     return <Page noPadding seo={{
-        title: 'Contact',
-        description: 'Contact me through a form or email',
+        title: 'Contact Joel Grayson',
+        description: 'Fill out this contact form to reach Joel',
         og: {
             image: '/image/joel/listening.webp'
         }
