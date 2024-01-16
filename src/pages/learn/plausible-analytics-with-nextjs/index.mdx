@@ -5,7 +5,7 @@ export default function LearningContent({children}) {
 
 # How to Set up Plausible Analytics with Next.js
 1. `npm i next-plausible`
-2. Configure next.config.js like so:
+2. To proxy the plausible scripts so ad blockers do not stop the collection, configure next.config.js like so:
 ```js
 const { withPlausibleProxy }=require('next-plausible');
 const nextConfig={
@@ -13,7 +13,7 @@ const nextConfig={
 };
 module.exports=withPlausibleProxy()(nextConfig);
 ```
-3. Add \<PlausibleProxy\> to `_app.tsx`:
+3. Add \<PlausibleProvider\> to `_app.tsx`:
 ```tsx
 import PlausibleProvider from 'next-plausible';
 import type { AppProps } from 'next/app';
@@ -25,3 +25,4 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 }
 ```
 4. Add the website to your dashboard on [plausible.io](https://plausible.io/sites)
+

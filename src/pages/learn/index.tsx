@@ -14,6 +14,7 @@ export default function Learn() {
             <li><Link href='/learn/daylight-saving-time'>Daylight Savings Time</Link></li>
             <li><Link href='/learn/using-tokens-to-push-to-github'>Using Tokens to Push to GitHub</Link></li>
             <li><Link href='/learn/css-grid'>CSS Grid</Link></li>
+            <li><Link href='/learn/plausible-analytics-with-nextjs'>Set up Plausible Analytics with Next.js</Link></li>
 
             
             {/* Notion page on MLA citations */}

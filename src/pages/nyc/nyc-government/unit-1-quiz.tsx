@@ -36,7 +36,7 @@ export default function Unit1Quiz() {
         <Question
             type='reveal'
             question={<span>
-                <span>Which of the following city agencies that are not mayoral agencies:</span>
+                <span>Which of the following city agencies are not mayoral agencies:</span>
                 <ul>
                     <li>MTA</li>
                     <li>NYC Department of Education</li>

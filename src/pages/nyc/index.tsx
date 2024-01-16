@@ -43,6 +43,7 @@ export default function NYC() {
         <Link href='/nyc/nyc-government' className='button'>
             Go to NYC Government Self-Paced Course
         </Link>
+        <p>I also created a visualization of NYC&apos;s budget <Link href='/nyc/nyc-government/nyc-budget'>here</Link>.</p>
 
         <h2>Manhattan Community Board 1 Member</h2>
         <p>Being a community board member has been an exciting and rewarding experience. I have enjoyed learning how NYC Government works, talking with different department liaisons, making friends with other board members, and am grateful to be a part of a group of inspiring involved community members.</p>

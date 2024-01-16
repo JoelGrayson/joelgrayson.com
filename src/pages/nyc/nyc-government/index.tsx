@@ -96,7 +96,7 @@ export default function NYCGoverment() {
         </div>
 
 
-        <p>Congratulations for making it to the end of unit 1. It&apos;s time for <Link href='/nyc/nyc-government/unit-1-test'>a quiz</Link> to see if you were paying attention!</p>
+        <p>Congratulations for making it to the end of unit 1. It&apos;s time for <Link href='/nyc/nyc-government/unit-1-quiz'>a quiz</Link> to see if you were paying attention!</p>
 
         <h3 id='borough'>Unit 2: Within the Borough</h3>
         <p>Essential question: What is the interface between the community boards and the borough boards and borough presidents?</p>
@@ -221,6 +221,7 @@ export default function NYCGoverment() {
             <a href="/nyc/nyc-government/Understanding the Budget.pdf">Understanding the Budget</a>
             .
         </p>
+        <p>See a visualization of NYC&apos;s budget <Link href='/nyc/nyc-government/nyc-budget'>here</Link>.</p>
 
 
         <strong>Module 4.4: Comptroller</strong>
