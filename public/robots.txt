@@ -1,2 +1,3 @@
 User-Agent: *
 Disallow: /api
+Sitemap: https://joelgrayson.com/sitemap.xml

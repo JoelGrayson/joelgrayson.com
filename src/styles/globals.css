@@ -10,7 +10,7 @@ html, body {
     margin: 0;
     font-family: var(--font), AvenirMedium, Segoe UI, Roboto, Helvetica Neue, sans-serif;
 }
-* {
+header * {
     transition: all .3s ease;
 }
 

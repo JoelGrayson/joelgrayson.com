@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import BlogPage from '../BlogPage';
-import jdate from 'joeldate';
+import { jdate } from 'joeldate';
 import { ExposedComment } from 'src/data/prisma/TYPES';
 import { Reply } from './Reply';
 import AddComment from './AddComment';
