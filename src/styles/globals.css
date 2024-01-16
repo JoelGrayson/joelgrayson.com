@@ -233,28 +233,30 @@ button:not(.unstyled):active, .btn:active, .button:active {
 button:not(.unstyled):disabled, .btn:disabled, .button:disabled {
     outline: none;
 }
-.btn-red,    .button-red    { background-color: #ff8f8f !important; }
+/* .btn-red,    .button-red    { background-color: #ff8f8f; } */
 .btn-yellow, .button-yellow { background-color: #ffd472 !important; }
 .btn-green,  .button-green  { background-color: #90ee90 !important; }
 .btn-blue,   .button-blue   { background-color: #aed8fc !important; }
 
 
 .btn-red {
-    background-color: #E21C21; /* red */
-    color: white;
+    display: inline-block;
+    min-height: 48px;
+    background-color: #E21C21 !important; /* red */
+    color: white !important;
 
     /*border*/
-    border: 2px solid #ED3A1E; /* slightly lighter */
-    border-radius: 14px;
-    font-size: 16px;
-    padding: 8px 17px;
+    border: 2px solid #ED3A1E !important; /* slightly lighter */
+    border-radius: 14px !important;
+    font-size: 16px !important;
+    padding: 8px 17px !important;
 }
 .btn-red:hover {
-    background-color: #f9c44d;
-    border-color: #ffd779;
+    background-color: #f9c44d !important;
+    border-color: #ffd779 !important;
 }
 .btn-red:active {
-    background-color: #ffd064;
+    background-color: #ffd064 !important;
 }
 
 

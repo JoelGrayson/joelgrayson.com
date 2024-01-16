@@ -78,7 +78,6 @@ export function Subject({children, link}: {children: any; link: string}) {
                 place-items: center;
                 font-size: 20px;
                 font-weight: bold;
-                font-family: 'Lato Semibold';
             `}
         >
             {children}

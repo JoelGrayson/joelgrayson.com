@@ -1,10 +1,11 @@
 .header-group-item
 .left-arrow {
-    width: 37px;
+    font-weight: 400;
+    width: 33px;
 }
 .header-group-item:hover
 .left-arrow {
-    width: 33px;
+    width: 37px;
 }
 
 .header-group-item:hover

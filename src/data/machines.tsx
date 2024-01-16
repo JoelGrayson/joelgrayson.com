@@ -61,7 +61,7 @@ export const machines: Machine[]=[
                     </div>
                     <div className='flex m:mt-3'>
                         <Image src='/image/machines/energy-t-shirt.jpg' height='230' width='160' alt='Energy T-Shirt Photo' />
-                        <img src='/image/machines/energy-t-shirt2.jpg' height='230' width='243' alt='Energy T-Shirt Photo Closeup' />
+                        <Image src='/image/machines/energy-t-shirt2.jpg' height='230' width='243' alt='Energy T-Shirt Photo Closeup' />
                     </div>
                 </div>
             </>

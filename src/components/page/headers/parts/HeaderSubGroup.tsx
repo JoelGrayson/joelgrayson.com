@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import HeaderSubGroupArrow from './HeaderSubGroupArrow';
 
-export default function HeaderSubGroup({ pathname, title, children }: { pathname?: string; title: string, children: any }) {
+export default function HeaderSubGroup({ title, children }: { title: string, children: any }) {
     const [hovered, setHovered]=useState(false); //hovered & open
     // const [hovered, setHovered]=[true, (e: any)=>{}]; //always open for testing
 

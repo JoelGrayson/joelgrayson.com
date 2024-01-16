@@ -1,4 +1,5 @@
 import Button from "@jcomponents/button";
+import Image from "next/image";
 
 const attributes={
     w2: 'col-span-2',
@@ -11,13 +12,13 @@ const attributes={
 const memes=[ //image path is {description}.jpg
     // if it is an element, it will be rendered. If it is a string, it will be rendered as an image
     <div className="p-3 grid place-items-center" key='confucian-matrix'>
-        <img src="/image/memes/2023 Confucian Matrix.jpg" alt="Confucian Matrix" />
+        <Image src="/image/memes/2023 Confucian Matrix.jpg" alt="Confucian Matrix" width={160} height={160} />
         <p>Confucian Matrix</p>
     </div>,
     [<div className='p-2 grid place-items-center"' key='president-chess-board'>
-        <img src="/image/memes/2023 Presidential Chess Board.jpg" alt="Presidential Chessboard" />
+        <Image src="/image/memes/2023 Presidential Chess Board.jpg" alt="Presidential Chessboard" width={400} height={400} className="mx-auto" />
         <p className='text-center bold mt-5'>
-          Hidden meaning
+          Hidden Meaning
         </p>
         <ul>
             <li>Known as King Jackson, Andrew Jackson is the king as an expander of the executive branch&apos;s power.</li>

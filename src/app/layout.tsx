@@ -1,16 +1,41 @@
 import { Metadata } from "next";
 import '../styles/globals.css';
+import localFont from 'next/font/local';
 
 export const metadata: Metadata={
-    title: 'Joel Grayson',
+    title: {
+        default: 'Joel Grayson',
+        template: '%s | Joel Grayson'
+    },
     description: 'Welcome to the United Cells of Joel Grayson',
-    metadataBase: new URL('https://joelgrayson.com')
+    metadataBase: new URL('https://joelgrayson.com'),
 };
+
+const myriadPro=localFont({
+    variable: '--font-myriad-pro',
+    src: [
+        {
+            path: '../styles/fonts/myriad-pro/MyriadProRegular.woff2',
+            weight: '400',
+            style: 'normal'
+        },
+        {
+            path: '../styles/fonts/myriad-pro/MyriadProSemibold.woff2',
+            weight: '600',
+            style: 'semibold'
+        },
+        {
+            path: '../styles/fonts/myriad-pro/MyriadProBold.woff2',
+            weight: '800',
+            style: 'bold'
+        },
+    ]
+});
 
 export default function RootLayout({ children, }: { children: React.ReactNode }) {
     // TODO: plausible and printLogo
     return <html lang="en">
-        <body>{children}</body>
+        <body className={myriadPro.className}>{children}</body>
     </html>;
 }
 

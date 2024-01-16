@@ -2,7 +2,7 @@ import UpDownArrow from './UpDownArrow';
 import styles from './header-group.module.css';
 import Link from 'next/link';
 
-export default function HeaderGroup({ pathname, title, children, link, className }: { pathname?: string; title: string; children: any; link?: string; className?: any }) {
+export default function HeaderGroup({ title, children, link, className }: { title: string; children: any; link?: string; className?: any }) {
     return <li className={`${className} header-group ${styles['header-group']}`}>
         {/* Active is when mouseDown on button */}
         <Link href={link || ''} className='unstyled'>
@@ -13,7 +13,6 @@ export default function HeaderGroup({ pathname, title, children, link, className
                     border-solid border-[#11111130] border-[0.2px] hover:bg-[#ffe062]  ${'' /* active: #ffd13c */}
                     mobile:px-[.5rem] mobile:py-[.3rem]
                 `}
-                style={{fontFamily: 'AvenirMedium'}}
                 tabIndex={0}
             >
                 {title}
