@@ -1,6 +1,11 @@
 import ArticleWrapper from 'src/components/blog/ArticleWrapper';
 import { P } from '@jcomponents/writing-components';
 
+/*
+Convert @jcomponents/latex into server-side compiled latex using `tex2svg --inline '{latex}' | pbcopy`
+/<LaTeX>\{(.*?)\}</LaTeX>/{latex[$1]}/g
+*/
+
 export default function TheImportanceOfPhaseInQuantumMechanics() {
     return <ArticleWrapper title='The Importance of Phase in Quantum Mechanics' date={new Date('Jan 21, 2023')} hyphenatedTitle='the-importance-of-phase-in-quantum-mechanics'>
         <P>Although when finally measuring, the phase does not play an impact on the probability of measuring a state, it does play an impact in the quantum circuit before measurement when quantum gates are applied. While an entangled state is going through a quantum circuit, its phase is affected by its interactions with the gates and can lead to different probabilities. For example, {<LaTeX number={1} />} and {
