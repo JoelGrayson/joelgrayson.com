@@ -3,6 +3,7 @@ import Page from "@/components/page-client/DefaultPage";
 import Table from "@jcomponents/table";
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import Info from "@/components/global/Info";
 
 export default function Record() {
     const victoryClass='!bg-green-100 text-green-700';
@@ -17,7 +18,7 @@ export default function Record() {
         { victory: true, date: '2021', position: '10th Grade Representative', spots: 3, candidates: 9 },
 
         { victory: true, date: '2022', position: 'Jolli Humanitarian Nominee', spots: 5, candidates: 13 },
-        { victory: true, date: '2022', position: 'Jolli Humanitarian Award', spots: 13, candidates: 1 },
+        { victory: false, date: '2022', position: 'Jolli Humanitarian Award', spots: 1, candidates: 13 },
 
         { victory: true, date: '2022', position: 'Rise Finalist', spots: 500, candidates: 10_000 },
         { victory: false, date: '2022', position: 'Rise Winner', spots: 100, candidates: 10_000 },
@@ -25,6 +26,9 @@ export default function Record() {
         { victory: true, date: '2022', position: '11th Grade Representative', spots: 3, candidates: 11 },
         { victory: true, date: '2023', position: '12th Grade Representative', spots: 4, candidates: 12 },
         { victory: false, date: '2023', position: 'US Co-President', spots: 2, candidates: 12 },
+
+        { victory: true, date: '2023', position: 'Manhattan Community Board 1 Member', spots: <div className="relative">60 <Info> <div>Although there were 300 appointments for Manhattan community boards, there were 60 new appointments from the 700 candidates because many of the members were returning.</div> </Info></div>, spotsVal: 60, candidates: 700 },
+        { victory: true, date: '2023', position: 'ARISE', spots: 67, candidates: 984 },
     ];
     
     return <Page>
@@ -57,7 +61,7 @@ export default function Record() {
                         <td>{item.position}</td>
                         <td>{item.spots}</td>
                         <td>{item.candidates}</td>
-                        <td>{Math.round(item.spots/item.candidates*100)}%</td>
+                        <td>{Math.round(((item.spotsVal as number | undefined) || item.spots as number)/item.candidates*100)}%</td>
                     </tr>;
                 })}
             </tbody>

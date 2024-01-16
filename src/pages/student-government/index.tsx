@@ -8,7 +8,7 @@ export default function StudentGovernment() {
 
     return <Page bottomPadding>
         <h1 className='text-center'>Student Government</h1>
-        <p>I have had a fun career of being elected grade representative for five years straight. It has been an exhilirating and emotion-full experience.</p>
+        <p>I have had a fun career of being elected grade representative for five years straight. It has been an exhilirating and emotion-full experience. Thank you to those who put their faith in me.</p>
 
         <h2>Record</h2>
         <Table>
