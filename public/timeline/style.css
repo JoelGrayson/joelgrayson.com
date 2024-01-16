@@ -1,14 +1,14 @@
 @font-face {
     font-family: Avenir;
-    src: url('/styles/fonts/Avenir\ Book.ttf');
+    src: url('/styles/fonts/AvenirBook.woff2') format('woff2');
 }
 @font-face {
     font-family: AvenirMedium;
-    src: url('/styles/fonts/Avenir\ Medium.ttf');
+    src: url('/styles/fonts/AvenirMedium.woff2') format('woff2');
 }
 @font-face {
-    font-family: Myriad;
-    src: url('/styles/fonts/Myriad\ Pro\ Bold.ttf');
+    font-family: MyriadPro;
+    src: url('/styles/fonts/MyriadProBold.woff2') format('woff2');
 }
 
 body {
@@ -21,6 +21,7 @@ body {
 }
 
 #title {
+    font-family: MyriadPro;
     text-align: center;
     font-weight: 800;
     user-select: none;
