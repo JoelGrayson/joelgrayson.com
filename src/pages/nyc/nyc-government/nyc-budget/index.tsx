@@ -70,5 +70,8 @@ export default function NYCBudget() {
         <br /><br /><br />
         <h3>From the CEC & IBO 2023 CB1 Training Session</h3>
         <Image src='/nyc/nyc-government/nyc-budget/expense-by-budget.png' width={500} height={500} alt='Capital Commitments circular packing chart' />
+
+        <h3>More Resources</h3>
+        See a detailed description at <a href="https://checkbooknyc.com" target='_blank'>checkbooknyc.com</a>.
     </Page>;
 }
