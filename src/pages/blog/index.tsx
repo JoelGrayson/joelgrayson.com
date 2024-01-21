@@ -4,6 +4,7 @@ import BlogPage from 'src/components/blog/BlogPage';
 import { articles } from 'src/data/blog';
 import { categories, displayCategory } from 'src/data/blog/types';
 import ArticleThumbnail from 'src/components/blog/ArticleThumbnail';
+import SEO from '@/components/page/parts/SEO';
 
 const gridStyle={
     display: 'grid',
@@ -13,6 +14,13 @@ const gridStyle={
 
 export default function JoelsBlog() { //List of articles
     return <BlogPage>
+        <SEO seo={{
+            title: 'Joel\'s Blog',
+            description: 'Articles on philosophy, climate change, science, government, and more.',
+            og: {
+                image: '/image/opengraph/blog.png'
+            },
+        }} />
         <BlogArticles />
     </BlogPage>;
 }

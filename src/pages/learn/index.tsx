@@ -3,7 +3,10 @@ import Page from "@/components/page/DefaultPage";
 import Link from "next/link";
 
 export default function Learn() {
-    return <Page bottomPadding>
+    return <Page bottomPadding seo={{
+        title: 'Learning Resources',
+        description: 'Here are some learning resources Joel made on various subjects.',
+    }}>
         <h1 className="my-3 text-center">Learn</h1>
 
         <p>Here are some learning resources I made on various subjects.</p>

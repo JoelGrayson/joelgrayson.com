@@ -10,7 +10,8 @@ export default function Contact() {
         title: 'Contact Joel Grayson',
         description: 'Fill out this contact form to reach Joel',
         og: {
-            image: '/image/joel/listening.webp'
+            image: '/image/opengraph/contact.png',
+            imageAlt: "Listening Joel"
         }
     }}>
         <div className='overflow-x-hidden'> {/* make sure does not overflow */}

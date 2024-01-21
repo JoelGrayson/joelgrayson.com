@@ -6,7 +6,12 @@ export default function StudentGovernment() {
     const victoryClass='bg-green-400 text-green-700';
     const lossClass='bg-red-400 text-red-700';
 
-    return <Page bottomPadding>
+    return <Page bottomPadding seo={{
+        title: 'Student Government',
+        og: {
+            image: '/image/opengraph/student-government.png'
+        }
+    }}>
         <h1 className='text-center'>Student Government</h1>
         <p>I have had a fun career of being elected grade representative for five years straight. It has been an exhilirating and emotion-full experience. Thank you to those who put their faith in me.</p>
 

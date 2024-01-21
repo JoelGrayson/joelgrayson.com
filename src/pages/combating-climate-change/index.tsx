@@ -20,7 +20,8 @@ export default function CCC() {
 
     return <Page
         seo={{
-            title: 'Climate Change | Joel\'s Initiatives'
+            title: "Joel's Climate Initiatives",
+            description: "Solar panels, electric school buses, electrification, and more.",
         }}
         pathname='/combating-climate-change'
         noPadding
@@ -38,7 +39,7 @@ export default function CCC() {
                         width: 335,
                         marginLeft: 10
                     }}>
-                        <Switch defaultChecked onChange={setShowDescription} checked={showDescription} id='showDescriptions' />
+                        <Switch defaultChecked onChange={setShowDescription} checked={showDescription} id='showDescriptions' className='unstyled' />
                         <label htmlFor='showDescriptions' className='ml-2 cursor-pointer' onClick={()=>setShowDescription(!showDescription)}>Show descriptions</label>
                     </div>
                 </div>

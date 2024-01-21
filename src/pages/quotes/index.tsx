@@ -1,7 +1,9 @@
 import Page from '@/components/page/DefaultPage';
 
 export default function Quotes() {
-    return <Page>
+    return <Page seo={{
+        title: 'Quotes'
+    }}>
         <h1 className='text-center'>Quotes</h1>
         <p>Here are some quotes I have said:</p>
         

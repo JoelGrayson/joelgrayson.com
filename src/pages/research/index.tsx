@@ -2,7 +2,13 @@ import Page from '@/components/page/DefaultPage';
 import Link from 'next/link';
 
 export default function Research() {
-    return <Page bottomPadding pathname='/research'>
+    return <Page bottomPadding pathname='/research' seo={{
+        title: 'Research',
+        description: 'Here are some research papers and studies I have conducted.',
+        og: {
+            image: '/image/opengraph/research.png'
+        }
+    }}>
         <h1 className='text-center'>Research</h1>
 
         <div className='grid grid-cols-[1fr_3fr]'>

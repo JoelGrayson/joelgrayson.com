@@ -9,7 +9,10 @@ export default function Machines() {
         pathname='/machines'
         seo={{
             title: 'Machines | Joel Grayson',
-            description: `Ever since I can remember, I've always loved to build. Here are some machines I've created over the years (including pinball machines, vending machines, and a Tesla coil).`
+            description: `Ever since I can remember, I've always loved to build. Here are some machines I've created over the years (including pinball machines, vending machines, and a Tesla coil).`,
+            og: {
+                image: '/image/opengraph/machines.jpg'
+            }
         }}
         noPadding bottomPadding
     >

@@ -19,7 +19,13 @@ export default function Slaphappy() {
     }, []);
     
     return <Page
-        seo={{ title: 'Slaphappy | Joel Grayson' }}
+        seo={{
+            title: 'Slaphappy, Joel\'s YouTube Channel',
+            description: 'Comedy skits with my dad',
+            og: {
+                image: '/image/opengraph/slaphappy.png'
+            }
+        }}
         style={{overflow: 'hidden'}}
         pathname='/slaphappy'
         noPadding bottomPadding

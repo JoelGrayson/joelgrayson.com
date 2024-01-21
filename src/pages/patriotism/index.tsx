@@ -13,7 +13,10 @@ export default function Patriotism() {
         new Audio('/audio/patriotism/grayson-yes.mp3').play();
     }
     
-    return <Page>
+    return <Page seo={{
+        title: 'Patriotism',
+        description: 'I pledge allegiance to the United Cells of Joel Grayson, New York City, and the United States of America.'
+    }}>
         {/* <div onMouseLeave={()=>setSelectedFlag(null)}> */}
         <div>
             <h1 className='text-center'>Patriotism</h1>

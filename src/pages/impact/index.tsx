@@ -1,7 +1,10 @@
 import Page from '@/components/page/DefaultPage';
 
 export default function Impact() {
-    return <Page seo={{ title: 'Impact' }} bottomPadding>
+    return <Page bottomPadding seo={{
+        title: "Joel's Impact",
+        description: "Joel's impact on the world"
+    }}>
         <h1 className='text-center'>Impact</h1>
         <ul>
             <li>
