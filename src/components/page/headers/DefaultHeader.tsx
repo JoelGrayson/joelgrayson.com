@@ -39,6 +39,7 @@ export default function DefaultHeader({ pathname='' }: { pathname?: string }) {
                         <ViolinBow />
                     </HeaderGroupItem>
                     <HeaderGroupItem pathname={pathname} link='/slaphappy'>Slaphappy</HeaderGroupItem>
+                    <HeaderGroupItem pathname={pathname} link='/learn'>Learning Resources</HeaderGroupItem>
                 </HeaderGroup>
 
                 <HeaderGroup pathname={pathname} title='Software' link='/software' className='m:order-5' pixelOffset={1}>

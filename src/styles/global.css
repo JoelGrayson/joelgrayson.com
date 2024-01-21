@@ -102,6 +102,8 @@ a:not(.unstyled):hover *,
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-decoration: underline; /* does not work because of -webkit-background-clip */
+    font-weight: 600;
+    transition: none !important;
 }
 
 /* ## Forms */

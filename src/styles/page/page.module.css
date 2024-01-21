@@ -7,7 +7,7 @@
 
 .pageNamespace * { /* transition everything */
     box-sizing: border-box;  
-    transition: all 0.3s ease
+    /* transition: all 0.3s ease */
 }
 
 .pageNamespace *::selection { /* yellow highlight color */
