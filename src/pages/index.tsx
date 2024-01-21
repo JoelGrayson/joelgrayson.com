@@ -11,7 +11,7 @@ export default function Home() {
         ],
         description: 'The official website of the United Cells of Joel Grayson',
         og: {
-            image: '/image/home/portraits/4.22.2023/JoelGrayson.webp',
+            image: '/image/home/portraits/4.22.2023/JoelGrayson.jpg',
             imageAlt: 'Joel Grayson Profile Photo'
         }
     }}>
