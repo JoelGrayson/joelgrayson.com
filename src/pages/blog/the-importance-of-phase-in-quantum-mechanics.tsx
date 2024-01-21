@@ -26,5 +26,6 @@ export default function TheImportanceOfPhaseInQuantumMechanics() {
 }
 
 function LaTeX({ number }: { number: number }) {
-    return <img src={`/image/blog/the-importance-of-phase-in-quantum-mechanics/latex/${number}.svg`} className='inline' />;
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img src={`/image/blog/the-importance-of-phase-in-quantum-mechanics/latex/${number}.svg`} className='inline' alt='latex' />;
 }

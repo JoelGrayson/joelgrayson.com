@@ -5,9 +5,14 @@ import Content from '../app/Content';
 export default function Home() {
     return <Page noPadding pathname='/' seo={{
         title: 'Joel Grayson',
+        keywords: [
+            'Joel Grayson',
+            'New York'
+        ],
         description: 'The official website of the United Cells of Joel Grayson',
         og: {
-            image: '/image/home/portraits/4.22.2023/Joel Grayson.webp'
+            image: '/image/home/portraits/4.22.2023/JoelGrayson.webp',
+            imageAlt: 'Joel Grayson Profile Photo'
         }
     }}>
         {/* Profile and Signature */}
