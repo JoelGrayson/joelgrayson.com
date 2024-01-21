@@ -27,6 +27,10 @@ export default function SEO({ seo }: { seo?: SEOProps }) {
         <meta name='og:type' content={seo?.og?.type || 'website'} />
 
 
+        {/* Favicon (not really SEO) */}
+        {/* TODO:  */}
+
+
         {/* Specified SEO */}
         <title>{seo?.title || 'Joel Grayson'}</title>
         { seo && <>
@@ -36,13 +40,13 @@ export default function SEO({ seo }: { seo?: SEOProps }) {
                 ? <>
                     { (seo.og.title || seo.title) && <meta property='og:title' content={seo.og.title || seo.title} /> }
                     { (seo.og.description || seo.description) && <meta property='og:description' content={seo.og.description || seo.description} /> }
-                    { (seo.og.image || seo.favicon) && <meta property='og:image' content={seo.og.image ||  seo.favicon} /> }
+                    { (seo.og.image || seo.favicon) && <meta property='og:image' content={getURL(seo.og.image || seo.favicon || '')} /> }
                     { seo.og.imageAlt && <meta property='og:image:alt' content={seo.og.imageAlt} /> }
                 </>
                 : !seo.noIndex && <>
                     { seo.title && <meta property='og:title' content={seo.title} /> }
                     { seo.description && <meta property='og:description' content={seo.description} /> }
-                    { seo.favicon && <meta property='og:image' content={seo.favicon} /> }
+                    { seo.favicon && <meta property='og:image' content={getURL(seo.favicon)} /> }
                 </> }
         </> }
 
@@ -54,3 +58,10 @@ export default function SEO({ seo }: { seo?: SEOProps }) {
         }
     </Head>;
 }
+
+function getURL(url: string) {
+    if (url[0]==='/')
+        return 'https://joelgrayson.com'+url;
+    return url;
+}
+
