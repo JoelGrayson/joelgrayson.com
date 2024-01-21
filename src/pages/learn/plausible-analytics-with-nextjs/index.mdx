@@ -3,7 +3,8 @@ export default function LearningContent({children}) {
 	return <LearnPage markdown bottomPadding>{children}</LearnPage>;
 }
 
-# How to Set up Plausible Analytics with Next.js
+<h1 style={{fontSize: 30}}>How to Set up Plausible Analytics with Next.js</h1>
+
 1. `npm i next-plausible`
 2. To proxy the plausible scripts so ad blockers do not stop the collection, configure next.config.js like so:
 ```js
@@ -13,7 +14,7 @@ const nextConfig={
 };
 module.exports=withPlausibleProxy()(nextConfig);
 ```
-3. Add \<PlausibleProvider\> to `_app.tsx`:
+3. Add `<PlausibleProvider>` to `_app.tsx`:
 ```tsx
 import PlausibleProvider from 'next-plausible';
 import type { AppProps } from 'next/app';

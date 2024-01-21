@@ -90,11 +90,11 @@ details>summary {
 a, details>summary {
     cursor: pointer;
 }
-a:not(.unstyled) {
+a:not(.unstyled):not(.button) {
     color: #0000e1;
 }
-a:not(.unstyled):hover,
-a:not(.unstyled):hover *,
+a:not(.unstyled):not(.button):hover,
+a:not(.unstyled):not(.button):hover *,
 .gradient-text,
 .gradient-text-on-hover:hover {
     color: #fa00f2; /* backup for browsers not supporting text gradient */
@@ -267,8 +267,12 @@ button:not(.unstyled):disabled, .btn:disabled, .button:disabled {
     font-size: 2.5rem;
 }
 
-.markdown-container code {
+.markdown-container pre, .markdown-container code {
     background-color: #eee;
     padding: 2px 4px;
     border-radius: 4px;
+}
+
+.markdown-container ol {
+    list-style-type: decimal;
 }

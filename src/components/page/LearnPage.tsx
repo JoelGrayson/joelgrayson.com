@@ -4,7 +4,6 @@ import SEO, { SEOProps } from './parts/SEO';
 import pageStyle from '@/styles/page/page.module.css';
 import RedirectFromVercelAppToCom from './parts/RedirectFromVercelAppToCom';
 import Favicons from './parts/Favicons';
-import Button from '@jcomponents/button';
 import Link from 'next/link';
 
 export default function LearnPage({ children, noPadding, bottomPadding, seo, noPageStyling=false, markdown, noContainer=false, ...props }: {
@@ -39,9 +38,11 @@ export default function LearnPage({ children, noPadding, bottomPadding, seo, noP
             { noPadding
                 ? children
                 : <div id='pageNamespace' className={`${noContainer ? '': 'j_container'} ${noPageStyling ? '' : pageStyle.pageNamespace}`}>
-                    <Link href='/learn'>
-                        <Button>↳ Return to Learn</Button>
-                    </Link>
+                    <Link href='/learn' className='button' style={{
+                        position: 'relative',
+                        top: 20,
+                        left: 10
+                    }}>↳ See other learning resources</Link>
 
                     <div className={markdown ? "markdown-container" : ''}>
                         {children}
