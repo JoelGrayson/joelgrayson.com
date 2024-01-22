@@ -19,5 +19,5 @@ export default function ShruggingJoel() {
         });
     }, []);
 
-    return <Image ref={shrugRef} width='455' height='326' src='/image/joel/shrugging-2023.png' alt='Shrug' className='relative top-3' />;
+    return <Image ref={shrugRef} width='455' height='326' src='/image/joel/shrugging-2023.webp' alt='Shrug' className='relative top-3' />;
 }

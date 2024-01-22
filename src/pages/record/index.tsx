@@ -31,7 +31,10 @@ export default function Record() {
         { victory: true, date: '2023', position: 'ARISE', spots: 67, candidates: 984 },
     ];
     
-    return <Page>
+    return <Page bottomPadding seo={{
+        title: 'Record',
+        description: 'You win some, you lose some. The most important thing is that you tried and know you did your best.'
+    }}>
         <h1 className='text-center'>Record</h1>
         <p>You win some, you lose some. The most important thing is that you tried and know you did your best.</p>
         
