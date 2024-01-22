@@ -3,6 +3,7 @@ import { redirects } from './_internals/types';
 const polyfill=(link: string)=>({[`https://joelgrayson.wixsite.com/joelgrayson${link}`]: link});
 
 export const temporary: redirects={ //302
+    '/learn/pablo-neruda/index.html': ['/pablo-neruda', '/neruda', '/learn/neruda', '/pablo-neruda/index.html'],
     '/learn/physics/index.html': '/learn/physics',
     '/nyc/nyc-government/unit-1-quiz': '/nyc/nyc-government/unit-1-test',
     '/research/how-do-cultures-combine/How%20Cultures%20Combine%20in%20Mixed-Race%20Families.pdf': '/research/how-do-cultures-combine',
@@ -143,7 +144,6 @@ export const permanent: redirects={ //301
     // index.html is not automatic on next.js
     '/favicon-fetcher/index.html': '/favicon-fetcher',
     '/terms-and-conditions/index.html': '/terms-and-conditions',
-    '/pablo-neruda/index.html': '/pablo-neruda',
     '/software/canvas-circles/index.html': '/software/canvas-circles',
     '/rise/index.html': '/rise',
 };

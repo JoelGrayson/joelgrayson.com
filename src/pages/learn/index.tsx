@@ -17,6 +17,7 @@ export default function Learn() {
             <li><Link href='/learn/pi'>The Digits of Pi</Link></li>
             <li><a href='https://memorizethepresidents.com'>The Presidents of the United States</a></li>
             <li><Link href='/learn/citations'>Citations</Link></li>
+            <li><Link href='/learn/pablo-neruda'>Pablo Neruda</Link></li>
             <li><Link href='/learn/docker'>Docker</Link></li>
             <li><Link href='/learn/daylight-saving-time'>Daylight Savings Time</Link></li>
             <li><Link href='/learn/css-grid'>CSS Grid</Link></li>
