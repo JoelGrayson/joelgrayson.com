@@ -16,7 +16,12 @@ export default function NYC() {
     //     new Audio('/audio/patriotism/grayson-yes.mp3').play();
     // }
     
-    return <Page bottomPadding pathname='/nyc'>
+    return <Page bottomPadding pathname='/nyc' seo={{
+        title: 'Involvement in New York City',
+        og: {
+            image: '/image/patriotism/nyc-flag.jpg'
+        }
+    }}>
         <div className='flex justify-center'>
             <div className='relative w-[10ch]'>
                 <h1>NYC</h1>

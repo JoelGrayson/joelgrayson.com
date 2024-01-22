@@ -6,7 +6,7 @@ export default function Research() {
         title: 'Research',
         description: 'Here are some research papers and studies I have conducted.',
         og: {
-            image: '/image/opengraph/research.png'
+            image: '/image/opengraph/research.jpg'
         }
     }}>
         <h1 className='text-center'>Research</h1>
