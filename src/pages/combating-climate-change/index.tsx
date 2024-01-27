@@ -60,7 +60,7 @@ export default function CCC() {
                     <ul>
                         <li>Currently, when the power goes out in the River Campus, there is no WiFi, heat, or lighting. This happens around 3 times a year. Our installation will add a battery to the lower school to make sure the campus has 4–6 hours of backup power during the outages.</li>
                         <li>EV charging in the carports</li>
-                        <li>Live energy generation data will be used in the science curriculum.</li>
+                        <li>Live energy generation data will be displayed in campus hallways and used in the science curriculum.</li>
                     </ul>
                 </div>
                 <Image src='/image/ccc/solar-for-riverdale/models.png' width={720} height={146} alt='Solar Models' />
