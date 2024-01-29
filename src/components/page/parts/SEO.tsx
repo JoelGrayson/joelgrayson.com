@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Favicons from './Favicons';
 
 export type SEOProps={
     title?: string;
@@ -28,7 +29,10 @@ export default function SEO({ seo }: { seo?: SEOProps }) {
 
 
         {/* Favicon (not really SEO) */}
-        {/* TODO:  */}
+        { seo?.favicon
+            ? <link rel='icon' href={seo?.favicon || '/image/favicon.ico'} />
+            : <Favicons />
+        }
 
 
         {/* Specified SEO */}

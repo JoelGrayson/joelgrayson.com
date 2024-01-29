@@ -39,7 +39,10 @@ export default function Article({ hyphenatedTitle, title, date /** published dat
         }
     }, [hyphenatedTitle, router.query.commentId, router.query.state]);
     
-    return <BlogPage seo={{ title: title ? `${title} | Joel's Blog` : "Joel's Blog" }}>
+    return <BlogPage seo={{
+        title: title ? `${title} | Joel's Blog` : "Joel's Blog",
+        favicon: `/image/blog/${hyphenatedTitle}/thumbnail.jpg`
+    }}>
         {/* Title & Date */}
         {!notitle && <h1 style={{fontSize: '2.5rem', textAlign: 'center'}}>{title}</h1>}
         <div className='text-right' title={date && `Published on ${jdate(date)}`}>{!nodate && date && jdate(date)}</div>

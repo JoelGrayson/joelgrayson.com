@@ -8,7 +8,7 @@ import { BlogArticles } from '.';
 import BlogPage from '@/components/blog/BlogPage';
 
 export default function ArticleNotFound() {
-    const article=useRouter().query.article;
+    const article=useRouter().query['article-not-found'];
 
     const shrugRef=useRef() as React.MutableRefObject<HTMLImageElement>;
 

@@ -17,6 +17,7 @@ export default function JoelsBlog() { //List of articles
         <SEO seo={{
             title: 'Joel\'s Blog',
             description: 'Articles on philosophy, climate change, science, government, and more.',
+            favicon: '/image/favicon.ico',
             og: {
                 image: '/image/opengraph/blog.png'
             },
