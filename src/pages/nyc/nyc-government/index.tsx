@@ -423,6 +423,10 @@ export default function NYCGoverment() {
 
         {/* <h2>About</h2> */}
         {/* <Image width={262.5} height={350} src="/nyc/nyc-government/municipal-building.jpg" alt="Municipal Building" className='inline' /> */}
+
+        <h3>Final Presentation</h3>
+        <Link href='/nyc/nyc-government/presentation'>See more</Link>.
+        
         <h3>Resources</h3>
         <ul>
             <li><a target='_blank' href='https://nycadmincode.readthedocs.io'>Administrative Code</a></li>

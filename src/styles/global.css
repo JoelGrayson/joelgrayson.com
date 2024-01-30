@@ -191,6 +191,10 @@ input[type='submit'] {
 
 /* ### Button from https://joelgrayson.com/styles/button.v2.css */
 button:not(.unstyled), .btn, .button {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
     border: 1.1px solid #000;
     border-radius: 3px;
     padding: 5px 10px;
