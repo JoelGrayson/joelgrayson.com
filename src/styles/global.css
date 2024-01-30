@@ -190,7 +190,7 @@ input[type='submit'] {
 
 
 /* ### Button from https://joelgrayson.com/styles/button.v2.css */
-button:not(.unstyled), .btn, .button {
+:where(button):not(.unstyled), .btn, .button {
     display: inline-flex;
     align-items: center;
     cursor: pointer;
@@ -206,44 +206,52 @@ button:not(.unstyled), .btn, .button {
     transition: top;
     transition-duration: .1s;
 }
-button:not(.unstyled):hover, .btn:hover, .button:hover {
+:where(button):not(.unstyled):hover, .btn:hover, .button:hover {
     outline: 2.1px solid #111;
     outline-offset: -2px;
     filter: brightness(0.85) saturate(1.4);
 }
-button:not(.unstyled):active, .btn:active, .button:active {
+:where(button):not(.unstyled):active, .btn:active, .button:active {
     border-radius: 2px;
 	top: 1.1px;
     filter: brightness(0.8) saturate(1.4);
 }
-button:not(.unstyled):disabled, .btn:disabled, .button:disabled {
+:where(button):not(.unstyled):disabled, .btn:disabled, .button:disabled {
     outline: none;
 }
-/* .btn-red,    .button-red    { background-color: #ff8f8f; } */
-.btn-yellow, .button-yellow { background-color: #ffd472 !important; }
-.btn-green,  .button-green  { background-color: #90ee90 !important; }
-.btn-blue,   .button-blue   { background-color: #aed8fc !important; }
+
+.btn-red,    .button-red    { background-color: #ff8f8f; }
+.btn-yellow, .button-yellow { background-color: #ffd472; }
+.btn-green,  .button-green  { background-color: #90ee90; }
+.btn-blue,   .button-blue   { background-color: #aed8fc; }
 
 
-.btn-red {
+.btn-puffy {
     display: inline-block;
     min-height: 48px;
-    background-color: #E21C21 !important; /* red */
-    color: white !important;
+    color: white;
 
     /*border*/
-    border: 2px solid #ED3A1E !important; /* slightly lighter */
-    border-radius: 14px !important;
-    font-size: 16px !important;
-    padding: 8px 17px !important;
+    border: 2px solid #ED3A1E; /* slightly lighter */
+    border-radius: 14px;
+    font-size: 16px;
+    padding: 8px 17px;
 }
-.btn-red:hover {
+.btn-puffy-red {
+    background-color: #E21C21 !important; /* red */
+}
+.btn-puffy-red:hover {
     background-color: #f9c44d !important;
-    border-color: #ffd779 !important;
+    outline-color: #ffd779 !important;
 }
-.btn-red:active {
-    background-color: #ffd064 !important;
+.btn-puffy-red:active {
+    outline-color: #ffd064 !important;
 }
+
+.j_max-w { /* page width */
+    max-width: 800px;
+}
+
 
 
 

@@ -15,7 +15,7 @@ export default function Custom404() {
                 <h1 className='text-5xl font-bold'>404</h1>
                 <p>This page does not exist.</p>
                 <Link href='/' className='unstyled'>
-                    <button className='btn-red'>Return home</button>
+                    <button className='btn-puffy btn-puffy-red'>Return home</button>
                 </Link>
             </div>
         </div>
