@@ -4,6 +4,15 @@ import Link from 'next/link';
 import Gallery from 'src/components/gallery/Gallery';
 import { useState } from 'react';
 import { ytVideos } from './ytVideos';
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
+
+const compositions=[
+    'Cadenza',
+    'In Like a Lion, Out Like a Lamb',
+    'Jogging Fury',
+    'The Yearning Soul'
+];
 
 export async function getServerSideProps() {
     const url=`https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&part=snippet&playlistId=PLPq06AMW3cIFOA3J8Z0cd1bMaKn6TV_9K&maxResults=50`;
@@ -20,6 +29,12 @@ export async function getServerSideProps() {
 export default function Performances({ videos }: { videos: ytVideos }) {
     const [galleryOpen, setGalleryOpen]=useState<boolean>(false);
     const [index, setIndex]=useState<number>(0);
+    const gridStyle={
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr 1fr',
+        gap: 10,
+        marginBottom: 50
+    };
     
     return <Page
         pathname='/performances'
@@ -30,14 +45,32 @@ export default function Performances({ videos }: { videos: ytVideos }) {
         }}
         bottomPadding
     >
-        <h1 className='text-center'>Performances</h1>
+        <h1 className='text-center'>Music</h1>
         
-        <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr 1fr',
-            gap: 10,
-            marginBottom: 50
-        }}>{
+        <h2>Compositions</h2>
+        <div style={gridStyle}>
+            {compositions.map(composition=>{
+                const source=`/music/${composition}`;
+                return <div className='' style={{
+                    border: '2px solid #00499c',
+                    padding: 10
+                }}>
+                    <p className='text-center'>{composition}</p>
+                    {/* <audio
+                        src={source+'.mp3'}
+                        controls
+
+                    /> */}
+                    <AudioPlayer
+                        src={`/music/${composition}.mp3`}
+                    />
+                </div>;
+            })}
+        </div>
+
+        
+        <h2>Performances</h2>
+        <div style={gridStyle}>{
             videos?.items?.map((video, index)=>{
                 const thumbnailUrl=video.snippet.thumbnails.high.url;
 
