@@ -3,6 +3,7 @@ import { redirects } from './_internals/types';
 const polyfill=(link: string)=>({[`https://joelgrayson.wixsite.com/joelgrayson${link}`]: link});
 
 export const temporary: redirects={ //302
+    '/music': ['/performance', '/performances', '/projects/music'],
     '/learn/pablo-neruda/index.html': ['/pablo-neruda', '/neruda', '/learn/neruda', '/pablo-neruda/index.html'],
     '/learn/physics/index.html': '/learn/physics',
     '/nyc/nyc-government/unit-1-quiz': '/nyc/nyc-government/unit-1-test',
@@ -100,7 +101,6 @@ export const permanent: redirects={ //301
     'https://joels-secrets-vemwxlduba-uk.a.run.app': ['/secrets', '/sign', '/secret'],
     '/art': ['/projects/art', '/arts', '/artwork'],
     '/machines': ['/projects/machines', '/machine'],
-    '/performances': ['/performance', '/projects/performances', '/projects/performance'],
     'https://calendar.google.com/calendar/u/0?cid=Y182MTYxMThmYmE5ZTY1YWI0YzlkODlmZjAyZDlkMTcxNjE1ZjQ2ZTIyMzlhNTI0MWY1MDBlNjQzZTAyZmRmODRlQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20': ['/software/day-number-calendar/google', '/software/day-number-calendar/calendar'],
     'https://github.com/JoelGrayson/Day-Number-Calendar': '/software/day-number-calendar/github',
     '/software/day-number-calendar.ics': '/software/day-number-calendar/apple',

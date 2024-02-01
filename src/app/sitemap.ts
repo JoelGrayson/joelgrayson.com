@@ -29,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ['/sites', .9],
         ['/impact', .8],
         ['/font', .7],
-        ['/performances', .7],
+        ['/music', .7],
         ['/combating-climate-change', 1, 'daily'],
         ['/art', .7],
         ['/stats', .7],
