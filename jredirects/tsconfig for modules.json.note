@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "lib": ["ES2017"],
+        "rootDir": "./src/",
+        "outDir": "./compiled-js/",
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "esModuleInterop": true,
+        "allowJs": true,
+
+        "strict": true,
+        "target": "ES2020",
+        "skipLibCheck": true,
+        "allowSyntheticDefaultImports": true    
+    },
+    "ts-node": {
+        "experimentalSpecifierResolution": "node",
+        "transpileOnly": true,
+        "esm": true,
+    }
+}

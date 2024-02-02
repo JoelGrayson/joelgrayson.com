@@ -1,0 +1,21 @@
+#!/bin/bash
+
+rm -rf compiled-js dist.js dist.mjs
+# tsc
+# file_content="$(node ./compiled-js/_internals/processRedirects)"
+file_content="$(node --loader ts-node/esm ./src/_internals/processRedirects.ts)"
+cat <<EOF > dist.js
+const jredirects=async ()=>${file_content}; //must be a function that returns a promise
+
+module.exports=jredirects;
+EOF
+cat <<EOF > dist.mjs
+export default async function Redirects() { //must be a function that returns a promise
+    return ${file_content};
+}
+EOF
+
+# echo -n 'const jredirects=async ()=>' > dist.js
+#  >> dist.js
+# printf '; //must be a function that returns a promise\n\nmodule.exports=jredirects;\n' >> dist.js
+rm -rf compiled-js
