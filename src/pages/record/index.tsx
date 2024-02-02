@@ -1,9 +1,13 @@
-import { useState } from "react";
+import React, { useState, Suspense } from 'react';
 import Page from "@/components/page/DefaultPage";
 import Table from "@jcomponents/table";
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import Info from "@/components/global/Info";
+import Loader from '@/components/global/Loader';
+
+// import Switch from '@mui/material/Switch';
+// import FormControlLabel from '@mui/material/FormControlLabel';
+const Switch=React.lazy(()=>import('@mui/material/Switch'));
+const FormControlLabel=React.lazy(()=>import('@mui/material/FormControlLabel'));
 
 export default function Record() {
     const victoryClass='!bg-green-100 text-green-700';
@@ -38,12 +42,14 @@ export default function Record() {
         <h1 className='text-center'>Record</h1>
         <p>You win some, you lose some. The most important thing is that you tried and know you did your best.</p>
         
-        <FormControlLabel
-            control={
-                <Switch onChange={e=>setShowOnlyVictories(e.target.checked)} />
-            }
-            label="Show only victories (a loss is an absence of a win)"
-        />
+        <Suspense fallback={<Loader />}>
+            <FormControlLabel
+                control={
+                    <Switch onChange={e=>setShowOnlyVictories(e.target.checked)} />
+                }
+                label="Show only victories (a loss is an absence of a win)"
+            />
+        </Suspense>
         
         <Table>
             <thead>
@@ -71,4 +77,4 @@ export default function Record() {
         </Table>
         
     </Page>;
-  }
+}
