@@ -19,9 +19,13 @@ export default function Music({ videos }: { videos: ytVideos }) {
     return <Page
         pathname='/performances'
         seo={{
-            title: 'Violin & Piano Performances',
-            keywords: ['violin', 'piano', 'recitals'],
-            description: 'Playing the violin over the years'
+            title: 'Music | Joel Grayson',
+            keywords: ['compositions', 'violin', 'piano', 'recitals', 'performances'],
+            description: 'Joel\'s compositions and performances over the years',
+            favicon: '/image/header/violin.png',
+            og: {
+                image: '/image/header/violin.png'
+            }
         }}
         bottomPadding
     >

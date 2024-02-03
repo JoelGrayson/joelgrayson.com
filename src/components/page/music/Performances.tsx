@@ -5,25 +5,22 @@ import { ytVideos } from './ytVideos';
 import 'react-h5-audio-player/lib/styles.css';
 import { useState } from 'react';
 
-const gridStyle={
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
-    gap: 10,
-    marginBottom: 50
-};
-
 export default function Performances({ videos }: { videos: ytVideos }) {
     const [galleryOpen, setGalleryOpen]=useState<boolean>(false);
     const [index, setIndex]=useState<number>(0);
     
     return <>
         <h2>Performances</h2>
-        <div style={gridStyle}>{
+        <div className='d:grid' style={{
+            gridTemplateColumns: '1fr 1fr 1fr',
+            gap: 10,
+            marginBottom: 50
+        }}>{
             videos?.items?.map((video, index)=>{
                 const thumbnailUrl=video.snippet.thumbnails.high.url;
 
                 return <div key={video.id} onClick={()=>{setIndex(index); setGalleryOpen(true);}} className='cursor-pointer my-1 mx-.5'>
-                    <Image src={thumbnailUrl} alt={`Thumbnail for ${video.snippet.title}`} width='233' height='175' style={{
+                    <Image src={thumbnailUrl} alt={`Thumbnail for ${video.snippet.title}`} width='233' height='175' className='m:mx-auto' style={{
                         objectFit: 'cover',
                         width: 233,
                         height: 111,

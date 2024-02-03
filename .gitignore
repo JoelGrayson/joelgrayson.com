@@ -4,7 +4,6 @@ public/timeline/dist
 !public/timeline/dist/tinycolor.js
 jredirects/dist.js
 public/sitemap.xml
-package-lock.json
 out
 
 
@@ -21,7 +20,6 @@ api.joelgrayson.com/node_modules
 
 # MacOS-Specific
 **/.DS_Store
-Icon
 
 
 # Large Files (so Github doesn't complain)

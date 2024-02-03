@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 const compositions: [string, string, string][]=[
-    ['In Like a Lion, Out Like a Lamb', '2 Violins, Viola, Cello', 'Feb 2024'],
+    ['In Like a Lion, Out Like a Lamb', '2 Violins, Viola, Cello', 'February 2024'],
     ['The Yearning Soul', '2 Violins', 'August 2022'],
     ['Jogging Fury', 'Violin', 'May 2021'],
     ['Cadenza', 'Violin', 'May 2021'],
