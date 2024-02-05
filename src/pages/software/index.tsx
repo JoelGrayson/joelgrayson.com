@@ -43,15 +43,18 @@ export default function Software() {
                     <li><a href="https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf" target="_blank">Focus</a></li>
                 </ul>
             </li>
-            {/* <li>
+            <li>
                 Apps
                 <ul>
-                    <li><a href="" target="_blank">Bullet Brainstorm Desktop</a></li>
                     <li><a href="" target="_blank">Edit Time</a> (waiting for approval for publishing on App Store)</li>
+                    {/*
+                    <li><a href="" target="_blank">Bullet Brainstorm Desktop</a></li>
+                    <li><a href="" target="_blank">Buseroo Mobile</a></li>
                     <li><a href="/chess/index.html" target="_blank">Chess</a></li>
                     <li><a href="" target="_blank">Event Colorer</a> (waiting for approval for publishing on the Google App Store)</li>
+                    */}
                 </ul>
-            </li> */}
+            </li>
             <li>
                 Developer Tools
                 <ul>

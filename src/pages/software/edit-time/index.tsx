@@ -5,7 +5,7 @@ import Page from '@/components/page/DefaultPage';
 export default function EditTime() {
     return <Page bottomPadding>
         <h1 className='text-center'>Edit Time</h1>
-        <p className='italic text-center text-gray-400'>The Mac accessory for changing a file&apos;s Date Modified</p>
+        <p className='italic text-center text-gray-400'>The Mac app for changing a file&apos;s created and modified dates</p>
         <br />
         <p>Available on the Mac App Store (coming soon)</p>
         <br />

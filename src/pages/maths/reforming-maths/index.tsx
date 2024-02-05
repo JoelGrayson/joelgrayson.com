@@ -14,6 +14,7 @@ export default function ReformingMath() {
         <p>Here are my suggestions for making math notation better:</p>
         <ul>
             {/* <li>Instead of \(\int\;dx\), use \(dx\over d\). From my basic understanding of calculus, \(\int\) does the same thing as \(\frac1d\). It is confusing to me to have different symbols mean the same thing.</li> */}
+                {/* ∫=1/d  dx/d for ∫ dx */}
             <li>Use \(\tau\) instead of \(\pi\) for the circle constant</li>
             <li>Instead of writing {r`\(a_{12}\)`} to mean the edge between points \(1\) and \(2\) in graph theory, write {r`\(a_{1\leftrightarrow2}\)`}. Otherwise, it looks like indexing \(12\) of \(a\). When indexing a 2d-array, write {r`\(a_{1,2}\)`} instead of {r`\(a_{12}\)`}. In a 100x100 array, {r`\(a_{12}\)`} should return a 1x100 vector (analogous to a[12]), not a number (analogous to a[1][2])</li>
             <li>
