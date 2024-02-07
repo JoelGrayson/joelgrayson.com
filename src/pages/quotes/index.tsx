@@ -7,6 +7,7 @@ export default function Quotes() {
         <h1 className='text-center'>Quotes</h1>
         <p>Here are some quotes I have said:</p>
         
+        <Quote date='2.5.24'>Always look for simpler solutions. When something bad happens, see if there is a clever solution that is fast and easy because there is always the long solution.</Quote>
         <Quote date='11.21.22'>When you are free you want work; when you have work you want to be free.</Quote>
         <Quote date='9.22.22'>You win some. You lose some. The important thing is to try and know you did your best.</Quote>
         <Quote date='9.30.21'>Nearly-invisible opportunities pass you every day. Catch them.</Quote>
