@@ -141,11 +141,13 @@ input[type='submit'] {
     margin: 0 auto;
     line-height: 1.75rem;
     padding: 0 2.5rem;
+    position: relative;
 }
 
 .j_max-w { /* page width */
     max-width: 800px;
     margin: 0 auto;
+    position: relative;
 }
 
 
