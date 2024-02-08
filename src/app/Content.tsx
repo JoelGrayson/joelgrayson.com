@@ -5,7 +5,6 @@ import Image from 'next/image';
 import SEBLogo from 'src/components/by-page/home/SEB Logo';
 import BtnIcon from 'src/components/by-page/home/BtnIcon';
 import { useEffect, useState } from 'react';
-import Prototype from '@/components/by-page/connecting-street-vendors-to-the-grid/Prototype';
 
 // TODO: add shadow to boxes
 // TODO: add shading gradient in boxes
@@ -96,9 +95,6 @@ export default function Content() {
             </BtnIcon>
             <BtnIcon href='/connecting-street-vendors-to-the-grid' target='_self'>
                 <Image alt='Generators vs Grid' height={55} width={100} className='relative left-2' src='/image/connecting-street-vendors-to-the-grid/generators-versus-grid.gif' />
-                {/* <div style={{ zoom: 0.3, margin: '0 auto' }}>
-                    <Prototype style={{ margin: '0 auto', transform: 'scale(.8)' }} tiny />
-                </div> */}
                 <span className='text-[0.8rem]'>Connecting Street Vendors to the Grid</span>
             </BtnIcon>
         </article>

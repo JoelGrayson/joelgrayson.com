@@ -6,7 +6,7 @@ const START_LOC=[293, 197];
 const SPEED=[1.5, -.6];
 const FREQ=400; //ms to spawn circles
 
-export default function Prototype({ className, style, tiny=false }: { className?: string; style?: React.CSSProperties; tiny?: boolean }) {
+export default function Prototype({ className, style }: { className?: string; style?: React.CSSProperties }) {
     const fumesRef=useRef<HTMLCanvasElement | null>(null);
     const [showingSolution, setShowingSolution]=useState(false);
 
@@ -108,11 +108,7 @@ export default function Prototype({ className, style, tiny=false }: { className?
                 left: 80,
                 width: showingSolution ? 170 : 210,
                 borderRadius: 10,
-                transition: 'background-color 0.5s',
-
-                ...(tiny && {
-                    height: 40
-                })
+                transition: 'background-color 0.5s'
             }}
         >
             { showingSolution ? 'Electricity from Grid' : 'Electricity from Generators' }
