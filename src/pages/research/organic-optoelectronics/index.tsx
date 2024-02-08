@@ -44,10 +44,8 @@ export default function OrganicOptoelectronics() {
             <li><a href="/research/organic-optoelectronics/X-ray-diffraction.zip">X-Ray diffraction (from UNAM)</a></li>
         </ul>
         {/* <p>TODO: test it in more devices like photodetectors and, if successful, organic solar cells.</p> */}
-        
-        <Data />
 
-        <h3>Explaining stuff in the lab to a general audience</h3>
+        <h3>Explaining the Labwork to a General Audience</h3>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/AuM790sAzUc" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
         
         <h3>Presenting at the ARISE colloquium</h3>
@@ -61,6 +59,8 @@ export default function OrganicOptoelectronics() {
         <PDF src='/research/organic-optoelectronics/Twisting Charge Transfer Complex Crystals for Organic Optoelectronics Paper.pdf' height={700} />
         <br />
         
+        <Data />
+
         <h3>Weekly Presentations</h3>
         <PDF src='/research/organic-optoelectronics/presentations/Week 1.pdf' height={464} />
         <PDF src='/research/organic-optoelectronics/presentations/Week 2.pdf' height={464} />

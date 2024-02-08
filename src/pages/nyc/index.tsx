@@ -52,7 +52,7 @@ export default function NYC() {
 
         <h2>Manhattan Community Board 1 Member</h2>
         <p>Being a community board member has been an exciting and rewarding experience. I have enjoyed learning how NYC Government works, talking with different department liaisons, making friends with other board members, and am grateful to be a part of a group of inspiring involved community members.</p>
-        <h3>My initatives</h3>
+        <h3>My Initiatives</h3>
         <ul>
             <li>Created a resolution to add maker spaces to middle schools in my district</li>
             <li>Wrote to the DOT about electric ferries and made a budget request for electric ferries to the EDC (Budget Request for Electric Ferries.jpg)</li>

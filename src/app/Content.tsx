@@ -5,6 +5,7 @@ import Image from 'next/image';
 import SEBLogo from 'src/components/by-page/home/SEB Logo';
 import BtnIcon from 'src/components/by-page/home/BtnIcon';
 import { useEffect, useState } from 'react';
+import Prototype from '@/components/by-page/connecting-street-vendors-to-the-grid/Prototype';
 
 // TODO: add shadow to boxes
 // TODO: add shading gradient in boxes
@@ -83,6 +84,22 @@ export default function Content() {
                 <Image alt='Homework Checker Logo' height={50} width={50} src='/image/home/optimized/homework-checker-logo.avif' />
                 <span className='text-[0.8rem]'>Homework Checker</span>
                 { hCInstalls!=null && <Label>{hCInstalls} installs</Label> }
+            </BtnIcon>
+        
+            <BtnIcon href='https://sparelearn.com'>
+                <Image alt='Spare Learn Logo' height={50} width={50} src='/image/software/sparelearn/logo.png' />
+                <span className='text-[1rem]'>SpareLearn.com</span>
+            </BtnIcon>
+            <BtnIcon href='/research/organic-optoelectronics' target='_self'>
+                <Image alt='Homework Checker Logo' height={50} width={50} src='/image/ccc/BrDPA-AzoBipy Structure.png' />
+                <span className='text-[1rem]'>Organic Solar Cell Research</span>
+            </BtnIcon>
+            <BtnIcon href='/connecting-street-vendors-to-the-grid' target='_self'>
+                <Image alt='Generators vs Grid' height={55} width={100} className='relative left-2' src='/image/connecting-street-vendors-to-the-grid/generators-versus-grid.gif' />
+                {/* <div style={{ zoom: 0.3, margin: '0 auto' }}>
+                    <Prototype style={{ margin: '0 auto', transform: 'scale(.8)' }} tiny />
+                </div> */}
+                <span className='text-[0.8rem]'>Connecting Street Vendors to the Grid</span>
             </BtnIcon>
         </article>
     </>;
