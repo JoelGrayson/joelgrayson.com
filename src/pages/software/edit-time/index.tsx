@@ -12,7 +12,7 @@ export default function EditTime() {
             <Image src='/image/software/edit-time/logo.png' width={60} height={60} alt='Logo' className='inline relative bottom-1' />
             Edit Time
         </h1>
-        <p className='italic text-center text-gray-400'>The Mac app for changing a file&apos;s created and modified dates. Edit Time is only way to change a file's date modified and date created without using the terminal.</p>
+        <p className='italic text-center text-gray-400'>The Mac app for changing a file&apos;s created and modified dates. Edit Time is only way to change a file&apos;s date modified and date created without using the terminal.</p>
         <br />
         <Link target='_blank' href='https://apps.apple.com/us/app/edit-time/id6464405876'>
             <Image src="/image/software/edit-time/download-on-the-mac-app-store.png" alt="Download on the Mac App Store" height={74.375} width={170} style={{
