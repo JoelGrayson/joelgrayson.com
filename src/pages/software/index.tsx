@@ -53,6 +53,7 @@ export default function Software() {
                     <li><Link href="/software/hide desktop.command" target="_blank">Hide/Show Desktop Icons</Link></li>
                     <li><Link href="https://github.com/JoelGrayson/create-joel-app" target="_blank">Create Joel App</Link></li>
                     <li><Link href="/software/processing-to-html-converter" target="_blank">Processing to HTML Converter</Link></li>
+                    <li><Link href="https://github.com/JoelGrayson/jredirects" target="_blank">JRedirects</Link></li>
                     {/* TODO: Scripts */}
                 </ul>
             </li>
