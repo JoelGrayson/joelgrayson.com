@@ -69,6 +69,7 @@ export default function Content() {
                 </div>
                 <span>Machines</span>
             </BtnIcon> {/* sunbeam going down when hover */}
+            
             <BtnIcon href='https://buseroo.com'>
                 <Image alt='buseroo-logo' height={48} width={48} className='mb-0.5' src='/image/home/optimized/buseroo-logo.avif' />
                 <span>Buseroo.com</span>
@@ -97,6 +98,12 @@ export default function Content() {
                 <Image alt='Generators vs Grid' height={55} width={100} className='relative left-2' src='/image/connecting-street-vendors-to-the-grid/generators-versus-grid.gif' />
                 <span className='text-[0.8rem]'>Connecting Street Vendors to the Grid</span>
             </BtnIcon>
+
+            {/* Lirong Art, Shirtocracy, BulletBrainstorm */}
+            {/* <BtnIcon href='/connecting-street-vendors-to-the-grid' target='_self'>
+                <Image alt='Generators vs Grid' height={55} width={100} className='relative left-2' src='/image/connecting-street-vendors-to-the-grid/generators-versus-grid.gif' />
+                <span className='text-[0.8rem]'>Connecting Street Vendors to the Grid</span>
+            </BtnIcon> */}
         </article>
     </>;
 }

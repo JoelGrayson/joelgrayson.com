@@ -4,6 +4,9 @@ import { useEffect } from 'react';
 import PlausibleProvider from 'next-plausible';
 import localFont from 'next/font/local';
 
+import { lazy } from 'react';
+const RickRoll=lazy(()=>import('@/components/RickRoll'));
+
 const font=localFont({
     variable: '--font',
     src: [

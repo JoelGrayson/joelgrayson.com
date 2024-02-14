@@ -47,6 +47,14 @@ model Stats {
     shanghaiDictionarySearches Int?
 }
 
+// Events, for example how many times people have been rickrolled by the modal
+model EventCounter {
+    id        String   @id @default(cuid())
+    eventName String
+    origin    String
+    time      DateTime @default(now())
+}
+
 // # Logging
 model Error {
     id       String   @id @default(cuid())

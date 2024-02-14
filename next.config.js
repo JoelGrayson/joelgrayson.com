@@ -36,23 +36,26 @@ const nextConfig={
         return [
             {
                 source: '/api/contact',
-                headers: [
-                    { key: "Access-Control-Allow-Credentials", value: "true" },
-                    { key: "Access-Control-Allow-Origin", value: "https://shirtocracy.com" }, //the origin
-                    { key: "Access-Control-Allow-Methods", value: "POST" },
-                    { key: "Access-Control-Allow-Headers", value: "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" },
-                ]
+                headers: CORSHeaders('https://shirtocracy.com', 'POST')
             },
             {
                 source: '/api/lirong-art-email-list/add',
-                headers: [
-                    { key: "Access-Control-Allow-Credentials", value: "true" },
-                    { key: "Access-Control-Allow-Origin", value: "*" }, //the origin
-                    { key: "Access-Control-Allow-Methods", value: "POST, GET" },
-                    { key: "Access-Control-Allow-Headers", value: "Content-Type, Authorization, X-Requested-With" },
-                ]
+                headers: CORSHeaders()
+            },
+            {
+                source: '/api/event/rick-roll',
+                headers: CORSHeaders()
             }
-        ]
+        ];
+
+        function CORSHeaders(origin='*', methods='POST, GET') {
+            return [
+                { key: "Access-Control-Allow-Credentials", value: "true" },
+                { key: "Access-Control-Allow-Origin", value: origin }, //the origin
+                { key: "Access-Control-Allow-Methods", value: methods },
+                { key: "Access-Control-Allow-Headers", value: "Content-Type, Authorization, X-Requested-With" },
+            ];
+        }
     }
 
     // Uncomment below in order to export as HTML
@@ -62,3 +65,6 @@ const nextConfig={
 };
 
 module.exports=withBundleAnalyzer(withMDX(withPlausibleProxy()(nextConfig)));
+
+
+
