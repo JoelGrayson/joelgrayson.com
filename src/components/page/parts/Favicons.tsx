@@ -2,6 +2,8 @@ import Head from 'next/head';
 
 export default function Favicons() {
     return <Head>
+        {/* Genreated from https://realfavicongenerator.net */}
+
         {/* Favicons */}
         <link rel="apple-touch-icon" sizes="180x180" href="/image/favicon/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/image/favicon/favicon-32x32.png" />
@@ -14,4 +16,3 @@ export default function Favicons() {
         <meta name="theme-color" content="#ffffff" />
     </Head>;
 }
-

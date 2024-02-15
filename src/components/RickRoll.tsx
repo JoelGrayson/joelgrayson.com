@@ -1,5 +1,6 @@
 'use client';
 
+import baseUrl from '@/helpers/baseUrl';
 import Modal from '@jcomponents/modal';
 import { useEffect, useState } from 'react';
 
@@ -14,8 +15,9 @@ export default function RickRoll() {
             const isApril=new Date().getMonth()===3;
             const isFirst=new Date().getDate()===1;
             if (isApril && isFirst) { // April 1st
+                console.log('Sending rickroll');
                 setOpen(true);
-                fetch('https://joelgrayson.com/api/event/rick-roll');
+                fetch(baseUrl+'api/log-event/rick-roll');
             }
         }
         else

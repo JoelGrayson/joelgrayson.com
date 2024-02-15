@@ -37,7 +37,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <PlausibleProvider domain='joelgrayson.com' enabled>
             <main className={font.className}>
                 <Component {...pageProps} />
-                { new Date().getMonth()===3 && new Date().getDate()===1 && <RickRoll /> }
+                {/* { new Date().getMonth()===3 && new Date().getDate()===1 && <RickRoll /> } */}
+                <RickRoll />
             </main>
         </PlausibleProvider>
     </>;

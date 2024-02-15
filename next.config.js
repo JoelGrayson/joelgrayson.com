@@ -43,7 +43,7 @@ const nextConfig={
                 headers: CORSHeaders()
             },
             {
-                source: '/api/event/rick-roll',
+                source: '/api/log-event/rick-roll',
                 headers: CORSHeaders()
             }
         ];

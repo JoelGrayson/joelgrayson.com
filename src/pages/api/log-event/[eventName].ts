@@ -12,5 +12,5 @@ export default async function LogEvent(req: NextApiRequest, res: NextApiResponse
 
     res.json({
         status: 'success'
-    })
+    });
 }
