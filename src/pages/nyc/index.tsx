@@ -56,7 +56,7 @@ export default function NYC() {
         <ul>
             <li>Created a resolution to add maker spaces to middle schools in my district</li>
             <li>Wrote to the DOT about electric ferries and made a budget request for electric ferries to the EDC (Budget Request for Electric Ferries.jpg)</li>
-            <li>Advocated for Miyawaki forests in the resolution about the rotary tunnel (mentioned in <a href='https://www.ebroadsheet.com/throwing-in-the-sponge/'>this Broadsheet article</a>)</li>
+            <li>Advocated for Miyawaki forests in the resolution about the rotary tunnel (mentioned in <Link target='_blank' href='https://www.ebroadsheet.com/throwing-in-the-sponge/'>this Broadsheet article</Link>)</li>
             <li>Advocated to five elected officials for private school e-bus funds.</li>
         </ul>
         <Yt>stwfwzbFqQE</Yt>

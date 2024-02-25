@@ -121,7 +121,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
                 <Savings>
                     <span>Saves ~<Green>0.675 MTCO₂e</Green> per year</span>
                     <CalculationInfo>
-                        <p>5 kg of CO2 per hour of use (<a href='https://www.quietcleanpdx.org/wp-content/uploads/2019/11/Gas-Powered-Leaf-Blower-Emissions-Factsheet-11.12.pdf'>source</a>).</p>
+                        <p>5 kg of CO2 per hour of use (<Link href='https://www.quietcleanpdx.org/wp-content/uploads/2019/11/Gas-Powered-Leaf-Blower-Emissions-Factsheet-11.12.pdf'>source</Link>).</p>
                         <p>5 kg*45 days per year*3 people per hour*1 hour per day=675 kg of emissions per year</p>
                     </CalculationInfo>
                 </Savings>
@@ -147,13 +147,13 @@ Permanent link: https://perma.cc/N7QN-QDK6
         <Section title='Energy Efficiency'>
             <Action title='Stopped Bus Idling' {...{showDescription}}>
                 <IdlingEngine />
-                <p>Wrote to my school&apos;s bus contractor to enforce <a href="https://portal.311.nyc.gov/article/?kanumber=KA-02222">NYC&apos;s law banning bus idling</a>. The day afterward, buses went from idling for hours to minutes.</p>
+                <p>Wrote to my school&apos;s bus contractor to enforce <Link href="https://portal.311.nyc.gov/article/?kanumber=KA-02222">NYC&apos;s law banning bus idling</Link>. The day afterward, buses went from idling for hours to minutes.</p>
                 <br />
                 <Savings>
                     <span>Saves ~<Green>6.7 MTCO₂e</Green> per year</span>
                     <CalculationInfo>
                         .0690 kg per minute*90 minutes idling per day*180 days per year*6 buses doing this per day=6706 kg of CO₂ emissions per year
-                        (<a href="https://natural-resources.canada.ca/energy/efficiency/communities-infrastructure/transportation/idling/4463">source</a>)
+                        (<Link href="https://natural-resources.canada.ca/energy/efficiency/communities-infrastructure/transportation/idling/4463">source</Link>)
                     </CalculationInfo>
                 </Savings>
             </Action>
@@ -180,12 +180,12 @@ Permanent link: https://perma.cc/N7QN-QDK6
                 <div className='d:flex'>
                     <div className='d:grid d:place-items-center'>
                         <Image width={380} height={205} src="/image/ccc/presenting/middle-school.jpg" alt="Presentation to the Middle School" />
-                        <a className='m:hidden' href='/combating-climate-change/Combating Climate Change.pptx'>
+                        <Link className='m:hidden' href='/combating-climate-change/Combating Climate Change.pptx'>
                             <Button>
                                 <svg className={Button.Icon} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width='48px' height='48px'><path fill='#dc4c2c' d='M8,24c0,9.941,8.059,18,18,18s18-8.059,18-18H26H8z'/><path fill='#f7a278' d='M26,6v18h18C44,14.059,35.941,6,26,6z'/><path fill='#c06346' d='M26,6C16.059,6,8,14.059,8,24h18V6z'/><path fill='#9b341f' d='M22.319,34H5.681C4.753,34,4,33.247,4,32.319V15.681C4,14.753,4.753,14,5.681,14h16.638 C23.247,14,24,14.753,24,15.681v16.638C24,33.247,23.247,34,22.319,34z'/><path fill='#fff' d='M14.673,19.012H10v10h2.024v-3.521H14.3c1.876,0,3.397-1.521,3.397-3.397v-0.058 C17.697,20.366,16.343,19.012,14.673,19.012z M15.57,22.358c0,0.859-0.697,1.556-1.556,1.556h-1.99v-3.325h1.99 c0.859,0,1.556,0.697,1.556,1.556V22.358z'/></svg>
                                 <span>Download Presentation</span>
                             </Button>
-                        </a>
+                        </Link>
                     </div>
                     <div className='m:hidden'>
                         <PDF src='combating-climate-change/Combating Climate Change.pdf' height={260} />
@@ -194,19 +194,19 @@ Permanent link: https://perma.cc/N7QN-QDK6
             </Action>
             <Action title='Upper School Climate Solutions Presentation' {...{showDescription}}>
                 <div className='flex justify-around items-center'>
-                    <a className='m:hidden' href='/combating-climate-change/Climate Solutions for Riverdale.pptx'>
+                    <Link className='m:hidden' href='/combating-climate-change/Climate Solutions for Riverdale.pptx'>
                         <Button>
                             <svg className={Button.Icon} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width='48px' height='48px'><path fill='#dc4c2c' d='M8,24c0,9.941,8.059,18,18,18s18-8.059,18-18H26H8z'/><path fill='#f7a278' d='M26,6v18h18C44,14.059,35.941,6,26,6z'/><path fill='#c06346' d='M26,6C16.059,6,8,14.059,8,24h18V6z'/><path fill='#9b341f' d='M22.319,34H5.681C4.753,34,4,33.247,4,32.319V15.681C4,14.753,4.753,14,5.681,14h16.638 C23.247,14,24,14.753,24,15.681v16.638C24,33.247,23.247,34,22.319,34z'/><path fill='#fff' d='M14.673,19.012H10v10h2.024v-3.521H14.3c1.876,0,3.397-1.521,3.397-3.397v-0.058 C17.697,20.366,16.343,19.012,14.673,19.012z M15.57,22.358c0,0.859-0.697,1.556-1.556,1.556h-1.99v-3.325h1.99 c0.859,0,1.556,0.697,1.556,1.556V22.358z'/></svg>
                             <span>Download Presentation</span>
                         </Button>
-                    </a>
+                    </Link>
                     <div className='m:hidden'>
                         <PDF src='combating-climate-change/Climate Solutions for Riverdale.pdf' height={200} />
                     </div>
                 </div>
             </Action>
             <Action title='Petition for Electric School Buses' {...{showDescription}}>
-                Received <a href='https://api.joelgrayson.com/combating-climate-change/electric-school-buses-petition' target='_blank'>313 petition signatures</a> for SuperSelby&apos;s adoption of electric school buses, kicking off Students for Electric Buses.
+                Received <Link href='https://api.joelgrayson.com/combating-climate-change/electric-school-buses-petition' target='_blank'>313 petition signatures</Link> for SuperSelby&apos;s adoption of electric school buses, kicking off Students for Electric Buses.
             </Action>
             <Action title='The Need for a Nuclear Renaissance Presentation' {...{showDescription}}>
                 {/* TODO: add download link */}
@@ -227,7 +227,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
         </Section>
         <Section title={'Mitigating Climate Change\'s Effects'}>
             <Action title='Urban Miniforest' {...{showDescription}}>
-                Made a Community Board <a href='https://www.nyc.gov/assets/manhattancb1/downloads/pdf/resolutions/23-09-26.pdf#page=2' target='_blank'>resolution amendment</a> to recommend the developers of the Holland Rotary to create a Miyawaki forest to improve air quality, lessen the urban heating effect (which saves HVAC emissions), and act as a flood resiliency measure.
+                Made a Community Board <Link href='https://www.nyc.gov/assets/manhattancb1/downloads/pdf/resolutions/23-09-26.pdf#page=2' target='_blank'>resolution amendment</Link> to recommend the developers of the Holland Rotary to create a Miyawaki forest to improve air quality, lessen the urban heating effect (which saves HVAC emissions), and act as a flood resiliency measure.
             </Action>
             {/* TODO: created a video explaining the resiliency projects in Lower Manhattan */}
             <Action title='Flood Resiliency' {...{showDescription}}>

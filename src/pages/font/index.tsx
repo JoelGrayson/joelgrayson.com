@@ -1,6 +1,7 @@
 import Page from '@/components/page/DefaultPage';
 import Button from '@jcomponents/button';
 import localFont from 'next/font/local';
+import Link from 'next/link';
 
 const joelFont=localFont({ src: 'JoelHandwriting.ttf' });
 
@@ -20,13 +21,13 @@ export default function Font() {
             <p>The quick brown fox jumps over the lazy dog.</p>
             <p>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.</p>
             <h3 className="custom-font">Download Joel Font</h3>
-            <a href="/font/JoelHandwriting.ttf">
+            <Link href="/font/JoelHandwriting.ttf">
                 <Button>Download as TTF</Button>
-            </a>
+            </Link>
             <br />
-            <a href="/font/JoelHandwriting.otf">
+            <Link href="/font/JoelHandwriting.otf">
                 <Button>Download as OTF</Button>
-            </a>
+            </Link>
         </div>
     </Page>;
 }

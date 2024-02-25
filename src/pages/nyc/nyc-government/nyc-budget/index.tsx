@@ -2,6 +2,7 @@ import { CodeIcon } from 'src/components/icons';
 import Page from '@/components/page/DefaultPage';
 import { Tooltip } from 'antd';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function NYCBudget() {
     const overallCategories: [number, string][]=[ //billions
@@ -45,26 +46,26 @@ export default function NYCBudget() {
                 )
             }
         </div>
-        <p><a href='' target='_blank'>Source</a></p>
+        {/* <p><Link href='' target='_blank'>Source</Link></p> */}
 
 
         <h3>Spending by Agency</h3>
         <p>Total: 107B</p>
         <Image src='/nyc/nyc-government/nyc-budget/department-spending.png' width={500} height={500} alt='Department Spending circular packing chart' />
-        <p><a href='https://www.nyc.gov/assets/omb/downloads/pdf/fps-jul-2023.pdf' target='_blank'>Source: July 2023 Financial Plan Statement Report 4 and 4a</a></p>
+        <p><Link href='https://www.nyc.gov/assets/omb/downloads/pdf/fps-jul-2023.pdf' target='_blank'>Source: July 2023 Financial Plan Statement Report 4 and 4a</Link></p>
 
 
         <h3>Capital Commitments</h3>
         <Image src='/nyc/nyc-government/nyc-budget/capital-commitments.png' width={500} height={500} alt='Capital Commitments circular packing chart' />
-        <p><a href='https://www.nyc.gov/assets/omb/downloads/pdf/fps-jul-2023.pdf' target='_blank'>Source: July 2023 Financial Plan Statement Report 5</a></p>
+        <p><Link href='https://www.nyc.gov/assets/omb/downloads/pdf/fps-jul-2023.pdf' target='_blank'>Source: July 2023 Financial Plan Statement Report 5</Link></p>
 
 
         <br /><br />
         <p>Created in October, 2023</p>
-        <a href='/nyc/nyc-government/nyc-budget/main.py' target='_blank'>
+        <Link href='/nyc/nyc-government/nyc-budget/main.py' target='_blank'>
             <CodeIcon width={30} />
             <span className='ml-3'>Download the code that generated the circular packing charts</span>
-        </a>
+        </Link>
 
 
         <br /><br /><br />
@@ -72,6 +73,6 @@ export default function NYCBudget() {
         <Image src='/nyc/nyc-government/nyc-budget/expense-by-budget.png' width={500} height={500} alt='Capital Commitments circular packing chart' />
 
         <h3>More Resources</h3>
-        See a detailed description at <a href="https://checkbooknyc.com" target='_blank'>checkbooknyc.com</a>.
+        See a detailed description at <Link href="https://checkbooknyc.com" target='_blank'>checkbooknyc.com</Link>.
     </Page>;
 }

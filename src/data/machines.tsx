@@ -33,7 +33,7 @@ export const machines: Machine[]=[
             desc: <>
                 <div className='d:flex d:gap-9'>
                     <div className='d:w-[50%]'>
-                        I designed the pieces in Blender. <a href='/chess/Chess Pieces.zip'><Button>Download 3D Models</Button></a>
+                        I designed the pieces in Blender. <Link href='/chess/Chess Pieces.zip'><Button>Download 3D Models</Button></Link>
                         <Image src='/image/machines/playing-chess.jpg' alt='Playing Chess' width='240' height='148' />
                     </div>
                     <div className='flex m:mt-3'>

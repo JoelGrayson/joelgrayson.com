@@ -3,6 +3,7 @@ import Button from '@jcomponents/button';
 import { ToastContainer } from 'react-toastify';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Link from 'next/link';
 
 export default function AddComment({ hyphenatedTitle }: { hyphenatedTitle: string }) { //form for submitting a comment
     const [name, setName]=useState<string>('');
@@ -49,7 +50,7 @@ export default function AddComment({ hyphenatedTitle }: { hyphenatedTitle: strin
             ? <div>
                 <p>Please click the verification link sent to <span className='bold text-blue-800'>{email}</span> to post the comment.</p>
                 {/* Open email providers */}
-                <a href="https://mail.google.com" target='_blank'>
+                <Link href="https://mail.google.com" target='_blank'>
                     <div className='flex justify-center items-center gap-3 w-fit py-3 px-10 mx-auto mt-6 mb-3' style={{
                         border: '1px solid black',
                         borderRadius: 10
@@ -72,7 +73,7 @@ export default function AddComment({ hyphenatedTitle }: { hyphenatedTitle: strin
                             height: 20
                         }} version="1.1" viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg"> <path d="m909.46 216-350.69 350.69c-20.586 20.586-20.617 54.047 0.003907 74.668 20.574 20.578 54.047 20.621 74.664 0.003906l350.56-350.56v117.24c0 26.43 21.492 47.961 48 47.961 26.457 0 48-21.473 48-47.961v-240.08c0-13.207-5.3672-25.195-14.047-33.879-8.6914-8.6992-20.676-14.082-33.914-14.082h-240.08c-26.43 0-47.961 21.492-47.961 48 0 26.457 21.473 48 47.961 48zm170.54 480v-228.18 492.54c0 66.078-47.605 119.64-106.41 119.64h-747.19c-58.766 0-106.41-53.672-106.41-119.64v-720.71c0-66.078 47.605-119.64 106.41-119.64h512.39-234.8c26.508 0 48 21.492 48 48s-21.492 48-48 48h-260.67c-15.27 0-27.332 14.336-27.332 32.023v703.95c0 17.367 12.238 32.023 27.332 32.023h713.34c15.27 0 27.332-14.336 27.332-32.023v-255.98c0-26.508 21.492-48 48-48s48 21.492 48 48z" fill-rule="evenodd"/> </svg>
                     </div>
-                </a>
+                </Link>
             </div>
             : <>
                 <div>

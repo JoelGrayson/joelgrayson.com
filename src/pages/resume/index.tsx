@@ -62,12 +62,12 @@ export default function Resume() {
             </Link>
 
             {/* Export/Download Button */}
-            <a href="https://docs.google.com/document/d/1KQD6eFb9rgbHEaR4BImEVhEnJuohLjokrUrJYhuAgCk/export?format=pdf" target="_blank" className="absolute top-10 right-8 unstyled">
+            <Link href="https://docs.google.com/document/d/1KQD6eFb9rgbHEaR4BImEVhEnJuohLjokrUrJYhuAgCk/export?format=pdf" target="_blank" className="absolute top-10 right-8 unstyled">
                 <Button>
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={Button.Icon} width={20} height={20}><g id="info"/><g id="icons"><g id="save"><path d="M11.2,16.6c0.4,0.5,1.2,0.5,1.6,0l6-6.3C19.3,9.8,18.8,9,18,9h-4c0,0,0.2-4.6,0-7c-0.1-1.1-0.9-2-2-2c-1.1,0-1.9,0.9-2,2    c-0.2,2.3,0,7,0,7H6c-0.8,0-1.3,0.8-0.8,1.4L11.2,16.6z"/><path d="M19,19H5c-1.1,0-2,0.9-2,2v0c0,0.6,0.4,1,1,1h16c0.6,0,1-0.4,1-1v0C21,19.9,20.1,19,19,19z"/></g></g></svg>
                     PDF
                 </Button>
-            </a>
+            </Link>
 
 
             <h3>Accomplishments</h3>
@@ -86,7 +86,7 @@ export default function Resume() {
                     </li>
                     <li className='mb-2'>
                         <SEBLogo size={25} inline style={{ marginLeft: 4, marginRight: -4, top: 7, right: 4 }} />
-                        <span>Founded <a href='https://studentsforelectricbuses.org'>Students for Electric Buses</a>, multi-school coalition, to electrify bus fleets.</span>
+                        <span>Founded <Link href='https://studentsforelectricbuses.org'>Students for Electric Buses</Link>, multi-school coalition, to electrify bus fleets.</span>
                         <span className="date !top-[5px]">2021&ndash;present</span>
                     </li>
                     <li>
@@ -99,7 +99,7 @@ export default function Resume() {
                         <Image src='/image/ccc/stopping-bus-idling/stopping-bus-idling.png' alt='stopping-bus-idling' width={20} height={13} className='relative bottom-[3px] mr-1 inline' />
                         <span>Stopping Bus Idling</span>
                         <span className="date">2022</span>
-                        <div className="description indent">Wrote to bus contractor to enforce <a href='https://portal.311.nyc.gov/article/?kanumber=KA-02222'>NYC&apos;s law banning bus idling</a>.</div>
+                        <div className="description indent">Wrote to bus contractor to enforce <Link href='https://portal.311.nyc.gov/article/?kanumber=KA-02222'>NYC&apos;s law banning bus idling</Link>.</div>
                     </li>
                     <li className='mb-2 mt-2'>
                         <span>Presented to middle school, upper school, and Riverdale alumni on climate solutions.</span>
@@ -121,25 +121,25 @@ export default function Resume() {
                 <ul>
                     <li>
                         <Image src='/image/home/buseroo-logo.png' alt='buseroo-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                        <span><a href="https://buseroo.com">Buseroo.com</a></span>
+                        <span><Link href="https://buseroo.com">Buseroo.com</Link></span>
                         <span className="date">2021&ndash;23</span>
                         <div className="description indent">kiosk and website for students to find closest bus to any address.</div>
                     </li>
                     <li>
                         <Image src='/image/home/homework-checker-logo.png' alt='homework-checker-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                        <span><a href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>Homework Checker</a></span>
+                        <span><Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>Homework Checker</Link></span>
                         <span className="date">2021&ndash;22</span>
                         <div className="description indent">Chrome extension helping 1000 students manage homework.</div>
                     </li>
                     <li>
                         <Image src='/image/home/focus-logo.png' alt='focus-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                        <span><a href="https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf">Focus</a></span>
+                        <span><Link href="https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf">Focus</Link></span>
                         <span className="date">2022</span>
                         <div className="description indent">Chrome extension helping 400+ people write distraction-free.</div>
                     </li>
                     <li>
                         <Image src='/image/lirong-art/lirong-art.png' alt='lirongart-logo' width={16.8125} height={30} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                        <span><a href='https://lirongart.com'>LirongArt.com</a></span>
+                        <span><Link href='https://lirongart.com'>LirongArt.com</Link></span>
                         <span className="date">2020</span>
                         <div className="description indent">online gallery showcasing my mom’s paintings.</div>
                     </li>
@@ -194,7 +194,7 @@ export default function Resume() {
                     <span className='date'>2011&ndash;present</span>
                 </div>
                 <div className='relative'>
-                    <span className='description'><a href='https://youtube.com/SonAndFather'>YouTube channel</a> with father-son comedy, project records, and claymation.</span>
+                    <span className='description'><Link href='https://youtube.com/SonAndFather'>YouTube channel</Link> with father-son comedy, project records, and claymation.</span>
                     {/* Wrote, acted, filmed, and edited 34 comedy videos with my father since age 11, created nine9 stop motion animations, and included other projects */}
                     <span className='date'>2018&ndash;present</span>
                 </div>

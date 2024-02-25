@@ -12,7 +12,7 @@ export default function IcosahedronNavigation() {
         
         <h3>Problem</h3>
         <blockquote cite='https://www.janestreet.com/imo2022/'>
-            You are standing on one vertex of an icosahedron. You&apos;d like to reach the opposite vertex by walking along the edges. Unfortunately, every time you reach a vertex, you get turned around and forget which way you were pointing, which makes this difficult. Luckily, you have some stones with distinct colours that you can set down and move as desired to mark vertices (though you can&apos;t mark their orientations). You&apos;d like to (with probability 1) reach the vertex opposite your starting point and declare with certainty that you&apos;re standing on it. How many stones do you need? (sited from <a href='https://www.janestreet.com/imo2022/'>Jane Street&apos;s International Math Olympiad 2022 page</a>)
+            You are standing on one vertex of an icosahedron. You&apos;d like to reach the opposite vertex by walking along the edges. Unfortunately, every time you reach a vertex, you get turned around and forget which way you were pointing, which makes this difficult. Luckily, you have some stones with distinct colours that you can set down and move as desired to mark vertices (though you can&apos;t mark their orientations). You&apos;d like to (with probability 1) reach the vertex opposite your starting point and declare with certainty that you&apos;re standing on it. How many stones do you need? (sited from <Link href='https://www.janestreet.com/imo2022/'>Jane Street&apos;s International Math Olympiad 2022 page</Link>)
         </blockquote>
         <br />
         

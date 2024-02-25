@@ -1,4 +1,5 @@
 import Page from '@/components/page/DefaultPage';
+import Link from 'next/link';
 
 export default function Impact() {
     return <Page bottomPadding seo={{
@@ -26,10 +27,10 @@ export default function Impact() {
             <li>
                 <b>Software</b>
                 <ul>
-                    <li><a href="https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj" target='_blank'>Homework Checker</a> helping 1,000 students daily</li>
-                    <li><a href="https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf" target='_blank'>Focus for Google Docs</a> helps 436 users enter the writing flow</li>
+                    <li><Link href="https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj" target='_blank'>Homework Checker</Link> helping 1,000 students daily</li>
+                    <li><Link href="https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf" target='_blank'>Focus for Google Docs</Link> helps 436 users enter the writing flow</li>
                     <li>Created software tools used 34,000 times</li>
-                    <li>Online businesses: <a href="https://lirongart.com" target='_blank'>lirongart.com</a> and <a href="https://bulletbrainstorm.com" target='_blank'>bulletbrainstorm.com</a></li>
+                    <li>Online businesses: <Link href="https://lirongart.com" target='_blank'>lirongart.com</Link> and <Link href="https://bulletbrainstorm.com" target='_blank'>bulletbrainstorm.com</Link></li>
                 </ul>
             </li>
 

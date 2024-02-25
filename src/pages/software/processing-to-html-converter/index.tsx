@@ -5,6 +5,7 @@ import Editor from '@monaco-editor/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import Modal from '@jcomponents/modal';
+import Link from 'next/link';
 
 export default function RunProcessingInWeb() {
     const [title, setTitle]=useState<string>('');
@@ -96,7 +97,7 @@ ${polyfillProcessingCode(processingCode)}
 
         <Modal open={infoModalOpen} setOpen={setInfoModalOpen}>
             <h2 className='text-center'>About</h2>
-            <p>This tool converts your Processing code into HTML code using the <a href='https://happycoding.io/tutorials/processing/processing-js' target='_blank'>processing.js</a> library. It polyfills the following features to fit processing.js&apos;s limited API:</p>
+            <p>This tool converts your Processing code into HTML code using the <Link href='https://happycoding.io/tutorials/processing/processing-js' target='_blank'>processing.js</Link> library. It polyfills the following features to fit processing.js&apos;s limited API:</p>
             <ul>
                 <li>circle()</li>
                 <li>square()</li>

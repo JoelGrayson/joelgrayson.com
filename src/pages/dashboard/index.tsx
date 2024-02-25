@@ -8,6 +8,7 @@ import { Error } from '@prisma/client';
 import React from 'react';
 import { Action } from 'src/pages/api/dashboard';
 import { ReloadIcon } from 'src/components/icons';
+import Link from 'next/link';
 
 type DashboardError=Error & { ids: string[]; count: number }; //error for the dashboard
 
@@ -120,7 +121,7 @@ export default function Dashboard() {
                             return <React.Fragment key={source}>
                                 <div className='border-r-[1px] border-black text-right border-b-[1px] px-2'>{dashboardError.count}</div>
                                 <div className='border-b-[1px] border-black px-2 border-r-[1px]'>
-                                    <a href={`${dashboardError.source}?dont_report=true`} target='_blank' title='Visit link'>{dashboardError.source}</a>
+                                    <Link href={`${dashboardError.source}?dont_report=true`} target='_blank' title='Visit link'>{dashboardError.source}</Link>
                                 </div>
                                 <div className='border-b-[1px] border-black px-2 flex justify-center items-center'>
                                     <input
@@ -177,7 +178,7 @@ export default function Dashboard() {
                             <tr key={error.id}>
                                 <td style={{width: 200}}>{formatDate(error.date)}</td>
                                 <td>
-                                    <a href={`${error.source}?dont_report=true`} target='_blank' title='Visit link'>{error.source}</a>
+                                    <Link href={`${error.source}?dont_report=true`} target='_blank' title='Visit link'>{error.source}</Link>
                                 </td>
                                 <td>
                                     <Info>{JSON.stringify(error)}</Info>

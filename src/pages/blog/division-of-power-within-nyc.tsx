@@ -1,6 +1,7 @@
 import ArticleWrapper from 'src/components/blog/ArticleWrapper';
 import { P, Citation, Footnote } from '@jcomponents/writing-components';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function ConnectingWithThePast() {
     return <ArticleWrapper title='Division of Power within NYC' date={new Date('Oct 30, 2023')} hyphenatedTitle='division-of-power-within-nyc'>
@@ -26,7 +27,7 @@ export default function ConnectingWithThePast() {
             Ibid., 195.
         </Footnote>
         <Footnote number={3}>
-            Wills, Matthew. “John Lindsay, Last of the Liberal Republicans.” <em>JSTOR Daily</em>, 26 Oct. 2015, <a href="https://daily.jstor.org/john-lindsay-one-last-liberal-republicans/">daily.jstor.org/john-lindsay-one-last-liberal-republicans</a>.
+            Wills, Matthew. “John Lindsay, Last of the Liberal Republicans.” <em>JSTOR Daily</em>, 26 Oct. 2015, <Link href="https://daily.jstor.org/john-lindsay-one-last-liberal-republicans/">daily.jstor.org/john-lindsay-one-last-liberal-republicans</Link>.
         </Footnote>
         <Footnote number={4}>
             Egbert, Bill. “City Island Firehouse Stays Open despite Budget’s Plan for
@@ -36,16 +37,16 @@ export default function ConnectingWithThePast() {
             Accessed 15 Oct. 2023.
         </Footnote>
         <Footnote number={5}>
-            “Fire hits City Island days before FDNY plans to cut staffing at area ladder company.” <em>New York Daily News. </em><a href="https://www.nydailynews.com/2009/01/06/fire-hits-city-island-days-before-fdny-plans-to-cut-staffing-at-area-ladder-company">nydailynews.com/2009/01/06/fire-hits-city-island-days-before-fdny-plans-to-cut-staffing-at-area-ladder-comp<br/>any</a>. Accessed 15 Oct. 2023.
+            “Fire hits City Island days before FDNY plans to cut staffing at area ladder company.” <em>New York Daily News. </em><Link href="https://www.nydailynews.com/2009/01/06/fire-hits-city-island-days-before-fdny-plans-to-cut-staffing-at-area-ladder-company">nydailynews.com/2009/01/06/fire-hits-city-island-days-before-fdny-plans-to-cut-staffing-at-area-ladder-comp<br/>any</Link>. Accessed 15 Oct. 2023.
         </Footnote>
         <Footnote number={6}>
-            Hu, Winnie. “A Little-Used Fire Company, Rescued Annually.” The New York Times, 30 May 2012. NYTimes.com,<a href="https://www.nytimes.com/2012/05/30/nyregion/city-island-fire-company-threatened-again-by-budget-cuts.html"> nytimes.com/2012/05/30/nyregion/city-island-fire-company-threatened-again-by-budget-cuts.html</a>.
+            Hu, Winnie. “A Little-Used Fire Company, Rescued Annually.” The New York Times, 30 May 2012. NYTimes.com,<Link href="https://www.nytimes.com/2012/05/30/nyregion/city-island-fire-company-threatened-again-by-budget-cuts.html"> nytimes.com/2012/05/30/nyregion/city-island-fire-company-threatened-again-by-budget-cuts.html</Link>.
         </Footnote>
         <Footnote number={7}>
             Perrotta, 210.
         </Footnote>
         <Footnote number={8}>
-            Cholakovska, Jana. “Who are the most responsive New York City Council members?” <em>City & State New York</em>. <a href="https://www.cityandstateny.com/politics/2020/01/who-are-the-most-responsive-new-york-city-council-members/176468/">cityandstateny.com/politics/2020/01/who-are-the-most-responsive-new-york-city-council-members/176468</a>. Accessed 12 Nov. 2023.
+            Cholakovska, Jana. “Who are the most responsive New York City Council members?” <em>City & State New York</em>. <Link href="https://www.cityandstateny.com/politics/2020/01/who-are-the-most-responsive-new-york-city-council-members/176468/">cityandstateny.com/politics/2020/01/who-are-the-most-responsive-new-york-city-council-members/176468</Link>. Accessed 12 Nov. 2023.
         </Footnote>
     </ArticleWrapper>;
 }

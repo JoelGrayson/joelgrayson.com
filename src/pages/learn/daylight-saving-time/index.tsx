@@ -12,9 +12,9 @@ export default function LearningContent() {
       {/* eslint-enable */}
 		</div>
 		<br /><br />
-		<a href="/learn/daylight-saving-time/Daylight Savings Time Explained.png" download>
+		<Link href="/learn/daylight-saving-time/Daylight Savings Time Explained.png" download>
 			<Button>Download as PNG</Button>
-		</a>
+		</Link>
 	</LearnPage>;
 }
 
@@ -26,6 +26,7 @@ import { memo } from 'react';
 import type { FC } from 'react';
 
 import classes from './diagram.module.css';
+import Link from "next/link";
 
 interface Props {
   className?: string;

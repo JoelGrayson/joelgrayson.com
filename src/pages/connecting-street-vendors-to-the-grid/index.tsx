@@ -3,6 +3,7 @@ import { Yt } from 'src/components/by-page/machines/helpers';
 import ConnectingStreetVendorstotheGridPage from '@/components/page/ConnectingStreetVendorstotheGridPage';
 import { P, Citation, Footnote as JFootnote } from '@jcomponents/writing-components';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function ConnectingStreetVendorsToTheGrid() {
     return <ConnectingStreetVendorstotheGridPage bottomPadding seo={{
@@ -53,7 +54,7 @@ export default function ConnectingStreetVendorsToTheGrid() {
 export function Footnote({ number, title, href } :{ number: string | number; title?: string; href?: string }) {
     if (href)
         return <JFootnote number={number}>
-            <a href={href} target='_blank'>{title || href}</a>
+            <Link href={href} target='_blank'>{title || href}</Link>
         </JFootnote>;
     else
         return <JFootnote number={number}>{title}</JFootnote>;

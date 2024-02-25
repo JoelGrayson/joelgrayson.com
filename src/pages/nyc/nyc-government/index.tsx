@@ -35,8 +35,8 @@ export default function NYCGoverment() {
 
         <h3>Unit 0: Overview</h3>
         <p>This broad overview will help with making connections throughout the course.
-            Take at <a href='/nyc/nyc-government/NYC Government Structure.pdf'>this overview of NYC&apos;s goverment structure <PDFIcon /></a> and <a href="/nyc/nyc-government/NYS Government Structure.pdf">this overview of the state&apos;s government structure <PDFIcon /></a>. Next, skim over <Link href='/nyc/nyc-government/timeline'>this timeline of NYC <PDFIcon /></Link>.</p>
-        <p>NYC&apos;s laws and rules are included in the Charter, Administrative Code, and Rules <a href="https://codelibrary.amlegal.com/codes/newyorkcity/latest/overview" target="_blank">published here</a>. The state&apos;s laws are part of the <a href='https://www.nysenate.gov/legislation/laws/CONSOLIDATED' target='_blank'>Consolidated Laws of New York</a>.</p>
+            Take at <Link target='_blank' href='/nyc/nyc-government/NYC Government Structure.pdf'>this overview of NYC&apos;s goverment structure <PDFIcon /></Link> and <Link target='_blank' href="/nyc/nyc-government/NYS Government Structure.pdf">this overview of the state&apos;s government structure <PDFIcon /></Link>. Next, skim over <Link href='/nyc/nyc-government/timeline'>this timeline of NYC <PDFIcon /></Link>.</p>
+        <p>NYC&apos;s laws and rules are included in the Charter, Administrative Code, and Rules <Link href="https://codelibrary.amlegal.com/codes/newyorkcity/latest/overview" target="_blank">published here</Link>. The state&apos;s laws are part of the <Link href='https://www.nysenate.gov/legislation/laws/CONSOLIDATED' target='_blank'>Consolidated Laws of New York</Link>.</p>
 
 
 
@@ -49,7 +49,7 @@ export default function NYCGoverment() {
                 <strong>Module 1.1: Mayorship</strong>
             </p>
             <div>
-                Learn about the mayor&apos;s powers, which include appointing and overseeing departments, acting during states of emergencies, and representing NYC outside of the city (e.g., Conference of Mayors). Read pages 19–24 in Kivelson on the roles of the mayor. Then, the mayoralties of Adams, De Blasio, Bloomberg, Giuliani, Dinkins, Koch, Beame, Lindsay, Wagner Jr., and La Guardia <a href="/nyc/nyc-government/Meet the Mayors.pdf">in this compilation <PDFIcon /></a>. As you read, see if you can find examples of the Third Law of Historical Motion (i.e., which mayors succeeded each other because of a campaign contrasting their predecessor). When you have finished,
+                Learn about the mayor&apos;s powers, which include appointing and overseeing departments, acting during states of emergencies, and representing NYC outside of the city (e.g., Conference of Mayors). Read pages 19–24 in Kivelson on the roles of the mayor. Then, the mayoralties of Adams, De Blasio, Bloomberg, Giuliani, Dinkins, Koch, Beame, Lindsay, Wagner Jr., and La Guardia <Link href="/nyc/nyc-government/Meet the Mayors.pdf">in this compilation <PDFIcon /></Link>. As you read, see if you can find examples of the Third Law of Historical Motion (i.e., which mayors succeeded each other because of a campaign contrasting their predecessor). When you have finished,
                 <details>
                     <summary className='cursor-pointer'>click here for the examples we found</summary>
                     <ul>
@@ -61,7 +61,7 @@ export default function NYCGoverment() {
                     </ul>
                 </details>
             </div>
-            <div>Skim over the mayor&apos;s <a href="https://www.nyc.gov/assets/omb/downloads/pdf/typ4-23.pdf">ten-year capital budget</a>.</div>
+            <div>Skim over the mayor&apos;s <Link href="https://www.nyc.gov/assets/omb/downloads/pdf/typ4-23.pdf">ten-year capital budget</Link>.</div>
 
             <br />
             <p>
@@ -74,21 +74,21 @@ export default function NYCGoverment() {
                 Read through the about pages of departments and agencies and learn how the mayor oversees and interacts with them:
             </p>
             <ul>
-                <li><a href="/nyc/nyc-government/Department of Education.pdf">Department of Education (DOE) <PDFIcon /></a></li>
-                <li><a href="/nyc/nyc-government/NYC DOT.pdf">Department of Transportation (DOT) <PDFIcon /></a></li>
-                <li><a href="/nyc/nyc-government/NYC Parks.pdf">NYC Parks &amp; Recreation <PDFIcon /></a></li>
+                <li><Link href="/nyc/nyc-government/Department of Education.pdf">Department of Education (DOE) <PDFIcon /></Link></li>
+                <li><Link href="/nyc/nyc-government/NYC DOT.pdf">Department of Transportation (DOT) <PDFIcon /></Link></li>
+                <li><Link href="/nyc/nyc-government/NYC Parks.pdf">NYC Parks &amp; Recreation <PDFIcon /></Link></li>
                 <li>Department of Buildings (DOB) </li>
                 <li>NYC Housing Authority (NYCHA)
                 </li>
-                <a href="/nyc/nyc-government/Wrapping up City Agencies.pdf">
+                <Link href="/nyc/nyc-government/Wrapping up City Agencies.pdf">
                     <li>Department of Sanitation (DSNY)
                     </li><li>NYC Police Department (NYPD)
                     </li><li>Economic Development Cooperation (EDC)
                     </li><li>Department of City Planning
                     </li><li>Department of Housing Preservation and Development
                     </li>
-                </a>
-                <li><a href="https://www.nyc.gov/nyc-resources/agencies.page">nyc.gov&apos;s agency page</a></li>
+                </Link>
+                <li><Link href="https://www.nyc.gov/nyc-resources/agencies.page">nyc.gov&apos;s agency page</Link></li>
             </ul>
             <p>
                 Formative: Take note of which are well-funded or underfunded in addition to their importance and current issues. Why are some underfunded, and what is the effect?
@@ -105,8 +105,8 @@ export default function NYCGoverment() {
             <strong>Module 2.1: The Borough Presidents</strong>
         </p>
         <p>
-            Read Kivelson pages 28–30 and <a href="/nyc/nyc-government/NYC Charter Borough Presidents.pdf">Chapter 8 of the NYC Charter sections 82 and 83 <PDFIcon></PDFIcon></a> to understand the office of the borough president. Read the <a href="/nyc/nyc-government/Borough Presidents.pdf">biographies of the current borough presidents, Mark Levine, Vanessa Gibson, Antonio Reynoso, Donovan Richards, and Vito Fossella <PDFIcon></PDFIcon></a>.
-            Next, read <em><a href="/nyc/nyc-government/A Case for and Against the Borough President in Twenty-First Century New York City.pdf">A Case for and Against the Borough President in Twenty-First Century New York City <PDFIcon></PDFIcon></a></em>. This is a note by a Fordham law student. A note is shorter than an article and provides a summary and analysis of a subject that an uninformed reader should be able to understand.
+            Read Kivelson pages 28–30 and <Link href="/nyc/nyc-government/NYC Charter Borough Presidents.pdf">Chapter 8 of the NYC Charter sections 82 and 83 <PDFIcon></PDFIcon></Link> to understand the office of the borough president. Read the <Link href="/nyc/nyc-government/Borough Presidents.pdf">biographies of the current borough presidents, Mark Levine, Vanessa Gibson, Antonio Reynoso, Donovan Richards, and Vito Fossella <PDFIcon></PDFIcon></Link>.
+            Next, read <em><Link href="/nyc/nyc-government/A Case for and Against the Borough President in Twenty-First Century New York City.pdf">A Case for and Against the Borough President in Twenty-First Century New York City <PDFIcon></PDFIcon></Link></em>. This is a note by a Fordham law student. A note is shorter than an article and provides a summary and analysis of a subject that an uninformed reader should be able to understand.
         </p>
         <details>
             <summary>Here are my thoughts on the Berg reading</summary>
@@ -129,7 +129,7 @@ export default function NYCGoverment() {
             <strong>Module 2.2: The Borough Boards</strong>
         </p>
         <p>
-            Learn about the issues talked about in the borough boards, including Uniform Land Use Review Procedure (ULURP), borough issues past, and conflicts between community boards. Watch a borough board meeting recording from <a href="https://www.manhattanbp.nyc.gov/resources/manhattan-borough-board/">their website</a>.
+            Learn about the issues talked about in the borough boards, including Uniform Land Use Review Procedure (ULURP), borough issues past, and conflicts between community boards. Watch a borough board meeting recording from <Link href="https://www.manhattanbp.nyc.gov/resources/manhattan-borough-board/">their website</Link>.
         </p>
 
 
@@ -138,11 +138,11 @@ export default function NYCGoverment() {
             <strong>Module 2.3: The Community Boards</strong>
         </p>
         <p>
-            Read <a href={root + 'Reimagining Community Input_ Past Present and Future of New York.pdf'}>Fordham Urban Law Journal&apos;s review of community boards&apos; history, present, and future <PDFIcon></PDFIcon></a>.
+            Read <Link href={root + 'Reimagining Community Input_ Past Present and Future of New York.pdf'}>Fordham Urban Law Journal&apos;s review of community boards&apos; history, present, and future <PDFIcon></PDFIcon></Link>.
         </p>
         <p>We met the author, Egor Shaknovskiy to ask him questions and learn more.</p>
         <p>
-            Read <a href="https://www.nyc.gov/assets/planning/download/pdf/applicants/applicant-portal/lur.pdf">this chart</a> summarizing how ULURP works.
+            Read <Link href="https://www.nyc.gov/assets/planning/download/pdf/applicants/applicant-portal/lur.pdf">this chart</Link> summarizing how ULURP works.
         </p>
 
         <br />
@@ -169,16 +169,16 @@ export default function NYCGoverment() {
             <strong>Module 3.2: Field Trip</strong>
         </p>
         <p>
-            Watch a virtual City Council stated meeting from the <a href="https://legistar.council.nyc.gov/Calendar.aspx">calendar</a>. Then, attend a City Council stated meeting in person on the Chambers’ Observatory Mezzanine. Just like in British Parliament, you can sit above the council to watch it proceed. Write a reflection on what you notice and find interesting.
+            Watch a virtual City Council stated meeting from the <Link href="https://legistar.council.nyc.gov/Calendar.aspx">calendar</Link>. Then, attend a City Council stated meeting in person on the Chambers’ Observatory Mezzanine. Just like in British Parliament, you can sit above the council to watch it proceed. Write a reflection on what you notice and find interesting.
         </p>
         <p>
             Here is my reflection.
         </p>
         <p>
-            <a href={root + '11_2_2023 City Stated Council Meeting (Watched Recording).pdf'}>11/2/2023 City Stated Council Meeting (Watched Recording) <PDFIcon></PDFIcon></a>
+            <Link href={root + '11_2_2023 City Stated Council Meeting (Watched Recording).pdf'}>11/2/2023 City Stated Council Meeting (Watched Recording) <PDFIcon></PDFIcon></Link>
         </p>
         <p>
-            <a href={root + '11_15_23 City Council Stated Meeting.pdf'}>11/15/23 City Council Stated Meeting <PDFIcon></PDFIcon></a>
+            <Link href={root + '11_15_23 City Council Stated Meeting.pdf'}>11/15/23 City Council Stated Meeting <PDFIcon></PDFIcon></Link>
         </p>
         <p>
             Attend a City Council meeting publicly (either in-person or remotely). Read parts of the NYC administrative code to see examples of passed regulations.
@@ -192,8 +192,8 @@ export default function NYCGoverment() {
 
 
         <br />
-        <p>We have seen the names of many people repeated. Take a look at <a href={root + "names-of-positions"}>this list of names and positions
-        </a>.</p>
+        <p>We have seen the names of many people repeated. Take a look at <Link target='_blank' href={root + "names-of-positions"}>this list of names and positions
+        </Link>.</p>
 
         <h3>Unit 4: Accountability</h3>
 
@@ -216,9 +216,9 @@ export default function NYCGoverment() {
 
         <strong>Module 4.3: Budgeting Process</strong>
         <p>Read&nbsp;
-            <a href="/nyc/nyc-government/How Budget Process Works.pdf">How Budget Process Works</a>
+            <Link href="/nyc/nyc-government/How Budget Process Works.pdf">How Budget Process Works</Link>
             &nbsp;and&nbsp;
-            <a href="/nyc/nyc-government/Understanding the Budget.pdf">Understanding the Budget</a>
+            <Link href="/nyc/nyc-government/Understanding the Budget.pdf">Understanding the Budget</Link>
             .
         </p>
         <p>See a visualization of NYC&apos;s budget <Link href='/nyc/nyc-government/nyc-budget'>here</Link>.</p>
@@ -254,7 +254,7 @@ export default function NYCGoverment() {
 
         </ul>
         <p>Keep a Google document log of government agencies with a summary of their impact.</p>
-        <a href={root + 'NGOs.pdf'}>Here is our document</a>.
+        <Link href={root + 'NGOs.pdf'}>Here is our document</Link>.
 
 
 
@@ -263,14 +263,14 @@ export default function NYCGoverment() {
             <strong>Module 6.1: State Courts</strong>
             <p>In this unit, learn the functions and divisions of the different New York State courts, of which NYC is a part. Read:</p>
             <ul>
-                <li><a href="https://video.dos.ny.gov/lg/handbook/html/the_judicial_system.html">The Judicial System · GitBook</a>
-                </li><li><a href={root + 'NY Courts-Intro Guide.pdf'}>NY Courts-Intro Guide.pdf</a>
-                </li><li><a href="https://spectrumlocalnews.com/nys/central-ny/news/2022/03/01/covid-impact-on-ny-courts-still-felt--two-years-later">COVID impact on NY courts still felt, two years later</a>
-                </li><li><a href="https://www.findlaw.com/litigation/filing-a-lawsuit/civil-cases-vs-criminal-cases-key-differences.html">Civil Cases vs. Criminal Cases: Key Differences - FindLaw</a>
+                <li><Link href="https://video.dos.ny.gov/lg/handbook/html/the_judicial_system.html">The Judicial System · GitBook</Link>
+                </li><li><Link href={root + 'NY Courts-Intro Guide.pdf'}>NY Courts-Intro Guide.pdf</Link>
+                </li><li><Link href="https://spectrumlocalnews.com/nys/central-ny/news/2022/03/01/covid-impact-on-ny-courts-still-felt--two-years-later">COVID impact on NY courts still felt, two years later</Link>
+                </li><li><Link href="https://www.findlaw.com/litigation/filing-a-lawsuit/civil-cases-vs-criminal-cases-key-differences.html">Civil Cases vs. Criminal Cases: Key Differences - FindLaw</Link>
                 </li>
             </ul>
         </div>
-        <p>Notes were taken in <a href={root + 'NYS Courts.pdf'}>this document</a>.</p>
+        <p>Notes were taken in <Link href={root + 'NYS Courts.pdf'}>this document</Link>.</p>
 
 
 
@@ -280,7 +280,7 @@ export default function NYCGoverment() {
             <strong>Module 7.1: Zoning</strong>
         </p>
         <p>
-            Read parts of <a href="https://zr.planning.nyc.gov">NYC’s Zoning Resolution</a> as well as legal summaries elsewhere and learn the history behind its passing and how zoning laws can be amended. <a href="https://discovery-ebsco-com.riverdale.idm.oclc.org/c/sjqbnh/viewer/html/7aq2vdar45">Read this page on Moses</a> and <a href="https://buildingtheskyline.org/zoning-moses-1/">this article on zoning and Moses</a>. Read Kivelson 59–69 on land use and city planning.
+            Read parts of <Link href="https://zr.planning.nyc.gov">NYC’s Zoning Resolution</Link> as well as legal summaries elsewhere and learn the history behind its passing and how zoning laws can be amended. <Link href="https://discovery-ebsco-com.riverdale.idm.oclc.org/c/sjqbnh/viewer/html/7aq2vdar45">Read this page on Moses</Link> and <Link href="https://buildingtheskyline.org/zoning-moses-1/">this article on zoning and Moses</Link>. Read Kivelson 59–69 on land use and city planning.
         </p>
         <p>
             Summative: Write an essay comparing the benefits of either having Robert Moses or the Zoning Resolution control NYC infrastructure.
@@ -311,7 +311,7 @@ export default function NYCGoverment() {
                 Just like city budget proposals go to the state government, many other agencies and processes are shared with the state government. How does the MTA operate? How do the city and state collaborate to run the MTA? Why did DeBlasio and Cuomo bicker all the time and over what? How do NYC and NYS courts relate? Read Chapter 3 of Berg.
             </p>
             <p>
-                Meet Assemblyman Ron Kim, Riverdale graduate. Prepared questions and took notes <a href={root + "Meeting Ron Kim.pdf"}>in this document</a>.
+                Meet Assemblyman Ron Kim, Riverdale graduate. Prepared questions and took notes <Link href={root + "Meeting Ron Kim.pdf"}>in this document</Link>.
             </p>
             <p>
                 <strong>Module 8.2: Relationship to the Federal Government</strong>
@@ -328,13 +328,13 @@ export default function NYCGoverment() {
         <h3>Unit 9: Current Issues (Optional)</h3>
         <div>
             <p>
-                Depending on how much time this course takes, this unit can be skipped. Reports from the mayor or departments can be found <a href="https://www.nyc.gov/site/operations/performance/mmr.page">here</a>.
+                Depending on how much time this course takes, this unit can be skipped. Reports from the mayor or departments can be found <Link href="https://www.nyc.gov/site/operations/performance/mmr.page">here</Link>.
             </p>
             <p>
                 <strong>Module 9.1: Climate Resiliency</strong>
             </p>
             <p>
-                Read <a href="https://www.nyc.gov/assets/orr/pdf/publications/Coastal-Protection-Guidance.pdf">Coastal Protection Guidance</a> written partly by Jeff Galloway of MCB1. Then, read the United States Army Corps’ (USACE) NY-NJ HATS plan and think about the pros (preventing flooding) and cons (blocking views of the river).
+                Read <Link href="https://www.nyc.gov/assets/orr/pdf/publications/Coastal-Protection-Guidance.pdf">Coastal Protection Guidance</Link> written partly by Jeff Galloway of MCB1. Then, read the United States Army Corps’ (USACE) NY-NJ HATS plan and think about the pros (preventing flooding) and cons (blocking views of the river).
             </p>
             <p>
                 Summative: Write an essay answering the prompt: Is USACE’s plan a good idea, and how does USACE compare to Lower Manhattan’s coastal resiliency?
@@ -367,7 +367,7 @@ export default function NYCGoverment() {
                 <strong>Module 9.5: Homelessness</strong>
             </p>
             <p>
-                How does the government help homeless people? Read the <a href="https://www.nyc.gov/site/hpd/about/housing-blueprint.page">Housing Blueprint</a> government report.
+                How does the government help homeless people? Read the <Link href="https://www.nyc.gov/site/hpd/about/housing-blueprint.page">Housing Blueprint</Link> government report.
             </p>
             <p>
                 <strong>Module 9.6: Prisons</strong>
@@ -407,11 +407,11 @@ export default function NYCGoverment() {
             <li>
                 Is CB1 what replaced congregations for me since I am an atheist? Perhaps, because we meet regularly as a parochial entity. The definition of &quot;church&quot; can be more flexible for modern context. Mr. Kildahl sees Riverdale as a church because it is one of the sources of his faith.
             </li>
-            <li>Assemblyman Ron Kim said that it is easier to make your opponent&apos;s voters not turn out to vote than it is to excite voters to vote for you. I have noticed this in my council district&apos;s 2023 election. There were 23,212 voters in 2021 for Manhattan Council District 1 but only 12,486 in 2023 (<a href='https://ballotpedia.org/Christopher_Marte'>source</a>). This low turnout occurred after attack ads against the incument Councilmember Marte from Susan Lee in the primary and Helen Qiu in the general election were put all over the district: on the buildings, in shops, and in the mail. Turnout went down by about half, likely because these ads made Marte supporters not want to vote.</li>
+            <li>Assemblyman Ron Kim said that it is easier to make your opponent&apos;s voters not turn out to vote than it is to excite voters to vote for you. I have noticed this in my council district&apos;s 2023 election. There were 23,212 voters in 2021 for Manhattan Council District 1 but only 12,486 in 2023 (<Link href='https://ballotpedia.org/Christopher_Marte'>source</Link>). This low turnout occurred after attack ads against the incument Councilmember Marte from Susan Lee in the primary and Helen Qiu in the general election were put all over the district: on the buildings, in shops, and in the mail. Turnout went down by about half, likely because these ads made Marte supporters not want to vote.</li>
             <li>Advice for community board members: run things by other members before bringing them into committee if you want to succeed. This way, you can clarify any reasons that they may oppose.</li>
         </ul>
 
-        {/* <p>Watch <a href='https://www.kanopy.com/en/product/my-brooklyn-demystifying-gentrification' target='_blank'>My Brooklyn</a>, a film about gentrification in Downtown Brooklyn.</p> */}
+        {/* <p>Watch <Link href='https://www.kanopy.com/en/product/my-brooklyn-demystifying-gentrification' target='_blank'>My Brooklyn</Link>, a film about gentrification in Downtown Brooklyn.</p> */}
 
         {/* TODO: insert course notes https://drive.google.com/drive/folders/14nZ9QgbKep7FxUL_hEuR81PILg49WHpl */}
         {/* TODO: insert my writing and initial reflection */}
@@ -429,13 +429,13 @@ export default function NYCGoverment() {
         
         <h3>Resources</h3>
         <ul>
-            <li><a target='_blank' href='https://nycadmincode.readthedocs.io'>Administrative Code</a></li>
-            <li><a target='_blank' href='https://intro.nyc/local-laws'>Local Laws</a></li>
-            <li><a href="https://www.nyc.gov/site/civicengagement/our-programs/community-boards.page">Civic Engagement Commission’s Resources</a></li>
-            <li><a href="https://www.amazon.com/What-Makes-New-York-City-ebook/dp/B07JDGMY7L/ref=sr_1_11?crid=140T8B2PSDWSH&keywords=new+york+city+government&qid=1680284825&s=books&sprefix=new+york+city+gove%2Cstripbooks%2C92&sr=1-11">What Makes New York City Run?: A Citizen&apos;s Guide to How City Government Works</a> by Adrienne Kivelson (2018) </li>
+            <li><Link target='_blank' href='https://nycadmincode.readthedocs.io'>Administrative Code</Link></li>
+            <li><Link target='_blank' href='https://intro.nyc/local-laws'>Local Laws</Link></li>
+            <li><Link href="https://www.nyc.gov/site/civicengagement/our-programs/community-boards.page">Civic Engagement Commission’s Resources</Link></li>
+            <li><Link href="https://www.amazon.com/What-Makes-New-York-City-ebook/dp/B07JDGMY7L/ref=sr_1_11?crid=140T8B2PSDWSH&keywords=new+york+city+government&qid=1680284825&s=books&sprefix=new+york+city+gove%2Cstripbooks%2C92&sr=1-11">What Makes New York City Run?: A Citizen&apos;s Guide to How City Government Works</Link> by Adrienne Kivelson (2018) </li>
             <li>Adrienne Kivelson - City Affairs Chair of NYC League of Women Voters </li>
-            <li><a href="https://www.rutgersuniversitypress.org/new-york-city-politics/9780813586663">New York City Politics: Governing Gotham</a> by Bruce F. Berg (2018)</li>
-            <li><a href="https://codelibrary.amlegal.com/codes/newyorkcity/latest/overview">AMLegal</a> - Administrative Code, Charter, and Rules</li>
+            <li><Link href="https://www.rutgersuniversitypress.org/new-york-city-politics/9780813586663">New York City Politics: Governing Gotham</Link> by Bruce F. Berg (2018)</li>
+            <li><Link href="https://codelibrary.amlegal.com/codes/newyorkcity/latest/overview">AMLegal</Link> - Administrative Code, Charter, and Rules</li>
             <li>CB1 monthly minutes, reports, resolutions, and other online archives </li>
         </ul>
 

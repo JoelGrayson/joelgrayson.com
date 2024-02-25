@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { usePlausible } from "next-plausible";
 import Loader from 'src/components/global/Loader';
+import Link from 'next/link';
 
 export default function Form() {
     const [state, setState]=useState<'not_submitted' | 'loading' | 'submitted'>('not_submitted');
@@ -43,7 +44,7 @@ export default function Form() {
             max-w-[540px] min-h-[500px]
             leading-loose bg-[#fff0d4] d:px-8'> {/* Box */}
             <h2 className='pt-6'>I&apos;d Love to Talk with You</h2>
-            <p className='text-center mb-3'>Fill out the form below or email <a href='mailto:joel@joelgrayson.com'>joel@joelgrayson.com</a></p>
+            <p className='text-center mb-3'>Fill out the form below or email <Link href='mailto:joel@joelgrayson.com'>joel@joelgrayson.com</Link></p>
             {
                 state==='not_submitted'
                 ? <form id='contactForm' method='POST' className='flex flex-col items-center w-full px-5' action='#' onSubmit={handleSubmit}>

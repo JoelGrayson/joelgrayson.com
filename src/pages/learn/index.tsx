@@ -15,7 +15,7 @@ export default function Learn() {
             <li><Link href='/nyc/nyc-government'>NYC Government</Link></li>
             <li><Link href='/learn/physics'>Physics</Link></li>
             <li><Link href='/learn/pi'>The Digits of Pi</Link></li>
-            <li><a href='https://memorizethepresidents.com'>The Presidents of the United States</a></li>
+            <li><Link href='https://memorizethepresidents.com'>The Presidents of the United States</Link></li>
             <li><Link href='/learn/citations'>Citations</Link></li>
             <li><Link href='/learn/pablo-neruda'>Pablo Neruda</Link></li>
             <li><Link href='/learn/docker'>Docker</Link></li>
