@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { GithubIcon, YoutubeIcon } from '../../icons';
+import { GithubIcon, LinkedInIcon, YoutubeIcon } from '../../icons';
 import Link from 'next/link';
 
 const wigglingSrc='/image/slaphappy/s tipping hat.gif';
@@ -17,8 +17,11 @@ export default function DefaultFooter() {
             <Link href="https://github.com/JoelGrayson" target='_blank' className='flex' aria-label='GitHub Profile' tabIndex={0}>
                 <GithubIcon width={30} />
             </Link>
+            <Link href="https://www.linkedin.com/in/joelgrayson/" target='_blank' className='flex' aria-label='LinkedIn Profile' tabIndex={0}>
+                <LinkedInIcon width={30} />
+            </Link>
             {/* Image wiggles onHover by changing its source from the wiggling.gif to the still.png */}
-            <a
+            <Link
                 href='https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A'
                 className='unstyled flex justify-center items-center'
                 onMouseEnter={()=>setSrc(wigglingSrc)}
@@ -32,7 +35,7 @@ export default function DefaultFooter() {
                     <Image width='53' height='57' priority={false} src={src} className='w-13 color-[#0F1CA0] hue-rotate-30 brightness-[0.5]' alt='S' />
                     <span className='text-xl text-[#0F1CA0] relative top-[-10px]'>laphappy</span>
                 </div>
-            </a>
+            </Link>
             {/* eslint-enable */}
         </div>
         <div className="text-center pb-4">

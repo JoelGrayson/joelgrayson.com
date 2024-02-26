@@ -31,9 +31,9 @@ export default function ConnectingWithThePast() {
         </Footnote>
         <Footnote number={4}>
             Egbert, Bill. “City Island Firehouse Stays Open despite Budget’s Plan for
-            Shutdown.” <em>New York Daily News</em>.<a
+            Shutdown.” <em>New York Daily News</em>.<Link
             href="https://www.nydailynews.com/2009/07/01/city-island-firehouse-stays-open-despite-budgets-plan-for-shutdown/">
-            nydailynews.com/2009/07/01/city-island-firehouse-stays-open-despite-budgets-plan-for-shutdown</a>.
+            nydailynews.com/2009/07/01/city-island-firehouse-stays-open-despite-budgets-plan-for-shutdown</Link>.
             Accessed 15 Oct. 2023.
         </Footnote>
         <Footnote number={5}>
