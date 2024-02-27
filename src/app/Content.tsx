@@ -46,12 +46,13 @@ export default function Content() {
 
     return <>
         {/* Icons */}
-        <article className='j_container !max-w-[700px] d:gap-[20px]' style={{
+        <article className='mx-auto px-4 !max-w-[600px] d:gap-[20px]' style={{
             display: 'grid',
             marginTop: 30,
             paddingBottom: 30,
             gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
             justifyItems: 'center',
+            alignItems: 'center'
         }}>
             <BtnIcon href='/combating-climate-change#solar-for-riverdale' target='_self'>
                 <div style={{width: 50, height: 50, display: 'grid', placeItems: 'center'}}>

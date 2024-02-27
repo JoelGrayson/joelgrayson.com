@@ -49,7 +49,8 @@ export default function Home() {
             </div>
         </div>
 
-        <div className="w-full max-w-[650px] mx-auto pt-8 pb-1 leading-8">
+        {/* Text Description */}
+        <div className="w-full max-w-[680px] px-4 mx-auto pt-8 pb-1 leading-8">
             <p className='indent-8'>Hi, I&apos;m Joel. I have a passion for <Link href='/combating-climate-change'>combating climate change</Link>, <Link href='/nyc'>government</Link>, <Link href='/software'>software development</Link>, and <Link href='/machines'>engineering</Link>.</p>
             <p className='indent-8'>I am working to bring a <Link href='/combating-climate-change#solar-for-riverdale'>solar installation</Link> to Riverdale Country School, which will save 331 metric tons of CO₂ equivalent each year, save Riverdale money, supply backup power during outages, and provide live energy data for use in the science curriculum. I founded <Link href='https://studentsforelectricbuses.org' target='_blank'>Students for Electric Buses</Link>, a club attempting to transition Riverdale’s bus provider to electric school buses. I also did <Link href='/research/organic-optoelectronics'>research on organic solar cells</Link> at New York University’s Lee Lab.</p>
             <p className='indent-8'>I serve on Manhattan Community Board One’s Environmental Protection Committee, which plans Lower Manhattan’s climate resiliency projects, and the Youth & Education Committee. I am working with the Mayor’s Office of Climate and Environmental Justice and Street Vendor Project to enable street vendors to connect to the electrical grid instead of using gas generators, which would prevent 450 tons of gas from being burned annually per vendor and improve NYC’s air quality (<Link href='/connecting-street-vendors-to-the-grid'>see more</Link>). I am working to open new maker spaces in public schools to give kids the same opportunity to make that I had.</p>
@@ -58,7 +59,7 @@ export default function Home() {
         </div>
 
 
-        {/* Client component */}
+        {/* Squares (client component) */}
         <Content />
 
     </Page>;
