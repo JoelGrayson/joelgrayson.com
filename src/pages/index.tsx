@@ -4,7 +4,7 @@ import Content from '../app/Content';
 import Link from 'next/link';
 
 export default function Home() {
-    return <Page noPadding bottomPadding pathname='/' seo={{
+    return <Page noPadding pathname='/' seo={{
         title: 'Joel Grayson',
         keywords: [
             'Joel Grayson',

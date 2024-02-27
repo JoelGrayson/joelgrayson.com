@@ -48,8 +48,8 @@ export default function Content() {
         {/* Icons */}
         <article className='mx-auto px-4 !max-w-[600px] d:gap-[20px]' style={{
             display: 'grid',
-            marginTop: 30,
-            paddingBottom: 30,
+            marginTop: 33,
+            paddingBottom: 58,
             gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
             justifyItems: 'center',
             alignItems: 'center'
@@ -92,19 +92,28 @@ export default function Content() {
                 <span className='text-[1rem]'>SpareLearn.com</span>
             </BtnIcon>
             <BtnIcon href='/research/organic-optoelectronics' target='_self'>
-                <Image alt='Homework Checker Logo' height={50} width={50} src='/image/ccc/BrDPA-AzoBipy Structure.png' />
+                <Image alt='Homework Checker Logo' height={50} width={50} src='/image/ccc/BrDPA-AzoBipy Structure.png' className='mb-1 pt-3' />
                 <span className='text-[1rem]'>Organic Solar Cell Research</span>
             </BtnIcon>
             <BtnIcon href='/connecting-street-vendors-to-the-grid' target='_self'>
-                <Image alt='Generators vs Grid' height={55} width={100} className='relative left-2' src='/image/connecting-street-vendors-to-the-grid/generators-versus-grid.gif' />
+                <Image alt='Generators vs. Grid' height={55} width={100} className='relative left-2' src='/image/connecting-street-vendors-to-the-grid/generators-versus-grid.gif' />
                 <span className='text-[0.8rem]'>Connecting Street Vendors to the Grid</span>
             </BtnIcon>
 
-            {/* Lirong Art, Shirtocracy, BulletBrainstorm */}
-            {/* <BtnIcon href='/connecting-street-vendors-to-the-grid' target='_self'>
-                <Image alt='Generators vs Grid' height={55} width={100} className='relative left-2' src='/image/connecting-street-vendors-to-the-grid/generators-versus-grid.gif' />
-                <span className='text-[0.8rem]'>Connecting Street Vendors to the Grid</span>
-            </BtnIcon> */}
+            <BtnIcon href='https://lirongart.com'>
+                <Image alt='Lirong Art Logo' height={70} width={70} className='relative mb-2' src='/image/home/lirongart-logo.png' />
+                <span className=''>Lirong Art</span>
+            </BtnIcon>
+            <BtnIcon href='https://shirtocracy.com'>
+                <Image alt='Shirtocracy Logo' height={80} width={80} className='relative left-0.5 mb-1' src='/image/home/shirtocracy-logo.png' />
+                <span className=''>Shirtocracy</span>
+            </BtnIcon>
+            <BtnIcon href='https://apps.apple.com/us/app/edit-time/id6464405876'>
+                <Image alt='Edit Time Logo' height={80} width={80} className='relative left-0.5 mb-1' src='/image/home/edit-time-logo.png' />
+                <span className=''>Edit Time</span>
+            </BtnIcon>
+
+            {/* Future: BulletBrainstorm */}
         </article>
     </>;
 }
