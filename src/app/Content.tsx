@@ -113,7 +113,21 @@ export default function Content() {
                 <span className=''>Edit Time</span>
             </BtnIcon>
 
-            {/* Future: BulletBrainstorm */}
+            {/* <BtnIcon href='/nyc'>
+                <Image alt='NYC Logo' height={70} width={70} className='relative top-1' src='/image/patriotism/nyc-flag.jpg' />
+                <span className='relative top-3'>NYC</span>
+            </BtnIcon> */}
+            {/* <BtnIcon href=''>
+                <Image alt='NYC Logo' height={70} width={70} className='relative top-1' src='/image/patriotism/nyc-flag.jpg' />
+                <span className='relative top-3'>Venderoo</span>
+            </BtnIcon> */}
+            {/* <BtnIcon href='/nyc'>
+                <ViolinBow />
+                <span className='relative top-3'>Compositions</span>
+            </BtnIcon> */}
+            
+            {/* Memorize the Presidents */}
+            {/* More Tiles: Venderoo, Compositions, NYC Government, BulletBrainstorm */}
         </article>
     </>;
 }
