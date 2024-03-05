@@ -1,0 +1,21 @@
+import LearnPage from "@/components/page/LearnPage";
+export default function LearningContent({children}) {
+	return <LearnPage markdown bottomPadding>{children}</LearnPage>;
+}
+
+# mysqli in PHP
+
+```php
+$db=mysqli_connect("localhost","root","","project");
+
+// Get
+$stmt=$db->query("SELECT * FROM vendors WHERE email=?");
+$stmt->bind_param("s", $email);
+$user=$stmt->fetch_assoc();
+
+// Insert
+$stmt=$db->prepare("INSERT INTO email (`email`) VALUES (?)");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+
+```
