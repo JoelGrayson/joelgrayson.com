@@ -48,7 +48,7 @@ const nextConfig={
             }
         ];
 
-        function CORSHeaders(origin='*', methods='GET, POST, PUT') {
+        function CORSHeaders(origin='*', methods='GET, POST, PUT, PATCH, OPTIONS') {
             return [
                 { key: "Access-Control-Allow-Credentials", value: "true" },
                 { key: "Access-Control-Allow-Origin", value: origin }, //the origin
