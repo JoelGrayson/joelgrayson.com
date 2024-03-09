@@ -1,0 +1,119 @@
+<html>
+    <head>
+        <style>
+            :root {
+                overflow: hidden;
+            }
+            input {
+                font-size: 16;
+                font-family: Avenir;
+                color: #1A2DF3;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                padding-left: 10px;
+                padding-right: 5px;
+                margin: 0px;
+                font-weight: bold;
+            }
+            .css-button {
+                padding-top: 6px;
+                padding-bottom: 6px;
+                padding-left: 12px;
+                padding-right: 12px;
+                background-color: #1A2DF3;
+                font-weight: bold;
+                border: solid 1px #1A2DF3;
+                text-align: center;
+                font-family: Avenir;
+                cursor:pointer;
+                color: white;
+                border-radius: 10px;
+                margin: 0px;
+            }
+        </style>
+    </head>
+    <body style='display:flex;'>
+        <form style='display:inline;' accept-charset='utf-8' id='formM'>
+            <input type='email' placeholder='Email' name='email' id='emailM' class='input' style='width:160px; margin-left:5px;' onkeydown="return event.key != 'Enter';" /> <!--onkeydown ensures enter key does not submit form-->
+            <input type='text' placeholder='Name' name='name' id='name' style='width:100px; display:none;' oninput='typingName()'/>
+            <button type='button' id='firstButton' class='css-button' onclick='submitEmailClicked()'>></button>
+            <input type='submit' value='✓  ' name='submissio' id='secondButton' class='css-button' style='display:none;'/>
+            
+            <input type='hidden' name='list' value='7mCwzB1doWbnAEFhz9CDNQ'/>
+            <input type='hidden' name='subform' value='yes'/>
+        </form>
+        <div id="status"></div>
+        <img src='https://static.wixstatic.com/media/7ab48f_76bfdee1be004421b9d3ee9bd100a017~mv2.gif' width=77px height=33px style='margin-left:30px; display:none;' id='arrow'/>
+        <img src='https://static.wixstatic.com/media/7ab48f_b2078f20ffe84a54872e8ffb88d2fb45~mv2.png' width=77px height=33px style='margin-left:30px; display:none' id='frozenArrow'/>
+    </body>
+    <script>
+        var alreadyMoved=false; //ensures arrow animation does not occur >1 times
+        
+        function submitEmailClicked() {
+            document.getElementById('secondButton').style.display = 'inline-block'; //shows second button
+            document.getElementById('firstButton').style.display = 'none'; //hides first button
+            var name = document.getElementById('name');
+            if (name.style.display==='none') {
+            name.style.display = 'inline-block';
+            }
+        }
+        function typingName() {
+            var arrow = document.getElementById('arrow');
+            var frozenArrow = document.getElementById('frozenArrow');
+            if (!alreadyMoved) {
+            setTimeout(() => {arrow.style.display='inline-block';},6000); //shows moving arrow
+            setTimeout(() => {frozenArrow.style.display='inline-block'; arrow.style.display='none';},9001); //shows frozen arrow & collapses moving arrow
+            alreadyMoved=true;
+            }
+        }
+        
+        document.getElementById('emailM').addEventListener('keyup', function(event) {
+            if (event.keyCode===13) {
+                event.stopImmediatePropagation();
+                document.getElementById('firstButton').click();
+            }
+        });
+
+        document.getElementById('formM').addEventListener('submit', submitForm);
+
+        function setStatus(status) {
+            const statusEl=document.getElementById('status');
+            
+            switch (status) {
+                case 'loading':
+                    statusEl.innerHTML=`<img src='https://joelgrayson.com/image/miscellaneous/loading.gif' />`;
+                    // hidden
+                case 'success':
+                    // show success message
+                    statusEl.innerHTML=`<img src='https://joelgrayson.com/image/miscellaneous/checkmark.gif' />`;
+                default:
+                    statusEl.innerHTML='';
+            }
+        }
+        
+        function submitForm(e) {
+            e.preventDefault();
+            // // Show Wix lightbox
+            // window.parent.postMessage('confirmation lightbox','*');
+            const name=document.getElementById('name').value;
+            const email=document.getElementById('emailM').value;
+            console.log('Sending', {name, email});
+            setStatus('loading');
+            fetch('https://joelgrayson.com/api/lirong-art-email-list/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email }),
+            })
+                .then(res=>res.json())
+                .then(res=>{
+                    console.log('res', res);
+                    setStatus('success');
+                })
+          		.catch(res=>{
+              		console.error('Failed because', res);
+	            });
+        }
+    </script>
+</html>
