@@ -86,6 +86,8 @@
                 case 'success':
                     // show success message
                     statusEl.innerHTML=`<img src='https://joelgrayson.com/image/miscellaneous/checkmark.gif' />`;
+                case 'duplicate':
+                    document.body.innerHTML='You are already on the list!';
                 default:
                     statusEl.innerHTML='';
             }
@@ -112,7 +114,10 @@
                     setStatus('success');
                 })
           		.catch(res=>{
-              		console.error('Failed because', res);
+                    if (res.status==='duplicate email')
+                        setStatus('duplicate');
+                    else
+                        console.error('Failed because', res);
 	            });
         }
     </script>
