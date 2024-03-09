@@ -12,18 +12,41 @@ export default function DefaultFooter() {
     const [src, setSrc]=useState<string>(stillSrc);
 
     return <footer className='bg-[#facb62]'>
-        <div className="flex justify-center p-4 gap-5">
-            {/* eslint-disable */}
-            <Link href="https://github.com/JoelGrayson" target='_blank' className='flex' aria-label='GitHub Profile' tabIndex={0}>
-                <GithubIcon width={30} />
+        <div className="flex justify-center items-center p-4 gap-4">
+            <Link
+                href="https://github.com/JoelGrayson"
+                target='_blank'
+                className='grid place-items-center rounded-full bg-[#99999900] hover:bg-[#999999ff] transition-colors duration-100 unstyled'
+                style={{
+                    width: 40,
+                    height: 40
+                }}
+                aria-label={'Joel\'s GitHub'}
+                title={'Joel\'s GitHub'}
+                tabIndex={0}
+            >
+                <GithubIcon width={30} className='fill-black ' />
             </Link>
-            <Link href="https://www.linkedin.com/in/joelgrayson/" target='_blank' className='flex' aria-label='LinkedIn Profile' tabIndex={0}>
-                <LinkedInIcon width={30} />
+
+            <Link
+                href="https://www.linkedin.com/in/joelgrayson/"
+                target='_blank'
+                className='grid place-items-center rounded-md bg-[#6f97ad00] hover:bg-[#6f97adff] transition-colors duration-100 unstyled'
+                style={{
+                    width: 40,
+                    height: 40
+                }}
+                aria-label="Joel's LinkedIn"
+                title="Joel's LinkedIn"
+                tabIndex={0}
+            >
+                <LinkedInIcon width={30} className="fill-[#0273B1] group-hover/linkedin:fill-blue-900" />
             </Link>
+
             {/* Image wiggles onHover by changing its source from the wiggling.gif to the still.png */}
             <Link
                 href='https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A'
-                className='unstyled flex justify-center items-center'
+                className='unstyled flex justify-center items-center ml-2'
                 onMouseEnter={()=>setSrc(wigglingSrc)}
                 onMouseLeave={()=>setSrc(stillSrc)}
                 target='_blank'
@@ -36,8 +59,8 @@ export default function DefaultFooter() {
                     <span className='text-xl text-[#0F1CA0] relative top-[-10px]'>laphappy</span>
                 </div>
             </Link>
-            {/* eslint-enable */}
         </div>
+        
         <div className="text-center pb-4">
             &copy; 2019–{new Date().getFullYear()} Joel Grayson
         </div>
