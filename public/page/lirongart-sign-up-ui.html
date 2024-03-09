@@ -82,12 +82,15 @@
             switch (status) {
                 case 'loading':
                     document.body.innerHTML=`<img src='https://joelgrayson.com/image/miscellaneous/loading.gif' />`;
+                    break;
                     // hidden
                 case 'success':
                     // show success message
                     document.body.innerHTML=`<img src='https://joelgrayson.com/image/miscellaneous/checkmark.gif' />`;
+                    break;
                 case 'duplicate':
                     document.body.innerHTML='You are already on the list!';
+                    break;
                 default:
                     statusEl.innerHTML='';
             }
