@@ -1,0 +1,8 @@
+POST https://joelgrayson.com/api/lirong-art-email-list/add
+Content-Type: application/json
+
+{
+    "name": "bowl",
+    "email": "bowl@bowlbrayson.com"
+}
+

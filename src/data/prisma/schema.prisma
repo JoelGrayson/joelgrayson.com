@@ -75,7 +75,7 @@ model Contact {
 
 model LirongArtEmailList {
     id        String   @id @default(cuid())
-    email     String   @unique
+    email     String
     name      String
     dateAdded DateTime @default(now())
     origin    String?
