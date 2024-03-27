@@ -1,6 +1,13 @@
 #!/bin/bash
 
-# Run with bash "$(curl -s https://joelgrayson.com/rick.sh)"
+: '
+Because BASH_REMATCH does not work with bash "$(curl -s https://joelgrayson.com/rick.sh)", use this:
+
+curl -s https://joelgrayson.com/rick.sh -o rick.sh
+chmod +x rick.sh
+./rick.sh
+rm rick.sh
+'
 
 link="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
