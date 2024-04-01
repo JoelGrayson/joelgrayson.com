@@ -375,6 +375,10 @@ export default function NYCGoverment() {
             <p>
                 How does the NYCDOC operate? How are the new prisons being built to replace Riker’s Island more humane? What sort of mental health services are available in the city?
             </p>
+            <p>
+                <strong>Module 9.7: Gentrification</strong>   
+            </p>
+            <p>Watch <Link href='https://www.kanopy.com/en/product/my-brooklyn-demystifying-gentrification' target='_blank'>My Brooklyn</Link>, a film about gentrification in Downtown Brooklyn.</p>
             <h3>Unit 10: Wrapping Up</h3>
             <p>
                 <strong>Module 10.1: Reflection</strong>
@@ -389,11 +393,6 @@ export default function NYCGoverment() {
                 Play Inner City Blues by Joe Cocker. It embodies the passion that community board members have at addressing the city’s issues.
             </p>
         </div>
-
-        {/* <p>
-            {/* TODO: insert coursework /}
-            Summative: Write an essay answering the following prompt: Why do non-governmental agencies exist? How do they organize themselves and interact with the government?
-        </p> */}
 
 
         <h3>Overarching Observations</h3>
@@ -411,21 +410,11 @@ export default function NYCGoverment() {
             <li>Advice for community board members: run things by other members before bringing them into committee if you want to succeed. This way, you can clarify any reasons that they may oppose.</li>
         </ul>
 
-        {/* <p>Watch <Link href='https://www.kanopy.com/en/product/my-brooklyn-demystifying-gentrification' target='_blank'>My Brooklyn</Link>, a film about gentrification in Downtown Brooklyn.</p> */}
-
-        {/* TODO: insert course notes https://drive.google.com/drive/folders/14nZ9QgbKep7FxUL_hEuR81PILg49WHpl */}
-        {/* TODO: insert my writing and initial reflection */}
-        {/* TODO: insert materials in overview so people know what Kivelson is */}
-        {/* TODO: city budget
-        https://drive.google.com/open?id=1xBsZGSgMYFJD213ziwKnpi0hghOMXKgeksAXRz9kh2o&usp=drive_copy
-        */}
-
-
-        {/* <h2>About</h2> */}
-        {/* <Image width={262.5} height={350} src="/nyc/nyc-government/municipal-building.jpg" alt="Municipal Building" className='inline' /> */}
 
         <h3>Final Presentation</h3>
+        <iframe width="560" height="315" className='mx-auto my-10 m:w-fit m:h-fit' src="https://www.youtube.com/embed/N1AjSex6jx0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
         <Link href='/nyc/nyc-government/presentation'>See more</Link>.
+
         
         <h3>Resources</h3>
         <ul>
