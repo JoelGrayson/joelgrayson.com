@@ -52,7 +52,8 @@ export const temporary: redirects={ //302
     'https://joelgrayson.wixsite.com/joelgrayson/joel-case': '/joel-case',
     'https://joelgrayson.wixsite.com/joelgrayson/projects': '/projects',
     'https://joelgrayson.wixsite.com/joelgrayson/big-sur-icons': '/big-sur-icons',
-    'https://joelgrayson.wixsite.com/joelgrayson/audio/*': '/audio/*',
+    // 'https://joelgrayson.wixsite.com/joelgrayson/audio/*': '/audio/*',
+    'https://joelgrayson.wixsite.com/joelgrayson/audio/electric-shock': '/audio/electric-shock',
     'https://joelgrayson.wixsite.com/joelgrayson': ['/wix', '/old', '/wixsite']
 };
 
