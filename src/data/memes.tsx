@@ -11,6 +11,7 @@ const attributes={
 
 const memes=[ //image path is {description}.jpg
     // if it is an element, it will be rendered. If it is a string, it will be rendered as an image
+    '2024 College Process.gif',
     <div className="p-3 grid place-items-center" key='confucian-matrix'>
         <Image src="/image/memes/2023 Confucian Matrix.jpg" alt="Confucian Matrix" width={160} height={160} />
         <p>Confucian Matrix</p>
