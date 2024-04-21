@@ -39,6 +39,7 @@ export default function Slaphappy() {
             width: '100vw',
             zIndex: -1
         }} />
+        <Link href={'https://youtube.com/@JoelGrayson'} className='unstyled'>
         <img src='/image/slaphappy/Channel-Art.png' alt='Slaphappy Channel Art' className='mx-auto pt-[60px] sm:pt-[100px] lg:pt-[160px]' style={{
             width: '60%',
             zIndex: -2,
@@ -67,17 +68,23 @@ export default function Slaphappy() {
                     display: 'flex',
                     gap: 10
                 }}>
-                    <Link href='https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A?sub_confirmation=1'>
+                    {/* <Link href='https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A?sub_confirmation=1'> */}
                         <Image src='/image/slaphappy/Subscribe.png' alt='Subscribe' width='82' height='22' />
-                    </Link>
+                    {/* </Link> */}
                     <span>← Why not?</span>
                 </div>
             </div>
+        </Link>
         {/* </div> */}
 
         <div style={{width: '60%', maxWidth: 800, margin: '0 auto', marginTop: 14}}>
             <p>Slaphappy shows videos my Dad and I have made together since I was 11. If you find them funny, our names are Joel Grayson and Paul Grayson. If not, they are anonymous. The channel has separate sections for stop motion animation and my various projects. I am not a professional trumpet player.</p>
         </div>
-        
+
+        <div className="w-full flex justify-center mt-10">
+            <Link href={'https://youtube.com/@JoelGrayson'} className='button'>
+                View Here
+            </Link>
+        </div>
     </Page>;
 }
