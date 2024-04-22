@@ -53,10 +53,9 @@ export default function CCC() {
                 <Image src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='solar panel' width={26} height={20} className='ml-3 inline' />
             } {...{showDescription}}>
                 <div className='relative'>
-                    {/* TODO: change to 492 kW */}
-                    <p>While learning about different energy sources, I realized that my school&apos;s empty rooftops had great potential for solar energy. I measured the rooftops, created solar models in HelioScope (image below), calculated savings, and gathered quotes from two companies. I presented to the administration and board of trustees, who agreed to a 582 kW solar PPA arrangement (enough to power 55 households) that will cover six buildings, promote renewable energy, and save the school tens of thousands of dollars every year.</p>
-                    <p>85% of New York City&apos;s electricity comes from fossil fuels. This installation will generate 867 megawatt-hours of clean electricity per year.</p>
-                        {/* My solar installation makes NYC&apos;s electricity <Green>0.0075%</Green> more renewable.</p> */}
+                    {/* 493 kW system producing 540 MWh */}
+                    <p>While learning about different energy sources, I realized that my school&apos;s empty rooftops had great potential for solar energy. I measured the rooftops, created solar models in HelioScope (image below), calculated savings, and gathered quotes from two companies. I presented to the administration and board of trustees, who agreed to a 493 kW solar PPA arrangement (enough to power 50 households) that will cover six buildings, promote renewable energy, and save the school tens of thousands of dollars every year.</p>
+                    <p>85% of New York City&apos;s electricity comes from fossil fuels. This installation will generate 540 megawatt-hours of clean electricity per year.</p>
                     <b>Cobenefits:</b>
                     <ul>
                         <li>Currently, when the power goes out in the River Campus, there is no WiFi, heat, or lighting. This happens around three times a year. Our installation will add a battery to the lower school to make sure the campus has 4–6 hours of backup power during the outages.</li>
@@ -78,7 +77,7 @@ export default function CCC() {
                 </div> */}
 
                 <p className='d:absolute d:top-0 d:right-0'>
-                    Will save ~<Green>331 MTCO₂e</Green> each year
+                    Will save ~<Green>200 MTCO₂e</Green> each year
                     <CalculationInfo>
                         <Markdown>{`
 ### Grid Emissions
@@ -88,8 +87,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
 817.9 lb CO2e/MWh × 1 metric ton / 2204.62 lb=0.371 metric tons CO2e/MWh
 
 ### Solar Savings
-582 kW installation × 4.08 hours/day (average sunlight in NYC from [this source](https://perma.cc/GP5Z-YUD3)) × 365 days per year × 1 MWh/1000 kWh=867 MWh/year
-867 MWh/year from solar × .371 metric tons CO₂ / MWh=322 metric tons CO₂ / year
+540 MWh/year from solar × .371 metric tons CO₂ / MWh=200 metric tons CO₂ / year
 
                         `.trim()}</Markdown>
                     </CalculationInfo>
