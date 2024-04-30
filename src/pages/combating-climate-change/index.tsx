@@ -16,7 +16,7 @@ import Prototype from 'src/components/by-page/connecting-street-vendors-to-the-g
 
 export default function CCC() {
     const [showDescription, setShowDescription]=useState<boolean>(true);
-    let emissionsSaved=331+.675+6.7+1.7;
+    let emissionsSaved=200+.675+6.7+1.7;
 
     return <Page
         seo={{
