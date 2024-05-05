@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Page from '@/components/page/DefaultPage';
-import Content from '../app/Content';
+import Content from '@/app/Content';
 import Link from 'next/link';
 
 export default function Home() {

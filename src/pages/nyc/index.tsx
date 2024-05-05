@@ -50,7 +50,7 @@ export default function NYC() {
         {/* <iframe width="560" height="315" className='mx-auto my-10 m:w-fit m:h-fit' src="https://www.youtube.com/embed/N1AjSex6jx0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe> */}
         <Yt>N1AjSex6jx0</Yt>
 
-        <h2>Manhattan Community Board 1 Member</h2>
+        <h2 id='cb1'>Manhattan Community Board 1 Member</h2>
         <p>Being a community board member has been an exciting and rewarding experience. I have enjoyed learning how NYC Government works, talking with different department liaisons, making friends with other board members, and am grateful to be a part of a group of inspiring involved community members.</p>
         <h3>My Initiatives</h3>
         <ul>

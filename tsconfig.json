@@ -19,6 +19,9 @@
       ],
       "@/data/*": [
         "src/data/*"
+      ],
+      "@/app/*": [
+        "src/app/*"
       ]
     },
     "allowJs": true,
