@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import Page from '@/components/page/DefaultPage';
-import Link from 'next/link';
+// import Image from 'next/image';
+// import Link from 'next/link';
 
 export default function Home() {
     return <Page noPadding pathname='/' seo={{
