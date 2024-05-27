@@ -44,5 +44,12 @@ export default function ReformingMath() {
                 <div>Use == when writing a proof, so that you remember that you cannot manipulate both sides like an equation. For example, prove {r`\(\frac{\cos 2x-1}{\sin 2x}==-\tan x\)`}</div>
             </li>
         </ul>
+
+        <h3>Reforming Physics</h3>
+        <ul>
+            <li>Make an electron positive charge</li>
+            <li>Use moles of e as a unit of charge instead of coulombs C because that way it is easier to visualize as opposed to being a completely arbitrary unit.</li>
+            <li>Do not use {r`\frac{1}{4\pi\epsilon_0}`}</li>
+        </ul>
     </Page>;
 }

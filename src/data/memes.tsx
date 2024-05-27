@@ -11,6 +11,12 @@ const attributes={
 
 const memes=[ //image path is {description}.jpg
     // if it is an element, it will be rendered. If it is a string, it will be rendered as an image
+    // <div className="p-3" key='college-board'>
+    //     TODO: Meme: when college board doesn’t give you extra scrap paper: shows me writing calculus on my chair and the white wall
+    // </div>,
+    <div className="p-3" key='gay-protons'>
+        <p>Protons are attracted to electrons and repel each other, except for the gay protons.</p>
+    </div>,
     '2024 College Process.gif',
     <div className="p-3 grid place-items-center" key='confucian-matrix'>
         <Image src="/image/memes/2023 Confucian Matrix.jpg" alt="Confucian Matrix" width={160} height={160} />
