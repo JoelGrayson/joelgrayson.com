@@ -109,8 +109,9 @@ export default function Content() {
                 <span className=''>Shirtocracy</span>
             </BtnIcon>
             <BtnIcon href='https://apps.apple.com/us/app/edit-time/id6464405876'>
-                <Image alt='Edit Time Logo' height={80} width={80} className='relative left-0.5 mb-1' src='/image/home/edit-time-logo.png' />
-                <span className=''>Edit Time</span>
+                <Image alt='Edit Time Logo' height={80} width={80} className='relative left-0.5 bottom-3' src='/image/home/edit-time-logo.png' />
+                <span className='relative bottom-3'>Edit Time</span>
+                <Label>86 users</Label>
             </BtnIcon>
 
             {/* <BtnIcon href='/nyc'>
