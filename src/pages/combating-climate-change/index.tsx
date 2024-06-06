@@ -11,12 +11,12 @@ import PDF from 'src/components/global/PDF';
 import { Switch } from 'antd';
 import Info from 'src/components/global/Info';
 import CalculationInfo from 'src/components/global/CalculationInfo';
-import Markdown from 'markdown-to-jsx';
+// import Markdown from 'markdown-to-jsx';
 import Prototype from 'src/components/by-page/connecting-street-vendors-to-the-grid/Prototype';
 
 export default function CCC() {
     const [showDescription, setShowDescription]=useState<boolean>(true);
-    let emissionsSaved=200+.675+6.7+1.7;
+    let emissionsSaved=250+.675+6.7+1.7;
 
     return <Page
         seo={{
@@ -77,8 +77,8 @@ export default function CCC() {
                 </div> */}
 
                 <p className='d:absolute d:top-0 d:right-0'>
-                    Will save ~<Green>200 MTCO₂e</Green> each year
-                    <CalculationInfo>
+                    Will save ~<Green>250 MTCO₂e</Green> each year
+                    {/* <CalculationInfo>
                         <Markdown>{`
 ### Grid Emissions
 Emissions from [EPA egrid](https://www.epa.gov/egrid/summary-data) accessed 11.8.23
@@ -90,7 +90,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
 540 MWh/year from solar × .371 metric tons CO₂ / MWh=200 metric tons CO₂ / year
 
                         `.trim()}</Markdown>
-                    </CalculationInfo>
+                    </CalculationInfo> */}
                 </p>
             </Action>
             <Action title='Renewable Energy Research' {...{showDescription}}>

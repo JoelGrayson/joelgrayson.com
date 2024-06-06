@@ -1,5 +1,5 @@
 import Prototype from 'src/components/by-page/connecting-street-vendors-to-the-grid/Prototype';
-import { Yt } from 'src/components/by-page/machines/helpers';
+// import { Yt } from 'src/components/by-page/machines/helpers';
 import ConnectingStreetVendorstotheGridPage from '@/components/page/ConnectingStreetVendorstotheGridPage';
 import { P, Citation } from '@jcomponents/writing-components';
 import Image from 'next/image';
@@ -12,7 +12,10 @@ export default function ConnectingStreetVendorsToTheGrid() {
         title: 'Connecting Street Vendors to the Grid',
         keywords: ['food vendor', 'street vendor']
     }}>
-        <h1 className='text-center text-4xl my-10 mb-8'>Connecting Street Vendors to the Grid {/* TODO: insert logo */}</h1>
+        <h1 className='text-4xl my-10 mb-8 text-center'>
+            Connecting Street Vendors to the Grid
+            <Image src="/image/connecting-street-vendors-to-the-grid/logo.png" alt="Logo" className='inline relative bottom-1 left-2' width={32} height={32} />
+        </h1>
         <p>Every year, an average street vendor burns 450 gallons of gas, emitting 4 tons of CO₂ equivalent and the same amount of smog as 180 cars driving coast to coast. This smog is localized to the one area the vendor operates, single-handedly making the neighborhood&apos;s air quality worse. Given that NYC has bad air quality (D according to the American Lung Association) and New York State plans to cut emissions by 85% by 2050 (based on 1990 levels)<Citation number={2} />, it is essential that we electrify street vendors. Doing so will not only fight climate change and improve air quality, it also has the following benefits for vendors:</p>
         <ul>
             <li>protects their heart & lung health
@@ -28,12 +31,11 @@ export default function ConnectingStreetVendorsToTheGrid() {
             </li>
             <li>makes them not have to listen to the loud generators all day.
                 <p className="indent-4">
-                    This health study shows that listening to the generators is bad for your health
-                    {/* TODO: */}
+                    <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(13)61613-X/abstract?rss=yes" target='_blank'>This health study </a>shows that listening to the generators is bad for your health
                 </p>
             </li>
             <li>
-                saves them time and frustration from repairing the generator
+                saves them time and frustration from repairing the generator.
             </li>
         </ul>
 
@@ -44,7 +46,8 @@ export default function ConnectingStreetVendorsToTheGrid() {
         <P>Vendors are often parked right next to street lamps, so we can install an outlet box for around $5,000 with a meter. Using an app, vendors can unlock the outlets and be charged for the electricity they use. Electricians have said that this is feasible as long as DOT and ConEd approve.</P>
         <P className='mb-3'>This initiative is endorsed by the Street Vendor Project, and there are vendors eager to be in this pilot.</P>
         <Prototype />
-        <Yt>Y50nhH18HH4</Yt>
+        {/* <Yt>Y50nhH18HH4</Yt> */}
+        {/* TODO: get new YT */}
 
 
         <h3 className='mt-5'>Timeline</h3>
