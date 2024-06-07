@@ -201,7 +201,7 @@ export default function Resume() {
                         <span className='date'>2023&ndash;24</span>
                     </div>
                     <div className='relative'>
-                        <span className='description'>Researched novel compound at Lee Lab in NYU Tandon&apos;s seven-week ARISE program.</span>
+                        <span className='description'>Researched novel compound at Lee Lab in NYU&apos;s seven-week ARISE program.</span>
                         <span className='date relative'>2023</span>
                     </div>
                     <div className='relative'>
@@ -221,7 +221,7 @@ export default function Resume() {
                         <span className='date'>2015&ndash;22</span>
                     </div>
                     <div className='relative'>
-                        <span className='description'>Violin: Praeludium & Allegro, Spring, Bach&apos;s Concerto No. 1 recitals; Interlochen.</span>
+                        <span className='description'>Violin: Praeludium & Allegro, Spring, Bach&apos;s Concerto No. 1 recitals; Interlochen; <Link href='/music'>Compositions</Link>.</span>
                         <span className='date'>2011&ndash;now</span>
                     </div>
                     <div className='relative'>

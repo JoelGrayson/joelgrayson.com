@@ -10,7 +10,6 @@ export default function Home() {
         description: 'The banana system',
         og: {
             // TODO: image of banana
-            // image: '/image/home/portraits/4.22.2023/JoelGrayson.jpg',
             // imageAlt: 'Joel Grayson Profile Photo'
         }
     }}>
