@@ -6,7 +6,7 @@ export const temporary: redirects={ //302
     '/banana-system': ['/banana', '/bananasystem', '/the-banana-system'],
     'https://drive.google.com/drive/folders/1TypGPB9FFJA3dAvo1XX4cBsfRYRW3oqZ?usp=sharing': '/file',
     '/music': ['/performance', '/performances', '/projects/music'],
-    '/learn/pablo-neruda/index.html': ['/pablo-neruda', '/neruda', '/learn/neruda', '/pablo-neruda/index.html'],
+    '/learn/pablo-neruda/index.html': ['/pablo-neruda', '/neruda', '/learn/neruda', '/pablo-neruda/index.html', '/learn/pablo-neruda'],
     '/learn/physics/index.html': '/learn/physics',
     '/nyc/nyc-government/unit-1-quiz': '/nyc/nyc-government/unit-1-test',
     '/research/how-do-cultures-combine/How%20Cultures%20Combine%20in%20Mixed-Race%20Families.pdf': '/research/how-do-cultures-combine',

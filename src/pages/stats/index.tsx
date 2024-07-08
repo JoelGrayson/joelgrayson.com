@@ -117,7 +117,7 @@ export default function Stats() {
                     <td><Value>{focusInstalls}</Value></td>
                 </tr>
                 <tr>
-                    <td>Homework checker installations</td>
+                    <td>Homework Checker installations</td>
                     <td><Value>{hCInstalls}</Value></td>
                 </tr>
                 <tr>
@@ -176,6 +176,7 @@ export default function Stats() {
         {
             hCInstalls && focusInstalls && blogViews && shanghaiDictionarySearches && ytData && <div>
                 Every day,
+                {/* TODO: calculate */}
                 <ul>
                     <li>20 people watch my YouTube channels</li>
                     <li>500 pounds of CO<sub>2</sub> is saved</li>
