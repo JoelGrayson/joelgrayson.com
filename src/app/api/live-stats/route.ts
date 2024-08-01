@@ -11,6 +11,8 @@ import getHomeworkCheckerUsers from "./get-stats/getHomeworkCheckerUsers";
 import getFocusUsers from "./get-stats/getFocusUsers";
 import { NextResponse } from "next/server";
 
+// Opt out of caching
+export const dynamic='force-dynamic';
 export async function GET() {
     const promises=[
         getFocusUsers(), //TODO

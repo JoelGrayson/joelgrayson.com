@@ -1,0 +1,14 @@
+name: Cron Job Backing up Stats
+on:
+  # Triggers the workflow every day
+  schedule:
+    - cron: "5 0 * * *"
+jobs:
+  # This workflow contains a single job called "cron"
+  cron:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Run a one-line script
+        run: node ./subroutines/capture-stats.js
