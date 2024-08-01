@@ -56,7 +56,7 @@ model Stats {
     focusUsers           Int?
     homeworkCheckerUsers Int?
     buserooSearches      Int?
-    shirtocracyVisits    Int?
+    shirtocracyOrders    Int?
     journalUsers         Int?
     projectsUsers        Int?
     habitUsers           Int?

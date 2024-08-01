@@ -2,7 +2,7 @@ import getBlogViews from "./get-stats/getBlogViews";
 import getShanghaiDictionarySearches from "./get-stats/getShanghaiDictionarySearches";
 import getBuserooUsers from "./get-stats/getBuserooUsers";
 import getBuserooSearches from "./get-stats/getBuserooSearches";
-import getShirtocracyViews from "./get-stats/getShirtocracyViews";
+import getShirtocracyOrders from "./get-stats/getShirtocracyOrders";
 import getJournalUsers from "./get-stats/getJournalUsers";
 import getNumbersUsers from "./get-stats/getNumbersUsers";
 import getHabitUsers from "./get-stats/getHabitUsers";
@@ -18,7 +18,7 @@ export async function GET() {
         getFocusUsers(), //TODO
         getHomeworkCheckerUsers(), //TODO
         getBuserooSearches(),
-        getShirtocracyViews(),
+        getShirtocracyOrders(),
         getJournalUsers(), //TODO
         getProjectsUsers(), //TODO
         getHabitUsers(), //TODO
