@@ -1,3 +1,26 @@
+/*
+# Stats
+Focus users	
+Homework Checker users	
+Buseroo.com searches	
+Shirtocracy.com visits
+Journal users
+Projects users
+Habit users
+Numbers users
+
+## Additional Not Displayed
+Blog views
+Buseroo users
+ShanghaiDictionary.com Searches
+
+# Schema
+/api/live-stats shows live stats. It is triggered every 30 minutes and stores results in the database `stats`.
+/api/stats fetches the stats from the database and returns them in JSON format.
+/stats displays the stats visually
+
+*/
+
 import React, { useState, useEffect } from 'react';
 import Page from '@/components/page/DefaultPage';
 import Loader from 'src/components/global/Loader';

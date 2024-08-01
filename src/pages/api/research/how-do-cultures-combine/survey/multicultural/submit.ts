@@ -50,7 +50,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     
     await sendEmail({
         subject: `New Multicultural Survey Response from a ${data.father.race} ${data.mother.race}`,
-        to: 'joelbaograyson@gmail.com',
+        to: 'joel@joelgrayson.com',
         html: `
             <p>See responses <a href="https://docs.google.com/spreadsheets/d/1myKBPm0_4PQek0mBjPlTcxjD0lQsL4GGKBM3zTdT87g/edit?pli=1#gid=0">here</a>.</p>
 

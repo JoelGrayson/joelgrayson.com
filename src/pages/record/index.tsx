@@ -33,6 +33,9 @@ export default function Record() {
 
         { victory: true, date: '2023', position: 'Manhattan Community Board 1 Member', spots: <div className="relative">60 <Info> <div>Although there were 300 appointments for Manhattan community boards, there were 60 new appointments from the 700 candidates because many of the members were returning.</div> </Info></div>, spotsVal: 60, candidates: 700 },
         { victory: true, date: '2023', position: 'ARISE', spots: 67, candidates: 984 },
+
+        // Class of 2027 stats because my class has not been released on the Common Data Set yet
+        { victory: true, date: '2023', position: 'Stanford', spots: 2099, candidates: 53733 },
     ];
     
     return <Page bottomPadding seo={{

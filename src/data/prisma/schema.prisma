@@ -38,12 +38,33 @@ model Comment {
 }
 
 // # Stats (api.joelgrayson.com adds stats to this table every morning)
+// Focus users	
+// Homework Checker users	
+// Buseroo.com searches	
+// Shirtocracy.com visits
+// Journal users
+// Projects users
+// Habit users
+// Numbers users
+
+// Captured every day
 model Stats {
-    id                         String   @id @default(cuid())
-    date                       DateTime @default(now())
-    homeworkCheckerInstalls    Int?
-    focusInstalls              Int?
+    id   String   @id @default(cuid())
+    date DateTime @default(now())
+
+    // Displayed on the stats page and Joelesque Empire Board
+    focusUsers           Int?
+    homeworkCheckerUsers Int?
+    buserooSearches      Int?
+    shirtocracyVisits    Int?
+    journalUsers         Int?
+    projectsUsers        Int?
+    habitUsers           Int?
+    numbersUsers         Int?
+
+    // Additional Not Displayed
     blogViews                  Int?
+    buserooUsers               Int?
     shanghaiDictionarySearches Int?
 }
 

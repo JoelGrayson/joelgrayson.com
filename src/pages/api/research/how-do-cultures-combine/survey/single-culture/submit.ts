@@ -46,7 +46,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     
     await sendEmail({
         subject: `New Single Culture Survey Response from a ${data.race} Person`,
-        to: 'joelbaograyson@gmail.com',
+        to: 'joel@joelgrayson.com',
         html: `
             <p>See responses <a href="https://docs.google.com/spreadsheets/d/1sBssTGqo7BogXBgTyjK8Ui1LoQSnKtWB1H_im6wfSrE/edit#gid=0">here</a>.</p>
 
