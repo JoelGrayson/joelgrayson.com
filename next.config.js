@@ -45,6 +45,10 @@ const nextConfig={
             {
                 source: '/api/log-event/rick-roll',
                 headers: CORSHeaders()
+            },
+            {
+                source: '/api/log-error/joelgreyson.com',
+                headers: CORSHeaders('https://joelgreyson.com')
             }
         ];
 

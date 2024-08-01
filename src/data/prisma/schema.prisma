@@ -55,6 +55,18 @@ model EventCounter {
     time      DateTime @default(now())
 }
 
+// Library
+model Library {
+    id          String    @id @default(cuid())
+    type        String //book | movie | interview | audiobook
+    title       String
+    author      String?
+    url         String?
+    imageUrl    String?
+    date        DateTime //ended
+    startedDate DateTime?
+}
+
 // # Logging
 model Error {
     id       String   @id @default(cuid())
