@@ -55,7 +55,7 @@ export default function DefaultHeader({ pathname='' }: { pathname?: string }) {
                 </HeaderGroup>
 
                 <HeaderItem pathname={pathname} link='/blog' className='m:order-4'>Blog</HeaderItem>
-                <HeaderItem pathname={pathname} link='/contact' className='m:order-6'>Contact</HeaderItem>
+                <HeaderItem pathname={pathname} link={`/contact?referrer=${pathname}`} className='m:order-6'>Contact</HeaderItem>
             </ul>
         </nav>
     </header>;

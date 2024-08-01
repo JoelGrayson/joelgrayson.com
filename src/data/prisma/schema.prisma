@@ -65,12 +65,13 @@ model Error {
 }
 
 model Contact {
-    id      String   @id @default(cuid())
-    date    DateTime @default(now())
-    name    String
-    email   String
-    message String
-    origin  String
+    id           String   @id @default(cuid())
+    date         DateTime @default(now())
+    name         String
+    email        String
+    message      String
+    origin       String
+    previousPage String? // the page before they clicked the contact button in the header to contact me. This is important so I have context as to where they were before, such as if they were using one of my softwares and found a bug
 }
 
 model LirongArtEmailList {

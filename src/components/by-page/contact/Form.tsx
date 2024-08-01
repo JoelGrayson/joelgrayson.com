@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { usePlausible } from "next-plausible";
 import Loader from 'src/components/global/Loader';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
 export default function Form() {
     const [state, setState]=useState<'not_submitted' | 'loading' | 'submitted'>('not_submitted');
     const plausible=usePlausible();
-
+    const previousPage=useSearchParams()?.get('referrer');
+    
     return <>
         <style jsx>{`
             input, textarea {
@@ -77,7 +79,8 @@ export default function Form() {
         const values={
             name: e.target[0].value,
             email: e.target[1].value,
-            message: e.target[2].value
+            message: e.target[2].value,
+            previousPage
         };
 
         setState('loading');

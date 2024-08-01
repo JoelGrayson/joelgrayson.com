@@ -1,5 +1,4 @@
 import LearnPage from "@/components/page/LearnPage";
-import Button from "@jcomponents/button";
 export default function LearningContent() {
 	return <LearnPage markdown bottomPadding>
 		<h1>Daylight Saving Time</h1>
@@ -12,8 +11,8 @@ export default function LearningContent() {
       {/* eslint-enable */}
 		</div>
 		<br /><br />
-		<Link href="/learn/daylight-saving-time/Daylight Savings Time Explained.png" download>
-			<Button>Download as PNG</Button>
+		<Link href="/learn/daylight-saving-time/Daylight Savings Time Explained.png" className="button" download>
+			Download as PNG
 		</Link>
 	</LearnPage>;
 }

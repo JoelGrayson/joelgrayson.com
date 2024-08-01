@@ -3,7 +3,7 @@ import notifyJoel from '../../../helpers/notifyJoel';
 import prisma from 'src/data/prisma/client';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<{message: string, queryRes?: any; origin?: string}>) {
-    const { name, email, message }=req.body;
+    const { name, email, message, previousPage }=req.body;
     // origin
     const origin=req.headers.origin || 'joelgrayson.com';
 
@@ -24,7 +24,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             name,
             email,
             message,
-            origin
+            origin,
+            previousPage
         }
     });
 
