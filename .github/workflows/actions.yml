@@ -11,4 +11,5 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Run a one-line script
+        uses: actions/checkout@v4
         run: node ./subroutines/capture-stats.js

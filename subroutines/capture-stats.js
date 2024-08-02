@@ -8,7 +8,7 @@ async function main() {
             .then(x=>x.json())
             .then(res)
     });
-    const { focusUsers, homeworkCheckerUsers, buserooSearches, shirtocracyVisits, journalUsers, projectsUsers, habitUsers, numbersUsers, blogViews, buserooUsers, shanghaiDictionarySearches }=result;
+    const { focusUsers, homeworkCheckerUsers, buserooSearches, shirtocracyOrders, journalUsers, projectsUsers, habitUsers, numbersUsers, blogViews, buserooUsers, shanghaiDictionarySearches }=result;
 
     await prisma.stats.create({
         data: {
@@ -17,7 +17,7 @@ async function main() {
             focusUsers,
             homeworkCheckerUsers,
             buserooSearches,
-            shirtocracyVisits,
+            shirtocracyOrders,
             journalUsers,
             projectsUsers,
             habitUsers,
