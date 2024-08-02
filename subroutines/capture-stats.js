@@ -1,5 +1,4 @@
 const PrismaClient=require('@prisma/client').PrismaClient;
-
 const prisma=new PrismaClient();
 
 async function main() {
@@ -12,8 +11,6 @@ async function main() {
 
     await prisma.stats.create({
         data: {
-            date: new Date(),
-
             focusUsers,
             homeworkCheckerUsers,
             buserooSearches,
@@ -28,7 +25,6 @@ async function main() {
             shanghaiDictionarySearches
         }
     });
-    // console.log('Stats captured:', result);
 }
 
 main();

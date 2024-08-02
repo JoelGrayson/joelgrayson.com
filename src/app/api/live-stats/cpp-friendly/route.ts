@@ -1,33 +1,29 @@
-import getBuserooSearches from "../get-stats/getBuserooSearches";
-import getShirtocracyOrders from "../get-stats/getShirtocracyOrders";
-import getJournalUsers from "../get-stats/getJournalUsers";
-import getNumbersUsers from "../get-stats/getNumbersUsers";
-import getHabitUsers from "../get-stats/getHabitUsers";
-import getProjectsUsers from "../get-stats/getProjectsUsers";
-import getHomeworkCheckerUsers from "../get-stats/getHomeworkCheckerUsers";
-import getFocusUsers from "../get-stats/getFocusUsers";
-
 // Opt out of caching
 export const dynamic='force-dynamic';
+
 export async function GET() {
-    const promises=[
-        getFocusUsers(),
-        getHomeworkCheckerUsers(),
-        getBuserooSearches(),
-        getShirtocracyOrders(),
-        getJournalUsers(),
-        getProjectsUsers(),
-        getHabitUsers(),
-        getNumbersUsers(),
+    const res=await fetch('https://joelgrayson.com/api/live-stats');
+    const data=await res.json();
+    
+    const items=[
+        data.focusUsers,
+        data.homeworkCheckerUsers,
+        data.buserooSearches,
+        data.shirtocracyOrders,
+        data.journalUsers,
+        data.projectsUsers,
+        data.habitUsers,
+        data.numbersUsers,
 
-        // Additional Not Displayed
-        // getBlogViews(),
-        // getBuserooUsers(),
-        // getShanghaiDictionarySearches()
+        data.diff.focusUsers,
+        data.diff.homeworkCheckerUsers,
+        data.diff.buserooSearches,
+        data.diff.shirtocracyOrders,
+        data.diff.journalUsers,
+        data.diff.projectsUsers,
+        data.diff.habitUsers,
+        data.diff.numbersUser
     ];
-
-    const result=await Promise.all(promises);
-    // [focusUsers, homeworkCheckerUsers, buserooSearches, shirtocracyVisits, journalUsers, projectsUsers, habitUsers, numbersUsers]
-
-    return new Response(result.join(' '));
+    
+    return new Response(items.join(' '));
 }
