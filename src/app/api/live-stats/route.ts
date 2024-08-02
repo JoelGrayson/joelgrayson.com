@@ -32,13 +32,13 @@ export async function GET() {
         getLastWeeksStats()
     ];
 
-    const [focusUsers, homeworkCheckerUsers, buserooSearches, shirtocracyVisits, journalUsers, projectsUsers, habitUsers, numbersUsers, blogViews, buserooUsers, shanghaiDictionarySearches, lastWeeksStats]=await Promise.all(promises);
+    const [focusUsers, homeworkCheckerUsers, buserooSearches, shirtocracyOrders, journalUsers, projectsUsers, habitUsers, numbersUsers, blogViews, buserooUsers, shanghaiDictionarySearches, lastWeeksStats]=await Promise.all(promises);
 
     return NextResponse.json({
         focusUsers,
         homeworkCheckerUsers,
         buserooSearches,
-        shirtocracyVisits,
+        shirtocracyOrders,
         journalUsers,
         projectsUsers,
         habitUsers,
@@ -51,7 +51,7 @@ export async function GET() {
             focusUsers: focusUsers-lastWeeksStats.focusUsers,
             homeworkCheckerUsers: homeworkCheckerUsers-lastWeeksStats.homeworkCheckerUsers,
             buserooSearches: buserooSearches-lastWeeksStats.buserooSearches,
-            shirtocracyVisits: shirtocracyVisits-lastWeeksStats.shirtocracyVisits,
+            shirtocracyOrders: shirtocracyOrders-lastWeeksStats.shirtocracyOrders,
             journalUsers: journalUsers-lastWeeksStats.journalUsers,
             projectsUsers: projectsUsers-lastWeeksStats.projectsUsers,
             habitUsers: habitUsers-lastWeeksStats.habitUsers,
