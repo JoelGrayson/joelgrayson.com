@@ -15,6 +15,10 @@ import getLastWeeksStats from "./get-stats/getLastWeeksStats";
 // Opt out of caching
 export const dynamic='force-dynamic';
 export async function GET() {
+    return NextResponse.json(await getLiveStats());
+}
+
+export async function getLiveStats() {
     const promises=[
         getFocusUsers(), //TODO
         getHomeworkCheckerUsers(), //TODO
@@ -34,7 +38,7 @@ export async function GET() {
 
     const [focusUsers, homeworkCheckerUsers, buserooSearches, shirtocracyOrders, journalUsers, projectsUsers, habitUsers, numbersUsers, blogViews, buserooUsers, shanghaiDictionarySearches, lastWeeksStats]=await Promise.all(promises);
 
-    return NextResponse.json({
+    return {
         focusUsers,
         homeworkCheckerUsers,
         buserooSearches,
@@ -60,5 +64,6 @@ export async function GET() {
             buserooUsers: buserooUsers-lastWeeksStats.buserooUsers,
             shanghaiDictionarySearches: shanghaiDictionarySearches-lastWeeksStats.shanghaiDictionarySearches
         }
-    });
+    };
 }
+

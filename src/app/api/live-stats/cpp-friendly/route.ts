@@ -1,9 +1,12 @@
+import { getLiveStats } from "../route";
+
 // Opt out of caching
 export const dynamic='force-dynamic';
 
 export async function GET() {
-    const res=await fetch('https://joelgrayson.com/api/live-stats');
-    const data=await res.json();
+    // const res=await fetch('https://joelgrayson.com/api/live-stats');
+    // const data=await res.json();
+    const data=await getLiveStats();
     
     const items=[
         data.focusUsers,
@@ -22,7 +25,7 @@ export async function GET() {
         data.diff.journalUsers,
         data.diff.projectsUsers,
         data.diff.habitUsers,
-        data.diff.numbersUser
+        data.diff.numbersUsers
     ];
     
     return new Response(items.join(' '));

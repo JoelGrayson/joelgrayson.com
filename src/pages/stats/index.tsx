@@ -1,217 +1,95 @@
-/*
-# Stats
-Focus users	
-Homework Checker users	
-Buseroo.com searches	
-Shirtocracy.com visits
-Journal users
-Projects users
-Habit users
-Numbers users
+'use client';
 
-## Additional Not Displayed
-Blog views
-Buseroo users
-ShanghaiDictionary.com Searches
-
-# Schema
-/api/live-stats shows live stats. It is triggered every 30 minutes and stores results in the database `stats`.
-/api/stats fetches the stats from the database and returns them in JSON format.
-/stats displays the stats visually
-
-*/
-
-import React, { useState, useEffect } from 'react';
 import Page from '@/components/page/DefaultPage';
-import Loader from 'src/components/global/Loader';
-
-type ytDataT={
-    slaphappy: {
-        subscribers: number;
-        views: number;
-    };
-    joelgrayson2: {
-        subscribers: number;
-        views: number;
-    };
-};
-
-const fmt=new Intl.NumberFormat().format;
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 export default function Stats() {
-    // Homework Checker and focus from /live-stats
-    const [hCInstalls, setHCInstalls]=useState<number | null>(null);
-    const [focusInstalls, setFocusInstalls]=useState<number | null>(null);
-    useEffect(()=>{
-        if (hCInstalls!==null || focusInstalls!==null) return; //value already set
-        
-        if (process.env.NODE_ENV==='development') { //skip calling api.joelgrayson.com/live-stats in development because of CORS error
-            console.log('skipping getting live-stats in development');
-            setHCInstalls(-4);
-            setFocusInstalls(-4);
-        } else {
-            fetch('https://api.joelgrayson.com/live-stats')
-                .then(res=>res.json())
-                .then((res)=>{
-                    if (res.hCInstalls===-1 || !res.hCInstalls) return console.log('hCInstalls is -1');
-                    if (res.focusInstalls===-1 || !res.focusInstalls) return console.log('focusInstalls is -1');
-
-                    console.log('/api/home/stats returned', res);
-                    setHCInstalls(res.hCInstalls);
-                    setFocusInstalls(res.focusInstalls);
-                });
+    const [data, setData]=useState<
+        null
+        |
+        {
+            focusUsers: number;
+            homeworkCheckerUsers: number;
+            buserooSearches: number;
+            shirtocracyOrders: number;
+            journalUsers: number;
+            projectsUsers: number;
+            habitUsers: number;
+            numbersUsers: number;
+            blogViews: number;
+            buserooUsers: number;
+            shanghaiDictionarySearches: number;
+    
+            diff: {
+                focusUsers: number;
+                homeworkCheckerUsers: number;
+                buserooSearches: number;
+                shirtocracyOrders: number;
+                journalUsers: number;
+                projectsUsers: number;
+                habitUsers: number;
+                numbersUsers: number;
+                blogViews: number;
+                buserooUsers: number;
+                shanghaiDictionarySearches: number;
+            };
         }
-    // eslint-disable-next-line
-    }, []);
-
-    const [blogViews, setBlogViews]=useState<number | null>(null);
+    >(null);
+    
     useEffect(()=>{
-        fetch('/api/blog/total-views')
+        fetch('/api/live-stats')
             .then(res=>res.json())
-            .then(res=>setBlogViews(res.views));
+            .then(setData);
     }, []);
     
-    // const [buserooUsers, setBuserooUsers]=useState<number | null>(null);
-    const [shanghaiDictionarySearches, setShanghaiDictionarySearches]=useState<number | null>(null);
-    useEffect(()=>{
-        fetch('https://shanghaidictionary.com/api/analytics/searches')
-            .then(res=>res.json())
-            .then(res=>{
-                if (!res.searches)
-                    return console.error('ShanghaiDictionary.com API error:', res);
-                setShanghaiDictionarySearches(res.searches);
-            })
-            .catch(err=>{
-                console.error('Caught shanghaiDictionary.com API error:', err);
-                setShanghaiDictionarySearches(-4);
-            });
-    }, []);
-
-    const [ytData, setYtData]=useState<ytDataT | null>(null);
-    const [hoveringYtSubscribers, setHoveringYtSubscribers]=useState<boolean>(false);
-    const [hoveringYtViews, setHoveringYtViews]=useState<boolean>(false);
-    useEffect(()=>{
-        const apiKey=process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
-        const slaphappyId='UCAwfG8BfhLuhMddFZh7z09A';
-        const joelgrayson2Id='UChs2-tks6XqrAdZ6K2I0QCA';
-        const channelId=slaphappyId+','+joelgrayson2Id;
-        console.log({ channelId, apiKey });
-        fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`)
-            .then(res=>res.json())
-            .then(res=>{
-                console.log(res.items);
-                if (!res.items) {
-                    setYtData({
-                        slaphappy: {
-                            subscribers: -4,
-                            views: -4
-                        },
-                        joelgrayson2: {
-                            subscribers: -4,
-                            views: -4
-                        }
-                    });
-                    return console.error('YouTube API error:', res);
-                }
-                const slaphappy=res.items.find((channel: any)=>channel.id===slaphappyId);
-                const joelgrayson2=res.items.find((channel: any)=>channel.id===joelgrayson2Id);
-                setYtData({
-                    slaphappy: {
-                        subscribers: parseInt(slaphappy.statistics.subscriberCount),
-                        views: parseInt(slaphappy.statistics.viewCount)
-                    },
-                    joelgrayson2: {
-                        subscribers: parseInt(joelgrayson2.statistics.subscriberCount),
-                        views: parseInt(joelgrayson2.statistics.viewCount)
-                    }
-                });
-            });
-    }, []);
-
     return <Page>
-        <h1 className='text-center'>
-            Stats
-            <svg id="Icons" width="20px" height="20px" style={{display: 'inline', marginLeft: 13, }} version="1.1" viewBox="0 0 32 32" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><style type="text/css" dangerouslySetInnerHTML={{__html: "\n\t.st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}\n" }} /><path className="st0" d="M16,24c3.6,0,7.1,0.7,10.2,2.1c1.8-2.2,2.8-5,2.8-8.1c0-7.2-5.8-13-13-13S3,10.8,3,18c0,3.1,1.1,5.9,2.8,8.1  C8.9,24.7,12.4,24,16,24z" /><line className="st0" x1={16} x2={16} y1={8} y2={10} /><line className="st0" x1="8.9" x2="10.3" y1="10.9" y2="12.3" /><line className="st0" x1={6} x2={8} y1={18} y2={18} /><line className="st0" x1={26} x2={24} y1={18} y2={18} /><line className="st0" x1="23.1" x2="21.7" y1="10.9" y2="12.3" /><line className="st0" x1={16} x2={20} y1={24} y2={16} /></svg>
-        </h1>
-        <table onMouseEnter={()=>setHoveringYtSubscribers(true)} onMouseLeave={()=>setHoveringYtSubscribers(false)}>
-            <tbody>
-                <tr>
-                    <td>Focus installations</td>
-                    <td><Value>{focusInstalls}</Value></td>
-                </tr>
-                <tr>
-                    <td>Homework Checker installations</td>
-                    <td><Value>{hCInstalls}</Value></td>
-                </tr>
-                <tr>
-                    <td>Blog views</td>
-                    <td><Value>{blogViews}</Value></td>
-                </tr>
-                {/* <tr>
-                    <td>Buseroo.com users</td>
-                    <td><Value>{buserooUsers}</Value></td>
-                </tr> */}
-                <tr>
-                    <td>ShanghaiDictionary.com searches&emsp;</td>
-                    <td><Value>{shanghaiDictionarySearches}</Value></td>
-                </tr>
-                <tr onMouseEnter={()=>setHoveringYtSubscribers(true)} onMouseLeave={()=>setHoveringYtSubscribers(false)}>
-                    <td>Combined YouTube subscribers&emsp;</td>
-                    <td className='relative'>{ ytData
-                        ? <>
-                            <p>{fmt(ytData.slaphappy.subscribers+ytData.joelgrayson2.subscribers)}</p>
-                            { hoveringYtSubscribers && <div className='absolute bottom-3 left-[-90px] w-[240px]'>
-                                <div className='px-2 py-1 bg-gradient-to-tl from-gray-200 to-gray-50' style={{
-                                    border: '1px solid black',
-                                    borderRadius: 5
-                                }}>
-                                    <p>Slaphappy: {fmt(ytData.slaphappy.subscribers)} subscribers</p>
-                                    <p>JoelGrayson2: {fmt(ytData.joelgrayson2.subscribers)} subscribers</p>
-                                </div>
-                                <p className='text-center relative bottom-3'>v</p>
-                            </div> }
-                        </>
-                        : <Loader size={15} />
-                    }</td>
-                </tr>
-                <tr onMouseEnter={()=>setHoveringYtViews(true)} onMouseLeave={()=>setHoveringYtViews(false)}>
-                    <td>Combined YouTube views</td>
-                    <td className='relative'>{ ytData
-                        ? <>
-                            <p>{fmt(ytData.slaphappy.views+ytData.joelgrayson2.views)}</p>
-                            { hoveringYtViews && <div className='absolute top-3 left-[-90px] w-[240px]'>
-                                <p className='text-center relative top-3.5'>^</p>
-                                <div className='px-2 py-1 bg-gradient-to-tl from-gray-200 to-gray-50' style={{
-                                    border: '1px solid black',
-                                    borderRadius: 5
-                                }}>
-                                    <p>Slaphappy: {fmt(ytData.slaphappy.views)} views</p>
-                                    <p>JoelGrayson2: {fmt(ytData.joelgrayson2.views)} views</p>
-                                </div>
-                            </div> }
-                        </>
-                        : <Loader size={15} />
-                    }</td>
-                </tr>
-            </tbody>
-        </table>
+        <h1 className='text-center'>Stats</h1>
+        
+        {data==null ? 'Loading...' : <>
+            <div className='grid grid-cols-[3fr_1fr_1fr] text-2xl gap-6'>
+                <div>Focus</div>
+                <div className='text-right'>{data.focusUsers}<Person/></div>
+                <div className='text-right'>{formatDiff(data.diff.focusUsers)}</div>
+                
+                <div>HW Checker</div>
+                <div className='text-right'>{data.homeworkCheckerUsers}<Person/></div>
+                <div className='text-right'>{formatDiff(data.diff.homeworkCheckerUsers)}</div>
 
-        {
-            hCInstalls && focusInstalls && blogViews && shanghaiDictionarySearches && ytData && <div>
-                Every day,
-                {/* TODO: calculate */}
-                <ul>
-                    <li>20 people watch my YouTube channels</li>
-                    <li>500 pounds of CO<sub>2</sub> is saved</li>
-                    <li>900 people use Homework Checker</li>
-                    <li>900 students use Homework Checker</li>
-                </ul>
+                <div>Buseroo</div>
+                <div className='text-right'>{data.buserooSearches}<Search/></div>
+                <div className='text-right'>{formatDiff(data.diff.buserooSearches)}</div>
+
+                <div>Shirtocracy</div>
+                <div className='text-right'>{data.shirtocracyOrders}<TShirt/></div>
+                <div className='text-right'>{formatDiff(data.diff.shirtocracyOrders)}</div>
+
+                <div>Journal</div>
+                <div className='text-right'>{data.journalUsers}<Person/></div>
+                <div className='text-right'>{formatDiff(data.diff.journalUsers)}</div>
+
+                <div>Projects</div>
+                <div className='text-right'>{data.projectsUsers}<Person/></div>
+                <div className='text-right'>{formatDiff(data.diff.projectsUsers)}</div>
+
+                <div>Habit</div>
+                <div className='text-right'>{data.habitUsers}<Person/></div>
+                <div className='text-right'>{formatDiff(data.diff.habitUsers)}</div>
+
+                <div>Numbers</div>
+                <div className='text-right'>{data.numbersUsers}<Person/></div>
+                <div className='text-right'>{formatDiff(data.diff.numbersUsers)}</div>
             </div>
-        }
+        </>}
     </Page>;
 }
 
-export function Value({ children }: { children: number | null }) {
-    return children===null ? <Loader size={15} /> : <p>{fmt(children)}</p>;
-}
+const Person=()=><Image src='/image/stats/person.png' width={23} height={23} alt='users' title='Users' className='inline ml-3' />;
+const Search=()=><Image src='/image/stats/search.png' width={23} height={23} alt='searches' title='Searches' className='inline ml-2' />;
+const TShirt=()=><Image src='/image/stats/t-shirt.png' width={23} height={23} alt='shirts' title='Shirts' className='inline ml-3' />;
 
+function formatDiff(num: number) {
+    if (num==0) return '';
+    if (num>0) return `+${num}`;
+    return num;
+}

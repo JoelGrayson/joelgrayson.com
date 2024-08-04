@@ -1,5 +1,6 @@
 import prisma from "@/data/prisma/client";
 import { NextResponse } from "next/server";
+import { getLiveStats } from "../live-stats/route";
 
 export async function GET() {
     // Since it is fetched at 12:05am, find everything after 12:01am.
@@ -22,10 +23,10 @@ export async function GET() {
         return NextResponse.error();
 
     if (stats.length===0) { //not fetched
-        console.warn('Stats not fetched yet. This should not happen.');
+        console.warn('Stats not fetched yet. This should not happen.', stats);
         
         return NextResponse.json(
-            await fetch('https://joelgrayson.com/api/live-stats').then(res=>res.json())
+            await getLiveStats()
         );
     }
 
