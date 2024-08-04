@@ -7,8 +7,7 @@ import getJournalUsers from "./get-stats/getJournalUsers";
 import getNumbersUsers from "./get-stats/getNumbersUsers";
 import getHabitUsers from "./get-stats/getHabitUsers";
 import getProjectsUsers from "./get-stats/getProjectsUsers";
-import getHomeworkCheckerUsers from "./get-stats/getHomeworkCheckerUsers";
-import getFocusUsers from "./get-stats/getFocusUsers";
+import getChromeExtensionUsers from "./get-stats/getChromeExtensionUsers";
 import { NextResponse } from "next/server";
 import getLastWeeksStats from "./get-stats/getLastWeeksStats";
 
@@ -20,8 +19,7 @@ export async function GET() {
 
 export async function getLiveStats() {
     const promises=[
-        getFocusUsers(), //TODO
-        getHomeworkCheckerUsers(), //TODO
+        getChromeExtensionUsers(),
         getBuserooSearches(),
         getShirtocracyOrders(),
         getJournalUsers(), //TODO
@@ -36,7 +34,7 @@ export async function getLiveStats() {
         getLastWeeksStats()
     ];
 
-    const [focusUsers, homeworkCheckerUsers, buserooSearches, shirtocracyOrders, journalUsers, projectsUsers, habitUsers, numbersUsers, blogViews, buserooUsers, shanghaiDictionarySearches, lastWeeksStats]=await Promise.all(promises);
+    const [{ focusUsers, homeworkCheckerUsers }, buserooSearches, shirtocracyOrders, journalUsers, projectsUsers, habitUsers, numbersUsers, blogViews, buserooUsers, shanghaiDictionarySearches, lastWeeksStats]=await Promise.all(promises);
 
     return {
         focusUsers,
