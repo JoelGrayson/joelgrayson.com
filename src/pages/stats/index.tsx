@@ -44,41 +44,41 @@ export default function Stats() {
     }, []);
     
     return <Page>
-        <h1 className='text-center'>Stats</h1>
+        <h1 className='text-center my-6'>Stats</h1>
         
         {data==null ? 'Loading...' : <>
-            <div className='grid grid-cols-[3fr_1fr_1fr] text-2xl gap-6'>
+            <div className='grid grid-cols-[4fr_1fr_1fr] text-2xl gap-6 max-w-[500px] mx-auto'>
                 <div>Focus</div>
                 <div className='text-right'>{data.focusUsers}<Person/></div>
-                <div className='text-right'>{formatDiff(data.diff.focusUsers)}</div>
+                <Diff diff={data.diff.focusUsers} />
                 
                 <div>HW Checker</div>
                 <div className='text-right'>{data.homeworkCheckerUsers}<Person/></div>
-                <div className='text-right'>{formatDiff(data.diff.homeworkCheckerUsers)}</div>
+                <Diff diff={data.diff.homeworkCheckerUsers} />
 
                 <div>Buseroo</div>
                 <div className='text-right'>{data.buserooSearches}<Search/></div>
-                <div className='text-right'>{formatDiff(data.diff.buserooSearches)}</div>
+                <Diff diff={data.diff.buserooSearches} />
 
                 <div>Shirtocracy</div>
                 <div className='text-right'>{data.shirtocracyOrders}<TShirt/></div>
-                <div className='text-right'>{formatDiff(data.diff.shirtocracyOrders)}</div>
+                <Diff diff={data.diff.shirtocracyOrders} />
 
                 <div>Journal</div>
                 <div className='text-right'>{data.journalUsers}<Person/></div>
-                <div className='text-right'>{formatDiff(data.diff.journalUsers)}</div>
+                <Diff diff={data.diff.journalUsers} />
 
                 <div>Projects</div>
                 <div className='text-right'>{data.projectsUsers}<Person/></div>
-                <div className='text-right'>{formatDiff(data.diff.projectsUsers)}</div>
+                <Diff diff={data.diff.projectsUsers} />
 
                 <div>Habit</div>
                 <div className='text-right'>{data.habitUsers}<Person/></div>
-                <div className='text-right'>{formatDiff(data.diff.habitUsers)}</div>
+                <Diff diff={data.diff.habitUsers} />
 
                 <div>Numbers</div>
                 <div className='text-right'>{data.numbersUsers}<Person/></div>
-                <div className='text-right'>{formatDiff(data.diff.numbersUsers)}</div>
+                <Diff diff={data.diff.numbersUsers} />
             </div>
         </>}
     </Page>;
@@ -88,8 +88,9 @@ const Person=()=><Image src='/image/stats/person.png' width={23} height={23} alt
 const Search=()=><Image src='/image/stats/search.png' width={23} height={23} alt='searches' title='Searches' className='inline ml-2' />;
 const TShirt=()=><Image src='/image/stats/t-shirt.png' width={23} height={23} alt='shirts' title='Shirts' className='inline ml-3' />;
 
-function formatDiff(num: number) {
-    if (num==0) return '';
-    if (num>0) return `+${num}`;
-    return num;
+function Diff({ diff }: { diff: number }) {
+    if (diff==0)
+        return <div />;
+
+    return <div className={'text-right '+(diff>0 ? 'text-green-800' : 'text-red-800')}>{diff>0 ? `+${diff}` : diff}</div>;
 }
