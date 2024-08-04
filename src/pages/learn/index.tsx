@@ -1,4 +1,4 @@
-import { Yt } from "src/components/by-page/machines/helpers";
+import Yt from "@/components/global/Yt";
 import Page from "@/components/page/DefaultPage";
 import Link from "next/link";
 

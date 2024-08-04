@@ -1,3 +1,4 @@
+import Yt from '@/components/global/Yt';
 import Page from '@/components/page/DefaultPage';
 import Link from 'next/link';
 
@@ -65,6 +66,18 @@ export default function Software() {
                 </ul>
             </li>
         </ul>
+
+
+        <div className='bg-gray-400'>
+            <h3>Recent</h3>
+            {/* TEDx video */}
+            <Yt>rV_8xB7rGyQ</Yt>
+            {/* Venderoo video */}
+            {/* TODO: */}
+            
+            {/* GuardBox video */}
+            <Yt>DbfRmZZx4VA</Yt>
+        </div>
     </Page>;
 }
 

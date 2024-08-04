@@ -18,12 +18,12 @@ header * {
 h1, h2, h3, h4, h5 {
     line-height: 1.8;
 }
-h1 { font-size: 3.4rem; margin-top: 10px; font-weight: 800; }
-h2 { font-size: 2.1rem; margin-top: 8px;  font-weight: 800; }
-h3 { font-size: 1.6rem; margin-top: 7px;  font-weight: 600; }
-h4 { font-size: 1.3rem; margin-top: 6px;  font-weight: 600; }
-h5 { font-size: 1.2rem; margin-top: 5px;  font-weight: 600; }
-h6 { font-size: 1.1rem; margin-top: 4px;  font-weight: 600; }
+h1 { font-size: 3.4rem; margin-top: 10px; font-weight: 800; margin-bottom: 10px; }
+h2 { font-size: 2.1rem; margin-top: 8px;  font-weight: 800; margin-bottom: 0px; }
+h3 { font-size: 1.6rem; margin-top: 7px;  font-weight: 600; margin-bottom: 0px; }
+h4 { font-size: 1.3rem; margin-top: 6px;  font-weight: 600; margin-bottom: 0px; }
+h5 { font-size: 1.2rem; margin-top: 5px;  font-weight: 600; margin-bottom: 0px; }
+h6 { font-size: 1.1rem; margin-top: 4px;  font-weight: 600; margin-bottom: 0px; }
 
 /* ### Mobile-Friendly Headers */
 @media only screen and (max-width: 640px) {
@@ -46,6 +46,15 @@ b, .bold {
 
 small {
     font-size: 65%;
+}
+
+ol {
+    list-style-type: decimal;
+    padding-left: 1rem;
+}
+
+.unstyled>li {
+    list-style-type: none;
 }
 
 

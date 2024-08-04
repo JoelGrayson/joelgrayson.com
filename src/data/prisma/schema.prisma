@@ -68,6 +68,13 @@ model Stats {
     shanghaiDictionarySearches Int?
 }
 
+// Used for download link generators and other pages where visits are being tracked
+model PageVisits {
+    id     String @id @default(cuid())
+    url    String @unique
+    visits Int    @default(0)
+}
+
 // Events, for example how many times people have been rickrolled by the modal
 model EventCounter {
     id        String   @id @default(cuid())

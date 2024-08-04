@@ -1,0 +1,223 @@
+<script> //EDIT ME
+    //1 Edit Content
+    var firstButtonTxt='Generate';
+    var firstInputPlaceholder='Share Link';
+    var secondInputPlaceholder='Direct Download Link';
+    let errorMessage='Invalid OneDrive URL'
+    //2 Change rules for output generation <script>
+    //3 Turn this on:
+    var editing=false; //turns off auto-focus on input
+  </script>
+  
+  <html>
+    <br>
+    <div style='display:block;'>
+      <input type='text' id='input' placeholder='Enter sharing URL'>
+      <button onclick='firstButton()' id='firstButton' class='yellowButton'>Create Download Link</button>
+      <br>
+      <span id='middleSection'>
+        <span id='cssArrow'></span>
+        </span><span id='errorMessage'>
+      </span>
+      <br>
+      <input id='output' type='text' placeholder='Direct Download Link' onclick='copy()' readonly>
+      <button onclick='copy()' id='copyButton' class='yellowButton'>Copy</button>
+    </div>
+  </html>
+  
+  <style>
+    :root {
+      zoom: 1.2;
+    }
+    #input {
+      padding: 3px 8px 3px 8px;
+      margin-bottom: 5px; /* controls dist between inputs */
+      padding-right: 8px;
+      border-radius: 6px;
+      font-family: avenir-medium;
+      font-size: 16px;
+      width: 250px;
+    }
+    .yellowButton {
+      background-color: #f9c44d;
+      padding: 7px;
+      border-radius: 5px;
+      border: none;
+      font-size: 15px;
+      transition: all;
+      transition-duration: 0.3s;
+    }
+    .yellowButton:hover {
+      background-color: #edb739;
+    }
+    #middleSection {
+      font-size: 23px; /* arrow size */
+      padding-left: 120px; /* half of input length */
+      padding-right: 20px;
+      text-align: right;
+      transition: all;
+      transition-duration: 0.5s;
+    }
+    #errorMessage {
+      color: red;
+      font-size: 18px;
+      font-family: avenir;
+      font-weight: bold;
+      position: relative;
+      bottom: 3px;
+      left: 7px;
+    }
+    #output {
+      padding: 3px;
+      padding-left: 8px;
+      padding-right: 8px;
+      border-radius: 6px;
+      font-family: avenir-medium;
+      font-size: 16px;
+      width: 250px;
+      transition: color;
+      color: #1dbf00;
+      transition-duration: 1s;
+    }
+    #cssArrow {
+    --colorM: #000;
+    position: absolute;
+    margin-top: 1px; /* dist between input & arrow */
+    width: 5px;
+    height: 20px;
+    background-color: var(--colorM);
+    border-radius: 4px;
+    transition: margin,color;
+    transition-duration: 0.4s;
+    }
+    #cssArrow::before { 
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: -1px;
+      width: 15px;
+      height: 5px;
+      transform: rotate(-45deg);
+      border-radius: 4px;
+      background-color: var(--colorM);
+    }
+    #cssArrow::after {
+      content: '';
+      position: absolute;
+      top: 12px;
+      right: -1px;
+      width: 15px;
+      height: 5px;
+      transform: rotate(45deg);
+      border-radius: 4px;
+      background-color: var(--colorM);
+    }
+    ::placeholder { /* placeholder text color */
+      color: #666;
+    }
+  </style>
+  
+  <script>
+    window.onload = () => {
+      if (!editing) {
+        document.getElementById('input').focus(); //comment out while editing
+      }
+    }
+
+    /*
+    from copy link:
+    https://1drv.ms/u/c/532f5bff4f2c4dfb/EcjQIAJCB8FKre_ZnbM2pioBVy9k4FiE_5Zoov6qMy167A?e=smeTZs
+      ↓
+    https://api.onedrive.com/v1.0/shares/s!532f5bff4f2c4dfb/root/content
+
+    https://1drv.ms/b/c/532f5bff4f2c4dfb/IQPgvioCZ7W6RZDHI6lv_2vvAXXsXcbhIz_2chv-pgxlcWk
+    
+
+    https://api.onedrive.com/v1.0/shares/u!532F5BFF4F2C4DFB/root/content
+
+   https://my.microsoftpersonalcontent.com/personal/532f5bff4f2c4dfb/_layouts/15/download.aspx?UniqueId=0220d0c8-0742-4ac1-adef-d99db336a62a&Translate=false&tempauth=v1e.eyJzaXRlaWQiOiJhZmEwNjc5OC1hYjk4LTQ1NzktYjFlMy1jOGZmMTdjYjU2MzkiLCJhcHBpZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDA0ODE3MTBhNCIsImF1ZCI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMC9teS5taWNyb3NvZnRwZXJzb25hbGNvbnRlbnQuY29tQDkxODgwNDBkLTZjNjctNGM1Yi1iMTEyLTM2YTMwNGI2NmRhZCIsImV4cCI6IjE3MjIzNDAyOTUifQ.uibd9OgYp6XPJbV8V5zioi0XehTtnWDR6VGf9RO5VXk58JDYRyVU_wZ8sBLo0y5KQd9m-7-PPfsktgxkfogn-v2QOM-I-uIzWhjo8eroDx6ACi9ZADRkXzlOrygMJYwUYvZEgsQEc0uYpcKE9fz9vmoyTfzxFBc5qCnrzY09DroO7NyIPYGXh-oI2bwT-IzqWZkqZ1BGkVfjGiImO_sN38DWA1P94rVNGIRkIdHCKSZyog_0IJgmRDeE3qbX1AhPpqSnysHGbuoPY0bpAprIPwyweaQwMPp8MJ60ykriSc71Fchi0tlIyGCuLnvYtwVVf13Hl8d6BerH_PpNyIhDbwUpiq8WnTll251G0w3hGzyn9wtMVoO05cxKxoTgZm5pUva7sj8UACM-_p5uXglGTw.n-q8ysUwWUWzlh3rE9eID-83fWmzMuJKgGoqOPua0V8&ApiVersion=2.0&AVOverride=1
+ 
+
+    Copy link: https://1drv.ms/b/c/532f5bff4f2c4dfb/EeC-KgJntbpFkMcjqW__a-8BZkyUgimCAk7lB1jnHijkog?e=RLeYMI
+    Embed: <iframe src="https://1drv.ms/b/c/532f5bff4f2c4dfb/IQPgvioCZ7W6RZDHI6lv_2vvAXXsXcbhIz_2chv-pgxlcWk" width="98" height="120" frameborder="0" scrolling="no"></iframe>
+
+    https://1drv.ms/b/c/532f5bff4f2c4dfb/IQPgvioCZ7W6RZDHI6lv_2vvAXXsXcbhIz_2chv-pgxlcWk
+
+    https://onedrive.live.com/download?id=532F5BFF4F2C4DFB!s022abee0b56745ba90c723a96fff6bef&resid=532F5BFF4F2C4DFB!s022abee0b56745ba90c723a96fff6bef&cid=532f5bff4f2c4dfb&ithint=file%2cpdf&redeem=aHR0cHM6Ly8xZHJ2Lm1zL2IvYy81MzJmNWJmZjRmMmM0ZGZiL0lRUGd2aW9DWjdXNlJaREhJNmx2XzJ2dkFYWHNYY2JoSXpfMmNodi1wZ3hsY1dr&migratedtospo=true&embed=1
+    https://onedrive.live.com/download?cid=&resid=&authkey=
+    */
+   
+    function firstButton() { //2 EDIT ME
+      var input=document.getElementById('input').value.trim(); //trim() removes extra space
+      var directURL='';
+      if (/1drv\.ms\/.\/s!/i.test(input)) { //valid sharing link
+        let data=input.match(/1drv\.ms\/.\/s!?([a-zA-Z0-9-_]+)\??/i);
+        directURL=`https://api.onedrive.com/v1.0/shares/s!${data[1]}/root/content`;
+        
+        document.getElementById('output').value=directURL;
+        document.getElementById('errorMessage').innerHTML='';  //removes error message
+        successArrow();
+      } else {
+        //ERROR
+        var error=document.getElementById('errorMessage');
+        error.innerHTML=errorMessage; //show error for 7 sec
+        setTimeout(function(){error.innerHTML=''},7000);
+      }
+    }
+    function successArrow() {
+      var loc=0;
+      var wiggle=7;  /* how much the arrow wiggles by */
+      var speed=130; /* how quickly arrow oscillates */
+      
+      let arrow=document.getElementById('cssArrow');
+      arrowColor('green');
+      arrow.style.marginLeft=(loc-wiggle).toString()+'px'; /* -3 left */
+      setTimeout(() => {
+        arrow.style.marginLeft=(loc+wiggle).toString()+'px';
+      },speed);
+      setTimeout(() => {
+        arrow.style.marginLeft=(loc-wiggle).toString()+'px';
+      },speed*2);
+      setTimeout(() => {
+        arrow.style.marginLeft=(loc).toString()+'px';
+      },speed*3);
+      setTimeout(() => {
+        output.style.color='black';
+        arrowColor('black');
+      },1000);
+    }
+    function arrowColor(color) {
+      let arrow=document.getElementById('cssArrow');
+      arrow.style.setProperty('--colorM',color);
+    }
+    function copy(copyText=document.getElementById('output').value) { //default copies Output value
+      console.log(copyText);
+      if (copyText) {
+        const bar=document.createElement('textarea');
+        bar.value=copyText;
+        document.body.appendChild(bar);
+        bar.select();
+        document.execCommand('copy');
+        document.body.removeChild(bar);
+      }
+      // copy animation
+      copyButton=document.getElementById('copyButton');
+      copyButton.style.backgroundColor='#79d65c';
+      copyButton.innerHTML='Copied';
+      setTimeout(()=>{
+        copyButton.style.backgroundColor='#f9c44d';
+        copyButton.innerHTML='Copy';
+      },2000);
+    }
+    
+      document.querySelector('#input').addEventListener('keyup',event => {
+      if (event.keyCode===13) { //enter key
+            document.querySelector('#firstButton').click();
+      }
+    });
+    //Implements VARIABLES 
+    document.getElementById('firstButton').innerHTML=firstButtonTxt;
+    document.getElementById('input').placeholder=firstInputPlaceholder;
+    document.getElementById('output').placeholder=secondInputPlaceholder;
+    
+  </script>

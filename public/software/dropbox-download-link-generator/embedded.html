@@ -1,0 +1,147 @@
+<html>
+  <br>
+  <div style='display:block;'>
+    <input type='text' id='input' placeholder='Enter sharing URL'>
+    <button onclick='generateLink()' id='generateLink' class='yellowButton'>Create Download Link</button>
+    <br>
+    <span id='arrowDiv'>⬇</span><span id='errorMessage'></span>
+    <br>
+    <input id='output' type='text' placeholder='Direct Download Link' onclick='copy("output")' readonly>
+    <button onclick='copy()' id='copyButton' class='yellowButton'>Copy</button>
+  </div>
+</html>
+
+<style>
+  :root {
+    zoom: 1.2;
+  }
+  #input {
+    padding: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 6px;
+    font-family: avenir-medium;
+    font-size: 16px;
+    width: 250px;
+  }
+  .yellowButton {
+    background-color: #f9c44d;
+    padding: 7px;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+    transition: all;
+    transition-duration: 0.3s;
+  }
+  .yellowButton:hover {
+    background-color: #edb739;
+  }
+  #arrowDiv {
+    font-size: 23px; /* arrow size */
+    padding-left: 120px; /* half of input length */
+    padding-right: 20px;
+    text-align: right;
+    transition: all;
+    transition-duration: 0.5s;
+  }
+  #errorMessage {
+    color: red;
+    font-size: 18px;
+    font-family: avenir;
+    font-weight: bold;
+    position: relative;
+    bottom: 3px;
+    left: 7px;
+  }
+  #output {
+    padding: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 6px;
+    font-family: avenir-medium;
+    font-size: 16px;
+    width: 250px;
+    transition: color;
+    color: #1dbf00;
+    transition-duration: 1s;
+  }
+  ::placeholder { /* placeholder text color */
+    color: #666;
+  }
+</style>
+
+<script>
+  window.onload = () => {
+    document.getElementById('input').focus(); //comment out while editing
+  }
+  function generateLink() {
+    var input=document.getElementById('input').value.trim(); //trim() removes extra space
+    var directURL='';
+    if (input.includes('dropbox.com')) { //valid sharing link
+      if (input.includes('dl=0')) {
+        directURL=input.replace('dl=0','dl=1');
+      } else {
+        directURL=input+'?dl=1';
+      }
+      // let cutOffIndex=input.indexOf('dropbox.com')+'dropbox.com'.length;
+      // let endAppend=input.slice(cutOffIndex); //cuts off dropbox.com and before (https://www.)
+      // directURL='https://dl.dropboxusercontent.com'+endAppend;
+
+      var output=document.getElementById('output');
+      //animate green arrow + output
+      output.value=directURL;
+      const arrow = document.getElementById('arrowDiv');
+      arrow.style.color='green';
+      document.getElementById('errorMessage').innerHTML='';  //removes error message
+      var wiggle=7; /* how much the arrow wiggles by */
+      var speed=130; /* how quickly arrow oscillates */
+      arrow.style.paddingLeft=(120-wiggle).toString() + 'px'; /* -3 left */
+      setTimeout(() => {
+        arrow.style.paddingLeft=(120+wiggle).toString() + 'px';
+      },speed);
+      setTimeout(() => {
+        arrow.style.paddingLeft=(120-wiggle).toString() + 'px';
+      },speed*2);
+      setTimeout(() => {
+        arrow.style.paddingLeft='120px';
+      },speed*3);
+      setTimeout(() => {
+        output.style.color='black';
+      },1000);
+    } else {
+      //ERROR
+      var error=document.getElementById('errorMessage');
+      error.innerHTML='Invalid Dropbox URL'; //show error for 7 sec
+      setTimeout(function(){error.innerHTML=''},7000);
+    }
+  }
+  function copy(copyText=document.getElementById('output').value) { //default copies Output value
+    if (copyText) {
+      const bar = document.createElement('textarea');
+      bar.value = copyText;
+      document.body.appendChild(bar);
+      bar.select();
+      document.execCommand('copy');
+      document.body.removeChild(bar);
+    }
+    // copy animation
+    copyButton=document.getElementById('copyButton');
+    copyButton.style.backgroundColor='#79d65c';
+    copyButton.innerHTML='Copied';
+    setTimeout(()=>{
+      copyButton.style.backgroundColor='#f9c44d';
+      copyButton.innerHTML='Copy';
+    },2000);
+  }
+  document.querySelector('#input').addEventListener('keyup',event => {
+    if (event.keyCode===13) { //enter key
+		  document.querySelector('#generateLink').click();
+    }
+  });
+  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+	document.getElementById('root').style.zoom='0.75';
+  }
+</script>
+
+
+

@@ -42,12 +42,8 @@ export const temporary: redirects={ //302
 
     // Polyfill the old wix website
     'https://joelgrayson.wixsite.com/joelgrayson/tesseract-os': ['/tesseract', '/tesseract-os'],
-    'https://joelgrayson.wixsite.com/joelgrayson/onedrive-download-link-generator': '/onedrive-download-link-generator',
-    'https://joelgrayson.wixsite.com/joelgrayson/drive-download-link-generator': '/drive-download-link-generator',
-    'https://joelgrayson.wixsite.com/joelgrayson/box-download-link-generator': '/box-download-link-generator',
     'https://joelgrayson.wixsite.com/joelgrayson/big-sur-sounds': '/big-sur-sounds',
     'https://joelgrayson.wixsite.com/joelgrayson/zoom-sfx': '/zoom-sfx',
-    'https://joelgrayson.wixsite.com/joelgrayson/dropbox-download-link-generator': '/dropbox-download-link-generator',
     'https://joelgrayson.wixsite.com/joelgrayson/zoom-timers': '/zoom-timers', // test with parameters e.g., zoom-timers?color=white'
     'https://joelgrayson.wixsite.com/joelgrayson/open-in-new-tab-wix-code': '/open-in-new-tab-wix-code',
     'https://joelgrayson.wixsite.com/joelgrayson/jeopardy-theme': '/jeopardy-theme',

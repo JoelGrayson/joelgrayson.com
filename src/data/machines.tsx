@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Machine, DefaultTemplate, Yt } from '../components/by-page/machines/helpers';
+import { Machine, DefaultTemplate } from '../components/by-page/machines/helpers';
+import Yt from '@/components/global/Yt';
 import Button from '@jcomponents/button';
 
 export const machines: Machine[]=[

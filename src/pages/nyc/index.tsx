@@ -1,6 +1,6 @@
 import Page from '@/components/page/DefaultPage';
 import Flag from '@jcomponents/flag';
-import { Yt } from 'src/components/by-page/machines/helpers';
+import Yt from '@/components/global/Yt';
 import Link from 'next/link';
 
 export default function NYC() {
