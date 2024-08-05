@@ -1,6 +1,7 @@
 import OtherGenerators from '@/components/by-page/download-link-generators/other-generators';
 import BlueCircleOl from '@/components/global/BlueCircleOl';
 import Yt from '@/components/global/Yt';
+import { GoogleAdsenseScriptTag } from '@/components/GoogleAdsense';
 import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -23,6 +24,8 @@ export default function BoxDownloadLinkGenerator() {
         pathname='/software/box-download-link-generator'
         noPadding
     >
+        <GoogleAdsenseScriptTag />
+        
         <div className='relative max-w-[900px] mx-auto'>
             <div className='flex justify-center items-center gap-4 py-8'>
                 <Image src='/image/software/download-link-generators/box-large.webp' alt='Box' width={100} height={74} className='relative bottom-2' />
