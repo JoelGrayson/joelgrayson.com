@@ -62,6 +62,17 @@ export default function Home() {
         {/* Squares (client component) */}
         <Content />
 
+
+        {/* <div className='bg-gray-400'>
+            <h3>Recent</h3>
+            {/* TEDx video *}
+            <Yt>rV_8xB7rGyQ</Yt>
+            {/* Venderoo video *}
+            {/* TODO: */}
+            
+            {/* GuardBox video /}
+            <Yt>DbfRmZZx4VA</Yt>
+        </div> */}
     </Page>;
 }
 

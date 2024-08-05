@@ -1,7 +1,6 @@
 import OtherGenerators from '@/components/by-page/download-link-generators/other-generators';
 import BlueCircleOl from '@/components/global/BlueCircleOl';
 import Yt from '@/components/global/Yt';
-import { GoogleAdsenseScriptTag } from '@/components/GoogleAdsense';
 import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -19,13 +18,11 @@ export default function BoxDownloadLinkGenerator() {
     return <Page
         seo={{
             title: 'Box Download Link Generator',
-            description: 'Want a link that downloads a file immediately? This tool generates a direct download link for box files.'
+            description: 'Want a link that downloads a file from Box immediately? This tool generates a direct download link for Box files.'
         }}
         pathname='/software/box-download-link-generator'
         noPadding
     >
-        <GoogleAdsenseScriptTag />
-        
         <div className='relative max-w-[900px] mx-auto'>
             <div className='flex justify-center items-center gap-4 py-8'>
                 <Image src='/image/software/download-link-generators/box-large.webp' alt='Box' width={100} height={74} className='relative bottom-2' />
@@ -45,7 +42,7 @@ export default function BoxDownloadLinkGenerator() {
                 <div className='border border-black p-4 rounded-lg shadow-lg shadow-gray-500'>
                     <h3 className='text-center'>Instructions</h3>
                     <BlueCircleOl>
-                        <li>Click <span className='text-blue-800'>Share</span> and turn on <img className='inline' src='/image/software/download-link-generators/create-shared-link.webp' /></li>
+                        <li>Click <span className='text-blue-800'>Share</span> and turn on <Image className='inline' src='/image/software/download-link-generators/create-shared-link.webp' width={169} height={28} alt={'create shared link'} /></li>
                         <li>Make sure permissions are set to <span className="text-blue-800">&quot;People with the link can view & download&quot;</span></li>
                         <li>Double-click the file (unless you are already viewing the file)</li>
                         <li>Copy the URL in your address bar. It should look like this:

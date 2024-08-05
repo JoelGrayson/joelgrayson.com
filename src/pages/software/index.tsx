@@ -1,4 +1,3 @@
-import Yt from '@/components/global/Yt';
 import Page from '@/components/page/DefaultPage';
 import Link from 'next/link';
 
@@ -55,6 +54,11 @@ export default function Software() {
                     <li><Link href="https://github.com/JoelGrayson/create-joel-app" target="_blank">Create Joel App</Link></li>
                     <li><Link href="/software/processing-to-html-converter" target="_blank">Processing to HTML Converter</Link></li>
                     <li><Link href="https://github.com/JoelGrayson/jredirects" target="_blank">JRedirects</Link></li>
+                    <li><Link href="/software/drive-download-link-generator" target="_blank">Drive Download Link Generator</Link></li>
+                    {/* <li><Link href="/software/onedrive-download-link-generator" target="_blank">Onedrive Download Link Generator</Link></li> */}
+                    <li><Link href="/software/box-download-link-generator" target="_blank">Box Download Link Generator</Link></li>
+                    <li><Link href="/software/dropbox-download-link-generator" target="_blank">Dropbox Download Link Generator</Link></li>
+
                     {/* TODO: Scripts */}
                 </ul>
             </li>
@@ -66,18 +70,6 @@ export default function Software() {
                 </ul>
             </li>
         </ul>
-
-
-        <div className='bg-gray-400'>
-            <h3>Recent</h3>
-            {/* TEDx video */}
-            <Yt>rV_8xB7rGyQ</Yt>
-            {/* Venderoo video */}
-            {/* TODO: */}
-            
-            {/* GuardBox video */}
-            <Yt>DbfRmZZx4VA</Yt>
-        </div>
     </Page>;
 }
 

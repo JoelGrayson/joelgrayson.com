@@ -1,7 +1,6 @@
 import OtherGenerators from '@/components/by-page/download-link-generators/other-generators';
 import BlueCircleOl from '@/components/global/BlueCircleOl';
 import Yt from '@/components/global/Yt';
-import { GoogleAdsenseScriptTag } from '@/components/GoogleAdsense';
 import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -18,13 +17,11 @@ export default function DriveDownloadLinkGenerator() {
     return <Page
         seo={{
             title: 'Drive Download Link Generator',
-            description: 'Want a link that downloads a drive file immediately? This tool generates a direct download link for Google Drive files.'
+            description: 'Want a link that downloads a Google Drive file immediately? This tool generates a direct download link, so users do not need to click to download.'
         }}
         pathname='/software/drive-download-link-generator'
         noPadding
     >
-        <GoogleAdsenseScriptTag />
-        
         <div className='relative max-w-[900px] mx-auto'>
             <div className='flex justify-center items-center gap-4 py-8'>
                 <Image src='/image/software/download-link-generators/drive.webp' alt='drive' width={53*.8} height={48*.8} className='relative bottom-0.5' />

@@ -17,16 +17,16 @@ export default function OneDriveDownloadLinkGenerator() {
     return <Page
         seo={{
             title: 'OneDrive Download Link Generator',
-            description: 'Want a link that downloads a drive file immediately? This tool generates a direct download link for Google Drive files.'
+            description: 'Want a link that downloads a OneDrive file immediately? This tool generates a direct download link for OneDrive files.'
         }}
-        pathname='/software/dropbox-download-link-generator'
+        pathname='/software/onedrive-download-link-generator'
         noPadding
     >
         <GoogleAdsenseScriptTag />
 
         <div className='relative max-w-[900px] mx-auto'>
             <div className='flex justify-center items-center gap-4 py-8'>
-                <Image src='/image/software/download-link-generators/dropbox.webp' alt='Box' width={60} height={60} className='relative bottom-1' />
+                <Image src='/image/software/download-link-generators/onedrive.webp' alt='OneDrive' width={60} height={60} className='relative bottom-1' />
                 <h1 className='text-[40px]'>OneDrive Direct Download Link Generator</h1>
             </div>
 
@@ -43,8 +43,8 @@ export default function OneDriveDownloadLinkGenerator() {
                 <div className='border border-black p-4 rounded-lg shadow-lg shadow-gray-500'>
                     <h3 className='text-center'>Instructions</h3>
                     <BlueCircleOl>
-                        <li>Select a file and click <img src='/image/software/download-link-generators/share.webp' alt='Share' className='inline' /></li>
-                        <li>Click <img src='/image/software/download-link-generators/copy-link.webp' alt='copy link' className='inline' /></li>
+                        <li>Select a file and click <Image src='/image/software/download-link-generators/share.webp' alt='Share' className='inline' width={77} height={22} /></li>
+                        <li>Click <Image src='/image/software/download-link-generators/copy-link.webp' alt='copy link' className='inline' height={46} width={36} /></li>
                         <li>Paste link in tool</li>
                     </BlueCircleOl>
                 </div>
@@ -54,7 +54,7 @@ export default function OneDriveDownloadLinkGenerator() {
 
             <div className='flex justify-around items-center mt-2 mb-1'>
                 <p className={!visits ? 'invisible' : ''}>This page has {visits} visits</p>
-                <OtherGenerators currentGenerator='box' />
+                <OtherGenerators currentGenerator='onedrive' />
             </div>
         </div>
     </Page>;

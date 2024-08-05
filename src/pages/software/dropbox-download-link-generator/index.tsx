@@ -1,10 +1,8 @@
 import OtherGenerators from '@/components/by-page/download-link-generators/other-generators';
 import BlueCircleOl from '@/components/global/BlueCircleOl';
 import Yt from '@/components/global/Yt';
-import { GoogleAdsenseScriptTag } from '@/components/GoogleAdsense';
 import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function DropboxDownloadLinkGenerator() {
@@ -18,17 +16,15 @@ export default function DropboxDownloadLinkGenerator() {
     
     return <Page
         seo={{
-            title: 'Box Download Link Generator',
-            description: 'Want a link that downloads a drive file immediately? This tool generates a direct download link for Google Drive files.'
+            title: 'Dropbox Download Link Generator',
+            description: 'Want a link that downloads a Dropbox file immediately? This tool generates a direct download link for Dropbox files.'
         }}
         pathname='/software/dropbox-download-link-generator'
         noPadding
     >
-        <GoogleAdsenseScriptTag />
-        
         <div className='relative max-w-[900px] mx-auto'>
             <div className='flex justify-center items-center gap-4 py-8'>
-                <Image src='/image/software/download-link-generators/dropbox.webp' alt='Box' width={60} height={60} className='relative bottom-1' />
+                <Image src='/image/software/download-link-generators/dropbox.webp' alt='Dropbox' width={60} height={60} className='relative bottom-1' />
                 <h1 className='text-[40px]'>Dropbox Download Link Generator</h1>
             </div>
 
@@ -45,7 +41,7 @@ export default function DropboxDownloadLinkGenerator() {
                 <div className='border border-black p-4 rounded-lg shadow-lg shadow-gray-500'>
                     <h3 className='text-center'>Instructions</h3>
                     <BlueCircleOl>
-                        <li>Click Share & <img src='/image/software/download-link-generators/create-then-copy-link.webp' alt='create then copy link' className='inline' /> </li>
+                        <li>Click Share & <Image src='/image/software/download-link-generators/create-then-copy-link.webp' alt='create then copy link' className='inline' width={202} height={22} /> </li>
                         <li>Make sure the permissions are <b>Anyone with this link can view</b></li>
                         <li>Paste link in tool</li>
                     </BlueCircleOl>
@@ -54,15 +50,9 @@ export default function DropboxDownloadLinkGenerator() {
                 </div>
             </div>
 
-            <div className='flex justify-end mt-4 mb-8'>
-                <div className='w-[380px]'>
-                    Thank you to Asif for <Link target='_blank' href="https://www.asifkamboh.com/2020/11/how-to-create-box-direct-download-link.html">his article</Link> explaining Box direct download links in detail.
-                </div>
-            </div>
-
             <div className='flex justify-around items-center mt-2 mb-1'>
                 <p className={!visits ? 'invisible' : ''}>This page has {visits} visits</p>
-                <OtherGenerators currentGenerator='box' />
+                <OtherGenerators currentGenerator='dropbox' />
             </div>
         </div>
     </Page>;
