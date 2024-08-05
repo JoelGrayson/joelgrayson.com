@@ -1,5 +1,5 @@
-name: Add Stats to websites/joelgrayson/stats every Morning
-run-name: This is the run name for logging stats
+name: Log stats
+run-name: Log stats to websites>joelgrayson>stats every morning
 on:
   workflow_dispatch:
   schedule:
@@ -15,3 +15,4 @@ jobs:
       - run: npm install && node ./subroutines/capture-stats.js
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+

@@ -52,6 +52,9 @@
   "exclude": [
     "node_modules",
     ".next",
-    "api.joelgrayson.com"
+    "api.joelgrayson.com",
+    "TODO",
+    "subroutines",
+    "out"
   ]
 }

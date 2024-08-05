@@ -30,7 +30,7 @@ export const temporary: redirects={ //302
         '/dropbox-download-generator', '/dropbox-download-link', '/dropbox-generator',
         '/dropbox-link', '/dropbox-link-generator',
     ],
-    '/software/box-download-link-generator': ['/box-direct-download-generator', '/box-direct-download-link-generator', '/box-download-generator', '/box-download-link', '/direct-download-link-generator-box', '/download-link-generator-box'],
+    '/software/box-download-link-generator': ['/box-download-link-generator', '/box-direct-download-generator', '/box-direct-download-link-generator', '/box-download-generator', '/box-download-link', '/direct-download-link-generator-box', '/download-link-generator-box'],
     '/software/articlify/articlify.css': ['/articlify.css', '/articlify', '/software/articlify/plain.css'],
     '/open-in-new-tab-wix-code': ['/wix-code-new-tab', /open-in-new-tab(-using)?(-wix-code)?-velo/],
     '/favicon-fetcher': '/favicon',
