@@ -23,7 +23,7 @@ export default function NYC({ items }: { items: string }) {
     const deserializedItems=superjson.parse(items) as Prisma.Library[];
     // console.log('Items', deserializedItems);
 
-    return <Page bottomPadding pathname='/nyc' seo={{
+    return <Page bottomPadding pathname='/library' seo={{
         title: 'Library',
     }}>
         <h1 className='text-center mb-6 mt-6'>Library</h1>

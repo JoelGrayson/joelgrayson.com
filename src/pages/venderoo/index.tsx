@@ -3,7 +3,7 @@ import Page from '@/components/page/DefaultPage';
 // import Link from 'next/link';
 
 export default function Home() {
-    return <Page noPadding pathname='/' seo={{
+    return <Page noPadding pathname='/venderoo' seo={{
         title: 'Venderoo',
         keywords: [
             'Vending machine',

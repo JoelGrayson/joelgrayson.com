@@ -41,12 +41,23 @@ export default function Resume() {
                 display: inline-block;
                 max-width: calc(100% - 4rem /* size of year */);
             }
+            #root .title.with-icon {
+                max-width: calc(100% - 6rem /* size of year */);
+            }
+            #root li>img {
+                vertical-align: top;
+                padding-top: 7px;
+            }
             #root .description {
+                display: inline-block;
                 color: #666;
                 font-size: 0.9rem;
                 // no bullet point
                 list-style-type: none;
-                max-width: calc(100% - 4rem /* size of year */);
+                max-width: calc(100% - 2rem);
+            }
+            #root .activities .description {
+                max-width: calc(100% - 4.5rem); //in activities, there are no titles, so the dates overlap with the descriptions
             }
             #root .indent {
                 padding-left: 3rem;
@@ -59,26 +70,29 @@ export default function Resume() {
                 border-radius: 8px;
             }
 
-            @media (max-width: 600px) {
-                // Mobile
-                #root .date {
-                    // display: block;
-                    // text-align: right;
-                    position: relative;
-                    padding-left: 1rem;
-                    white-space: nowrap;
-                }
-                #root .indent {
-                    padding-left: 1rem;
-                }
-                #root h1 {
-                    padding-top: 5.5rem;
-                    font-size: 2rem;
-                }
-                #root .description {
-                    max-width: none;
-                }
-            }
+            // @media (max-width: 600px) {
+            //     // Mobile
+            //     #root .title {
+            //         display: initial;
+            //     }
+            //     #root .date {
+            //         display: inline-block;
+            //         // text-align: right;
+            //         position: initial;
+            //         padding-left: 1rem;
+            //         white-space: nowrap;
+            //     }
+            //     #root .indent {
+            //         padding-left: 1rem;
+            //     }
+            //     #root h1 {
+            //         padding-top: 5.5rem;
+            //         font-size: 2rem;
+            //     }
+            //     #root .description {
+            //         max-width: none;
+            //     }
+            // }
         `}>
             <div id="root" className="j_container relative flex flex-col">
                 <h1 className='text-center text-[46px] pt-4'>Joel Grayson</h1>
@@ -111,18 +125,18 @@ export default function Resume() {
                                 className='inline bottom-1 relative'
                                 style={{ right: 4 }}
                             />
-                            <span className="title">Brought 410 kW solar installation to my school, enough to power 40 households.</span>    
-                            <span className="date">2021&ndash;now</span>
+                            <span className="title with-icon">Brought 410 kW solar installation to Riverdale, enough to power 40 households.</span>    
+                            <span className="date">2021&ndash;2024</span>
                             <div className="description indent">Collected rooftop measurements, created solar models in HelioScope, gathered quotes from several installers, researched legal and financial aspects, and presented to administration and Board of Trustees.</div>
                         </li>
                         <li className='mb-2'>
-                            <SEBLogo size={25} inline style={{ marginLeft: 4, marginRight: -4, top: 7, right: 4 }} />
-                            <span className="title">Founded <Link href='https://studentsforelectricbuses.org'>Students for Electric Buses</Link>, multi-school coalition, to electrify bus fleets.</span>
-                            <span className="date !top-[5px]">2021&ndash;now</span>
+                            <SEBLogo size={25} inline style={{ marginLeft: 4, marginRight: -4, top: 7, right: 4, verticalAlign: 'top', paddingTop: 7 }} />
+                            <span className="title with-icon">Founded <Link href='https://studentsforelectricbuses.org'>Students for Electric Buses</Link> to electrify bus fleets.</span>
+                            <span className="date !top-[5px]">2021&ndash;2024</span>
                         </li>
                         <li>
                             <Image src='/image/ccc/electric-leaf-blowers/electric-leaf-blower.png' alt='leaf blower' width={20} height={13} className='relative bottom-[3px] mr-1 inline' />
-                            <span className="title">Electric Leaf Blowers</span>
+                            <span className="title with-icon">Electric Leaf Blowers</span>
                             <span className="date">2022</span>
                             <div className='description indent'>Convinced my school&apos;s facilities team to switch from gas to electric leaf blowers.</div>
                         </li>
@@ -137,11 +151,11 @@ export default function Resume() {
                             <span className="date">2021&ndash;23</span>
                         </li>
                         <li className='mb-2'>
-                            <span className="title">Head of Sustainability Club (member 2021&ndash;23).</span>
-                            <span className="date">2022&ndash;24</span>
+                            <span className="title">Leader of Sustainability Club (member 2021&ndash;23).</span>
+                            <span className="date">2023&ndash;24</span>
                         </li>
                         <li>
-                            <span className="title">Completed En-ROADS ambassador training program (climate educator).</span>
+                            <span className="title">En-ROADS Ambassador (climate educator).</span>
                             <span className="date">2022&ndash;now</span>
                         </li>
                     </ul>
@@ -152,25 +166,25 @@ export default function Resume() {
                     <ul>
                         <li>
                             <Image src='/image/home/buseroo-logo.png' alt='buseroo-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                            <span className="title"><Link href="https://buseroo.com">Buseroo.com</Link></span>
+                            <span className="title with-icon"><Link href="https://buseroo.com">Buseroo.com</Link></span>
                             <span className="date">2021&ndash;23</span>
                             <div className="description indent">kiosk and website for students to find closest bus to any address.</div>
                         </li>
                         <li>
                             <Image src='/image/home/homework-checker-logo.png' alt='homework-checker-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                            <span className="title"><Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>Homework Checker</Link></span>
+                            <span className="title with-icon"><Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>Homework Checker</Link></span>
                             <span className="date">2021&ndash;22</span>
                             <div className="description indent">Chrome extension helping 1000 students manage homework.</div>
                         </li>
                         <li>
                             <Image src='/image/home/focus-logo.png' alt='focus-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                            <span className="title"><Link href="https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf">Focus</Link></span>
+                            <span className="title with-icon"><Link href="https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf">Focus</Link></span>
                             <span className="date">2022</span>
                             <div className="description indent">Chrome extension helping 400+ people write distraction-free.</div>
                         </li>
                         <li>
                             <Image src='/image/lirong-art/lirong-art.png' alt='lirongart-logo' width={16.8125} height={30} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                            <span className="title"><Link href='https://lirongart.com'>LirongArt.com</Link></span>
+                            <span className="title with-icon"><Link href='https://lirongart.com'>LirongArt.com</Link></span>
                             <span className="date">2020</span>
                             <div className="description indent">online gallery showcasing my mom’s paintings.</div>
                         </li>
@@ -194,7 +208,7 @@ export default function Resume() {
                 </div>
 
 
-                <div className="section hover:bg-red-100">
+                <div className="section hover:bg-red-100 activities">
                     <h3>Activities</h3>
                     <div className='relative'>
                         <span className='description'>Manhattan Community Board 1 member: Environmental and Youth & Ed Committees.</span>

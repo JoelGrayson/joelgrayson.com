@@ -29,7 +29,7 @@ export async function getSignedUrl({ id, password }: { id: string; password: str
     const signedUrl=await s3GetSignedUrl(s3, putObjectCommand, { expiresIn: 60 });
     const imageUrl=signedUrl.split('?')[0];
     
-    console.log({id, imageUrl});
+    // console.log({id, imageUrl});
     
     await prisma.library.update({
         where: {

@@ -17,7 +17,7 @@ export async function getServerSideProps() {
 
 export default function Music({ videos }: { videos: ytVideos }) {
     return <Page
-        pathname='/performances'
+        pathname='/music'
         seo={{
             title: 'Music | Joel Grayson',
             keywords: ['compositions', 'violin', 'piano', 'recitals', 'performances'],
