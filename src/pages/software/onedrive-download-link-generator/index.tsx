@@ -1,5 +1,5 @@
 import OtherGenerators from '@/components/by-page/download-link-generators/other-generators';
-import BlueCircleOl from '@/components/global/BlueCircleOl';
+import FancyOl from '@jcomponents/fancyol';
 import { GoogleAdsenseScriptTag } from '@/components/GoogleAdsense';
 import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
@@ -26,7 +26,7 @@ export default function OneDriveDownloadLinkGenerator() {
 
         <div className='relative max-w-[900px] mx-auto'>
             <div className='flex justify-center items-center gap-4 py-8'>
-                <Image src='/image/software/download-link-generators/onedrive.webp' alt='OneDrive' width={60} height={60} className='relative bottom-1' />
+                <Image src='/image/software/download-link-generators/onedrive.svg' alt='OneDrive' width={60} height={60} className='relative bottom-1' />
                 <h1 className='text-[40px]'>OneDrive Direct Download Link Generator</h1>
             </div>
 
@@ -42,11 +42,11 @@ export default function OneDriveDownloadLinkGenerator() {
             
                 <div className='border border-black p-4 rounded-lg shadow-lg shadow-gray-500'>
                     <h3 className='text-center'>Instructions</h3>
-                    <BlueCircleOl>
+                    <FancyOl>
                         <li>Select a file and click <Image src='/image/software/download-link-generators/share.webp' alt='Share' className='inline' width={77} height={22} /></li>
                         <li>Click <Image src='/image/software/download-link-generators/copy-link.webp' alt='copy link' className='inline' height={46} width={36} /></li>
                         <li>Paste link in tool</li>
-                    </BlueCircleOl>
+                    </FancyOl>
                 </div>
             </div>
 

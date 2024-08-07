@@ -1,5 +1,5 @@
 import OtherGenerators from '@/components/by-page/download-link-generators/other-generators';
-import BlueCircleOl from '@/components/global/BlueCircleOl';
+import FancyOl from '@jcomponents/fancyol';
 import Yt from '@/components/global/Yt';
 import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
@@ -40,19 +40,19 @@ export default function DriveDownloadLinkGenerator() {
             
                 <div className='border border-black p-4 rounded-lg shadow-lg shadow-gray-500'>
                     <h3 className='text-center'>Instructions</h3>
-                    <BlueCircleOl>
+                    <FancyOl>
                         <li>Get the shareable link</li>
                         <li>Change permissions to <span className='text-blue-800'>anyone with link</span></li>
                         <li>Paste link in tool</li>
-                    </BlueCircleOl>
+                    </FancyOl>
             
                     <h3 className='text-center'>Compatibility</h3>
                     <p>This tool only works for files. To use folder, Google doc, slides, or sheets:</p>
-                    <BlueCircleOl>
+                    <FancyOl>
                         <li>Download folder/document</li>
                         <li>Compress it</li>
                         <li>Upload compressed file to Drive</li>
-                    </BlueCircleOl>
+                    </FancyOl>
                     <div>Video demo ↓</div>
                     <Yt width={300}>xb3P7M9u-M4</Yt>
                 </div>

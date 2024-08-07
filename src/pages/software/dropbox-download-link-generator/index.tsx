@@ -1,5 +1,5 @@
 import OtherGenerators from '@/components/by-page/download-link-generators/other-generators';
-import BlueCircleOl from '@/components/global/BlueCircleOl';
+import FancyOl from '@jcomponents/fancyol';
 import Yt from '@/components/global/Yt';
 import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
@@ -40,11 +40,11 @@ export default function DropboxDownloadLinkGenerator() {
             
                 <div className='border border-black p-4 rounded-lg shadow-lg shadow-gray-500'>
                     <h3 className='text-center'>Instructions</h3>
-                    <BlueCircleOl>
+                    <FancyOl>
                         <li>Click Share & <Image src='/image/software/download-link-generators/create-then-copy-link.webp' alt='create then copy link' className='inline' width={202} height={22} /> </li>
                         <li>Make sure the permissions are <b>Anyone with this link can view</b></li>
                         <li>Paste link in tool</li>
-                    </BlueCircleOl>
+                    </FancyOl>
                     <h3 className='text-center'>Demo</h3>
                     <Yt width={300}>t9WfJ-y7Wzg</Yt>
                 </div>

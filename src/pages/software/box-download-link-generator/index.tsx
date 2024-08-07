@@ -1,5 +1,5 @@
 import OtherGenerators from '@/components/by-page/download-link-generators/other-generators';
-import BlueCircleOl from '@/components/global/BlueCircleOl';
+import FancyOl from '@jcomponents/fancyol';
 import Yt from '@/components/global/Yt';
 import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
@@ -41,7 +41,7 @@ export default function BoxDownloadLinkGenerator() {
             
                 <div className='border border-black p-4 rounded-lg shadow-lg shadow-gray-500'>
                     <h3 className='text-center'>Instructions</h3>
-                    <BlueCircleOl>
+                    <FancyOl>
                         <li>Click <span className='text-blue-800'>Share</span> and turn on <Image className='inline' src='/image/software/download-link-generators/create-shared-link.webp' width={169} height={28} alt={'create shared link'} /></li>
                         <li>Make sure permissions are set to <span className="text-blue-800">&quot;People with the link can view & download&quot;</span></li>
                         <li>Double-click the file (unless you are already viewing the file)</li>
@@ -49,7 +49,7 @@ export default function BoxDownloadLinkGenerator() {
                             <div className='text-blue-800'>https://app.box.com/file/1006031450855?s=ljxbwk0jmwvnw9qzi1wx6g4ancs73qqh</div>
                         </li>
                         <li>Paste link in tool</li>
-                    </BlueCircleOl>
+                    </FancyOl>
                     <h3 className='text-center'>Demo</h3>
                     <Yt width={300}>t9WfJ-y7Wzg</Yt>
                 </div>

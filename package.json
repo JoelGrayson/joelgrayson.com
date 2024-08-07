@@ -32,6 +32,7 @@
         "@fortawesome/react-fontawesome": "^0.2.0",
         "@jcomponents/button": "^1.2.20",
         "@jcomponents/container": "^1.0.7",
+        "@jcomponents/fancyol": "^0.1.6",
         "@jcomponents/flag": "^1.0.3",
         "@jcomponents/header": "^1.1.13",
         "@jcomponents/latex": "^1.0.2",
