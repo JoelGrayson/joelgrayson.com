@@ -9,9 +9,6 @@ export default function OtherGenerators({ currentGenerator }: { currentGenerator
         { currentGenerator!=='drive' && <Link href='/software/drive-download-link-generator' title="Drive">
             <Image src="/image/software/download-link-generators/drive.webp" alt="drive" className="inline mx-2" width={33.125} height={30} />
         </Link> }
-        { currentGenerator!=='onedrive' && <Link href='/software/onedrive-download-link-generator' title="OneDrive">
-            <Image src="/image/software/download-link-generators/onedrive.svg" alt="onedrive" className="inline mx-2" width={48} height={30} />
-        </Link> }
         { currentGenerator!=='box' && <Link href='/software/box-download-link-generator' title="Box">
             <Image src="/image/software/download-link-generators/box.webp" alt="box" className="inline mx-2" width={62} height={33} />
         </Link> }

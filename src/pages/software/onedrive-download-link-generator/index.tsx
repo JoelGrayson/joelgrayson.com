@@ -50,7 +50,7 @@ export default function OneDriveDownloadLinkGenerator() {
                 </div>
             </div>
 
-            <p className='my-12'>Note: as of June 2024, this tool no longer works because OneDrive had a major API rehaul that no longer allows permanent file download links to be created as far as I am aware. Bummer!</p>
+            <p className='my-12 text-2xl font-bold text-red-900'>Note: as of June 2024, this tool no longer works because OneDrive had a major API rehaul that no longer allows permanent file download links to be created as far as I am aware. Bummer!</p>
 
             <div className='flex justify-around items-center mt-2 mb-1'>
                 <p className={!visits ? 'invisible' : ''}>This page has {visits} visits</p>

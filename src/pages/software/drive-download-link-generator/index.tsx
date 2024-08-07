@@ -4,6 +4,7 @@ import Yt from '@/components/global/Yt';
 import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import JBlue from '@/components/global/JBlue';
 
 export default function DriveDownloadLinkGenerator() {
     const [visits, setVisits]=useState(0);
@@ -41,9 +42,9 @@ export default function DriveDownloadLinkGenerator() {
                 <div className='border border-black p-4 rounded-lg shadow-lg shadow-gray-500'>
                     <h3 className='text-center'>Instructions</h3>
                     <FancyOl>
-                        <li>Get the shareable link</li>
-                        <li>Change permissions to <span className='text-blue-800'>anyone with link</span></li>
-                        <li>Paste link in tool</li>
+                        <li>Go to the file&apos;s share settings by clicking <Image src='/image/software/download-link-generators/drive-share.jpg' alt='share' width={20} height={20} className='inline' /></li>
+                        <li>Change <JBlue>General Access</JBlue> permissions from <JBlue>Restricted</JBlue> to <JBlue>Anyone with the link</JBlue> can view</li>
+                        <li>Click <JBlue>Copy Link</JBlue> and paste it in this tool</li>
                     </FancyOl>
             
                     <h3 className='text-center'>Compatibility</h3>
