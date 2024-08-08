@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Gallery from 'src/components/gallery/Gallery';
+import Gallery from '@/components/gallery/Gallery';
 import { ytVideos } from './ytVideos';
 import 'react-h5-audio-player/lib/styles.css';
 import { useState } from 'react';

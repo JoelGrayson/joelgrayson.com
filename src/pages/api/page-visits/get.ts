@@ -1,6 +1,6 @@
 // ABOUT: gets the number of page visits and adds one to it
 import type { NextApiRequest, NextApiResponse } from 'next';
-import prisma from 'src/data/prisma/client';
+import prisma from '@/data/prisma/client';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
     if (typeof req.headers.referer!=='string')

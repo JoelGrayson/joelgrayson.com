@@ -1,7 +1,7 @@
 import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
 import { Data } from './data';
-import PDF from 'src/components/global/PDF';
+import PDF from '@/components/global/PDF';
 import Link from 'next/link';
 
 export default function OrganicOptoelectronics() {

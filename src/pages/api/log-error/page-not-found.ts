@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import prisma from 'src/data/prisma/client';
+import prisma from '@/data/prisma/client';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
     const url=req.headers.referer;

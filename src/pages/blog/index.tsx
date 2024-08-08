@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
 import Router from 'next/router';
-import BlogPage from 'src/components/blog/BlogPage';
-import { articles } from 'src/data/blog';
-import { categories, displayCategory } from 'src/data/blog/types';
-import ArticleThumbnail from 'src/components/blog/ArticleThumbnail';
+import BlogPage from '@/components/blog/BlogPage';
+import { articles } from '@/data/blog';
+import { categories, displayCategory } from '@/data/blog/types';
+import ArticleThumbnail from '@/components/blog/ArticleThumbnail';
 import SEO from '@/components/page/parts/SEO';
 
 const gridStyle={

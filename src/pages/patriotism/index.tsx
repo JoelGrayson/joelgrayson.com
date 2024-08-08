@@ -1,7 +1,7 @@
 import Page from '@/components/page/DefaultPage';
 import { useState } from 'react';
 import NextImage from 'next/image';
-import { PlayAudioIcon } from 'src/components/icons';
+import { PlayAudioIcon } from '@/components/icons';
 import { Tooltip } from 'antd';
 import Flag from '@jcomponents/flag';
 

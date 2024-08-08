@@ -1,13 +1,13 @@
-import Loader from 'src/components/global/Loader';
+import Loader from '@/components/global/Loader';
 import Page from '@/components/page/DefaultPage';
 import Button from '@jcomponents/button';
 import { useState } from 'react';
 import { format } from 'date-fns';
-import Info from 'src/components/global/Info';
+import Info from '@/components/global/Info';
 import { Error } from '@prisma/client';
 import React from 'react';
-import { Action } from 'src/pages/api/dashboard';
-import { ReloadIcon } from 'src/components/icons';
+import { Action } from '@/pages/api/dashboard';
+import { ReloadIcon } from '@/components/icons';
 import Link from 'next/link';
 
 type DashboardError=Error & { ids: string[]; count: number }; //error for the dashboard

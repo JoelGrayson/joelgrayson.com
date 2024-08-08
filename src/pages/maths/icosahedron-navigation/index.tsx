@@ -2,7 +2,7 @@ import Page from '@/components/page/DefaultPage';
 import Button from '@jcomponents/button';
 import styles from '@/styles/btn-icon.module.css';
 import Link from 'next/link';
-import MathsReturnButton from 'src/components/MathsReturnButton';
+import MathsReturnButton from '@/components/MathsReturnButton';
 
 export default function IcosahedronNavigation() {
     return <Page bottomPadding>

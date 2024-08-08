@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '@jcomponents/button';
-import Page from 'src/components/@jcomponents/Page';
-import Code from 'src/components/@jcomponents/Code';
+import Page from '@/components/@jcomponents/Page';
+import Code from '@/components/@jcomponents/Code';
 
 function Gap() { //separator
     return <div style={{height: 8}}/>;

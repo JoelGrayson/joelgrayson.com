@@ -2,7 +2,7 @@ import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
 import Link from 'next/link';
 import Flag from '@jcomponents/flag';
-import { PDFIcon } from 'src/components/icons';
+import { PDFIcon } from '@/components/icons';
 
 export default function NYCGoverment() {
     const root='/nyc/nyc-government/';

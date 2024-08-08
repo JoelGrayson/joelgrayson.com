@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Page from '@/components/page/DefaultPage';
-import Gallery from 'src/components/gallery/Gallery';
-import memes from 'src/data/memes';
+import Gallery from '@/components/gallery/Gallery';
+import memes from '@/data/memes';
 
 const getDate=(name: string): Date | 'invalid date'=>{
     // name.matchAll(/\d{4}(.\d{2})?(.\d{2})?/)

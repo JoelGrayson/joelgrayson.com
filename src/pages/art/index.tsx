@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Page from '@/components/page/DefaultPage';
-import Gallery from 'src/components/gallery/Gallery';
-import images from 'src/data/art';
+import Gallery from '@/components/gallery/Gallery';
+import images from '@/data/art';
 
 const getDate=(name: string): Date | 'invalid date'=>{
     // name.matchAll(/\d{4}(.\d{2})?(.\d{2})?/)

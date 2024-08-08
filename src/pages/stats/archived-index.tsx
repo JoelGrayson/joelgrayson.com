@@ -23,7 +23,7 @@ ShanghaiDictionary.com Searches
 
 import React, { useState, useEffect } from 'react';
 import Page from '@/components/page/DefaultPage';
-import Loader from 'src/components/global/Loader';
+import Loader from '@/components/global/Loader';
 
 type ytDataT={
     slaphappy: {

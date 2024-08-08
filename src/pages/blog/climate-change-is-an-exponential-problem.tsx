@@ -1,4 +1,4 @@
-import ArticleWrapper from 'src/components/blog/ArticleWrapper';
+import ArticleWrapper from '@/components/blog/ArticleWrapper';
 import { P } from '@jcomponents/writing-components';
 
 export default function ClimateChangeIsAnExponentialProblem() {

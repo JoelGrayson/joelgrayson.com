@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import Page from '@/components/page/DefaultPage';
-import SEBLogo from 'src/components/by-page/home/SEB Logo';
+import SEBLogo from '@/components/by-page/home/SEB Logo';
 import Image from 'next/image';
 import styles from '@/styles/ccc/sections.module.css';
 import Link from 'next/link';
-import { Section, Action } from 'src/components/by-page/combating-climate-change/helpers';
+import { Section, Action } from '@/components/by-page/combating-climate-change/helpers';
 import Button from '@jcomponents/button';
-import IdlingEngine from 'src/components/by-page/combating-climate-change/IdlingEngine';
-import PDF from 'src/components/global/PDF';
+import IdlingEngine from '@/components/by-page/combating-climate-change/IdlingEngine';
+import PDF from '@/components/global/PDF';
 import { Switch } from 'antd';
-import Info from 'src/components/global/Info';
-import CalculationInfo from 'src/components/global/CalculationInfo';
-import Prototype from 'src/components/by-page/connecting-street-vendors-to-the-grid/Prototype';
+import Info from '@/components/global/Info';
+import CalculationInfo from '@/components/global/CalculationInfo';
+import Prototype from '@/components/by-page/connecting-street-vendors-to-the-grid/Prototype';
 import Yt from '@/components/global/Yt';
 
 export default function CCC() {

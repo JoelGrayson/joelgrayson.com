@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import NYCPage from 'src/components/global/NYCPage';
+import NYCPage from '@/components/global/NYCPage';
 
 export default function NamesOfPositions() {
     return <NYCPage>

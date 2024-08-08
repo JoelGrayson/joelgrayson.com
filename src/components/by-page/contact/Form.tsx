@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { usePlausible } from "next-plausible";
-import Loader from 'src/components/global/Loader';
+import Loader from '@/components/global/Loader';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 

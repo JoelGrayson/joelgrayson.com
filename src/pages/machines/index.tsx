@@ -1,8 +1,8 @@
-import { machines } from 'src/data/machines';
+import { machines } from '@/data/machines';
 import Image from 'next/image';
 import Page from '@/components/page/DefaultPage';
 import Container from '@jcomponents/container';
-import MiscellaneousBottom from 'src/components/by-page/machines/MiscellaneousBottom';
+import MiscellaneousBottom from '@/components/by-page/machines/MiscellaneousBottom';
 
 export default function Machines() {
     return <Page

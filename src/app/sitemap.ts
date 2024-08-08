@@ -1,6 +1,6 @@
 import { toDate } from 'joeldate';
 import { MetadataRoute } from 'next';
-import { articles as blogArticles } from 'src/data/blog';
+import { articles as blogArticles } from '@/data/blog';
 type changeFrequency= "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never" | undefined;
 type CustomEntry=[string, number, changeFrequency?, Date?];
 

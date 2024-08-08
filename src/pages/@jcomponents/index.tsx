@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Page from 'src/components/@jcomponents/Page';
+import Page from '@/components/@jcomponents/Page';
 
 export default function Home() {
     return <Page>

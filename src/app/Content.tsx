@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 
-import SEBLogo from 'src/components/by-page/home/SEB Logo';
-import BtnIcon from 'src/components/by-page/home/BtnIcon';
+import SEBLogo from '@/components/by-page/home/SEB Logo';
+import BtnIcon from '@/components/by-page/home/BtnIcon';
 import { useEffect, useState } from 'react';
 
 // TODO: add shadow to boxes

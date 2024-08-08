@@ -1,4 +1,4 @@
-import Cursor from 'src/components/Cursor';
+import Cursor from '@/components/Cursor';
 import Page from '@/components/page/DefaultPage';
 import Button from '@jcomponents/button';
 import { useEffect, useMemo, useState } from 'react';

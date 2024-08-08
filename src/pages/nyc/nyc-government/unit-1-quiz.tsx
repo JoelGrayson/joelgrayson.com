@@ -1,5 +1,5 @@
 import Page from '@/components/page/DefaultPage';
-import Question from 'src/components/nyc-government/TestQuestion';
+import Question from '@/components/nyc-government/TestQuestion';
 
 export default function Unit1Quiz() {
     let questionNumber=1;

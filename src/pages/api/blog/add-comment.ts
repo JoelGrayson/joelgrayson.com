@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import prisma from 'src/data/prisma/client';
-import sendEmail from 'src/helpers/sendEmail';
-import generateToken from 'src/helpers/generate-token';
+import prisma from '@/data/prisma/client';
+import sendEmail from '@/helpers/sendEmail';
+import generateToken from '@/helpers/generate-token';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<{ type: 'error' | 'success'; message?: string }>) {
     const { name, email, comment, hyphenatedTitle }=req.body as { name?: string; email?: string; comment?: string; hyphenatedTitle?: string };

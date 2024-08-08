@@ -1,9 +1,9 @@
 import { google } from 'googleapis';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { createId as cuid } from '@paralleldrive/cuid2';
-import sendEmail from 'src/helpers/sendEmail';
-import { type SingleCultureSurveyData } from 'src/components/research/survey/types';
-import { getRows } from 'src/components/research/survey/utils';
+import sendEmail from '@/helpers/sendEmail';
+import { type SingleCultureSurveyData } from '@/components/research/survey/types';
+import { getRows } from '@/components/research/survey/utils';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
     const data=req.body as SingleCultureSurveyData;

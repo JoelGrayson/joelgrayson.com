@@ -1,6 +1,6 @@
-import { ExposedComment } from 'src/data/prisma/TYPES';
+import { ExposedComment } from '@/data/prisma/TYPES';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import prisma from 'src/data/prisma/client';
+import prisma from '@/data/prisma/client';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<string | { views: number; comments: ExposedComment[]; }>) {
     const hyphenatedTitle=req.body.hyphenatedTitle;

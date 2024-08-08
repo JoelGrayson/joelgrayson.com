@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import notifyJoel from '../../../helpers/notifyJoel';
-import prisma from 'src/data/prisma/client';
+import prisma from '@/data/prisma/client';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<{message: string, queryRes?: any; origin?: string}>) {
     const { name, email, message, previousPage }=req.body;

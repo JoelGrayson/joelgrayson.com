@@ -1,4 +1,4 @@
-import ArticleWrapper from 'src/components/blog/ArticleWrapper';
+import ArticleWrapper from '@/components/blog/ArticleWrapper';
 import { Citation, Footnote, P, HangingIndent } from '@jcomponents/writing-components';
 import Image from 'next/image';
 import Link from 'next/link';

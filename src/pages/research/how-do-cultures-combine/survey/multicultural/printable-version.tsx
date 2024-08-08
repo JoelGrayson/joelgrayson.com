@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { produce } from 'immer';
-import Loader from 'src/components/global/Loader';
+import Loader from '@/components/global/Loader';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from '@jcomponents/modal';
-import { races, relations, type Strength, type MulticulturalSurveyData } from 'src/components/research/survey/types';
-import Missing from 'src/components/research/survey/Missing';
-import Circles from 'src/components/research/survey/Circles';
-import { theme } from 'src/components/research/survey/config';
+import { races, relations, type Strength, type MulticulturalSurveyData } from '@/components/research/survey/types';
+import Missing from '@/components/research/survey/Missing';
+import Circles from '@/components/research/survey/Circles';
+import { theme } from '@/components/research/survey/config';
 
 export default function PrintableSurvey() {
     const [formState]=useState<'filling out' | 'error' | 'loading' | 'submitted'>('filling out');
