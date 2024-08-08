@@ -11,8 +11,8 @@ import PDF from 'src/components/global/PDF';
 import { Switch } from 'antd';
 import Info from 'src/components/global/Info';
 import CalculationInfo from 'src/components/global/CalculationInfo';
-// import Markdown from 'markdown-to-jsx';
 import Prototype from 'src/components/by-page/connecting-street-vendors-to-the-grid/Prototype';
+import Yt from '@/components/global/Yt';
 
 export default function CCC() {
     const [showDescription, setShowDescription]=useState<boolean>(true);
@@ -174,6 +174,23 @@ Permanent link: https://perma.cc/N7QN-QDK6
             </Action>
         </Section>
         <Section title='Raising Public Awareness'>
+            {/* TODO: add spoke to students at Baruch and students at Middle School (show photo) */}
+            <Action title='TEDx Talk' {...{showDescription}}>
+                <Yt>rV_8xB7rGyQ</Yt>
+            </Action>
+            <Action title='Upper School Climate Solutions Presentation' {...{showDescription}}>
+                <div className='flex justify-around items-center'>
+                    <Link className='m:hidden' href='/combating-climate-change/Climate Solutions for Riverdale.pptx'>
+                        <Button>
+                            <svg className={Button.Icon} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width='48px' height='48px'><path fill='#dc4c2c' d='M8,24c0,9.941,8.059,18,18,18s18-8.059,18-18H26H8z'/><path fill='#f7a278' d='M26,6v18h18C44,14.059,35.941,6,26,6z'/><path fill='#c06346' d='M26,6C16.059,6,8,14.059,8,24h18V6z'/><path fill='#9b341f' d='M22.319,34H5.681C4.753,34,4,33.247,4,32.319V15.681C4,14.753,4.753,14,5.681,14h16.638 C23.247,14,24,14.753,24,15.681v16.638C24,33.247,23.247,34,22.319,34z'/><path fill='#fff' d='M14.673,19.012H10v10h2.024v-3.521H14.3c1.876,0,3.397-1.521,3.397-3.397v-0.058 C17.697,20.366,16.343,19.012,14.673,19.012z M15.57,22.358c0,0.859-0.697,1.556-1.556,1.556h-1.99v-3.325h1.99 c0.859,0,1.556,0.697,1.556,1.556V22.358z'/></svg>
+                            <span>Download Presentation</span>
+                        </Button>
+                    </Link>
+                    <div className='m:hidden'>
+                        <PDF src='combating-climate-change/Climate Solutions for Riverdale.pdf' height={200} />
+                    </div>
+                </div>
+            </Action>
             <Action title='Middle School Combating Climate Change Presentation' {...{showDescription}}>
                 <div className='d:flex'>
                     <div className='d:grid d:place-items-center'>
@@ -190,19 +207,6 @@ Permanent link: https://perma.cc/N7QN-QDK6
                     </div>
                 </div>
             </Action>
-            <Action title='Upper School Climate Solutions Presentation' {...{showDescription}}>
-                <div className='flex justify-around items-center'>
-                    <Link className='m:hidden' href='/combating-climate-change/Climate Solutions for Riverdale.pptx'>
-                        <Button>
-                            <svg className={Button.Icon} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width='48px' height='48px'><path fill='#dc4c2c' d='M8,24c0,9.941,8.059,18,18,18s18-8.059,18-18H26H8z'/><path fill='#f7a278' d='M26,6v18h18C44,14.059,35.941,6,26,6z'/><path fill='#c06346' d='M26,6C16.059,6,8,14.059,8,24h18V6z'/><path fill='#9b341f' d='M22.319,34H5.681C4.753,34,4,33.247,4,32.319V15.681C4,14.753,4.753,14,5.681,14h16.638 C23.247,14,24,14.753,24,15.681v16.638C24,33.247,23.247,34,22.319,34z'/><path fill='#fff' d='M14.673,19.012H10v10h2.024v-3.521H14.3c1.876,0,3.397-1.521,3.397-3.397v-0.058 C17.697,20.366,16.343,19.012,14.673,19.012z M15.57,22.358c0,0.859-0.697,1.556-1.556,1.556h-1.99v-3.325h1.99 c0.859,0,1.556,0.697,1.556,1.556V22.358z'/></svg>
-                            <span>Download Presentation</span>
-                        </Button>
-                    </Link>
-                    <div className='m:hidden'>
-                        <PDF src='combating-climate-change/Climate Solutions for Riverdale.pdf' height={200} />
-                    </div>
-                </div>
-            </Action>
             <Action title='Petition for Electric School Buses' {...{showDescription}}>
                 Received <Link href='https://api.joelgrayson.com/combating-climate-change/electric-school-buses-petition' target='_blank'>313 petition signatures</Link> for SuperSelby&apos;s adoption of electric school buses, kicking off Students for Electric Buses.
             </Action>
@@ -212,10 +216,6 @@ Permanent link: https://perma.cc/N7QN-QDK6
                     Presented on the need for a nuclear renaissance
                 </Link>
                 &nbsp;at Brown University.
-            </Action>
-            <Action title='A Look into Climate Solutions Presentation' {...{showDescription}}>
-                {/* TODO: add download link */}
-                Presented A Look into Climate Solutions to advisors (small groups) using En-ROADS as an En-ROADS Ambassador.
             </Action>
             <Action title='Article on Nuclear Energy' {...{showDescription}}>
                 {/* TODO: insert article */}
@@ -229,7 +229,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
             </Action>
             {/* TODO: created a video explaining the resiliency projects in Lower Manhattan */}
             <Action title='Flood Resiliency' {...{showDescription}}>
-                Part of discussions in the planning of resiliency projects in Lower Manhattan as a member of the Environmental Protection Committee of Manhattan Community Board 1.
+                In discussions on Lower Manhattan coastal resiliency projects as a member of Manhattan Community Board 1&apos;s Environmental Protection Committee.
             </Action>
             <br />
         </Section>

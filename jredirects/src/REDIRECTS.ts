@@ -52,7 +52,7 @@ export const temporary: redirects={ //302
     
     // Shorten page names
     '/software/edit-time': '/edit-time',
-    '/connecting-street-vendors-to-the-grid': '/connect2grid',
+    '/connecting-street-vendors-to-the-grid': ['/connect2grid', '/connect-to-grid'],
     '/software/focus': ['/software/focus-for-google-docs', '/focus'],
     '/software/homework-checker': [
         '/hwchecker',
