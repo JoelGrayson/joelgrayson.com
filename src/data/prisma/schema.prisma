@@ -62,10 +62,13 @@ model Stats {
     habitUsers           Int?
     numbersUsers         Int?
 
-    // Additional Not Displayed
-    blogViews                  Int?
-    buserooUsers               Int?
-    shanghaiDictionarySearches Int?
+    // Additional Not Displayed (not included in diff, Joelesque Empire Board, or cpp-friendly)
+    blogViews                          Int?
+    buserooUsers                       Int?
+    shanghaiDictionarySearches         Int?
+    driveDownloadLinkGeneratorVisits   Int?
+    dropboxDownloadLinkGeneratorVisits Int?
+    boxDownloadLinkGeneratorVisits     Int?
 }
 
 // Used for download link generators and other pages where visits are being tracked

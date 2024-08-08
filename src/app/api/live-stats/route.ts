@@ -10,6 +10,7 @@ import getProjectsUsers from "./get-stats/getProjectsUsers";
 import getChromeExtensionUsers from "./get-stats/getChromeExtensionUsers";
 import { NextResponse } from "next/server";
 import getLastWeeksStats from "./get-stats/getLastWeeksStats";
+import getDownloadLinkGeneratorVisits from "./get-stats/getDownloadLinkGeneratorVisits";
 
 // Opt out of caching
 export const dynamic='force-dynamic';
@@ -26,15 +27,16 @@ export async function getLiveStats() {
         getProjectsUsers(), //TODO
         getHabitUsers(), //TODO
         getNumbersUsers(), //TODO
+        getLastWeeksStats(),
 
         // Additional Not Displayed
         getBlogViews(),
         getBuserooUsers(),
         getShanghaiDictionarySearches(),
-        getLastWeeksStats()
+        getDownloadLinkGeneratorVisits(),
     ];
 
-    const [{ focusUsers, homeworkCheckerUsers }, buserooSearches, shirtocracyOrders, journalUsers, projectsUsers, habitUsers, numbersUsers, blogViews, buserooUsers, shanghaiDictionarySearches, lastWeeksStats]=await Promise.all(promises);
+    const [{ focusUsers, homeworkCheckerUsers }, buserooSearches, shirtocracyOrders, journalUsers, projectsUsers, habitUsers, numbersUsers, lastWeeksStats, blogViews, buserooUsers, shanghaiDictionarySearches, downloadLinkGeneratorVisits]=await Promise.all(promises);
 
     return {
         focusUsers,
@@ -45,10 +47,15 @@ export async function getLiveStats() {
         projectsUsers,
         habitUsers,
         numbersUsers,
+        ...downloadLinkGeneratorVisits, //{"driveDownloadLinkGeneratorVisits":9933,"dropboxDownloadLinkGeneratorVisits":1590,"boxDownloadLinkGeneratorVisits":8394,"oneDriveDownloadLinkGeneratorVisits":8378}
+
         blogViews,
         buserooUsers,
         shanghaiDictionarySearches,
-
+        // driveDownloadLinkGeneratorVisits,
+        // dropboxDownloadLinkGeneratorVisits,
+        // boxDownloadLinkGeneratorVisits,
+        
         diff: {
             focusUsers: focusUsers-lastWeeksStats.focusUsers,
             homeworkCheckerUsers: homeworkCheckerUsers-lastWeeksStats.homeworkCheckerUsers,
@@ -58,9 +65,6 @@ export async function getLiveStats() {
             projectsUsers: projectsUsers-lastWeeksStats.projectsUsers,
             habitUsers: habitUsers-lastWeeksStats.habitUsers,
             numbersUsers: numbersUsers-lastWeeksStats.numbersUsers,
-            blogViews: blogViews-lastWeeksStats.blogViews,
-            buserooUsers: buserooUsers-lastWeeksStats.buserooUsers,
-            shanghaiDictionarySearches: shanghaiDictionarySearches-lastWeeksStats.shanghaiDictionarySearches
         }
     };
 }

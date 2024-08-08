@@ -2,29 +2,10 @@ const PrismaClient=require('@prisma/client').PrismaClient;
 const prisma=new PrismaClient();
 
 async function main() {
-    const result=await new Promise((res, rej)=>{
-        fetch('https://joelgrayson.com/api/live-stats')
-            .then(x=>x.json())
-            .then(res)
-    });
-    const { focusUsers, homeworkCheckerUsers, buserooSearches, shirtocracyOrders, journalUsers, projectsUsers, habitUsers, numbersUsers, blogViews, buserooUsers, shanghaiDictionarySearches }=result;
+    const res=await fetch('https://joelgrayson.com/api/live-stats')
+    const data=await res.json();
 
-    await prisma.stats.create({
-        data: {
-            focusUsers,
-            homeworkCheckerUsers,
-            buserooSearches,
-            shirtocracyOrders,
-            journalUsers,
-            projectsUsers,
-            habitUsers,
-            numbersUsers,
-
-            blogViews,
-            buserooUsers,
-            shanghaiDictionarySearches
-        }
-    });
+    await prisma.stats.create({ data });
 }
 
 main();
