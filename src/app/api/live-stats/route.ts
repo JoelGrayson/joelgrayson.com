@@ -47,7 +47,7 @@ export async function getLiveStats() {
         projectsUsers,
         habitUsers,
         numbersUsers,
-        ...downloadLinkGeneratorVisits, //{"driveDownloadLinkGeneratorVisits":9933,"dropboxDownloadLinkGeneratorVisits":1590,"boxDownloadLinkGeneratorVisits":8394,"oneDriveDownloadLinkGeneratorVisits":8378}
+        ...downloadLinkGeneratorVisits, //{"driveDownloadLinkGeneratorVisits":9933,"dropboxDownloadLinkGeneratorVisits":1590,"boxDownloadLinkGeneratorVisits":8394}
 
         blogViews,
         buserooUsers,

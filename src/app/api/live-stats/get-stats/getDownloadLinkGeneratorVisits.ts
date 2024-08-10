@@ -29,9 +29,6 @@ export default async function getDownloadLinkGeneratorVisits() {
             case '/software/box-download-link-generator':
                 output.boxDownloadLinkGeneratorVisits=obj.visits;
                 break;
-            case '/software/onedrive-download-link-generator':
-                output.oneDriveDownloadLinkGeneratorVisits=obj.visits;
-                break;
             case '/software/dropbox-download-link-generator':
                 output.dropboxDownloadLinkGeneratorVisits=obj.visits;
                 break;
@@ -41,5 +38,5 @@ export default async function getDownloadLinkGeneratorVisits() {
     
     return output;
     
-    // Returns {"driveDownloadLinkGeneratorVisits":9933,"dropboxDownloadLinkGeneratorVisits":1590,"boxDownloadLinkGeneratorVisits":8394,"oneDriveDownloadLinkGeneratorVisits":8378}
+    // Returns {"driveDownloadLinkGeneratorVisits":9933,"dropboxDownloadLinkGeneratorVisits":1590,"boxDownloadLinkGeneratorVisits":8394}
 }
