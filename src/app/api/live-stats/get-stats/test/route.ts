@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import getDownloadLinkGeneratorVisits from "../getDownloadLinkGeneratorVisits";
+import getBlogViews from "../getBlogViews";
+import getLastWeeksStats from "../getLastWeeksStats";
 
 // Opt out of caching
 export const dynamic='force-dynamic';
@@ -8,8 +10,8 @@ export async function GET() {
 }
 
 export async function getLiveStats() {
-    const downloadLinkGeneratorVisits=await getDownloadLinkGeneratorVisits();
-
-    return downloadLinkGeneratorVisits;
+    // return await getDownloadLinkGeneratorVisits();
+    // return await getBlogViews();
+    return await getLastWeeksStats();
 }
 

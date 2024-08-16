@@ -41,7 +41,7 @@ export const temporary: redirects={ //302
     
     
     // Shortcuts to other sites
-    'https://drive.google.com/drive/folders/1TypGPB9FFJA3dAvo1XX4cBsfRYRW3oqZ?usp=sharing': '/file',
+    'https://drive.google.com/drive/folders/1TypGPB9FFJA3dAvo1XX4cBsfRYRW3oqZ?usp=sharing': ['/file', '/drive', '/files'],
     'https://www.youtube.com/@JoelGrayson': ['/youtube', '/yt'],
     'https://github.com/JoelGrayson': '/github',
     'https://www.linkedin.com/in/joelgrayson/': '/linkedin',

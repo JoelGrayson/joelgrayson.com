@@ -1,16 +1,19 @@
-import getBlogViews from "./get-stats/getBlogViews";
-import getShanghaiDictionarySearches from "./get-stats/getShanghaiDictionarySearches";
-import getBuserooUsers from "./get-stats/getBuserooUsers";
+import { NextResponse } from "next/server";
+
+import getChromeExtensionUsers from "./get-stats/getChromeExtensionUsers";
 import getBuserooSearches from "./get-stats/getBuserooSearches";
 import getShirtocracyOrders from "./get-stats/getShirtocracyOrders";
 import getJournalUsers from "./get-stats/getJournalUsers";
-import getNumbersUsers from "./get-stats/getNumbersUsers";
-import getHabitUsers from "./get-stats/getHabitUsers";
 import getProjectsUsers from "./get-stats/getProjectsUsers";
-import getChromeExtensionUsers from "./get-stats/getChromeExtensionUsers";
-import { NextResponse } from "next/server";
+import getHabitUsers from "./get-stats/getHabitUsers";
+import getNumbersUsers from "./get-stats/getNumbersUsers";
 import getLastWeeksStats from "./get-stats/getLastWeeksStats";
+
+import getBlogViews from "./get-stats/getBlogViews";
+import getBuserooUsers from "./get-stats/getBuserooUsers";
+import getShanghaiDictionarySearches from "./get-stats/getShanghaiDictionarySearches";
 import getDownloadLinkGeneratorVisits from "./get-stats/getDownloadLinkGeneratorVisits";
+
 
 // Opt out of caching
 export const dynamic='force-dynamic';
@@ -36,8 +39,11 @@ export async function getLiveStats() {
         getDownloadLinkGeneratorVisits(),
     ];
 
-    const [{ focusUsers, homeworkCheckerUsers }, buserooSearches, shirtocracyOrders, journalUsers, projectsUsers, habitUsers, numbersUsers, lastWeeksStats, blogViews, buserooUsers, shanghaiDictionarySearches, downloadLinkGeneratorVisits]=await Promise.all(promises);
+    const res=await Promise.all(promises);
+    // console.log('res', res);
 
+    const [{ focusUsers, homeworkCheckerUsers }, buserooSearches, shirtocracyOrders, journalUsers, projectsUsers, habitUsers, numbersUsers, lastWeeksStats, blogViews, buserooUsers, shanghaiDictionarySearches, downloadLinkGeneratorVisits]=res;
+    
     return {
         focusUsers,
         homeworkCheckerUsers,
@@ -57,14 +63,14 @@ export async function getLiveStats() {
         // boxDownloadLinkGeneratorVisits,
         
         diff: {
-            focusUsers: focusUsers-lastWeeksStats.focusUsers,
-            homeworkCheckerUsers: homeworkCheckerUsers-lastWeeksStats.homeworkCheckerUsers,
-            buserooSearches: buserooSearches-lastWeeksStats.buserooSearches,
-            shirtocracyOrders: shirtocracyOrders-lastWeeksStats.shirtocracyOrders,
-            journalUsers: journalUsers-lastWeeksStats.journalUsers,
-            projectsUsers: projectsUsers-lastWeeksStats.projectsUsers,
-            habitUsers: habitUsers-lastWeeksStats.habitUsers,
-            numbersUsers: numbersUsers-lastWeeksStats.numbersUsers,
+            focusUsers:           lastWeeksStats?.focusUsers           ? focusUsers-lastWeeksStats.focusUsers                     : -4,
+            homeworkCheckerUsers: lastWeeksStats?.homeworkCheckerUsers ? homeworkCheckerUsers-lastWeeksStats.homeworkCheckerUsers : -4,
+            buserooSearches:      lastWeeksStats?.buserooSearches      ? buserooSearches-lastWeeksStats.buserooSearches           : -4,
+            shirtocracyOrders:    lastWeeksStats?.shirtocracyOrders    ? shirtocracyOrders-lastWeeksStats.shirtocracyOrders       : -4,
+            journalUsers:         lastWeeksStats?.journalUsers         ? journalUsers-lastWeeksStats.journalUsers                 : -4,
+            projectsUsers:        lastWeeksStats?.projectsUsers        ? projectsUsers-lastWeeksStats.projectsUsers               : -4,
+            habitUsers:           lastWeeksStats?.habitUsers           ? habitUsers-lastWeeksStats.habitUsers                     : -4,
+            numbersUsers:         lastWeeksStats?.numbersUsers         ? numbersUsers-lastWeeksStats.numbersUsers                 : -4
         }
     };
 }
