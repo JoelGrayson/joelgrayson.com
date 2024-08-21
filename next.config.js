@@ -49,6 +49,10 @@ const nextConfig={
             {
                 source: '/api/log-error/joelgreyson.com',
                 headers: CORSHeaders('https://joelgreyson.com')
+            },
+            {
+                source: '/api/page-visits/get-and-add',
+                headers: CORSHeaders('https://ad.joelgrayson.com')
             }
         ];
 
