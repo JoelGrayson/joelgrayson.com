@@ -5,7 +5,8 @@ import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import JBlue from '@/components/global/JBlue';
-import Head from 'next/head';
+import GoogleAdsenseScriptTag from '@/components/google-adsense/ScriptTag';
+import AdBanner from '@/components/google-adsense/AdBanner';
 
 export default function DriveDownloadLinkGenerator() {
     const [visits, setVisits]=useState(0);
@@ -24,10 +25,6 @@ export default function DriveDownloadLinkGenerator() {
         pathname='/software/drive-download-link-generator'
         noPadding
     >
-        <Head>
-            <meta name='admaven-placement' content='BrHU4qTU4' />
-        </Head>
-        
         <div className='relative max-w-[900px] mx-auto'>
             <div className='flex justify-center items-center gap-4 py-8'>
                 <Image src='/image/software/download-link-generators/drive.webp' alt='drive' width={53*.8} height={48*.8} className='relative bottom-0.5' />
@@ -68,6 +65,10 @@ export default function DriveDownloadLinkGenerator() {
                 <p className={!visits ? 'invisible' : ''}>This page has {visits} visits</p>
                 <OtherGenerators currentGenerator='drive' />
             </div>
+
+
+            <GoogleAdsenseScriptTag />
+            <AdBanner slot='9655906541' />
         </div>
     </Page>;
 }

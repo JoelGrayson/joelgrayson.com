@@ -1,6 +1,5 @@
 import OtherGenerators from '@/components/by-page/download-link-generators/other-generators';
 import FancyOl from '@jcomponents/fancyol';
-import { GoogleAdsenseScriptTag } from '@/components/GoogleAdsense';
 import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -22,8 +21,6 @@ export default function OneDriveDownloadLinkGenerator() {
         pathname='/software/onedrive-download-link-generator'
         noPadding
     >
-        <GoogleAdsenseScriptTag />
-
         <div className='relative max-w-[900px] mx-auto'>
             <div className='flex justify-center items-center gap-4 py-8'>
                 <Image src='/image/software/download-link-generators/onedrive.svg' alt='OneDrive' width={60} height={60} className='relative bottom-1' />

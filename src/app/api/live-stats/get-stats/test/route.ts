@@ -1,6 +1,4 @@
 import { NextResponse } from "next/server";
-import getDownloadLinkGeneratorVisits from "../getDownloadLinkGeneratorVisits";
-import getBlogViews from "../getBlogViews";
 import getLastWeeksStats from "../getLastWeeksStats";
 
 // Opt out of caching
