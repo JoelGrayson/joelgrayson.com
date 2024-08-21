@@ -5,8 +5,6 @@ import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import JBlue from '@/components/global/JBlue';
-import GoogleAdsenseScriptTag from '@/components/google-adsense/ScriptTag';
-import AdBanner from '@/components/google-adsense/AdBanner';
 
 export default function DriveDownloadLinkGenerator() {
     const [visits, setVisits]=useState(0);
@@ -65,10 +63,6 @@ export default function DriveDownloadLinkGenerator() {
                 <p className={!visits ? 'invisible' : ''}>This page has {visits} visits</p>
                 <OtherGenerators currentGenerator='drive' />
             </div>
-
-
-            <GoogleAdsenseScriptTag />
-            <AdBanner slot='9655906541' />
         </div>
     </Page>;
 }
