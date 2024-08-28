@@ -111,7 +111,7 @@ export default function Content() {
             <BtnIcon href='https://apps.apple.com/us/app/edit-time/id6464405876'>
                 <Image alt='Edit Time Logo' height={80} width={80} className='relative left-0.5 bottom-3' src='/image/home/edit-time-logo.png' />
                 <span className='relative bottom-3'>Edit Time</span>
-                <Label>101 users</Label>
+                <Label>1980 installs</Label>
             </BtnIcon>
 
             {/* <BtnIcon href='/nyc'>
