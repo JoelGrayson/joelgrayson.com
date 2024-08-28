@@ -39,17 +39,17 @@ export default function Content({hCInstalls, focusInstalls, buserooSearches, edi
             <BtnIcon href='https://buseroo.com'>
                 <Image alt='buseroo-logo' height={48} width={48} className='mb-0.5' src='/image/home/optimized/buseroo-logo.avif' />
                 <span>Buseroo.com</span>
-                { buserooSearches!=null && <Label>{buserooSearches} searches</Label> }
+                { buserooSearches!=null && buserooSearches!=-4 && <Label>{buserooSearches} searches</Label> }
             </BtnIcon>
             <BtnIcon href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf'>
                 <Image alt='focus-logo' height={50} width={50} src='/image/home/optimized/focus-logo.avif' />
                 <span>Focus</span>
-                { focusInstalls!=null && <Label>{focusInstalls} installs</Label> }
+                { focusInstalls!=null && focusInstalls!=-4 && <Label>{focusInstalls} installs</Label> }
             </BtnIcon>
             <BtnIcon href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>
                 <Image alt='Homework Checker Logo' height={50} width={50} src='/image/home/optimized/homework-checker-logo.avif' />
                 <span className='text-[0.8rem]'>Homework Checker</span>
-                { hCInstalls!=null && <Label>{hCInstalls} installs</Label> }
+                { hCInstalls!=null && hCInstalls!=-4 && <Label>{hCInstalls} installs</Label> }
             </BtnIcon>
         
             <BtnIcon href='https://apps.apple.com/us/app/edit-time/id6464405876'>
