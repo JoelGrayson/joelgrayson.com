@@ -4,46 +4,11 @@ import Image from 'next/image';
 
 import SEBLogo from '@/components/by-page/home/SEB Logo';
 import BtnIcon from '@/components/by-page/home/BtnIcon';
-import { useEffect, useState } from 'react';
 
 // TODO: add shadow to boxes
 // TODO: add shading gradient in boxes
 
-export default function Content() {
-    const [hCInstalls, setHCInstalls]=useState<number | null>(null);
-    const [focusInstalls, setFocusInstalls]=useState<number | null>(null);
-    const [buserooSearches, setBuserooSearches]=useState<number | null>(null);
-
-    useEffect(()=>{
-        if (hCInstalls!=null || focusInstalls!=null) return;
-        
-        // Need to call api.joelgrayson.com in order to use Puppeteer
-        if (process.env.NODE_ENV==='development') { //skip calling api.joelgrayson.com/live-stats in development because of CORS error
-            console.log('skipping getting live-stats in development');
-            setBuserooSearches(-4);
-            setHCInstalls(-4);
-            setFocusInstalls(-4);
-        } else {
-            fetch('https://api.joelgrayson.com/live-stats')
-                .then(res=>res.json())
-                .then((res)=>{
-                    if (res.hCInstalls===-1 || !res.hCInstalls) return console.log('hCInstalls is -1');
-                    if (res.focusInstalls===-1 || !res.focusInstalls) return console.log('focusInstalls is -1');
-
-                    console.log('/api/home/stats returned', res);
-                    setHCInstalls(res.hCInstalls);
-                    setFocusInstalls(res.focusInstalls);
-                });
-            
-            fetch('https://buseroo.com/api/overall/stats')
-                .then(res=>res.json())
-                .then(res=>{
-                    setBuserooSearches(res.searches);
-                });
-        }
-    // eslint-disable-next-line
-    }, []);
-
+export default function Content({hCInstalls, focusInstalls, buserooSearches, editTimeInstalls}: {hCInstalls: number | null, focusInstalls: number | null, buserooSearches: number | null; editTimeInstalls: number}) {
     return <>
         {/* Icons */}
         <article className='mx-auto px-4 !max-w-[600px] d:gap-[20px]' style={{
@@ -87,6 +52,11 @@ export default function Content() {
                 { hCInstalls!=null && <Label>{hCInstalls} installs</Label> }
             </BtnIcon>
         
+            <BtnIcon href='https://apps.apple.com/us/app/edit-time/id6464405876'>
+                <Image alt='Edit Time Logo' height={80} width={80} className='relative left-0.5 bottom-3' src='/image/home/edit-time-logo.png' />
+                <span className='relative bottom-3'>Edit Time</span>
+                <Label>{editTimeInstalls} installs</Label>
+            </BtnIcon>
             <BtnIcon href='https://sparelearn.com'>
                 <Image alt='Spare Learn Logo' height={50} width={50} src='/image/software/sparelearn/logo.png' />
                 <span className='text-[1rem]'>SpareLearn.com</span>
@@ -95,6 +65,7 @@ export default function Content() {
                 <Image alt='Homework Checker Logo' height={50} width={50} src='/image/ccc/BrDPA-AzoBipy Structure.png' className='mb-1 pt-3' />
                 <span className='text-[1rem]'>Organic Solar Cell Research</span>
             </BtnIcon>
+            
             <BtnIcon href='/connecting-street-vendors-to-the-grid' target='_self'>
                 <Image alt='Generators vs. Grid' height={55} width={100} className='relative left-2' src='/image/connecting-street-vendors-to-the-grid/generators-versus-grid.gif' />
                 <span className='text-[0.8rem]'>Connecting Street Vendors to the Grid</span>
@@ -107,11 +78,6 @@ export default function Content() {
             <BtnIcon href='https://shirtocracy.com'>
                 <Image alt='Shirtocracy Logo' height={80} width={80} className='relative left-0.5 mb-1' src='/image/home/shirtocracy-logo.png' />
                 <span className=''>Shirtocracy</span>
-            </BtnIcon>
-            <BtnIcon href='https://apps.apple.com/us/app/edit-time/id6464405876'>
-                <Image alt='Edit Time Logo' height={80} width={80} className='relative left-0.5 bottom-3' src='/image/home/edit-time-logo.png' />
-                <span className='relative bottom-3'>Edit Time</span>
-                <Label>1980 installs</Label>
             </BtnIcon>
 
             {/* <BtnIcon href='/nyc'>
