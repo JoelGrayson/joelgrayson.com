@@ -2,8 +2,44 @@ import Image from 'next/image';
 import Page from '@/components/page/DefaultPage';
 import Content from '@/app/Content';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+    const [hCInstalls, setHCInstalls]=useState<number | null>(null);
+    const [focusInstalls, setFocusInstalls]=useState<number | null>(null);
+    const [buserooSearches, setBuserooSearches]=useState<number | null>(null);
+    const editTimeInstalls=1980 as number; //manually inserted from AppStoreConnect analytics
+
+    useEffect(()=>{
+        if (hCInstalls!=null || focusInstalls!=null) return;
+        
+        // Need to call api.joelgrayson.com in order to use Puppeteer
+        if (process.env.NODE_ENV==='development') { //skip calling api.joelgrayson.com/live-stats in development because of CORS error
+            console.log('skipping getting live-stats in development');
+            setBuserooSearches(-4);
+            setHCInstalls(-4);
+            setFocusInstalls(-4);
+        } else {
+            fetch('https://api.joelgrayson.com/live-stats')
+                .then(res=>res.json())
+                .then((res)=>{
+                    if (res.hCInstalls===-1 || !res.hCInstalls) return console.log('hCInstalls is -1');
+                    if (res.focusInstalls===-1 || !res.focusInstalls) return console.log('focusInstalls is -1');
+
+                    console.log('/api/home/stats returned', res);
+                    setHCInstalls(res.hCInstalls);
+                    setFocusInstalls(res.focusInstalls);
+                });
+            
+            fetch('https://buseroo.com/api/overall/stats')
+                .then(res=>res.json())
+                .then(res=>{
+                    setBuserooSearches(res.searches);
+                });
+        }
+    // eslint-disable-next-line
+    }, []);
+    
     return <Page noPadding pathname='/' seo={{
         title: 'Joel Grayson',
         keywords: [
@@ -51,16 +87,17 @@ export default function Home() {
 
         {/* Text Description */}
         <div className="w-full max-w-[680px] px-4 mx-auto pt-8 pb-1 leading-8">
-            <p className='indent-8'>Hi, I&apos;m Joel. I have a passion for <Link href='/combating-climate-change'>combating climate change</Link>, <Link href='/nyc'>government</Link>, <Link href='/software'>software development</Link>, and <Link href='/machines'>engineering</Link>.</p>
-            <p className='indent-8'>I am working to bring a <Link href='/combating-climate-change#solar-for-riverdale'>solar installation</Link> to Riverdale Country School, which will save 250 metric tons of CO₂ equivalent each year, save Riverdale money, supply backup power during outages, and provide live energy data for use in the science curriculum. I founded <Link href='https://studentsforelectricbuses.org' target='_blank'>Students for Electric Buses</Link>, a club attempting to transition Riverdale’s bus provider to electric school buses. I also did <Link href='/research/organic-optoelectronics'>research on organic solar cells</Link> at New York University’s Lee Lab.</p>
-            <p className='indent-8'>I serve on Manhattan Community Board One’s Environmental Protection Committee (whose work includes planning Lower Manhattan’s climate resiliency projects), and the Youth & Education Committee. I am working with the Mayor’s Office of Climate and Environmental Justice and Street Vendor Project to enable street vendors to connect to the electrical grid instead of using gas generators, which would prevent 450 tons of gas from being burned annually per vendor and improve NYC’s air quality (<Link href='/connecting-street-vendors-to-the-grid'>see more</Link>). I am working to open new maker spaces in public schools to give kids the same opportunity to make that I had.</p>
-            <p className='indent-8'>Among my software projects, <Link href='https://buseroo.com' target='_blank'>Buseroo.com</Link> has helped students find which school bus goes to any address over 500 times, <Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj' target='_blank'>Homework Checker</Link> helps 1,000 students manage their homework, <Link href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf' target='_blank'>Focus for Google Docs</Link> helps over 400 people write without distractions, and <Link href='https://lirongart.com' target='_blank'>LirongArt.com</Link> showcases my mom’s paintings.</p>
-            <p className='indent-8'>Among my engineering projects, I made a <Link href='https://youtu.be/8BwmKFodra0?t=76' target='_blank'>Jacob’s ladder</Link> that acts as my alarm, waking me up every morning. I built a vending machine that serves snacks to people at school, a wooden pinball machine, Tesla coil, and various other devices. You can explore my projects in more depth below:</p>
+            <p className='indent-8'>Hi, I&apos;m Joel. I like to work on <Link href='/machines' target='_blank'>machines</Link>, <Link href='/software' target='_blank'>software</Link>, and <Link href='/combating-climate-change' target='_blank'>climate solutions</Link>.</p>
+            
+            <p className='indent-8'>I helped to bring a <Link href='/combating-climate-change#solar-for-riverdale' target='_blank'>solar installation</Link> to Riverdale Country School, which will save 250 metric tons of CO₂ equivalent each year, save Riverdale money, supply backup power during outages, and provide live energy data for use in the science curriculum. I founded <Link href='https://studentsforelectricbuses.org' target='_blank'>Students for Electric Buses</Link>, a club attempting to transition Riverdale’s bus provider to electric school buses. I also did <Link href='/research/organic-optoelectronics' target='_blank'>research on organic solar cells</Link> at New York University’s Lee Lab.</p>
+            <p className='indent-8'>I served on Manhattan Community Board One’s Environmental Protection Committee, which plans Lower Manhattan’s climate resiliency projects, and the Youth & Education Committee. I worked with the Mayor’s Office of Climate and Environmental Justice and Street Vendor Project on connecting street vendors to the electrical grid instead of using gas generators (<Link href='/connecting-street-vendors-to-the-grid'>see more</Link>).</p>
+            <p className='indent-8'>Among my software projects, <Link href='https://buseroo.com' target='_blank'>Buseroo.com</Link> has helped students find which school bus goes to any address, <Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj' target='_blank'>Homework Checker</Link> helps {hCInstalls && hCInstalls!=-4 || ''} students manage their homework, <Link href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf' target='_blank'>Focus for Google Docs</Link> helps {focusInstalls && focusInstalls!=-4 || ''} people write without distractions,{editTimeInstalls && editTimeInstalls!=-4 ? <span> <Link href='https://apps.apple.com/us/app/edit-time/id6464405876' target='_blank'>Edit Time</Link> helps {editTimeInstalls} people manage their file&apos;s last modified properties,</span> : ''} and <Link href='https://lirongart.com' target='_blank'>LirongArt.com</Link> showcases my mom’s paintings.</p>
+            <p className='indent-8'>Among my engineering projects, I built a vending machine that served snacks to people at school, Jacob’s ladder that acts as my morning alarm, wooden pinball machine, and slayer exciter. You can explore my projects in more depth below:</p>
         </div>
 
 
         {/* Squares (client component) */}
-        <Content />
+        <Content {...{hCInstalls, focusInstalls, editTimeInstalls, buserooSearches}} />
 
 
         {/* <div className='bg-gray-400'>
