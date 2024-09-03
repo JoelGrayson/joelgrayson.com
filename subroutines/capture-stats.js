@@ -2,10 +2,37 @@ const PrismaClient=require('@prisma/client').PrismaClient;
 const prisma=new PrismaClient();
 
 async function main() {
-    const res=await fetch('https://joelgrayson.com/api/live-stats/without-diff')
-    const data=await res.json();
+    const timesToTry=10;
+    let remainingAttempts=timesToTry;
 
-    await prisma.stats.create({ data });
+    while (remainingAttempts>0) {
+        try {
+            console.log(`Attempt ${timesToTry-remainingAttempts+1} of ${timesToTry}`);
+            const res=await fetch('https://joelgrayson.com/api/live-stats/without-diff')
+            console.log('Before processing');
+            const data=await res.json();
+            
+            console.log('Before prisma');
+            await prisma.stats.create({ data });
+
+            remainingAttempts=0;
+            break;
+        } catch (error) {
+            console.warn('Error:', error);
+            remainingAttempts--;
+            await sleep(10);
+        }
+    }
+
+    console.log('Success');
 }
 
+function sleep(seconds) {
+    console.log('Sleeping for', seconds, 'seconds');
+    return new Promise(resolve=>{
+        setTimeout(resolve, seconds*1000);
+    });
+}
+
+console.log('Starting script');
 main();
