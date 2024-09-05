@@ -46,3 +46,10 @@ function calculateDaysLeftUntil(date: Date): number {
     return daysLeft;
 }
 
+
+/*
+# Examples
+https://joelgrayson.com/software/days-until?date=2024-09-05&event=Leave+Home
+https://joelgrayson.com/software/days-until?date=2024-06-10&event=Graduation
+
+*/

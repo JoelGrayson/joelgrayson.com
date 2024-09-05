@@ -8,13 +8,15 @@ export async function GET() {
     thisMorning.setHours(0);
     thisMorning.setMinutes(1);
 
+    const yesterday=new Date(thisMorning.getDate()-20*60*60); //20 hours before midnight the day before
+    
     const stats=await prisma.stats.findMany({
         orderBy: {
             date: 'desc'
         },
         where: {
             date: {
-                gte: thisMorning
+                gte: yesterday
             }
         },
         take: 1
@@ -30,6 +32,5 @@ export async function GET() {
         );
     }
 
-    
     return NextResponse.json(stats[0]);
 }

@@ -69,6 +69,8 @@ model Stats {
     driveDownloadLinkGeneratorVisits   Int?
     dropboxDownloadLinkGeneratorVisits Int?
     boxDownloadLinkGeneratorVisits     Int?
+
+    pageVisits Json?
 }
 
 // Used for download link generators and other pages where visits are being tracked

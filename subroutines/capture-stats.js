@@ -2,15 +2,28 @@ const PrismaClient=require('@prisma/client').PrismaClient;
 const prisma=new PrismaClient();
 
 async function main() {
+    console.log('Starting script');
+
     const timesToTry=10;
     let remainingAttempts=timesToTry;
+    let pageVisits;
+    try {
+        pageVisits=await prisma.pageVisits.findMany({});
+        if (!pageVisits) {
+            throw new Error("Unable to fetch pageVisits");
+        }
+    } catch(err) {
+        console.log('Error fetching pageVisits:', err);
+        return;
+    }
 
     while (remainingAttempts>0) {
         try {
             console.log(`Attempt ${timesToTry-remainingAttempts+1} of ${timesToTry}`);
-            const res=await fetch('https://joelgrayson.com/api/live-stats/without-diff')
+            const res=await fetch('https://joelgrayson.com/api/live-stats/without-diff');
             console.log('Before processing');
             const data=await res.json();
+            data.pageVisits=pageVisits;
             
             console.log('Before prisma');
             await prisma.stats.create({ data });
@@ -34,5 +47,4 @@ function sleep(seconds) {
     });
 }
 
-console.log('Starting script');
 main();
