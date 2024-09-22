@@ -60,6 +60,8 @@ export default function ManageLibrary() {
             setAuthor('');
             setUrl('');
             setDate('');
+
+            alert('Successfully added item!');
         }
     }
     

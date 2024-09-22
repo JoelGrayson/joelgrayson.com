@@ -225,7 +225,7 @@ export default function Resume() {
                             <span className='date'>2023&ndash;24</span>
                         </li>
                         <li>
-                            <span className='description is-title'>Researched novel compound at Lee Lab in NYU&apos;s seven-week ARISE program.</span>
+                            <span className='description is-title'>Researched novel compound at Lee Research Lab in NYU&apos;s seven-week ARISE program.</span>
                             <span className='date relative'>2023</span>
                         </li>
                         <li>
