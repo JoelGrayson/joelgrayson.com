@@ -180,7 +180,15 @@ export default function Resume() {
                                 <Link href="https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf">Focus</Link>
                             </span>
                             <span className="date">2022</span>
-                            <div className="description inline-description">Chrome extension helping 400+ people write distraction-free.</div>
+                            <div className="description inline-description">Chrome extension helping 800 people write distraction-free.</div>
+                        </li>
+                        <li>
+                            <span className="title with-icon">
+                                <Image src='/image/home/edit-time-logo.png' alt='focus-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
+                                <Link href="https://apps.apple.com/us/app/edit-time/id6464405876?mt=12">Edit Time</Link>
+                            </span>
+                            <span className="date">2024</span>
+                            <div className="description inline-description">App with 2500 installs that changes file date created and modified properties</div>
                         </li>
                         <li>
                             <span className="title with-icon">
