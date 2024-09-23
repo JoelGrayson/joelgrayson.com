@@ -3,6 +3,7 @@ import Page from '@/components/page/DefaultPage';
 import Content from '@/app/Content';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import Yt from '@/components/global/Yt';
 
 export default function Home() {
     const [hCInstalls, setHCInstalls]=useState<number | null>(null);
@@ -100,16 +101,27 @@ export default function Home() {
         <Content {...{hCInstalls, focusInstalls, editTimeInstalls, buserooSearches}} />
 
 
-        {/* <div className='bg-gray-400'>
-            <h3>Recent</h3>
-            {/* TEDx video *}
-            <Yt>rV_8xB7rGyQ</Yt>
-            {/* Venderoo video *}
-            {/* TODO: */}
-            
-            {/* GuardBox video /}
-            <Yt>DbfRmZZx4VA</Yt>
-        </div> */}
+        <div className='bg-gray-200 pt-5 pb-10' style={{
+            borderTop: '1px solid #ddd'
+        }}>
+            <h3 className='text-center mb-2'>Recent Videos</h3>
+            {/* <div className='flex lg:gap-3 justify-center'> */}
+            <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, 300px)',
+                gap: '1rem',
+                justifyContent: 'center',
+                justifyItems: 'center'
+            }}>
+                {/* TEDx video */}
+                <Yt width='fit-content'>rV_8xB7rGyQ</Yt>
+                {/* Venderoo video */}
+                <Yt width='fit-content'>bHHk2FL5Ujs</Yt>
+                {/* GuardBox video */}
+                <Yt width='fit-content'>1o4ugYFm5ag</Yt>
+                {/* <Yt width='fit-content'>DbfRmZZx4VA</Yt> */}
+            </div>
+        </div>
     </Page>;
 }
 
