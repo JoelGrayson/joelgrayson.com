@@ -1,48 +1,68 @@
+import { faCompress, faExpand } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
+import React, { useState } from "react";
 
 export const docLink=(docId: string)=>`https://docs.google.com/document/d/${docId}/edit?rm=minimal`;
 export const agendas={
-    Buseroo: '15hOxtH4xDGnUgq9SdqmWNSG0KihnXwN1iKZNpW4-FXw',
-    Connect2Grid: '1m6f8igALdkPsQkEG3wmODTCtMzHwqOytguZQ_VUzr08',
-    CB1: '1CFfa8K-XeO4x9fvJ9qwHT2XYjqRlWax7zUnb1yoXRVc',
-    Solar: '1WQnU_U1rG955NcYjRCCz7fBeK8wEZ2KxW7_JBN7mmS4',
-    'Students for Electric Buses': '1hjc1ZM9gfHd7VsPnQcnHtzrVOx8RguzEajhax7rk7Ww',
-    'Vending Machine': '17fWXdeUmfWz0W7UqSDC0tmr5TaMrz6L7O2S9Uu6iS34',
-    Shirtocracy: '14J4rPtrke6MRDxecwxdG2YTkROGXuB_ccRHyH7xW9-g',
-    College: '12i0EDe2CCYE81ssbm0KpF7KBPd8Z7gzi5agNGslU7Dk',
-    Learning: '15TW1rDATUrihnRX3cuLSuL-Q6fZZR1JwRtd_uQHE9A4',
+    Stanford: '1qycEgNsSO5NWP2lLadGTdrrtkHG8NpnczlBO6wsbPTE',
+    // Buseroo: '15hOxtH4xDGnUgq9SdqmWNSG0KihnXwN1iKZNpW4-FXw',
+    Buseroo: '178K4aj2UBrius1bJ5KeHKSDHVrvfc0Lh4M-C-G_V6Ts',
+    Learning: '1Ti-tIRjmDKavivuanMBjT9UZwKb7mFRr9NUBtKgn-BA',
 };
 
 export default function Plan() {
+    type DocId=string;
+    const [expanded, setExpanded]=useState<DocId | false>(false);
+    
     return <div>
         <Head>
             <meta name="robots" content="noindex" />
             <meta name="googlebot" content="noindex" />
             <title>Joel&apos;s Plan</title>
         </Head>
-        <h1 className="text-center">Joel&apos;s Plan</h1>
+        { !expanded && <h1 className="text-center">Joel&apos;s Plan</h1> }
 
-        <div className="grid grid-cols-2 gap-5 mx-5">
+        <div className={expanded ? '' : "grid grid-cols-2 gap-5 mx-5"}>
             {
                 // eslint-disable-next-line
                 Object.entries(agendas).map(([name, docId], i)=>{
-                    return <iframe key={docId} src={docLink(docId)} style={{
-                        width: '100%',
-                        height: 500,
-                        border: '1px solid gray'
-                    }} />;
+                    if (expanded && expanded!==docId)
+                        return <React.Fragment key={docId} />;
+
+                    return <div key={docId} className="relative" style={{
+                        width: expanded ? '100dvw' : '100%',
+                        height: expanded===docId ? '100dvh' : 500,
+                    }}>
+                        <iframe src={docLink(docId)} style={{
+                            width: '100%',
+                            height: '100%',
+                            border: '1px solid gray'
+                        }} />
+                        <div onClick={()=>{
+                            if (expanded===docId)
+                                setExpanded(false);
+                            else
+                                setExpanded(docId);
+                        }} className="cursor-pointer absolute top-2 right-2">
+                            <FontAwesomeIcon icon={expanded===docId ? faCompress : faExpand} size="xl" />
+                        </div>
+                    </div>;
                 })
             }
-            <div style={{
+            { !expanded && <div style={{
                 width: 750,
                 height: 500,
             }}>
                 <ul className="mt-8 text-lg">
-                    <li>Vending Machine</li>
+                    <li>Journal</li>
+                    <li>Project</li>
+                    <li>Habit</li>
+                    <li>Numbers</li>
                     <li>BulletBrainstorm.com</li>
                     <li>MemorizeThePresidents.com</li>
                 </ul>
-            </div>
+            </div> }
         </div>
         
     </div>;
