@@ -1,0 +1,31 @@
+import LearnPage from "@/components/page/LearnPage";
+export default function LearningContent({children}) {
+	return <LearnPage markdown bottomPadding>{children}</LearnPage>;
+}
+
+
+# Fetching Data in Swift
+```swift
+final class InstitutionDataViewModel: ObservableObject {
+    @Published var institutionData: InstitutionData?
+    
+    init() {}
+    
+    func fetchInstitutionData() {
+        guard let url=URL(string: institutionDataUrl) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data else { return }
+            do {
+                let newInstitutionData=try JSONDecoder().decode(InstitutionData.self, from: data)
+                DispatchQueue.main.async {
+                    self.institutionData = newInstitutionData
+                }
+            } catch {
+                print("Error")
+            }
+        }.resume()
+    }
+}
+```
+

@@ -9,11 +9,23 @@ export const machines: Machine[]=[
         sortBy: {
             rank: 3, //sort by best project
             date: new Date('May 2024'), //sort by date of project
-            title: 'Buseroo Kiosk' //sort alphabetically
+            title: 'Joelesque Empire Board' //sort alphabetically
         },
         html: DefaultTemplate({
             date: '2024',
-            title: <>Venderoo</>,
+            title: <>Joelesque Empire Board</>,
+            yt: 'bHHk2FL5Ujs'
+        })
+    },
+    {
+        sortBy: {
+            rank: 3, //sort by best project
+            date: new Date('May 2024'), //sort by date of project
+            title: 'Venderoo' //sort alphabetically
+        },
+        html: DefaultTemplate({
+            date: '2024',
+            title: <>Venderoo: Arduino-Based Vending Machine</>,
             yt: 'bHHk2FL5Ujs'
         })
     },

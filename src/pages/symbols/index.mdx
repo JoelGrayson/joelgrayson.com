@@ -1,0 +1,109 @@
+import Page from "@/components/page/DefaultPage";
+export default function LearningContent({children}) {
+	return <Page>{children}</Page>;
+}
+
+<h1 style={{ textAlign: 'center' }}>Joelesque Notation</h1>
+
+Joelesque notation is designed to speed up note-taking, reading time, and conserve page space. It includes symbols in place of common words or with their own meaning, letter abbreviations, and additional features such as word encryption, page anchors, and capture groups for referencing earlier parts of a sentence. It has been evolving since 2019 and taken inspiration from math notation, computer science syntax syntax, and other languages.
+
+{/* When hand-writing notes, the symbols are drawn. In digital notes, type the text shortcut with a period on both sides (`.`shortcut`.`). KeyboardMaestro.app on Mac or AutoKey on Linux will process the command.
+
+Examples:
+.bc. → ∵
+.oplus. →⊕ */}
+
+
+### Checking System
+
+## Features
+**Switch Case**
+
+- In the case of encryption, passwords, or emphasis, switch case modifies a word. To change a word into switch case, switch the last two sounds and add -un if it ends with a consonant, and -tun if it ends with a vowel. Examples:
+    - Joel → Joletun
+    - Language - languaegun
+
+**Variables**
+
+- In place for a variable, use $ followed by the word. Group $\{multiple words} with surrounding brackets. If there is no category, use plain ${}.
+    - $category     ie The die rolled $number
+    - ${}                    ie I like ${}
+- In place of an example, surround the example with $[]. This syntax makes it easier to spot the variable in a sentence or illustrate a concept with an example instead of definition. Additionally, a colon can separate the example from its type. (Inspired by TypeScript)
+    - Client: I like $[mangos : fruit]
+
+**Capture Groups**
+
+- When referring to a certain part of a phrase, use capture groups in parentheses and refer to them with \  ⊕ example below
+- (\<11.30>) $reading (\</11.30>)        \ indicates
+
+**Miscellaneous**
+
+- :$a - returns $a  ie `foo${str}`   : 'foobar' (origin: PHP)
+- b:$a - b is a type of $a ie [banana:fruit] (origin: TypeScript)
+- (a:=b) returns a
+    - Example: la cinematografía - (cinematography:=the art of motion picture photography)
+- {}: means in the format of
+    - e.g. P-codes; {}: P\d\{2,3}
+- \</> means the end of a section, such as the last page of a reading assignment
+
+
+### Common Abbreviations
+- diff - different
+- ppl - people
+- usu - usually
+- prob - probably
+- gov - government
+- ${}  ie ${} - fast example
+- → - simplifies to    ie 2+2 → 4
+- viz - that is to say, namely
+- Что \{}=what is a/the \{} or what does \{} mean? (from Russian, which excludes articles)
+
+
+### Tags
+Tags are appended to names to indicate something about them
+
+- \<P> - private
+- \<M> - mine (made by me as opposed to a system default)
+- \<T> - temporary
+
+
+### Prefixes
+- u_ - user input
+- j_ or m_ - made by me
+
+
+### Math Notation
+- \{description text} represents the same as a single letter would. This allows you to write more readable equations.
+    - PV=nRT because \{Pressure}\{Volume}=\{#mols}\{gas constant}\{temperature}
+- Use == instead of = in proofs or test conditions. This is to remind oneself that this is not an equation that can have operations done to on both sides.
+    - For example, prove $cot(x)^2==1-sec^2(x)$
+    - if $x==y+3$
+
+
+### Checkmarks
+![Correct](/image/symbols/checkmark.png)
+
+Correct
+
+![Minor Mistake](/image/symbols/minor-mistake.png)
+
+Minor Mistake
+
+![Major Mistake](/image/symbols/major-mistake.png)
+
+Major Mistake
+
+![Still can’t figure out answer](/image/symbols/major-mistake.png)
+
+Still can’t figure out answer
+
+**Smiley Versions:**
+
+![Smiley Check](/image/symbols/smiley-check.png)
+
+![Smiley Minor Mistake](/image/symbols/smiley-minor-mistake.png)
+
+![Smiley Mistake](/image/symbols/smiley-mistake.png)
+
+![Smiley Question](/image/symbols/smiley-question.png)
+
