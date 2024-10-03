@@ -23,9 +23,6 @@ export default function Resume() {
                 padding-left: 25px;
                 padding-right: 25px;
             }
-            #root>h3 {
-                margin-top: 1rem;
-            }
             #root li {
                 position: relative;
                 list-style-type: none;
@@ -57,6 +54,9 @@ export default function Resume() {
                 font-size: 0.9rem;
                 // no bullet point
                 list-style-type: none;
+            }
+            #activities-section .description {
+                color: black;
             }
             #root .indent {
                 padding-left: 3rem;
@@ -91,7 +91,7 @@ export default function Resume() {
                 </div>
 
                 {/* Export/Download Button */}
-                <Link href="https://docs.google.com/document/d/1KQD6eFb9rgbHEaR4BImEVhEnJuohLjokrUrJYhuAgCk/export?format=pdf" target="_blank" className="absolute top-10 right-8 unstyled">
+                <Link href="https://docs.google.com/document/d/1n0C4OwxBDtwiGWKBjpCsN7VpxVrgm6ONfo8iq2N_nhI/export?format=pdf" target="_blank" className="absolute top-10 right-8 unstyled">
                     <Button style={{
                         height: 40
                     }}>
@@ -101,62 +101,8 @@ export default function Resume() {
                 </Link>
 
 
-                <h3>Accomplishments</h3>
-
-                <div className="section hover:bg-green-100" id='climate-change-section'>
-                    <h4>Climate Change</h4>
-                    <ul>
-                        <li>
-                            <span className="title with-icon">
-                                <Image src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='solar panel' width={26} height={20}
-                                    className='inline bottom-0.5 relative'
-                                    style={{ right: 4 }}
-                                />
-                                Brought 410 kW solar installation to Riverdale, enough to power 40 households.
-                            </span>    
-                            <span className="date">2021&ndash;2024</span>
-                            <div className="description indent">Collected rooftop measurements, created solar models in HelioScope, gathered quotes from several installers, researched legal and financial aspects, and presented to administration and Board of Trustees.</div>
-                        </li>
-                        <li className='mb-2'>
-                            <span className="title with-icon">
-                                <SEBLogo size={25} inline style={{ marginLeft: 4, marginRight: -4, top: 7, right: 4, paddingTop: 4 }} />
-                                Founded <Link href='https://studentsforelectricbuses.org'>Students for Electric Buses</Link> to electrify bus fleets.
-                            </span>
-                            <span className="date !top-[5px]">2021&ndash;2024</span>
-                        </li>
-                        <li>
-                            <span className="title with-icon">
-                                <Image src='/image/ccc/electric-leaf-blowers/electric-leaf-blower.png' alt='leaf blower' width={20} height={13} className='relative bottom-[3px] mr-1 inline' />
-                                Electric Leaf Blowers
-                            </span>
-                            <span className="date">2022</span>
-                            <div className='description indent'>Convinced my school&apos;s facilities team to switch from gas to electric leaf blowers.</div>
-                        </li>
-                        <li>
-                            <span className="title">
-                                <Image src='/image/ccc/stopping-bus-idling/stopping-bus-idling.png' alt='stopping-bus-idling' width={20} height={13} className='relative bottom-[3px] mr-1 inline' />
-                                Stopping Bus Idling
-                            </span>
-                            <span className="date">2022</span>
-                            <div className="description inline-description">Wrote to bus contractor to enforce <Link href='https://portal.311.nyc.gov/article/?kanumber=KA-02222'>NYC&apos;s law banning bus idling</Link>.</div>
-                        </li>
-                        <li className='mb-2 mt-2'>
-                            <span className="title">Presented to middle school, upper school, and Riverdale alumni on climate solutions.</span>
-                            <span className="date">2021&ndash;23</span>
-                        </li>
-                        <li className='mb-2'>
-                            <span className="title">Leader of Sustainability Club (member 2021&ndash;23).</span>
-                            <span className="date">2023&ndash;24</span>
-                        </li>
-                        <li>
-                            <span className="title">En-ROADS Ambassador (climate educator).</span>
-                            <span className="date">2022&ndash;now</span>
-                        </li>
-                    </ul>
-                </div>
-                
                 <div className="section hover:bg-blue-100" id='software-section'>
-                    <h4>Software</h4>
+                    <h3>Projects</h3>
                     <ul>
                         <li>
                             <span className="title with-icon">
@@ -199,12 +145,88 @@ export default function Resume() {
                             <div className="description inline-description">online gallery showcasing my mom’s paintings.</div>
                         </li>
                         <li>
-                            <span className="title">Download link generators</span>
-                            <span className="date">2021</span>
-                            <div className="description inline-description">Tools for cloud storage used 17,000 times.</div>
+                            <span className="title"><Link href='https://www.youtube.com/watch?v=bHHk2FL5Ujs'>Venderoo</Link></span>
+                            <span className="date">2023</span>
+                            <div className="description inline-description">built a vending machine that sold snacks in school hallway.</div>
+                        </li>
+                        <li>
+                            <span className='description is-title'><Link href='https://youtube.com/@JoelGrayson'>YouTube channel</Link></span>
+                            {/* Wrote, acted, filmed, and edited 34 comedy videos with my father since age 11, created nine9 stop motion animations, and included other projects */}
+                            <span className='date'>2018&ndash;now</span>
+                            <div className="description inline-description">father-and-son comedy, project records, and claymation.</div>
                         </li>
                     </ul>
                 </div>
+
+
+                <div className="section hover:bg-green-100" id='climate-change-section'>
+                    <h3>Climate Change</h3>
+                    <ul>
+                        <li>
+                            <span className="title with-icon">
+                                <Image src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='solar panel' width={26} height={20}
+                                    className='inline bottom-0.5 relative'
+                                    style={{ right: 4 }}
+                                />
+                                Brought 493 kW solar installation to Riverdale, enough to power 40 households.
+                            </span>    
+                            <span className="date">2021&ndash;2024</span>
+                            <div className="description indent">Collected rooftop measurements, created solar models in HelioScope, gathered quotes from several installers, researched legal and financial aspects, and presented to administration and Board of Trustees.</div>
+                        </li>
+                        <li className='mb-2'>
+                            <span className="title with-icon">
+                                <SEBLogo size={25} inline style={{ marginLeft: 4, marginRight: -4, top: 7, right: 4, paddingTop: 4 }} />
+                                Founded <Link href='https://studentsforelectricbuses.org'>Students for Electric Buses</Link> to electrify school bus fleets.
+                            </span>
+                            <span className="date !top-[5px]">2021&ndash;2024</span>
+                        </li>
+                        <li className='mb-2'>
+                            <span className="title with-icon">
+                                Gave a <Link href="https://www.youtube.com/watch?v=rV_8xB7rGyQ">TEDx talk on combating climate change</Link>.
+                            </span>
+                            <span className="date !top-[5px]">2024</span>
+                        </li>
+                        <li className='mb-2'>
+                            <span className="title with-icon">
+                                Worked on connecting NYC street vendors to the electrical grid.
+                            </span>
+                            <span className="date !top-[5px]">2023–24</span>
+                        </li>
+                        
+                        <li>
+                            <span className="title">En-ROADS Ambassador (climate educator).</span>
+                            <span className="date">2022&ndash;now</span>
+                        </li>
+                    </ul>
+                </div>
+                
+
+                <div className="section hover:bg-red-100" id='activities-section'>
+                    <h3>Activities</h3>
+                    <ul>
+                        <li>
+                            <span className='description is-title'>Manhattan Community Board 1 member: Environmental and Youth & Ed Committees.</span>
+                            <span className='date'>2023&ndash;24</span>
+                        </li>
+                        <li>
+                            <span className='description is-title'><Link href="/research/organic-optoelectronics">Researched novel compound</Link> for organic solar cells at NYU&apos;s Molecular Design Institute.</span>
+                            <span className='date relative'>2023</span>
+                        </li>
+                        <li>
+                            <span className='description is-title'>Grade representative for five years in student government.</span>
+                            <span className='date'>2019&ndash;now</span>
+                        </li>
+                        <li>
+                            <span className='description is-title'>Violin: recitals (e.g., Praeludium & Allegro, Spring) and <Link href='/music'>compositions</Link>.</span>
+                            <span className='date'>2011&ndash;now</span>
+                        </li>
+                        <li>
+                            <span className='description is-title'>Interned for the Stone House Group (energy efficiency consultants).</span>
+                            <span className='date'>2021</span>
+                        </li>
+                    </ul>
+                </div>
+
 
                 <div className="section hover:bg-gray-200" id="education-section">
                     <h3>Education</h3>
@@ -225,51 +247,11 @@ export default function Resume() {
                 </div>
 
 
-                <div className="section hover:bg-red-100" id='activities-section'>
-                    <h3>Activities</h3>
-                    <ul>
-                        <li>
-                            <span className='description is-title'>Manhattan Community Board 1 member: Environmental and Youth & Ed Committees.</span>
-                            <span className='date'>2023&ndash;24</span>
-                        </li>
-                        <li>
-                            <span className='description is-title'>Researched novel compound at Lee Research Lab in NYU&apos;s seven-week ARISE program.</span>
-                            <span className='date relative'>2023</span>
-                        </li>
-                        <li>
-                            <span className='description is-title'>Grade representative for five years in student government.</span>
-                            <span className='date'>2019&ndash;now</span>
-                        </li>
-                        <li>
-                            <span className='description is-title'>Completed MIT xPRO&apos;s Introduction to Quantum Computing four-week course.</span>
-                            <span className='date'>2023</span>
-                        </li>
-                        <li>
-                            <span className='description is-title'>Interned for the Stone House Group (energy efficiency consultants).</span>
-                            <span className='date'>2021</span>
-                        </li>
-                        <li>
-                            <span className='description is-title'>Summer courses: NY Math Circle, Center for Talented Youth, Brown, Tufts, BU.</span>
-                            <span className='date'>2015&ndash;22</span>
-                        </li>
-                        <li>
-                            <span className='description is-title'>Violin: Praeludium & Allegro, Spring, Bach&apos;s Concerto No. 1 recitals; Interlochen; <Link href='/music'>Compositions</Link>.</span>
-                            <span className='date'>2011&ndash;now</span>
-                        </li>
-                        <li>
-                            <span className='description is-title'><Link href='https://youtube.com/SonAndFather'>YouTube channel</Link> with father-son comedy, project records, and claymation.</span>
-                            {/* Wrote, acted, filmed, and edited 34 comedy videos with my father since age 11, created nine9 stop motion animations, and included other projects */}
-                            <span className='date'>2018&ndash;now</span>
-                        </li>
-                    </ul>
-                </div>
-
-
                 <div className="section hover:bg-yellow-100" id='honors-section'>
                     <h3>Honors</h3>
                     <ul>
                         <li className='relative'>
-                            <span className="description is-title">Finalist in the Rise competition (global search for talented youth).</span>
+                            <span className="description is-title">Rise for the World finalist (global search for talented youth).</span>
                             <span className='date'>2021&ndash;22</span>
                         </li>
                     </ul>
