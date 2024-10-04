@@ -161,21 +161,21 @@ input[type='submit'] {
 
 
 /* ## Table */
-.j_table {
+table.styled {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
     border: 1px solid #555;
 }
-.j_table td, .j_table th {
+table.styled td, table.styled th {
     padding: 16px;
     border: 1px solid #555;
 }
-.j_table th {
+table.styled th {
     text-align: center;
     font-weight: bold;
 }
-.j_table td {
+table.styled td {
     text-align: left;
 }
 

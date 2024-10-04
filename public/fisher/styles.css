@@ -61,15 +61,15 @@ Replace (?<!#)##[^#](.*)
 
 
 /* j_table */
-.j_table {
+table.styled {
     border-collapse: collapse;
     background-color: #ddf;
 }
-.j_table td, .j_table th {
+table.styled td, table.styled th {
     border: 1px solid #aaa;
     padding: .2rem .5rem;
 }
-.j_table>tbody>tr+tr>th {
+table.styled>tbody>tr+tr>th {
     text-align: left;
 }
 

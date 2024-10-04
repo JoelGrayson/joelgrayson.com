@@ -1,6 +1,9 @@
+import Symbols from './Symbols';
 import Page from "@/components/page/DefaultPage";
 export default function LearningContent({children}) {
-	return <Page>{children}</Page>;
+	return <Page seo={{
+        title: 'Joelesque Notation',
+    }}>{children}</Page>;
 }
 
 <h1 style={{ textAlign: 'center' }}>Joelesque Notation</h1>
@@ -14,9 +17,14 @@ Examples:
 .oplus. →⊕ */}
 
 
-### Checking System
+## Table of Contents
+- [Features](#features)
+- [Abbreviations](#abbreviations)
+- [Symbols](#symbols)
 
-## Features
+
+<h2 id='features'>Features</h2>
+
 **Switch Case**
 
 - In the case of encryption, passwords, or emphasis, switch case modifies a word. To change a word into switch case, switch the last two sounds and add -un if it ends with a consonant, and -tun if it ends with a vowel. Examples:
@@ -47,7 +55,7 @@ Examples:
 - \</> means the end of a section, such as the last page of a reading assignment
 
 
-### Common Abbreviations
+<h2 id='abbreviations'>Common Abbreviations</h2>
 - diff - different
 - ppl - people
 - usu - usually
@@ -57,6 +65,7 @@ Examples:
 - → - simplifies to    ie 2+2 → 4
 - viz - that is to say, namely
 - Что \{}=what is a/the \{} or what does \{} mean? (from Russian, which excludes articles)
+- w.r.t. - with respect to
 
 
 ### Tags
@@ -80,30 +89,44 @@ Tags are appended to names to indicate something about them
     - if $x==y+3$
 
 
+<h2 id='symbols'>Symbols</h2>
+<Symbols />
+
 ### Checkmarks
-![Correct](/image/symbols/checkmark.png)
+<div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    justifyContent: 'center',
+}}>
+![Correct](/image/notation/checkmarks/checkmark.png)
+
+![Minor Mistake](/image/notation/checkmarks/minor-mistake.png)
+
+![Major Mistake](/image/notation/checkmarks/major-mistake.png)
+
+![Still can’t figure out answer](/image/notation/checkmarks/major-mistake.png)
 
 Correct
 
-![Minor Mistake](/image/symbols/minor-mistake.png)
-
 Minor Mistake
-
-![Major Mistake](/image/symbols/major-mistake.png)
 
 Major Mistake
 
-![Still can’t figure out answer](/image/symbols/major-mistake.png)
-
 Still can’t figure out answer
+</div>
 
 **Smiley Versions:**
+<div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    justifyContent: 'center',
+}}>
+![Smiley Check](/image/notation/checkmarks/smiley-check.png)
 
-![Smiley Check](/image/symbols/smiley-check.png)
+![Smiley Minor Mistake](/image/notation/checkmarks/smiley-minor-mistake.png)
 
-![Smiley Minor Mistake](/image/symbols/smiley-minor-mistake.png)
+![Smiley Mistake](/image/notation/checkmarks/smiley-mistake.png)
 
-![Smiley Mistake](/image/symbols/smiley-mistake.png)
-
-![Smiley Question](/image/symbols/smiley-question.png)
+![Smiley Question](/image/notation/checkmarks/smiley-question.png)
+</div>
 
