@@ -6,7 +6,6 @@ import SEBLogo from '@/components/by-page/home/SEB Logo';
 import BtnIcon from '@/components/by-page/home/BtnIcon';
 import ViolinBow from '@/components/page/headers/parts/ViolinBow';
 
-// TODO: add shadow to boxes
 // TODO: add shading gradient in boxes
 
 export type Stats={
@@ -34,7 +33,7 @@ export type Stats={
     }[];
 };
 
-export default function Content({ stats }: { stats: Stats | null }) {
+export default function Tiles({ stats }: { stats: Stats | null }) {
     return <>
         {/* Icons */}
         <article className='mx-auto px-4 !max-w-[600px] d:gap-[20px]' style={{
@@ -112,10 +111,8 @@ export default function Content({ stats }: { stats: Stats | null }) {
                 <span>Machines</span>
             </BtnIcon>
             <BtnIcon href='/music'>
-                <div className="absolute flex h-[70px] top-[86px]">
-                    <ViolinBow right={20} bottom={80} />
-                    <span>Compositions</span>
-                </div>
+                <ViolinBow />
+                <span>Compositions</span>
             </BtnIcon>
             <BtnIcon href='/research/organic-optoelectronics' target='_self'>
                 <Image alt='Homework Checker Logo' height={50} width={50} src='/image/ccc/BrDPA-AzoBipy Structure.png' className='mb-1 pt-3' />

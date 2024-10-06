@@ -36,7 +36,13 @@ export default function DefaultHeader({ pathname='' }: { pathname?: string }) {
                     <HeaderGroupItem pathname={pathname} link='/art'>Art</HeaderGroupItem>
                     <HeaderGroupItem pathname={pathname} link='/music'>
                         <span>Music &emsp;&nbsp;&nbsp;</span>
-                        <ViolinBow right={-12} bottom={-8} />
+                        <div style={{
+                            position: 'absolute',
+                            right: -12,
+                            bottom: -8,
+                        }}>
+                            <ViolinBow />
+                        </div>
                     </HeaderGroupItem>
                     <HeaderGroupItem pathname={pathname} link='/slaphappy'>Slaphappy</HeaderGroupItem>
                     <HeaderGroupItem pathname={pathname} link='/learn'>Learning Resources</HeaderGroupItem>

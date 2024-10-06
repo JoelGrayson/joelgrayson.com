@@ -1,16 +1,11 @@
 import Image from 'next/image';
 import Page from '@/components/page/DefaultPage';
-import Content, { Stats } from '@/app/Content';
+import Tiles, { Stats } from '@/components/by-page/home/Tiles';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Yt from '@/components/global/Yt';
 
 export default function Home() {
-    // const [hCInstalls, setHCInstalls]=useState<number | null>(null);
-    // const [focusInstalls, setFocusInstalls]=useState<number | null>(null);
-    // const [buserooSearches, setBuserooSearches]=useState<number | null>(null);
-    // const editTimeInstalls=2545 as number; //manually inserted from AppStoreConnect analytics
-    // const [shanghaiDictionarySearches, setShanghaiDictionarySearches]=useState<number | null>(null);
     const [stats, setStats]=useState<Stats | null>(null);
     
     useEffect(()=>{
@@ -70,7 +65,6 @@ export default function Home() {
                     }
                 */
             });
-    // eslint-disable-next-line
     }, []);
     
     return <Page noPadding pathname='/' seo={{
@@ -128,16 +122,12 @@ export default function Home() {
             <p className='indent-8'>Among my engineering projects, I built a vending machine that served snacks to people at school, Jacob&apos;s ladder that acts as my morning alarm, wooden pinball machine, and slayer exciter. You can explore my projects in more depth below:</p>
         </div>
 
-
-        {/* Squares (client component) */}
-        <Content stats={stats} />
-
+        <Tiles stats={stats} />
 
         <div className='bg-gray-200 pt-5 pb-10' style={{
             borderTop: '1px solid #ddd'
         }}>
             <h3 className='text-center mb-2'>Recent Videos</h3>
-            {/* <div className='flex lg:gap-3 justify-center'> */}
             <div style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, 300px)',
