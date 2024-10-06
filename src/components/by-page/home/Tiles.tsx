@@ -42,78 +42,87 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
             justifyItems: 'center',
             alignItems: 'center'
         }}>
-            <Tile href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj' tryptic>
-                <Image alt='Homework Checker Logo' height={50} width={50} src='/image/home/optimized/homework-checker-logo.avif' />
+            <Tryptic
+                name='Homework Checker'
+                href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'
+                stat={stats?.homeworkCheckerUsers}
+            >
                 <span className='text-[0.8rem]'>Homework Checker</span>
-                { stats?.homeworkCheckerUsers!=null && stats.homeworkCheckerUsers!==-4 && <Label>{stats.homeworkCheckerUsers} installs</Label> }
-            </Tile>
-            <Tile href='https://apps.apple.com/us/app/edit-time/id6464405876' tryptic>
-                <Image alt='Edit Time Logo' height={50} width={50} className='relative left-0.5 bottom-3' src='/image/home/edit-time-logo.png' />
-                <span className='relative bottom-3'>Edit Time</span>
-                { stats?.editTimeUsers!=null && stats.editTimeUsers!==-4 && <Label>{stats.editTimeUsers} installs</Label> }
-            </Tile>
-            <Tile href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf'>
-                <Image alt='focus-logo' height={50} width={50} src='/image/home/optimized/focus-logo.avif' />
-                <span>Focus</span>
-                { stats?.focusUsers!=null && stats.focusUsers!==-4 && <Label>{stats.focusUsers} installs</Label> }
-            </Tile>
-
-            <Tile href='https://buseroo.com'>
-                <Image alt='buseroo-logo' height={48} width={48} className='mb-0.5' src='/image/home/optimized/buseroo-logo.avif' />
-                <span>Buseroo<DotCom /></span>
-                { stats?.buserooSearches!=null && stats.buserooSearches!==-4 && <Label>{stats.buserooSearches} searches</Label> }
-            </Tile>
-            <Tile href='https://shanghaidictionary.com'>
-                <Image alt='Shanghai Dictionary Logo' height={50} width={50} src='/image/home/shanghai-dictionary-logo.jpg' />
-                <span className=''>Shanghai Dictionary<DotCom /></span>
-                { stats?.shanghaiDictionarySearches!=null && <Label absolute={false}>{stats?.shanghaiDictionarySearches} searches</Label> }
-            </Tile>
+            </Tryptic>
+            <Tryptic
+                name='Edit Time'
+                href='https://apps.apple.com/us/app/edit-time/id6464405876'
+                stat={stats?.editTimeUsers}
+            >
+                Edit Time
+            </Tryptic>
+            <Tryptic
+                name='Focus'
+                href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf'
+                stat={stats?.focusUsers}
+            >
+                Focus
+            </Tryptic>
+            
+            <Tryptic
+                name='Buseroo'
+                href='https://buseroo.com'
+                stat={stats?.buserooSearches}
+                statMetric='searches'
+            >
+                Buseroo<DotCom />
+            </Tryptic>
+            <Tryptic
+                name='Shanghai Dictionary'
+                href='https://shanghaidictionary.com'
+                stat={stats?.shanghaiDictionarySearches}
+                statMetric='searches'
+            >
+                Shanghai Dictionary<DotCom />
+            </Tryptic>
+            
             <Tile href='https://lirongart.com'>
-                <Image alt='Lirong Art Logo' height={70} width={70} className='relative mb-2' src='/image/home/lirongart-logo.png' />
-                <span className=''>Lirong Art<DotCom /></span>
+                <Image alt='Lirong Art Logo' width={50} height={50} className='relative mb-2' src='/image/home/lirongart-logo.png' />
+                <span>Lirong Art<DotCom /></span>
             </Tile>
 
             <Tile href='https://shirtocracy.com'>
-                <Image alt='Shirtocracy Logo' height={80} width={80} className='relative left-0.5 mb-1' src='/image/home/shirtocracy-logo.png' />
-                <span className=''>Shirtocracy<DotCom /></span>
+                <Image alt='Shirtocracy Logo' width={60} height={60} className='relative left-0.5 mb-1' src='/image/home/shirtocracy-logo.png' />
+                <span>Shirtocracy<DotCom /></span>
             </Tile>
             <Tile href='https://sparelearn.com'>
-                <Image alt='Spare Learn Logo' height={50} width={50} src='/image/software/sparelearn/logo.png' />
+                <Image alt='Spare Learn Logo' width={50} height={50} src='/image/software/sparelearn/logo.png' />
                 <span className='text-[1rem]'>SpareLearn<DotCom /></span>
             </Tile>
             <Tile href='https://memorizethepresidents.com'>
-                <Image alt='Memorize the Presidents Logo' height={80} width={80} className='relative left-0.5 mb-1' src='/image/home/memorize-the-presidents-logo.png' />
-                <span className=''>MemorizeThe<br />Presidents<DotCom /></span>
+                <Image alt='Memorize the Presidents Logo' width={50} height={50} className='relative left-0.5 mb-1' src='/image/home/memorize-the-presidents-logo.png' />
+                <span>MemorizeThe<br />Presidents<DotCom /></span>
             </Tile>
 
             <Tile href='/combating-climate-change#solar-for-riverdale' target='_self'>
                 {/* TODO: sunbeam going down when hover */}
-                <div style={{width: 50, height: 50, display: 'grid', placeItems: 'center'}}>
-                    <Image alt='solar' height={50} width={37.5} src='/image/home/optimized/solar-for-riverdale.avif' />
-                </div>
+                <Image alt='solar' width={50} height={38} src='/image/home/optimized/solar-for-riverdale.avif' />
                 <span>Solar for Riverdale</span>
             </Tile>
             <Tile href='https://studentsforelectricbuses.org'>
-                <SEBLogo size={75} />
+                <SEBLogo size={50} />
                 <span>Students for Electric Buses</span>
             </Tile>
             <Tile href='/connecting-street-vendors-to-the-grid' target='_self'>
-                <Image alt='Generators vs. Grid' height={55} width={100} className='relative left-2' src='/image/connecting-street-vendors-to-the-grid/generators-versus-grid.gif' />
+                <Image alt='Generators vs. Grid' width={100} height={55} className='relative left-2' src='/image/connecting-street-vendors-to-the-grid/generators-versus-grid.gif' />
                 <span className='text-[0.8rem]'>Connecting Street Vendors to the Grid</span>
             </Tile>
 
             <Tile href='/machines' target='_self'>
-                <div style={{width: 80, height: 69, display: 'grid', placeItems: 'center'}}>
-                    <Image alt='Combination Safe Machine' height={80} width={71.3} src='/image/home/optimized/machine.avif' />
-                </div>
+                <Image alt='Combination Safe Machine' width={60} height={53} src='/image/home/optimized/machine.avif' />
                 <span>Machines</span>
             </Tile>
             <Tile href='/music'>
-                <ViolinBow />
+                <ViolinBow size={50} />
                 <span>Compositions</span>
             </Tile>
             <Tile href='/research/organic-optoelectronics' target='_self'>
-                <Image alt='Homework Checker Logo' height={50} width={50} src='/image/ccc/BrDPA-AzoBipy Structure.png' className='mb-1 pt-3' />
+                <Image alt='Homework Checker Logo' width={50} height={50} src='/image/ccc/BrDPA-AzoBipy Structure.png' className='mb-1 pt-3' />
                 <span className='text-[1rem]'>Organic Solar Cell Research</span>
             </Tile>
             
@@ -128,13 +137,13 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
     </>;
 }
 
-
-function Tile({ href, children, target='_blank', tryptic=false }: { href: string; children: any; target?: string; tryptic?: boolean }) {
+function Tile({ href, children, target='_blank', gap=10 }: { href: string; children: any; target?: string; gap?: number }) {
     return <Link
         className='unstyled relative shadow-md hover:shadow-lg transition duration-100'
         style={{
             display: 'flex',
             flexDirection: 'column',
+            gap,
             justifyContent: 'center',
             alignItems: 'center',
             border: '1px solid #333',
@@ -156,8 +165,22 @@ function Tile({ href, children, target='_blank', tryptic=false }: { href: string
     </Link>;
 }
 
-function Label({children, absolute=true}: {children: any, absolute?: boolean}) {
-    return <div className={`${absolute ? 'absolute' : ''} bottom-2 bg-[#ffd166] px-1.5 text-sm py-0.5 rounded-lg border border-[#ecb715]`}>{children}</div>;
+function Tryptic({ name, href, children, stat, statMetric='installs' }: { name: string; href: string; children: any; stat: number | null | undefined; statMetric?: string }) {
+    return <Tile href={href} gap={1}>
+        <div style={{ height: 50 }}>
+            <Image alt={`${name} Logo`} width={50} height={50} src={`/image/home/${hyphenateName(name)}-logo.png`} />
+        </div>
+        <span>{children}</span>
+        { stat!=null && stat!==-4 && <Label>{stat} {statMetric}</Label> }
+    </Tile>;
+}
+
+function hyphenateName(name: string) {
+    return name.toLowerCase().replace(/ /g, '-');
+}
+
+function Label({children}: {children: any}) {
+    return <div className={`bg-[#ffd166] px-1.5 text-sm py-0.5 rounded-lg border border-[#ecb715]`}>{children}</div>;
 }
 
 function DotCom() {

@@ -96,7 +96,7 @@ export default function StudentGovernment() {
         <h3 className='mt-5'>12th Grade</h3>
         <Image src="/student-government/posters/12th/Poster.png" alt="Poster" width={500} height={310} />
         <div className="flex gap-3">
-            <Image src="/student-government/posters/12th/Poster 2.png" alt="Poster 2" height={350} width={247} />
+            <Image src="/student-government/posters/12th/Poster 2.png" alt="Poster 2" width={247} height={350} />
             <Image src="/student-government/posters/12th/I Want You.png" alt="I Want You" width={294} height={350} />
         </div>
         <div className="flex gap-3">
@@ -111,7 +111,7 @@ export default function StudentGovernment() {
         <Image src="/student-government/posters/10th/Poster.png" alt="Poster" width={500} height={358.5} />
 
         <h3 className='mt-5'>9th Grade</h3>
-        <Image src="/student-government/posters/9th/Drake Hotline.jpg" alt="Drake Hotline" height={250} width={250} />
+        <Image src="/student-government/posters/9th/Drake Hotline.jpg" alt="Drake Hotline" width={250} height={250} />
         <div className="flex items-center gap-5">
             <p>Endorsement from Obama:</p>
             <video

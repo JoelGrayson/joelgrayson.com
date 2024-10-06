@@ -41,7 +41,7 @@ export default function OneDriveDownloadLinkGenerator() {
                     <h3 className='text-center'>Instructions</h3>
                     <FancyOl>
                         <li>Select a file and click <Image src='/image/software/download-link-generators/share.webp' alt='Share' className='inline' width={77} height={22} /></li>
-                        <li>Click <Image src='/image/software/download-link-generators/copy-link.webp' alt='copy link' className='inline' height={46} width={36} /></li>
+                        <li>Click <Image src='/image/software/download-link-generators/copy-link.webp' alt='copy link' className='inline' width={36} height={46} /></li>
                         <li>Paste link in tool</li>
                     </FancyOl>
                 </div>

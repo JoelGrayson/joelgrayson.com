@@ -72,8 +72,8 @@ export default function ConnectingStreetVendorsToTheGrid() {
         <Footnote number={2} title='New York State Department of Environmental Conservation' href='https://www.dec.ny.gov/energy/99223.html' />
 
 
-        <Image className='inline mt-6 mr-4' src='/image/connecting-street-vendors-to-the-grid/svp-logo-text.jpg' alt='SVP Logo' height={100} width={66} />
-        <Image className='inline mt-6' src='/image/connecting-street-vendors-to-the-grid/mocej-logo.png' alt='MOCEJ Logo' height={100} width={292} />
+        <Image className='inline mt-6 mr-4' src='/image/connecting-street-vendors-to-the-grid/svp-logo-text.jpg' alt='SVP Logo' width={66} height={100} />
+        <Image className='inline mt-6' src='/image/connecting-street-vendors-to-the-grid/mocej-logo.png' alt='MOCEJ Logo' width={292} height={100} />
         
         
     </ConnectingStreetVendorstotheGridPage>;
