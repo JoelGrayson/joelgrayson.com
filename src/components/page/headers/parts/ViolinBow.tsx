@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { gsap } from 'gsap';
 import { useRef, useEffect } from 'react';
 
-export default function ViolinBow() {
+export default function ViolinBow({ right, bottom }: { right: number; bottom: number }) {
     const bowRef=useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement> ;
 
     useEffect(()=>{ //violin bow animation back and forth
@@ -34,10 +34,10 @@ export default function ViolinBow() {
     }, []);
 
     return <>
-        <div className='absolute right-[-12px] bottom-[-10px]'>
+        <div style={{ position: 'absolute', right, bottom }}>
             <Image src='/image/header/violin.png' height='42' width='42' alt='violin' />
         </div>
-        <div className='absolute right-[-12px] bottom-[-10px]' ref={bowRef}>
+        <div ref={bowRef} style={{ position: 'absolute', right, bottom }}>
             <Image src='/image/header/bow.png' height='42' width='42' alt='bow' />
         </div>
     </>;

@@ -52,8 +52,6 @@ async function main() {
             console.warn('No data found for', date, 'in the CSV');
         }
     }
-    
-    console.log(data);
 }
 
 function sleep(seconds) {

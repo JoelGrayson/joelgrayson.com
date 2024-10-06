@@ -4,11 +4,37 @@ import Image from 'next/image';
 
 import SEBLogo from '@/components/by-page/home/SEB Logo';
 import BtnIcon from '@/components/by-page/home/BtnIcon';
+import ViolinBow from '@/components/page/headers/parts/ViolinBow';
 
 // TODO: add shadow to boxes
 // TODO: add shading gradient in boxes
 
-export default function Content({hCInstalls, focusInstalls, buserooSearches, editTimeInstalls}: {hCInstalls: number | null, focusInstalls: number | null, buserooSearches: number | null; editTimeInstalls: number}) {
+export type Stats={
+    id: string;
+    date: string;
+    focusUsers: number;
+    homeworkCheckerUsers: number;
+    buserooSearches: number;
+    shirtocracyOrders: number;
+    journalUsers: number;
+    projectsUsers: number;
+    habitUsers: number;
+    numbersUsers: number;
+    editTimeUsers: number;
+    blogViews: number;
+    buserooUsers: number;
+    shanghaiDictionarySearches: number;
+    driveDownloadLinkGeneratorVisits: number;
+    dropboxDownloadLinkGeneratorVisits: number;
+    boxDownloadLinkGeneratorVisits: number;
+    pageVisits: {
+        id: string;
+        url: string;
+        visits: number;
+    }[];
+};
+
+export default function Content({ stats }: { stats: Stats | null }) {
     return <>
         {/* Icons */}
         <article className='mx-auto px-4 !max-w-[600px] d:gap-[20px]' style={{
@@ -38,28 +64,28 @@ export default function Content({hCInstalls, focusInstalls, buserooSearches, edi
             
             <BtnIcon href='https://buseroo.com'>
                 <Image alt='buseroo-logo' height={48} width={48} className='mb-0.5' src='/image/home/optimized/buseroo-logo.avif' />
-                <span>Buseroo.com</span>
-                { buserooSearches!=null && buserooSearches!=-4 && <Label>{buserooSearches} searches</Label> }
+                <span>Buseroo<DotCom /></span>
+                { stats?.buserooSearches!=null && stats.buserooSearches!==-4 && <Label>{stats.buserooSearches} searches</Label> }
             </BtnIcon>
             <BtnIcon href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf'>
                 <Image alt='focus-logo' height={50} width={50} src='/image/home/optimized/focus-logo.avif' />
                 <span>Focus</span>
-                { focusInstalls!=null && focusInstalls!=-4 && <Label>{focusInstalls} installs</Label> }
+                { stats?.focusUsers!=null && stats.focusUsers!==-4 && <Label>{stats.focusUsers} installs</Label> }
             </BtnIcon>
             <BtnIcon href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>
                 <Image alt='Homework Checker Logo' height={50} width={50} src='/image/home/optimized/homework-checker-logo.avif' />
                 <span className='text-[0.8rem]'>Homework Checker</span>
-                { hCInstalls!=null && hCInstalls!=-4 && <Label>{hCInstalls} installs</Label> }
+                { stats?.homeworkCheckerUsers!=null && stats.homeworkCheckerUsers!==-4 && <Label>{stats.homeworkCheckerUsers} installs</Label> }
             </BtnIcon>
         
             <BtnIcon href='https://apps.apple.com/us/app/edit-time/id6464405876'>
                 <Image alt='Edit Time Logo' height={80} width={80} className='relative left-0.5 bottom-3' src='/image/home/edit-time-logo.png' />
                 <span className='relative bottom-3'>Edit Time</span>
-                <Label>{editTimeInstalls} installs</Label>
+                { stats?.editTimeUsers!=null && stats.editTimeUsers!==-4 && <Label>{stats.editTimeUsers} installs</Label> }
             </BtnIcon>
             <BtnIcon href='https://sparelearn.com'>
                 <Image alt='Spare Learn Logo' height={50} width={50} src='/image/software/sparelearn/logo.png' />
-                <span className='text-[1rem]'>SpareLearn.com</span>
+                <span className='text-[1rem]'>SpareLearn<DotCom /></span>
             </BtnIcon>
             <BtnIcon href='/research/organic-optoelectronics' target='_self'>
                 <Image alt='Homework Checker Logo' height={50} width={50} src='/image/ccc/BrDPA-AzoBipy Structure.png' className='mb-1 pt-3' />
@@ -73,33 +99,43 @@ export default function Content({hCInstalls, focusInstalls, buserooSearches, edi
 
             <BtnIcon href='https://lirongart.com'>
                 <Image alt='Lirong Art Logo' height={70} width={70} className='relative mb-2' src='/image/home/lirongart-logo.png' />
-                <span className=''>Lirong Art</span>
+                <span className=''>Lirong Art<DotCom /></span>
             </BtnIcon>
             <BtnIcon href='https://shirtocracy.com'>
                 <Image alt='Shirtocracy Logo' height={80} width={80} className='relative left-0.5 mb-1' src='/image/home/shirtocracy-logo.png' />
-                <span className=''>Shirtocracy</span>
+                <span className=''>Shirtocracy<DotCom /></span>
             </BtnIcon>
-
-            {/* <BtnIcon href='/nyc'>
-                <Image alt='NYC Logo' height={70} width={70} className='relative top-1' src='/image/patriotism/nyc-flag.jpg' />
-                <span className='relative top-3'>NYC</span>
-            </BtnIcon> */}
-            {/* <BtnIcon href=''>
-                <Image alt='NYC Logo' height={70} width={70} className='relative top-1' src='/image/patriotism/nyc-flag.jpg' />
-                <span className='relative top-3'>Venderoo</span>
-            </BtnIcon> */}
-            {/* <BtnIcon href='/nyc'>
-                <ViolinBow />
-                <span className='relative top-3'>Compositions</span>
-            </BtnIcon> */}
+            <BtnIcon href='https://shanghaidictionary.com'>
+                <Image alt='Shanghai Dictionary Logo' height={50} width={50} src='/image/home/shanghai-dictionary-logo.jpg' />
+                <span className=''>Shanghai Dictionary<DotCom /></span>
+                { stats?.shanghaiDictionarySearches!=null && <Label absolute={false}>{stats?.shanghaiDictionarySearches} searches</Label> }
+            </BtnIcon>
+            
+            <BtnIcon href='/music'>
+                <div className="absolute flex h-[70px] top-[86px]">
+                    <ViolinBow right={20} bottom={80} />
+                    <span>Compositions</span>
+                </div>
+            </BtnIcon>
             
             {/* Memorize the Presidents */}
             {/* More Tiles: Venderoo, Compositions, NYC Government, BulletBrainstorm */}
+
+            {/* New arrangement:
+            HW Checker, Edit Time, Focus
+            Buseroo, LirongArt.com, Shirtocracy.com
+            ShanghaiDictionary.com, SpareLearn.com, MTP
+            Solar for Riverdale, Students for Electric Buses, Connect2Grid
+            Machines, Compositions, Organic Solar Cell Research */}
         </article>
     </>;
 }
 
-function Label({children}: {children: any}) {
-    return <div className='absolute bottom-2 bg-[#ffd166] px-1.5 text-sm py-0.5 rounded-lg border border-[#ecb715]'>{children}</div>;
+function Label({children, absolute=true}: {children: any, absolute?: boolean}) {
+    return <div className={`${absolute ? 'absolute' : ''} bottom-2 bg-[#ffd166] px-1.5 text-sm py-0.5 rounded-lg border border-[#ecb715]`}>{children}</div>;
+}
+
+function DotCom() {
+    return <span className='text-sm'>.com</span>;
 }
 

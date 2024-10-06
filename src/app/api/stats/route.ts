@@ -32,5 +32,21 @@ export async function GET() {
         );
     }
 
+    const returning=stats[0];
+    // Get the editTimeUsers from the last time it was updated
+    const editTimeUsersStats=await prisma.stats.findFirst({
+        orderBy: {
+            date: 'desc'
+        },
+        where: {
+            editTimeUsers: {
+                not: null
+            }
+        },
+        select: {
+            editTimeUsers: true
+        }
+    });
+    returning.editTimeUsers=editTimeUsersStats?.editTimeUsers || -4;
     return NextResponse.json(stats[0]);
 }

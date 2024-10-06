@@ -8,6 +8,7 @@ export default function Wisdom() {
         
         <h3>For Entrepreneurs</h3>
         <p>Lots of ambition is good. Overconfidence is bad.</p>
+        <p>Care less about what others think about you.</p>
     </Page>;
 }
 
