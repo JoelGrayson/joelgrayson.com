@@ -63,6 +63,7 @@ model Stats {
     numbersUsers         Int?
 
     // Additional Not Displayed (not included in diff, Joelesque Empire Board, or cpp-friendly)
+    editTimeUsers                      Int?
     blogViews                          Int?
     buserooUsers                       Int?
     shanghaiDictionarySearches         Int?
