@@ -1,4 +1,4 @@
-import SEBLogo from "@/components/by-page/home/SEB Logo";
+import SEBLogo from "@/components/by-page/home/SEBLogo";
 import { css } from "@emotion/css";
 import Button from "@jcomponents/button";
 import Image from "next/image";

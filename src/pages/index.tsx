@@ -11,59 +11,61 @@ export default function Home() {
     useEffect(()=>{
         if (stats) return;
         
+        if (process.env.NODE_ENV==='development') { //make sure not to make too many requests in dev
+            setStats({
+                "id": "cm1wwlsmg0000onyg75rxzo9g",
+                "date": "2024-10-06T01:27:54.665Z",
+                "focusUsers": 753,
+                "homeworkCheckerUsers": 1000,
+                "buserooSearches": 750,
+                "shirtocracyOrders": 24,
+                "journalUsers": -4,
+                "projectsUsers": -4,
+                "habitUsers": -4,
+                "numbersUsers": -4,
+                "blogViews": 1756,
+                "buserooUsers": 7,
+                "editTimeUsers": 2000,
+                "shanghaiDictionarySearches": 259,
+                "driveDownloadLinkGeneratorVisits": 10004,
+                "dropboxDownloadLinkGeneratorVisits": 1595,
+                "boxDownloadLinkGeneratorVisits": 8528,
+                "pageVisits": [
+                    {
+                        "id": "cm0389rqy0000106y8v8xq4pd",
+                        "url": "/",
+                        "visits": 25
+                    },
+                    {
+                        "id": "clzg2dcwq002d2ffztkbce761",
+                        "url": "/software/box-download-link-generator",
+                        "visits": 8528
+                    },
+                    {
+                        "id": "clzga9bvr000210d8f64uk69x",
+                        "url": "/software/onedrive-download-link-generator",
+                        "visits": 8430
+                    },
+                    {
+                        "id": "clzgaat8t000310d8al7x2xtq",
+                        "url": "/software/dropbox-download-link-generator",
+                        "visits": 1595
+                    },
+                    {
+                        "id": "clzg1r53x00002ffz2kjyr5pn",
+                        "url": "/software/drive-download-link-generator",
+                        "visits": 10004
+                    }
+                ]
+            })
+            return;
+        }
+
         fetch('/api/stats')
             .then(res=>res.json())
             .then(res=>{
                 console.log(res);
                 setStats(res);
-                /*
-                    Example
-                    const x: Stats={
-                        "id": "cm1wwlsmg0000onyg75rxzo9g",
-                        "date": "2024-10-06T01:27:54.665Z",
-                        "focusUsers": 753,
-                        "homeworkCheckerUsers": 1000,
-                        "buserooSearches": 750,
-                        "shirtocracyOrders": 24,
-                        "journalUsers": -4,
-                        "projectsUsers": -4,
-                        "habitUsers": -4,
-                        "numbersUsers": -4,
-                        "blogViews": 1756,
-                        "buserooUsers": 7,
-                        "shanghaiDictionarySearches": 259,
-                        "driveDownloadLinkGeneratorVisits": 10004,
-                        "dropboxDownloadLinkGeneratorVisits": 1595,
-                        "boxDownloadLinkGeneratorVisits": 8528,
-                        "pageVisits": [
-                            {
-                                "id": "cm0389rqy0000106y8v8xq4pd",
-                                "url": "/",
-                                "visits": 25
-                            },
-                            {
-                                "id": "clzg2dcwq002d2ffztkbce761",
-                                "url": "/software/box-download-link-generator",
-                                "visits": 8528
-                            },
-                            {
-                                "id": "clzga9bvr000210d8f64uk69x",
-                                "url": "/software/onedrive-download-link-generator",
-                                "visits": 8430
-                            },
-                            {
-                                "id": "clzgaat8t000310d8al7x2xtq",
-                                "url": "/software/dropbox-download-link-generator",
-                                "visits": 1595
-                            },
-                            {
-                                "id": "clzg1r53x00002ffz2kjyr5pn",
-                                "url": "/software/drive-download-link-generator",
-                                "visits": 10004
-                            }
-                        ]
-                    }
-                */
             });
     }, []);
     

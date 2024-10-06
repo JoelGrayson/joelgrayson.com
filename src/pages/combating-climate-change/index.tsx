@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Page from '@/components/page/DefaultPage';
-import SEBLogo from '@/components/by-page/home/SEB Logo';
+import SEBLogo from '@/components/by-page/home/SEBLogo';
 import Image from 'next/image';
 import styles from '@/styles/ccc/sections.module.css';
 import Link from 'next/link';
