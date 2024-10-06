@@ -122,10 +122,10 @@ export default function Home() {
         <div className="w-full max-w-[680px] px-4 mx-auto pt-8 pb-1 leading-8">
             <p className='indent-8'>Hi, I&apos;m Joel. I like to work on <Link href='/machines' target='_blank'>machines</Link>, <Link href='/software' target='_blank'>software</Link>, and <Link href='/combating-climate-change' target='_blank'>climate solutions</Link>.</p>
             
-            <p className='indent-8'>I helped to bring a <Link href='/combating-climate-change#solar-for-riverdale' target='_blank'>solar installation</Link> to Riverdale Country School, which will save 250 metric tons of CO₂ equivalent each year, save Riverdale money, supply backup power during outages, and provide live energy data for use in the science curriculum. I founded <Link href='https://studentsforelectricbuses.org' target='_blank'>Students for Electric Buses</Link>, a club attempting to transition Riverdale’s bus provider to electric school buses. I also did <Link href='/research/organic-optoelectronics' target='_blank'>research on organic solar cells</Link> at New York University’s Lee Research Lab.</p>
-            <p className='indent-8'>I served on Manhattan Community Board One’s Environmental Protection Committee, which plans Lower Manhattan’s climate resiliency projects, and the Youth & Education Committee. I worked with the Mayor’s Office of Climate and Environmental Justice and Street Vendor Project on connecting street vendors to the electrical grid instead of using gas generators (<Link href='/connecting-street-vendors-to-the-grid'>see more</Link>).</p>
+            <p className='indent-8'>I helped to bring a <Link href='/combating-climate-change#solar-for-riverdale' target='_blank'>solar installation</Link> to Riverdale Country School, which will save 250 metric tons of CO₂ equivalent each year, save Riverdale money, supply backup power during outages, and provide live energy data for use in the science curriculum. I founded <Link href='https://studentsforelectricbuses.org' target='_blank'>Students for Electric Buses</Link>, a club attempting to transition Riverdale&apos;s bus provider to electric school buses. I also did <Link href='/research/organic-optoelectronics' target='_blank'>research on organic solar cells</Link> at New York University&apos;s Lee Research Lab.</p>
+            <p className='indent-8'>I served on Manhattan Community Board One&apos;s Environmental Protection Committee, which plans Lower Manhattan&apos;s climate resiliency projects, and the Youth & Education Committee. I worked with the Mayor&apos;s Office of Climate and Environmental Justice and Street Vendor Project on connecting street vendors to the electrical grid instead of using gas generators (<Link href='/connecting-street-vendors-to-the-grid'>see more</Link>).</p>
             <p className='indent-8'>Among my software projects, <Link href='https://buseroo.com' target='_blank'>Buseroo.com</Link> has helped students find which school bus goes to any address, <Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj' target='_blank'>Homework Checker</Link> helps {(stats?.homeworkCheckerUsers && stats?.homeworkCheckerUsers!==-4) ? stats?.homeworkCheckerUsers : ''} students manage their homework, <Link href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf' target='_blank'>Focus for Google Docs</Link> helps {stats?.focusUsers && stats?.focusUsers!==-4 ? stats?.focusUsers : ''} people write without distractions,{stats?.editTimeUsers && stats.editTimeUsers!==-4 ? <span> <Link href='https://apps.apple.com/us/app/edit-time/id6464405876' target='_blank'>Edit Time</Link> helps {stats.editTimeUsers} people manage their file&apos;s last modified properties,</span> : ''} and <Link href='https://lirongart.com' target='_blank'>LirongArt.com</Link> showcases my mom&apos;s paintings.</p>
-            <p className='indent-8'>Among my engineering projects, I built a vending machine that served snacks to people at school, Jacob’s ladder that acts as my morning alarm, wooden pinball machine, and slayer exciter. You can explore my projects in more depth below:</p>
+            <p className='indent-8'>Among my engineering projects, I built a vending machine that served snacks to people at school, Jacob&apos;s ladder that acts as my morning alarm, wooden pinball machine, and slayer exciter. You can explore my projects in more depth below:</p>
         </div>
 
 
@@ -145,13 +145,12 @@ export default function Home() {
                 justifyContent: 'center',
                 justifyItems: 'center'
             }}>
-                {/* TEDx video */}
-                <Yt width='fit-content'>rV_8xB7rGyQ</Yt>
-                {/* Venderoo video */}
+                {/* Venderoo */}
                 <Yt width='fit-content'>bHHk2FL5Ujs</Yt>
-                {/* GuardBox video */}
+                {/* TEDx */}
+                <Yt width='fit-content'>rV_8xB7rGyQ</Yt>
+                {/* The Hectic Journey */}
                 <Yt width='fit-content'>1o4ugYFm5ag</Yt>
-                {/* <Yt width='fit-content'>DbfRmZZx4VA</Yt> */}
             </div>
         </div>
     </Page>;
