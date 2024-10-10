@@ -67,6 +67,7 @@ export default function Home() {
                 console.log(res);
                 setStats(res);
             });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
     return <Page noPadding pathname='/' seo={{

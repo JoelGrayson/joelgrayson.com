@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export const symbols: {
     name: string;
     meaning: string;
@@ -46,7 +48,7 @@ export default function Symbols() {
             {symbols.map(symbol=>
                 <tr key={symbol.name}>
                     <td>
-                        <img src={`/image/notation/${symbol.name}.png`} alt={symbol.name} />
+                        <Image src={`/image/notation/${symbol.name}.png`} alt={symbol.name} width={30} height={30} />
                     </td>
                     <td>{symbol.meaning}</td>
                     <td>{symbol.origin}</td>

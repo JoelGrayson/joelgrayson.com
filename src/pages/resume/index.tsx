@@ -118,7 +118,7 @@ export default function Resume() {
                                 <Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>Homework Checker</Link>
                             </span>
                             <span className="date">2021&ndash;22</span>
-                            <div className="description inline-description">Chrome extension helping 1000 students manage homework.</div>
+                            <div className="description inline-description">Chrome extension helping 2,000 students manage homework.</div>
                         </li>
                         <li>
                             <span className="title with-icon">
@@ -134,7 +134,7 @@ export default function Resume() {
                                 <Link href="https://apps.apple.com/us/app/edit-time/id6464405876?mt=12">Edit Time</Link>
                             </span>
                             <span className="date">2024</span>
-                            <div className="description inline-description">App with 2500 installs that changes file date created and modified properties</div>
+                            <div className="description inline-description">App with 2,811 installs that changes file date created and modified properties</div>
                         </li>
                         <li>
                             <span className="title with-icon">
@@ -168,7 +168,7 @@ export default function Resume() {
                                     className='inline bottom-0.5 relative'
                                     style={{ right: 4 }}
                                 />
-                                Brought 493 kW solar installation to Riverdale, enough to power 40 households.
+                                Brought 493 kW solar installation to Riverdale, enough to power 50 households.
                             </span>    
                             <span className="date">2021&ndash;2024</span>
                             <div className="description indent">Collected rooftop measurements, created solar models in HelioScope, gathered quotes from several installers, researched legal and financial aspects, and presented to administration and Board of Trustees.</div>
