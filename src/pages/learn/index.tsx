@@ -24,6 +24,7 @@ export default function Learn() {
             <li><Link href='/learn/using-tokens-to-push-to-github'>How To Use Tokens to Push to GitHub</Link></li>
             <li><Link href='/learn/plausible-analytics-with-nextjs'>Set up Plausible Analytics with Next.js</Link></li>
             <li><Link href='/learn/php-mysqli'>Using mysqli in PHP</Link></li>
+            <li><Link href='/learn/http-requests-in-swift'>HTTP Requests in Swift</Link></li>
 
             
             {/* STEM videos from Slaphappy */}

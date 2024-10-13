@@ -1,0 +1,32 @@
+import LearnPage from "@/components/page/LearnPage";
+export default function LearningContent({children}) {
+	return <LearnPage markdown bottomPadding>{children}</LearnPage>;
+}
+
+
+# HTTP Requests in Swift
+
+## POST Request
+```swift
+func makePostRequest(userId: String, message: String) async {
+    guard let url=URL(string: "https://example.com/api/log-message") else { return }
+    let bodyAsDictionary=[
+        "userId": userId,
+        "message": message,
+    ] as [String: Any]
+
+    guard let bodyAsJson=try? JSONSerialization.data(withJSONObject: bodyAsDictionary, options: []) else { return }
+
+    var request=URLRequest(url: url)
+    request.httpMethod="POST"
+    request.httpBody=bodyAsJson
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    URLSession.shared.dataTask(with: request) { data, response, error in
+        if let error {
+            print("Error logging search", error)
+        } else {
+            print("Logged search")
+        }
+    }.resume()
+}
+```
