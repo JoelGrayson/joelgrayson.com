@@ -5,18 +5,18 @@ import Yt from '@/components/global/Yt';
 import Button from '@jcomponents/button';
 
 export const machines: Machine[]=[
-    {
-        sortBy: {
-            rank: 3, //sort by best project
-            date: new Date('May 2024'), //sort by date of project
-            title: 'Joelesque Empire Board' //sort alphabetically
-        },
-        html: DefaultTemplate({
-            date: '2024',
-            title: <>Joelesque Empire Board</>,
-            yt: 'bHHk2FL5Ujs'
-        })
-    },
+    // {
+    //     sortBy: {
+    //         rank: 3, //sort by best project
+    //         date: new Date('May 2024'), //sort by date of project
+    //         title: 'Joelesque Empire Board' //sort alphabetically
+    //     },
+    //     html: DefaultTemplate({
+    //         date: '2024',
+    //         title: <>Joelesque Empire Board</>,
+    //         yt: 'bHHk2FL5Ujs'
+    //     })
+    // },
     {
         sortBy: {
             rank: 3, //sort by best project

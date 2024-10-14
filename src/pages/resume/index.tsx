@@ -91,7 +91,11 @@ export default function Resume() {
                 </div>
 
                 {/* Export/Download Button */}
-                <Link href="https://docs.google.com/document/d/1n0C4OwxBDtwiGWKBjpCsN7VpxVrgm6ONfo8iq2N_nhI/export?format=pdf" target="_blank" className="absolute top-10 right-8 unstyled">
+                <Link
+                    href="https://docs.google.com/document/d/1BZ4zuOEKgKcglOQbSWBilAfFkNWgqBFW0BElgroysyI/export?format=pdf"
+                    target="_blank"
+                    className="absolute top-10 right-8 unstyled"
+                >
                     <Button style={{
                         height: 40
                     }}>
