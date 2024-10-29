@@ -2,6 +2,7 @@ import { getLiveStats } from "../route";
 
 // Opt out of caching
 export const dynamic='force-dynamic';
+export const revalidate=0;
 
 export async function GET() {
     // const res=await fetch('https://joelgrayson.com/api/live-stats');

@@ -20,7 +20,10 @@ async function main() {
     while (remainingAttempts>0) {
         try {
             console.log(`Attempt ${timesToTry-remainingAttempts+1} of ${timesToTry}`);
-            const res=await fetch('https://joelgrayson.com/api/live-stats/without-diff');
+            const res=await fetch(
+                'https://joelgrayson.com/api/live-stats/without-diff',
+                { cache: 'no-store' } //do not cache response
+            );
             console.log('Before processing');
             const data=await res.json();
             data.pageVisits=pageVisits;

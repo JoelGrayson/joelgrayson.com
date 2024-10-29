@@ -1,7 +1,10 @@
+#!/usr/bin/env node
+
 // 1. Go to https://appstoreconnect.apple.com/analytics/app/ytd/6464405876/metrics?chartType=singleaxis&measureKey=totalDownloads&zoomType=day
 // 2. Click on the "Download CSV" button
 // 3. Rename the file to ~/Downloads/installs.csv
 // 4. Run this program
+
 const PrismaClient=require('@prisma/client').PrismaClient;
 const prisma=new PrismaClient();
 const fs=require('fs');
