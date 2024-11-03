@@ -35,8 +35,15 @@ export default function EditTime() {
         <h3>Support/Bugs</h3>
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSePFBfxJWYugRXSpnNXFOmJdlxzNqd4MeIxQFUkxl-rQDJBrQ/viewform?embedded=true" width='100%' height="708">Loading…</iframe>
 
-        <h3>Privacy Policy</h3>
+
+        <h3 id='privacy-policy'>Privacy Policy</h3>
         <p>No data is collected.</p>
+        <p>This privacy policy may change in the future. Last updated 11.2.2024</p>
+
+
+        <h3>Terms of Service</h3>
+        <iframe src="/software/edit-time/Edit Time EULA.pdf" width='100%' height='708' />
+        <Link href="/software/edit-time/Edit Time EULA.pdf" target='_blank' className='button'>Download PDF</Link>
     </Page>;
 }
 

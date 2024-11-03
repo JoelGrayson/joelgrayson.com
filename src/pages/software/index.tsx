@@ -24,8 +24,8 @@ export default function Software() {
                     <li><Link target='_blank' href='https://luxpremierllc.com'>luxpremierllc.com</Link></li>
                     <li><Link target='_blank' href='https://memorizethepresidents.com'>memorizethepresidents.com</Link></li>
                     <li><Link target='_blank' href='https://joelgrayson.wixsite.com/geography'>Geography learning site</Link> (my first site)</li>
+                    <li><Link target='_blank' href='https://shirtocracy.com'>shirtocracy.com</Link></li>
                     <li><Link target='_blank' href='https://bulletbrainstorm.com'>bulletbrainstorm.com</Link> (coming soon)</li>
-                    <li><Link target='_blank' href='https://shirtocracy.com'>shirtocracy.com</Link> (coming soon)</li>
                 </ul>
             </li>
             <li>
