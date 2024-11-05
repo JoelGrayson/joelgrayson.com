@@ -2,6 +2,7 @@
 
 import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 export default function Stats() {
@@ -43,7 +44,9 @@ export default function Stats() {
             .then(setData);
     }, []);
     
-    return <Page>
+    const embedded=useRouter().query.embedded!==undefined;
+    
+    return <ShowPageUnlessEmbedded embedded={embedded}>
         <h1 className='text-center my-6'>Stats</h1>
         
         {data==null ? 'Loading...' : <>
@@ -81,7 +84,7 @@ export default function Stats() {
                 <Diff diff={data.diff.numbersUsers} />
             </div>
         </>}
-    </Page>;
+    </ShowPageUnlessEmbedded>;
 }
 
 const Person=()=><Image src='/image/stats/person.png' width={23} height={23} alt='users' title='Users' className='inline ml-3' />;
@@ -93,4 +96,11 @@ function Diff({ diff }: { diff: number }) {
         return <div />;
 
     return <div className={'text-right '+(diff>0 ? 'text-green-800' : 'text-red-800')}>{diff>0 ? `+${diff}` : diff}</div>;
+}
+
+export function ShowPageUnlessEmbedded({ embedded, children }: { embedded: boolean, children: React.ReactNode }) {
+    if (embedded)
+        return <>{children}</>;
+
+    return <Page>{children}</Page>;
 }
