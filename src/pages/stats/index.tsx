@@ -50,7 +50,9 @@ export default function Stats() {
         <h1 className='text-center my-6'>Stats</h1>
         
         {data==null ? 'Loading...' : <>
-            <div className='grid grid-cols-[4fr_1fr_1fr] text-2xl gap-6 max-w-[500px] mx-auto'>
+            <div className='grid text-2xl gap-6 max-w-[500px] mx-auto' style={{
+                gridTemplateColumns: '1fr max-content max-content'
+            }}>
                 <div>Focus</div>
                 <div className='text-right'>{data.focusUsers}<Person/></div>
                 <Diff diff={data.diff.focusUsers} />
@@ -102,5 +104,5 @@ export function ShowPageUnlessEmbedded({ embedded, children }: { embedded: boole
     if (embedded)
         return <>{children}</>;
 
-    return <Page>{children}</Page>;
+    return <Page bottomPadding>{children}</Page>;
 }
