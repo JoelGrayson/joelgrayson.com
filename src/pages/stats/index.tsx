@@ -1,14 +1,14 @@
 'use client';
 
-import formatDateTime from '@/components/formatDateTime';
 import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-export default function Stats() { // ?embedded=1&ignoreCache=1
+export default function Stats() { // ?embedded=1&ignoreCache=1?hideTitle=1
     const embedded=useRouter().query.embedded!==undefined;
     const ignoreCache=useRouter().query.ignoreCache!==undefined;
+    const hideTitle=useRouter().query.hideTitle!==undefined;
     const [usedCache, setUsedCache]=useState(false);
     const [cachedDate, setCachedDate]=useState<string | null>(null);
 
@@ -80,7 +80,7 @@ export default function Stats() { // ?embedded=1&ignoreCache=1
     }, []);
 
     return <ShowPageUnlessEmbedded embedded={embedded}>
-        <h1 className='text-center my-6'>Stats</h1>
+        { !hideTitle && <h1 className='text-center my-6'>Stats</h1> }
         
         {data==null ? 'Loading...' : <>
             <div className='grid text-2xl gap-6 max-w-[500px] mx-auto' style={{
