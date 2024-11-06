@@ -1,11 +1,17 @@
 'use client';
 
+import formatDateTime from '@/components/formatDateTime';
 import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-export default function Stats() {
+export default function Stats() { // ?embedded=1&ignoreCache=1
+    const embedded=useRouter().query.embedded!==undefined;
+    const ignoreCache=useRouter().query.ignoreCache!==undefined;
+    const [usedCache, setUsedCache]=useState(false);
+    const [cachedDate, setCachedDate]=useState<string | null>(null);
+
     const [data, setData]=useState<
         null
         |
@@ -39,13 +45,40 @@ export default function Stats() {
     >(null);
     
     useEffect(()=>{
-        fetch('/api/live-stats')
-            .then(res=>res.json())
-            .then(setData);
+        if (typeof window==='undefined')
+            return;
+        if (data)
+            return;
+
+        let reloadData=true;
+        let useCache=false;
+        if (!ignoreCache) {
+            const lastSet=localStorage.getItem('last-set');
+            if (lastSet) {
+                let lastSetDate=new Date(parseInt(lastSet));
+                const oneDay=1000*60*60*24;
+                let expiresDate=new Date(lastSetDate.getTime()+oneDay);
+                if (new Date()<expiresDate) {
+                    useCache=true;
+                    reloadData=false;
+                }
+            }
+        }
+        if (useCache) {
+            setData(JSON.parse(localStorage.getItem('stats')!));
+            setUsedCache(true);
+            setCachedDate(new Date().toLocaleString());
+        } else if (reloadData) {
+            fetch('/api/live-stats?'+(ignoreCache ? 'ignoreCache=1' : ''))
+                .then(res=>res.json())
+                .then(d=>{
+                    setData(d);
+                    localStorage.setItem('stats', JSON.stringify(d));
+                    localStorage.setItem('last-set', Date.now().toString());
+                });
+        }
     }, []);
-    
-    const embedded=useRouter().query.embedded!==undefined;
-    
+
     return <ShowPageUnlessEmbedded embedded={embedded}>
         <h1 className='text-center my-6'>Stats</h1>
         
@@ -86,6 +119,12 @@ export default function Stats() {
                 <Diff diff={data.diff.numbersUsers} />
             </div>
         </>}
+
+        {/* <div className='text-right mt-4'>As of {
+            usedCache && cachedDate
+                ? formatDateTime(new Date(cachedDate))
+                : formatDateTime(new Date())
+        }</div> */}
     </ShowPageUnlessEmbedded>;
 }
 
