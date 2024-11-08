@@ -51,7 +51,11 @@ app.post('/verify', require('./servers/verify/verify').verifyHandler);
 app.use('/combating-climate-change/electric-school-buses-petition/signatures', require('./servers/electric-school-buses-petition/server'));
 app.use('/stats-over-time', require('./servers/stats-over-time/server'));
 // Comment line below if on mac because it uses puppeteer
-app.use('/live-stats', require('./servers/live-stats/server'));
+if (process.env.IS_MAC) {
+    console.log('Skipping live-stats because on mac and it includes puppeteer');
+} else {
+    app.use('/live-stats', require('./servers/live-stats/server'));
+}
 
 
 // ## 404

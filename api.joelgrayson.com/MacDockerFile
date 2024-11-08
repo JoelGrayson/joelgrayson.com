@@ -1,4 +1,6 @@
-# Ubuntu has support for many frameworks
+# Excludes puppeteer because it's not supported on mac m1
+
+
 FROM ubuntu:latest
 MAINTAINER Joel Grayson
 
@@ -27,7 +29,9 @@ RUN npm i -g node-gyp
 WORKDIR /usr/src/app
 COPY . .
 ENV NODE_ENV=production
+RUN mv mac-package.json package.json
 RUN npm install --omit=dev
+ENV IS_MAC=true
 # RUN /usr/bin/crontab crontab
 
 

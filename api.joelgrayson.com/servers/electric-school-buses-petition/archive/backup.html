@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <base href="/combating-climate-change/electric-school-buses-petition/signatures/" />
+    <link rel='stylesheet' href='style.css' />
+    <link rel='stylesheet' href='switch.css' />
+</head>
+<body>
+    <div class="container">
+        <br>
+        
+        <h1>Electric School Bus Petition Signatures</h1>
+        <br>
+        <div class='table-container'>
+            <h3>Total signatures: 313</h3>
+            <br>
+            <table>
+                <tr>
+                    <th>Grade</th>
+                    <th>Signatures</th>
+                    <th>% of Grade</th>
+                </tr>
+                
+                    <tr>
+                        <td>12th</td>
+                        <td>20</td>
+                        <td>
+                            <div class="progress">
+                                
+                                <div class="progress-bar" style='width: 16%' role="progressbar" aria-valuenow="16%" aria-valuemin="0" aria-valuemax="100">
+                                    16%
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>11th</td>
+                        <td>32</td>
+                        <td>
+                            <div class="progress">
+                                
+                                <div class="progress-bar" style='width: 24%' role="progressbar" aria-valuenow="24%" aria-valuemin="0" aria-valuemax="100">
+                                    24%
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>10th</td>
+                        <td>54</td>
+                        <td>
+                            <div class="progress">
+                                
+                                <div class="progress-bar" style='width: 39%' role="progressbar" aria-valuenow="39%" aria-valuemin="0" aria-valuemax="100">
+                                    39%
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>9th</td>
+                        <td>62</td>
+                        <td>
+                            <div class="progress">
+                                
+                                <div class="progress-bar" style='width: 39%' role="progressbar" aria-valuenow="39%" aria-valuemin="0" aria-valuemax="100">
+                                    39%
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>8th</td>
+                        <td>31</td>
+                        <td>
+                            <div class="progress">
+                                
+                                <div class="progress-bar" style='width: 31%' role="progressbar" aria-valuenow="31%" aria-valuemin="0" aria-valuemax="100">
+                                    31%
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>7th</td>
+                        <td>35</td>
+                        <td>
+                            <div class="progress">
+                                
+                                <div class="progress-bar" style='width: 36%' role="progressbar" aria-valuenow="36%" aria-valuemin="0" aria-valuemax="100">
+                                    36%
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>6th</td>
+                        <td>36</td>
+                        <td>
+                            <div class="progress">
+                                
+                                <div class="progress-bar" style='width: 39%' role="progressbar" aria-valuenow="39%" aria-valuemin="0" aria-valuemax="100">
+                                    39%
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Students Overall</td>
+                        <td>270</td>
+                        <td>
+                            <div class="progress">
+                                
+                                <div class="progress-bar" style='width: 32%' role="progressbar" aria-valuenow="32%" aria-valuemin="0" aria-valuemax="100">
+                                    32%
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Faculty</td>
+                        <td>38</td>
+                        <td>
+                            <div class="progress">
+                                
+                                <div class="progress-bar" style='width: 31%' role="progressbar" aria-valuenow="31%" aria-valuemin="0" aria-valuemax="100">
+                                    31%
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+            </table>
+            <br>
+            <iframe width="780" height="527" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSg3sVIBychAWVp1s8ezaPznm-Oeb8aFyrnbfeS1fgo40l1Bz6gKH5m00jTlQsY4-FMXupsJCZeoIOF/pubchart?oid=834418990&amp;format=interactive"></iframe>
+            <label for="toggle">
+                Show by grade & faculty
+                <button type="button" id="toggle" role="switch" aria-checked="false">
+                    <span>on</span><span>off</span>  
+                </button>
+            </label>
+            <br>
+            <a href='https://forms.gle/XXSiWhcDd7howzKH8'>Sign the petition</a>
+            <br>
+        </div>
+    </div>
+    <script>
+        const button = document.querySelector('button');
+        button.addEventListener('click', (e) => {  //switch change
+            let el = e.target;
+            let state = el.getAttribute('aria-checked');
+            let isState = (state === 'true');
+            el.setAttribute('aria-checked', isState ? false : true)
+            let reg=  'https://docs.google.com/spreadsheets/d/e/2PACX-1vRO3AjCN779HPVXQBiJiP0EqcPRYIHz1_r6e3v1FJxBuP2PgSrSJRkuma_VJXuxTdednAPL3GZgI3Gv/pubchart?oid=834418990&format=interactive';
+            let parts='https://docs.google.com/spreadsheets/d/e/2PACX-1vRO3AjCN779HPVXQBiJiP0EqcPRYIHz1_r6e3v1FJxBuP2PgSrSJRkuma_VJXuxTdednAPL3GZgI3Gv/pubchart?oid=1010867117&format=interactive';
+            document.querySelector('iframe').src=isState?reg:parts;
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
