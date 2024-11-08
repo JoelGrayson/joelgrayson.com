@@ -1,0 +1,8 @@
+POST http://localhost:3000/api/submit-form
+
+{
+    "formName": "focus-feedback",
+    "message": "This is a test feedback message",
+    
+    "email": "test@example.com"
+}

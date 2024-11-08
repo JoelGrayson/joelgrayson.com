@@ -127,3 +127,16 @@ model LirongArtEmailList {
     dateAdded DateTime @default(now())
     origin    String?
 }
+
+// For feedback from other softwares such as Focus, etc.
+model FormSubmission {
+    id       String   @id @default(cuid())
+    date     DateTime @default(now())
+    formName String //such as focus-feedback
+
+    message String
+
+    email  String?
+    origin String?
+    name   String?
+}
