@@ -27,23 +27,32 @@ function createGetChromeExtensionStats(url) {
             args: [
                 '--no-sandbox', //disable security feature of sandboxing chrome's processes. Gives more privileges to the program execution runtime.
                 // '--disable-setuid-sandbox'
-            ]
+            ],
+            timeout: 50000  //default: 30000
         });
         const page=await browser.newPage();
     
-        await page.goto(url, { waitUntil: 'domcontentloaded' });
+        try {
+            await page.goto(url, { waitUntil: 'domcontentloaded' });
+        } catch (e) {
+            console.error('Error in page.goto', e);
+        }
         // await page.waitForSelector('div.F9iKBc');
     
-        const users=await page.evaluate(()=>{
-            const usersEl=document.querySelector('div.F9iKBc');
-            const usersText=usersEl.innerText;
-            return parseInt(usersText.match(/([\d,]+) users/)?.[1]?.split(',')?.join('') || '-1');
+        try {
+            const users=await page.evaluate(()=>{
+                const usersEl=document.querySelector('div.F9iKBc');
+                const usersText=usersEl.innerText;
+                return parseInt(usersText.match(/([\d,]+) users/)?.[1]?.split(',')?.join('') || '-1');
 
-            // // Old Chrome Web Store GUI
-            // const usersEl=document.querySelector('span[title$="users"]');
-            // const usersText=usersEl.innerText;
-            // return parseInt(usersText.match(/(\d+) users/)?.[1] || '-1');
-        });
+                // // Old Chrome Web Store GUI
+                // const usersEl=document.querySelector('span[title$="users"]');
+                // const usersText=usersEl.innerText;
+                // return parseInt(usersText.match(/(\d+) users/)?.[1] || '-1');
+            });
+        } catch (e) {
+            console.error('Error in page.evaluate', e);
+        }
         await page.close();
         await browser.close();
         resolve(users);

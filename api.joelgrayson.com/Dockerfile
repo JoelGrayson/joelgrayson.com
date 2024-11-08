@@ -1,5 +1,7 @@
+FROM ubuntu:22.04
 # Ubuntu has support for many frameworks
-FROM ubuntu:latest
+# Breaks for ubuntu 23 when installing libasound2
+
 MAINTAINER Joel Grayson
 
 
