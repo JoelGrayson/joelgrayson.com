@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Page from '@/components/page/DefaultPage';
 import Link from 'next/link';
-// import Button from '@jcomponents/button';
 
 export default function EditTime() {
     return <Page bottomPadding seo={{
@@ -13,14 +12,13 @@ export default function EditTime() {
             Edit Time
         </h1>
         <p className='italic text-center text-gray-400'>The Mac app for changing a file&apos;s created and modified dates. Edit Time is only way to change a file&apos;s date modified and date created without using the terminal.</p>
-        <br />
-        <Link target='_blank' href='https://apps.apple.com/us/app/edit-time/id6464405876'>
-            <Image src="/image/software/edit-time/download-on-the-mac-app-store.png" alt="Download on the Mac App Store" height={74.375} width={170} style={{
-                position: 'absolute',
-                right: '40px',
-                top: '130px'
-            }} />
-        </Link>
+
+        <div className='flex justify-end'>
+            <Link target='_blank' href='https://apps.apple.com/us/app/edit-time/id6464405876'>
+                <Image src="/image/software/edit-time/download-on-the-mac-app-store.png" alt="Download on the Mac App Store" height={74.375} width={170} />
+            </Link>
+        </div>
+
         <br />
 
         <h3>Usage</h3>

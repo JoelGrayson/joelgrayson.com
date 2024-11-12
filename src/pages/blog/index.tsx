@@ -64,9 +64,9 @@ export function BlogArticles() {
     })();
     
     return <>
-        <div className='flex justify-end mb-3'>
+        <div className='flex justify-end mb-3 gap-2 items-center'>
             <span>Sort by: </span>
-            <select name='sorting-method' id='sorting-method' value={sortingMethod} onChange={e=>setSortingMethod(e.target.value as sortingMethodT)}>
+            <select name='sorting-method' id='sorting-method' value={sortingMethod} onChange={e=>setSortingMethod(e.target.value as sortingMethodT)} className='border border-gray-800 rounded-lg'>
                 <option value='newest-to-oldest'>Newest to Oldest</option>
                 <option value='oldest-to-newest'>Oldest to Newest</option>
                 <option value='category'>By Category</option>

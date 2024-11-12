@@ -39,8 +39,9 @@ function createGetChromeExtensionStats(url) {
         }
         // await page.waitForSelector('div.F9iKBc');
     
+        let users;
         try {
-            const users=await page.evaluate(()=>{
+            users=await page.evaluate(()=>{
                 const usersEl=document.querySelector('div.F9iKBc');
                 const usersText=usersEl.innerText;
                 return parseInt(usersText.match(/([\d,]+) users/)?.[1]?.split(',')?.join('') || '-1');
@@ -55,7 +56,10 @@ function createGetChromeExtensionStats(url) {
         }
         await page.close();
         await browser.close();
-        resolve(users);
+        if (users)
+            resolve(users);
+        else
+            resolve({ status: 'error', message: 'No users found, likely because page.evaluate failed.' });
     });
 }
 
