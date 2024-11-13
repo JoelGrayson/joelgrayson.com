@@ -30,3 +30,49 @@ func makePostRequest(userId: String, message: String) async {
     }.resume()
 }
 ```
+
+
+## GET Request
+```swift
+final class InstitutionsListViewModel: ObservableObject {
+    @Published var institutionsList: InstitutionsList?
+    
+    init() {}
+    
+    func fetchInstitutionsList() {
+        guard let url=URL(string: "https://example.com/api/get-data") else {
+            print(FetchingDataError.invalidResponse)
+            return
+        }
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data else {
+                print(FetchingDataError.invalidResponse)
+                return
+            }
+            guard let response=response as? HTTPURLResponse, response.statusCode==200 else { print(FetchingDataError.invalidResponse)
+                return
+            }
+            do {
+                let newInstitutionsList=try JSONDecoder().decode(InstitutionsListAPIResponse.self, from: data)
+                if newInstitutionsList.status != "success" {
+                    print("Status was not 'success' when fetching institution list. Status:", newInstitutionsList.status)
+                    return
+                }
+                // print("Institution list", newInstitutionsList)
+                DispatchQueue.main.async {
+                    self.institutionsList = newInstitutionsList.data
+                }
+            } catch {
+                print(FetchingDataError.problemParsingResponse)
+                return
+            }
+        }.resume()
+    }
+}
+
+enum FetchingDataError: Error {
+    case invalidUrl
+    case invalidResponse
+    case problemParsingResponse
+}
+```

@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 export default function HeaderGroup({ pathname, title, children, link, className, pixelOffset }: { pathname?: string; title: string; children: any; link?: string; className?: any; pixelOffset?: number | string }) {
     const isCurrentPage=link===pathname; //always yellow
-    console.log(link, pathname, isCurrentPage);
     
     return <li className={`${className} header-group ${styles['header-group']}`}>
         {/* Active is when mouseDown on button */}
