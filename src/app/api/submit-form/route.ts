@@ -17,7 +17,7 @@ export async function POST(request: Request) {
             origin: origin,
             name: name
         }
-    })
+    });
 
     let emailMessage=message+'\n\n';
     if (email || name)

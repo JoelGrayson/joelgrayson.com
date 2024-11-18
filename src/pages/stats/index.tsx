@@ -9,7 +9,9 @@ export default function Stats() { // ?embedded=1&ignoreCache=1?hideTitle=1
     const embedded=useRouter().query.embedded!==undefined;
     const ignoreCache=useRouter().query.ignoreCache!==undefined;
     const hideTitle=useRouter().query.hideTitle!==undefined;
+    // eslint-disable-next-line no-unused-vars
     const [usedCache, setUsedCache]=useState(false);
+    // eslint-disable-next-line no-unused-vars
     const [cachedDate, setCachedDate]=useState<string | null>(null);
 
     const [data, setData]=useState<
@@ -77,6 +79,7 @@ export default function Stats() { // ?embedded=1&ignoreCache=1?hideTitle=1
                     localStorage.setItem('last-set', Date.now().toString());
                 });
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return <ShowPageUnlessEmbedded embedded={embedded}>

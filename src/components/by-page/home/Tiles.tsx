@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 import SEBLogo from './SEBLogo';
 import ViolinBow from '@/components/page/headers/parts/ViolinBow';
+import formatNumber from '@/components/global/formatNumber';
 
 export type Stats={
     id: string;
@@ -171,7 +172,7 @@ function Tryptic({ name, href, children, stat, statMetric='installs' }: { name: 
             <Image alt={`${name} Logo`} width={50} height={50} src={`/image/home/${hyphenateName(name)}-logo.png`} />
         </div>
         <span>{children}</span>
-        { stat!=null && stat!==-4 && <Label>{stat} {statMetric}</Label> }
+        { stat!=null && stat!==-4 && <Label>{formatNumber(stat)} {statMetric}</Label> }
     </Tile>;
 }
 
