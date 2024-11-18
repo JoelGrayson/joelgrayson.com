@@ -1,39 +1,44 @@
 #!/usr/bin/env node
 
-// 1. Go to https://appstoreconnect.apple.com/analytics/app/ytd/6464405876/metrics?chartType=singleaxis&measureKey=totalDownloads&zoomType=day
-// 2. Click on the three dots and click "Export as CSV"
-// 3. Rename the file to ~/Downloads/edit-time-installs.csv
-// 4. Run this program with `./update-edit-time-installs.js`
+// 1. Go to https://chrome.google.com/webstore/devconsole/61858c1f-4cbf-4529-89f5-3d80b05e9b4c/djnloioaddlnmagobbcnjpppmbelfocf/analytics/users
+// 2. Set the date range to the greatest (last 5 years)
+// 3. Click "Export to CSV" under Weekly users over time
+// 4. Rename the file to ~/Downloads/focus-installs.csv
+// 5. Run this program with `./update-focus-installs.js`
 
 const PrismaClient=require('@prisma/client').PrismaClient;
 const prisma=new PrismaClient();
 const fs=require('fs');
 const { default: jdate } = require('joeldate');
 
-const updateAll=true; // Like --force
+const updateAll=false; // Like --force
 
 async function main() {
-    // Get Edit Time data from the CSV file
-    const fileContents=fs.readFileSync('/Users/joelgrayson/Downloads/edit-time-installs.csv', 'utf8');
+    // Get Focus installs data from the CSV file
+    const fileContents=fs.readFileSync('/Users/joelgrayson/Downloads/focus-installs.csv', 'utf8');
     const lines=fileContents.split('\n')
-        .slice(5); //remove the metadata at the top of files
+        .slice(3); //remove the metadata at the top of files
     // Date,Total Downloads
 
     const data={}; //jdate -> totalDownloads
-    let totalDownloads=0;
     for (let line of lines) {
-        const date=new Date(line.split(',')[0]);
-        const downloadsOfThatDay=parseInt(line.split(',')[1]);
-        totalDownloads+=downloadsOfThatDay;
-        data[jdate(date)]=totalDownloads;
+        if (!line) continue;
+        let [dateStr, usersStr]=line.split(',');
+        const date=new Date(dateStr);
+        const users=parseInt(usersStr);
+        const jdateStr=jdate(date);
+        if (!date || !jdateStr || jdateStr=='NaN.NaN.NaN') {
+            console.log('Invalid date with dateStr', dateStr, 'for line', line);
+            continue;
+        }
+        data[jdateStr]=users;
     }
-    
 
     // Update in prisma
     const needToUpdate=await prisma.stats.findMany({
         where: updateAll
             ? undefined
-            : { editTimeUsers: null }, //only update not already included
+            : { focusUsers: null }, //only update not already included
         select: {
             id: true,
             date: true
@@ -50,7 +55,7 @@ async function main() {
                     id
                 },
                 data: {
-                    editTimeUsers: data[date]
+                    focusUsers: data[date]
                 }
             });
         } else {
