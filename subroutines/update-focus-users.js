@@ -7,4 +7,4 @@
 // 4. Rename the file to ~/Downloads/focus-installs.csv
 // 5. Run this program with `./update-focus-installs.js`
 
-require('./parts/update-chrome-extensions-installs.js')({ name: 'focus', key: 'focusUsers' });
+require('./parts/update-chrome-extensions-users.js')({ name: 'focus', key: 'focusUsers' });

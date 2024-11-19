@@ -7,4 +7,4 @@
 // 4. Rename the file to ~/Downloads/homework-checker-installs.csv
 // 5. Run this program with `./update-homework-checker-installs.js`
 
-require('./parts/update-chrome-extensions-installs.js')({ name: 'homework-checker', key: 'homeworkCheckerUsers' });
+require('./parts/update-chrome-extensions-users.js')({ name: 'homework-checker', key: 'homeworkCheckerUsers' });
