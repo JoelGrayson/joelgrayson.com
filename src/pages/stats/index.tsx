@@ -13,7 +13,7 @@ export default function Stats() { // ?embedded=1&ignoreCache=1?hideTitle=1
     const [usedCache, setUsedCache]=useState(false);
     // eslint-disable-next-line no-unused-vars
     const [cachedDate, setCachedDate]=useState<string | null>(null);
-
+    
     const [data, setData]=useState<
         null
         |
@@ -29,7 +29,8 @@ export default function Stats() { // ?embedded=1&ignoreCache=1?hideTitle=1
             blogViews: number;
             buserooUsers: number;
             shanghaiDictionarySearches: number;
-    
+            editTimeUsers: number;
+
             diff: {
                 focusUsers: number;
                 homeworkCheckerUsers: number;
@@ -42,10 +43,11 @@ export default function Stats() { // ?embedded=1&ignoreCache=1?hideTitle=1
                 blogViews: number;
                 buserooUsers: number;
                 shanghaiDictionarySearches: number;
+                editTimeUsers: number;
             };
         }
     >(null);
-    
+
     useEffect(()=>{
         if (typeof window==='undefined')
             return;
@@ -55,7 +57,7 @@ export default function Stats() { // ?embedded=1&ignoreCache=1?hideTitle=1
         let reloadData=true;
         let useCache=false;
         if (!ignoreCache) {
-            const lastSet=localStorage.getItem('last-set');
+            const lastSet=localStorage.getItem('/stats:last-set');
             if (lastSet) {
                 let lastSetDate=new Date(parseInt(lastSet));
                 const oneDay=1000*60*60*24;
@@ -67,16 +69,19 @@ export default function Stats() { // ?embedded=1&ignoreCache=1?hideTitle=1
             }
         }
         if (useCache) {
-            setData(JSON.parse(localStorage.getItem('stats')!));
+            const newData=JSON.parse(localStorage.getItem('/stats:stats')!);
+            setData(newData);
             setUsedCache(true);
             setCachedDate(new Date().toLocaleString());
+            console.log('Data from cache', newData);
         } else if (reloadData) {
-            fetch('/api/live-stats?'+(ignoreCache ? 'ignoreCache=1' : ''))
+            fetch('/api/stats?'+(ignoreCache ? 'ignoreCache=1' : ''))
                 .then(res=>res.json())
                 .then(d=>{
                     setData(d);
-                    localStorage.setItem('stats', JSON.stringify(d));
-                    localStorage.setItem('last-set', Date.now().toString());
+                    console.log('Fetched data', d);
+                    localStorage.setItem('/stats:stats', JSON.stringify(d));
+                    localStorage.setItem('/stats:last-set', Date.now().toString());
                 });
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -91,35 +96,55 @@ export default function Stats() { // ?embedded=1&ignoreCache=1?hideTitle=1
             }}>
                 <div>Focus</div>
                 <div className='text-right'>{data.focusUsers}<Person/></div>
-                <Diff diff={data.diff.focusUsers} />
+                <Diff diff={data?.diff?.focusUsers} />
                 
                 <div>HW Checker</div>
                 <div className='text-right'>{data.homeworkCheckerUsers}<Person/></div>
-                <Diff diff={data.diff.homeworkCheckerUsers} />
+                <Diff diff={data?.diff?.homeworkCheckerUsers} />
+
+                <div>Edit Time</div>
+                <div className='text-right'>{data.editTimeUsers}<Person/></div>
+                <Diff diff={data?.diff?.editTimeUsers} />
 
                 <div>Buseroo</div>
                 <div className='text-right'>{data.buserooSearches}<Search/></div>
-                <Diff diff={data.diff.buserooSearches} />
+                <Diff diff={data?.diff?.buserooSearches} />
 
-                <div>Shirtocracy</div>
+                {/* <div>Shirtocracy</div>
                 <div className='text-right'>{data.shirtocracyOrders}<TShirt/></div>
-                <Diff diff={data.diff.shirtocracyOrders} />
+                <Diff diff={data?.diff?.shirtocracyOrders} /> */}
 
-                <div>Journal</div>
-                <div className='text-right'>{data.journalUsers}<Person/></div>
-                <Diff diff={data.diff.journalUsers} />
+                { 
+                    T(data.journalUsers) && <>
+                        <div>Journal</div>
+                        <div className='text-right'>{data.journalUsers}<Person/></div>
+                        <Diff diff={data?.diff?.journalUsers} />
+                    </>
+                }
 
-                <div>Projects</div>
-                <div className='text-right'>{data.projectsUsers}<Person/></div>
-                <Diff diff={data.diff.projectsUsers} />
+                { 
+                    T(data.projectsUsers) && <>
+                        <div>Projects</div>
+                        <div className='text-right'>{data.projectsUsers}<Person/></div>
+                        <Diff diff={data?.diff?.projectsUsers} />
+                    </>
+                }
 
-                <div>Habit</div>
-                <div className='text-right'>{data.habitUsers}<Person/></div>
-                <Diff diff={data.diff.habitUsers} />
+                { 
+                    T(data.habitUsers) && <>
+                        <div>Habit</div>
+                        <div className='text-right'>{data.habitUsers}<Person/></div>
+                        <Diff diff={data?.diff?.habitUsers} />
+                    </>
+                }
 
-                <div>Numbers</div>
-                <div className='text-right'>{data.numbersUsers}<Person/></div>
-                <Diff diff={data.diff.numbersUsers} />
+                { 
+                    T(data.numbersUsers) && <>
+                        <div>Numbers</div>
+                        <div className='text-right'>{data.numbersUsers}<Person/></div>
+                        <Diff diff={data?.diff?.numbersUsers} />
+                    </>
+                }
             </div>
         </>}
 
@@ -133,7 +158,7 @@ export default function Stats() { // ?embedded=1&ignoreCache=1?hideTitle=1
 
 const Person=()=><Image src='/image/stats/person.png' width={23} height={23} alt='users' title='Users' className='inline ml-3' />;
 const Search=()=><Image src='/image/stats/search.png' width={23} height={23} alt='searches' title='Searches' className='inline ml-2' />;
-const TShirt=()=><Image src='/image/stats/t-shirt.png' width={23} height={23} alt='shirts' title='Shirts' className='inline ml-3' />;
+// const TShirt=()=><Image src='/image/stats/t-shirt.png' width={23} height={23} alt='shirts' title='Shirts' className='inline ml-3' />;
 
 function Diff({ diff }: { diff: number }) {
     if (diff==0)
@@ -147,4 +172,12 @@ export function ShowPageUnlessEmbedded({ embedded, children }: { embedded: boole
         return <>{children}</>;
 
     return <Page bottomPadding>{children}</Page>;
+}
+
+function T(val: any) {
+    if (val===-4)
+        return false;
+    if (!val)
+        return false;
+    return true;
 }

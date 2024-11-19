@@ -1,22 +1,22 @@
 'use client';
 
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { LineChart } from '@mui/x-charts/LineChart';
 import Loader from '@/components/global/Loader';
 
 export default function StatsTimelineView() {
+    const hideTitle=useRouter().query.hideTitle!==undefined;
+
     return <div>
-        <h1 className="text-center">Stats Timeline</h1>
-        <StatsTimeline width='calc(95dvw - 200px)' height='calc(95dvh - 200px)' />
+        {!hideTitle && <h1 className="text-center">Stats Timeline</h1>}
+        <StatsTimeline width='100dvw' height='calc(95dvh - 200px)' />
     </div>;
 }
 
 function StatsTimeline({ width=800, height=500 }: { width?: string | number, height?: string | number }) { // ?embedded=1&ignoreCache=1?hideTitle=1
     const embedded=useRouter().query.embedded!==undefined;
     const ignoreCache=useRouter().query.ignoreCache!==undefined;
-    const hideTitle=useRouter().query.hideTitle!==undefined;
     // eslint-disable-next-line no-unused-vars
     const [usedCache, setUsedCache]=useState(false);
     // eslint-disable-next-line no-unused-vars
@@ -34,7 +34,7 @@ function StatsTimeline({ width=800, height=500 }: { width?: string | number, hei
         let reloadData=true;
         let useCache=!ignoreCache;
         if (!ignoreCache) {
-            const lastSet=localStorage.getItem('last-set');
+            const lastSet=localStorage.getItem('/stats/timeline:last-set');
             if (lastSet) {
                 let lastSetDate=new Date(parseInt(lastSet));
                 const oneDay=1000*60*60*24;
@@ -47,7 +47,7 @@ function StatsTimeline({ width=800, height=500 }: { width?: string | number, hei
         }
         if (useCache) {
             console.log('Used cache');
-            setData(JSON.parse(localStorage.getItem('stats')!));
+            setData(JSON.parse(localStorage.getItem('/stats/timeline:stats')!));
             setUsedCache(true);
             setCachedDate(new Date().toLocaleString());
         } else if (reloadData) {
@@ -64,8 +64,8 @@ function StatsTimeline({ width=800, height=500 }: { width?: string | number, hei
             .then(d=>{
                 setData(d);
                 console.log(d);
-                localStorage.setItem('stats', JSON.stringify(d));
-                localStorage.setItem('last-set', Date.now().toString());
+                localStorage.setItem('/stats/timeline:stats', JSON.stringify(d));
+                localStorage.setItem('/stats/timeline:last-set', Date.now().toString());
                 setLoading(false);
             });
     }
@@ -75,7 +75,8 @@ function StatsTimeline({ width=800, height=500 }: { width?: string | number, hei
         height,
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center'
     }}>
         {/* https://mui.com/x/api/charts/line-chart */}
         <LineChart
@@ -100,7 +101,7 @@ function StatsTimeline({ width=800, height=500 }: { width?: string | number, hei
             }}
         />
 
-        <div className="w-full flex justify-end">
+        <div className="w-full flex justify-end mr-12">
             <button onClick={reloadDataFn}>
                 {
                     loading

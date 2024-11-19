@@ -11,7 +11,7 @@ export default async function getLastWeeksStats() {
             }
         },
         orderBy: {
-            date: 'desc'
+            date: 'asc'
         }
     });
 }

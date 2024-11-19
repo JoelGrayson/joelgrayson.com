@@ -1,6 +1,8 @@
 import prisma from "@/data/prisma/client";
 import { NextResponse } from "next/server";
 import { getLiveStats } from "../live-stats/route";
+import getLastWeeksStats from "../live-stats/get-stats/getLastWeeksStats";
+import { Stats } from "@prisma/client";
 
 export async function GET() {
     // Since it is fetched at 12:05am, find everything after 12:01am.
@@ -32,7 +34,7 @@ export async function GET() {
         );
     }
 
-    const returning=stats[0];
+    const returning=stats[0] as Stats & { diff: { [key: string]: number } };
     // Get the editTimeUsers from the last time it was updated
     const editTimeUsersStats=await prisma.stats.findFirst({
         orderBy: {
@@ -48,5 +50,17 @@ export async function GET() {
         }
     });
     returning.editTimeUsers=editTimeUsersStats?.editTimeUsers || -4;
+    const lastWeeksStats=await getLastWeeksStats();
+    
+    returning.diff={
+        focusUsers:           lastWeeksStats?.focusUsers           && returning.focusUsers           ? returning.focusUsers-lastWeeksStats.focusUsers                     : -4,
+        homeworkCheckerUsers: lastWeeksStats?.homeworkCheckerUsers && returning.homeworkCheckerUsers ? returning.homeworkCheckerUsers-lastWeeksStats.homeworkCheckerUsers : -4,
+        buserooSearches:      lastWeeksStats?.buserooSearches      && returning.buserooSearches      ? returning.buserooSearches-lastWeeksStats.buserooSearches           : -4,
+        shirtocracyOrders:    lastWeeksStats?.shirtocracyOrders    && returning.shirtocracyOrders    ? returning.shirtocracyOrders-lastWeeksStats.shirtocracyOrders       : -4,
+        journalUsers:         lastWeeksStats?.journalUsers         && returning.journalUsers         ? returning.journalUsers-lastWeeksStats.journalUsers                 : -4,
+        projectsUsers:        lastWeeksStats?.projectsUsers        && returning.projectsUsers        ? returning.projectsUsers-lastWeeksStats.projectsUsers               : -4,
+        habitUsers:           lastWeeksStats?.habitUsers           && returning.habitUsers           ? returning.habitUsers-lastWeeksStats.habitUsers                     : -4,
+        numbersUsers:         lastWeeksStats?.numbersUsers         && returning.numbersUsers         ? returning.numbersUsers-lastWeeksStats.numbersUsers                 : -4
+    };
     return NextResponse.json(stats[0]);
 }

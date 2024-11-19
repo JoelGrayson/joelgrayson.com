@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const PrismaClient=require('@prisma/client').PrismaClient;
 const prisma=new PrismaClient();
 
