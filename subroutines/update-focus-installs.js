@@ -31,7 +31,19 @@ async function main() {
             console.log('Invalid date with dateStr', dateStr, 'for line', line);
             continue;
         }
-        data[jdateStr]=users;
+        data[jdate(date)]={
+            date,
+            downloads: users,
+            covered: false
+        };
+    }
+
+    if (updateAll) { // Delete all existing entries so they will be updated
+        console.log('Deleting all entries')
+        await prisma.stats.updateMany({
+            data: { focusUsers: null }
+        });
+        console.log('Deleted all entries');
     }
 
     // Update in prisma
@@ -62,13 +74,22 @@ async function main() {
             console.warn('No data found for', date, 'in the CSV');
         }
     }
-}
 
-function sleep(seconds) {
-    console.log('Sleeping for', seconds, 'seconds');
-    return new Promise(resolve=>{
-        setTimeout(resolve, seconds*1000);
-    });
+    if (updateAll) {
+        for (let jdate of Object.keys(data)) {
+            const d=data[jdate];
+            if (!d.downloads) continue; //ignore zero or null values
+            if (!d.covered) {
+                console.warn('No data found for', jdate, 'in the CSV. So creating it.');
+                await prisma.stats.create({
+                    data: {
+                        date: d.date,
+                        focusUsers: d.downloads
+                    }
+                });
+            }
+        }
+    }
 }
 
 main();

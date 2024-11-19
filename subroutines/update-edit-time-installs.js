@@ -9,6 +9,7 @@ const PrismaClient=require('@prisma/client').PrismaClient;
 const prisma=new PrismaClient();
 const fs=require('fs');
 const { default: jdate } = require('joeldate');
+const sleep=require('./helpers/sleep');
 
 const updateAll=true; // Like --force
 
@@ -25,11 +26,22 @@ async function main() {
         const date=new Date(line.split(',')[0]);
         const downloadsOfThatDay=parseInt(line.split(',')[1]);
         totalDownloads+=downloadsOfThatDay;
-        data[jdate(date)]=totalDownloads;
+        data[jdate(date)]={
+            date,
+            downloads: totalDownloads,
+            covered: false
+        };
     }
     
 
-    // Update in prisma
+    if (updateAll) { // Delete all existing entries so they will be updated
+        console.log('Deleting all entries')
+        await prisma.stats.updateMany({
+            data: { editTimeUsers: null }
+        });
+        console.log('Deleted all entries');
+    }
+    
     const needToUpdate=await prisma.stats.findMany({
         where: updateAll
             ? undefined
@@ -50,20 +62,30 @@ async function main() {
                     id
                 },
                 data: {
-                    editTimeUsers: data[date]
+                    editTimeUsers: data[date].downloads
                 }
             });
+            data[date].covered=true;
         } else {
             console.warn('No data found for', date, 'in the CSV');
         }
     }
-}
-
-function sleep(seconds) {
-    console.log('Sleeping for', seconds, 'seconds');
-    return new Promise(resolve=>{
-        setTimeout(resolve, seconds*1000);
-    });
+    
+    if (updateAll) {
+        for (let jdate of Object.keys(data)) {
+            const d=data[jdate];
+            if (!d.downloads) continue; //ignore zero or null values
+            if (!d.covered) {
+                console.warn('No data found for', jdate, 'in the CSV. So creating it.');
+                await prisma.stats.create({
+                    data: {
+                        date: d.date,
+                        editTimeUsers: d.downloads
+                    }
+                });
+            }
+        }
+    }
 }
 
 main();
