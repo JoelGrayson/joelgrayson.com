@@ -9,9 +9,12 @@
 const PrismaClient=require('@prisma/client').PrismaClient;
 const prisma=new PrismaClient();
 const fs=require('fs');
-const { default: jdate } = require('joeldate');
+const { default: jdate, toDate } = require('joeldate');
 
-const updateAll=false; // Like --force
+let updateAll=false;
+if (process.argv.includes('--force')) // --force sets updateAll to true
+    updateAll=true;
+
 
 async function main() {
     // Get Focus installs data from the CSV file
@@ -39,7 +42,7 @@ async function main() {
     }
 
     if (updateAll) { // Delete all existing entries so they will be updated
-        console.log('Deleting all entries')
+        console.log('Deleting all entries');
         await prisma.stats.updateMany({
             data: { focusUsers: null }
         });
@@ -59,7 +62,7 @@ async function main() {
     for (let entry of needToUpdate) {
         const id=entry.id;
         const date=jdate(entry.date);
-        const newVal=data[date];
+        const newVal=data[date]?.downloads;
         if (newVal) {
             console.log('Updating', date)
             await prisma.stats.update({
@@ -67,7 +70,7 @@ async function main() {
                     id
                 },
                 data: {
-                    focusUsers: data[date]
+                    focusUsers: newVal
                 }
             });
         } else {
@@ -76,11 +79,11 @@ async function main() {
     }
 
     if (updateAll) {
-        for (let jdate of Object.keys(data)) {
-            const d=data[jdate];
+        for (let jdateKey of Object.keys(data).sort((a, b)=>new Date(toDate(a))-new Date(toDate(b)))) {
+            const d=data[jdateKey];
             if (!d.downloads) continue; //ignore zero or null values
             if (!d.covered) {
-                console.warn('No data found for', jdate, 'in the CSV. So creating it.');
+                console.warn('No data found for', jdateKey, 'in the CSV. So creating it.');
                 await prisma.stats.create({
                     data: {
                         date: d.date,
