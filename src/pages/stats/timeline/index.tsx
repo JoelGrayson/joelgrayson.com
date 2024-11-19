@@ -82,8 +82,8 @@ function StatsTimeline({ width=800, height=500 }: { width?: string | number, hei
             series={
                 [
                     { curve: "linear", data: !data ? [] : data.map(d=>d.editTimeUsers), label: 'Edit Time Users', connectNulls: true,  },
-                    { curve: "linear", data: !data ? [] : data.map(d=>d.focusUsers), label: 'Focus Users', connectNulls: true },
-                    { curve: "linear", data: !data ? [] : data.map(d=>d.homeworkCheckerUsers), label: 'Homework Checker Users', connectNulls: true },
+                    { curve: "linear", data: !data ? [] : data.map(d=>d.focusUsers), label: 'Focus Weekly Users', connectNulls: true },
+                    { curve: "linear", data: !data ? [] : data.map(d=>d.homeworkCheckerUsers), label: 'Homework Checker Weekly Users', connectNulls: true },
                     // { curve: "linear", data: !data ? [] : data.map(d=>d.buserooSearches), label: 'Buseroo Searches', connectNulls: true },
                 ]
             }

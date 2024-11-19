@@ -38,7 +38,7 @@ model Comment {
 }
 
 // # Stats (api.joelgrayson.com adds stats to this table every morning)
-// Focus users	
+// Focus weekly users	
 // Homework Checker users	
 // Buseroo.com searches	
 // Shirtocracy.com visits
@@ -54,7 +54,7 @@ model Stats {
 
     // Displayed on the stats page and Joelesque Empire Board
     focusUsers           Int?
-    homeworkCheckerUsers Int?
+    homeworkCheckerUsers Int? //weekly users
     buserooSearches      Int?
     shirtocracyOrders    Int?
     journalUsers         Int?
