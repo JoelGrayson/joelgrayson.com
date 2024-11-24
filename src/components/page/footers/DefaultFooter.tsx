@@ -11,7 +11,7 @@ const stillSrc='/image/slaphappy/still s tipping hat.png';
 export default function DefaultFooter() {
     const [src, setSrc]=useState<string>(stillSrc);
 
-    return <footer className='bg-[#facb62]'>
+    return <footer className='bg-[#facb62] dark:bg-gradient-to-b dark:from-[#1a1a1a] dark:to-[#222] dark:border-t dark:border-[#333]'>
         <div className="flex justify-center items-center p-4 gap-4">
             <Link
                 href="https://github.com/JoelGrayson"
@@ -55,8 +55,8 @@ export default function DefaultFooter() {
             >
                 <YoutubeIcon width={30} />
                 <div className='flex items-end mr-0 relative bottom-1'>
-                    <Image width='53' height='57' priority={false} src={src} className='w-13 color-[#0F1CA0] hue-rotate-30 brightness-[0.5]' alt='S' />
-                    <span className='text-xl text-[#0F1CA0] relative top-[-10px]'>laphappy</span>
+                    <Image width='53' height='57' priority={false} src={src} className='w-13 color-[#0F1CA0] hue-rotate-30 brightness-[0.5] dark:brightness-[0.8]' alt='S' />
+                    <span className='text-xl text-[#0F1CA0] dark:text-dark-text relative top-[-10px]'>laphappy</span>
                 </div>
             </Link>
         </div>

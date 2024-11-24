@@ -5,12 +5,11 @@ import { linkTextClassName } from './HeaderGroupItem';
 
 export default function HeaderSubGroupItem({ pathname, link, children, }: { pathname?: string; children: any; link?: string }) {
     return <Link
-        className='unstyled relative flex'
+        className={`unstyled relative flex ${compareLinks({ link, pathname }) ? 'selected-group-item' : ''}`}
         href={link || '#'}
         target={link?.trim()?.slice(0, 4)==='http' ? '_blank' : undefined} //open in new tab if external link
         tabIndex={0}
         style={{
-            backgroundColor: compareLinks({ link, pathname }) ? '#ffe273' : undefined,
             borderRadius: 10
         }}
     >
