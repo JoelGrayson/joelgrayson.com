@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Button from '@jcomponents/button';
 import { ToastContainer } from 'react-toastify';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
