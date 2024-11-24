@@ -3,7 +3,7 @@ import Page from "@/components/page/DefaultPage";
 import Link from "next/link";
 
 export default function Learn() {
-    return <Page bottomPadding seo={{
+    return <Page bottomPadding pathname='/learn' seo={{
         title: 'Learning Resources',
         description: 'Here are some learning resources Joel made on various subjects.',
     }}>
@@ -28,7 +28,7 @@ export default function Learn() {
 
             
             {/* STEM videos from Slaphappy */}
-            <div className="d:grid grid-cols-2 gap-2 place-content-center">
+            <div className="mt-8 d:grid grid-cols-2 gap-2 place-content-center">
                 <Yt width={300}>7BqbyixlSRU</Yt>
                 <Yt width={300}>BYTgpx9bEgQ</Yt>
                 <Yt width={300}>jty0QHS0F3I</Yt>

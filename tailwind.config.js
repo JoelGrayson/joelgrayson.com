@@ -17,6 +17,7 @@ module.exports = {
             },
             colors: {
                 "light-bg": "var(--light-bg)",
+                "light-bg-darker": "var(--light-bg-darker)",
                 "dark-bg": "var(--dark-bg)",
                 "dark-bg-lighter": "var(--dark-bg-lighter)",
                 

@@ -13,10 +13,9 @@ export default function Compositions() {
         <div>
             {compositions.map((composition, i)=>{
                 const [name, instruments, date]=composition;
-                return <div key={i} className='d:grid d:grid-cols-[1fr_2fr] items-center my-3' style={{
+                return <div key={i} className='d:grid d:grid-cols-[1fr_2fr] items-center my-3 bg-light-bg-darker dark:bg-dark-bg-lighter' style={{
                     border: '2px solid #0080b2',
                     padding: 10,
-                    backgroundColor: '#fefefe',
                     borderRadius: 10
                 }}>
                     <div>

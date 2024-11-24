@@ -1,7 +1,7 @@
 import Page from '@/components/page/DefaultPage';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRef, useLayoutEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 
 export default function Slaphappy() {
@@ -9,7 +9,7 @@ export default function Slaphappy() {
     
     const curtainsRef=useRef() as React.MutableRefObject<HTMLImageElement>;
 
-    useLayoutEffect(()=>{
+    useEffect(()=>{
         const el=curtainsRef.current!;
         gsap.fromTo(
             el,
@@ -57,6 +57,7 @@ export default function Slaphappy() {
                     marginLeft: '20%',
                     marginTop: 50,
                     padding: '9px 25px',
+                    color: 'black'
                 }}>
                     <div className='text-xl bold pb-0'>Hilarity Guaranteed!</div>
                     <div className='text-sm font-semibold pt-2 text-center'>*or your money back</div>
