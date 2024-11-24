@@ -15,7 +15,7 @@ export default function OrganicOptoelectronics() {
         `}</style>
         <h1 className='text-center'>Organic Optoelectronics</h1>
 
-        <Image src='/research/organic-optoelectronics/BrDPA-AzoBipy Structure.png' width={150} height={230} alt='BrDPA-AzoBipy structure' className='float-right' />
+        <Image src='/research/organic-optoelectronics/BrDPA-AzoBipy Structure.png' width={150} height={230} alt='BrDPA-AzoBipy structure' className='float-right dark:invert' />
         <p>This research studied the charge transfer complex of bis(4-bromophenyl)amine and 4,4&quot;-azopyridine (abbreviated as BrDPA-AzoBipy), shown to the right:</p>
         <p>The goal was to find optimal twisting conditions so it can be used in organic optoelectronics&apos;s active layer.</p>
 

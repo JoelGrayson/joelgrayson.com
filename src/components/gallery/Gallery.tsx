@@ -1,5 +1,4 @@
 import { useCallback, useEffect } from 'react';
-import Button from '@jcomponents/button';
 
 export default function Gallery({ images, renderChildren, galleryOpen, setGalleryOpen, index, setIndex }: {
     images: any[];
@@ -46,31 +45,37 @@ export default function Gallery({ images, renderChildren, galleryOpen, setGaller
     
     return <div id='gallery-container'>{
         galleryOpen && 
-        <div id='gallery' style={{
+        <div id='gallery' className='bg-light-bg dark:bg-dark-bg' style={{
             position: 'fixed',
             top: 0,
             left: 0,
             width: '100vw',
             height: '100dvh',
-            backgroundColor: 'white',
             zIndex: 1,
             overflow: 'hidden'
         }}>
             {/* Close Button */}
-            <Button onClick={()=>setGalleryOpen(false)} style={{
-                position: 'absolute',
-                top: '20px',
-                right: '50px',
-                borderRadius: '50%',
-                padding: '2px 7px',
-                width: '30px',
-                height: '30px',
-                textAlign: 'center',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                fontSize: '36px'
-            }} color='jred' aria-label='Close'>&times;</Button>
+            <button
+                onClick={()=>setGalleryOpen(false)}
+                className='btn-red'
+                style={{
+                    position: 'absolute',
+                    top: '20px',
+                    right: '50px',
+                    borderRadius: '50%',
+                    padding: '2px 7px',
+                    width: '30px',
+                    height: '30px',
+                    textAlign: 'center',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    fontSize: '36px'
+                }}
+                aria-label='Close'
+            >
+                &times;
+            </button>
             
             {/* <- Artwork -> */}
             <div style={{
@@ -79,7 +84,7 @@ export default function Gallery({ images, renderChildren, galleryOpen, setGaller
                 alignItems: 'center',
                 height: '100%'
             }}>
-                <Button style={{ width: '40px', height: '40px', textAlign: 'center', verticalAlign: 'center' }} onClick={galleryLeft} aria-label='Previous Artwork'>&lt;</Button>
+                <button style={{ width: '40px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center' }} onClick={galleryLeft} aria-label='Previous Artwork'>&lt;</button>
 
                 <div className='px-3 py-2 mx-6' style={{ //Image
                     width: '60vw',
@@ -90,7 +95,7 @@ export default function Gallery({ images, renderChildren, galleryOpen, setGaller
                     {renderChildren(imagePath)}
                 </div>
 
-                <Button style={{ width: '40px', height: '40px', textAlign: 'center', verticalAlign: 'center' }} onClick={galleryRight} aria-label='Next Artwork'>&gt;</Button>
+                <button style={{ width: '40px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center' }} onClick={galleryRight} aria-label='Next Artwork'>&gt;</button>
             </div>
         </div>
     }</div>;

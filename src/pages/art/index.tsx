@@ -57,9 +57,10 @@ export default function Art() {
                     
                     return <span key={fullName} className={`${imageClass || ''} flex items-center justify-center`} title={tooltip}>
                         <button
+                            // className='bg-[#ffffffaa] dark:bg-[#111111aa]'
+                            className='shadow-[10px_10px_35px_#aaa] dark:shadow-[10px_10px_35px_#444]'
                             style={{
                                 backgroundColor: '#ffffffaa',
-                                boxShadow: '10px 10px 35px #aaa',
                                 padding: 5,
                                 borderRadius: 15,
                                 cursor: 'pointer'

@@ -6,8 +6,10 @@
 
 /* Variables */
 :root {
+    --light-bg: #fff;
     --dark-bg: #1a1a1a;
     --dark-bg-lighter: #2a2a2a;
+
     --light-text: #000;
     --dark-text: #fff;
 }
@@ -282,12 +284,10 @@ table.styled td {
     outline: none;
 }
 
-@media (prefers-color-scheme: light) {
-    .btn-red,    .button-red    { background-color: #ff8f8f; }
-    .btn-yellow, .button-yellow { background-color: #ffd472; }
-    .btn-green,  .button-green  { background-color: #90ee90; }
-    .btn-blue,   .button-blue   { background-color: #aed8fc; }
-}
+:where(button, .btn, .button):where(.btn-red,    .button-red)    { background-color: #ff8f8f !important; }
+:where(button, .btn, .button):where(.btn-yellow, .button-yellow) { background-color: #ffd472 !important; }
+:where(button, .btn, .button):where(.btn-green,  .button-green)  { background-color: #90ee90 !important; }
+:where(button, .btn, .button):where(.btn-blue,   .button-blue)   { background-color: #aed8fc !important; }
 
 /* <Added for dark mode> */
 @media (prefers-color-scheme: dark) {

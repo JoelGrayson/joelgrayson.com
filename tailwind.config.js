@@ -16,10 +16,12 @@ module.exports = {
                 font: ['var(--font)']
             },
             colors: {
+                "light-bg": "var(--light-bg)",
                 "dark-bg": "var(--dark-bg)",
-                "dark-text": "var(--dark-text)",
                 "dark-bg-lighter": "var(--dark-bg-lighter)",
-                "light-text": "var(--light-text)"
+                
+                "light-text": "var(--light-text)",
+                "dark-text": "var(--dark-text)",
             }
         }
     },
