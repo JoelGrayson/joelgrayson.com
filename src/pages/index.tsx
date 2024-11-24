@@ -141,11 +141,20 @@ export default function Home() {
                 justifyItems: 'center'
             }}>
                 {/* Venderoo */}
-                <Yt width='fit-content'>bHHk2FL5Ujs</Yt>
+                <div className='w-full'>
+                    <Yt width='fit-content'>bHHk2FL5Ujs</Yt>
+                    <div className='text-center'>Arduino-Based Vending Machine</div>
+                </div>
                 {/* TEDx */}
-                <Yt width='fit-content'>rV_8xB7rGyQ</Yt>
+                <div className='w-full'>
+                    <Yt width='fit-content'>rV_8xB7rGyQ</Yt>
+                    <div className='text-center'>TEDx Talk on Climate Change</div>
+                </div>
                 {/* The Hectic Journey */}
-                <Yt width='fit-content'>1o4ugYFm5ag</Yt>
+                <div className='w-full'>
+                    <Yt width='fit-content'>1o4ugYFm5ag</Yt>
+                    <div className='text-center'>Stop Motion Animation</div>
+                </div>
             </div>
         </div>
     </Page>;
