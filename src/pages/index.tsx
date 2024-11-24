@@ -5,23 +5,9 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Yt from '@/components/global/Yt';
 import formatNumber from '@/components/global/formatNumber';
-import { useDarkMode } from 'usehooks-ts'
-import firstLevelEquals from '@/components/firstLevelEquals';
-
-export const lightImageSources={
-    signature: '/image/ucjg/signature.gif',
-    shirtocracy: '/image/home/shirtocracy-logo.png',
-    organicSolarCells: '/image/ccc/BrDPA-AzoBipy-Structure.png',
-};
-export const darkImageSources={
-    signature: '/image/ucjg/signature-dark.gif',
-    shirtocracy: '/image/home/shirtocracy-logo-dark.png',
-    organicSolarCells: '/image/ccc/BrDPA-AzoBipy-Structure-dark.png',
-};
 
 export default function Home() {
     const [stats, setStats]=useState<Stats | null>(null);
-    const darkMode=useDarkMode().isDarkMode;
     
     useEffect(()=>{
         if (stats) return;
@@ -84,18 +70,6 @@ export default function Home() {
             });
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    const [imageSources, setImageSources]=useState(lightImageSources);
-
-    useEffect(()=>{
-        // Set image sources based on dark mode
-        if (darkMode) {
-            setImageSources(darkImageSources);
-        } else {
-            if (!firstLevelEquals(imageSources, lightImageSources))
-                setImageSources(lightImageSources);
-        }
-    }, [darkMode]);
     
     return <Page noPadding pathname='/' seo={{
         title: 'Joel Grayson',
@@ -122,13 +96,14 @@ export default function Home() {
             `}>
                 {/* signature gif */}
                 <Image
-                    src={imageSources.signature} alt='Joel Grayson Signature'
+                    src='/image/ucjg/signature.gif' alt='Joel Grayson Signature'
                     width={371*.8} height={149*.8}
                     className={`
                         d:mx-3
                         mb-14
                         w-[297px] h-[119px]    ${''/* 80% OG size */}
                         m:w-[185px] m:h-[74px] ${''/* 50% OG size */}
+                        dark:invert
                     `}
                     priority
                 />
@@ -157,7 +132,7 @@ export default function Home() {
             <p className='indent-8'>Regarding climate change, I helped bring a <Link href='/combating-climate-change#solar-for-riverdale' target='_blank'>solar installation</Link> to Riverdale Country School, which will reduce emissions by 250 metric tons of CO₂ equivalent each year, save Riverdale money, supply backup power during outages, and provide live energy data for use in the science curriculum. I founded <Link href='https://studentsforelectricbuses.org' target='_blank'>Students for Electric Buses</Link>, a club attempting to transition Riverdale&apos;s bus provider to electric school buses. I also did <Link href='/research/organic-optoelectronics' target='_blank'>research on organic solar cells</Link> at New York University&apos;s Lee Research Lab. Finally, I served on Manhattan Community Board One&apos;s Environmental Protection Committee, which plans Lower Manhattan&apos;s climate resiliency projects, and the Youth & Education Committee. I worked with the Mayor&apos;s Office of Climate and Environmental Justice and Street Vendor Project on <Link href='/connecting-street-vendors-to-the-grid'>connecting street vendors to the electrical grid</Link> instead of using gas generators.</p>
         </div>
 
-        <Tiles stats={stats} imageSources={imageSources} />
+        <Tiles stats={stats} />
 
         <div className='
             pt-5 pb-10 border-t

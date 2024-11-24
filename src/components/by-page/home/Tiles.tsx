@@ -6,7 +6,6 @@ import Link from 'next/link';
 import SEBLogo from './SEBLogo';
 import ViolinBow from '@/components/page/headers/parts/ViolinBow';
 import formatNumber from '@/components/global/formatNumber';
-import { lightImageSources } from '@/pages/index';
 
 export type Stats={
     id: string;
@@ -33,8 +32,7 @@ export type Stats={
     }[];
 };
 
-export default function Tiles({ stats, imageSources }: { stats: Stats | null; imageSources: typeof lightImageSources }) {
-    console.log(imageSources);
+export default function Tiles({ stats }: { stats: Stats | null }) {
     return <>
         {/* Icons */}
         <article className='mx-auto px-4 !max-w-[600px] d:gap-[20px]' style={{
@@ -90,7 +88,7 @@ export default function Tiles({ stats, imageSources }: { stats: Stats | null; im
             </Tile>
 
             <Tile href='https://shirtocracy.com'>
-                <Image alt='Shirtocracy Logo' width={60} height={60} className='relative left-0.5 mb-1' src={imageSources.shirtocracy} />
+                <Image alt='Shirtocracy Logo' width={60} height={60} className='relative left-0.5 mb-1 dark:invert' src='/image/home/shirtocracy-logo.png' />
                 {/* <Image alt='Shirtocracy Logo' width={60} height={60} className='dark:hidden relative left-0.5 mb-1' src='/image/home/shirtocracy-logo.png' />
                 <Image alt='Shirtocracy Logo' width={60} height={60} className='hidden dark:block relative left-0.5 mb-1' src='/image/home/shirtocracy-logo-dark.png' /> */}
                 <span>Shirtocracy<DotCom /></span>
@@ -127,7 +125,7 @@ export default function Tiles({ stats, imageSources }: { stats: Stats | null; im
                 <span>Compositions</span>
             </Tile>
             <Tile href='/research/organic-optoelectronics' target='_self'>
-                <Image alt='Organic Solar Cells' width={50} height={50} src={imageSources.organicSolarCells} className='mb-1 pt-3' />
+                <Image alt='Organic Solar Cells' width={50} height={50} src='/image/ccc/BrDPA-AzoBipy-Structure.png' className='mb-1 pt-3 dark:invert' />
                 <span className='text-[1rem]'>Organic Solar Cell Research</span>
             </Tile>
             

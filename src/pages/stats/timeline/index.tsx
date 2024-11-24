@@ -15,7 +15,6 @@ export default function StatsTimelineView() {
 }
 
 function StatsTimeline({ width=800, height=500 }: { width?: string | number, height?: string | number }) { // ?embedded=1&ignoreCache=1?hideTitle=1
-    const embedded=useRouter().query.embedded!==undefined;
     const ignoreCache=useRouter().query.ignoreCache!==undefined;
     // eslint-disable-next-line no-unused-vars
     const [usedCache, setUsedCache]=useState(false);
