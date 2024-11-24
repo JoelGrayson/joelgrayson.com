@@ -14,6 +14,11 @@ module.exports = {
         extend: {
             fontFamily: {
                 font: ['var(--font)']
+            },
+            colors: {
+                "dark-bg": "var(--dark-bg)",
+                "dark-text": "var(--dark-text)",
+                "dark-bg-lighter": "var(--dark-bg-lighter)"
             }
         }
     },

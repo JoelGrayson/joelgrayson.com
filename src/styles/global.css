@@ -4,6 +4,13 @@
 @tailwind utilities;
 
 
+/* Variables */
+:root {
+    --dark-bg: #1a1a1a;
+    --dark-bg-lighter: #2a2a2a;
+    --dark-text: #fff;
+}
+
 /* # DOM Elements */
 html, body {
     padding: 0;  
@@ -13,6 +20,15 @@ html, body {
 header * {
     transition: all .3s ease;
 }
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+    }
+}
+
 
 /* ## Headers */
 h1, h2, h3, h4, h5 {
@@ -113,6 +129,25 @@ a:not(.unstyled):not(.button):hover *,
     text-decoration: underline; /* does not work because of -webkit-background-clip */
     font-weight: 600;
     transition: none !important;
+}
+@media (prefers-color-scheme: dark) {
+    a:not(.unstyled):not(.button) {
+        color: #bdbcff;
+        text-decoration: underline;
+    }
+    a:not(.unstyled):not(.button):hover,
+    a:not(.unstyled):not(.button):hover *,
+    .gradient-text,
+    .gradient-text-on-hover:hover {
+        color: #cdcbff;
+        font-weight: 600;
+        transition: none !important;
+        /* Not like light mode because looks bad */
+        background: unset;
+        -webkit-background-clip: unset;
+        -webkit-text-fill-color: unset;
+        text-decoration: underline; /* does not work because of -webkit-background-clip */
+    }
 }
 
 /* ## Forms */

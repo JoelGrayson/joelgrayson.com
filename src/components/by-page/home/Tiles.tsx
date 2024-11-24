@@ -6,6 +6,7 @@ import Link from 'next/link';
 import SEBLogo from './SEBLogo';
 import ViolinBow from '@/components/page/headers/parts/ViolinBow';
 import formatNumber from '@/components/global/formatNumber';
+import { lightImageSources } from '@/pages/index';
 
 export type Stats={
     id: string;
@@ -32,7 +33,8 @@ export type Stats={
     }[];
 };
 
-export default function Tiles({ stats }: { stats: Stats | null }) {
+export default function Tiles({ stats, imageSources }: { stats: Stats | null; imageSources: typeof lightImageSources }) {
+    console.log(imageSources);
     return <>
         {/* Icons */}
         <article className='mx-auto px-4 !max-w-[600px] d:gap-[20px]' style={{
@@ -88,7 +90,9 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
             </Tile>
 
             <Tile href='https://shirtocracy.com'>
-                <Image alt='Shirtocracy Logo' width={60} height={60} className='relative left-0.5 mb-1' src='/image/home/shirtocracy-logo.png' />
+                <Image alt='Shirtocracy Logo' width={60} height={60} className='relative left-0.5 mb-1' src={imageSources.shirtocracy} />
+                {/* <Image alt='Shirtocracy Logo' width={60} height={60} className='dark:hidden relative left-0.5 mb-1' src='/image/home/shirtocracy-logo.png' />
+                <Image alt='Shirtocracy Logo' width={60} height={60} className='hidden dark:block relative left-0.5 mb-1' src='/image/home/shirtocracy-logo-dark.png' /> */}
                 <span>Shirtocracy<DotCom /></span>
             </Tile>
             <Tile href='https://sparelearn.com'>
@@ -102,7 +106,7 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
 
             <Tile href='/combating-climate-change#solar-for-riverdale' target='_self'>
                 {/* TODO: sunbeam going down when hover */}
-                <Image alt='solar' width={50} height={38} src='/image/home/optimized/solar-for-riverdale.avif' />
+                <Image alt='Solar' width={50} height={38} src='/image/home/optimized/solar-for-riverdale.avif' />
                 <span>Solar for Riverdale</span>
             </Tile>
             <Tile href='https://studentsforelectricbuses.org'>
@@ -123,7 +127,7 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
                 <span>Compositions</span>
             </Tile>
             <Tile href='/research/organic-optoelectronics' target='_self'>
-                <Image alt='Homework Checker Logo' width={50} height={50} src='/image/ccc/BrDPA-AzoBipy Structure.png' className='mb-1 pt-3' />
+                <Image alt='Organic Solar Cells' width={50} height={50} src={imageSources.organicSolarCells} className='mb-1 pt-3' />
                 <span className='text-[1rem]'>Organic Solar Cell Research</span>
             </Tile>
             
@@ -140,7 +144,12 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
 
 function Tile({ href, children, target='_blank', gap=10 }: { href: string; children: any; target?: string; gap?: number }) {
     return <Link
-        className='unstyled relative shadow-md hover:shadow-lg transition duration-100'
+        className='
+            unstyled relative shadow-md hover:shadow-lg transition duration-100
+            bg-gradient-to-b
+            from-[#fff] to-[#fafafa]
+            dark:from-dark-bg-lighter dark:to-dark-bg
+        '
         style={{
             display: 'flex',
             flexDirection: 'column',
@@ -154,10 +163,7 @@ function Tile({ href, children, target='_blank', gap=10 }: { href: string; child
             width: '150px',
             height: 150,
             userSelect: 'none',
-            textAlign: 'center',
-        
-            background: 'linear-gradient(180deg, #fff, #fafafa)'
-            // background: linear-gradient(180deg, #fcfcfc, #f0f0f0)
+            textAlign: 'center'
         }}
         tabIndex={0}
         {...{href, target}}
@@ -181,7 +187,11 @@ function hyphenateName(name: string) {
 }
 
 function Label({children}: {children: any}) {
-    return <div className={`bg-[#ffd166] px-1.5 text-sm py-0.5 rounded-lg border border-[#ecb715]`}>{children}</div>;
+    return <div className='
+        px-1.5 text-sm py-0.5 rounded-lg border
+        bg-[#ffd166] border-[#ecb715]
+        dark:bg-dark-bg-lighter dark:border-dark-text
+    '>{children}</div>;
 }
 
 function DotCom() {
