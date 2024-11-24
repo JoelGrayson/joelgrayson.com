@@ -1,8 +1,9 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
+import compareLinks from './compareLinks';
 
 export default function HeaderItem({ pathname, link /*a href's link*/, children, className }: { pathname?: string; link: string, children: ReactNode; className?: any }) { //highlighted if is current page
-    const isCurrentPage=link===pathname; //always yellow
+    const isCurrentPage=compareLinks({ link, pathname }); //always yellow
     
     return <li className={`m:flex m:justify-center ${className || ''}`}>
             {/* Active is when mouseDown on button */}

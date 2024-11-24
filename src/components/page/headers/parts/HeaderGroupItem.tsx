@@ -1,14 +1,16 @@
 import Link from 'next/link';
 import styles from './header-group-item.module.css';
+import compareLinks from './compareLinks';
+
+export const linkTextClassName='link !no-underline !text-light-text dark:!text-dark-text';
 
 export default function HeaderGroupItem({ pathname, link, children }: { pathname?: string; children: any; link?: string }) {
     return <Link
-        className='unstyled relative flex'
+        className={`unstyled relative flex ${compareLinks({ link, pathname }) ? 'selected-group-item' : ''}`}
         href={link || '#'}
         target={link?.trim()?.slice(0, 4)==='http' ? '_blank' : undefined} //open in new tab if external link
         tabIndex={0}
         style={{
-            backgroundColor: pathname===link ? '#ffe273' : undefined,
             borderRadius: 10
         }}
     >
@@ -19,7 +21,7 @@ export default function HeaderGroupItem({ pathname, link, children }: { pathname
             </svg>
 
             {/* Content */}
-            <span className='link !no-underline !text-light-text dark:!text-dark-text'>{children}</span>
+            <span className={linkTextClassName}>{children}</span>
         </div>
     </Link>;
 }

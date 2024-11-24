@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import styles from './header-group-item.module.css';
+import compareLinks from './compareLinks';
+import { linkTextClassName } from './HeaderGroupItem';
 
 export default function HeaderSubGroupItem({ pathname, link, children, }: { pathname?: string; children: any; link?: string }) {
     return <Link
@@ -8,13 +10,13 @@ export default function HeaderSubGroupItem({ pathname, link, children, }: { path
         target={link?.trim()?.slice(0, 4)==='http' ? '_blank' : undefined} //open in new tab if external link
         tabIndex={0}
         style={{
-            backgroundColor: pathname===link ? '#ffe273' : undefined,
+            backgroundColor: compareLinks({ link, pathname }) ? '#ffe273' : undefined,
             borderRadius: 10
         }}
     >
         <div className={`${styles['header-group-item']} w-full flex`}>
             {/* Content */}
-            <span className='link !no-underline !text-light-text dark:!text-dark-text'>{children}</span>
+            <span className={linkTextClassName}>{children}</span>
         </div>
     </Link>;
 }

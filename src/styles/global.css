@@ -335,3 +335,16 @@ table.styled td {
 .markdown-container ol {
     list-style-type: decimal;
 }
+
+/* Header */
+.selected-group-item {
+    background-color: #ffe273;
+}
+@media (prefers-color-scheme: dark) {
+    .selected-group-item {
+        /* background-color: #ffd13c; */
+        /* background-color: #7b5e00; */
+        background-color: #be9b27;
+        /* background-color: #494949; */
+    }
+}

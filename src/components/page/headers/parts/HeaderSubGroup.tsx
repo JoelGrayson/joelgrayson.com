@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import HeaderSubGroupArrow from './HeaderSubGroupArrow';
+import compareLinks from './compareLinks';
+import { linkTextClassName } from './HeaderGroupItem';
 
 export default function HeaderSubGroup({ pathname, link, title, children }: { pathname?: string; link?: string; title: string, children: any }) {
     const [hovered, setHovered]=useState(false); //hovered & open
@@ -26,9 +28,9 @@ export default function HeaderSubGroup({ pathname, link, title, children }: { pa
             onMouseEnter={()=>setHovered(true)}
         >
             <span
-                className={hovered ? 'gradient-text semibold' : ''}
+                className={linkTextClassName}
                 style={{
-                    backgroundColor: pathname===link ? '#ffe273' : undefined,
+                    backgroundColor: compareLinks({ link, pathname }) ? '#ffe273' : undefined,
                     borderRadius: 10
                 }}
             >{title}</span>
