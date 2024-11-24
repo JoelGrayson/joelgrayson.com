@@ -9,6 +9,11 @@
   border: 0;
 }
 
+@media (prefers-color-scheme: dark) {
+  .section {
+    background-color: var(--dark-bg);
+  }
+}
 .content {
   display: block;
   width: 95%;
