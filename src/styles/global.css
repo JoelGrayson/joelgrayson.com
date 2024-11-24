@@ -213,6 +213,13 @@ input[type='submit'] {
     position: relative;
 }
 
+/* Select */
+@media (prefers-color-scheme: dark) {
+    select {
+        background-color: var(--dark-bg-lighter);
+        border-color: var(--dark-text);
+    }
+}
 
 /* ## Table */
 table.styled {
@@ -285,10 +292,14 @@ table.styled td {
     outline: none;
 }
 
+/* Only red works in dark mode */
 :where(button, .btn, .button):where(.btn-red,    .button-red)    { background-color: #ff8f8f !important; }
-:where(button, .btn, .button):where(.btn-yellow, .button-yellow) { background-color: #ffd472 !important; }
-:where(button, .btn, .button):where(.btn-green,  .button-green)  { background-color: #90ee90 !important; }
-:where(button, .btn, .button):where(.btn-blue,   .button-blue)   { background-color: #aed8fc !important; }
+@media (prefers-color-scheme: light) {
+    :where(button, .btn, .button):where(.btn-yellow, .button-yellow) { background-color: #ffd472 !important; }
+    :where(button, .btn, .button):where(.btn-green,  .button-green)  { background-color: #90ee90 !important; }
+    :where(button, .btn, .button):where(.btn-blue,   .button-blue)   { background-color: #aed8fc !important; }
+}
+
 
 /* <Added for dark mode> */
 @media (prefers-color-scheme: dark) {

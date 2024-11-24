@@ -92,10 +92,10 @@ export default function AddComment({ hyphenatedTitle }: { hyphenatedTitle: strin
                         <textarea name='comment' id='comment' className='mb-2' placeholder='Leave a comment...' value={comment} rows={3} onChange={e=>setComment(e.target.value)} />
                     </div>
                 </div>
-                <Button onClick={submitHandler} color='jblue'>
+                <button onClick={submitHandler} className='btn-blue dark:btn-gray'>
                     <span>Comment</span>
                     <svg stroke='currentColor' fill='none' strokeWidth='2' viewBox='0 0 24 24' strokeLinecap='round' strokeLinejoin='round' height='1em' width='1em' className='ml-1 inline' xmlns='http://www.w3.org/2000/svg'><line x1='22' y1='2' x2='11' y2='13'></line><polygon points='22 2 15 22 11 13 2 9 22 2'></polygon></svg>
-                </Button>
+                </button>
             </>
             }
         </div>

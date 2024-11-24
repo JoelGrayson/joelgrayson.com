@@ -89,8 +89,6 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
 
             <Tile href='https://shirtocracy.com'>
                 <Image alt='Shirtocracy Logo' width={60} height={60} className='relative left-0.5 mb-1 dark:invert' src='/image/home/shirtocracy-logo.png' />
-                {/* <Image alt='Shirtocracy Logo' width={60} height={60} className='dark:hidden relative left-0.5 mb-1' src='/image/home/shirtocracy-logo.png' />
-                <Image alt='Shirtocracy Logo' width={60} height={60} className='hidden dark:block relative left-0.5 mb-1' src='/image/home/shirtocracy-logo-dark.png' /> */}
                 <span>Shirtocracy<DotCom /></span>
             </Tile>
             <Tile href='https://sparelearn.com'>

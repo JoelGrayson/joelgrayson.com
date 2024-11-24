@@ -13,7 +13,11 @@ export default function ArticleThumbnail({article}: {article: articleT}) { //rec
                 image height: 225px
                 image width: 400px
         */}
-        <div className='p-3 border-gray-400 border-[1px] rounded-xl shadow-md bg-gray-50 hover:shadow-slate-300 hover:shadow-lg cursor-pointer grid place-items-center' style={{
+        <div className='
+            p-3 border-[1px] rounded-xl shadow-md hover:shadow-lg cursor-pointer grid place-items-center
+            bg-gray-50 hover:shadow-slate-300 border-gray-400
+            dark:bg-dark-bg-lighter dark:hover:shadow-[#555] dark:border-dark-text
+        ' style={{
             height: '220px',
             width: '250px',
         }}>

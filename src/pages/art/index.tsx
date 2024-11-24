@@ -28,7 +28,7 @@ export default function Art() {
     const [index, setIndex]=useState<number>(0);
 
     return <Page title='Art | Joel Grayson' pathname='/art' seo={{
-        title: 'Joel Grayson',
+        title: 'Art | Joel Grayson',
         description: 'Drawings and sculptures'
     }}>
         <h1 className='text-center'>Art</h1>

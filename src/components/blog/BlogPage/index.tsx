@@ -4,10 +4,10 @@ import JThreeDots from '@/components/page/headers/parts/JThreeDots';
 import Container from '@jcomponents/container';
 import SEO, { SEOProps } from '@/components/page/parts/SEO';
 
-const chomsky=localFont({ src: './chomsky-font/Chomsky.woff2' });
+const chomsky=localFont({ src: './chomsky-font/Chomsky.woff2', fallback: ['serif'] });
 
 export default function BlogPage({children, seo, maxWidth=800}: {children: React.ReactNode | any; seo?: SEOProps; maxWidth?: number}) {
-    return <div style={{backgroundColor: '#fdfdfd'}}>
+    return <div className='bg-light-bg-darker dark:bg-dark-bg'>
         <SEO seo={{
             title: "Joel's Blog", //can be overridden by props.seo
             description: 'Short blog articles about philosophy, science, climate change, and other topics',
