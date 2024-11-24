@@ -18,7 +18,7 @@ export default function HeaderSubGroup({ pathname, link, title, children }: { pa
     >
         {/* --> Left Arrow (onhover increases arrow length) */}
         <svg className='inline pr-2' width='33px' height='15px' viewBox='0 0 33 15' fill='none' xmlns='http://www.w3.org/2000/svg'>
-            <path d='M0 6.90909H31M31 6.90909L22.5 14M31 6.90909L22.5 1' stroke='black' strokeWidth='2'/>
+            <path d='M0 6.90909H31M31 6.90909L22.5 14M31 6.90909L22.5 1' className='stroke-black dark:stroke-white' strokeWidth='2'/>
         </svg>
         
         <span
@@ -37,10 +37,9 @@ export default function HeaderSubGroup({ pathname, link, title, children }: { pa
         </span>
         
         { /* show children if open */
-            hovered && <div className='p-4 rounded-md height-fit' style={{
+            hovered && <div className='p-4 rounded-md height-fit backdrop-blur-sm bg-[#ffffffdd] dark:bg-[#000000dd]' style={{
                 zIndex: 5,
                 width: 'fit-content',
-                backgroundColor: 'rgb(255,255,255,0.8)',
                 border: '2px solid gray',
                 left: '7.6rem',
                 position: 'absolute',

@@ -15,7 +15,7 @@ export default function DefaultHeader({ pathname='' }: { pathname?: string }) {
         w-full
         border-solid border-b-[1px] border-black p-3
         bg-gradient-to-b from-[#fcd98b] to-[#faca62]
-        ${/* dark:from-[#333] dark:to-[#111] */''}
+        dark:from-[#333] dark:to-[#1a1a1a]
         m:pb-0
     `}>
         <nav className='j_max-w mx-auto'>

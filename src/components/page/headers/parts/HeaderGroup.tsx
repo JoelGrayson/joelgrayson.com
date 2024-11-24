@@ -26,16 +26,18 @@ export default function HeaderGroup({ pathname, title, children, link, className
             <UpDownArrow />
         </Link>
 
-        <div className={`${styles['header-group-content']} absolute ml-3 p-4 rounded-md height-fit border-2 bg-[rgb(255,255,255,0.8)] border-gray-500 z-10 select-none`}>
+        <div className={`${styles['header-group-content']} absolute ml-3 p-4 rounded-md height-fit border-2 backdrop-blur-sm bg-[#ffffffdd] dark:bg-[#000000dd] border-gray-500 z-10 select-none`}>
             {/* Vertical line */}
-            <div style={{
-                height: `calc(100% - 16px - 12px + ${pixelOffset}px)`,
-                width: '2px',
-                backgroundColor: 'black',
-                position: 'absolute',
-                left: '14px',
-                top: 0
-            }}/>
+            <div
+                style={{
+                    height: `calc(100% - 16px - 12px + ${pixelOffset}px)`,
+                    width: '2px',
+                    position: 'absolute',
+                    left: '14px',
+                    top: 0
+                }}
+                className='bg-black dark:bg-white'
+            />
 
             {children}
         </div>

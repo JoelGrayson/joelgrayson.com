@@ -8,8 +8,10 @@
 :root {
     --dark-bg: #1a1a1a;
     --dark-bg-lighter: #2a2a2a;
+    --light-text: #000;
     --dark-text: #fff;
 }
+
 
 /* # DOM Elements */
 html, body {
@@ -115,13 +117,14 @@ details>summary {
 a, details>summary {
     cursor: pointer;
 }
-a:not(.unstyled):not(.button) {
+a:not(.unstyled):not(.button), .link {
     color: #0000e1;
 }
 a:not(.unstyled):not(.button):hover,
 a:not(.unstyled):not(.button):hover *,
 .gradient-text,
-.gradient-text-on-hover:hover {
+.gradient-text-on-hover:hover,
+.link:hover {
     color: #fa00f2; /* backup for browsers not supporting text gradient */
     background: -webkit-linear-gradient(45deg, #fa00f2 0%, #000acd 60%, #00299d 100%); /* blue/purple gradient text */
     -webkit-background-clip: text;
@@ -131,14 +134,15 @@ a:not(.unstyled):not(.button):hover *,
     transition: none !important;
 }
 @media (prefers-color-scheme: dark) {
-    a:not(.unstyled):not(.button) {
+    a:not(.unstyled):not(.button), .link {
         color: #bdbcff;
         text-decoration: underline;
     }
     a:not(.unstyled):not(.button):hover,
     a:not(.unstyled):not(.button):hover *,
     .gradient-text,
-    .gradient-text-on-hover:hover {
+    .gradient-text-on-hover:hover,
+    .link:hover {
         color: #cdcbff;
         font-weight: 600;
         transition: none !important;

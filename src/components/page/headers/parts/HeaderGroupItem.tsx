@@ -15,11 +15,11 @@ export default function HeaderGroupItem({ pathname, link, children }: { pathname
         <div className={`${styles['header-group-item']} w-full`}>
             {/* --> Left Arrow (onhover increases arrow length) */}
             <svg className={`inline pr-2 ${styles['left-arrow']}`} height='15px' viewBox='0 0 33 15' fill='none' xmlns='http://www.w3.org/2000/svg'>
-                <path d='M0 6.90909H31M31 6.90909L22.5 14M31 6.90909L22.5 1' stroke='black' strokeWidth='2'/>
+                <path d='M0 6.90909H31M31 6.90909L22.5 14M31 6.90909L22.5 1' className='stroke-black dark:stroke-white' strokeWidth='2'/>
             </svg>
 
             {/* Content */}
-            <span className={styles['header-group-item-text']}>{children}</span>
+            <span className='link !no-underline !text-light-text dark:!text-dark-text'>{children}</span>
         </div>
     </Link>;
 }

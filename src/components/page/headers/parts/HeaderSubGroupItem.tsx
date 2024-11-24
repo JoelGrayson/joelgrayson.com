@@ -14,7 +14,7 @@ export default function HeaderSubGroupItem({ pathname, link, children, }: { path
     >
         <div className={`${styles['header-group-item']} w-full flex`}>
             {/* Content */}
-            <span className={styles['header-group-item-text']}>{children}</span>
+            <span className='link !no-underline !text-light-text dark:!text-dark-text'>{children}</span>
         </div>
     </Link>;
 }
