@@ -156,26 +156,38 @@ a:not(.unstyled):not(.button):hover *,
 
 /* ## Forms */
 input, textarea {
-    border: 1px solid black;
-    background-color: #dde5ff;
     border-radius: 0.4rem;
     padding: 0.2rem 0.8rem;
 }
 
-input:invalid, textarea:invalid {
-    background-color: #fde2f0;
-}
-  
-input:hover, textarea:hover {
-    background-color: #c4c9f2;
-}
-  
-input:focus, textarea:focus {
-    background-color: #d4e0fd;
-}
-
 input[type='submit'] {
     cursor: pointer;
+}
+
+@media (prefers-color-scheme: light) {
+    input, textarea {
+        border: 1px solid black;
+        background-color: #dde5ff;
+    }
+
+    input:invalid, textarea:invalid {
+        background-color: #fde2f0;
+    }
+    
+    input:hover, textarea:hover {
+        background-color: #c4c9f2;
+    }
+    
+    input:focus, textarea:focus {
+        background-color: #d4e0fd;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    input, textarea {
+        border: 1px solid white;
+        background-color: #222;
+    }
 }
 
 
@@ -240,7 +252,7 @@ table.styled td {
 
 
 /* ### Button from https://joelgrayson.com/styles/button.v2.css */
-:where(button):not(.unstyled), .btn, .button {
+:where(button, .btn, .button):not(.unstyled) {
     display: inline-flex;
     align-items: center;
     cursor: pointer;
@@ -256,24 +268,38 @@ table.styled td {
     transition: top;
     transition-duration: .1s;
 }
-:where(button):not(.unstyled):hover, .btn:hover, .button:hover {
+:where(button, .btn, .button):not(.unstyled):hover {
     outline: 2.1px solid #111;
     outline-offset: -2px;
     filter: brightness(0.85) saturate(1.4);
 }
-:where(button):not(.unstyled):active, .btn:active, .button:active {
+:where(button, .btn, .button):not(.unstyled):active {
     border-radius: 2px;
 	top: 1.1px;
     filter: brightness(0.8) saturate(1.4);
 }
-:where(button):not(.unstyled):disabled, .btn:disabled, .button:disabled {
+:where(button, .btn, .button):not(.unstyled):disabled {
     outline: none;
 }
 
-.btn-red,    .button-red    { background-color: #ff8f8f; }
-.btn-yellow, .button-yellow { background-color: #ffd472; }
-.btn-green,  .button-green  { background-color: #90ee90; }
-.btn-blue,   .button-blue   { background-color: #aed8fc; }
+@media (prefers-color-scheme: light) {
+    .btn-red,    .button-red    { background-color: #ff8f8f; }
+    .btn-yellow, .button-yellow { background-color: #ffd472; }
+    .btn-green,  .button-green  { background-color: #90ee90; }
+    .btn-blue,   .button-blue   { background-color: #aed8fc; }
+}
+
+/* <Added for dark mode> */
+@media (prefers-color-scheme: dark) {
+    :where(button, .btn, .button):not(.unstyled) {
+        background-color: #222;
+    }
+    :where(button, .btn, .button):not(.unstyled):hover {
+        background-color: #333;
+    }
+}
+/* </> */
+
 
 
 .btn-puffy {
