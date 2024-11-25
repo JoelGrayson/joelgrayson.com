@@ -3,7 +3,7 @@ import styles from './talking.module.css';
 import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 
-const TALKING_BALL_SPEED=200;
+const TALKING_BALL_SPEED=180;
 const DELAY_BETWEEN_BALLS=5;
 
 function Talking() {
@@ -21,7 +21,7 @@ function Talking() {
             animationTimingFunction: 'linear'
         });
 
-        // <Testing>
+        // <Testing for frame coordinates>
         // gsap.to(circleRef.current, {
         //     duration: 1,
         //     ease: 'linear',
@@ -39,7 +39,7 @@ function Talking() {
 
 
         // // Circle
-        gsap.set(circleRef.current, {css: {opacity: 0} }); //hide circle at start
+        gsap.set(circleRef.current, { opacity: 0 }); //hide circle at start
         const tl=gsap.timeline({
             delay: 1,
             repeatDelay: DELAY_BETWEEN_BALLS,
@@ -55,17 +55,9 @@ function Talking() {
                 x, y
             });
         }
-        tl.to(circleRef.current, { opacity: 0 }); //hide while moving to start
-        tl.to(circleRef.current, { x: 1, y: 1, duration: .3 }); //quickly return to the start
-        tl.to(circleRef.current, { css: {scaleX: 1, scaleY: 1}, duration: .3 }); //quickly return to the start
-        tl.to(circleRef.current, { opacity: 1, duration: 0.2 }); //show
-        // frame(1,   80,  30);
-        // frame(0.4, 105, 50);
-        // frame(1,  -86,  150);
-        // frame(0.5,-36,  160);
-        // frame(1.3, 110, 170);
         const frames=[
-            [0, 0],
+            [-30, 0],
+            [15, 10],
             [70, 25],
             [65, 65],
             [-10, 70],
@@ -73,42 +65,35 @@ function Talking() {
             [30, 150],
             [150, 165]
         ];
-        for (let i=0; i<frames.length; i++) {
-            let d;
-            if (i===0)
-                d=distance(0, 0, frames[i][0], frames[i][1]);
-            else
-                d=distance(frames[i-1][0], frames[i-1][1], frames[i][0], frames[i][1]);
-            
+        tl.to(circleRef.current, { opacity: 0 }); //hide while moving to start
+        tl.to(circleRef.current, { x: frames[0][0], y: frames[0][1], duration: .3 }); //quickly return to the start
+        tl.to(circleRef.current, { scale: 0, duration: .3 }); //quickly return to the start
+        tl.to(circleRef.current, { opacity: 1, duration: 0.1 }); //show
+        tl.to(circleRef.current, { scale: 1, x: frames[1][0], y: frames[1][1], duration: distance(frames[0][0], frames[0][1], frames[1][0], frames[1][1])/TALKING_BALL_SPEED*1.2 }); //show
+
+        for (let i=2; i<frames.length; i++) {
+            let d=distance(frames[i-1][0], frames[i-1][1], frames[i][0], frames[i][1]);
             frame(d/TALKING_BALL_SPEED, frames[i][0], frames[i][1]);
         }
-        // frames.forEach(([x, y])=>{
-        //     frame(1, x, y);
-        // });
 
         tl.to(circleRef.current, {
             delay: .2,
             duration: .3,
-            css: {
-                opacity: 0,
-                scaleX: 0,
-                scaleY: 0
-            }
+            scale: 0,
+            opacity: 0
         });
     }, []);
 
-    return <>
-        <div id='talking' ref={talkingRef} style={{ //talkingRef starting position
-            position: 'absolute',
-            right: -100,
-            opacity: 0
-        }} >
-            <div className={styles.leftImgContainer}>
-                <Image src='/contact/talking-joel.webp' width='434' alt='talking-joel' height='320' priority />
-                <div className={styles.circle} ref={circleRef} id='ball' />
-            </div>
+    return <div id='talking' ref={talkingRef} style={{ //talkingRef starting position
+        position: 'absolute',
+        right: -100,
+        opacity: 0
+    }} >
+        <div className={styles.leftImgContainer}>
+            <Image src='/contact/talking-joel.webp' width='434' alt='talking-joel' height='320' priority />
+            <div className={styles.circle} ref={circleRef} id='ball' />
         </div>
-    </>;
+    </div>;
 }
 
 export default Talking;
