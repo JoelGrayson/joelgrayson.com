@@ -61,7 +61,7 @@ export default function Form() {
                     />
                     <br />
                     {/* Captcha? */}
-                    <input className='w-fit mb-6' type='submit' value='Send' />
+                    <input className='w-fit mb-6 button dark:text-black' type='submit' value='Send' />
                 </form>
                 : state==='loading'
                 ? <Loader />

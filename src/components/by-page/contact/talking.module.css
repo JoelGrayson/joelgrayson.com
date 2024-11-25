@@ -1,5 +1,7 @@
 .talking {
     opacity: 0;
+    transition: none;
+    animation: none;
 }
 
 
