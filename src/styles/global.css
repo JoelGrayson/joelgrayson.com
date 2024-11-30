@@ -386,3 +386,13 @@ table.styled td {
         /* background-color: #494949; */
     }
 }
+
+/* Selection */
+*::selection { /* yellow highlight color */
+    background-color: #f9c44d;
+}
+@media (prefers-color-scheme: dark) {
+    *::selection {
+        background-color: #a88100;
+    }
+}

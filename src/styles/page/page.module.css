@@ -10,7 +10,3 @@
     /* transition: all 0.3s ease */
 }
 
-.pageNamespace *::selection { /* yellow highlight color */
-    background-color: #f9c44d;
-}
-
