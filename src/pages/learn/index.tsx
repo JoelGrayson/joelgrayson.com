@@ -9,7 +9,7 @@ export default function Learn() {
     }}>
         <h1 className="my-3 text-center">Learn</h1>
 
-        <p>Here are some learning resources I made on various subjects.</p>
+        <p>Here are some learning resources I made for various subjects.</p>
         
         <ul>
             <li><Link href='/nyc/nyc-government'>NYC Government</Link></li>
@@ -25,6 +25,7 @@ export default function Learn() {
             <li><Link href='/learn/plausible-analytics-with-nextjs'>Set up Plausible Analytics with Next.js</Link></li>
             <li><Link href='/learn/php-mysqli'>Using mysqli in PHP</Link></li>
             <li><Link href='/learn/http-requests-in-swift'>HTTP Requests in Swift</Link></li>
+            <li><Link href='/learn/understanding-taylor-and-maclaurin-series.pdf'>Understanding Taylor and Maclaurin Series</Link></li>
 
             
             {/* STEM videos from Slaphappy */}

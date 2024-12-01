@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import '../styles/global.css';
 import localFont from 'next/font/local';
-import PlausibleProvider from 'next-plausible'
+import PlausibleProvider from 'next-plausible';
 import PrintLogo from "./PrintLogo";
 
 export const metadata: Metadata={

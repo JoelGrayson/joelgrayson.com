@@ -1,5 +1,4 @@
 import Page from '@/components/page/DefaultPage';
-import Image from 'next/image';
 
 export default function Quotes() {
     return <Page seo={{
