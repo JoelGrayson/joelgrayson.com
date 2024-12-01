@@ -58,8 +58,6 @@ export default function Software() {
                     {/* <li><Link href="/software/onedrive-download-link-generator" target="_blank">Onedrive Download Link Generator</Link></li> */}
                     <li><Link href="/software/box-download-link-generator" target="_blank">Box Download Link Generator</Link></li>
                     <li><Link href="/software/dropbox-download-link-generator" target="_blank">Dropbox Download Link Generator</Link></li>
-
-                    {/* TODO: Scripts */}
                 </ul>
             </li>
             <li>

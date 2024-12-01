@@ -5,7 +5,6 @@ import Link from 'next/link';
 
 export default function ChinasBrutalRoadToSocialism() {
     return <ArticleWrapper title={`China's Brutal Road to Socialism`} date={new Date('May 23, 2022')} hyphenatedTitle='chinas-brutal-road-to-socialism'>
-        {/* TODO: footnotes */}
         <h3 id='introduction'>Introduction</h3>
         <Character name='hua' alt='huá' />
         <P>The Great Leap Forward and Cultural Revolution were disasters because they caused tremendous human suffering for too little gain. They killed and purged tens of millions and ruined the lives of countless innocent intellectuals and businessmen. In 1949, the Chinese Communist Party (CCP) conquered mainland China and declared the People’s Republic of China. They initially followed the Soviet Union’s example of moving to a utopian communist society with socialism as an intermediary state. However, the CCP’s leader, Mao Zedong, made China’s path to communism different from the Soviet Union’s due to China’s different demographics and cultures. Mao instigated two major events during the tumultuous period of 1958 to 1972: the Great Leap Forward and Cultural Revolution. The events liberated China from foreign control and formed the foundation for a stable country that would outlast the Soviet Union. However, they resulted in widespread, unjust violence. All things considered, the communists caused too much human suffering to transform China into a stable and independent socialist superpower during the Great Leap Forward and Cultural Revolution.</P>

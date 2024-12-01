@@ -112,7 +112,7 @@ export default function Resume() {
                 </Link>
 
 
-                <div className="section hover:bg-blue-100" id='software-section'>
+                <div className="section hover:bg-blue-100 dark:hover:bg-[rgba(50,50,200,0.2)]" id='software-section'>
                     <h3>Projects</h3>
                     <ul>
                         <li>
@@ -170,7 +170,7 @@ export default function Resume() {
                 </div>
 
 
-                <div className="section hover:bg-green-100" id='climate-change-section'>
+                <div className="section hover:bg-green-100 dark:hover:bg-green-950" id='climate-change-section'>
                     <h3>Climate Change</h3>
                     <ul>
                         <li>
@@ -212,7 +212,7 @@ export default function Resume() {
                 </div>
                 
 
-                <div className="section hover:bg-red-100" id='activities-section'>
+                <div className="section hover:bg-red-100 dark:hover:bg-[rgba(200,50,50,0.3)]" id='activities-section'>
                     <h3>Activities</h3>
                     <ul>
                         <li>
@@ -239,7 +239,7 @@ export default function Resume() {
                 </div>
 
 
-                <div className="section hover:bg-gray-200" id="education-section">
+                <div className="section hover:bg-gray-200 dark:hover:bg-gray-800" id="education-section">
                     <h3>Education</h3>
                     <ul>
                         <li>
@@ -258,7 +258,7 @@ export default function Resume() {
                 </div>
 
 
-                <div className="section hover:bg-yellow-100" id='honors-section'>
+                <div className="section hover:bg-yellow-100 dark:hover:bg-[rgba(255,255,0,0.1)]" id='honors-section'>
                     <h3>Honors</h3>
                     <ul>
                         <li className='relative'>

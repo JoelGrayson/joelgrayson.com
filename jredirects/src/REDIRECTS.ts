@@ -46,7 +46,7 @@ export const temporary: redirects={ //302
     'https://github.com/JoelGrayson': '/github',
     'https://www.linkedin.com/in/joelgrayson/': '/linkedin',
     'https://www.youtube.com/watch?v=dQw4w9WgXcQ': ['/rick', '/rick-roll'],
-    'https://us06web.zoom.us/j/5482667091?pwd=Vnk1bXpuMkx3ZzRGNDA1THJSNHRCQT09': '/zoom', //TODO: see if this still works
+    'https://us06web.zoom.us/j/5482667091?pwd=Vnk1bXpuMkx3ZzRGNDA1THJSNHRCQT09': '/zoom',
     'https://joels-secrets-vemwxlduba-uk.a.run.app': ['/secrets', '/sign', '/secret'],
     
     

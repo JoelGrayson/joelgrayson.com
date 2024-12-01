@@ -27,7 +27,6 @@ export default function NYCGoverment() {
         </div>
 
         <h3>Rationale</h3>
-        {/* TODO: overarching course material */}
         <p>
             This course covers NYC government&apos;s organization and processes. I created it as a senior at Riverdale Country School in order to be a better informed citizen and community board member.
         </p>

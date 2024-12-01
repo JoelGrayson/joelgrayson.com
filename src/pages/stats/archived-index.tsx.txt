@@ -199,7 +199,6 @@ export default function Stats() {
         {
             hCInstalls && focusInstalls && blogViews && shanghaiDictionarySearches && ytData && <div>
                 Every day,
-                {/* TODO: calculate */}
                 <ul>
                     <li>20 people watch my YouTube channels</li>
                     <li>500 pounds of CO<sub>2</sub> is saved</li>

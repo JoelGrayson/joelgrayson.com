@@ -123,7 +123,6 @@ export default function StudentGovernment() {
         </div>
 
         <h3 className='mt-5'>8th</h3>
-        {/* TODO: link to video impersonating Trump */}
         <iframe width="560" height="315" src="https://www.youtube.com/embed/3EzSVfP8dms" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
 
     </Page>;

@@ -162,7 +162,6 @@ export default function Dashboard() {
                     </>
                 }
                 
-                {/* TODO: FULL TABLE */}
                 <h4>Log</h4>
                 <table className='j_table_no_padding'>
                     <thead>
