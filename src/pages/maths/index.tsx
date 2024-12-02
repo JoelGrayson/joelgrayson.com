@@ -16,6 +16,9 @@ export default function Maths() {
                     gap: 3px;
                 `}
             >
+                <Subject link='/learn/understanding-taylor-and-maclaurin-series.pdf'>
+                    <div>Understanding Taylor and Maclaurin Series</div>
+                </Subject>
                 <Subject link='/memorize-pi'>
                     <div>Tool for Memorizing Pi</div>
                 </Subject>
@@ -72,6 +75,15 @@ export function Subject({children, link}: {children: any; link: string}) {
                 }
                 &:active {
                     background-color: #ccc;
+                }
+                @media (prefers-color-scheme: dark) {
+                    background-color: #222;
+                    &:hover {
+                        background-color: #333;
+                    }
+                    &:active {
+                        background-color: #444;
+                    }
                 }
 
                 display: grid;
