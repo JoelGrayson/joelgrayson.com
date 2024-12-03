@@ -14,6 +14,38 @@ export default function StatsTimelineView() {
     </div>;
 }
 
+const endingDate=new Date('12/24/2024');
+
+const darkModeStyles={
+    "& .MuiChartsAxis-left .MuiChartsAxis-tickLabel":{
+        strokeWidth: "0.4",
+        fill: "#fff"
+    },
+    // change all labels fontFamily shown on both xAxis and yAxis
+    "& .MuiChartsAxis-tickContainer .MuiChartsAxis-tickLabel":{
+        fontFamily: "Roboto",
+    },
+    // change bottom label styles
+    "& .MuiChartsAxis-bottom .MuiChartsAxis-tickLabel":{
+        strokeWidth: "0.5",
+        fill: "#fff"
+    },
+    // bottomAxis Line Styles
+    "& .MuiChartsAxis-bottom .MuiChartsAxis-line":{
+        stroke: "#fff",
+        strokeWidth: 0.4
+    },
+    // leftAxis Line Styles
+    "& .MuiChartsAxis-left .MuiChartsAxis-line":{
+        stroke: "#fff",
+        strokeWidth: 0.4
+    },
+    // Chart legend
+    "& .MuiChartsLegend-root text tspan": {
+        fill: "#fff",
+    }
+};
+
 function StatsTimeline({ width=800, height=500 }: { width?: string | number, height?: string | number }) { // ?embedded=1&ignoreCache=1?hideTitle=1
     const ignoreCache=useRouter().query.ignoreCache!==undefined;
     // eslint-disable-next-line no-unused-vars
@@ -23,6 +55,14 @@ function StatsTimeline({ width=800, height=500 }: { width?: string | number, hei
 
     const [data, setData]=useState<null | any[]>(null);
     const [loading, setLoading]=useState(false);
+
+    const dataFiltered=data?.filter(d=>new Date(d.date)<endingDate);
+    const [isDarkMode, setIsDarkMode]=useState(false);
+    useEffect(()=>{
+        if (typeof window==='undefined')
+            return;
+        setIsDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }, [typeof window!=='undefined' && window.matchMedia('(prefers-color-scheme: dark)')]);
     
     useEffect(()=>{
         if (typeof window==='undefined')
@@ -81,23 +121,25 @@ function StatsTimeline({ width=800, height=500 }: { width?: string | number, hei
         <LineChart
             series={
                 [
-                    { curve: "linear", data: !data ? [] : data.map(d=>d.editTimeUsers), label: 'Edit Time Users', connectNulls: true,  },
-                    { curve: "linear", data: !data ? [] : data.map(d=>d.focusUsers), label: 'Focus Weekly Users', connectNulls: true },
-                    { curve: "linear", data: !data ? [] : data.map(d=>d.homeworkCheckerUsers), label: 'Homework Checker Weekly Users', connectNulls: true },
-                    // { curve: "linear", data: !data ? [] : data.map(d=>d.buserooSearches), label: 'Buseroo Searches', connectNulls: true },
+                    { curve: "linear", data: !dataFiltered ? [] : dataFiltered.map(d=>d.editTimeUsers), label: 'Edit Time Users', connectNulls: true,  },
+                    { curve: "linear", data: !dataFiltered ? [] : dataFiltered.map(d=>d.focusUsers), label: 'Focus Weekly Users', connectNulls: true },
+                    { curve: "linear", data: !dataFiltered ? [] : dataFiltered.map(d=>d.homeworkCheckerUsers), label: 'Homework Checker Weekly Users', connectNulls: true },
+                    // { curve: "linear", data: !dataFiltered ? [] : dataFiltered.map(d=>d.buserooSearches), label: 'Buseroo Searches', connectNulls: true },
                 ]
             }
             xAxis={[{
                 scaleType: 'utc',
-                data: data ? data.map(d=>new Date(d.date)) : []
+                data: dataFiltered ? dataFiltered.map(d=>new Date(d.date)) : []
             }]}
-            loading={data==null}
+            loading={dataFiltered==null}
             // width={800}
             // height={400}
             sx={{
                 width: '100%',
-                height: '100%'
+                height: '100%',
+                ...(isDarkMode ? darkModeStyles : {})
             }}
+            
         />
 
         <div className="w-full flex justify-end mr-12">
