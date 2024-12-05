@@ -13,10 +13,10 @@ export function Sites() { /* bullet points of all sites */
         <h1 className='text-center'>Sites</h1>
         <ul>
             <Site>joelgrayson.com</Site>
-            <Site addendum=' (startup)'>buseroo.com</Site>
-            <Site addendum=' (startup)'>lirongart.com</Site>
+            <Site>buseroo.com</Site>
+            <Site>lirongart.com</Site>
             <Site>studentsforelectricbuses.org</Site>
-            <Site addendum=' (startup)'>shirtocracy.com</Site>
+            <Site>shirtocracy.com</Site>
             <Site>memorizethepresidents.com</Site>
             <Site>luxpremierllc.com</Site>
             <Site addendum=' (Slaphappy)' href='https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A'>youtube.com/@JoelGrayson</Site>
@@ -25,7 +25,7 @@ export function Sites() { /* bullet points of all sites */
 
         <h3 className='mt-3'>Coming Soon</h3>
         <ul>
-            <Site addendum=' (startup)'>bulletbrainstorm.com</Site>
+            <Site>bulletbrainstorm.com</Site>
         </ul>
     </>;
 }

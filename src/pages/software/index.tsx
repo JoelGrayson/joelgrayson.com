@@ -39,6 +39,7 @@ export default function Software() {
                 Apps
                 <ul>
                     <li><Link href="/software/edit-time">Edit Time</Link> (<Link target='_blank' href='https://apps.apple.com/us/app/edit-time/id6464405876'>App Store Link</Link>)</li>
+                    <li><Link href="https://apps.apple.com/us/app/buseroo/id6736895918">Buseroo App</Link></li>
                     {/*
                     <li><Link href="" target="_blank">Bullet Brainstorm Desktop</Link></li>
                     <li><Link href="" target="_blank">Buseroo Mobile</Link></li>
