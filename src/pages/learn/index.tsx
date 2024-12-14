@@ -26,6 +26,8 @@ export default function Learn() {
             <li><Link href='/learn/php-mysqli'>Using mysqli in PHP</Link></li>
             <li><Link href='/learn/http-requests-in-swift'>HTTP Requests in Swift</Link></li>
             <li><Link href='/learn/understanding-taylor-and-maclaurin-series.pdf'>Understanding Taylor and Maclaurin Series</Link></li>
+            <li><Link href='/learn/constants'>Constants</Link></li>
+            {/* <li>pH=log_(.1) [H+] - I find easier to visualize</li> */}
 
             
             {/* STEM videos from Slaphappy */}
