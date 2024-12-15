@@ -28,14 +28,14 @@ export default function CCC() {
         {/* <Viewer status={viewer} setStatus={setViewer} /> */}
         <section className={styles.section}>
             <div className='j_container'>
-                <h1 className='text-center'>Combating Climate Change</h1>
+                <h1 className='text-center m:text-2xl'>Combating Climate Change</h1>
                 <div className='d:flex d:justify-between'>
                     <div>
-                        <p className='pr-2'>My climate initiatives reduce emissions by an estimated <Green>{Math.round(emissionsSaved)} metric tons of CO₂ equivalent</Green> (MTCO₂e) per year.</p>
+                        {/* <p className='pr-2'>My climate initiatives reduce emissions by an estimated <Green>{Math.round(emissionsSaved)} metric tons of CO₂ equivalent</Green> (MTCO₂e) per year.</p> */}
                         <p>Hover over <svg viewBox="0 0 24 24" style={{ display: 'inline', width: 20, height: 20, marginLeft: 5, marginRight: 5 }} xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Calculator"><path style={{fill:'#9293a5'}} d="M5.25,2H18.47a.89.89,0,0,1,.89.89V21.11a.89.89,0,0,1-.89.89H5.25a.89.89,0,0,1-.89-.89V2.89A.89.89,0,0,1,5.25,2" /><path style={{fill:'#6f7188'}} d="M15,2V22h3.46a.89.89,0,0,0,.89-.89V2.89A.89.89,0,0,0,18.47,2Z" /><rect style={{fill:'#eae2f9'}} height="9.34" width="11.44" x="6.14" y="10.83" /><rect style={{fill:'#eae2f9'}} height="4.71" width="11.44" x="6.14" y={4} /><rect style={{fill:'#f94060'}} height="9.34" width="2.57" x="15.01" y="10.83" /><rect style={{fill:'#c0c3ee'}} height="4.71" width="2.57" x="15.01" y={4} /><path d="M5.25,22.5H18.47a1.39,1.39,0,0,0,1.39-1.39V2.89A1.39,1.39,0,0,0,18.47,1.5H5.25A1.4,1.4,0,0,0,3.86,2.89V21.11A1.39,1.39,0,0,0,5.25,22.5ZM4.86,2.89a.4.4,0,0,1,.39-.39H18.47a.39.39,0,0,1,.39.39V21.11a.39.39,0,0,1-.39.39H5.25a.4.4,0,0,1-.39-.39Z" /><path d="M6.14,20.67H17.58a.5.5,0,0,0,.5-.5V10.83a.5.5,0,0,0-.5-.5H6.14a.5.5,0,0,0-.5.5v9.34A.5.5,0,0,0,6.14,20.67Zm9.37-9.34h1.57v3.83H15.51Zm0,4.83h1.57v3.51H15.51Zm-2.89-4.83h1.89v2.15H12.62Zm0,3.15h1.89v2H12.62Zm0,3h1.89v2.15H12.62Zm-3-6.19h2v2.15h-2Zm0,3.15h2v2h-2Zm0,3h2v2.15h-2ZM6.64,11.33H8.58v2.15H6.64Zm0,3.15H8.58v2H6.64Zm0,3H8.58v2.15H6.64Z" /><path d="M6.14,9.21H17.58a.5.5,0,0,0,.5-.5V4a.5.5,0,0,0-.5-.5H6.14a.5.5,0,0,0-.5.5V8.71A.5.5,0,0,0,6.14,9.21Zm.5-4.71H17.08V8.21H6.64Z" /><path d="M15.65,6.77h-.51a.5.5,0,0,0-.5.5.5.5,0,0,0,.5.5h.51a.5.5,0,0,0,.5-.5A.51.51,0,0,0,15.65,6.77Z" /></g></svg> to see calculations.</p>
                     </div>
                     <div style={{
-                        width: 335,
+                        width: 190,
                         marginLeft: 10
                     }}>
                         <Switch defaultChecked onChange={setShowDescription} checked={showDescription} id='showDescriptions' className='unstyled' style={{
@@ -174,8 +174,9 @@ Permanent link: https://perma.cc/N7QN-QDK6
         </Section>
         <Section title='Raising Public Awareness'>
             {/* TODO: add spoke to students at Baruch and students at Middle School (show photo) */}
+
             <Action title='TEDx Talk' {...{showDescription}}>
-                <Yt>rV_8xB7rGyQ</Yt>
+                <Yt className='m:w-[300px] m:h-[200px]'>rV_8xB7rGyQ</Yt>
             </Action>
             <Action title='Upper School Climate Solutions Presentation' {...{showDescription}}>
                 <div className='flex justify-around items-center'>
@@ -192,7 +193,7 @@ Permanent link: https://perma.cc/N7QN-QDK6
                 <div className='d:flex'>
                     <div className='d:grid d:place-items-center'>
                         <Image width={380} height={205} src="/image/ccc/presenting/middle-school.jpg" alt="Presentation to the Middle School" />
-                        <Link className='button m:hidden' href='/combating-climate-change/Combating Climate Change.pptx'>
+                        <Link className='button m:hidden mt-2' href='/combating-climate-change/Combating Climate Change.pptx'>
                             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width='48px' height='48px'><path fill='#dc4c2c' d='M8,24c0,9.941,8.059,18,18,18s18-8.059,18-18H26H8z'/><path fill='#f7a278' d='M26,6v18h18C44,14.059,35.941,6,26,6z'/><path fill='#c06346' d='M26,6C16.059,6,8,14.059,8,24h18V6z'/><path fill='#9b341f' d='M22.319,34H5.681C4.753,34,4,33.247,4,32.319V15.681C4,14.753,4.753,14,5.681,14h16.638 C23.247,14,24,14.753,24,15.681v16.638C24,33.247,23.247,34,22.319,34z'/><path fill='#fff' d='M14.673,19.012H10v10h2.024v-3.521H14.3c1.876,0,3.397-1.521,3.397-3.397v-0.058 C17.697,20.366,16.343,19.012,14.673,19.012z M15.57,22.358c0,0.859-0.697,1.556-1.556,1.556h-1.99v-3.325h1.99 c0.859,0,1.556,0.697,1.556,1.556V22.358z'/></svg>
                             <span>Download Presentation</span>
                         </Link>

@@ -21,6 +21,7 @@ export default function Learn() {
             <li><Link href='/learn/docker'>Docker</Link></li>
             <li><Link href='/learn/daylight-saving-time'>Daylight Savings Time</Link></li>
             <li><Link href='/learn/understanding-taylor-and-maclaurin-series.pdf'>Understanding Taylor and Maclaurin Series</Link></li>
+            <li><Link href='/learn/constants'>Constants</Link></li>
         </ul>
 
 
