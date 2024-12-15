@@ -42,3 +42,39 @@ func runScript(_ script: String) -> String {
     return "Failed to run script"
 }
 ```
+
+### utils/runScript.swift if you want to use sudo in your commands
+```swift
+runScript("sudo ifconfig en0 ether 69:69:69:69:69:69", sudo: true)
+
+func runScript(_ script: String, sudo: Bool=false) -> String {
+    let process=Process()
+    let pipe=Pipe()
+    process.standardInput=nil //no stdin needed
+    process.standardOutput=pipe //output both stdout and stderr to the pipe
+    process.standardError=pipe
+    process.executableURL=URL(fileURLWithPath: "/bin/sh")
+
+    process.arguments=["-c", script] //runs bash -c [script]. -c means execute the following argument
+    
+    do {
+        if #available(macOS 13.0, *) {
+            try process.run() //throws errors
+        } else {
+            process.launch() //old way
+        }
+        if sudo {
+            tcsetpgrp(STDIN_FILENO, process.processIdentifier) //for sudo
+        }
+        
+        let data=pipe.fileHandleForReading.readDataToEndOfFile()
+        let output=String(data: data, encoding: .utf8) ?? ""
+        return output
+    } catch {
+        print("Running a script resulted in the following error:")
+        print(error)
+    }
+    
+    return "Failed to run script"
+}
+```
