@@ -20,22 +20,27 @@ export default function Learn() {
             <li><Link href='/learn/pablo-neruda'>Pablo Neruda</Link></li>
             <li><Link href='/learn/docker'>Docker</Link></li>
             <li><Link href='/learn/daylight-saving-time'>Daylight Savings Time</Link></li>
+            <li><Link href='/learn/understanding-taylor-and-maclaurin-series.pdf'>Understanding Taylor and Maclaurin Series</Link></li>
+        </ul>
+
+
+        <h3>Programming</h3>
+        <ul>
+            <li><Link href='/learn/running-bash-script-in-swift'>Running Bash Script in Swift</Link></li>
             <li><Link href='/learn/css-grid'>CSS Grid</Link></li>
             <li><Link href='/learn/using-tokens-to-push-to-github'>How To Use Tokens to Push to GitHub</Link></li>
             <li><Link href='/learn/plausible-analytics-with-nextjs'>Set up Plausible Analytics with Next.js</Link></li>
             <li><Link href='/learn/php-mysqli'>Using mysqli in PHP</Link></li>
             <li><Link href='/learn/http-requests-in-swift'>HTTP Requests in Swift</Link></li>
-            <li><Link href='/learn/understanding-taylor-and-maclaurin-series.pdf'>Understanding Taylor and Maclaurin Series</Link></li>
-
-            
-            {/* STEM videos from Slaphappy */}
-            <div className="mt-8 d:grid grid-cols-2 gap-2 place-content-center">
-                <Yt width={300}>7BqbyixlSRU</Yt>
-                <Yt width={300}>BYTgpx9bEgQ</Yt>
-                <Yt width={300}>jty0QHS0F3I</Yt>
-                <Yt width={300}>F0ameJ2K3_0</Yt>
-            </div>
         </ul>
+
+        <h3>STEM Videos from <Link href='https://youtube.com/@JoelGrayson' target="_blank">Slaphappy</Link></h3>
+        <div className="mt-8 d:grid grid-cols-2 gap-2 place-content-center">
+            <Yt width={300}>7BqbyixlSRU</Yt>
+            <Yt width={300}>BYTgpx9bEgQ</Yt>
+            <Yt width={300}>jty0QHS0F3I</Yt>
+            <Yt width={300}>F0ameJ2K3_0</Yt>
+        </div>
     </Page>;
 }
 

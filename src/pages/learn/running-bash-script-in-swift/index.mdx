@@ -1,0 +1,44 @@
+import LearnPage from "@/components/page/LearnPage";
+export default function LearningContent({children}) {
+	return <LearnPage markdown bottomPadding>{children}</LearnPage>;
+}
+
+
+# Running Bash Script in Swift
+### Using the script
+```swift
+var address=runScript("ifconfig en0 | grep ether")
+```
+
+
+### utils/runScript.swift
+```swift
+import Foundation
+
+let process=Process()
+let pipe=Pipe()
+
+func runScript(_ script: String) -> String {
+    process.standardInput=nil //no stdin needed
+    process.standardOutput=pipe //output both stdout and stderr to the pipe
+    process.standardError=pipe
+    process.arguments=["-c", script] //runs bash -c [script]. -c means execute the following argument
+    process.executableURL=URL(fileURLWithPath: "/bin/bash")
+    
+    do {
+        if #available(macOS 13.0, *) {
+            try process.run() //throws errors
+        } else {
+            process.launch() //old way
+        }
+        let data=pipe.fileHandleForReading.readDataToEndOfFile()
+        let output=String(data: data, encoding: .utf8) ?? ""
+        return output
+    } catch {
+        print("Running a script resulted in the following error:")
+        print(error)
+    }
+    
+    return "Failed to run script"
+}
+```
