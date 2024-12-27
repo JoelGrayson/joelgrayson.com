@@ -25,6 +25,9 @@
       ],
       "@/pages/*": [
         "src/pages/*"
+      ],
+      "@/*": [
+        "./*"
       ]
     },
     "allowJs": true,
