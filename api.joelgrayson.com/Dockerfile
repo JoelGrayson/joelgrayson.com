@@ -7,10 +7,10 @@ MAINTAINER Joel Grayson
 
 # Cron
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y cron
-COPY crontab /etc/cron.d/joel-cron
-RUN chmod 644 /etc/cron.d/joel-cron
-RUN touch /var/log/cron.log
+# RUN apt-get install -y cron
+# COPY crontab /etc/cron.d/joel-cron
+# RUN chmod 644 /etc/cron.d/joel-cron
+# RUN touch /var/log/cron.log
 
 
 # Install Node & NPM
