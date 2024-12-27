@@ -17,8 +17,9 @@ async function main({ name, key }) {
     const data={}; //jdate -> totalDownloads
     let totalDownloads=0;
     for (let line of lines) {
-        const date=new Date(line.split(',')[0]);
-        const downloadsOfThatDay=parseInt(line.split(',')[1]);
+        const [fst, snd]=line.split(',')
+        const date=new Date(fst);
+        const downloadsOfThatDay=parseInt(snd);
         totalDownloads+=downloadsOfThatDay;
         data[jdate(date)]={
             date,

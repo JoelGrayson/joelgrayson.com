@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { AreaChart, CartesianGrid, Line, LineChart, XAxis } from "recharts"
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
 
 import {
   Card,
@@ -25,6 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import jdate from "joeldate";
 
 const chartConfig = {
   users: {
@@ -42,57 +43,64 @@ const chartConfig = {
     label: "Focus Users",
     color: "hsl(var(--chart-3))",
   }
-} satisfies ChartConfig
+} satisfies ChartConfig;
+
+
 
 export function Component({ data: chartData }: { data: any }) {
-  const [timeRange, setTimeRange] = React.useState("90d")
+  const [timeRange, setTimeRange] = React.useState<string>("All Time");
 
   
   const filteredData = chartData.filter((item: any) => {
-    const date = new Date(item.date)
-    const referenceDate = new Date()
-    let daysToSubtract = 90
-    if (timeRange === "30d") {
-      daysToSubtract = 30
-    } else if (timeRange === "7d") {
-      daysToSubtract = 7
+    if (timeRange==='All Time') return true;
+
+    if (timeRange.at(-1)==='d') {
+      let daysToSubtract=Number(timeRange.slice(0, -1))
+      let d=new Date();
+      let startDate=new Date(d);
+      startDate.setDate(d.getDate()-daysToSubtract);
+      // console.log({startDate, itemDate: item.date})
+      return new Date(item.date)>=startDate;
+    } else {
+      return true;
     }
-    const startDate = new Date(referenceDate)
-    startDate.setDate(startDate.getDate() - daysToSubtract)
-    return date >= startDate
   })
 
   console.log({chartData, filteredData});
   
   return (
-    <Card>
+    <Card className="no-animation">
       <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
         <div className="grid flex-1 gap-1 text-center sm:text-left">
-          <CardTitle>Area Chart - Interactive</CardTitle>
+          <CardTitle>Software Weekly Users</CardTitle>
           <CardDescription>
-            Showing total visitors for the last 3 months
+            This chart shows how many people are using each software each week.
           </CardDescription>
         </div>
         <Select value={timeRange} onValueChange={setTimeRange}>
           <SelectTrigger
-            className="w-[160px] rounded-lg sm:ml-auto"
+            className="unstyled w-[160px] rounded-lg sm:ml-auto"
             aria-label="Select a value"
           >
-            <SelectValue placeholder="Last 3 months" />
+            <SelectValue placeholder="All Time" />
           </SelectTrigger>
           <SelectContent className="rounded-xl">
+            <SelectItem value="All Time" className="rounded-lg">
+              All Time
+            </SelectItem>
+            <SelectItem value="365d" className="rounded-lg">
+              Last 12 months
+            </SelectItem>
             <SelectItem value="90d" className="rounded-lg">
               Last 3 months
             </SelectItem>
             <SelectItem value="30d" className="rounded-lg">
               Last 30 days
             </SelectItem>
-            <SelectItem value="7d" className="rounded-lg">
-              Last 7 days
-            </SelectItem>
           </SelectContent>
         </Select>
       </CardHeader>
+      
       <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
         <ChartContainer
           config={chartConfig}
@@ -138,6 +146,7 @@ export function Component({ data: chartData }: { data: any }) {
               </linearGradient>
             </defs>
             <CartesianGrid vertical={false} />
+            <YAxis />
             <XAxis
               dataKey="date"
               tickLine={false}
@@ -156,11 +165,20 @@ export function Component({ data: chartData }: { data: any }) {
               cursor={false}
               content={
                 <ChartTooltipContent
-                  labelFormatter={(value) => {
-                    return new Date(value).toLocaleDateString("en-US", {
+                  labelKey="date"
+                  labelFormatter={(value, payload) => {
+                    // Done by Cursor AI
+                    const date=payload[0].payload.date;
+                    if (!date) return value;
+                    return date.toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
-                    })
+                    });
+                    // return jdate(new Date(date));
+                    // return new Date(date).toLocaleDateString("en-US", {
+                    //   month: "short",
+                    //   day: "numeric",
+                    // })
                   }}
                   indicator="dot"
                 />

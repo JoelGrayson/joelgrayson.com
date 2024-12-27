@@ -13,6 +13,8 @@
 
     --light-text: #000;
     --dark-text: #fff;
+
+    --shadcn-animation: none;
 }
 
 
@@ -458,4 +460,9 @@ table.styled td {
   body {
     @apply bg-background text-foreground;
     }
+}
+
+.no-animation, .no-animation * {
+    animation: none !important;
+    animation-duration: 0s !important;
 }
