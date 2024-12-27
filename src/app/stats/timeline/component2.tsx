@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
+import { AreaChart, CartesianGrid, Line, LineChart, XAxis } from "recharts"
 
 import {
   Card,
@@ -50,7 +50,7 @@ export function Component({ data: chartData }: { data: any }) {
   
   const filteredData = chartData.filter((item: any) => {
     const date = new Date(item.date)
-    const referenceDate = new Date("2024-06-30")
+    const referenceDate = new Date()
     let daysToSubtract = 90
     if (timeRange === "30d") {
       daysToSubtract = 30
@@ -98,7 +98,7 @@ export function Component({ data: chartData }: { data: any }) {
           config={chartConfig}
           className="aspect-auto h-[250px] w-full"
         >
-          <AreaChart data={filteredData}>
+          <LineChart data={filteredData}>
             <defs>
               <linearGradient id="fillEditTimeUsers" x1="0" y1="0" x2="0" y2="1">
                 <stop
@@ -166,29 +166,29 @@ export function Component({ data: chartData }: { data: any }) {
                 />
               }
             />
-            <Area
+            <Line
               dataKey="editTimeUsers"
-              type="natural"
-              fill="url(#fillHomeworkCheckerUsers)"
+              type="monotone"
               stroke="var(--color-homeworkCheckerUsers)"
-              stackId="a"
+              strokeWidth={2}
+              dot={false}
             />
-            <Area
+            <Line
               dataKey="homeworkCheckerUsers"
-              type="natural"
-              fill="url(#fillEditTimeUsers)"
+              type="monotone"
               stroke="var(--color-editTimeUsers)"
-              stackId="a"
+              strokeWidth={2}
+              dot={false}
             />
-            <Area
+            <Line
               dataKey="focusUsers"
-              type="natural"
-              fill="url(#focusUsers)"
+              type="monotone"
               stroke="var(--color-focusUsers)"
-              stackId="a"
+              strokeWidth={2}
+              dot={false}
             />
             <ChartLegend content={<ChartLegendContent />} />
-          </AreaChart>
+          </LineChart>
         </ChartContainer>
       </CardContent>
     </Card>
