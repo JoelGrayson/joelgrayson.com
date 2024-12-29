@@ -3,7 +3,7 @@ import Question from '@/components/nyc-government/TestQuestion';
 
 export default function Unit1Quiz() {
     let questionNumber=1;
-    return <Page bottomPadding>
+    return <Page bottomPadding seo={{ title: 'Unit 1 Quiz' }}>
         <h1 className='text-center'>Unit 1 Quiz</h1>
         <p>How well do you know the mayor and mayoral departments? We shall see...</p>
         <br />

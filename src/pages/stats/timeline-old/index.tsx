@@ -58,11 +58,12 @@ function StatsTimeline({ width=800, height=500 }: { width?: string | number, hei
 
     const dataFiltered=data?.filter(d=>new Date(d.date)<endingDate);
     const [isDarkMode, setIsDarkMode]=useState(false);
+    const updateUef=typeof window!=='undefined' && window.matchMedia('(prefers-color-scheme: dark)');
     useEffect(()=>{
         if (typeof window==='undefined')
             return;
         setIsDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
-    }, [typeof window!=='undefined' && window.matchMedia('(prefers-color-scheme: dark)')]);
+    }, [updateUef]);
     
     useEffect(()=>{
         if (typeof window==='undefined')

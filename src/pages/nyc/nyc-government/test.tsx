@@ -3,7 +3,10 @@ import Question from '@/components/nyc-government/TestQuestion';
 
 export default function Test() {
     let questionNumber=1;
-    return <Page bottomPadding>
+    return <Page bottomPadding seo={{
+        title: 'NYC Government Test',
+        description: 'How well do you know NYC government? We shall see...'
+    }}>
         <h1 className='text-center'>Test</h1>
         <p>How well do you know NYC government? We shall see...</p>
         <br />

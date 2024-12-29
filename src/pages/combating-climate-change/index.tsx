@@ -15,7 +15,7 @@ import Yt from '@/components/global/Yt';
 
 export default function CCC() {
     const [showDescription, setShowDescription]=useState<boolean>(true);
-    let emissionsSaved=250+.675+6.7+1.7;
+    // let emissionsSaved=250+.675+6.7+1.7;
 
     return <Page
         seo={{

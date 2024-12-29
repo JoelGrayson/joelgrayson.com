@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import Page from '@/components/@jcomponents/Page';
+import SEO from '@/components/page/parts/SEO';
 
 export default function Home() {
     return <Page>
+        <SEO seo={{ title: 'JComponents' }} />
         <h1 style={{textAlign: 'center'}}>JComponents</h1>
         <p>Easily integrate custom-made components into your React projects.</p>
         <p>This page is a demo of all the components</p>

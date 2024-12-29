@@ -102,10 +102,6 @@ export const temporary: redirects={ //302
     '/blog/*': ['/the-blog/*', '/joels-blog/*', '/perspective/*', '/the-perspective/*', '/joels-perspective/*'],
 
 
-    // Miscellaneous
-    '/research/how-do-cultures-combine/How%20Cultures%20Combine%20in%20Mixed-Race%20Families.pdf': '/research/how-do-cultures-combine',
-
-
     // Download links which redirect to hosting platforms
     'https://drive.google.com/uc?export=download&id=10ZMJ05tzSK1FwAXWKfX5rtCLA4K9U8Hr': '/combating-climate-change/Combating%20Climate%20Change.pptx', //because larger than 100 MB
     'https://docs.google.com/document/d/1BZ4zuOEKgKcglOQbSWBilAfFkNWgqBFW0BElgroysyI/export?format=pdf': '/resume/download', //downloads resume

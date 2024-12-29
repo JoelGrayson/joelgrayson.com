@@ -25,7 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import jdate from "joeldate";
+// import jdate from "joeldate";
 
 const chartConfig = {
   users: {
@@ -66,7 +66,7 @@ export function Component({ data: chartData }: { data: any }) {
     }
   })
 
-  console.log({chartData, filteredData});
+  // console.log({chartData, filteredData});
   
   return (
     <Card className="no-animation">

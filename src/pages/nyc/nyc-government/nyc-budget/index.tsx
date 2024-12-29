@@ -13,7 +13,10 @@ export default function NYCBudget() {
         [16.5, 'Other'],
     ];
 
-    return <Page bottomPadding>
+    return <Page bottomPadding seo={{
+        title: 'NYC Budget',
+        description: 'A visualization of NYC\'s budget.'
+    }}>
         <style jsx>{`
             .overall-categories {
                 display: flex;

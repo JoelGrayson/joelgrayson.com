@@ -4,7 +4,10 @@ import Link from 'next/link';
 import styles from '@/styles/btn-icon.module.css';
 
 export default function DayNumberCalendar() {
-    return <Page>
+    return <Page seo={{
+        title: 'Day Number Calendar',
+        description: 'Shows what day of the week it is in Riverdale&apos;s eight-day cycle.'
+    }}>
         <h1 className='text-center'>Day Number Calendar</h1>
         <p>Shows what day of the week it is in Riverdale&apos;s eight-day cycle.</p>
         <div className='flex'>

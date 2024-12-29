@@ -1,7 +1,9 @@
 import Page from "@/components/page/DefaultPage";
 
 export default function Tips() {
-    return <Page>
+    return <Page seo={{
+        title: 'Tips'
+    }}>
         <h3>Be a Google Power User</h3>
         <p>Google has a lot of hidden features. Here are some of my favorites.</p>
         <table className="grid grid-cols-2">
