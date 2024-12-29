@@ -21,7 +21,10 @@ export default function Focus() {
         gsap.fromTo(pageRef, { opacity: 0 }, { opacity: 1, duration: 0.5, delay: 1 });
     }, []);
     
-    return <Page bottomPadding>
+    return <Page bottomPadding seo={{
+        title: 'Focus for Google Docs',
+        description: 'Focus for Google Docs helps you enter the writing flow by decluttering Google Docs and adding a pomodoro timer'
+    }}>
         <h1 className='flex justify-center items-center gap-5' ref={titleRef}>
             Focus
             <Image alt='logo' src='/software/focus/logo.png' width={55} height={55} />
@@ -31,11 +34,11 @@ export default function Focus() {
             <Link href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf' target='_blank' className='unstyled' rel='noreferrer'>
                 <Button>
                     <svg className={Button.Icon} viewBox='0 0 192 192'><defs><path id='a' d='M8 20v140c0 6.6 5.4 12 12 12h152c6.6 0 12-5.4 12-12V20H8zm108 32H76c-4.42 0-8-3.58-8-8s3.58-8 8-8h40c4.42 0 8 3.58 8 8s-3.58 8-8 8z' /></defs><clipPath id='b'><use xlinkHref='#a' overflow='visible' /></clipPath><path clipPath='url(#b)' fill='#eee' d='M8 20h176v152H8z' /><path fill='#fff' d='M116 36H76c-4.42 0-8 3.58-8 8s3.58 8 8 8h40c4.42 0 8-3.58 8-8s-3.58-8-8-8z' clipPath='url(#b)' /><g clipPath='url(#b)'><defs><circle id='c' cx={96} cy={160} r={76} /></defs><clipPath id='d'><use xlinkHref='#c' overflow='visible' /></clipPath><path d='M32.07 84v93.27h34.01L96 125.45h76V84zm0 0v93.27h34.01L96 125.45h76V84z' clipPath='url(#d)' fill='#DB4437' /><path d='M20 236h72.34l33.58-33.58v-25.14l-59.84-.01L20 98.24zm0 0h72.34l33.58-33.58v-25.14l-59.84-.01L20 98.24z' clipPath='url(#d)' fill='#0F9D58' /><path d='M96 125.45l29.92 51.82L92.35 236H172V125.45zm0 0l29.92 51.82L92.35 236H172V125.45z' clipPath='url(#d)' fill='#FFCD40' /><g clipPath='url(#d)'><circle fill='#F1F1F1' cx={96} cy={160} r='34.55' /><circle fill='#4285F4' cx={96} cy={160} r='27.64' /></g></g><path clipPath='url(#b)' fill='#212121' fillOpacity='.05' d='M8 20h176v76H8z' /><path fill='#212121' fillOpacity='.02' d='M8 95h176v1H8z' /><path fill='#fff' fillOpacity='.05' d='M8 96h176v1H8z' /><path fill='#212121' fillOpacity='.02' d='M116 52H76c-4.25 0-7.72-3.32-7.97-7.5-.02.17-.03.33-.03.5 0 4.42 3.58 8 8 8h40c4.42 0 8-3.58 8-8 0-.17-.01-.33-.03-.5-.25 4.18-3.72 7.5-7.97 7.5zM8 20v1h176v-1H8z' /><path fill='#231F20' fillOpacity='.1' d='M76 36h40c4.25 0 7.72 3.32 7.97 7.5.01-.17.03-.33.03-.5 0-4.42-3.58-8-8-8H76c-4.42 0-8 3.58-8 8 0 .17.01.33.03.5.25-4.18 3.72-7.5 7.97-7.5zm96 135H20c-6.6 0-12-5.4-12-12v1c0 6.6 5.4 12 12 12h152c6.6 0 12-5.4 12-12v-1c0 6.6-5.4 12-12 12z' /><radialGradient id='e' cx='7.502' cy='19.344' r='227.596' gradientUnits='userSpaceOnUse'><stop offset={0} stopColor='#fff' stopOpacity='.1' /><stop offset={1} stopColor='#fff' stopOpacity={0} /></radialGradient><path fill='url(#e)' d='M8 20v140c0 6.6 5.4 12 12 12h152c6.6 0 12-5.4 12-12V20H8zm108 32H76c-4.42 0-8-3.58-8-8s3.58-8 8-8h40c4.42 0 8 3.58 8 8s-3.58 8-8 8z' /><path fill='none' d='M0 0h192v192H0z' /></svg>
-                    Add it on the Chrome Web Store
+                    Add on the Chrome Web Store
                 </Button>
             </Link>
             
-            <p>Focus is a Chrome extension that simplifies Google Docs by hiding distracting controls to just show the text. It is good for minimalists or those who get easily distracted. It includes a pomodoro timer to motivate you to write continuously for a period of time (e.g. 15 minutes).</p>
+            <p>Focus for Google Docs helps you enter the writing flow by decluttering Google Docs and adding a pomodoro timer.</p>
             <iframe width='560' height='315' src='https://www.youtube.com/embed/-Wfecnvi9g8' title='YouTube video player' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowFullScreen></iframe>
 
             <h3>How to Use</h3>

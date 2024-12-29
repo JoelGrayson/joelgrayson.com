@@ -4,7 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function HomeworkChecker() {
-    return <Page>
+    return <Page seo={{
+        title: 'Homework Checker',
+        description: 'Homework Checker is a Chrome extension that helps you keep track of your Schoology assignments by checking them off.'
+    }}>
         <h1 className='text-center flex justify-center items-center'>
             <span>Homework&nbsp;</span>
             <span className='text-[#00962a]'>Checker</span>
@@ -84,7 +87,7 @@ export default function HomeworkChecker() {
         <p>Homework Checker does not and will never collect any data. It is fully-transparent: you can see the source code at <Link href='https://github.com/JoelGrayson/Homework-Checker'>github.com/JoelGrayson/Homework-Checker</Link></p>
 
 
-        <Link target='_blank' href='https://forms.gle/AzoqSVwKaVtRzrAH8'>
+        <Link target='_blank' href='https://docs.google.com/forms/d/e/1FAIpQLSeK28AAdGS6yL-L3lhO_NEXhATmSSXBiT7wZ8mznaPmtZZZdA/viewform'>
             <Button>Report a bug</Button>
         </Link>
 
