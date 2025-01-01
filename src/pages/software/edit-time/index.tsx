@@ -29,9 +29,13 @@ export default function EditTime() {
         {/* <Image src="/software/edit-time/demo.gif" alt="Demo" width='554' height='338' /> */}
         <video src="https://s3.amazonaws.com/joelgrayson.com/Edit+Time+Demo.mp4" controls autoPlay muted></video>
 
+
         <br />
         <h3>Support/Bugs</h3>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSePFBfxJWYugRXSpnNXFOmJdlxzNqd4MeIxQFUkxl-rQDJBrQ/viewform?embedded=true" width='100%' height="708">Loading…</iframe>
+        <p>Submit a bug report here: <a href="https://forms.gle/MprXLj4iWBNYNQhQ8" target='_blank'>https://forms.gle/MprXLj4iWBNYNQhQ8</a>.</p>
+        {/* {/* <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeItHxBKJG1R8uA_ybo7kKlNxqcdUEMhMceqay1ZcqGYPrUOA/viewform?usp=sf_link" width='100%' height="708">Loading…</iframe> */}
+        
+        {/* <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeItHxBKJG1R8uA_ybo7kKlNxqcdUEMhMceqay1ZcqGYPrUOA/viewform?embedded=true" width='100%' height="708">Loading…</iframe> */}
 
 
         <h3 id='privacy-policy'>Privacy Policy</h3>
