@@ -137,7 +137,7 @@ export default function Resume() {
                                 <Link href="https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf">Focus</Link>
                             </span>
                             <span className="date">2022</span>
-                            <div className="description inline-description">Chrome extension helping 800 people write distraction-free.</div>
+                            <div className="description inline-description">Chrome extension helping 1,000 people write distraction-free.</div>
                         </li>
                         <li>
                             <span className="title with-icon">
@@ -145,7 +145,7 @@ export default function Resume() {
                                 <Link href="https://apps.apple.com/us/app/edit-time/id6464405876?mt=12">Edit Time</Link>
                             </span>
                             <span className="date">2024</span>
-                            <div className="description inline-description">App with 2,811 installs that changes file date created and modified properties</div>
+                            <div className="description inline-description">App with 4,000 installs that changes file date created and modified properties</div>
                         </li>
                         <li>
                             <span className="title with-icon">
@@ -258,7 +258,15 @@ export default function Resume() {
                 </div>
 
 
-                <div className="section hover:bg-yellow-100 dark:hover:bg-[rgba(255,255,0,0.1)]" id='honors-section'>
+                <div className="section hover:bg-yellow-100 dark:hover:bg-[rgba(255,255,0,0.1)]" id='technical-skills-section'>
+                    <h3>Technical Skills</h3>
+                    <p>Full-Stack Web Development: Next.js/React, TypeScript, SQL, Docker, Express, PHP, Node</p>
+                    <p>App Development: Swift, SwiftUI, Java, React Native, Supabase</p>
+                    <p>Embedded Systems: Arduino, Raspberry Pi, ESP32, Python, C++</p>
+                </div>
+                
+
+                {/* <div className="section hover:bg-yellow-100 dark:hover:bg-[rgba(255,255,0,0.1)]" id='honors-section'>
                     <h3>Honors</h3>
                     <ul>
                         <li className='relative'>
@@ -266,7 +274,7 @@ export default function Resume() {
                             <span className='date'>2021&ndash;22</span>
                         </li>
                     </ul>
-                </div>            
+                </div> */}
             </div>
 
             <br /><br /><br />
