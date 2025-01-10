@@ -17,3 +17,10 @@ export async function loadData() {
     return stats;
 }
 
+export type Data={
+    editTimeUsers: number | null;
+    homeworkCheckerUsers: number | null;
+    focusUsers: number | null;
+    date: Date;
+};
+

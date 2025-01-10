@@ -1,7 +1,6 @@
 'use server';
 
-import { Component } from './component2';
-// import { Component as Component1 } from './component1';
+import Component from './ClientComponent';
 import { loadData } from './loadData';
 
 export default async function StatsTimeline() {
@@ -9,7 +8,6 @@ export default async function StatsTimeline() {
 
     return <div>
         <Component data={data} />
-        {/* <hr />
-        <Component1 /> */}
     </div>;
 }
+

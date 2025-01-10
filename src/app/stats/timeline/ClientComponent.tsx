@@ -25,6 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Data } from "./loadData";
 // import jdate from "joeldate";
 
 const chartConfig = {
@@ -47,7 +48,7 @@ const chartConfig = {
 
 
 
-export function Component({ data: chartData }: { data: any }) {
+export default function Component({ data: chartData, height=400 }: { data: Data[]; height?: number }) {
   const [timeRange, setTimeRange] = React.useState<string>("All Time");
 
   
@@ -69,7 +70,9 @@ export function Component({ data: chartData }: { data: any }) {
   // console.log({chartData, filteredData});
   
   return (
-    <Card className="no-animation">
+    <Card className="no-animation" style={{
+      height: height+200
+    }}>
       <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
         <div className="grid flex-1 gap-1 text-center sm:text-left">
           <CardTitle>Software Weekly Users</CardTitle>
@@ -104,7 +107,10 @@ export function Component({ data: chartData }: { data: any }) {
       <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
         <ChartContainer
           config={chartConfig}
-          className="aspect-auto h-[250px] w-full"
+          className="aspect-auto w-full"
+          style={{
+            height
+          }}
         >
           <LineChart data={filteredData}>
             <defs>
@@ -152,13 +158,37 @@ export function Component({ data: chartData }: { data: any }) {
               tickLine={false}
               axisLine={false}
               tickMargin={8}
-              minTickGap={32}
+              // minTickGap={30}
+              ticks={chartData.filter((d: Data)=>{
+                  return true;
+                  // return d.date.getDate()===1; //get first date of every month
+              }).map(d=>new Date().toISOString())}
+              // }).map(d=>d.date.toISOString())}
               tickFormatter={(value) => {
-                const date = new Date(value)
-                return date.toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                })
+                const d=new Date(value);
+                return d.toLocaleDateString('en-US', {
+                  month: 'numeric',
+                  day: 'numeric'
+                });
+                // switch (d.getMonth()) {
+                //   case 0: return d.getFullYear();
+                //   case 1: return 'Feb';
+                //   case 2: return 'Mar';
+                //   case 3: return 'Apr';
+                //   case 4: return 'May';
+                //   case 5: return 'Jun';
+                //   case 6: return 'Jul';
+                //   case 7: return 'Aug';
+                //   case 8: return 'Sep';
+                //   case 9: return 'Oct';
+                //   case 10: return 'Nov';
+                //   case 11: return 'Dec';
+                // }
+                // const date = new Date(value)
+                // return date.toLocaleDateString("en-US", {
+                //   month: "short",
+                //   day: "numeric",
+                // })
               }}
             />
             <ChartTooltip
@@ -173,6 +203,7 @@ export function Component({ data: chartData }: { data: any }) {
                     return date.toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
+                      year: 'numeric'
                     });
                     // return jdate(new Date(date));
                     // return new Date(date).toLocaleDateString("en-US", {
