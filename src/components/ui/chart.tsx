@@ -251,6 +251,17 @@ const ChartTooltipContent = React.forwardRef<
             )
           })}
         </div>
+        <div className="flex justify-between" style={{
+          marginLeft: 18,
+          borderTop: '2px solid #ccc',
+          paddingTop: 3,
+        }}>
+          <span className="text-muted-foreground">Total:</span>
+          <span className="font-mono font-medium tabular-nums text-foreground">{
+            (payload[0].payload.editTimeUsers+payload[0].payload.homeworkCheckerUsers+payload[0].payload.focusUsers)
+              .toLocaleString()
+          }</span>
+        </div>
       </div>
     )
   }
