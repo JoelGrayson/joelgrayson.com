@@ -51,6 +51,7 @@ const chartConfig = {
 export default function Component({ data: chartData, height=400 }: { data: Data[]; height?: number }) {
   const [timeRange, setTimeRange] = React.useState<string>("All Time");
 
+  console.log('Data', chartData);
   
   const filteredData = chartData.filter((item: any) => {
     if (timeRange==='All Time') return true;
