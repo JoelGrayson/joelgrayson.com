@@ -1,5 +1,4 @@
 import Page from '@/components/page/DefaultPage';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export default function ThankYou() {

@@ -173,8 +173,6 @@ Permanent link: https://perma.cc/N7QN-QDK6
             </Action>
         </Section>
         <Section title='Raising Public Awareness'>
-            {/* TODO: add spoke to students at Baruch and students at Middle School (show photo) */}
-
             <Action title='TEDx Talk' {...{showDescription}}>
                 <Yt className='m:w-[300px] m:h-[200px]'>rV_8xB7rGyQ</Yt>
             </Action>
@@ -207,14 +205,12 @@ Permanent link: https://perma.cc/N7QN-QDK6
                 Received <Link href='https://api.joelgrayson.com/combating-climate-change/electric-school-buses-petition' target='_blank'>313 petition signatures</Link> for SuperSelby&apos;s adoption of electric school buses, kicking off Students for Electric Buses.
             </Action>
             <Action title='The Need for a Nuclear Renaissance Presentation' {...{showDescription}}>
-                {/* TODO: add download link */}
                 <Link href='/combating-climate-change/the-need-for-a-nuclear-renaissance/index.html'>
                     Presented on the need for a nuclear renaissance
                 </Link>
                 &nbsp;at Brown University.
             </Action>
             <Action title='Article on Nuclear Energy' {...{showDescription}}>
-                {/* TODO: insert article */}
                 <Link href='/blog/why-we-need-nuclear-energy'>Published an article</Link> in my school&apos;s newspaper about the need for supporting nuclear energy.
             </Action>
             {/* <Action title='Cohead of Riverdale Sustainability Club'> </Action> */}
@@ -223,7 +219,6 @@ Permanent link: https://perma.cc/N7QN-QDK6
             <Action title='Urban Miniforest' {...{showDescription}}>
                 Made a Community Board <Link href='https://www.nyc.gov/assets/manhattancb1/downloads/pdf/resolutions/23-09-26.pdf#page=2' target='_blank'>resolution amendment</Link> to recommend the developers of the Holland Rotary to create a Miyawaki forest to improve air quality, lessen the urban heating effect (which saves HVAC emissions), and act as a flood resiliency measure.
             </Action>
-            {/* TODO: created a video explaining the resiliency projects in Lower Manhattan */}
             <Action title='Flood Resiliency' {...{showDescription}}>
                 In discussions on Lower Manhattan coastal resiliency projects as a member of Manhattan Community Board 1&apos;s Environmental Protection Committee.
             </Action>

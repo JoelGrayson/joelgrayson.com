@@ -46,7 +46,7 @@ export default function Focus() {
             
             
             <p>Focus for Google Docs helps you enter the writing flow by decluttering Google Docs and adding a pomodoro timer.</p>
-            <iframe width='560' height='315' src='https://www.youtube.com/embed/-Wfecnvi9g8' title='YouTube video player' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowFullScreen></iframe>
+            <iframe width='560' height='315' src='https://www.youtube.com/embed/ltKnFS1miEQ' title='YouTube video player' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowFullScreen></iframe>
 
             <h3>How to Use</h3>
             <p>Click the extension icon to toggle focus mode.</p>

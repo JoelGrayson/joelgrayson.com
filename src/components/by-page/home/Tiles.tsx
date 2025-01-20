@@ -101,7 +101,6 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
             </Tile>
 
             <Tile href='/combating-climate-change#solar-for-riverdale' target='_self'>
-                {/* TODO: sunbeam going down when hover */}
                 <Image alt='Solar' width={50} height={38} src='/image/home/optimized/solar-for-riverdale.avif' />
                 <span>Solar for Riverdale</span>
             </Tile>

@@ -46,8 +46,8 @@ export default function ConnectingStreetVendorsToTheGrid() {
         <P>Vendors are often parked right next to street lamps, so we can install an outlet box for around $5,000 with a meter. Using an app, vendors can unlock the outlets and be charged for the electricity they use. Electricians have said that this is feasible as long as DOT and ConEd approve.</P>
         <P className='mb-3'>This initiative is endorsed by the Street Vendor Project, and there are vendors eager to be in this pilot.</P>
         <Prototype />
+        {/* get new YT */}
         {/* <Yt>Y50nhH18HH4</Yt> */}
-        {/* TODO: get new YT */}
 
 
         <h3 className='mt-5'>Timeline</h3>

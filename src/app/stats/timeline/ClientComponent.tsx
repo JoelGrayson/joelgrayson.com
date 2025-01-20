@@ -51,7 +51,7 @@ const chartConfig = {
 export default function Component({ data: chartData, height=400 }: { data: Data[]; height?: number }) {
   const [timeRange, setTimeRange] = React.useState<string>("All Time");
 
-  console.log('Data', chartData);
+  // console.log('Data', chartData);
   
   const filteredData = chartData.filter((item: any) => {
     if (timeRange==='All Time') return true;
@@ -160,10 +160,10 @@ export default function Component({ data: chartData, height=400 }: { data: Data[
               axisLine={false}
               tickMargin={8}
               // minTickGap={30}
-              ticks={chartData.filter((d: Data)=>{
+              ticks={chartData.filter((_: Data)=>{
                   return true;
                   // return d.date.getDate()===1; //get first date of every month
-              }).map(d=>new Date().toISOString())}
+              }).map(_=>new Date().toISOString())}
               // }).map(d=>d.date.toISOString())}
               tickFormatter={(value) => {
                 const d=new Date(value);

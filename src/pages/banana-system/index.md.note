@@ -1,0 +1,39 @@
+import LearnPage from "@/components/page/LearnPage";
+export default function LearningContent({children}) {
+	return <LearnPage markdown bottomPadding>{children}</LearnPage>;
+}
+
+# The Banana System
+
+### **Base Units**
+
+| Name | Abbr | Definition | Metric Equivalent from Online | Our Measurements |
+| ----- | ----- | ----- | ----- | ----- |
+| Banana eat | beat | Time to eat a banana |  | X minutes |
+| Banana rot | brot | the time for banana to rot | 5 days | X days |
+| Banana mass | bmass | the mass of banana | 118 grams | X grams |
+| Banana length | blen | distance from one side of banana to other | 15 cm | X cm |
+| Banana current | bcur | how much current you can get from a banana before it stops giving out electricity |  | X A |
+| Banana luminous intensity | blight | the amount of light that a banana reflects back from the sun when at the equator |  | X cd |
+| Banana temperature | °B | 0°B is the optimal temperature for a banana to grow in and every 1°B above or below is … How much the banana warms while in your hand in one µbeat |  |  |
+
+### **Derived Units**
+
+| Banana voltage | bvolt | Average voltage of a banana when electrodes are inserted at random places |  | X V |
+| :---- | :---- | :---- | :---- | :---- |
+| Banana weight | bwt | the weight of a banana |  | X N |
+| Banana energy | beng | the amount of energy you get from eating a banana | 439 kJ (105 Calories) | X J |
+| Banana radiation  | brad | the amount of radiation a banana releases | 0.1 μSv | X µSv |
+
+### **Prefixes**
+
+* Nibble \- 1/100th of a banana  
+* Bite \- 1/10th of a banana  
+* Banana (finger)  
+* Hand of bananas \- 10 bananas  
+* Bunch of bananas \- 100 bananas  
+* Shipping container of bananas \-   
+* Vessel of bananas \-   
+* Dole of bananas \- how many bananas dole produces every year  
+* India of bananas \- 30 million bananas
+

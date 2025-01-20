@@ -79,7 +79,7 @@ export default function Stats() { // ?embedded=1&ignoreCache=1?hideTitle=1
                 .then(res=>res.json())
                 .then(d=>{
                     setData(d);
-                    console.log('Fetched data', d);
+                    // console.log('Fetched data', d);
                     localStorage.setItem('/stats:stats', JSON.stringify(d));
                     localStorage.setItem('/stats:last-set', Date.now().toString());
                 });

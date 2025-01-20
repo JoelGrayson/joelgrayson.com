@@ -38,10 +38,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ['/verify', .8],
         ['/student-government', .7],
         ['/software', .7],
-            // TODO: software/:slug
+            ['/software/edit-time', .9, 'daily'],
+            ['/software/focus', .9, 'daily'],
+            ['/software/homework-checker', .9, 'daily'],
         ['/slaphappy', .7],
         ['/research', .8],
-            // TODO: research/:slug
+            ['/research/how-do-cultures-combine', .7],
+            ['/research/organic-optoelectronics', .7],
         ['/quotes', .6],
         ['/record', .7],
         ['/patriotism', .6],
@@ -61,19 +64,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ['/machines', .7],
         // No ['/plan', .7],
         ['/resume', .7],
-        ['/@jcomponents', .8],
+        ['/@jcomponents', .6],
 
 
         // Public
-        // TODO: ['/image/']
-        // TODO: ['/styles']
         ['/maths/crustless-pizza/Crustless Pizza Pieces Recurrence Problem.pdf', .6, 'never'],
         ['/maths/icosahedron-navigation/Icosahedron Navigation.pdf', .6, 'never'],
         ['/research/organic-optoelectronics/Twisting Charge Transfer Complex Crystals for Organic Optoelectronics Paper.pdf', .6, 'never'],
         ['/research/organic-optoelectronics/Poster.pdf', .6, 'never'],
         ['/research/organic-optoelectronics/Joel in the Lab.jpg', .6, 'never'],
         ['/research/how-do-cultures-combine/How Cultures Combine in Mixed-Race Families.pdf', .6, 'never'],
-        // TODO: /software, /ccc, /fisher/, /nyc/ chess/ ... images
     ];
 
     return entries.map(item=>{
