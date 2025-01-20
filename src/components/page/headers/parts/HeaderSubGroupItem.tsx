@@ -3,7 +3,7 @@ import styles from './header-group-item.module.css';
 import compareLinks from './compareLinks';
 import { linkTextClassName } from './HeaderGroupItem';
 
-export default function HeaderSubGroupItem({ pathname, link, children, }: { pathname?: string; children: any; link?: string }) {
+export default function HeaderSubGroupItem({ pathname, link, children }: { pathname?: string; children: any; link?: string }) {
     return <Link
         className={`unstyled relative flex ${compareLinks({ link, pathname }) ? 'selected-group-item' : ''}`}
         href={link || '#'}
