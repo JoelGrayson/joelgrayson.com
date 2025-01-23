@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/data/prisma/client';
 import sendEmail from '@/helpers/sendEmail';
 import generateToken from '@/helpers/generate-token';
+import DOMPurify from 'dompurify';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<{ type: 'error' | 'success'; message?: string }>) {
     const { name, email, comment, hyphenatedTitle }=req.body as { name?: string; email?: string; comment?: string; hyphenatedTitle?: string };
@@ -19,12 +20,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         to: email,
         from: { name: `Joel's Blog`, email: 'bot@joelgrayson.com' },
         subject: 'Confirm Comment',
-        bcc: 'joel+info@joelgrayson.com',
+        bcc: 'joel+jgcom@joelgrayson.com',
         text: `Please go to ${verificationLink} to confirm your comment. Once confirmed, the following comment will be posted:\n`
         +'Name: '+name+'\n'
         +'Email: '+email+'\n'
         +'Comment: '+comment+'\n',
         html: `
+            <p>Dear ${DOMPurify.sanitize(name)},</p>
+            <p>The following comment was submitted to joelgrayson.com/blog under your email address (${email}).</p>
             <p>
                 <a
                     href='${verificationLink}'
@@ -32,13 +35,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
                 >
                     Click here
                 </a>
-                <span style='color:black'>&nbsp;to post the following comment:</span>
+                <span style='color:black'>&nbsp;to post it:</span>
             </p>
             <br />
             <fieldset>
-                <legend>${name} wrote</legend>
-                <p>${comment}</p>
+                <legend>${DOMPurify.sanitize(name)} wrote</legend>
+                <p>${DOMPurify.sanitize(comment)}</p>
             </fieldset>
+
+            <p>Best,</p>
+            <p>The Joel Grayson Bot 🤖</p>
+
+            <p>Don't recognize this email? Somebody must have put your email in the email address when trying to post the comment. No worries, you can ignore this email, as nothing will be posted unless you click the link above. If they were doing it for malicious purposes and you find out who it is, you have my permission to whack them in the face.</p>
         `
     });
     
