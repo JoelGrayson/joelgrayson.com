@@ -7,7 +7,7 @@ export default function ConnectingWithThePast() {
     return <ArticleWrapper title='Division of Power within NYC' date={new Date('Oct 30, 2023')} hyphenatedTitle='division-of-power-within-nyc'>
         <div className="bg-gray-300 py-4 px-10 rounded-md shadow-md flex items-center gap-10 mb-10">
             <span className="inline font-bold text-lg my-2 h-full">Listen instead</span>
-            <audio className="" src="/audio/Division of Power within NYC.mp3" controls />
+            <audio src="/audio/Division of Power within NYC.mp3" controls />
         </div>
 
         

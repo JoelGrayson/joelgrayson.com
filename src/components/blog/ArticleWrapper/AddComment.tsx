@@ -47,7 +47,7 @@ export default function AddComment({ hyphenatedTitle }: { hyphenatedTitle: strin
             {
             submitted 
             ? <div>
-                <p>Please click the verification link sent to <span className='bold text-blue-800'>{email}</span> to post the comment.</p>
+                <p>Please click the verification link sent to <span className='bold text-blue-800'>{email}</span> to post the comment <small>(this extra step is for security reasons to prevent spammer bots)</small></p>
                 {/* Open email providers */}
                 <Link href="https://mail.google.com" target='_blank'>
                     <div className='flex justify-center items-center gap-3 w-fit py-3 px-10 mx-auto mt-6 mb-3' style={{

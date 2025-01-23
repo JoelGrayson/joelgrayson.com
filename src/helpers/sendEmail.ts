@@ -2,11 +2,12 @@ import dotenv from 'dotenv';
 dotenv.config();
 import sgMail from '@sendgrid/mail';
 
-export default function sendEmail({ subject, text, html, to, from={}, replyTo }: {
+export default function sendEmail({ subject, text, html, to, bcc=undefined, from={}, replyTo }: {
     subject: string;
     text: string;
     html: string;
     to: string;
+    bcc?: string;
     from?: {
         name?: string;
         email?: string;
@@ -26,6 +27,7 @@ export default function sendEmail({ subject, text, html, to, from={}, replyTo }:
                 text: text.trim(),
                 html: html.trim(),
                 to,
+                bcc,
                 from: (from as {name: string; email: string}),
                 replyTo
             })

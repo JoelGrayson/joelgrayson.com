@@ -19,6 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         to: email,
         from: { name: `Joel's Blog`, email: 'bot@joelgrayson.com' },
         subject: 'Confirm Comment',
+        bcc: 'joel+info@joelgrayson.com',
         text: `Please go to ${verificationLink} to confirm your comment. Once confirmed, the following comment will be posted:\n`
         +'Name: '+name+'\n'
         +'Email: '+email+'\n'
