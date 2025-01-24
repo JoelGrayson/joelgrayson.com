@@ -19,7 +19,7 @@ export async function getServerSideProps() {
     };
 }
 
-export default function NYC({ items }: { items: string }) {
+export default function Library({ items }: { items: string }) {
     const deserializedItems=superjson.parse(items) as Prisma.Library[];
     // console.log('Items', deserializedItems);
 

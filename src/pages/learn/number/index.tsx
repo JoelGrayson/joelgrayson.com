@@ -82,11 +82,10 @@ export default function MemorizePi() {
     }
     
     return <Page
-        pathname='/learn/pi'
+        pathname='/learn/number'
         seo={{
             title: 'Memorize a Number',
-            description: 'Tool for memorizing the digits of pi',
-            keywords: ['pi', 'math']
+            description: 'Tool for memorizing the digits of any number like e, pi, tau, or your own number.',
         }}
         noPageStyling
     >

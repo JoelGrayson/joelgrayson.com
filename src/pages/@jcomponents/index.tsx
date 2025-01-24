@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Page from '@/components/@jcomponents/Page';
 import SEO from '@/components/page/parts/SEO';
 
-export default function Home() {
+export default function JComponents() {
     return <Page>
         <SEO seo={{ title: 'JComponents' }} />
         <h1 style={{textAlign: 'center'}}>JComponents</h1>

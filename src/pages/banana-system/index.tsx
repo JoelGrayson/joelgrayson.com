@@ -1,7 +1,7 @@
 import Page from '@/components/page/DefaultPage';
 
-export default function Home() {
-    return <Page bottomPadding pathname='/banana' seo={{
+export default function Banana() {
+    return <Page bottomPadding pathname='/banana-system' seo={{
         title: 'The Banana System',
         keywords: [
             'Banana System',
