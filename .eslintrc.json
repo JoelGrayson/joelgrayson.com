@@ -2,6 +2,5 @@
     "extends": "next/core-web-vitals",
     "rules": {
         // "semi": 1, //0=off, 1=warn, 2=error
-        "no-unused-vars": 1
     }
 }

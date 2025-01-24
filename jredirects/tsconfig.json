@@ -1,7 +1,10 @@
 {
     "compilerOptions": {
-        "lib": ["ES2017"],
+        "lib": ["ES2017", "dom"],
         "rootDir": "./src/",
-        "outDir": "./compiled-js/"
+        "outDir": "./compiled-js/",
+        "target": "ES2020",
+        "module": "commonjs",
+        "types": ["node"]
     }
 }

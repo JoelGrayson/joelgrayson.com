@@ -8,7 +8,6 @@ export const articles: articleT[]=[
     { title: 'Reflection on Privilege',                      hyphenatedTitle: 'reflection-on-privilege',                      date: new Date('Jan 21, 2023'), category: 'philosophy'     },
     { title: 'Climate Change Is an Exponential Problem',     hyphenatedTitle: 'climate-change-is-an-exponential-problem',     date: new Date('Aug 17, 2022'), category: 'climate-change' },
     { title: 'What It Means to Be an American',              hyphenatedTitle: 'what-it-means-to-be-an-american',              date: new Date('Jul 04, 2023'), category: 'miscellaneous'  },
-    { title: `China's Brutal Road to Socialism`,             hyphenatedTitle: 'chinas-brutal-road-to-socialism',              date: new Date('May 23, 2022'), category: 'miscellaneous'  },
     { title: 'Mindfully Traveling to School',                hyphenatedTitle: 'mindfully-traveling-to-school',                date: new Date('Nov 11, 2021'), category: 'miscellaneous'  },
     { title: 'Connecting with the Past',                     hyphenatedTitle: 'connecting-with-the-past',                     date: new Date('Aug 10, 2021'), category: 'philosophy'     },
     { title: 'Laws of Physics and Life',                     hyphenatedTitle: 'laws-of-physics-and-life',                     date: new Date('Jun 13, 2021'), category: 'philosophy'     },

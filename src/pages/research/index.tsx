@@ -23,9 +23,6 @@ export default function Research() {
                 Twisting Crystal Charge Transfer Complexes for Organic Optoelectronics
             </Link></p>
             <p>History</p>
-            <p><Link href='/blog/chinas-brutal-road-to-socialism'>
-                China&apos;s Brutal Road to Socialism
-            </Link></p>
         </div>
     </Page>;
 }
