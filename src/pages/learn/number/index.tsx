@@ -1,6 +1,5 @@
 import Cursor from '@/components/Cursor';
 import Page from '@/components/page/DefaultPage';
-import Button from '@jcomponents/button';
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -94,11 +93,11 @@ export default function MemorizePi() {
         <h1 className='text-center'>Memorize {symbol}</h1>
         {showInstructions && <div className='flex w-full justify-around mb-3'>
             <span>Start typing the digits of π. Press <kbd>tab</kbd> for the next digit if you forget.</span>
-            <Button style={{display: 'inline'}} onClick={()=>{
+            <button style={{display: 'inline'}} onClick={()=>{
                 setShowInstructions(false);
                 localStorage.setItem('showInstructions', 'false');
             }}
-            >Hide</Button>
+            >Hide</button>
         </div>}
         
         <div

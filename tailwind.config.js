@@ -3,7 +3,7 @@
 const tailwindPlugin=require('tailwindcss/plugin');
 
 module.exports = {
-    darkMode: ['class'],
+    darkMode: 'media',
     content: [ //all pages for compilation
         './src/pages/**/*.{js,ts,jsx,tsx}',
         './src/components/**/*.{js,ts,jsx,tsx}',

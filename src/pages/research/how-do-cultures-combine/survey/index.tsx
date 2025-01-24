@@ -2,7 +2,7 @@ import BlankPage from '@/components/page/BlankPage';
 import Link from 'next/link';
 
 export default function Survey() {
-    const box='p-10 h-80 text-xl border-2 border-black rounded-md flex items-center justify-center cursor-pointer hover:bg-gray-300 text-center';
+    const box='p-10 h-80 text-xl border-2 border-black rounded-md flex items-center justify-center cursor-pointer hover:bg-gray-300 hover:dark:bg-gray-700 text-center';
 
     return <BlankPage bottomPadding seo={{
         title: 'Survey on Cultural Identity',
