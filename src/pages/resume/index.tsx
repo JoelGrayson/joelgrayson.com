@@ -99,7 +99,7 @@ export default function Resume() {
 
                 {/* Export/Download Button */}
                 <Link
-                    href="https://docs.google.com/document/d/1BZ4zuOEKgKcglOQbSWBilAfFkNWgqBFW0BElgroysyI/export?format=pdf"
+                    href="https://docs.google.com/document/d/1BZ4zuOEKgKcglOQbSWBilAfFkNWgqBFW0BElgroysyI/export?format=pdf&tab=t.0"
                     target="_blank"
                     className="absolute top-10 right-8 unstyled"
                 >
