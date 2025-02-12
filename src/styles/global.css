@@ -466,3 +466,8 @@ table.styled td {
     animation: none !important;
     animation-duration: 0s !important;
 }
+
+.hanging-indent {
+    padding-left: 0.5in;
+    text-indent: -0.5in;
+}
