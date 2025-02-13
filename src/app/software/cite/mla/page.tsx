@@ -7,6 +7,8 @@ export const metadata={
     description: 'MLA citation guide and tool'
 };
 
+// Add clear button
+
 export default function MLACite() {
     const codeStyle={
         background: 'rgba(100, 100, 100, 0.2)',

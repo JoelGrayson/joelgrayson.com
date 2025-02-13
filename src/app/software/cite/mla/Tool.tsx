@@ -35,6 +35,22 @@ export default function Tool() {
     const containerTitle=websiteOrBook==='Book' ? bookContainerTitle : websiteRootTitle;
     
     const [copied, setCopied]=useState(false);
+
+    function reset() {
+        setFirstName('');
+        setLastName('');
+        setBookTitle('');
+        setBookContainerTitle('');
+        setPublicationDate(null);
+        setCityOfPublication('');
+        setBookNumber('');
+        setPublisher('');
+        setLocation('');
+        setUrl('');
+        setWebsiteTitle('');
+        setWebsiteRootTitle('');
+        setAccessedDate(new Date());
+    }
     
     return <div>
         <div className='grid gap-4 items-center' style={{ gridTemplateColumns: 'fit-content(150px) min-content' }}>
@@ -78,12 +94,21 @@ export default function Tool() {
 
                         <div><label htmlFor="bookLocation">Location:</label></div>
                         <div><input value={location} id='bookLocation' onChange={e=>setLocation(e.target.value)} placeholder='e.g., pp. 69–420' /></div>
+
+                        <div><label htmlFor="publisher">Publisher:</label></div>
+                        <div><input value={publisher} id='publisher' onChange={e=>setPublisher(e.target.value)} placeholder='e.g., Penguin Classics' /></div>
     
 
-                        <div style={{ gridColumn: 'span 2' }}><button onClick={()=>setShowMore(false)}>Show Less</button></div>
+                        <div style={{ gridColumn: 'span 2' }}>
+                            <button onClick={()=>setShowMore(false)}>Show Less</button>
+                            <button onClick={reset} className='ml-1'>Clear</button>
+                        </div>
                     </>
                     : <>
-                        <div style={{ gridColumn: 'span 2' }}><button onClick={()=>setShowMore(true)}>Show More</button></div>
+                        <div style={{ gridColumn: 'span 2' }}>
+                            <button onClick={()=>setShowMore(true)}>Show More</button>
+                            <button onClick={reset} className='ml-1'>Clear</button>
+                        </div>
                     </> }
                     
                     {/* <div><input value={publicationDate} onChange={e=>setBookContainerTitle(e.target.value)} placeholder='e.g., The Georgia Review' /></div> */}
@@ -122,6 +147,9 @@ export default function Tool() {
                         {/* <DatePicker defaultValue={defaultValue} format={dateFormat} /> */}
                         <input type="date" id="accessedDate" value={accessedDate.toISOString().split('T')[0]} onChange={e=>setAccessedDate(new Date(e.target.value))} />
                     </div>
+                    <div style={{ gridColumn: 'span 2' }}>
+                        <button onClick={reset} className='ml-1'>Clear</button>
+                    </div>
                 </>
             }
 
@@ -141,7 +169,7 @@ export default function Tool() {
                 marginLeft: 0,
             }}
         >
-            {(lastName && firstName) ? `${lastName}, ${firstName}. ` : ''}{title ? `"${title}." ` : ''}<i>{containerTitle}</i>{bookNumber && `${bookNumber}`}{lastName && firstName || title || containerTitle || bookNumber ? ', ' : ''}{websiteOrBook==='Website' && url ? <a className='unstyled' href={url}>{trimUrl(url)}</a> : ''}{publicationDate ? formatDate(publicationDate) : ''}{cityOfPublication && `, ${cityOfPublication}`}{location && `, ${location}`}.{websiteOrBook==='Website' && accessedDate ? ` Accessed ${formatDate(accessedDate)}.` : ''}
+            {(lastName && firstName) ? `${lastName}, ${firstName}. ` : ''}{title ? `"${title}." ` : ''}<i>{containerTitle}</i>{bookNumber && `${bookNumber}`}{lastName && firstName || title || containerTitle || bookNumber ? ', ' : ''}{websiteOrBook==='Website' && url ? <a className='unstyled' href={url}>{trimUrl(url)}</a> : ''}{websiteOrBook==='Book' && publisher ? publisher : ''}{publicationDate ? formatDate(publicationDate) : ''}{cityOfPublication && `, ${cityOfPublication}`}{location && `, ${location}`}.{websiteOrBook==='Website' && accessedDate ? ` Accessed ${formatDate(accessedDate)}.` : ''}
         </p>
         {/* Copy button doesn't work so excluding it */}
         <button onClick={async ()=>{
