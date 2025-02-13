@@ -1,6 +1,9 @@
+'use client';
+
 import { useState } from 'react';
 import { Segmented } from "antd";
 import { useRef } from 'react';
+import { getProperties } from './actions';
 
 export default function Tool() {
     // For both
@@ -26,12 +29,12 @@ export default function Tool() {
     const [websiteRootTitle, setWebsiteRootTitle]=useState('');
     const [accessedDate, setAccessedDate]=useState(new Date());
 
-    const dateFormat='MM/DD/YYYY';
-
     const generatedRef=useRef<HTMLParagraphElement>(null);
     
     const title=websiteOrBook==='Book' ? bookTitle : websiteTitle;
     const containerTitle=websiteOrBook==='Book' ? bookContainerTitle : websiteRootTitle;
+    
+    const [copied, setCopied]=useState(false);
     
     return <div>
         <div className='grid gap-4 items-center' style={{ gridTemplateColumns: 'fit-content(150px) min-content' }}>
@@ -92,21 +95,12 @@ export default function Tool() {
                             const newUrl=e.target.value;
                             setUrl(newUrl);
                             if (isValidUrl(newUrl)) {
-                                fetch(newUrl)
-                                    .then(res=>res.text())
-                                    .then(text=>{
-                                        const parser=new DOMParser();
-                                        const doc=parser.parseFromString(text, 'text/html');
-                                        const title=doc.querySelector('title');
-                                        if (title && !websiteTitle) { //fill in value if not already there
-                                            setWebsiteTitle(title.textContent || '');
-                                        }
-
-                                        // Website root title
-                                        const metaOgSiteName=doc.querySelector('meta[property="og:site_name"]');
-                                        if (metaOgSiteName && !websiteRootTitle) {
-                                            setWebsiteRootTitle(metaOgSiteName.getAttribute('content') || '');
-                                        }
+                                getProperties(newUrl)
+                                    .then(result=>{
+                                        if (!websiteTitle && result.websiteTitle)
+                                            setWebsiteTitle(result.websiteTitle);
+                                        if (!websiteRootTitle && result.websiteRootTitle)
+                                            setWebsiteRootTitle(result.websiteRootTitle);
                                     });
                             }
                         }} />
@@ -149,13 +143,25 @@ export default function Tool() {
         >
             {(lastName && firstName) ? `${lastName}, ${firstName}. ` : ''}{title ? `"${title}." ` : ''}<i>{containerTitle}</i>{bookNumber && `${bookNumber}`}{lastName && firstName || title || containerTitle || bookNumber ? ', ' : ''}{publicationDate ? formatDate(publicationDate) : ''}{cityOfPublication && `, ${cityOfPublication}`}{location && `, ${location}`}.{websiteOrBook==='Website' && accessedDate ? ` Accessed ${formatDate(accessedDate)}.` : ''}
         </p>
-        <button onClick={()=>{
-            navigator.clipboard.write([
-                new ClipboardItem({
-                    'text/html': new Blob([generatedRef.current?.outerHTML || ''], { type: 'text/html' })
-                })
+        {/* Copy button doesn't work so excluding it */}
+        <button onClick={async ()=>{
+            if (generatedRef.current) {
+                try {
+                    // await navigator.clipboard.writeText(generatedRef.current.innerText);
+                    await navigator.clipboard.write([
+                        new ClipboardItem({
+                            'text/html': new Blob([generatedRef.current?.innerHTML || ''], { type: 'text/html' })
+                    })
             ]);
-        }}>Copy</button>
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+                } catch (err) {
+                    console.error('Failed to copy: ', err);
+                }
+            } else {
+                console.log('No ref');
+            }
+        }}>{ copied ? '✅ Copied' : 'Copy'}</button>
     </div>;
 }
 
@@ -173,3 +179,4 @@ function isValidUrl(urlString: string): boolean {
     '(\\#[-a-z\\d_]*)?$','i'); // validate fragment locator
     return !!urlPattern.test(urlString);
 }
+
