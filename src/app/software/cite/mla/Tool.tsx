@@ -141,7 +141,7 @@ export default function Tool() {
                 marginLeft: 0,
             }}
         >
-            {(lastName && firstName) ? `${lastName}, ${firstName}. ` : ''}{title ? `"${title}." ` : ''}<i>{containerTitle}</i>{bookNumber && `${bookNumber}`}{lastName && firstName || title || containerTitle || bookNumber ? ', ' : ''}{publicationDate ? formatDate(publicationDate) : ''}{cityOfPublication && `, ${cityOfPublication}`}{location && `, ${location}`}.{websiteOrBook==='Website' && accessedDate ? ` Accessed ${formatDate(accessedDate)}.` : ''}
+            {(lastName && firstName) ? `${lastName}, ${firstName}. ` : ''}{title ? `"${title}." ` : ''}<i>{containerTitle}</i>{bookNumber && `${bookNumber}`}{lastName && firstName || title || containerTitle || bookNumber ? ', ' : ''}{websiteOrBook==='Website' && url ? <a className='unstyled' href={url}>{trimUrl(url)}</a> : ''}{publicationDate ? formatDate(publicationDate) : ''}{cityOfPublication && `, ${cityOfPublication}`}{location && `, ${location}`}.{websiteOrBook==='Website' && accessedDate ? ` Accessed ${formatDate(accessedDate)}.` : ''}
         </p>
         {/* Copy button doesn't work so excluding it */}
         <button onClick={async ()=>{
@@ -178,5 +178,12 @@ function isValidUrl(urlString: string): boolean {
     '(\\?[;&a-z\\d%_.~+=-]*)?'+ // validate query string
     '(\\#[-a-z\\d_]*)?$','i'); // validate fragment locator
     return !!urlPattern.test(urlString);
+}
+
+function trimUrl(url: string) {
+    if (url.startsWith('https://'))
+        return url.slice(8);
+    if (url.startsWith('http://'))
+        return url.slice(7);
 }
 
