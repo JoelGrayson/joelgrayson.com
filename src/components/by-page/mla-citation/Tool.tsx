@@ -13,7 +13,7 @@ export default function Tool() {
     // Book specific
     const [bookTitle, setBookTitle]=useState('');
     const [bookContainerTitle, setBookContainerTitle]=useState('');
-    const [publicationDate, setPublicationDate]=useState(new Date()); //if before 1900, show the city of publication field
+    const [publicationDate, setPublicationDate]=useState<Date | null>(null); //if before 1900, show the city of publication field
         // optional
     const [cityOfPublication, setCityOfPublication]=useState('');
     const [bookNumber, setBookNumber]=useState(''); //such as vol. 64, no. 1
@@ -21,6 +21,7 @@ export default function Tool() {
     const [location, setLocation]=useState('');
     
     // Website specific
+    const [url, setUrl]=useState('');
     const [websiteTitle, setWebsiteTitle]=useState('');
     const [websiteRootTitle, setWebsiteRootTitle]=useState('');
     const [accessedDate, setAccessedDate]=useState(new Date());
@@ -56,10 +57,10 @@ export default function Tool() {
                     <div><label htmlFor="publicationDate">Publication date:</label></div>
                     <div>
                         {/* <DatePicker defaultValue={defaultValue} format={dateFormat} /> */}
-                        <input type="date" id="publicationDate" value={publicationDate.toISOString().split('T')[0]} onChange={e=>setPublicationDate(new Date(e.target.value))} />
+                        <input type="date" id="publicationDate" value={publicationDate ?publicationDate.toISOString().split('T')[0] : ''} onChange={e=>setPublicationDate(new Date(e.target.value))} />
                     </div>
                     {
-                        publicationDate.getFullYear()<1900 && <>
+                        publicationDate && publicationDate.getFullYear()<1900 && <>
                             <div><label htmlFor="cityOfPublication">City of publication (should include for books before 1900):</label></div>
                             <div><input value={cityOfPublication} id='cityOfPublication' onChange={e=>setCityOfPublication(e.target.value)} placeholder='e.g., New York City' /></div>
                         </>
@@ -85,15 +86,41 @@ export default function Tool() {
                     {/* <div><input value={publicationDate} onChange={e=>setBookContainerTitle(e.target.value)} placeholder='e.g., The Georgia Review' /></div> */}
                 </>
                 : <>
+                    <div><label htmlFor="url">URL:</label></div>
+                    <div>
+                        <input value={url} id='url' onChange={e=>{
+                            const newUrl=e.target.value;
+                            setUrl(newUrl);
+                            if (isValidUrl(newUrl)) {
+                                fetch(newUrl)
+                                    .then(res=>res.text())
+                                    .then(text=>{
+                                        const parser=new DOMParser();
+                                        const doc=parser.parseFromString(text, 'text/html');
+                                        const title=doc.querySelector('title');
+                                        if (title && !websiteTitle) { //fill in value if not already there
+                                            setWebsiteTitle(title.textContent || '');
+                                        }
+
+                                        // Website root title
+                                        const metaOgSiteName=doc.querySelector('meta[property="og:site_name"]');
+                                        if (metaOgSiteName && !websiteRootTitle) {
+                                            setWebsiteRootTitle(metaOgSiteName.getAttribute('content') || '');
+                                        }
+                                    });
+                            }
+                        }} />
+                    </div>
+
                     <div><label htmlFor="websiteTitle">Webpage title:</label></div>
                     <div><input value={websiteTitle} id='websiteTitle' onChange={e=>setWebsiteTitle(e.target.value)} /></div>
                     <div><label htmlFor="websiteContainerTitle">Website container title:</label></div>
                     <div><input value={websiteRootTitle} id='websiteContainerTitle' onChange={e=>setWebsiteRootTitle(e.target.value)} placeholder='e.g., The New York Times' /></div>
                     
                     <div><label htmlFor="publicationDate">Publication date:</label></div>
-                    <div>
+                    <div className='flex items-center'>
                         {/* <DatePicker defaultValue={defaultValue} format={dateFormat} /> */}
-                        <input type="date" id="publicationDate" value={publicationDate.toISOString().split('T')[0]} onChange={e=>setPublicationDate(new Date(e.target.value))} />
+                        <input type="date" id="publicationDate" value={publicationDate ? publicationDate.toISOString().split('T')[0] : ''} onChange={e=>setPublicationDate(new Date(e.target.value))} />
                     </div>
 
                     <div><label htmlFor="accessedDate">Accessed date:</label></div>
@@ -120,7 +147,7 @@ export default function Tool() {
                 marginLeft: 0,
             }}
         >
-            {(lastName && firstName) ? `${lastName}, ${firstName}. ` : ''}{title ? `"${title}." ` : ''}<i>{containerTitle}</i>{bookNumber && `${bookNumber}`}{lastName && firstName || title || containerTitle || bookNumber ? ', ' : ''}{formatDate(publicationDate)}{cityOfPublication && `, ${cityOfPublication}`}{location && `, ${location}`}.{websiteOrBook==='Website' && accessedDate ? ` Accessed ${formatDate(accessedDate)}.` : ''}
+            {(lastName && firstName) ? `${lastName}, ${firstName}. ` : ''}{title ? `"${title}." ` : ''}<i>{containerTitle}</i>{bookNumber && `${bookNumber}`}{lastName && firstName || title || containerTitle || bookNumber ? ', ' : ''}{publicationDate ? formatDate(publicationDate) : ''}{cityOfPublication && `, ${cityOfPublication}`}{location && `, ${location}`}.{websiteOrBook==='Website' && accessedDate ? ` Accessed ${formatDate(accessedDate)}.` : ''}
         </p>
         <button onClick={()=>{
             navigator.clipboard.write([
@@ -133,6 +160,16 @@ export default function Tool() {
 }
 
 export function formatDate(date: Date) { //follows MLA format
-    return `${date.getDate()} ${date.toLocaleString('default', { month: 'long' })} ${date.getFullYear()}`;
+    return `${date.getDate()} ${date.toLocaleString('default', { month: 'short' })} ${date.getFullYear()}`;
 }
 
+// https://www.freecodecamp.org/news/check-if-a-javascript-string-is-a-url/
+function isValidUrl(urlString: string): boolean {
+    let urlPattern=new RegExp('^(https?:\\/\\/)?'+ // validate protocol
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // validate domain name
+    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // validate OR ip (v4) address
+    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // validate port and path
+    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // validate query string
+    '(\\#[-a-z\\d_]*)?$','i'); // validate fragment locator
+    return !!urlPattern.test(urlString);
+}
