@@ -2,6 +2,11 @@ import { AppPage } from '@/components/page/DefaultPage';
 import Image from 'next/image';
 import Tool from '@/app/software/cite/mla/Tool';
 
+export const metadata={
+    title: 'MLA Cite',
+    description: 'MLA citation guide and tool'
+};
+
 export default function MLACite() {
     const codeStyle={
         background: 'rgba(100, 100, 100, 0.2)',
@@ -11,10 +16,7 @@ export default function MLACite() {
         paddingTop: 20
     };
    
-    return <AppPage bottomPadding seo={{
-        title: 'MLA Cite',
-        description: 'MLA citation guide and tool'
-    }}>
+    return <AppPage bottomPadding>
         <h1 className='gap-5 text-center'>MLA Cite</h1>
 
         <h2>Tool</h2>

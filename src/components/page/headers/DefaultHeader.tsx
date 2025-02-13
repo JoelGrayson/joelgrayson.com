@@ -56,9 +56,10 @@ export default function DefaultHeader({ pathname='' }: { pathname?: string }) {
                     <HeaderGroupItem pathname={pathname} link='https://apps.apple.com/us/app/edit-time/id6464405876'>Edit Time</HeaderGroupItem>
                     <HeaderSubGroup pathname={pathname} title='Tools'>
                         <HeaderSubGroupItem pathname={pathname} link='/software/drive-download-link-generator'>Drive Download Link Generator</HeaderSubGroupItem>
-                        <HeaderSubGroupItem pathname={pathname} link='/chess'>Chess</HeaderSubGroupItem>
                         <HeaderSubGroupItem pathname={pathname} link='/learn/pi'>Memorize π</HeaderSubGroupItem>
                         <HeaderSubGroupItem pathname={pathname} link='/learn/number?name=tau'>Memorize τ</HeaderSubGroupItem>
+                        <HeaderSubGroupItem pathname={pathname} link='/software/cite/mla'>MLA Citation Generator</HeaderSubGroupItem>
+                        {/* <HeaderSubGroupItem pathname={pathname} link='/chess'>Chess</HeaderSubGroupItem> */}
                     </HeaderSubGroup>
                 </HeaderGroup>
 
