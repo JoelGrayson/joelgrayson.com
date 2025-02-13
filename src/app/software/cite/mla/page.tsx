@@ -7,7 +7,9 @@ export const metadata={
     description: 'MLA citation guide and tool'
 };
 
-// Add clear button
+
+// TODO: make authors work with et al. or two authors. You select the number of authors at the top: 1, 2, or 3+ and then it shows the appropriate number of author fields.
+// TODO: add option for making publication date text. Have [date input] or [text input] so you can do Sept 2020 or Spring 2019 for example
 
 export default function MLACite() {
     const codeStyle={
@@ -18,7 +20,7 @@ export default function MLACite() {
         paddingTop: 20
     };
    
-    return <AppPage bottomPadding>
+    return <AppPage bottomPadding pathname='/software/cite/mla'>
         <h1 className='gap-5 text-center'>MLA Cite</h1>
 
         <h2>Tool</h2>

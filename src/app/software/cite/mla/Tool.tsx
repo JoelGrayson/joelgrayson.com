@@ -169,7 +169,7 @@ export default function Tool() {
                 marginLeft: 0,
             }}
         >
-            {(lastName && firstName) ? `${lastName}, ${firstName}. ` : ''}{title ? `"${title}." ` : ''}<i>{containerTitle}</i>{bookNumber && `${bookNumber}`}{lastName && firstName || title || containerTitle || bookNumber ? ', ' : ''}{websiteOrBook==='Website' && url ? <a className='unstyled' href={url}>{trimUrl(url)}</a> : ''}{websiteOrBook==='Book' && publisher ? publisher : ''}{publicationDate ? formatDate(publicationDate) : ''}{cityOfPublication && `, ${cityOfPublication}`}{location && `, ${location}`}.{websiteOrBook==='Website' && accessedDate ? ` Accessed ${formatDate(accessedDate)}.` : ''}
+            {(lastName && firstName) ? `${lastName}, ${firstName}. ` : ''}{title ? `"${title}." ` : ''}<i>{containerTitle}</i>{bookNumber && `${bookNumber}`}{lastName && firstName || title || containerTitle || bookNumber ? ', ' : ''}{websiteOrBook==='Website' && url ? <a className='unstyled' href={url}>{trimUrl(url)}</a> : ''}{websiteOrBook==='Book' && publisher ? publisher+', ' : ''}{publicationDate ? formatDate(publicationDate) : ''}{cityOfPublication && `, ${cityOfPublication}`}{location && `, ${location}`}.{websiteOrBook==='Website' && accessedDate ? ` Accessed ${formatDate(accessedDate)}.` : ''}
         </p>
         {/* Copy button doesn't work so excluding it */}
         <button onClick={async ()=>{

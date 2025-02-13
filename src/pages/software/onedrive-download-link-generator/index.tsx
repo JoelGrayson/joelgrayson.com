@@ -27,7 +27,7 @@ export default function OneDriveDownloadLinkGenerator() {
                 <h1 className='text-[40px]'>OneDrive Direct Download Link Generator</h1>
             </div>
 
-            <p className='j_max-w pb-10'>
+            {/* <p className='j_max-w pb-10'>
                 This tool generates a direct download link for OneDrive files. Upon searching the generated URL, the download will start immediately.
             </p>
             
@@ -45,9 +45,9 @@ export default function OneDriveDownloadLinkGenerator() {
                         <li>Paste link in tool</li>
                     </FancyOl>
                 </div>
-            </div>
+            </div> */}
 
-            <p className='my-12 text-2xl font-bold text-red-900'>Note: as of June 2024, this tool no longer works because OneDrive had a major API rehaul that no longer allows permanent file download links to be created as far as I am aware. Bummer!</p>
+            <p className='my-12 text-2xl font-bold text-red-900'>As of June 2024, this tool no longer works because OneDrive had a major API rehaul. My friend Asif has produced a tool that does the same thing here: <a target='_blank' href="https://www.asifkamboh.com/p/onedrive-direct-link.html">asifkamboh.com/p/onedrive-direct-link.html</a></p>
 
             <div className='flex justify-around items-center mt-2 mb-1'>
                 <p className={!visits ? 'invisible' : ''}>This page has {visits} visits</p>
