@@ -2,9 +2,12 @@
 
 import axios from 'axios';
 import * as cheerio from 'cheerio';
+import https from 'https';
 
 export async function getProperties(url: string) {
-    return axios.get(url)
+    return axios.get(url, {
+        httpsAgent: new https.Agent({ rejectUnauthorized: false })
+    })
         .then(response => {
             const $=cheerio.load(response.data)
             const title=$('title').first();
