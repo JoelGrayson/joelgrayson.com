@@ -1,14 +1,11 @@
 import Page from '@/components/page/DefaultPage';
 import Image from 'next/image';
-import Button from '@jcomponents/button';
-import { gsap } from 'gsap';
-import { useEffect, useRef } from 'react';
-import Link from 'next/link';
+import Tool from '@/components/by-page/mla-citation/Tool';
 
 export default function MLACite() {
     return <Page bottomPadding seo={{
         title: 'MLA Cite',
-        description: 'MLA citation guide'
+        description: 'MLA citation guide and tool'
     }}>
         <style jsx>{`
             code {
@@ -21,11 +18,18 @@ export default function MLACite() {
             }
         `}</style>
 
-        <h1 className='gap-5 text-center'>MLA Citation Guide</h1>
+        <h1 className='gap-5 text-center'>MLA Cite</h1>
 
-        <h3>Website</h3>
-        <p>Format: <code>last name</code>, <code>first name</code>. "<code>Website title</code>." <i><code>Website root title</code></i>, <code>publication date</code>, <code>URL</code>. <code>Accessed date</code></p>
-        <p>In other words, <code>Author</code>. "<code>Title</code>." <i><code>Container title</code></i>, <code>publication date</code>, <code>URL</code>.</p>
+        <h2>Tool</h2>
+        <Tool />
+
+
+        <h2 className='mt-8'>Citation Guide</h2>
+
+        <h3 className='!pt-0 !mt-0'>Website</h3>
+        <p>Format: <code>last name</code>, <code>first name</code>. &quot;<code>Website title</code>.&quot; <i><code>Website root title</code></i>, <code>publication date</code>, <code>URL</code>. <code>Accessed date</code></p>
+        <p>In other words, <code>Author</code>. &quot;<code>Title</code>.&quot; <i><code>Container title</code></i>, <code>publication date</code>, <code>URL</code>.</p>
+        <p>The website root title is the name of the website in general whereas the website title is the name of that specific webpage. For example, if the URL is <code>www.nytimes.com/2021/08/15/world/asia/afghanistan-taliban-kabul-surrender.html</code>, the website root title is <i><code>The New York Times</code></i> and the website title is <code>&quot;Kabul’s Sudden Fall to Taliban Ends U.S. Era in Afghanistan&quot;</code></p>
 
         <h4>Examples</h4>
         <p className='hanging-indent'>Eliers, Christian. “What Should I Major In? How to Choose a Major in 9 Steps.” <em>Zety</em>, 22 Nov. 2019, <a href="http://zety.com/blog/how-to-choose-a-major">zety.com/blog/how-to-choose-a-major</a>. Accessed 28 Jun. 2023.</p>
@@ -34,12 +38,12 @@ export default function MLACite() {
 
         <h3>Book</h3>
         <ul>
-            <li>Format: <code>Last name</code>, <code>first name</code>. <i><code>Title of Book</code></i>. <code>Publisher</code>, <code>Publication Date</code>.</li>
+            <li>Format: <code>Last name</code>, <code>first name</code>. <i><code>Book title</code></i>. <code>Publisher</code>, <code>Publication Date</code>.</li>
             <li>
-                Full format: <code>Last</code>, <code>First</code>. <i><code>Title</code></i>. <code>City of publication</code>, <code>Publisher</code>, <code>year</code>. <code>Medium of publication</code>.
+                Full format: <code>Last</code>, <code>First</code>. <i><code>Title</code></i>. <code>City of publication</code>, <code>Publisher</code>, <code>year</code>. <code>Publication medium</code>.
                 <ul>
                     <li>
-                        The <code>medium of publication</code> is either <code>Print</code>, <code>Digital file</code>, <code>PDF</code>, or <code>EPUB</code>.
+                        The <code>publication medium</code> is either <code>Print</code>, <code>Digital file</code>, <code>PDF</code>, or <code>EPUB</code>.
                         <Image src='/software/cite/mla/advanced-citation-guide.jpg' alt='Advanced Citation Guide' width={300} height={248} />
                     </li>
                 </ul>
