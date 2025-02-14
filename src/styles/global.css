@@ -471,3 +471,7 @@ table.styled td {
     padding-left: 0.5in;
     text-indent: -0.5in;
 }
+
+.indented {
+    text-indent: 4ch;
+}

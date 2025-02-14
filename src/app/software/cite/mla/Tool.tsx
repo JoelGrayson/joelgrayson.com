@@ -8,15 +8,19 @@ import { getProperties } from './actions';
 export default function Tool() {
     // For both
     const [websiteOrBook, setWebsiteOrBook]=useState<'Book' | 'Website'>('Book');
+    const [numAuthors, setNumAuthors]=useState<'0' | '1' | '2' | '3+'>('1');
     const [firstName, setFirstName]=useState('');
     const [lastName, setLastName]=useState('');
+    const [secondFirstName, setSecondFirstName]=useState(''); //for 2 authors
+    const [secondLastName, setSecondLastName]=useState(''); //"
+
     const [showMore, setShowMore]=useState(false);
 
     
     // Book specific
     const [bookTitle, setBookTitle]=useState('');
     const [bookContainerTitle, setBookContainerTitle]=useState('');
-    const [publicationDate, setPublicationDate]=useState<Date | null>(null); //if before 1900, show the city of publication field
+    const [publicationDate, setPublicationDate]=useState<string>(''); //if before 1900, show the city of publication field
         // optional
     const [cityOfPublication, setCityOfPublication]=useState('');
     const [bookNumber, setBookNumber]=useState(''); //such as vol. 64, no. 1
@@ -41,7 +45,7 @@ export default function Tool() {
         setLastName('');
         setBookTitle('');
         setBookContainerTitle('');
-        setPublicationDate(null);
+        setPublicationDate('');
         setCityOfPublication('');
         setBookNumber('');
         setPublisher('');
@@ -53,19 +57,56 @@ export default function Tool() {
     }
     
     return <div>
-        <div className='grid gap-4 items-center' style={{ gridTemplateColumns: 'fit-content(150px) min-content' }}>
-            <div>Media type:</div>
+        <div className='grid gap-4 items-center' style={{ gridTemplateColumns: 'fit-content(200px) min-content' }}>
+            <div><label htmlFor="mediaType">Media type:</label></div>
             <div>
                 <Segmented
                     options={['Book', 'Website']}
+                    id='mediaType'
                     value={websiteOrBook}
                     onChange={setWebsiteOrBook}
                 />
             </div>
-            <div><label htmlFor="firstName">Author first name:</label></div>
-            <div><input value={firstName} id='firstName' onChange={e=>setFirstName(e.target.value)} /></div>
-            <div><label htmlFor="lastName">Author last name:</label></div>
-            <div><input value={lastName} id='lastName' onChange={e=>setLastName(e.target.value)} /></div>
+            <div><label htmlFor="numAuthors">Number of Authors:</label></div>
+            <div>
+                <Segmented
+                    options={['0', '1', '2', '3+']}
+                    id='numAuthors'
+                    value={numAuthors}
+                    onChange={setNumAuthors}
+                />
+            </div>
+            {
+                numAuthors==='0'
+                ? <></>
+                : numAuthors==='1'
+                ? <>
+                    <div><label htmlFor="firstName">Author first name:</label></div>
+                    <div><input value={firstName} id='firstName' onChange={e=>setFirstName(e.target.value)} /></div>
+                    <div><label htmlFor="lastName">Author last name:</label></div>
+                    <div><input value={lastName} id='lastName' onChange={e=>setLastName(e.target.value)} /></div>
+                </>
+                : numAuthors==='2'
+                ? <>
+                    <div><label htmlFor="firstName">First author&apos;s first name:</label></div>
+                    <div><input value={firstName} id='firstName' onChange={e=>setFirstName(e.target.value)} /></div>
+                    <div><label htmlFor="lastName">First author&apos;s last name:</label></div>
+                    <div><input value={lastName} id='lastName' onChange={e=>setLastName(e.target.value)} /></div>
+
+                    <div><label htmlFor="secondFirstName">Second author&apos;s first name:</label></div>
+                    <div><input value={secondFirstName} id='secondFirstName' onChange={e=>setSecondFirstName(e.target.value)} /></div>
+                    <div><label htmlFor="secondLastName">Second author&apos;s last name:</label></div>
+                    <div><input value={secondLastName} id='secondLastName' onChange={e=>setSecondLastName(e.target.value)} /></div>
+                </>
+                : numAuthors==='3+'
+                ? <>
+                    <div><label htmlFor="firstName">First author&apos;s first name:</label></div>
+                    <div><input value={firstName} id='firstName' onChange={e=>setFirstName(e.target.value)} /></div>
+                    <div><label htmlFor="lastName">First author&apos;s last name:</label></div>
+                    <div><input value={lastName} id='lastName' onChange={e=>setLastName(e.target.value)} /></div>
+                </>
+                : <></>
+            }
             {
                 websiteOrBook==='Book'
                 ? <>
@@ -76,10 +117,10 @@ export default function Tool() {
                     <div><label htmlFor="publicationDate">Publication date:</label></div>
                     <div>
                         {/* <DatePicker defaultValue={defaultValue} format={dateFormat} /> */}
-                        <input type="date" id="publicationDate" value={publicationDate ?publicationDate.toISOString().split('T')[0] : ''} onChange={e=>setPublicationDate(new Date(e.target.value))} />
+                        <input type="date" id="publicationDate" value={publicationDate} onChange={e=>setPublicationDate(e.target.value)} />
                     </div>
                     {
-                        publicationDate && publicationDate.getFullYear()<1900 && <>
+                        publicationDate && !isNaN(new Date(publicationDate).getTime()) && new Date(publicationDate).getFullYear()<1900 && <>
                             <div><label htmlFor="cityOfPublication">City of publication (should include for books before 1900):</label></div>
                             <div><input value={cityOfPublication} id='cityOfPublication' onChange={e=>setCityOfPublication(e.target.value)} placeholder='e.g., New York City' /></div>
                         </>
@@ -139,7 +180,7 @@ export default function Tool() {
                     <div><label htmlFor="publicationDate">Publication date:</label></div>
                     <div className='flex items-center'>
                         {/* <DatePicker defaultValue={defaultValue} format={dateFormat} /> */}
-                        <input type="date" id="publicationDate" value={publicationDate ? publicationDate.toISOString().split('T')[0] : ''} onChange={e=>setPublicationDate(new Date(e.target.value))} />
+                        <input type="date" id="publicationDate" value={publicationDate} onChange={e=>setPublicationDate(e.target.value)} />
                     </div>
 
                     <div><label htmlFor="accessedDate">Accessed date:</label></div>
@@ -169,7 +210,48 @@ export default function Tool() {
                 marginLeft: 0,
             }}
         >
-            {(lastName && firstName) ? `${lastName}, ${firstName}. ` : ''}{title ? `"${title}." ` : ''}<i>{containerTitle}</i>{bookNumber && `${bookNumber}`}{lastName && firstName || title || containerTitle || bookNumber ? ', ' : ''}{websiteOrBook==='Website' && url ? <a className='unstyled' href={url}>{trimUrl(url)}</a> : ''}{websiteOrBook==='Book' && publisher ? publisher+', ' : ''}{publicationDate ? formatDate(publicationDate) : ''}{cityOfPublication && `, ${cityOfPublication}`}{location && `, ${location}`}.{websiteOrBook==='Website' && accessedDate ? ` Accessed ${formatDate(accessedDate)}.` : ''}
+            {
+                // Author
+                numAuthors==='0'
+                ? ''
+                : numAuthors==='1'
+                    ? ((lastName && firstName)
+                        ? `${lastName}, ${firstName}. `
+                        : '')
+                : numAuthors==='2'
+                    ? ((lastName && firstName && secondLastName && secondFirstName)
+                        ? `${lastName}, ${firstName}, and ${secondFirstName} ${secondLastName}. `
+                        : '')
+                : numAuthors==='3+'
+                    ? ((lastName && firstName)
+                        ? `${lastName}, ${firstName}, et al. `
+                        : '')
+                : ''
+            }{ //Title
+                title ? `"${title}." ` : ''
+            }<i>{containerTitle}</i>{
+                bookNumber && <>, {bookNumber}</>
+            }{
+                websiteOrBook==='Website' && url
+                ? <>, <a className='unstyled' href={url}>{trimUrl(url)}</a></>
+                : ''
+            }{
+                (websiteOrBook==='Book' && publisher)
+                ? <>, {publisher}</>
+                : ''
+            }{
+                publicationDate
+                ? <>, {formatDate(publicationDate)}</>
+                : ''
+            }{
+                cityOfPublication && `, ${cityOfPublication}`
+            }{
+                location && `, ${location}`
+            }.{
+                (websiteOrBook==='Website' && accessedDate)
+                ? ` Accessed ${formatDate(accessedDate)}.`
+                : ''
+            }
         </p>
         {/* Copy button doesn't work so excluding it */}
         <button onClick={async ()=>{
@@ -193,7 +275,13 @@ export default function Tool() {
     </div>;
 }
 
-export function formatDate(date: Date) { //follows MLA format
+export function formatDate(date: Date | string) { //follows MLA format
+    if (typeof date==='string') {
+        date=new Date(date);
+        if (isNaN(date.getTime())) { //Invalid date string
+            return '';
+        }
+    }
     return `${date.getDate()} ${date.toLocaleString('default', { month: 'short' })} ${date.getFullYear()}`;
 }
 

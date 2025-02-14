@@ -13,13 +13,13 @@ export async function getProperties(url: string) {
             const title=$('title').first();
             const result={} as any;
             if (title) { //fill in value if not already there
-                result.websiteTitle=title.text() || '';
+                result.websiteTitle=title.text().trim() || '';
             }
 
             // Website root title
             const metaOgSiteName=$('meta[property="og:site_name"]').attr('content');
             if (metaOgSiteName) {
-                result.websiteRootTitle=metaOgSiteName || '';
+                result.websiteRootTitle=metaOgSiteName.trim() || '';
             }
             
             return result;
