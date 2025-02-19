@@ -6,6 +6,8 @@ export const temporary: redirects={ //302
     // Newest at top, oldest at bottom
     // Destination: source
     
+    '/software/cite/mla': ['/mla', '/cite-mla', '/cite-mla-format', '/mla-citation', '/mla-cite', '/mla-format'],
+    
     'https://buy.stripe.com/9AQ4jdfUEh0waOY000': ['/support', '/donate', '/pay'],
     
     // Page misspellings/similar names
