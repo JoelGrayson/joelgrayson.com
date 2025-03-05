@@ -11,6 +11,10 @@ export default function Resume() {
             description: "Joel Grayson's resume"
         }} />
         <div className={css`
+            /*
+            //#region CSS
+            */
+
             * {
                 transition: all 0s ease, background-color .3s ease;
             }
@@ -86,10 +90,16 @@ export default function Resume() {
             #education-section li {
                 margin-block: .4rem;
             }
+            #root h3 { font-size: 1.6rem; }
+            #root .section h4:first-of-type { margin-top: 5px; }
+            #root h4 { font-size: 1.0rem; margin-top: 15px; margin-bottom: 0px; }
+            #root h4+li { margin-top: 0px; }
+            /*
+            //#endregion
+            */
         `}>
             <div id="root" className="j_container relative flex flex-col">
                 <h1 className='text-center text-[46px] pt-4'>Joel Grayson</h1>
-
                 {/* Go to Site Button */}
                 <div className="absolute top-10 left-8">
                     <Link href="/" className="button">
@@ -115,6 +125,7 @@ export default function Resume() {
                 <div className="section hover:bg-blue-100 dark:hover:bg-[rgba(50,50,200,0.2)]" id='software-section'>
                     <h3>Projects</h3>
                     <ul>
+                        <h4>Software:</h4>
                         <li>
                             <span className="title with-icon">
                                 <Image src='/image/home/edit-time-logo.png' alt='focus-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
@@ -129,7 +140,7 @@ export default function Resume() {
                                 <Link href="https://buseroo.com">Buseroo.com</Link>
                             </span>
                             <span className="date">2021&ndash;23</span>
-                            <div className="description inline-description">website and <Link href='https://apps.apple.com/us/app/buseroo/id6736895918' target="_blank">app</Link> for students to find closest school bus to any address</div>
+                            <div className="description inline-description">website and <Link href='https://apps.apple.com/us/app/buseroo/id6736895918' target="_blank">app</Link> to find closest school bus to any address.</div>
                         </li>
                         <li>
                             <span className="title with-icon">
@@ -137,7 +148,7 @@ export default function Resume() {
                                 <Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>Homework Checker</Link>
                             </span>
                             <span className="date">2021&ndash;22</span>
-                            <div className="description inline-description">helps 3,000 students daily organize their homework. .</div>
+                            <div className="description inline-description">helps 3,000 students daily organize their homework.</div>
                         </li>
                         <li>
                             <span className="title with-icon">
@@ -155,34 +166,29 @@ export default function Resume() {
                             <span className="date">2020</span>
                             <div className="description inline-description">online gallery showcasing my mom’s paintings.</div>
                         </li>
+                        <h4>Physical:</h4>
                         <li>
                             <span className="title"><Link href='https://www.youtube.com/watch?v=bHHk2FL5Ujs'>Venderoo</Link></span>
                             <span className="date">2023</span>
-                            <div className="description inline-description">built a vending machine that sold snacks in school hallway.</div>
+                            <div className="description inline-description">designed & built vending machine that sold snacks in hallway.</div>
                         </li>
-                        <li>
-                            <span className='description is-title'><Link href='https://youtube.com/@JoelGrayson'>YouTube channel</Link></span>
-                            {/* Wrote, acted, filmed, and edited 34 comedy videos with my father since age 11, created nine9 stop motion animations, and included other projects */}
-                            <span className='date'>2018&ndash;now</span>
-                            <div className="description inline-description">father-and-son comedy, project records, and claymation.</div>
+                        <h4>Climate Change:</h4>
+                        <li className='mb-2'>
+                            <span className="title with-icon">
+                                Gave a <Link href="https://www.youtube.com/watch?v=rV_8xB7rGyQ">TEDx talk on combating climate change through projects</Link>.
+                            </span>
+                            <span className="date !top-[5px]">2024</span>
                         </li>
-                    </ul>
-                </div>
-
-
-                <div className="section hover:bg-green-100 dark:hover:bg-green-950" id='climate-change-section'>
-                    <h3>Climate Change</h3>
-                    <ul>
                         <li>
                             <span className="title with-icon">
                                 <Image src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='solar panel' width={26} height={20}
                                     className='inline bottom-0.5 relative'
                                     style={{ right: 4 }}
                                 />
-                                Brought 493 kW solar installation to Riverdale, enough to power 50 households.
+                                Facilitated 493 kW solar installation at Riverdale, enough to power 50 households.
                             </span>    
                             <span className="date">2021&ndash;2024</span>
-                            <div className="description indent">Collected rooftop measurements, created solar models in HelioScope, gathered quotes from several installers, researched legal and financial aspects, and presented to administration and Board of Trustees.</div>
+                            <div className="description indent">Measured rooftops, created solar models in HelioScope, gathered quotes from several installers, researched legal & financial aspects, & presented to admin and board.</div>
                         </li>
                         <li className='mb-2'>
                             <span className="title with-icon">
@@ -193,27 +199,16 @@ export default function Resume() {
                         </li>
                         <li className='mb-2'>
                             <span className="title with-icon">
-                                Gave a <Link href="https://www.youtube.com/watch?v=rV_8xB7rGyQ">TEDx talk on combating climate change</Link>.
-                            </span>
-                            <span className="date !top-[5px]">2024</span>
-                        </li>
-                        <li className='mb-2'>
-                            <span className="title with-icon">
                                 Worked on connecting NYC street vendors to the electrical grid.
                             </span>
                             <span className="date !top-[5px]">2023–24</span>
                         </li>
-                        
-                        <li>
-                            <span className="title">En-ROADS Ambassador (climate educator).</span>
-                            <span className="date">2022&ndash;now</span>
-                        </li>
                     </ul>
                 </div>
-                
 
-                <div className="section hover:bg-red-100 dark:hover:bg-[rgba(200,50,50,0.3)]" id='activities-section'>
-                    <h3>Activities</h3>
+
+                <div className="section hover:bg-green-100 dark:hover:bg-green-950" id='climate-change-section'>
+                    <h3>Employment</h3>
                     <ul>
                         <li>
                             <span className='description is-title'>Manhattan Community Board 1 member: Environmental and Youth & Ed Committees.</span>
@@ -224,20 +219,16 @@ export default function Resume() {
                             <span className='date relative'>2023</span>
                         </li>
                         <li>
-                            <span className='description is-title'>Grade representative for five years in student government.</span>
-                            <span className='date'>2019&ndash;now</span>
+                            <span className="title">En-ROADS Ambassador (climate educator).</span>
+                            <span className="date">2022&ndash;present</span>
                         </li>
                         <li>
-                            <span className='description is-title'>Violin: recitals (e.g., Praeludium & Allegro, Spring) and <Link href='/music'>compositions</Link>.</span>
-                            <span className='date'>2011&ndash;now</span>
-                        </li>
-                        <li>
-                            <span className='description is-title'>Interned for the Stone House Group (energy efficiency consultants).</span>
+                            <span className='description is-title'>Stone House Group intern (energy efficiency consultant).</span>
                             <span className='date'>2021</span>
                         </li>
                     </ul>
                 </div>
-
+                
 
                 <div className="section hover:bg-gray-200 dark:hover:bg-gray-800" id="education-section">
                     <h3>Education</h3>
@@ -260,9 +251,10 @@ export default function Resume() {
 
                 <div className="section hover:bg-yellow-100 dark:hover:bg-[rgba(255,255,0,0.1)]" id='technical-skills-section'>
                     <h3>Technical Skills</h3>
-                    <p>Full-Stack Web Development: Next.js/React, TypeScript, SQL, Docker, Express, PHP, Node</p>
-                    <p>App Development: Swift, SwiftUI, Java, React Native, Supabase</p>
-                    <p>Embedded Systems: Arduino, Raspberry Pi, ESP32, Python, C++</p>
+                    <p>Web Dev: React/Next.js, TypeScript, Express, Node, PHP, SQL, Docker, AWS/GCP</p>
+                    <p>App Dev: Swift, SwiftUI, React Native, Supabase, Deno, Lithic</p>
+                    <p>Embedded Systems: Arduino, Raspberry Pi, ESP32, C++</p>
+                    <p>Miscellaneous: Python, MATLAB, Java, Fusion 360, FCPX, Dragonframe</p>
                 </div>
                 
 
@@ -275,6 +267,20 @@ export default function Resume() {
                         </li>
                     </ul>
                 </div> */}
+                {/* <li>
+                    <span className='description is-title'><Link href='https://youtube.com/@JoelGrayson'>YouTube channel</Link></span>
+                    {/* Wrote, acted, filmed, and edited 34 comedy videos with my father since age 11, created nine9 stop motion animations, and included other projects /}
+                    <span className='date'>2018&ndash;now</span>
+                    <div className="description inline-description">father-and-son comedy, project records, and claymation.</div>
+                </li> */}
+                {/* <li>
+                    <span className='description is-title'>Violin: recitals (e.g., Praeludium & Allegro, Spring) and <Link href='/music'>compositions</Link>.</span>
+                    <span className='date'>2011&ndash;now</span>
+                </li> */}
+                {/* <li>
+                    <span className='description is-title'>Violin: recitals (e.g., Praeludium & Allegro, Spring) and <Link href='/music'>compositions</Link>.</span>
+                    <span className='date'>2011&ndash;now</span>
+                </li> */}
             </div>
 
             <br /><br /><br />
