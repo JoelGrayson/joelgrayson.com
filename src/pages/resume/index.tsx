@@ -38,9 +38,6 @@ export default function Resume() {
                 top: 0;
                 font-weight: 600;
             }
-            #root .title {
-                display: inline-block;
-            }
             #root .title::before, .description.is-title::before {
                 content: '';
                 float: right;
@@ -58,14 +55,15 @@ export default function Resume() {
                 // no bullet point
                 list-style-type: none;
             }
-            #activities-section .description {
+            #root .description .title, #root .is-title {
+                font-size: 16px;
                 color: black;
             }
             @media (prefers-color-scheme: dark) {
                 #root .description {
                     color: #aaa;
                 }
-                #activities-section .description {
+                #root .description .title, #root .is-title {
                     color: white;
                 }
             }
@@ -207,11 +205,11 @@ export default function Resume() {
                 </div>
 
 
-                <div className="section hover:bg-green-100 dark:hover:bg-green-950" id='climate-change-section'>
+                <div className="section hover:bg-green-100 dark:hover:bg-green-950" id='employment-section'>
                     <h3>Employment</h3>
                     <ul>
                         <li>
-                            <span className='description is-title'>Manhattan Community Board 1 member: Environmental and Youth & Ed Committees.</span>
+                            <span className='description'><span className="title">Manhattan Community Board 1 member</span>: Environmental and Youth & Ed Committees.</span>
                             <span className='date'>2023&ndash;24</span>
                         </li>
                         <li>
@@ -219,11 +217,11 @@ export default function Resume() {
                             <span className='date relative'>2023</span>
                         </li>
                         <li>
-                            <span className="title">En-ROADS Ambassador (climate educator).</span>
+                            <span className="description"><span className="title">En-ROADS Ambassador</span> (climate educator).</span>
                             <span className="date">2022&ndash;present</span>
                         </li>
                         <li>
-                            <span className='description is-title'>Stone House Group intern (energy efficiency consultant).</span>
+                            <span className='description'><span className="title">Stone House Group intern</span> (energy efficiency consultant).</span>
                             <span className='date'>2021</span>
                         </li>
                     </ul>
@@ -249,7 +247,7 @@ export default function Resume() {
                 </div>
 
 
-                <div className="section hover:bg-yellow-100 dark:hover:bg-[rgba(255,255,0,0.1)]" id='technical-skills-section'>
+                <div className="section hover:bg-red-100 dark:hover:bg-[rgba(200,50,50,0.3)]" id='technical-skills-section'>
                     <h3>Technical Skills</h3>
                     <p>Web Dev: React/Next.js, TypeScript, Express, Node, PHP, SQL, Docker, AWS/GCP</p>
                     <p>App Dev: Swift, SwiftUI, React Native, Supabase, Deno, Lithic</p>
@@ -281,6 +279,7 @@ export default function Resume() {
                     <span className='description is-title'>Violin: recitals (e.g., Praeludium & Allegro, Spring) and <Link href='/music'>compositions</Link>.</span>
                     <span className='date'>2011&ndash;now</span>
                 </li> */}
+                {/* hover:bg-yellow-100 dark:hover:bg-[rgba(255,255,0,0.1)]"  */}
             </div>
 
             <br /><br /><br />
