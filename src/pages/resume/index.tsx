@@ -117,11 +117,19 @@ export default function Resume() {
                     <ul>
                         <li>
                             <span className="title with-icon">
+                                <Image src='/image/home/edit-time-logo.png' alt='focus-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
+                                <Link href="https://apps.apple.com/us/app/edit-time/id6464405876?mt=12">Edit Time</Link>
+                            </span>
+                            <span className="date">2024</span>
+                            <div className="description inline-description">freemium app with 4,000 installs and $1,933 ARRR.</div>
+                        </li>
+                        <li>
+                            <span className="title with-icon">
                                 <Image src='/image/home/buseroo-logo.png' alt='buseroo-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
                                 <Link href="https://buseroo.com">Buseroo.com</Link>
                             </span>
                             <span className="date">2021&ndash;23</span>
-                            <div className="description inline-description">kiosk and website for students to find closest bus to any address.</div>
+                            <div className="description inline-description">website and <Link href='https://apps.apple.com/us/app/buseroo/id6736895918' target="_blank">app</Link> for students to find closest school bus to any address</div>
                         </li>
                         <li>
                             <span className="title with-icon">
@@ -129,7 +137,7 @@ export default function Resume() {
                                 <Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>Homework Checker</Link>
                             </span>
                             <span className="date">2021&ndash;22</span>
-                            <div className="description inline-description">Chrome extension helping 2,000 students manage homework.</div>
+                            <div className="description inline-description">helps 3,000 students daily organize their homework. .</div>
                         </li>
                         <li>
                             <span className="title with-icon">
@@ -138,14 +146,6 @@ export default function Resume() {
                             </span>
                             <span className="date">2022</span>
                             <div className="description inline-description">Chrome extension helping 1,000 people write distraction-free.</div>
-                        </li>
-                        <li>
-                            <span className="title with-icon">
-                                <Image src='/image/home/edit-time-logo.png' alt='focus-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                                <Link href="https://apps.apple.com/us/app/edit-time/id6464405876?mt=12">Edit Time</Link>
-                            </span>
-                            <span className="date">2024</span>
-                            <div className="description inline-description">App with 4,000 installs that changes file date created and modified properties</div>
                         </li>
                         <li>
                             <span className="title with-icon">
