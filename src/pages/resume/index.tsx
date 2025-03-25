@@ -254,7 +254,7 @@ export default function Resume() {
                     <p>Embedded Systems: Arduino, Raspberry Pi, ESP32, C++</p>
                     <p>Miscellaneous: Python, MATLAB, Java, Fusion 360, FCPX, Dragonframe</p>
                 </div>
-                
+
 
                 {/* <div className="section hover:bg-yellow-100 dark:hover:bg-[rgba(255,255,0,0.1)]" id='honors-section'>
                     <h3>Honors</h3>
