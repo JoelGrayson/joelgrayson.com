@@ -33,6 +33,7 @@ export default function Learn() {
             <li><Link href='/learn/plausible-analytics-with-nextjs'>Set up Plausible Analytics with Next.js</Link></li>
             <li><Link href='/learn/php-mysqli'>Using mysqli in PHP</Link></li>
             <li><Link href='/learn/http-requests-in-swift'>HTTP Requests in Swift</Link></li>
+            <li><Link href='/learn/aws-s3-image-upload-in-nextjs'>AWS S3 Image Upload in Next.js</Link></li>
         </ul>
 
         <h3>STEM Videos from <Link href='https://youtube.com/@JoelGrayson' target="_blank">Slaphappy</Link></h3>
