@@ -18,10 +18,56 @@ const [image, setImage]=useState<File | undefined>();
 />
 ```
 
-2. Add to your `.env`:
+2. Create an S3 bucket and IAM role in the AWS console.
+    a. When creating the bucket, uncheck block all public access
+    b. Set the bucket policy to
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Statement1",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::my_bucket_name/*"
+        }
+    ]
+}
 ```
+    c. Set the bucket CORS policy to 
+```json
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "GET",
+            "POST",
+            "PUT"
+        ],
+        "AllowedOrigins": [
+            "http://mywebsite.com",
+            "https://mywebsite.com",
+            // "http://localhost:3000" //include for when you are testing but remove it in production
+        ],
+        "ExposeHeaders": [],
+        "MaxAgeSeconds": 3000
+    }
+]
+```
+    d. Create a policy under IAM>Access Management>Policies
+    e. Create a user in IAM and add that policy to the user
+    f. Go to the IAM user's security credentials tab and create an access key
+```json
+
+3. Add values from step 2 to your `.env`:
+```
+# From S3 Bucket config
 S3_BUCKET_NAME=my_bucket_name
 S3_REGION=us-east-1
+# From IAM User's Access Key
 S3_ACCESS_KEY=...
 S3_SECRET_ACCESS_KEY=...
 ```
@@ -67,7 +113,7 @@ export async function getSignedUrl(id: string) {
 
 5. Create your `onSubmit` handler:
 ```tsx
-const signedUrl=await getSignedUrl(id);
+const signedUrl=await getSignedUrl(id); //id is used for updating the database entry
 
 fetch(signedUrl, {
     method: 'PUT',
