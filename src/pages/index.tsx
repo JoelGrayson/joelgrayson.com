@@ -79,7 +79,7 @@ export default function Home() {
         ],
         description: 'The official website of the United Cells of Joel Grayson',
         og: {
-            image: '/image/home/portraits/4.22.2023/Joel Grayson.jpg',
+            image: '/image/home/portraits/4.20.2025/Joel Grayson.webp',
             imageAlt: 'Joel Grayson Profile Photo'
         }
     }}>
@@ -109,7 +109,7 @@ export default function Home() {
                 />
                 {/* Portrait */}
                 <Image
-                    src='/image/home/portraits/5.26.2024/Joel Grayson.webp' alt='Joel Grayson Profile Photo'
+                    src='/image/home/portraits/4.20.2025/Joel Grayson.webp' alt='Joel Grayson Profile Photo'
                     width={364/2} height={540/2}
                     className={`
                         d:mx-3
