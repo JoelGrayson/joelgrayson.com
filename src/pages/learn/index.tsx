@@ -14,6 +14,7 @@ export default function Learn() {
         <ul>
             <li><Link href='/nyc/nyc-government'>NYC Government</Link></li>
             <li><Link href='/learn/physics'>Physics</Link></li>
+            <li><Link href='/learn/linear-algebra-derivatives/linear-algebra-derivatives.pdf'>Linear Algebra Derivatives</Link></li>
             <li><Link href='/learn/pi'>The Digits of Pi</Link></li>
             <li><Link href='https://memorizethepresidents.com'>The Presidents of the United States</Link></li>
             <li><Link href='/learn/citations'>Citations</Link></li>
