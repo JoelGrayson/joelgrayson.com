@@ -14,6 +14,7 @@ const memes=[ //image path is {description}.jpg
     // <div className="p-3" key='college-board'>
     //     TODO: Meme: when college board doesn’t give you extra scrap paper: shows me writing calculus on my chair and the white wall
     // </div>,
+    '2024 Cooked.jpg',
     <div className="p-3" key='gay-protons'>
         <p>Protons are attracted to electrons and repel each other, except for the gay protons.</p>
     </div>,
