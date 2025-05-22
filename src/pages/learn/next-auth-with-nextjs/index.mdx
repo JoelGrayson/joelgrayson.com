@@ -1,0 +1,42 @@
+import LearnPage from "@/components/page/LearnPage";
+export default function LearningContent({children}) {
+	return <LearnPage markdown bottomPadding>{children}</LearnPage>;
+}
+
+
+# Next Auth with Next.js
+This guide assumes you use the app router and will use the Google OAuth provider.
+
+1. `npm i next-auth`
+2. Create a Google cloud project, go to [console.cloud.google.com/apis/credentials](https://console.cloud.google.com/apis/credentials)
+    * If available, click configure consent screen. After going through the process, go to scopes and add
+    `auth/userinfo.email` and `auth/userinfo.profile`
+    * Create two clients, both web applications. One is local with URL `http://localhost:3000` and Authorized redirect URIs set to `http://localhost:3000/api/auth/callback/google` and the other is `https://yourdomain.com` and `https://yourdomain.com/api/auth/callback/google`
+3. Add to .env:
+```
+NEXTAUTH_URL=http://localhost:3000 #change to yourdomain.com in the production environment
+NEXTAUTH_SECRET=[generate a random code using `openssl rand -base64 32`]
+
+NEXT_PUBLIC_GOOGLE_CLIENT_ID=...apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=...
+```
+4. create `app/api/[...nextauth]/route.ts` with the following:
+```tsx
+import NextAuth, { AuthOptions } from "next-auth";
+import GoogleProvider from 'next-auth/providers/google';
+
+export const authOptions: AuthOptions={
+    providers: [
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID!,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+            allowDangerousEmailAccountLinking: true
+        })
+    ]
+};
+
+const handler=NextAuth(authOptions);
+
+export { handler as GET, handler as POST };
+```
+
