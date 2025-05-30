@@ -92,7 +92,7 @@ model EventCounter {
 // Library
 model Library {
     id          String    @id @default(cuid())
-    type        String //book | movie | interview | audiobook
+    type        String //book | movie | interview | audiobook | website
     title       String
     author      String?
     url         String?

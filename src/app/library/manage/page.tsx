@@ -6,11 +6,13 @@ import { getSignedUrl } from './create/addImage';
 import { addItem } from './create/addItem';
 import Modal from '@jcomponents/modal';
 
+type Type='book' | 'movie' | 'interview' | 'audiobook' | 'website';
+
 export default function ManageLibrary() {
     const [passwordSubmitted, setPasswordSubmitted]=useState(false);
     const [password, setPassword]=useState('');
     
-    const [type, setType]=useState('book');
+    const [type, setType]=useState<Type>('book');
     const [title, setTitle]=useState('');
     const [date, setDate]=useState<string>();
     const [image, setImage]=useState<File | undefined>();
@@ -88,11 +90,12 @@ export default function ManageLibrary() {
             
             <div>
                 <label htmlFor="type">Type&emsp;</label>
-                <select name="type" id="type" className='border border-black rounded' value={type} onChange={e=>setType(e.target.value)}>
+                <select name="type" id="type" className='border border-black rounded' value={type} onChange={e=>setType(e.target.value as Type)}>
                     <option value="book">Book</option>
                     <option value="movie">Movie</option>
                     <option value="interview">Interview</option>
                     <option value="audiobook">Audiobook</option>
+                    <option value="website">Website</option>
                 </select>
             </div>
         
@@ -117,8 +120,8 @@ export default function ManageLibrary() {
             </div>
             
             <div>
-                <label htmlFor="url">URL&emsp;</label>
-                <input type="text" id='url' value={url} onChange={e=>setUrl(e.target.value)} />
+                <label htmlFor="url">URL&emsp;{type==='website' && <Mandatory />}</label>
+                <input type="text" id='url' value={url} onChange={e=>setUrl(e.target.value)} required={type==='website'} />
             </div>
 
             <div>
@@ -128,6 +131,8 @@ export default function ManageLibrary() {
 
             <button type='submit'>{status==='loading' ? 'Submitting...' : 'Submit'}</button>
         </form>
+
+        <p>To edit/delete items, use <code>prisma studio</code>.</p>
     </Page>;
 }
 
