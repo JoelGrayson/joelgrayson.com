@@ -25,15 +25,18 @@ export default function DMStoDD() {
         noPadding
     >
         <div className='j_container'>
-            <h1 className='text-[40px] text-center'>DMS to DD Converter</h1>
+            <h1 className='text-center'>DMS to DD Converter</h1>
 
-            <p>Example: 27°19′33″N 97°25′21″E → 27.325833, 97.422500</p>
+            <p>Paste in your DMS (degrees, minutes, seconds) coordinates and it gives you back the DD coordinates. The output is automatically copied to clipboard. Example: 27°19′33″N 97°25′21″E → 27.325833, 97.422500</p>
 
-            <div>
+            <div className='pt-10 pb-3'>
                 <label style={{ width: '6ch', display: 'inline-block' }} htmlFor="dms">DMS:</label>
                 <input type="text" id='dms' name='dms' style={{ width: '23ch' }} value={dms} onChange={e=>{
+                    // Update the state
                     const newDms=e.target.value.trim().toUpperCase();
                     setDms(newDms);
+
+                    // Convert to DD
                     //27°19′33″N 97°25′21″E
                     let re=/(?<latD>\d+)°(?<latM>\d+)[′'](?<latS>\d+)[″"](?<latSign>[NS]) (?<lngD>\d+)°(?<lngM>\d+)[′'](?<lngS>\d+)[″"](?<lngSign>[WE])/
                     let g=newDms.match(re)?.groups;
@@ -55,7 +58,11 @@ export default function DMStoDD() {
                     if (g.lngSign==='W')
                         lng*=-1;
                     
-                    setDd(`${lat.toFixed(6)}, ${lng.toFixed(6)}`);
+                    const ddText=`${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+                    setDd(ddText);
+
+                    // Copy to clipboard
+                    navigator.clipboard.writeText(ddText);
                 }} />
             </div>
             <div>

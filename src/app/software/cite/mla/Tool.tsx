@@ -261,8 +261,8 @@ export default function Tool() {
                     await navigator.clipboard.write([
                         new ClipboardItem({
                             'text/html': new Blob([generatedRef.current?.innerHTML || ''], { type: 'text/html' })
-                    })
-            ]);
+                        })
+                    ]);
                     setCopied(true);
                     setTimeout(() => setCopied(false), 2000);
                 } catch (err) {
