@@ -10,9 +10,10 @@ export default function DriveDownloadLinkGenerator() {
     const [visits, setVisits]=useState(0);
     
     useEffect(()=>{
-        fetch('/api/page-visits/get-and-add')
-            .then(res=>res.json())
-            .then(res=>setVisits(res.visits));
+        if (process.env.NODE_ENV!=='development')
+            fetch('/api/page-visits/get-and-add')
+                .then(res=>res.json())
+                .then(res=>setVisits(res.visits));
     }, []);
     
     return <Page
