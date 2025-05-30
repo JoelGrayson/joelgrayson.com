@@ -4,6 +4,7 @@ import Prisma from '@prisma/client';
 import prisma from '@/data/prisma/client';
 import superjson from 'superjson';
 import { jdate } from 'joeldate';
+import { useRouter } from 'next/router';
 
 export async function getServerSideProps() {
     const items=await prisma.library.findMany({
@@ -22,17 +23,23 @@ export async function getServerSideProps() {
 export default function Library({ items }: { items: string }) {
     const deserializedItems=superjson.parse(items) as Prisma.Library[];
     // console.log('Items', deserializedItems);
+    const router=useRouter();
+    const { showWebsites }=router.query;
 
     return <Page bottomPadding pathname='/library' seo={{
         title: 'Library',
     }}>
         <h1 className='text-center mb-6 mt-6'>Library</h1>
         
-        {deserializedItems.map(item=>{
+        {deserializedItems.filter(items=>{
+            if (showWebsites)
+                return true;
+            return items.type!=='website'; //only show if not website
+        }).map(item=>{
             return <div key={item.id} className='flex mb-2 mx-auto' style={{ maxWidth: 600 }}>
-                <div style={{ width: 100 }}>
+                <div>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={item.imageUrl || ''} alt={item.title+' cover'} style={{ height: 100 }} className='rounded' />
+                    <img src={item.imageUrl || ''} alt={item.title+' cover'} style={{ height: 100, maxWidth: 100, objectFit: 'contain' }} className='rounded' />
                 </div>
                 <div className='relative w-full'>
                     <div>
