@@ -12,7 +12,7 @@ export default function ACoolProject({ children }: { children: React.ReactNode }
         setTimeout(()=>{
             router.replace('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
         }, 3000);
-    }, []);
+    }, [router]);
 
     return <Page>
         <div className="flex flex-col items-center gap-5 mt-8">
