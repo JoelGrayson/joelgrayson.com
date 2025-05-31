@@ -31,41 +31,43 @@ export default function Software() {
             <li>
                 Extensions
                 <ul>
-                    <li><Link href="https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj" target="_blank">Homework Checker</Link></li>
-                    <li><Link href="https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf" target="_blank">Focus</Link></li>
+                    <li><Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj' target='_blank'>Homework Checker</Link></li>
+                    <li><Link href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf' target='_blank'>Focus</Link></li>
                 </ul>
             </li>
             <li>
                 Apps
                 <ul>
-                    <li><Link href="/software/edit-time">Edit Time</Link> (<Link target='_blank' href='https://apps.apple.com/us/app/edit-time/id6464405876'>App Store Link</Link>)</li>
-                    <li><Link href="https://apps.apple.com/us/app/buseroo/id6736895918">Buseroo App</Link></li>
+                    <li><Link href='/software/edit-time'>Edit Time</Link> (<Link target='_blank' href='https://apps.apple.com/us/app/edit-time/id6464405876'>App Store Link</Link>)</li>
+                    <li><Link href='https://apps.apple.com/us/app/buseroo/id6736895918'>Buseroo App</Link></li>
                     {/*
-                    <li><Link href="" target="_blank">Bullet Brainstorm Desktop</Link></li>
-                    <li><Link href="" target="_blank">Buseroo Mobile</Link></li>
-                    <li><Link href="/chess/index.html" target="_blank">Chess</Link></li>
-                    <li><Link href="" target="_blank">Event Colorer</Link> (waiting for approval for publishing on the Google App Store)</li>
+                    <li><Link href='' target='_blank'>Bullet Brainstorm Desktop</Link></li>
+                    <li><Link href='' target='_blank'>Buseroo Mobile</Link></li>
+                    <li><Link href='/chess/index.html' target='_blank'>Chess</Link></li>
+                    <li><Link href='' target='_blank'>Event Colorer</Link> (waiting for approval for publishing on the Google App Store)</li>
                     */}
                 </ul>
             </li>
             <li>
                 Developer Tools
                 <ul>
-                    <li><Link href="/software/hide desktop.command" target="_blank">Hide/Show Desktop Icons</Link></li>
-                    <li><Link href="https://github.com/JoelGrayson/create-joel-app" target="_blank">Create Joel App</Link></li>
-                    <li><Link href="/software/processing-to-html-converter" target="_blank">Processing to HTML Converter</Link></li>
-                    <li><Link href="https://github.com/JoelGrayson/jredirects" target="_blank">JRedirects</Link></li>
-                    <li><Link href="/software/drive-download-link-generator" target="_blank">Drive Download Link Generator</Link></li>
-                    {/* <li><Link href="/software/onedrive-download-link-generator" target="_blank">Onedrive Download Link Generator</Link></li> */}
-                    <li><Link href="/software/box-download-link-generator" target="_blank">Box Download Link Generator</Link></li>
-                    <li><Link href="/software/dropbox-download-link-generator" target="_blank">Dropbox Download Link Generator</Link></li>
+                    <li><Link href='/software/hide desktop.command' target='_blank'>Hide/Show Desktop Icons</Link></li>
+                    <li><Link href='https://github.com/JoelGrayson/create-joel-app' target='_blank'>Create Joel App</Link></li>
+                    <li><Link href='/software/processing-to-html-converter' target='_blank'>Processing to HTML Converter</Link></li>
+                    <li><Link href='https://github.com/JoelGrayson/jredirects' target='_blank'>JRedirects</Link></li>
+                    <li><Link href='/software/drive-download-link-generator' target='_blank'>Drive Download Link Generator</Link></li>
+                    {/* <li><Link href='/software/onedrive-download-link-generator' target='_blank'>Onedrive Download Link Generator</Link></li> */}
+                    <li><Link href='/software/box-download-link-generator' target='_blank'>Box Download Link Generator</Link></li>
+                    <li><Link href='/software/dropbox-download-link-generator' target='_blank'>Dropbox Download Link Generator</Link></li>
+                    <li><Link href='/software/dms-dd-converter' target='_blank'>DMS DD Converter</Link></li>
                 </ul>
             </li>
             <li>
                 Resources
                 <ul>
-                    <li><Link href="https://www.youtube.com/watch?v=Fi19NDsJB4E" target="_blank">Zoom Timer</Link></li>
-                    <li><Link href="/software/days-until" target="_blank">Days Until</Link></li>
+                    <li><Link href='/software/cite/mla' target='_blank'>MLA Citation Generator</Link></li>
+                    <li><Link href='https://www.youtube.com/watch?v=Fi19NDsJB4E' target='_blank'>Zoom Timer</Link></li>
+                    <li><Link href='/software/days-until' target='_blank'>Days Until</Link></li>
                 </ul>
             </li>
         </ul>

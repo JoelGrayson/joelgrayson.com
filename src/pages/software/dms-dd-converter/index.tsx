@@ -17,14 +17,14 @@ export default function DMStoDD() {
     
     return <Page
         seo={{
-            title: 'DMS to DD Coordinate Conversion',
+            title: 'DMS DD Converter',
             description: 'Convert between DMS and DD coordinates'
         }}
-        pathname='/software/dms-to-dd'
+        pathname='/software/dms-dd-converter'
         noPadding
     >
         <div className='j_container'>
-            <h1 className='text-center'>DMS to DD Converter</h1>
+            <h1 className='text-center'>DMS DD Converter</h1>
 
             <p>Convert between DMS and DD coordinates. Paste in your DMS (degrees, minutes, seconds) to get the DD (decimal) or your DD to get the DMS. The output is automatically copied to clipboard.</p>
             <p>Example (DD to DMS): 40.712778, -74.006111 → 40°42′46″N 74°0′22″W</p>
@@ -121,3 +121,4 @@ function ddToDMS(dd: number) {
 
     return { d, m, s };
 }
+
