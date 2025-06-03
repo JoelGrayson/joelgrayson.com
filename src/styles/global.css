@@ -28,61 +28,6 @@ header * {
     transition: all .3s ease;
 }
 
-/* Dark Mode */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: var(--dark-bg);
-        color: var(--dark-text);
-    }
-
-    a:not(.unstyled):not(.button), .link {
-        color: #bdbcff;
-        text-decoration: underline;
-    }
-    a:not(.unstyled):not(.button):hover,
-    a:not(.unstyled):not(.button):hover *,
-    .gradient-text,
-    .gradient-text-on-hover:hover,
-    .link:hover {
-        color: #cdcbff;
-        font-weight: 600;
-        transition: none !important;
-        /* Not like light mode because looks bad */
-        background: unset;
-        -webkit-background-clip: unset;
-        -webkit-text-fill-color: unset;
-        text-decoration: underline; /* does not work because of -webkit-background-clip */
-    }
-
-    input, textarea {
-        border: 1px solid white;
-        background-color: #222;
-    }
-
-    select {
-        background-color: var(--dark-bg-lighter);
-        border-color: var(--dark-text);
-    }
-
-    .selected-group-item {
-        /* background-color: #ffd13c; */
-        /* background-color: #7b5e00; */
-        background-color: #be9b27;
-        /* background-color: #494949; */
-    }
-
-    :where(button, .btn, .button):not(.unstyled) {
-        background-color: #222;
-    }
-    :where(button, .btn, .button):not(.unstyled):hover {
-        background-color: #333;
-    }
-
-    *::selection {
-        background-color: #a88100;
-    }
-}
-
 
 /* ## Headers */
 h1, h2, h3, h4, h5 {
@@ -470,3 +415,61 @@ table.styled td {
 .indented {
     text-indent: 4ch;
 }
+
+/* Dark Mode:
+Needs to be at the bottom because @media does not increase the CSS specificity and the last style wins
+*/
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+    }
+
+    a:not(.unstyled):not(.button), .link {
+        color: #bdbcff;
+        text-decoration: underline;
+    }
+    a:not(.unstyled):not(.button):hover,
+    a:not(.unstyled):not(.button):hover *,
+    .gradient-text,
+    .gradient-text-on-hover:hover,
+    .link:hover {
+        color: #cdcbff;
+        font-weight: 600;
+        transition: none !important;
+        /* Not like light mode because looks bad */
+        background: unset;
+        -webkit-background-clip: unset;
+        -webkit-text-fill-color: unset;
+        text-decoration: underline; /* does not work because of -webkit-background-clip */
+    }
+
+    input, textarea {
+        border: 1px solid white;
+        background-color: #222;
+    }
+
+    select {
+        background-color: var(--dark-bg-lighter);
+        border-color: var(--dark-text);
+    }
+
+    .selected-group-item {
+        /* background-color: #ffd13c; */
+        /* background-color: #7b5e00; */
+        background-color: #be9b27;
+        /* background-color: #494949; */
+    }
+
+    :where(button, .btn, .button):not(.unstyled) {
+        background-color: #222;
+    }
+    :where(button, .btn, .button):not(.unstyled):hover {
+        background-color: #333;
+    }
+
+    *::selection {
+        background-color: #a88100;
+    }
+}
+

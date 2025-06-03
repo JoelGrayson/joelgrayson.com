@@ -22,7 +22,7 @@ export default function Research() {
             <p><Link href='/research/organic-optoelectronics'>
                 Twisting Crystal Charge Transfer Complexes for Organic Optoelectronics
             </Link></p>
-            <p>History</p>
+            {/* TODO: include the meat opinion piece */}
         </div>
     </Page>;
 }

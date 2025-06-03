@@ -18,7 +18,7 @@ export default function DMStoDD() {
     return <Page
         seo={{
             title: 'DMS DD Converter',
-            description: 'Convert between DMS and DD coordinates'
+            description: 'Convert between DMS (Degrees, Minutes, Seconds) and DD (Decimal Degrees) coordinates.'
         }}
         pathname='/software/dms-dd-converter'
         noPadding
@@ -64,7 +64,6 @@ export default function DMStoDD() {
 
                     // Copy to clipboard
                     navigator.clipboard.writeText(newDd);
-
                     toast('Copied the DD to clipboard');
                 }} />
             </div>
@@ -114,10 +113,20 @@ export default function DMStoDD() {
 }
 
 function ddToDMS(dd: number) {
-    const d=Math.trunc(dd);
+    let d=Math.trunc(dd);
     const mFloat=(dd-d)*60;
-    const m=Math.trunc(mFloat);
-    const s=(mFloat-m)*60;
+    let m=Math.trunc(mFloat);
+    let s=(mFloat-m)*60;
+
+    // ChatGPT found this edge case to avoid 40'60" from rounding:
+    if (s>=59.9995) {
+        s=0;
+        m++;
+    }
+    if (m===60) {
+        m=0;
+        d++;
+    }
 
     return { d, m, s };
 }
