@@ -24,6 +24,12 @@ export default function Worderoo() {
                 </Link>
             </div>
 
+            <h3>Feedback</h3>
+            <p>
+                Submit feedback at 
+                <Link href='https://forms.gle/2M3f8x14xyb1ctED6'>forms.gle/2M3f8x14xyb1ctED6</Link>
+            </p>
+
             <h3 id='privacy-policy'>Privacy Policy</h3>
             <p>No data is collected. This privacy policy may change in the future. Last updated 6.15.2025</p>
         </div>
