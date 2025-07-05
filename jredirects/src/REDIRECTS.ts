@@ -148,7 +148,6 @@ export const temporary: redirects={ //302
     ...polyfill('/open-in-new-tab-wix-code'),
     ...polyfill('/jeopardy-theme'),
     ...polyfill('/joel-case'),
-    ...polyfill('/projects'),
     ...polyfill('/big-sur-icons'),
     ...polyfill('/audio/electric-shock'),
     // 'https://joelgrayson.wixsite.com/joelgrayson/audio/*': '/audio/*',
