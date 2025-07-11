@@ -2,6 +2,7 @@ import Page from '@/components/page/DefaultPage';
 import Performances from '@/components/page/music/Performances';
 import Compositions from '@/components/page/music/Compositions';
 import { ytVideos } from '../../components/page/music/ytVideos';
+import Link from 'next/link';
 
 export async function getServerSideProps() {
     const url=`https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&part=snippet&playlistId=PLPq06AMW3cIFOA3J8Z0cd1bMaKn6TV_9K&maxResults=50`;
@@ -31,6 +32,8 @@ export default function Music({ videos }: { videos: ytVideos }) {
     >
         <h1 className='text-center'>Music</h1>
         <Compositions />
+        <p>Joke composition: <Link href='https://youtu.be/znO9OqXJiDs' target='_blank'>Dirac Delta Function</Link></p>
+        
         <Performances videos={videos} />
     </Page>;
 }
