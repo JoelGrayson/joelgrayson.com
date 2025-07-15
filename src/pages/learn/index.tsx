@@ -25,7 +25,6 @@ export default function Learn() {
             <li><Link href='/learn/constants'>Constants</Link></li>
         </ul>
 
-
         <h3>Programming</h3>
         <ul>
             <li><Link href='/learn/running-bash-script-in-swift'>Running Bash Script in Swift</Link></li>
@@ -45,6 +44,15 @@ export default function Learn() {
             <Yt width={300}>jty0QHS0F3I</Yt>
             <Yt width={300}>F0ameJ2K3_0</Yt>
         </div>
+
+        <h3>Class Notes</h3>
+        <ul>
+            <li><Link href='https://notes.joelgrayson.com/circuits'>Circuits (ENGR 40M and EE 101A)</Link></li>
+            <li><Link href='https://notes.joelgrayson.com/mathematical-foundations-of-computing'>Mathematical Foundations of Computing (CS 103)</Link></li>
+            <li><Link href='https://notes.joelgrayson.com/multivariable-calculus'>Multivariable Calculus (Math 52)</Link></li>
+            <li><Link href='https://notes.joelgrayson.com/e&m'>Electricity & Magnetism (Physics 43)</Link></li>
+            <li><Link href='https://notes.joelgrayson.com/ode'>ODEs (CME 102)</Link></li>
+        </ul>
     </Page>;
 }
 

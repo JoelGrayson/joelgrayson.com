@@ -50,15 +50,19 @@ export default function DefaultHeader({ pathname='' }: { pathname?: string }) {
                 </HeaderGroup>
 
                 <HeaderGroup pathname={pathname} title='Software' link='/software' className='m:order-5' pixelOffset={1}>
-                    <HeaderGroupItem pathname={pathname} link='https://buseroo.com'>Buseroo</HeaderGroupItem>
-                    <HeaderGroupItem pathname={pathname} link='https://lirongart.com'>Lirong Art</HeaderGroupItem>
-                    <HeaderGroupItem pathname={pathname} link='/zoom-timers'>Zoom Timers</HeaderGroupItem>
                     <HeaderGroupItem pathname={pathname} link='https://apps.apple.com/us/app/edit-time/id6464405876'>Edit Time</HeaderGroupItem>
+                    <HeaderGroupItem pathname={pathname} link='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf?hl=en'>Focus for Google Docs</HeaderGroupItem>
+                    <HeaderGroupItem pathname={pathname} link='https://buseroo.com'>Buseroo</HeaderGroupItem>
+                    <HeaderGroupItem pathname={pathname} link='/techmap'>TechMap</HeaderGroupItem>
+                    <HeaderGroupItem pathname={pathname} link='https://lirongart.com'>Lirong Art</HeaderGroupItem>
+                    <HeaderGroupItem pathname={pathname} link='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>Homework Checker</HeaderGroupItem>
+                    <HeaderGroupItem pathname={pathname} link='https://shanghaidictionary.com'>ShanghaiDictionary.com</HeaderGroupItem>
                     <HeaderSubGroup pathname={pathname} title='Tools'>
                         <HeaderSubGroupItem pathname={pathname} link='/software/drive-download-link-generator'>Drive Download Link Generator</HeaderSubGroupItem>
                         <HeaderSubGroupItem pathname={pathname} link='/learn/pi'>Memorize π</HeaderSubGroupItem>
                         <HeaderSubGroupItem pathname={pathname} link='/learn/number?name=tau'>Memorize τ</HeaderSubGroupItem>
                         <HeaderSubGroupItem pathname={pathname} link='/software/cite/mla'>MLA Citation Generator</HeaderSubGroupItem>
+                        <HeaderSubGroupItem pathname={pathname} link='/zoom-timers'>Zoom Timers</HeaderSubGroupItem>
                         {/* <HeaderSubGroupItem pathname={pathname} link='/chess'>Chess</HeaderSubGroupItem> */}
                     </HeaderSubGroup>
                 </HeaderGroup>

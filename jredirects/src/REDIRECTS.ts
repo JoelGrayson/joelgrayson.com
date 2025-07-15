@@ -10,6 +10,8 @@ export const temporary: redirects={ //302
 
     'https://notes.joelgrayson.com': '/notes',
     
+    '/software/worderoo': '/worderoo',
+    
     '/software/cite/mla': ['/mla', '/cite-mla', '/cite-mla-format', '/mla-citation', '/mla-cite', '/mla-format'],
     
     'https://buy.stripe.com/9AQ4jdfUEh0waOY000': ['/support', '/donate', '/pay'],
