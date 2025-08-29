@@ -8,3 +8,4 @@
 // 5. Run this program with `./update-homework-checker-installs.js`
 
 require('./parts/update-chrome-extensions-users.js')({ name: 'homework-checker', key: 'homeworkCheckerUsers' });
+

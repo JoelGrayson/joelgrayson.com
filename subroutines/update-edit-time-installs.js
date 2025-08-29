@@ -6,3 +6,4 @@
 // 4. Run this program with `./update-edit-time-installs.js`
 
 require('./parts/update-app-store-installs.js')({ name: 'edit-time', key: 'editTimeUsers' });
+
