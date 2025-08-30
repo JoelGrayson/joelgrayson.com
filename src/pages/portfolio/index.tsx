@@ -1,4 +1,4 @@
-import BuserooCarousel from '@/components/by-page/portfolio/BuserooCarousel';
+import VenderooCarousel from '@/components/by-page/portfolio/VenderooCarousel';
 import { GithubIcon } from '@/components/icons';
 import Page from '@/components/page/DefaultPage';
 import Link from 'next/link';
@@ -11,18 +11,21 @@ export default function Portfolio() {
         }}
         pathname='/portfolio'
     >
-        <h1 className='text-center'>Joel Grayson&apos;s Portfolio</h1>
+        <h1 className='text-center mb-3 mt-8 text-5xl'>Joel Grayson&apos;s Portfolio</h1>
 
-        <p>Here are my top five of my projects:</p>
+        <p className='text-center pt-4 pb-7'>Here are my top five of my projects:</p>
 
-        <div className='grid grid-cols-[1fr_2fr]'>
-            <div>
-                <BuserooCarousel />
-            </div>
+        <div className='grid grid-cols-[3fr_2fr]'>
+            <VenderooCarousel />
             <div>
                 <h3>Venderoo</h3>
                 <p>Designed & built vending machine that sold over a hundred snacks in school hallway.</p>
-                <GithubIcon width={30} className='fill-black ' />
+                <div className='flex justify-end'>
+                    <Link href='https://github.com/JoelGrayson/Venderoo/blob/main/vending_machine.ino' target='_blank' className='flex justify-center items-center gap-2 button'>
+                        <GithubIcon width={30} className='fill-black' />
+                        View code
+                    </Link>
+                </div>
             </div>
         </div>
 
