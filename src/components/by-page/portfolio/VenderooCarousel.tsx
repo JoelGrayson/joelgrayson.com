@@ -62,21 +62,11 @@ export default function VenderooCarousel() {
                 <Item padding={false}>
                     <Yt width='100%'>bHHk2FL5Ujs</Yt>
                 </Item>
-                {
-                    [
-                        ['1-Electrical Compartment.jpg', 'Electrical compartment'],
-                        ['2-Separators.jpg', 'Separators'],
-                        ['3-Blueprint.jpg', 'Blueprint'],
-                        ['4-Parts.jpg', 'Parts'],
-                        ['5-Venderoo.jpg', 'Venderoo'],
-                        ['6-Customers.jpg', 'Customers'],
-                    ]
-                        .map(([imgSlug, alt])=>{
-                            return <Item padding={false}>
-                            <img src={'/portfolio/Venderoo/'+imgSlug} alt={alt} />
-                        </Item>;
-                        })
-                }
+                <ImageItem slug='1-Electrical Compartment.jpg' alt='Electrical compartment' />
+                <ImageItem slug='2-Separators.jpg' alt='Separators' />
+                <ImageItem slug='3.5-Blueprint-and-parts.jpg' alt='Blueprint and parts' />
+                <ImageItem slug='5-Venderoo.jpg' alt='Venderoo' />
+                <ImageItem slug='6-Customers.jpg' alt='Customers' />
             </CarouselContent>
         </Carousel>
         
@@ -99,7 +89,13 @@ export default function VenderooCarousel() {
     </div>;
 }
 
-function Item({ children, padding=true }: { children: any; padding: boolean }) {
+export function ImageItem({ slug, alt }: { slug: string; alt: string }) {
+    return <Item padding={false}>
+        <img src={'/portfolio/Venderoo/'+slug} alt={alt} />
+    </Item>;
+}
+
+export function Item({ children, padding=true }: { children: any; padding: boolean }) {
     return <CarouselItem>
         <div style={{
             padding: padding ? 5 : 0,
