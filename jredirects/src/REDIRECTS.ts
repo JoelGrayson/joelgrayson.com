@@ -6,6 +6,7 @@ export const temporary: redirects={ //302
     // Newest at top, oldest at bottom
     // Destination: source
     
+    '/portfolio': '/portfolio.',
     '/techmap': ['/software/tech-map', '/software/techmap', '/tech-map'],
 
     'https://notes.joelgrayson.com': '/notes',
