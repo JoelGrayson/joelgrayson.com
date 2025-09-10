@@ -24,7 +24,7 @@ export default function DefaultHeader({ pathname='' }: { pathname?: string }) {
                 
                 <HeaderItem pathname={pathname} link='/' className='m:order-1'>Home</HeaderItem>
 
-                <HeaderGroup pathname={pathname} title='Projects' className='m:order-2' pixelOffset={0}>
+                <HeaderGroup pathname={pathname} title='Projects' link='/portfolio' className='m:order-2' pixelOffset={0}>
                     <HeaderGroupItem pathname={pathname} link='/combating-climate-change'>
                         <span style={{whiteSpace: 'nowrap', display: 'inline'}}>
                             Climate Change&nbsp;

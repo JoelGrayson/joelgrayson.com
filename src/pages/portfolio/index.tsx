@@ -17,13 +17,13 @@ export default function Portfolio() {
         
         <div className='d:grid d:grid-cols-[2fr_3fr] gap-3 relative'>
             <div className='pt-4'>
-                <video src="/portfolio/Edit Time/Edit Time Demo.mp4" controls />
+                <Yt width='100%'>EImxhXcVqFs</Yt>
             </div>
             <div>
                 <h3>Edit Time</h3>
                 <p>Desktop app that enables users to change files&apos; date creation properties, which was previously impossible without the terminal.</p>
                 <p>Impact: <b>6,000</b> users and <b>$1,400</b> in revenue</p>
-                <p>Tech: Swift/SwiftUI, StoreKit</p>
+                <p>Tech: Swift/SwiftUI, StoreKit, Bash</p>
                 <div className='flex justify-end items-center gap-2 absolute top-3 right-0'>
                     <Link href='https://apps.apple.com/us/app/edit-time/id6464405876' target='_blank'>
                         <Image src='/image/software/worderoo/download-on-the-app-store.png' alt={'Download on the App Store'} width={114} height={38} />
@@ -67,7 +67,7 @@ export default function Portfolio() {
             <div>
                 <h3>Homework Checker</h3>
                 <p>Helps students keep track of completed assignments, so they don&apos;t miss any.</p>
-                <p>Impact: <b>2,000</b> users</p>
+                <p>Impact: <b>3,000</b> users</p>
                 <p>Tech: TypeScript, OOP, Gulp, HTML/JS/SASS</p>
                 <div className='flex justify-end items-center gap-2 absolute top-3 right-0'>
                     <Link target='_blank' className='button' style={{display: 'inline-flex', alignItems: 'center', gap: 6, marginRight: 10, width: 163}} href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>
