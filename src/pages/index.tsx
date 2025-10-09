@@ -64,7 +64,7 @@ export default function Home() {
         fetch('/api/stats')
             .then(res=>res.json())
             .then(res=>{
-                console.log(res);
+                console.log('Got back stats', res);
                 setStats(res);
             });
     // eslint-disable-next-line react-hooks/exhaustive-deps

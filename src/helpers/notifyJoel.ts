@@ -19,4 +19,7 @@ export default function notifyJoel(args: { //notify Joel of contact form submiss
             replyTo: args.email.replyTo
         });
     }
+    if (args.text) {
+        
+    }
 }

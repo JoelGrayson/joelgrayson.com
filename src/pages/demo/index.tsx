@@ -5,16 +5,38 @@ import { GithubIcon } from '@/components/icons';
 import Page from '@/components/page/DefaultPage';
 import Link from 'next/link';
 
-export default function Portfolio() {
+export default function Demo() {
     return <Page bottomPadding
         seo={{
-            title: 'Portfolio | Joel Grayson',
+            title: 'Demo | Joel Grayson',
             description: ''
         }}
-        pathname='/portfolio'
+        pathname='/demo'
     >
-        <h1 className='text-center mb-3 mt-8 text-5xl'>Joel Grayson&apos;s Portfolio</h1>
+        <h1 className='text-center mb-3 mt-8 text-5xl'>Joel Grayson&apos;s Demos</h1>
         
+        <div className='d:grid d:grid-cols-[2fr_3fr] gap-3 relative'>
+            <div className='pt-4'>
+                <Yt width='100%'>bHHk2FL5Ujs</Yt>
+            </div>
+            <div>
+                <h3>Venderoo</h3>
+                <p>Designed & built vending machine.</p>
+                <p>Impact: over a hundred snacks sold</p>
+                <p>Tech: Arduino, C++</p>
+                <div className='flex justify-end absolute bottom-0 right-0'>
+                    <Link href='https://github.com/JoelGrayson/Venderoo/blob/main/Venderoo.ino' target='_blank' className='flex justify-center items-center gap-2 button !px-1.5 !py-1'>
+                        <GithubIcon width={30} className='fill-black' />
+                        View code
+                    </Link>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+
+        <h3>Apps/Websites</h3>
+
         <div className='d:grid d:grid-cols-[2fr_3fr] gap-3 relative'>
             <div className='pt-4'>
                 <Yt width='100%'>EImxhXcVqFs</Yt>
@@ -109,26 +131,6 @@ export default function Portfolio() {
                         View code
                     </Link>
                 </div> */}
-            </div>
-        </div>
-
-        <hr />
-        
-        <div className='d:grid d:grid-cols-[2fr_3fr] gap-3 relative'>
-            <div className='pt-4'>
-                <Yt width='100%'>bHHk2FL5Ujs</Yt>
-            </div>
-            <div>
-                <h3>Venderoo</h3>
-                <p>Designed & built vending machine.</p>
-                <p>Impact: over a hundred snacks sold</p>
-                <p>Tech: Arduino, C++</p>
-                <div className='flex justify-end absolute bottom-0 right-0'>
-                    <Link href='https://github.com/JoelGrayson/Venderoo/blob/main/Venderoo.ino' target='_blank' className='flex justify-center items-center gap-2 button !px-1.5 !py-1'>
-                        <GithubIcon width={30} className='fill-black' />
-                        View code
-                    </Link>
-                </div>
             </div>
         </div>
 

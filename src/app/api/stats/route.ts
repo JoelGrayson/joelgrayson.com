@@ -4,6 +4,8 @@ import { getLiveStats } from "../live-stats/route";
 import getLastWeeksStats from "../live-stats/get-stats/getLastWeeksStats";
 import { Stats } from "@prisma/client";
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
     // Since it is fetched at 12:05am, find everything after 12:01am.
     const thisMorning=new Date();
@@ -28,9 +30,10 @@ export async function GET() {
 
     if (stats.length===0) { //not fetched
         console.warn('Stats not fetched yet. This should not happen.', stats);
-        
+
         return NextResponse.json(
-            await getLiveStats()
+            await getLiveStats(),
+            { headers: { 'Cache-Control': 'no-store' } }
         );
     }
 
@@ -62,5 +65,7 @@ export async function GET() {
         habitUsers:           lastWeeksStats?.habitUsers           && returning.habitUsers           ? returning.habitUsers-lastWeeksStats.habitUsers                     : -4,
         numbersUsers:         lastWeeksStats?.numbersUsers         && returning.numbersUsers         ? returning.numbersUsers-lastWeeksStats.numbersUsers                 : -4
     };
-    return NextResponse.json(stats[0]);
+
+    // Return the assembled object (including diff and editTimeUsers) and ensure it's not cached
+    return NextResponse.json(returning, { headers: { 'Cache-Control': 'no-store' } });
 }
