@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/data/prisma/client';
 import sendEmail from '@/helpers/sendEmail';
 import generateToken from '@/helpers/generate-token';
-import DOMPurify from 'dompurify';
+import sanitizeHtml from 'sanitize-html';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<{ type: 'error' | 'success'; message?: string }>) {
     const { name, email, comment, hyphenatedTitle }=req.body as { name?: string; email?: string; comment?: string; hyphenatedTitle?: string };
@@ -26,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         +'Email: '+email+'\n'
         +'Comment: '+comment+'\n',
         html: `
-            <p>Dear ${DOMPurify.sanitize(name)},</p>
+            <p>Dear ${sanitizeHtml(name)},</p>
             <p>The following comment was submitted to joelgrayson.com/blog under your email address (${email}).</p>
             <p>
                 <a
@@ -39,8 +39,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             </p>
             <br />
             <fieldset>
-                <legend>${DOMPurify.sanitize(name)} wrote</legend>
-                <p>${DOMPurify.sanitize(comment)}</p>
+                <legend>${sanitizeHtml(name)} wrote</legend>
+                <p>${sanitizeHtml(comment)}</p>
             </fieldset>
 
             <p>Best,</p>
