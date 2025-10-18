@@ -7,3 +7,4 @@ export default function ClimateChangeIsAnExponentialProblem() {
         <P>Similarly, for climate change, humanity is now in one of the last stages when climate action costs more than its immediate benefits, yet it is most needed. Again, because the results of climate action are cumulative and delayed, actions are more effective when done earlier. This understanding of how exponential growth affects climate change explains the urgency for action now. A constant nudge from the public to those in power is required to break the status quo of insufficient climate action. You, dear reader, can put pressure on those in power to transition to clean infrastructure, or, even better, get in power to do so yourself.</P>
     </ArticleWrapper>;
 }
+
