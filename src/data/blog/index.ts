@@ -1,6 +1,7 @@
 import { article as articleT } from './types';
 
 export const articles: articleT[]=[
+    { title: 'A Realistic Path to Ending 99% of Human-Induced Animal Suffering', hyphenatedTitle: 'meat',                     date: new Date('Mar 13, 2025'), category: 'science'        },
     { title: 'Division of Power Within NYC',                 hyphenatedTitle: 'division-of-power-within-nyc',                 date: new Date('Oct 30, 2023'), category: 'government'     },
     { title: 'A Better Way to Teach Math',                   hyphenatedTitle: 'a-better-way-to-teach-math',                   date: new Date('Feb 20, 2023'), category: 'science'        },
     { title: 'Thank You, Fossil Fuels',                      hyphenatedTitle: 'thank-you-fossil-fuels',                       date: new Date('Feb 19, 2023'), category: 'climate-change' },
