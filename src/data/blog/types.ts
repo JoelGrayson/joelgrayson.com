@@ -13,4 +13,12 @@ export type article={
     hyphenatedTitle: string;
     date: Date;
     category: category;
+    defaultSection: keyof typeof DEFAULT_SECTION;
+    defaultIndex: number;
 };
+
+export const DEFAULT_SECTION = {
+    MAIN: 'MAIN',
+    OTHERS: 'OTHERS'
+} as const;
+
