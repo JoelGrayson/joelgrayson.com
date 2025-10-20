@@ -8,6 +8,7 @@ https://drive.google.com/drive/u/0/folders/1nxO2HdYoHkQ8R9tch8bxbJOqyevDCV6R
 * Thumbnail in `public/image/blog/{hyphenated-name}/thumbnail.jpg`
     * Dimensions - 400x225
 * an entry in the `src/data/blog/index`
+* a prisma entry in the Article table
 
 
 # Procedure for Google Docs → JSX

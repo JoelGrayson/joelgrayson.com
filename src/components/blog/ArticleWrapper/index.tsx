@@ -6,7 +6,7 @@ import { Reply } from './Reply';
 import AddComment from './AddComment';
 import { useRouter } from 'next/router';
 
-export default function Article({ hyphenatedTitle, title, date /** published date */, children, notitle=false, nodate=false }: { hyphenatedTitle: string; title: string; date: Date; children: React.ReactNode; notitle?: boolean; nodate?: boolean }) {
+export default function Article({ hyphenatedTitle, title, date /** published date */, children, notitle=false, customTitle=undefined, nodate=false }: { hyphenatedTitle: string; title: string; date: Date; children: React.ReactNode; notitle?: boolean; customTitle: React.ReactNode; nodate?: boolean }) {
     const [comments, setComments]=useState<ExposedComment[]>([]);
     const [views, setViews]=useState<null | number>(null);
     const [commentId, setCommentId]=useState<null | string>(null);
@@ -45,8 +45,9 @@ export default function Article({ hyphenatedTitle, title, date /** published dat
     }}>
         {/* Title & Date */}
         {!notitle && <h1 style={{fontSize: '2.5rem', textAlign: 'center'}}>{title}</h1>}
-        <div className='text-right' title={date && `Published on ${jdate(date)}`}>{!nodate && date && jdate(date)}</div>
-        <div className='text-right mb-6'>{views ? `${views} views` : <>&emsp;</>}</div>
+        {customTitle}
+        {!nodate && date && <div className='text-right' title={date && `Published on ${jdate(date)}`}>{jdate(date)}</div> }
+        <div className='text-right mb-6'>{views ? `${views} view${views === 1 ? '' : 's'}` : <>&emsp;</>}</div>
 
         {/* Article Content */}
         {children}

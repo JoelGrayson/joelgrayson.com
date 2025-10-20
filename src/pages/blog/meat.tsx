@@ -21,8 +21,9 @@ export function Citations({ numbers }: { numbers: string }) {
 }
 
 export default function Meat() {
-    
-    return <ArticleWrapper title='A Realistic Path to Ending 99% of Human-Induced Animal Suffering' date={new Date('March 13, 2025')} hyphenatedTitle='meat'>
+    return <ArticleWrapper title='A Realistic Path to Ending 99% of Human-Induced Animal Suffering' date={new Date('March 13, 2025')} hyphenatedTitle='meat' notitle customTitle={
+        <h1 className='text-4xl leading-[1.7] text-center'>A Realistic Path to Ending 99% <br/> of Human-Induced Animal Suffering</h1>
+    }>
         <div className="flex justify-end mb-10">
             <Link href="/blog/meat.pdf" className="button" target='_blank'>
                 <DownloadIcon />
