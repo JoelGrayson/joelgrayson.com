@@ -1,6 +1,5 @@
 import ArticleWrapper from '@/components/blog/ArticleWrapper';
 import { P, BU } from '@jcomponents/writing-components';
-import Link from 'next/link';
 
 export default function ABetterWayToTeachMath() {
     return <ArticleWrapper title='A Better Way to Teach Math' date={new Date('Feb 20, 2023')} hyphenatedTitle='a-better-way-to-teach-math'>

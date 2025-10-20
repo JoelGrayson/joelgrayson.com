@@ -6,7 +6,7 @@ import { Reply } from './Reply';
 import AddComment from './AddComment';
 import { useRouter } from 'next/router';
 
-export default function Article({ hyphenatedTitle, title, date /** published date */, children, notitle=false, customTitle=undefined, nodate=false }: { hyphenatedTitle: string; title: string; date: Date; children: React.ReactNode; notitle?: boolean; customTitle: React.ReactNode; nodate?: boolean }) {
+export default function ArticleWrapper({ hyphenatedTitle, title, date /** published date */, children, notitle=false, customTitle=undefined, nodate=false }: { hyphenatedTitle: string; title: string; date: Date; children: React.ReactNode; notitle?: boolean; customTitle?: React.ReactNode; nodate?: boolean }) {
     const [comments, setComments]=useState<ExposedComment[]>([]);
     const [views, setViews]=useState<null | number>(null);
     const [commentId, setCommentId]=useState<null | string>(null);
@@ -63,3 +63,4 @@ export default function Article({ hyphenatedTitle, title, date /** published dat
         </div>
     </BlogPage>;
 }
+
