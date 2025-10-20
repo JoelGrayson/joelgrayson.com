@@ -1,6 +1,6 @@
 import localFont from 'next/font/local';
 import Link from 'next/link';
-import JThreeDots from '@/components/page/headers/parts/JThreeDots';
+import JThreeDots, { jThreeDotsClassName } from '@/components/page/headers/parts/JThreeDots';
 import Container from '@jcomponents/container';
 import SEO, { SEOProps } from '@/components/page/parts/SEO';
 
@@ -15,14 +15,16 @@ export default function BlogPage({children, seo, maxWidth=800}: {children: React
             ...seo
         }} />
         
-        <header className='relative flex justify-between items-center px-5 py-0'>
+        <header className='relative flex justify-between items-center px-5 py-0 j_max-w'>
             <JThreeDots tabIndex={0} />
-            <span className={`${chomsky.className} text-[2.5rem] sm:text-[3.4rem] mt-[10px] leading-[1.8]`} tabIndex={0}>
+
+            <span className={`${chomsky.className} text-[2.5rem] sm:text-[3.4rem] mt-[10px] leading-[1.8] text-center`} tabIndex={0}>
                 <Link href='/blog' className='unstyled'>
                     Joel&apos;s Blog
                 </Link>
             </span>
-            <div />
+
+            <div className={jThreeDotsClassName} />
         </header>
 
         <hr />

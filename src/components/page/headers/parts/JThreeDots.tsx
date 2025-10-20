@@ -3,6 +3,8 @@
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 
+export const jThreeDotsClassName = 'block m:w-[50px] d:w-[65px]';
+
 export default function JThreeDots(props: any) { //interactive signature
     const [loadNum, setLoadNum]=useState<number>(0);
     const lastReloaded=useRef<number>(Date.now());
@@ -12,7 +14,7 @@ export default function JThreeDots(props: any) { //interactive signature
         setLoadNum(Math.random);
     };
 
-    return <Link href='/' className='block w-[55px] sm:w-[65px] m:mx-auto' {...props} aria-label='Joel Logo'>
+    return <Link href='/' className={jThreeDotsClassName} {...props} aria-label='Joel Logo'>
         <div className='flex items-center pr-4 select-none w-[30px] sm:w-[40px] cursor-pointer m:mx-auto'>
             <div className='relative cursor-pointer'>
                 {/* eslint-disable */}
