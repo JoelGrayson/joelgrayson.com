@@ -122,8 +122,15 @@ export default function Meat() {
 
         <P>In the future, I hope people will look back at how animals are treated today and say, “how could we have done that?” much in the same way that people today look back at slavery and gender inequality as backward. Introducing the MEAT label and developing cellular meat are the way to reach this future.</P>
 
-
+        
         <br /><br /><br />
+
+        <H2>Addendum on Killing</H2>
+
+        <P>While MEAT would greatly reduce animal suffering, this paper’s subject matter, it still leaves the separate problem of slaughtering large numbers of animals unaddressed. Perhaps killing an animal, especially killing an animal early in its potential lifespan, is immoral even if the animal had a good quality of life while it was alive. After all, it seems wrong to run a factory where human babies are born, live for three years with a high quality of life throughout, and then are slaughtered. One way to avoid killing animals is to consume more eggs and milk in place of chicken or other killed meat because the animals they are obtained from do not have to be killed. The layer chickens supplying MEAT eggs can be regulated to have a good quality of life and live their full lifespan. Also, animals are currently slaughtered at a young age because their meat is only tender then. Perhaps the animals can be genetically modified to have tender meat throughout their life so that they can live their full lifespan and are consumed only once they die at the end of their potential lifespan. While this would be more costly, it would be free of killing.</P>
+
+
+
         <H2>Terminology</H2>
         <ul>
             <li>Minimally Ethical And Torture-free (MEAT): meat that meets the requirements proposed in part 2.</li>
