@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import Yt from '@/components/global/Yt';
 
 export default function Slaphappy() {
     // https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A
@@ -40,10 +41,10 @@ export default function Slaphappy() {
             zIndex: -1
         }} />
         <Link href={'https://youtube.com/@JoelGrayson'} className='unstyled'>
-        <img src='/image/slaphappy/Channel-Art.png' alt='Slaphappy Channel Art' className='mx-auto pt-[60px] sm:pt-[100px] lg:pt-[160px]' style={{
+        <img src='/image/slaphappy/Channel-Art.png' alt='Slaphappy Channel Art' className='mx-auto pt-[60px] sm:pt-[100px] lg:pt-[220px]' style={{
             width: '60%',
             zIndex: -2,
-            position: 'inherit'
+            position: 'relative'
         }} />
         {/* eslint-enable */}
 
@@ -78,14 +79,25 @@ export default function Slaphappy() {
         </Link>
         {/* </div> */}
 
-        <div style={{width: '60%', maxWidth: 800, margin: '0 auto', marginTop: 14}}>
-            <p>Slaphappy shows videos my Dad and I have made together since I was 11. If you find them funny, our names are Joel Grayson and Paul Grayson. If not, they are anonymous. The channel has separate sections for stop motion animation and my various projects. I am not a professional trumpet player.</p>
+        <div style={{width: '60%', textAlign: 'center', maxWidth: 800, margin: '0 auto', marginTop: 14}}>
+            Slaphappy is a YouTube channel with comedy skits with my Dad, stop motion animations, coding/building projects, and learning resources.
         </div>
 
         <div className="w-full flex justify-center mt-10">
             <Link href={'https://youtube.com/@JoelGrayson'} className='button'>
                 View Here
             </Link>
+        </div>
+
+
+        <h3 className='text-center mt-10'>Example Videos</h3>
+        <div className="grid md:grid-cols-2 gap-3 grid-cols-1 j_max-w justify-items-center">
+            <Yt width='400px' className='inline'>KzPlEnuLa64</Yt>
+            <Yt width='400px' className='inline'>bHHk2FL5Ujs</Yt>
+            <Yt width='400px' className='inline'>-optfM81WFs</Yt>
+            <Yt width='400px' className='inline'>F0ameJ2K3_0</Yt>
+            <Yt width='400px' className='inline'>1o4ugYFm5ag</Yt>
+            <Yt width='400px' className='inline'>taCsJ-0EOAY</Yt>
         </div>
     </Page>;
 }
