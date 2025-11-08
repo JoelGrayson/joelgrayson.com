@@ -140,3 +140,9 @@ model FormSubmission {
     origin String?
     name   String?
 }
+
+model Values {
+    key         String   @id @unique
+    value       Json // Prisma JSON cannot just be a raw 3 or "hi", it has to be { value: ... }. I am doing this so that I can store any value type I want (string or int)
+    dateCreated DateTime @default(now())
+}
