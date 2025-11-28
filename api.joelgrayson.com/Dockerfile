@@ -42,5 +42,5 @@ RUN npm install --omit=dev
 
 
 EXPOSE 8080
-CMD cron && npm start
+CMD npm start
 
