@@ -1,6 +1,6 @@
 import prisma from "@/data/prisma/client";
 
-export default async function getDownloadLinkGeneratorVisits() {
+export default async function getDownloadLinkGeneratorVisits(): Promise<{ driveDownloadLinkGeneratorVisits: number; dropboxDownloadLinkGeneratorVisits: number; boxDownloadLinkGeneratorVisits: number }> {
     const queryRes=await prisma.pageVisits.findMany({
         where: {
             url: {

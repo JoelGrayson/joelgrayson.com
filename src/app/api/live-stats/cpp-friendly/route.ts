@@ -15,12 +15,16 @@ export async function GET() {
         data.focusUsers,
         data.homeworkCheckerUsers,
         data.buserooSearches,
-        data.shirtocracyOrders,
+
+        // data.shirtocracyOrders,
+        data.editTimeUsers,
+
         data.journalUsers,
         data.projectsUsers,
         data.habitUsers,
         data.numbersUsers,
 
+        // Diffs are based on the last 7 days
         data.diff.focusUsers,
         data.diff.homeworkCheckerUsers,
         data.diff.buserooSearches,

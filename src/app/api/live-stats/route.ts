@@ -13,6 +13,7 @@ import getBlogViews from "./get-stats/getBlogViews";
 import getBuserooUsers from "./get-stats/getBuserooUsers";
 import getShanghaiDictionarySearches from "./get-stats/getShanghaiDictionarySearches";
 import getDownloadLinkGeneratorVisits from "./get-stats/getDownloadLinkGeneratorVisits";
+import getStatsFromPrisma from "./get-stats/getStatsFromPrisma";
 
 
 // Opt out of caching
@@ -29,11 +30,16 @@ export async function getLiveStats() {
         getChromeExtensionUsers(),
         getBuserooSearches(),
         getShirtocracyOrders(),
+
         getJournalUsers(), //TODO
         getProjectsUsers(), //TODO
         getHabitUsers(), //TODO
+
         getNumbersUsers(), //TODO
         getLastWeeksStats(),
+        getStatsFromPrisma(),
+
+
 
         // Additional Not Displayed
         getBlogViews(),
@@ -49,18 +55,24 @@ export async function getLiveStats() {
         { focusUsers, homeworkCheckerUsers },
         buserooSearches,
         shirtocracyOrders,
+
         journalUsers,
         projectsUsers,
         habitUsers,
+
         numbersUsers,
         lastWeeksStats,
+        statsFromPrisma,
+
+
+
         blogViews,
         buserooUsers,
         shanghaiDictionarySearches,
         downloadLinkGeneratorVisits
     ]=res;
     
-    return {
+    const out = {
         focusUsers,
         homeworkCheckerUsers,
         buserooSearches,
@@ -69,6 +81,7 @@ export async function getLiveStats() {
         projectsUsers,
         habitUsers,
         numbersUsers,
+        ...statsFromPrisma, // editTimeUsers. Ideally, would also include editTimeRevenue
         ...downloadLinkGeneratorVisits, //{"driveDownloadLinkGeneratorVisits":9933,"dropboxDownloadLinkGeneratorVisits":1590,"boxDownloadLinkGeneratorVisits":8394}
 
         blogViews,
@@ -82,12 +95,17 @@ export async function getLiveStats() {
             focusUsers:           lastWeeksStats?.focusUsers           ? focusUsers-lastWeeksStats.focusUsers                     : -4,
             homeworkCheckerUsers: lastWeeksStats?.homeworkCheckerUsers ? homeworkCheckerUsers-lastWeeksStats.homeworkCheckerUsers : -4,
             buserooSearches:      lastWeeksStats?.buserooSearches      ? buserooSearches-lastWeeksStats.buserooSearches           : -4,
+
             shirtocracyOrders:    lastWeeksStats?.shirtocracyOrders    ? shirtocracyOrders-lastWeeksStats.shirtocracyOrders       : -4,
+            editTimeUsers: lastWeeksStats?.editTimeUsers && statsFromPrisma.editTimeUsers ? statsFromPrisma.editTimeUsers - lastWeeksStats?.editTimeUsers : -4,
             journalUsers:         lastWeeksStats?.journalUsers         ? journalUsers-lastWeeksStats.journalUsers                 : -4,
             projectsUsers:        lastWeeksStats?.projectsUsers        ? projectsUsers-lastWeeksStats.projectsUsers               : -4,
+
             habitUsers:           lastWeeksStats?.habitUsers           ? habitUsers-lastWeeksStats.habitUsers                     : -4,
             numbersUsers:         lastWeeksStats?.numbersUsers         ? numbersUsers-lastWeeksStats.numbersUsers                 : -4
         }
-    };
+    } as const;
+
+    return out;
 }
 
