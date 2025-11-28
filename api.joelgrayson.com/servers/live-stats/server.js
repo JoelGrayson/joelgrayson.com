@@ -1,3 +1,5 @@
+// ABOUT: this API endpoint will get the live stats for Chrome extension user counts. However, tihs endpoint is not actually used for anything since the crontab saves this to prisma.
+
 // Necessary in api.joelgrayson.com because it uses puppeteer
 
 const express=require('express');
@@ -8,15 +10,21 @@ const puppeteer=require('puppeteer');
 const getHCInstalls=createGetChromeExtensionStats('https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj');
 const getFocusInstalls=createGetChromeExtensionStats('https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf');
 
-router.get('/', cacheMiddleware, async (req, res)=>{
+// router.get('/', cacheMiddleware, async (req, res)=>{ //no need to cache it since this is /live-stats. Anything cached would be done with prisma
+router.get('/', async (req, res)=>{
+    return res.json(await getHCAndFocusInstalls());
+});
+
+module.exports={ router, getHCAndFocusInstalls };
+
+async function getHCAndFocusInstalls() {
     const [hCInstalls, focusInstalls]=await Promise.all([
         getHCInstalls,
         getFocusInstalls
     ]);
-    return res.json({ hCInstalls, focusInstalls });
-});
 
-module.exports=router;
+    return { hCInstalls, focusInstalls };
+}
 
 
 // Helpers

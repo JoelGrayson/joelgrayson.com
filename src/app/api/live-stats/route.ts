@@ -45,7 +45,20 @@ export async function getLiveStats() {
     const res=await Promise.all(promises);
     // console.log('res', res);
 
-    const [{ focusUsers, homeworkCheckerUsers }, buserooSearches, shirtocracyOrders, journalUsers, projectsUsers, habitUsers, numbersUsers, lastWeeksStats, blogViews, buserooUsers, shanghaiDictionarySearches, downloadLinkGeneratorVisits]=res;
+    const [
+        { focusUsers, homeworkCheckerUsers },
+        buserooSearches,
+        shirtocracyOrders,
+        journalUsers,
+        projectsUsers,
+        habitUsers,
+        numbersUsers,
+        lastWeeksStats,
+        blogViews,
+        buserooUsers,
+        shanghaiDictionarySearches,
+        downloadLinkGeneratorVisits
+    ]=res;
     
     return {
         focusUsers,

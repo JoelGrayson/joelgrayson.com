@@ -1,5 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next/types';
+import prisma from '@/data/prisma/client';
 
+// Called every time someone visits the joelgrayson.com home page
 export default async function handler(globalReq: NextApiRequest, globalRes: NextApiResponse<any>) {
     const apiKey=process.env.YOUTUBE_API_KEY;
     // const apiKey=process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
@@ -8,24 +10,40 @@ export default async function handler(globalReq: NextApiRequest, globalRes: Next
     const channelId=slaphappyId+','+joelgrayson2Id;
 
     const fetchRequests=[
-        fetch('https://api.joelgrayson.com/live-stats')
-            .then(res=>res.json())
-            .then((res)=>{
-                return {
-                    homeworkCheckerInstalls: res.hCInstalls,
-                    focusInstalls: res.focusInstalls
-                };
-            }),
-        fetch('https://joelgrayson.com/api/blog/total-views')
-            .then(res=>res.json())
-            .then(res=>({
-                blogViews: res.views
-            })),
-        fetch('https://shanghaidictionary.com/api/analytics/searches')
-            .then(res=>res.json())
-            .then(res=>({
-                shanghaiDictionarySearches: res.searches
-            })),
+        // fetch('https://api.joelgrayson.com/live-stats')
+        //     .then(res=>res.json())
+        //     .then((res)=>{
+        //         return {
+        //             homeworkCheckerInstalls: res.hCInstalls,
+        //             focusInstalls: res.focusInstalls
+        //         };
+        //     }),
+        async function getHcAndFocusInstallsFromPrisma() { //less time consuming of a call
+            const stats=await prisma.stats.findMany({
+                select: {
+                    date: true,
+                    editTimeUsers: true,
+                    homeworkCheckerUsers: true,
+                    focusUsers: true,
+                    blogViews: true,
+                    shanghaiDictionarySearches: true
+                },
+                orderBy: {
+                    date: 'asc'
+                }
+            });
+            return stats;
+        },
+        // fetch('https://joelgrayson.com/api/blog/total-views')
+        //     .then(res=>res.json())
+        //     .then(res=>({
+        //         blogViews: res.views
+        //     })),
+        // fetch('https://shanghaidictionary.com/api/analytics/searches')
+        //     .then(res=>res.json())
+        //     .then(res=>({
+        //         shanghaiDictionarySearches: res.searches
+        //     })),
         fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`)
             .then(res=>res.json())
             .then(res=>{

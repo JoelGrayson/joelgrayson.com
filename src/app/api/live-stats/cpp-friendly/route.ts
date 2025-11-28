@@ -4,6 +4,8 @@ import { getLiveStats } from "../route";
 export const dynamic='force-dynamic';
 export const revalidate=0;
 
+// This is for the Joelesque Empire Board since it cannot parse JSON easily
+
 export async function GET() {
     // const res=await fetch('https://joelgrayson.com/api/live-stats');
     // const data=await res.json();

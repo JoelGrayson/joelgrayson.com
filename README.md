@@ -1,6 +1,8 @@
 # Planning
-[Sitemap](https://docs.google.com/document/d/16YT7899bFbgKvBiruonL3wRYBa64Rj0m4cCRCL-VfAg/edit)
+[Sitemap](https://docs.google.com/document/d/1Ltw1L5mq5JpH9X2KIqvuD8B4zHJddkrYRoNE4o0KQFs/edit?tab=t.0#heading=h.807vu534hu66)
 
+
+A crontab is kept in vercel.json
 
 
 # Development

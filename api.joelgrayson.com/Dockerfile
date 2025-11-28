@@ -4,9 +4,9 @@ FROM ubuntu:22.04
 
 MAINTAINER Joel Grayson
 
+RUN apt-get update && apt-get upgrade -y
 
 # Cron
-RUN apt-get update && apt-get upgrade -y
 # RUN apt-get install -y cron
 # COPY crontab /etc/cron.d/joel-cron
 # RUN chmod 644 /etc/cron.d/joel-cron
@@ -16,12 +16,12 @@ RUN apt-get update && apt-get upgrade -y
 # Install Node & NPM
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y curl
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash
+RUN curl -sL https://deb.nodesource.com/setup_22.x | bash
 # RUN apt install -y Node.js npm
 RUN apt-get install -y nodejs
 # Fixing NPM to work
-RUN npm i -g npm@latest
-RUN npm i -g node-gyp
+# RUN npm i -g npm@11
+# RUN npm i -g node-gyp
 
 
 # <EXCLUDED IN MacDockerFile>

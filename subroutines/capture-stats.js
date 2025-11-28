@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+// Triggered by the GitHub Actions Workflow cronjob every morning
+
 const PrismaClient=require('@prisma/client').PrismaClient;
 const prisma=new PrismaClient();
 

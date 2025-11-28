@@ -1,2 +1,0 @@
-# Every morning, save stats
-0 0 * * * root node /usr/src/app/procedures/saveStats.js
