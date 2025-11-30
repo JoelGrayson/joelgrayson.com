@@ -30,17 +30,31 @@ async function getHCAndFocusInstalls() {
 // Helpers
 function createGetChromeExtensionStats(url) {
     return new Promise(async resolve=>{
-        const browser=await puppeteer.launch({
-            // headless: 'new',
-            args: [
-                '--no-sandbox', //disable security feature of sandboxing chrome's processes. Gives more privileges to the program execution runtime.
-                // '--disable-setuid-sandbox'
-            ],
-            timeout: 50000  //default: 30000
-        });
-        const page=await browser.newPage();
-    
         try {
+            console.log('Creating browser');
+            const browser=await puppeteer.launch({
+                // headless: 'new',
+                args: [
+                    '--no-sandbox', //disable security feature of sandboxing chrome's processes. Gives more privileges to the program execution runtime.
+                    // '--disable-setuid-sandbox'
+                ],
+                timeout: 50000  //default: 30000
+            });
+        } catch (err) {
+            console.log('There was a problem while creating the browser');
+            console.error(err);
+        }
+
+        try {
+            console.log('Creating the new page');
+            const page=await browser.newPage();
+        } catch (err) {
+            console.log('There was a problem while creating the page');
+            console.error(err);
+        }
+
+        try {
+            console.log('Going to url', url);
             await page.goto(url, { waitUntil: 'domcontentloaded' });
         } catch (e) {
             console.error('Error in page.goto', e);
@@ -49,7 +63,9 @@ function createGetChromeExtensionStats(url) {
     
         let users;
         try {
+            console.log('Evaluating page')
             users=await page.evaluate(()=>{
+                console.log('Page evaluated');
                 const usersEl=document.querySelector('div.F9iKBc');
                 const usersText=usersEl.innerText;
                 return parseInt(usersText.match(/([\d,]+) users/)?.[1]?.split(',')?.join('') || '-1');
