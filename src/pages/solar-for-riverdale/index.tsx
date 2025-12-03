@@ -24,7 +24,7 @@ export default function SolarForRiverdale() {
     return <div className="flex flex-col items-center">
         <h1 className="text-4xl mt-12 mb-6">Solar for Riverdale</h1>
         
-        <div className="text-center text-2xl">Riverdale has solar panels on top of the cafeteria, swimming pool, and Mow.</div>
+        <div className="text-center text-2xl leading-relaxed">Riverdale has a 109 kW solar installation with panels on top of the cafeteria, swimming pool, and Mow. Every year, it generates 130 megawatt-hours of electricity and reduces carbon emissions by 87.4 tonnes.</div>
         
         {
             data.length === 0

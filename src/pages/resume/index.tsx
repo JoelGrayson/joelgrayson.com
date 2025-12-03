@@ -183,7 +183,7 @@ export default function Resume() {
                                     className='inline bottom-0.5 relative'
                                     style={{ right: 4 }}
                                 />
-                                Facilitated 109 kW solar installation at Riverdale, enough to power 50 households.
+                                Facilitated 109 kW solar installation at Riverdale, enough to power 13 households.
                             </span>    
                             <span className="date">2021&ndash;2024</span>
                             <div className="description indent">Measured rooftops, created solar models in HelioScope, gathered quotes from several installers, researched legal & financial aspects, & presented to admin and board.</div>
