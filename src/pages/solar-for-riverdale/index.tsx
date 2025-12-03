@@ -1,3 +1,4 @@
+import TodayChart from "@/components/by-page/solar-for-riverdale/TodayChart";
 import LastSevenDaysChart from "@/components/by-page/solar-for-riverdale/LastSevenDaysChart";
 import { useEffect, useState } from "react";
 
@@ -469,7 +470,7 @@ export default function SolarForRiverdale() {
             ? <>
                 <div>Loading data...</div>
             </>
-            : 
+            : <TodayChart data={todaysData} />
         }
     </div>;
 }
