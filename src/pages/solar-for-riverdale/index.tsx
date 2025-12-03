@@ -10,13 +10,44 @@ export type SolarDatum = {
     value: number;
 };
 export type SolarData = SolarDatum[];
+export type SunriseSunsetData = {
+    sunrise: string;
+    sunset: string;
+    solar_noon: string;
+    day_length: string;
+    civil_twilight_begin: string;
+    civil_twilight_end: string;
+    nautical_twilight_begin: string;
+    nautical_twilight_end: string;
+    astronomical_twilight_begin: string;
+    astronomical_twilight_end: string;
+};
+// https://api.sunrise-sunset.org/json?lat=40.89942512627312&lng=-73.89975728835755
 
+function formatTime(time: string): string {
+    // Remove seconds from time format (e.g., "7:01:39 AM" -> "7:01 AM")
+    return time.replace(/:\d{2}(\s+[AP]M)/, '$1');
+}
 
 export default function SolarForRiverdale() {
     const [lastSevenDaysData, setLastSevenDaysData] = useState<SolarData>([]);
     const [todaysData, setTodaysData] = useState<SolarData>([]);
+    const [sunriseData, setSunriseData] = useState<SunriseSunsetData | null>(null);
 
     useEffect(()=>{
+        // Fetch sunrise/sunset data
+        fetch('https://api.sunrise-sunset.org/json?lat=40.89942512627312&lng=-73.89975728835755&tzid=America/New_York')
+            .then(res => res.json())
+            .then(res => {
+                if (res.status === 'OK') {
+                    setSunriseData(res.results);
+                    console.log('Sunrise/sunset data', res.results);
+                }
+            })
+            .catch(err => {
+                console.error('Error fetching sunrise/sunset data:', err);
+            });
+
         if (false && process.env.NODE_ENV === 'development') {
             // For testing so not too many API calls (only 400 allowed per day)
             setLastSevenDaysData([
@@ -453,7 +484,7 @@ export default function SolarForRiverdale() {
         }
     }, []);
     
-    return <Page noPadding pathname='/solar-for-riverdale' seo={{
+    return <Page noPadding bottomPadding pathname='/solar-for-riverdale' seo={{
         title: 'Solar for Riverdale',
         // description: 'Fill out this contact form to reach Joel',
         // og: {
@@ -463,29 +494,36 @@ export default function SolarForRiverdale() {
     }}>
         <div className="flex flex-col items-center">
             <h1 className="text-4xl mt-12 mb-6">Solar for Riverdale</h1>
-            
-            <div className="text-center text-2xl leading-relaxed max-w-[1100px] mb-5">Riverdale has a 109 kW solar installation on the roofs of the cafeteria, swimming pool, and Mow. Every year, it generates 130 megawatt-hours of electricity and reduces CO₂ equivalent emissions by 87.4 tonnes.</div>
-            
-            {
-                lastSevenDaysData.length === 0
-                ? <>
-                    <div>Loading data...</div>
-                </>
-                : <>
-                    <h3>Last 7 Days</h3>
-                    <LastSevenDaysChart data={lastSevenDaysData} />
-                </>
-            }
-            {
-                todaysData.length === 0
-                ? <>
-                    <div>Loading data...</div>
-                </>
-                : <>
-                    <h3>Today (Live)</h3>
-                    <TodayChart data={todaysData} />
-                </>
-            }
+
+            <div className="text-center text-xl leading-relaxed max-w-[1100px] mb-5">Riverdale has a 109 kW solar installation on the roofs of the cafeteria, swimming pool, and Mow. Every year, it generates 130 megawatt-hours of electricity and reduces CO₂ equivalent emissions by 87.4 tonnes.</div>
+
+            <div className="flex flex-col items-center border rounded-lg w-min">
+                {
+                    lastSevenDaysData.length === 0
+                    ? <>
+                        <div>Loading data...</div>
+                    </>
+                    : <div className="flex flex-col items-center border rounded-lg border-gray-300 px-10 w-full mb-3">
+                        <h3>Last 7 Days</h3>
+                        <div >
+                            <LastSevenDaysChart data={lastSevenDaysData} />
+                        </div>
+                    </div>
+                }
+                {
+                    todaysData.length === 0
+                    ? <>
+                        <div>Loading data...</div>
+                    </>
+                    : <div className="flex flex-col items-center border rounded-lg border-gray-300 px-10 w-full">
+                        <h3>Today (Live)</h3>
+                        <div >
+                            <TodayChart data={todaysData} />
+                        </div>
+                        <p className='text-xl pb-3'>Sunrise: {sunriseData?.sunrise && formatTime(sunriseData.sunrise)} | Sunset: {sunriseData?.sunset && formatTime(sunriseData.sunset)}</p>
+                    </div>
+                }
+            </div>
         </div>
     </Page>;
 }
