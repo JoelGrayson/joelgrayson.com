@@ -45,11 +45,9 @@ export default function PowerChart({ data }: PowerChartProps) {
     }))
 
   return (
-    <Card className="w-full max-w-4xl">
-      <CardHeader>
-        <CardTitle className="text-center">Today's Power (Live)</CardTitle>
-      </CardHeader>
+    <Card className="w-full max-w-4xl relative border-0">
       <CardContent>
+      
         <ChartContainer
           config={{
             power: {
@@ -66,18 +64,19 @@ export default function PowerChart({ data }: PowerChartProps) {
                 dataKey="time"
                 className="text-xs"
                 tick={{ fill: "hsl(var(--foreground))" }}
-                label={{
-                  value: "Time",
-                  position: "insideBottom",
-                  offset: -5,
-                  style: { fontSize: "1.7rem", fill: "hsl(var(--foreground))" },
-                }}
+                // label={{
+                //   value: "Time",
+                //   position: "insideBottom",
+                //   offset: -5,
+                //   style: { fontSize: "1.7rem", fill: "hsl(var(--foreground))" },
+                // }}
               />
               <YAxis
                 label={{
                   value: "Power (Watts)",
                   angle: -90,
                   position: "insideLeft",
+                  dy: 50,
                   style: { fontSize: "1.7rem", fill: "hsl(var(--foreground))" },
                 }}
                 className="text-xs"
@@ -85,6 +84,7 @@ export default function PowerChart({ data }: PowerChartProps) {
               />
               <ChartTooltip content={<ChartTooltipContent />} />
               <Line
+                key="power-line"
                 type="monotone"
                 dataKey="power"
                 stroke="#f5b72c"
@@ -93,6 +93,7 @@ export default function PowerChart({ data }: PowerChartProps) {
                 animationDuration={300}
               />
               <Line
+                key="power-dot"
                 type="monotone"
                 dataKey="power"
                 stroke="transparent"

@@ -2,8 +2,12 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
     const fmt = new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }); //date formatter
-    const todayNYC = fmt.format(Date.now() - 3 * 60 * 60 * 1000); //like 2025-12-01
+    const todayNYC = fmt.format(Date.now()); //like 2025-12-01
     console.log(todayNYC);
+
+    // Get current time in NYC
+    const nowNYC = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" }));
+
     const [studentCenterRes, aquaticCenterRes] = await Promise.all([
         fetch(`https://monitoringapi.solaredge.com/site/${process.env.STUDENT_CENTER_SITE_ID}/power?timeUnit=QUARTER_OF_AN_HOUR&startTime=${todayNYC}%2000:00:00&endTime=${todayNYC}%2023:59:59&api_key=${process.env.STUDENT_CENTER_SOLAR_API_KEY}`),
         fetch(`https://monitoringapi.solaredge.com/site/${process.env.AQUATIC_CENTER_SITE_ID}/power?timeUnit=QUARTER_OF_AN_HOUR&startTime=${todayNYC}%2000:00:00&endTime=${todayNYC}%2023:59:59&api_key=${process.env.AQUATIC_CENTER_SOLAR_API_KEY}`)
@@ -17,19 +21,31 @@ export async function GET() {
         aquaticCenterRes.json()
     ]);
 
-    // Units are watts
-    let studentCenter = studentCenterRawData.power.values.map((e: any)=>{
-        return {
-            date: e.date,
-            value: e.value
-        };
-    });
-    let aquaticCenter = aquaticCenterRawData.power.values.map((e: any)=>{
-        return {
-            date: e.date,
-            value: e.value
-        };
-    });
+    // Units are watts - filter to only include data up to current NYC time
+    let studentCenter = studentCenterRawData.power.values
+        .filter((e: any) => new Date(e.date) <= nowNYC)
+        .map((e: any)=>{
+            let value = e.value;
+            if (value !== null)
+              value /= 1000;
+
+            return {
+                date: e.date,
+                value
+            };
+        });
+    let aquaticCenter = aquaticCenterRawData.power.values
+        .filter((e: any) => new Date(e.date) <= nowNYC)
+        .map((e: any)=>{
+            let value = e.value;
+            if (value !== null)
+              value /= 1000;
+
+            return {
+                date: e.date,
+                value
+            };
+        });
 
     // Combine totals for each day
     let total = studentCenter.map((scEntry: any, index: number) => {

@@ -63,9 +63,9 @@ export default function LastSevenDaysChart({ data }: { data: SolarData }) {
           </Bar>
         </BarChart>
       </ChartContainer>
-      <div className="text-center mt-2">
+      {/* <div className="text-center mt-2">
         <p className="text-[1.7rem] text-black">Last 7 Days</p>
-      </div>
+      </div> */}
     </div>
   )
 }
