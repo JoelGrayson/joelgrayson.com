@@ -16,6 +16,7 @@ export default function LifeAdvice() {
 
         <h3>General</h3>
         <ul>
+            <li>Focus on the derivatives (how much you are improving on something every day, such as how much you learn today) not on the current values (how much you know in a subject). The derivatives are all you control but the absolute number is all you see. The absolute number can go very high in time if your derivatives are positive every day.</li>
             <li>Create a &quot;cookie jar&quot;, an easy-to-access document of supportive thoughts and mantras for when you need motivation.</li>
             <li>
                 {`Don't try hard to make friends like you. If they don't like you if you don't try hard, then why would you want to be friends with them if they are more interested if you try hard.

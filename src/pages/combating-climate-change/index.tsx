@@ -52,8 +52,7 @@ export default function CCC() {
                 <Image src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='solar panel' width={26} height={20} className='ml-3 inline' />
             } {...{showDescription}}>
                 <div className='relative'>
-                    {/* 493 kW system producing 540 MWh */}
-                    <p>While learning about different energy sources, I realized that my school&apos;s empty rooftops had great potential for solar energy. I measured the rooftops, created solar models in HelioScope (image below), calculated savings, and gathered quotes from two companies. I presented to the administration and board of trustees, who agreed to a 493 kW solar PPA arrangement (enough to power 50 households) that will cover six buildings, promote renewable energy, and save the school tens of thousands of dollars every year.</p>
+                    <p>While learning about different energy sources, I realized that my school&apos;s empty rooftops had great potential for solar energy. I measured the rooftops, created solar models in HelioScope (image below), calculated savings, and gathered quotes from two companies. I presented to the administration and board of trustees, leading to a 109 kW solar PPA arrangement (enough to power 50 households), promote renewable energy, and save the school tens of thousands of dollars every year.</p>
                     <p>85% of New York City&apos;s electricity comes from fossil fuels. This installation will generate 540 megawatt-hours of clean electricity per year.</p>
                     <b>Cobenefits:</b>
                     <ul>
@@ -76,8 +75,9 @@ export default function CCC() {
                 </div> */}
 
                 <p className='d:absolute d:top-0 d:right-0'>
-                    Will save ~<Green>250 MTCO₂e</Green> each year
-                    {/* <CalculationInfo>
+                    Will save ~<Green>87 MTCO₂e</Green> each year
+                    {/* Deprecated old calculations:
+                    <CalculationInfo>
                         <Markdown>{`
 ### Grid Emissions
 Emissions from [EPA egrid](https://www.epa.gov/egrid/summary-data) accessed 11.8.23
