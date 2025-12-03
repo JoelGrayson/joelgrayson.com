@@ -8,7 +8,8 @@ export async function GET() {
     console.log(todayNYC);
 
     // Get current time in NYC
-    const nowNYC = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" }));
+    const MINUTES_DELAY = 16; //this way it is never in between a 15 minute section
+    const nowNYC = new Date(new Date(Date.now() - MINUTES_DELAY * 60 * 1000).toLocaleString("en-US", { timeZone: "America/New_York" }));
 
     const [studentCenterRes, aquaticCenterRes] = await Promise.all([
         fetch(`https://monitoringapi.solaredge.com/site/${process.env.STUDENT_CENTER_SITE_ID}/power?timeUnit=QUARTER_OF_AN_HOUR&startTime=${todayNYC}%2000:00:00&endTime=${todayNYC}%2023:59:59&api_key=${process.env.STUDENT_CENTER_SOLAR_API_KEY}`, { cache: 'no-store' }),

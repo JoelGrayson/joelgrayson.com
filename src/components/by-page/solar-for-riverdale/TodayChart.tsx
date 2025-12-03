@@ -30,8 +30,8 @@ const PulsingDot = (props: any) => {
 
   return (
     <g>
-      <circle cx={cx} cy={cy} r={24} fill="#ef4444" className="animate-pulse" opacity={0.4} />
-      <circle cx={cx} cy={cy} r={5} fill="#dc2626" />
+      <circle cx={cx} cy={cy} r={12} fill="#ef4444" className="animate-pulse" opacity={0.4} />
+      <circle cx={cx} cy={cy} r={6} fill="#dc2626" />
     </g>
   )
 }
