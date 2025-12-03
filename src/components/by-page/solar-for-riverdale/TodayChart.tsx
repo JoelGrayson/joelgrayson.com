@@ -1,5 +1,5 @@
 "use client"
-import { Line, LineChart, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from "recharts"
+import { Line, LineChart, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from "recharts"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
@@ -34,6 +34,17 @@ const PulsingDot = (props: any) => {
       <circle cx={cx} cy={cy} r={5} fill="#dc2626" />
     </g>
   )
+}
+
+const CustomTooltip = ({ active, payload }: any) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-white border border-gray-300 rounded-lg shadow-lg p-3">
+        <p className="text-base text-black">{Math.round(payload[0].value)} kWh</p>
+      </div>
+    )
+  }
+  return null
 }
 
 export default function PowerChart({ data }: PowerChartProps) {
@@ -82,7 +93,8 @@ export default function PowerChart({ data }: PowerChartProps) {
                 className="text-xs"
                 tick={{ fill: "hsl(var(--foreground))" }}
               />
-              <ChartTooltip content={<ChartTooltipContent />} />
+              {/* <ChartTooltip content={<ChartTooltipContent />} /> */}
+              <Tooltip content={<CustomTooltip />} cursor={{ fill: "rgba(0, 0, 0, 0.1)" }} />
               <Line
                 key="power-line"
                 type="monotone"
@@ -107,3 +119,4 @@ export default function PowerChart({ data }: PowerChartProps) {
     </Card>
   )
 }
+
