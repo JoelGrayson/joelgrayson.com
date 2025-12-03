@@ -11,8 +11,10 @@ export async function GET() {
         fetch(`https://monitoringapi.solaredge.com/site/${process.env.AQUATIC_CENTER_SITE_ID}/energy?timeUnit=DAY&startDate=${sevenDaysAgoNYC}&endDate=${yesterdayNYC}&api_key=${process.env.AQUATIC_CENTER_SOLAR_API_KEY}`)
     ]);
 
-    if (!studentCenterRes.ok || !aquaticCenterRes.ok)
-        return NextResponse.error();
+    if (!studentCenterRes.ok || !aquaticCenterRes.ok) {
+      console.log('Something went wrong', studentCenterRes, aquaticCenterRes);
+      return NextResponse.error();
+    }
 
     const [studentCenterRawData, aquaticCenterRawData] = await Promise.all([
         studentCenterRes.json(),
