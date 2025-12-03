@@ -1,4 +1,3 @@
-import Page from '@/components/page/DefaultPage';
 import TodayChart from "@/components/by-page/solar-for-riverdale/TodayChart";
 import LastSevenDaysChart from "@/components/by-page/solar-for-riverdale/LastSevenDaysChart";
 import { useEffect, useState } from "react";
@@ -17,7 +16,7 @@ export default function SolarForRiverdale() {
     const [todaysData, setTodaysData] = useState<SolarData>([]);
 
     useEffect(()=>{
-        if (false && process.env.NODE_ENV === 'development') {
+        if (process.env.NODE_ENV === 'development') {
             // For testing so not too many API calls (only 400 allowed per day)
             setLastSevenDaysData([
                 {
@@ -453,40 +452,37 @@ export default function SolarForRiverdale() {
         }
     }, []);
     
-    return <Page noPadding pathname='/solar-for-riverdale' seo={{
-        title: 'Solar for Riverdale',
-        // description: 'Fill out this contact form to reach Joel',
-        // og: {
-        //     image: '/image/opengraph/contact.png',
-        //     imageAlt: "Listening Joel"
-        // }
-    }}>
-        <div className="flex flex-col items-center">
-            <h1 className="text-4xl mt-12 mb-6">Solar for Riverdale</h1>
-            
-            <div className="text-center text-2xl leading-relaxed max-w-[1100px] mb-5">Riverdale has a 109 kW solar installation on the roofs of the cafeteria, swimming pool, and Mow. Every year, it generates 130 megawatt-hours of electricity and reduces carbon emissions by 87.4 tonnes.</div>
-            
+    return <div className="flex flex-col items-center">
+        <h1 className="text-3xl mt-5 mb-1">Solar for Riverdale</h1>
+        
+        <div className="text-center text-xl leading-relaxed max-w-[1100px] mb-3">Riverdale has a 109 kW solar installation on the roofs of the cafeteria, swimming pool, and Mow. Every year, it generates 130 megawatt-hours of electricity and reduces carbon emissions by 87.4 tonnes.</div>
+        
+        <div className="flex flex-col items-center border rounded-lg w-min">
             {
                 lastSevenDaysData.length === 0
                 ? <>
                     <div>Loading data...</div>
                 </>
-                : <>
+                : <div className="flex flex-col items-center border rounded-lg border-gray-300 px-10 w-full mb-3">
                     <h3>Last 7 Days</h3>
-                    <LastSevenDaysChart data={lastSevenDaysData} />
-                </>
+                    <div style={{zoom: 0.7}}>
+                        <LastSevenDaysChart data={lastSevenDaysData} />
+                    </div>
+                </div>
             }
             {
                 todaysData.length === 0
                 ? <>
                     <div>Loading data...</div>
                 </>
-                : <>
+                : <div className="flex flex-col items-center border rounded-lg border-gray-300 px-10 w-full">
                     <h3>Today (Live)</h3>
-                    <TodayChart data={todaysData} />
-                </>
+                    <div style={{zoom: 0.7}}>
+                        <TodayChart data={todaysData} />
+                    </div>
+                </div>
             }
         </div>
-    </Page>;
+    </div>;
 }
 
