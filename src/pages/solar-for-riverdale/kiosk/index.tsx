@@ -452,37 +452,40 @@ export default function SolarForRiverdale() {
         }
     }, []);
     
-    return <div className="flex flex-col items-center">
-        <h1 className="text-3xl mt-5 mb-1">Solar for Riverdale</h1>
-        
-        <div className="text-center text-xl leading-relaxed max-w-[1100px] mb-3">Riverdale has a 109 kW solar installation on the roofs of the cafeteria, swimming pool, and Mow. Every year, it generates 130 megawatt-hours of electricity and reduces CO₂ equivalent emissions by 87.4 tonnes.</div>
-        
-        <div className="flex flex-col items-center border rounded-lg w-min">
-            {
-                lastSevenDaysData.length === 0
-                ? <>
-                    <div>Loading data...</div>
-                </>
-                : <div className="flex flex-col items-center border rounded-lg border-gray-300 px-10 w-full mb-3">
-                    <h3>Last 7 Days</h3>
-                    <div style={{zoom: 0.8}}>
-                        <LastSevenDaysChart data={lastSevenDaysData} />
+    return <>
+        <div className="flex flex-col items-center">
+            <h1 className="text-3xl mt-5 mb-1">Solar for Riverdale</h1>
+            
+            <div className="text-center text-xl leading-relaxed max-w-[1100px] mb-3">Riverdale has a 109 kW solar installation on the roofs of the cafeteria, swimming pool, and Mow. Every year, it generates 130 megawatt-hours of electricity and reduces CO₂ equivalent emissions by 87.4 tonnes.</div>
+            
+            <div className="flex flex-col items-center border rounded-lg w-min">
+                {
+                    lastSevenDaysData.length === 0
+                    ? <>
+                        <div>Loading data...</div>
+                    </>
+                    : <div className="flex flex-col items-center border rounded-lg border-gray-300 px-10 w-full mb-3">
+                        <h3>Last 7 Days</h3>
+                        <div style={{zoom: 0.8}}>
+                            <LastSevenDaysChart data={lastSevenDaysData} />
+                        </div>
                     </div>
-                </div>
-            }
-            {
-                todaysData.length === 0
-                ? <>
-                    <div>Loading data...</div>
-                </>
-                : <div className="flex flex-col items-center border rounded-lg border-gray-300 px-10 w-full">
-                    <h3>Today (Live)</h3>
-                    <div style={{zoom: 0.8}}>
-                        <TodayChart data={todaysData} />
+                }
+                {
+                    todaysData.length === 0
+                    ? <>
+                        <div>Loading data...</div>
+                    </>
+                    : <div className="flex flex-col items-center border rounded-lg border-gray-300 px-10 w-full">
+                        <h3>Today (Live)</h3>
+                        <div style={{zoom: 0.8}}>
+                            <TodayChart data={todaysData} />
+                        </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
-    </div>;
+        {/* <div className="text-sm text-right mt-5">*the Mow installation does not have live data so all numbers here are just from the cafeteria (Student Center) and swimming pool (Aquatic Center) panels. The Mow panels contribute an additional 30 kW to these numbers.</div> */}
+    </>;
 }
 

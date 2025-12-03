@@ -40,7 +40,7 @@ const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white border border-gray-300 rounded-lg shadow-lg p-3">
-        <p className="text-base text-black">{Math.round(payload[0].value)} kWh</p>
+        <p className="text-base text-black">{Math.round(payload[0].value)} kW</p>
       </div>
     )
   }
@@ -84,7 +84,7 @@ export default function PowerChart({ data }: PowerChartProps) {
               />
               <YAxis
                 label={{
-                  value: "Power (Watts)",
+                  value: "Power (kW)",
                   angle: -90,
                   position: "insideLeft",
                   dy: 50,
