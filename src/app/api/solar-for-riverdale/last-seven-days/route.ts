@@ -1,4 +1,3 @@
-import prisma from "@/data/prisma/client";
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -15,18 +14,35 @@ export async function GET() {
     if (!studentCenterRes.ok || !aquaticCenterRes.ok)
         return NextResponse.error();
 
-    const [studentCenterData, aquaticCenterData] = await Promise.all([
+    const [studentCenterRawData, aquaticCenterRawData] = await Promise.all([
         studentCenterRes.json(),
         aquaticCenterRes.json()
     ]);
+    let studentCenter = studentCenterRawData.energy.values.map((e: any)=>{
+        return {
+            date: e.date.split(' ')[0],
+            value: e.value / 1000 //kWh
+        };
+    });
+    let aquaticCenter = aquaticCenterRawData.energy.values.map((e: any)=>{
+        return {
+            date: e.date.split(' ')[0],
+            value: e.value / 1000 //kWh
+        };
+    });
 
-    const studentCenterTotal = studentCenterData.energy.values.reduce((sum: number, entry: any) => sum + entry.value, 0);
-    const aquaticCenterTotal = aquaticCenterData.energy.values.reduce((sum: number, entry: any) => sum + entry.value, 0);
+    // Combine totals for each day
+    let total = studentCenter.map((scEntry: any, index: number) => {
+        return {
+            date: scEntry.date,
+            value: scEntry.value + aquaticCenter[index].value
+        };
+    });
 
     const stats = {
-        studentCenter: studentCenterData.energy.values,
-        aquaticCenter: aquaticCenterData.energy.values,
-        total: studentCenterTotal + aquaticCenterTotal
+        studentCenter,
+        aquaticCenter,
+        total
     };
 
     return NextResponse.json(stats);
