@@ -35,7 +35,8 @@ export default function LastSevenDaysChart({ data }: { data: SolarData }) {
         config={{
           value: {
             label: "Energy (kWh)",
-            color: "hsl(45, 93%, 47%)",
+            color: "#f5b72c",
+            // color: "hsl(45, 93%, 47%)",
           },
         }}
         className="h-[400px]"
