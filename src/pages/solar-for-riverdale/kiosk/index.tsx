@@ -453,6 +453,7 @@ export default function SolarForRiverdale() {
     }, []);
     
     return <>
+        <title>Solar for Riverdale</title>
         <div className="flex flex-col items-center">
             <h1 className="text-3xl mt-5 mb-1">Solar for Riverdale</h1>
             

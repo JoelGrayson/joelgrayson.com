@@ -75,7 +75,7 @@ export default function CCC() {
                 </div> */}
 
                 <p className='d:absolute d:top-0 d:right-0'>
-                    Will save ~<Green>87 MTCO₂e</Green> each year
+                    Saves ~<Green>87 MTCO₂e</Green> each year
                     {/* Deprecated old calculations:
                     <CalculationInfo>
                         <Markdown>{`
