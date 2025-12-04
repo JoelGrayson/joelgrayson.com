@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
     const fmt = new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }); //date formatter
     const yesterdayNYC = fmt.format(Date.now() - 1 * 24 * 60 * 60 * 1000); //like 2025-12-01
