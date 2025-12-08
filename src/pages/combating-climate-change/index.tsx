@@ -52,14 +52,7 @@ export default function CCC() {
                 <Image src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='solar panel' width={26} height={20} className='ml-3 inline' />
             } {...{showDescription}}>
                 <div className='relative'>
-                    <p>While learning about different energy sources, I realized that my school&apos;s empty rooftops had great potential for solar energy. I measured the rooftops, created solar models in HelioScope (image below), calculated savings, and gathered quotes from two companies. I presented to the administration and board of trustees, leading to a 109 kW solar PPA arrangement (enough to power 13 households), promote renewable energy, and save the school tens of thousands of dollars every year.</p>
-                    <p>85% of New York City&apos;s electricity comes from fossil fuels. This installation will generate 540 megawatt-hours of clean electricity per year.</p>
-                    <b>Cobenefits:</b>
-                    <ul>
-                        <li>Currently, when the power goes out in the River Campus, there is no WiFi, heat, or lighting. This happens around three times a year. Our installation will add a battery to the lower school to make sure the campus has 4–6 hours of backup power during the outages.</li>
-                        <li>EV charging in the carports</li>
-                        <li>Live energy generation data will be displayed in campus hallways and used in the science curriculum.</li>
-                    </ul>
+                    <p>While learning about different energy sources, I realized that my school&apos;s empty rooftops had great potential for solar energy. I measured the rooftops, created solar models in HelioScope (image below), calculated savings, and gathered quotes from two companies. I presented to the administration and board of trustees, leading to a 109 kW solar installation (enough to power 13 households) that saves the school tens of thousands of dollars every year. The installation is on the roofs of the cafeteria and swimming pool, generating 130 megawatt-hours of electricity per year, helping to make New York City&apos;s electricity cleaner given that currently 85% of it comes from fossil fuels.</p>
                 </div>
                 <Image src='/image/ccc/solar-for-riverdale/models.png' width={720} height={146} alt='Solar Models' />
                 <Image src='/image/ccc/solar-for-riverdale/Presenting.png' width={500} height={265} alt='Solar Models' priority />
