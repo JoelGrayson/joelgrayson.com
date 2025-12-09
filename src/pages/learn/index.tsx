@@ -16,6 +16,7 @@ export default function Learn() {
             <li><Link href='/learn/physics'>Physics</Link></li>
             <li><Link href='/learn/linear-algebra-derivatives/linear-algebra-derivatives.pdf'>Linear Algebra Derivatives</Link></li>
             <li><Link href='/learn/pi'>The Digits of Pi</Link></li>
+            <li><Link href='https://joelkit.com'>Algorithms and Data Structures</Link></li>
             <li><Link href='https://memorizethepresidents.com'>The Presidents of the United States</Link></li>
             <li><Link href='/learn/citations'>Citations</Link></li>
             <li><Link href='/learn/pablo-neruda'>Pablo Neruda</Link></li>
@@ -47,6 +48,7 @@ export default function Learn() {
 
         <h3>Class Notes</h3>
         <ul>
+            <li><Link href='https://notes.joelgrayson.com/probability'>Probability (CS 109)</Link></li>
             <li><Link href='https://notes.joelgrayson.com/circuits'>Circuits (ENGR 40M and EE 101A)</Link></li>
             <li><Link href='https://notes.joelgrayson.com/mathematical-foundations-of-computing'>Mathematical Foundations of Computing (CS 103)</Link></li>
             <li><Link href='https://notes.joelgrayson.com/multivariable-calculus'>Multivariable Calculus (Math 52)</Link></li>
