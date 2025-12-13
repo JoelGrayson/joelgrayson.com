@@ -35,6 +35,8 @@ export default function Art() {
         <p className='mb-8'>&quot;Every child is an artist. The problem is how to remain an artist once he grows up.&quot; &mdash;Pablo Picasso</p>
         <div className='row-span-2 col-span-2'></div> {/* make sure that tailwind renders row-span-2 and col-span-2 */}
 
+        {/* <img src='/image/art/lower-manhattan.jpg' className='mb-5' /> */}
+        
         {/* Grid of Images to Select From */}
         <div style={{
             display: 'grid',

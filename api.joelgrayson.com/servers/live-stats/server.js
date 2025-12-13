@@ -30,24 +30,28 @@ async function getHCAndFocusInstalls() {
 // Helpers
 function createGetChromeExtensionStats(url) {
     return new Promise(async resolve=>{
+        console.log('Getting chrome extension stats v1');
+        let browser;
         try {
             console.log('Creating browser');
-            const browser=await puppeteer.launch({
-                // headless: 'new',
-                args: [
-                    '--no-sandbox', //disable security feature of sandboxing chrome's processes. Gives more privileges to the program execution runtime.
-                    // '--disable-setuid-sandbox'
-                ],
-                timeout: 50000  //default: 30000
+            browser=await puppeteer.launch({
+                pipe: true
+                // // headless: 'new',
+                // args: [
+                //     '--no-sandbox', //disable security feature of sandboxing chrome's processes. Gives more privileges to the program execution runtime.
+                //     // '--disable-setuid-sandbox'
+                // ],
+                // timeout: 50000  //default: 30000
             });
         } catch (err) {
-            console.log('There was a problem while creating the browser');
+            console.log('There was a problem while creating the browser', err);
             console.error(err);
         }
 
+        let page;
         try {
             console.log('Creating the new page');
-            const page=await browser.newPage();
+            page=await browser.newPage();
         } catch (err) {
             console.log('There was a problem while creating the page');
             console.error(err);
