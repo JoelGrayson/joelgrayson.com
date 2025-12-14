@@ -5,6 +5,7 @@ const port=process.env.PORT || 8080;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+require('dotenv').config();
 
 // Compress responses
 const compression=require('compression');
@@ -30,6 +31,24 @@ app.use(cors({
     }
 }));
 
+// Request logging middleware
+app.use((req, res, next) => {
+    const now = new Date();
+    console.log('\n=== Incoming Request ===');
+    console.log('NYC Time:', now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    console.log('CA Time:', now.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
+    console.log('Method:', req.method);
+    console.log('URL:', req.url);
+    console.log('Path:', req.path);
+    console.log('Query:', req.query);
+    console.log('Headers:', req.headers);
+    console.log('Body:', req.body);
+    console.log('IP:', req.ip);
+    console.log('========================\n');
+    next();
+});
+
+
 
 //# Pages
 // ## Public Webpages
@@ -51,18 +70,24 @@ app.post('/verify', require('./servers/verify/verify').verifyHandler);
 app.use('/combating-climate-change/electric-school-buses-petition/signatures', require('./servers/electric-school-buses-petition/server'));
 
 // Comment line below if on mac because it uses puppeteer
+console.log('Endpoint', process.env.LIVE_STATS_PATH);
 if (process.env.IS_MAC) {
     console.log('Skipping live-stats because on mac and it includes puppeteer');
+    app.get(process.env.LIVE_STATS_PATH, (req, res)=>res.send('Not defined on mac'));
 } else {
-    app.use('/live-stats', require('./servers/live-stats/server').router);
+    // Hide the path since it is being called too many times by spammers
+    app.use(process.env.LIVE_STATS_PATH, require('./servers/live-stats/server').router);
 }
 
 
 // ## 404
-app.use('*', (req, res)=>{
+app.use((req, res)=>{
     res.status(404).redirect('/404.html');
 });
 
 
 app.listen(port, ()=>console.log(`Listening on port ${port}`));
+
+
+console.log('Created api.joelgrayson.com version 12.13.2025v2');
 

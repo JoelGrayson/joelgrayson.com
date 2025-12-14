@@ -7,9 +7,6 @@ const router=express.Router();
 const cacheMiddleware=require('../../utils/cache');
 const puppeteer=require('puppeteer');
 
-const getHCInstalls=createGetChromeExtensionStats('https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj');
-const getFocusInstalls=createGetChromeExtensionStats('https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf');
-
 // router.get('/', cacheMiddleware, async (req, res)=>{ //no need to cache it since this is /live-stats. Anything cached would be done with prisma
 router.get('/', async (req, res)=>{
     return res.json(await getHCAndFocusInstalls());
@@ -18,6 +15,9 @@ router.get('/', async (req, res)=>{
 module.exports={ router, getHCAndFocusInstalls };
 
 async function getHCAndFocusInstalls() {
+    const getHCInstalls=createGetChromeExtensionStats('https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj');
+    const getFocusInstalls=createGetChromeExtensionStats('https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf');
+
     const [hCInstalls, focusInstalls]=await Promise.all([
         getHCInstalls,
         getFocusInstalls
@@ -30,18 +30,19 @@ async function getHCAndFocusInstalls() {
 // Helpers
 function createGetChromeExtensionStats(url) {
     return new Promise(async resolve=>{
-        console.log('Getting chrome extension stats v1');
+        console.log('Getting chrome extension stats v1.1');
+        
         let browser;
         try {
             console.log('Creating browser');
             browser=await puppeteer.launch({
-                pipe: true
+                // pipe: true
                 // // headless: 'new',
-                // args: [
-                //     '--no-sandbox', //disable security feature of sandboxing chrome's processes. Gives more privileges to the program execution runtime.
-                //     // '--disable-setuid-sandbox'
-                // ],
-                // timeout: 50000  //default: 30000
+                args: [
+                    '--no-sandbox', //disable security feature of sandboxing chrome's processes. Gives more privileges to the program execution runtime.
+                    // '--disable-setuid-sandbox'
+                ],
+                timeout: 50_000  //default: 30000
             });
         } catch (err) {
             console.log('There was a problem while creating the browser', err);

@@ -16,7 +16,7 @@ RUN apt-get update && apt-get upgrade -y
 # Install Node & NPM
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y curl
-RUN curl -sL https://deb.nodesource.com/setup_22.x | bash
+RUN curl -sL https://deb.nodesource.com/setup_24.x | bash
 # RUN apt install -y Node.js npm
 RUN apt-get install -y nodejs
 # Fixing NPM to work
@@ -36,6 +36,7 @@ RUN apt install -y gconf-service libgbm-dev libasound2 libatk1.0-0 libc6 libcair
 
 WORKDIR /usr/src/app
 COPY . .
+COPY .env .env
 ENV NODE_ENV=production
 RUN npm install --omit=dev
 # RUN /usr/bin/crontab crontab
