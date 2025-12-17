@@ -130,7 +130,7 @@ export default function Resume() {
                                 <Link href="https://apps.apple.com/us/app/edit-time/id6464405876?mt=12">Edit Time</Link>
                             </span>
                             <span className="date">2024</span>
-                            <div className="description inline-description">freemium app with 4,000 installs and $1,933 ARRR.</div>
+                            <div className="description inline-description">freemium app with 6,000 installs and $3,000 revenue.</div>
                         </li>
                         <li>
                             <span className="title with-icon">
@@ -138,7 +138,8 @@ export default function Resume() {
                                 <Link href="https://buseroo.com">Buseroo.com</Link>
                             </span>
                             <span className="date">2021&ndash;23</span>
-                            <div className="description inline-description">website and <Link href='https://apps.apple.com/us/app/buseroo/id6736895918' target="_blank">app</Link> to find closest school bus to any address.</div>
+                            <div className="description inline-description">1,500 searches, website and <Link href='https://apps.apple.com/us/app/buseroo/id6736895918' target="_blank">app</Link> to find closest school bus to any address.</div>
+                            {/* <div className="description inline-description">website and <Link href='https://apps.apple.com/us/app/buseroo/id6736895918' target="_blank">app</Link> to find closest school bus to any address.</div> */}
                         </li>
                         <li>
                             <span className="title with-icon">
@@ -146,7 +147,7 @@ export default function Resume() {
                                 <Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>Homework Checker</Link>
                             </span>
                             <span className="date">2021&ndash;22</span>
-                            <div className="description inline-description">helps 3,000 students daily organize their homework.</div>
+                            <div className="description inline-description">helps 6,000 students organize their homework.</div>
                         </li>
                         <li>
                             <span className="title with-icon">
@@ -162,7 +163,7 @@ export default function Resume() {
                                 <Link href='https://lirongart.com'>LirongArt.com</Link>
                             </span>
                             <span className="date">2020</span>
-                            <div className="description inline-description">online gallery showcasing my mom’s paintings.</div>
+                            <div className="description inline-description">online gallery showcasing my mom&apos;s paintings.</div>
                         </li>
                         <h4>Physical:</h4>
                         <li>
