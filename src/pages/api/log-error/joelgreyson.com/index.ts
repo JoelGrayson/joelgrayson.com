@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/data/prisma/client';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
-    const url=req.body.url;
+    const url=req.headers.referer || req.body.url;
 
     await prisma.error.create({
         data: {
