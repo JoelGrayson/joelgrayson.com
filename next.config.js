@@ -8,14 +8,7 @@ const { withPlausibleProxy }=require('next-plausible');
 
 /** @type {import('next').NextConfig} */
 const nextConfig={
-    reactStrictMode: true,
-    swcMinify: true,
     redirects: jredirects,
-    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
-    i18n: {
-        locales: ['en'],
-        defaultLocale: 'en'
-    },
     transpilePackages: [
         '@mui/material',
         '@ant-design/icons',
@@ -65,12 +58,10 @@ const nextConfig={
             ];
         }
     },
-    experimental: {
-        serverComponentsExternalPackages: [
-            '@aws-sdk/client-s3',
-            '@aws-sdk/s3-request-presigner'
-        ]
-    }
+    serverComponentsExternalPackages: [
+        '@aws-sdk/client-s3',
+        '@aws-sdk/s3-request-presigner'
+    ]
 
     // Uncomment below in order to export as HTML
     // output: 'export',
@@ -78,7 +69,7 @@ const nextConfig={
     // assetPath: '/joelgrayson.com',
 };
 
-module.exports=withBundleAnalyzer(withMDX(withPlausibleProxy()(nextConfig)));
-
-
+// module.exports=nextConfig;
+module.exports=withPlausibleProxy()(nextConfig);
+// module.exports=withBundleAnalyzer(withMDX(withPlausibleProxy()(nextConfig)));
 
