@@ -1,6 +1,5 @@
 import Loader from '@/components/global/Loader';
 import Page from '@/components/page/DefaultPage';
-import Button from '@jcomponents/button';
 import { useState } from 'react';
 import { format } from 'date-fns';
 import Info from '@/components/global/Info';
@@ -90,7 +89,7 @@ export default function Dashboard() {
                     <label htmlFor="password">Password: </label>
                     <input id='password' value={password} onChange={e=>setPassword(e.target.value)} type='password' />
                     <br />
-                    <Button type='submit'>Submit</Button>
+                    <button type='submit'>Submit</button>
                 </form>
                 { status==='loading' && <Loader /> }
                 { status==='error' && <div className='text-red-500'>{errorMessage}</div> }
@@ -143,22 +142,22 @@ export default function Dashboard() {
 
                 {
                     selectedErrors.length!==0 && <>
-                        <Button onClick={()=>{
+                        <button onClick={()=>{
                             request('RESOLVE', selectedErrors)
                                 .then(()=>{
                                     setErrors404(errors404.filter((error: any)=>!selectedErrors.includes(error.id)));
                                     setOtherErrors(otherErrors.filter((error: any)=>!selectedErrors.includes(error.id)));
                                     setSelectedErrors([]);
                                 });
-                        }}>Resolve</Button>
-                        <Button onClick={()=>{
+                        }}>Resolve</button>
+                        <button onClick={()=>{
                             request('DELETE', selectedErrors)
                                 .then(()=>{
                                     setErrors404(errors404.filter((error: any)=>!selectedErrors.includes(error.id)));
                                     setOtherErrors(otherErrors.filter((error: any)=>!selectedErrors.includes(error.id)));
                                     setSelectedErrors([]);
                                 });
-                        }}>Delete</Button>
+                        }}>Delete</button>
                     </>
                 }
                 
@@ -213,12 +212,12 @@ export default function Dashboard() {
                 </table>
                 
                 <br /><br />
-                <Button onClick={()=>{
+                <button onClick={()=>{
                     setPassword('');
                     setStatus('start-screen');
                     setOtherErrors([]);
                     setErrors404([]);
-                }}>Log Out</Button>
+                }}>Log Out</button>
             </div>
         }
     </Page>;

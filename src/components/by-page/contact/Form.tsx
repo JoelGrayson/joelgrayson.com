@@ -41,10 +41,10 @@ export default function Form() {
 
         {/* justify-around */}
 
-        <div className='border-black border-solid border-2 mx-auto rounded-3xl d:my-[100px] m:my-[50px]
+        <div className={`border-black border-solid border-2 mx-auto rounded-3xl d:my-[100px] m:my-[50px]
             flex flex-col items-center
             max-w-[540px] min-h-[500px]
-            leading-loose bg-[#fff0d4] dark:bg-[#222] d:px-8'> {/* Box */}
+            leading-loose bg-[#fff0d4] dark:bg-[#222] d:px-8`}> {/* Box */}
             <h2 className='pt-6'>I&apos;d Love to Talk with You</h2>
             <p className='text-center mb-3'>Fill out the form below or email <Link href='mailto:joel@joelgrayson.com'>joel@joelgrayson.com</Link></p>
             {
