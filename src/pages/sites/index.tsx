@@ -19,13 +19,10 @@ export function Sites() { /* bullet points of all sites */
             <Site>shirtocracy.com</Site>
             <Site>memorizethepresidents.com</Site>
             <Site>luxpremierllc.com</Site>
+            <Site>joelkit.com</Site>
+            <Site>stanfordlaunches.com</Site>
             <Site addendum=' (Slaphappy)' href='https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A'>youtube.com/@JoelGrayson</Site>
             <Site addendum=' (my first site)' href='https://joelgrayson.wixsite.com/geography'>Geography learning site</Site>
-        </ul>
-
-        <h3 className='mt-3'>Coming Soon</h3>
-        <ul>
-            <Site>bulletbrainstorm.com</Site>
         </ul>
     </>;
 }
