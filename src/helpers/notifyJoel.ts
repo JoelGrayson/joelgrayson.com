@@ -13,6 +13,8 @@ export default async function notifyJoel(args: { //notify Joel of contact form s
 }) {
     // email Joel
     if (args.email) {
+        const replyTo = args.email.replyTo;
+
         await Promise.all([
             // SendGrid
             emailClient.send({
@@ -20,15 +22,16 @@ export default async function notifyJoel(args: { //notify Joel of contact form s
                 from: 'bot@joelgrayson.com',
                 subject: args.email.subject,
                 text: args.email.body,
-                replyTo: args.email.replyTo
+                replyTo
             }),
             
             // Resend
             resend.emails.send({
                 from: 'Joel Grayson <contact@stanfordlaunches.com>',
                 to: 'joel@joelgrayson.com',
-                subject: `joelgrayson.com/contact: New Submission from ${args.email}`,
+                subject: `joelgrayson.com/contact: New Contact Form Submission from ${replyTo}`,
                 text: args.email.body,
+                replyTo
             })
         ])
     }
