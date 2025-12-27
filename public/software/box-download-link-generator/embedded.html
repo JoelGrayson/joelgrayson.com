@@ -103,8 +103,8 @@
     if (error) {
       //ERROR
       var errorEl=document.getElementById('errorMessage');
-      errorEl.innerHTML='Invalid Box URL. This is the URL from the address bar, not the copied link. See instructions steps 3–4.'; //show error for 7 sec
-      setTimeout(function(){errorEl.innerHTML=''},7000);
+      errorEl.innerHTML='Wrong Box URL. Please provide the URL from the address bar (website URL), not the Share Link URL. See instructions steps 3–4.'; //show error for 10 sec
+      setTimeout(function(){errorEl.innerHTML=''},10000);
     } else {
       document.getElementById('output').value=downloadLink;
       //animate green arrow

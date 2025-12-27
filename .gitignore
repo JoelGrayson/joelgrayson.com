@@ -34,3 +34,4 @@ next-env.d.ts
 public/image/memes/Cooked.ai
 
 private
+**/private

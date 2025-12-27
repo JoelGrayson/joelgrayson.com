@@ -2,7 +2,9 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/data/prisma/client';
 
 export default async function handler(req: NextApiRequest, globalRes: NextApiResponse<any>) {
+    console.log('handler started');
     const sharedName=req.query.sharedName;
+    console.log('sharedName', sharedName);
     if (!sharedName) {
         console.log('sharedName required');
         return globalRes.status(400).json({
@@ -35,5 +37,12 @@ export default async function handler(req: NextApiRequest, globalRes: NextApiRes
                     downloadLink
                 });
             }
+       })
+       .catch(err=>{
+            console.log('Box api error:', err);
+            globalRes.json({
+                status: 'error',
+                message: 'could not get box info'
+            });
        });
 }
