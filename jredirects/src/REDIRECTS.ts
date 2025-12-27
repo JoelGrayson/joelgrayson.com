@@ -10,6 +10,7 @@ export const temporary: redirects={ //302
     '/portfolio': '/portfolio.',
     '/techmap': ['/software/tech-map', '/software/techmap', '/tech-map'],
 
+    '/software/daily-joelmble/index.html': ['/daily-joelmble', '/software/daily-joelmble'],
     'https://notes.joelgrayson.com': '/notes',
     
     '/software/worderoo': '/worderoo',
