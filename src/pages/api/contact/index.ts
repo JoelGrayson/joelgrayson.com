@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const origin=req.headers.origin || 'joelgrayson.com';
 
     const notifyJoelMsg=`${name} <${email}> wrote:\n${message}`;
-    notifyJoel({ //notify Joel of contact form submission
+    await notifyJoel({ //notify Joel of contact form submission
         email: {
             subject: `${name} <${email}> contacted you through ${origin}`,
             replyTo: email,

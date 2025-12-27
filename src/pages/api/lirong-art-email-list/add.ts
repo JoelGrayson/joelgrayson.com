@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const notifyJoelMsg=`Name: ${name}\nEmail: ${email}`;
     console.log(`Registering ${name} <${email}> for the LirongArt Email List`);
 
-    notifyJoel({ //notify Joel of contact form submission
+    await notifyJoel({ //notify Joel of contact form submission
         email: {
             subject: `${name} <${email}> signed up for the LirongArt Email List`,
             replyTo: email,
