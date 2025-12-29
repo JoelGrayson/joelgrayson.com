@@ -22,7 +22,13 @@ else
 fi
 
 
+# Clear the way for Focus and Homework Checker stats
+echo Run \`prisma studio\` in the background to find the correct date
+$J_PATH/subroutines/parts/remove-chrome-extension-stats-after-certain-date.js
+
+
 # Focus for Google Docs
+# echo Remember to clear those from prisma studio that are whole numbers like 1,000
 open "https://chrome.google.com/webstore/devconsole/61858c1f-4cbf-4529-89f5-3d80b05e9b4c/djnloioaddlnmagobbcnjpppmbelfocf/analytics/users#:~:text=Weekly%20users%20by%20OS"
 echo -e "
 \e]8;;https://chrome.google.com/webstore/devconsole/61858c1f-4cbf-4529-89f5-3d80b05e9b4c/djnloioaddlnmagobbcnjpppmbelfocf/analytics/users#:~:text=Weekly%20users%20by%20OS\aFocus for Google Docs\e]8;;\a:
@@ -40,6 +46,7 @@ fi
 
 
 # Homework Checker
+# echo Remember to clear those from prisma studio that are whole numbers like 1,000
 open "https://chrome.google.com/webstore/devconsole/61858c1f-4cbf-4529-89f5-3d80b05e9b4c/aflepcmbhmafadnddmdippaajhjnmohj/analytics/users#:~:text=Weekly%20users%20by%20OS"
 echo -e "
 \e]8;;hhttps://chrome.google.com/webstore/devconsole/61858c1f-4cbf-4529-89f5-3d80b05e9b4c/aflepcmbhmafadnddmdippaajhjnmohj/analytics/users#:~:text=Weekly%20users%20by%20OS\aHomework Checker\e]8;;\a:

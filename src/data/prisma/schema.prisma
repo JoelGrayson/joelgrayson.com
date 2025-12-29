@@ -87,6 +87,7 @@ model EventCounter {
     eventName String
     origin    String
     time      DateTime @default(now())
+    notes     String? //used by me to annotate the rows
 }
 
 // Library
@@ -119,6 +120,7 @@ model Contact {
     origin            String
     previousPage      String? // the page before they clicked the contact button in the header to contact me. This is important so I have context as to where they were before, such as if they were using one of my softwares and found a bug
     contactFormStatus ContactFormStatus? @default(UNSET) //so prisma studio can use the not filter
+    notes             String?
 }
 
 enum ContactFormStatus {
