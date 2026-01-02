@@ -1,5 +1,6 @@
 import { resend } from "./resend";
 import emailClient from '@sendgrid/mail';
+import textJoel from "./textJoel";
 
 emailClient.setApiKey(process.env.SENDGRID_API_KEY as string);
 
@@ -29,10 +30,12 @@ export default async function notifyJoel(args: { //notify Joel of contact form s
             resend.emails.send({
                 from: 'Joel Grayson <contact@stanfordlaunches.com>',
                 to: 'joel@joelgrayson.com',
-                subject: `joelgrayson.com/contact: New Contact Form Submission from ${replyTo}`,
+                subject: args.email.subject,
                 text: args.email.body,
                 replyTo
-            })
+            }),
+
+            textJoel(args.email.body)
         ])
     }
     if (args.text) {

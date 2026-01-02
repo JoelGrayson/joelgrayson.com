@@ -11,6 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     await notifyJoel({ //notify Joel of contact form submission
         email: {
             subject: `${name} <${email}> contacted you through ${origin}`,
+            // `joelgrayson.com/contact: New Contact Form Submission from ${replyTo}`
             replyTo: email,
             body: notifyJoelMsg
         },
