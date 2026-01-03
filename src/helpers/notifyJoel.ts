@@ -30,6 +30,7 @@ export default async function notifyJoel(args: { //notify Joel of contact form s
             })
         );
 
+        // Resend
         promises.push(
             resend.emails.send({
                 from: 'Joel Grayson <contact@stanfordlaunches.com>',

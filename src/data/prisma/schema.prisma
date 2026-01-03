@@ -29,7 +29,7 @@ model Comment {
     author    String //display name on comment author
     content   String
     postedAt  DateTime
-    email     String
+    email     String?
     Article   Article  @relation(fields: [articleId], references: [id])
     articleId String
 

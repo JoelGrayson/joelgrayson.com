@@ -82,7 +82,7 @@ export default function AddComment({ hyphenatedTitle }: { hyphenatedTitle: strin
                             <input type='text' id='name' name='name' placeholder='Name'  value={name} onChange={e=>setName(e.target.value)} className='w-full' />
                         </div>
                         <div className='w-[50%]'>
-                            <label htmlFor="email">Email (Not public. For verification purposes)</label>
+                            <label htmlFor="email">Email (Not public. Optional)</label>
                             <input type='email' id='email' name='email' placeholder='Email' value={email} onChange={e=>setEmail(e.target.value)} className='w-full' />
                         </div>
                     </div>
