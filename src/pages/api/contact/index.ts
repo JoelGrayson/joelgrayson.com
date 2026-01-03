@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             replyTo: email,
             body: notifyJoelMsg
         },
-        text: `---New joelgrayson.com Contact Form Submission---\n${notifyJoelMsg}`
+        text: `New Contact Form Submission: ${notifyJoelMsg}`
     });
 
 

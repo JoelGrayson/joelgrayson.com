@@ -12,33 +12,40 @@ export default async function notifyJoel(args: { //notify Joel of contact form s
         body: string;
     };
 }) {
+    const promises = [];
+    const prefix = 'joelgrayson.com: ';
+
     // email Joel
     if (args.email) {
         const replyTo = args.email.replyTo;
 
-        await Promise.all([
-            // SendGrid
+        // SendGrid
+        promises.push(
             emailClient.send({
                 to: process.env.MY_SENDGRID_EMAIL_ADDR,
                 from: 'bot@joelgrayson.com',
-                subject: args.email.subject,
+                subject: prefix + args.email.subject,
                 text: args.email.body,
                 replyTo
-            }),
-            
-            // Resend
+            })
+        );
+
+        promises.push(
             resend.emails.send({
                 from: 'Joel Grayson <contact@stanfordlaunches.com>',
                 to: 'joel@joelgrayson.com',
-                subject: args.email.subject,
+                subject: prefix + args.email.subject,
                 text: args.email.body,
                 replyTo
-            }),
-
-            textJoel(args.email.body)
-        ])
+            })
+        );
     }
     if (args.text) {
-        
+        promises.push(
+            textJoel(prefix + args.text)
+        );
     }
+
+    return await Promise.all(promises);
 }
+
