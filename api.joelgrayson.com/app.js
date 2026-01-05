@@ -68,6 +68,10 @@ for (const [dest, src] of Object.entries(redirects)) {
 // ## API Page Routers
 app.post('/verify', require('./servers/verify/verify').verifyHandler);
 app.use('/combating-climate-change/electric-school-buses-petition/signatures', require('./servers/electric-school-buses-petition/server'));
+app.get('/j', (req, res)=>{
+    res.send('j');
+    return;
+});
 
 // Comment line below if on mac because it uses puppeteer
 console.log('Endpoint', process.env.LIVE_STATS_PATH);
