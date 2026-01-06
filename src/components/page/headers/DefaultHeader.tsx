@@ -53,10 +53,15 @@ export default function DefaultHeader({ pathname='' }: { pathname?: string }) {
                     <HeaderGroupItem pathname={pathname} link='https://apps.apple.com/us/app/edit-time/id6464405876'>Edit Time</HeaderGroupItem>
                     <HeaderGroupItem pathname={pathname} link='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf?hl=en'>Focus for Google Docs</HeaderGroupItem>
                     <HeaderGroupItem pathname={pathname} link='https://buseroo.com'>Buseroo</HeaderGroupItem>
-                    <HeaderGroupItem pathname={pathname} link='/techmap'>TechMap</HeaderGroupItem>
-                    <HeaderGroupItem pathname={pathname} link='https://lirongart.com'>Lirong Art</HeaderGroupItem>
                     <HeaderGroupItem pathname={pathname} link='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>Homework Checker</HeaderGroupItem>
+                    <HeaderGroupItem pathname={pathname} link='https://joelkit.com'>JoelKit</HeaderGroupItem>
+                    <HeaderGroupItem pathname={pathname} link='/techmap'>TechMap</HeaderGroupItem>
+                    <HeaderGroupItem pathname={pathname} link='/worderoo'>Worderoo</HeaderGroupItem>
+                    <HeaderGroupItem pathname={pathname} link='/readometer'>Readometer</HeaderGroupItem>
+                    <HeaderGroupItem pathname={pathname} link='https://lirongart.com'>Lirong Art</HeaderGroupItem>
                     <HeaderGroupItem pathname={pathname} link='https://shanghaidictionary.com'>ShanghaiDictionary.com</HeaderGroupItem>
+                    <HeaderGroupItem pathname={pathname} link='https://shirtocracy.com'>Shirtocracy</HeaderGroupItem>
+                    <HeaderGroupItem pathname={pathname} link='https://memorizethepresidents.com'>MemorizeThePresidents.com</HeaderGroupItem>
                     <HeaderSubGroup pathname={pathname} title='Tools'>
                         <HeaderSubGroupItem pathname={pathname} link='/software/drive-download-link-generator'>Drive Download Link Generator</HeaderSubGroupItem>
                         <HeaderSubGroupItem pathname={pathname} link='/learn/pi'>Memorize π</HeaderSubGroupItem>

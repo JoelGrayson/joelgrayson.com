@@ -44,18 +44,18 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
             alignItems: 'center'
         }}>
             <Tryptic
-                name='Homework Checker'
-                href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'
-                stat={stats?.homeworkCheckerUsers}
-            >
-                <span className='text-[0.8rem]'>Homework Checker</span>
-            </Tryptic>
-            <Tryptic
                 name='Edit Time'
                 href='https://apps.apple.com/us/app/edit-time/id6464405876'
                 stat={stats?.editTimeUsers}
             >
                 Edit Time
+            </Tryptic>
+            <Tryptic
+                name='Homework Checker'
+                href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'
+                stat={stats?.homeworkCheckerUsers}
+            >
+                <span className='text-[0.8rem]'>Homework Checker</span>
             </Tryptic>
             <Tryptic
                 name='Focus'
@@ -73,6 +73,63 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
             >
                 Buseroo<DotCom />
             </Tryptic>
+            <Tile href='https://youtu.be/bHHk2FL5Ujs' target='_blank'>
+                <Image alt='Combination Safe Machine' width={60} height={53} src='/portfolio/Venderoo/logo.png' />
+                <span>Venderoo</span>
+            </Tile>
+            <Tile href='/combating-climate-change#solar-for-riverdale' target='_blank'>
+                <Image alt='Solar' width={50} height={38} src='/image/home/optimized/solar-for-riverdale.avif' />
+                <span>Solar for Riverdale</span>
+            </Tile>
+
+            <Tile href='https://apps.apple.com/us/app/techmap/id6748248815'>
+                <Image alt='TechMap Logo' width={50} height={50} src='/image/software/techmap/logo.png' />
+                <span className='text-[1rem]'>TechMap</span>
+            </Tile>
+            <Tile href='https://apps.apple.com/us/app/readometer-track-your-speed/id6757317732'>
+                <Image alt='Readometer Logo' width={50} height={50} src='/image/software/readometer/logo.png' />
+                <span className='text-[1rem]'>Readometer</span>
+            </Tile>
+            <Tile href='https://apps.apple.com/us/app/worderoo/id6745312298'>
+                <Image alt='Worderoo Logo' width={50} height={50} src='/image/software/worderoo/logo.png' />
+                <span className='text-[1rem]'>Worderoo</span>
+            </Tile>
+            
+            <Tile href='https://joelkit.com'>
+                <Image alt='JoelKit Logo' width={50} height={50} src='/image/software/joelkit/logo.png' />
+                <span className='text-[1rem]'>JoelKit<DotCom /></span>
+            </Tile>
+            {/* <Tile href='https://sparelearn.com'>
+                <Image alt='Spare Learn Logo' width={50} height={50} src='/image/software/sparelearn/logo.png' />
+                <span className='text-[1rem]'>SpareLearn<DotCom /></span>
+            </Tile> */}
+            <Tile href='https://memorizethepresidents.com'>
+                <Image alt='Memorize the Presidents Logo' width={50} height={50} className='relative left-0.5 mb-1' src='/image/home/memorize-the-presidents-logo.png' />
+                <span>MemorizeThe<br />Presidents<DotCom /></span>
+            </Tile>
+
+            <Tile href='https://studentsforelectricbuses.org'>
+                <SEBLogo size={50} />
+                <span>Students for Electric Buses</span>
+            </Tile>
+            <Tile href='/connecting-street-vendors-to-the-grid' target='_blank'>
+                <Image alt='Generators vs. Grid' width={100} height={55} className='relative left-2' src='/image/connecting-street-vendors-to-the-grid/generators-versus-grid.gif' />
+                <span className='text-[0.8rem]'>Connecting Street Vendors to the Grid</span>
+            </Tile>
+
+            {/* <Tile href='/machines' target='_self'>
+                <Image alt='Combination Safe Machine' width={60} height={53} src='/image/home/optimized/machine.avif' />
+                <span>Machines</span>
+            </Tile> */}
+            <Tile href='/music'>
+                <ViolinBow size={50} />
+                <span>Compositions</span>
+            </Tile>
+            <Tile href='/research/organic-optoelectronics' target='_blank'>
+                <Image alt='Organic Solar Cells' width={50} height={50} src='/image/ccc/BrDPA-AzoBipy-Structure.png' className='mb-1 pt-3 dark:invert' />
+                <span className='text-[1rem]'>Organic Solar Cell Research</span>
+            </Tile>
+
             <Tryptic
                 name='Shanghai Dictionary'
                 href='https://shanghaidictionary.com'
@@ -90,40 +147,6 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
             <Tile href='https://shirtocracy.com'>
                 <Image alt='Shirtocracy Logo' width={60} height={60} className='relative left-0.5 mb-1 dark:invert' src='/image/home/shirtocracy-logo.png' />
                 <span>Shirtocracy<DotCom /></span>
-            </Tile>
-            <Tile href='https://sparelearn.com'>
-                <Image alt='Spare Learn Logo' width={50} height={50} src='/image/software/sparelearn/logo.png' />
-                <span className='text-[1rem]'>SpareLearn<DotCom /></span>
-            </Tile>
-            <Tile href='https://memorizethepresidents.com'>
-                <Image alt='Memorize the Presidents Logo' width={50} height={50} className='relative left-0.5 mb-1' src='/image/home/memorize-the-presidents-logo.png' />
-                <span>MemorizeThe<br />Presidents<DotCom /></span>
-            </Tile>
-
-            <Tile href='/combating-climate-change#solar-for-riverdale' target='_self'>
-                <Image alt='Solar' width={50} height={38} src='/image/home/optimized/solar-for-riverdale.avif' />
-                <span>Solar for Riverdale</span>
-            </Tile>
-            <Tile href='https://studentsforelectricbuses.org'>
-                <SEBLogo size={50} />
-                <span>Students for Electric Buses</span>
-            </Tile>
-            <Tile href='/connecting-street-vendors-to-the-grid' target='_self'>
-                <Image alt='Generators vs. Grid' width={100} height={55} className='relative left-2' src='/image/connecting-street-vendors-to-the-grid/generators-versus-grid.gif' />
-                <span className='text-[0.8rem]'>Connecting Street Vendors to the Grid</span>
-            </Tile>
-
-            <Tile href='/machines' target='_self'>
-                <Image alt='Combination Safe Machine' width={60} height={53} src='/image/home/optimized/machine.avif' />
-                <span>Machines</span>
-            </Tile>
-            <Tile href='/music'>
-                <ViolinBow size={50} />
-                <span>Compositions</span>
-            </Tile>
-            <Tile href='/research/organic-optoelectronics' target='_self'>
-                <Image alt='Organic Solar Cells' width={50} height={50} src='/image/ccc/BrDPA-AzoBipy-Structure.png' className='mb-1 pt-3 dark:invert' />
-                <span className='text-[1rem]'>Organic Solar Cell Research</span>
             </Tile>
             
             {/* Arrangement:

@@ -128,11 +128,11 @@ export default function Home() {
         <Tiles stats={stats} />
 
         <div className='
-            pt-5 pb-10 border-t
+            py-5 border-t
             bg-gray-200 border-[#ddd]
             dark:bg-dark-bg dark:border-[#333] dark:text-dark-text
         '>
-            <h3 className='text-center mb-2'>Recent Videos</h3>
+            {/* <h3 className='text-center mb-2'>Recent Videos</h3> */}
             <div style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, 300px)',

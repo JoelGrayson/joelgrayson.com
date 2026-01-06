@@ -14,9 +14,9 @@ export default function Readometer() {
         <p className='italic text-center text-gray-400'>The app for tracks how quickly you are reading</p>
 
         {/* TODO: update */}
-        <div className='flex justify-end'>
-            <Link target='_blank' href='https://apps.apple.com/us/app/edit-time/id6464405876'>
-                <Image src="/image/software/edit-time/download-on-the-mac-app-store.png" alt="Download on the Mac App Store" height={74.375} width={170} />
+        <div className='flex justify-end mb-2'>
+            <Link target='_blank' href='https://apps.apple.com/app/readometer-track-your-speed/id6757317732'>
+                <Image src="/image/software/worderoo/download-on-the-app-store.png" alt="Download on the Mac App Store" height={74.375} width={170} />
             </Link>
         </div>
 
