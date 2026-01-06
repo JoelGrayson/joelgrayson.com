@@ -14,7 +14,7 @@ export default function EditMacAddress() {
         <p className='italic text-center text-gray-400'>The Mac app for changing a mac&apos;s MAC address. It is useful for MAC spoofing. Edit MAC Address lets you change MAC addresses in one click without having to use many commands in the terminal.</p>
 
         {/* <div className='flex justify-end'>
-            <Link target='_blank' href='https://apps.apple.com/us/app/edit-time/id6464405876'>
+            <Link target='_blank' href='https://apps.apple.com/us/app/edit-time/id6464405876?pt=126612879&ct=web'>
                 <Image src="/image/software/edit-time/download-on-the-mac-app-store.png" alt="Download on the Mac App Store" height={74.375} width={170} />
             </Link>
         </div> */}

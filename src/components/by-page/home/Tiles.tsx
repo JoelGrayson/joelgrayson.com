@@ -45,7 +45,7 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
         }}>
             <Tryptic
                 name='Edit Time'
-                href='https://apps.apple.com/us/app/edit-time/id6464405876'
+                href='https://apps.apple.com/us/app/edit-time/id6464405876?pt=126612879&ct=web?pt=126612879&ct=web'
                 stat={stats?.editTimeUsers}
             >
                 Edit Time

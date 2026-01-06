@@ -50,7 +50,7 @@ export default function DefaultHeader({ pathname='' }: { pathname?: string }) {
                 </HeaderGroup>
 
                 <HeaderGroup pathname={pathname} title='Software' link='/software' className='m:order-5' pixelOffset={1}>
-                    <HeaderGroupItem pathname={pathname} link='https://apps.apple.com/us/app/edit-time/id6464405876'>Edit Time</HeaderGroupItem>
+                    <HeaderGroupItem pathname={pathname} link='https://apps.apple.com/us/app/edit-time/id6464405876?pt=126612879&ct=web'>Edit Time</HeaderGroupItem>
                     <HeaderGroupItem pathname={pathname} link='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf?hl=en'>Focus for Google Docs</HeaderGroupItem>
                     <HeaderGroupItem pathname={pathname} link='https://buseroo.com'>Buseroo</HeaderGroupItem>
                     <HeaderGroupItem pathname={pathname} link='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>Homework Checker</HeaderGroupItem>

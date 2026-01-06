@@ -127,7 +127,7 @@ export default function Resume() {
                         <li>
                             <span className="title with-icon">
                                 <Image src='/image/home/edit-time-logo.png' alt='focus-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                                <Link href="https://apps.apple.com/us/app/edit-time/id6464405876?mt=12">Edit Time</Link>
+                                <Link href="https://apps.apple.com/us/app/edit-time/id6464405876?pt=126612879&ct=web?mt=12">Edit Time</Link>
                             </span>
                             <span className="date">2024</span>
                             <div className="description inline-description">freemium app with 6,000 installs and $3,000 revenue.</div>

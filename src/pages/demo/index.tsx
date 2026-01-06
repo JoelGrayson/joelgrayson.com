@@ -47,7 +47,7 @@ export default function Demo() {
                 <p>Impact: <b>6,000</b> users and <b>$1,500</b> in revenue</p>
                 <p>Tech: Swift/SwiftUI, StoreKit, Bash</p>
                 <div className='flex justify-end items-center gap-2 absolute top-3 right-0'>
-                    <Link href='https://apps.apple.com/us/app/edit-time/id6464405876' target='_blank'>
+                    <Link href='https://apps.apple.com/us/app/edit-time/id6464405876?pt=126612879&ct=web' target='_blank'>
                         <Image src='/image/software/worderoo/download-on-the-app-store.png' alt={'Download on the App Store'} width={114} height={38} />
                     </Link>
                 </div>
