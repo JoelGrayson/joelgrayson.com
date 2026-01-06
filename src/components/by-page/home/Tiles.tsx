@@ -82,6 +82,19 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
                 <span>Solar for Riverdale</span>
             </Tile>
 
+            <Tile href='/research/organic-optoelectronics' target='_blank'>
+                <Image alt='Organic Solar Cells' width={50} height={50} src='/image/ccc/BrDPA-AzoBipy-Structure.png' className='mb-1 pt-3 dark:invert' />
+                <span className='text-[1rem]'>Organic Solar Cell Research</span>
+            </Tile>
+            <Tile href='https://shirtocracy.com'>
+                <Image alt='Shirtocracy Logo' width={60} height={60} className='relative left-0.5 mb-1 dark:invert' src='/image/home/shirtocracy-logo.png' />
+                <span>Shirtocracy<DotCom /></span>
+            </Tile>
+            <Tile href='https://lirongart.com'>
+                <Image alt='Lirong Art Logo' width={50} height={50} className='relative mb-2' src='/image/home/lirongart-logo.png' />
+                <span>Lirong Art<DotCom /></span>
+            </Tile>
+
             <Tile href='https://apps.apple.com/us/app/techmap/id6748248815'>
                 <Image alt='TechMap Logo' width={50} height={50} src='/image/software/techmap/logo.png' />
                 <span className='text-[1rem]'>TechMap</span>
@@ -112,23 +125,14 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
                 <SEBLogo size={50} />
                 <span>Students for Electric Buses</span>
             </Tile>
-            <Tile href='/connecting-street-vendors-to-the-grid' target='_blank'>
-                <Image alt='Generators vs. Grid' width={100} height={55} className='relative left-2' src='/image/connecting-street-vendors-to-the-grid/generators-versus-grid.gif' />
-                <span className='text-[0.8rem]'>Connecting Street Vendors to the Grid</span>
-            </Tile>
+            
 
             {/* <Tile href='/machines' target='_self'>
                 <Image alt='Combination Safe Machine' width={60} height={53} src='/image/home/optimized/machine.avif' />
                 <span>Machines</span>
             </Tile> */}
-            <Tile href='/music'>
-                <ViolinBow size={50} />
-                <span>Compositions</span>
-            </Tile>
-            <Tile href='/research/organic-optoelectronics' target='_blank'>
-                <Image alt='Organic Solar Cells' width={50} height={50} src='/image/ccc/BrDPA-AzoBipy-Structure.png' className='mb-1 pt-3 dark:invert' />
-                <span className='text-[1rem]'>Organic Solar Cell Research</span>
-            </Tile>
+            
+            
 
             <Tryptic
                 name='Shanghai Dictionary'
@@ -138,16 +142,16 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
             >
                 Shanghai Dictionary<DotCom />
             </Tryptic>
-            
-            <Tile href='https://lirongart.com'>
-                <Image alt='Lirong Art Logo' width={50} height={50} className='relative mb-2' src='/image/home/lirongart-logo.png' />
-                <span>Lirong Art<DotCom /></span>
+            <Tile href='/music'>
+                <ViolinBow size={50} />
+                <span>Compositions</span>
+            </Tile>
+            <Tile href='/connecting-street-vendors-to-the-grid' target='_blank'>
+                <Image alt='Generators vs. Grid' width={100} height={55} className='relative left-2' src='/image/connecting-street-vendors-to-the-grid/generators-versus-grid.gif' />
+                <span className='text-[0.8rem]'>Connecting Street Vendors to the Grid</span>
             </Tile>
 
-            <Tile href='https://shirtocracy.com'>
-                <Image alt='Shirtocracy Logo' width={60} height={60} className='relative left-0.5 mb-1 dark:invert' src='/image/home/shirtocracy-logo.png' />
-                <span>Shirtocracy<DotCom /></span>
-            </Tile>
+            
             
             {/* Arrangement:
             Homework Checker, Edit Time, Focus
