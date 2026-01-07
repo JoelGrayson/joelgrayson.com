@@ -105,6 +105,7 @@
     "devDependencies": {
         "@types/jsonwebtoken": "^9.0.10",
         "@types/lodash": "^4.14.199",
+        "@types/ms": "^2.1.0",
         "@types/node": "^22.10.10",
         "@types/pg": "^8.10.2",
         "@types/react": "^18.2.37",
