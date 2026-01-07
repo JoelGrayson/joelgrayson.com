@@ -15,8 +15,8 @@ export default function Software() {
             <li>
                 Chrome Extensions
                 <ul>
-                    <li><Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj' target='_blank'>Homework Checker</Link></li>
-                    <li><Link href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf' target='_blank'>Focus for Google Docs</Link></li>
+                    <li><Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj?utm_source=jgcom&utm_campaign=web&utm_medium=site' target='_blank'>Homework Checker</Link></li>
+                    <li><Link href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf?utm_source=jgcom&utm_campaign=web&utm_medium=site' target='_blank'>Focus for Google Docs</Link></li>
                 </ul>
             </li>
             <li>

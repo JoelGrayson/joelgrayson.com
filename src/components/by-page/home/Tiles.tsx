@@ -52,14 +52,14 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
             </Tryptic>
             <Tryptic
                 name='Homework Checker'
-                href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'
+                href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj?utm_source=jgcom&utm_campaign=web&utm_medium=site'
                 stat={stats?.homeworkCheckerUsers}
             >
                 <span className='text-[0.8rem]'>Homework Checker</span>
             </Tryptic>
             <Tryptic
                 name='Focus'
-                href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf'
+                href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf?utm_source=jgcom&utm_campaign=web&utm_medium=site'
                 stat={stats?.focusUsers}
             >
                 Focus

@@ -144,7 +144,7 @@ export default function Resume() {
                         <li>
                             <span className="title with-icon">
                                 <Image src='/image/home/homework-checker-logo.png' alt='homework-checker-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                                <Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj'>Homework Checker</Link>
+                                <Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj?utm_source=jgcom&utm_campaign=web&utm_medium=site'>Homework Checker</Link>
                             </span>
                             <span className="date">2021&ndash;22</span>
                             <div className="description inline-description">helps 6,000 students organize their homework.</div>
@@ -152,7 +152,7 @@ export default function Resume() {
                         <li>
                             <span className="title with-icon">
                                 <Image src='/image/home/focus-logo.png' alt='focus-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                                <Link href="https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf">Focus</Link>
+                                <Link href="https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf?utm_source=jgcom&utm_campaign=web&utm_medium=site">Focus</Link>
                             </span>
                             <span className="date">2022</span>
                             <div className="description inline-description">Chrome extension helping 1,000 people write distraction-free.</div>
