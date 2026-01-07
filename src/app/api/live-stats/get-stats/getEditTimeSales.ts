@@ -30,9 +30,9 @@ export default async function getEditTimeSales() {
 
 
     // https://www.linkedin.com/pulse/using-apples-app-store-connect-api-darren-brooks/
-    const url = new URL('https://api.appstoreconnect.apple.com/v1/salesReports');// + searchParams;
-    url.searchParams.append('filter[frequency]', 'DAILY')
-    url.searchParams.append('filter[reportDate]', '2026-01-04')
+    const url = new URL('https://api.appstoreconnect.apple.com/v1/salesReports');
+    url.searchParams.append('filter[frequency]', 'YEARLY')
+    url.searchParams.append('filter[reportDate]', '2024') // Get all data from 2024
     url.searchParams.append('filter[reportSubType]', 'SUMMARY')
     url.searchParams.append('filter[reportType]', 'SALES')
     url.searchParams.append('filter[vendorNumber]', env.APP_STORE_CONNECT_VENDOR_NUMBER)
@@ -61,8 +61,23 @@ export default async function getEditTimeSales() {
         return record;
     });
 
+    // Calculate total downloads for Edit Time (free app downloads only)
+    const editTimeDownloads = records
+        .filter(record =>
+            record.SKU === 'com.joelgrayson.Edit-Time' &&
+            (record['Product Type Identifier'] === 'F1' )//|| record['Product Type Identifier'] === 'F7')
+        )
+        .reduce((total, record) => total + parseInt(record.Units || '0'), 0);
+
+    // Calculate total Pro subscriptions
+    const proSubscriptions = records
+        .filter(record => record.SKU === 'com.joelgrayson.edittime.edittimepro_11_8_2024')
+        .reduce((total, record) => total + parseInt(record.Units || '0'), 0);
+
     return {
-        editTimeSales: records
+        totalDownloads: editTimeDownloads,
+        totalProSubscriptions: proSubscriptions,
+        rawData: records
     };
 }
 
