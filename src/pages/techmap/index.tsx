@@ -9,11 +9,11 @@ import { useEffect } from "react";
 export default function TechMap() {
     // return <Page noPadding>
     return <Page>
-        <SafariDownloadAppPopup url="https://apps.apple.com/us/app/techmap/id6748248815" />
+        <SafariDownloadAppPopup url="https://apps.apple.com/us/app/techmap/id6748248815?pt=126612879&ct=web" />
         
         <h1 className="text-4xl text-center pt-4">TechMap</h1>
 
-        <p className="text-center pt-3">Web version coming soon. App available at <Link href='https://apps.apple.com/us/app/techmap/id6748248815'>apps.apple.com/us/app/techmap/id6748248815</Link></p>
+        <p className="text-center pt-3">Web version coming soon. App available at <Link href='https://apps.apple.com/us/app/techmap/id6748248815?pt=126612879&ct=web'>apps.apple.com/us/app/techmap/id6748248815</Link></p>
 
         {/* <APIProvider apiKey={process.env.NEXT_PUBLIC_TECHMAP_API_KEY as string}>
             <Map

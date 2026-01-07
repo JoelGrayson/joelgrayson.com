@@ -45,7 +45,7 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
         }}>
             <Tryptic
                 name='Edit Time'
-                href='https://apps.apple.com/us/app/edit-time/id6464405876?pt=126612879&ct=web?pt=126612879&ct=web'
+                href='https://apps.apple.com/us/app/edit-time/id6464405876?pt=126612879&ct=web'
                 stat={stats?.editTimeUsers}
             >
                 Edit Time
@@ -95,15 +95,15 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
                 <span>Lirong Art<DotCom /></span>
             </Tile>
 
-            <Tile href='https://apps.apple.com/us/app/techmap/id6748248815'>
+            <Tile href='https://apps.apple.com/us/app/techmap/id6748248815?pt=126612879&ct=web'>
                 <Image alt='TechMap Logo' width={50} height={50} src='/image/software/techmap/logo.png' />
                 <span className='text-[1rem]'>TechMap</span>
             </Tile>
-            <Tile href='https://apps.apple.com/us/app/readometer-track-your-speed/id6757317732'>
+            <Tile href='https://apps.apple.com/us/app/readometer-track-your-speed/id6757317732?pt=126612879&ct=web'>
                 <Image alt='Readometer Logo' width={50} height={50} src='/image/software/readometer/logo.png' />
                 <span className='text-[1rem]'>Readometer</span>
             </Tile>
-            <Tile href='https://apps.apple.com/us/app/worderoo/id6745312298'>
+            <Tile href='https://apps.apple.com/us/app/worderoo/id6745312298?pt=126612879&ct=web'>
                 <Image alt='Worderoo Logo' width={50} height={50} src='/image/software/worderoo/logo.png' />
                 <span className='text-[1rem]'>Worderoo</span>
             </Tile>

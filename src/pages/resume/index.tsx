@@ -127,7 +127,7 @@ export default function Resume() {
                         <li>
                             <span className="title with-icon">
                                 <Image src='/image/home/edit-time-logo.png' alt='focus-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                                <Link href="https://apps.apple.com/us/app/edit-time/id6464405876?pt=126612879&ct=web?mt=12">Edit Time</Link>
+                                <Link href="https://apps.apple.com/us/app/edit-time/id6464405876?pt=126612879&ct=web">Edit Time</Link>
                             </span>
                             <span className="date">2024</span>
                             <div className="description inline-description">freemium app with 6,000 installs and $3,000 revenue.</div>
@@ -138,7 +138,7 @@ export default function Resume() {
                                 <Link href="https://buseroo.com">Buseroo.com</Link>
                             </span>
                             <span className="date">2021&ndash;23</span>
-                            <div className="description inline-description">1,500 searches, website and <Link href='https://apps.apple.com/us/app/buseroo/id6736895918' target="_blank">app</Link> to find closest school bus to any address.</div>
+                            <div className="description inline-description">1,500 searches, website and <Link href='https://apps.apple.com/us/app/buseroo/id6736895918?pt=126612879&ct=web' target="_blank">app</Link> to find closest school bus to any address.</div>
                             {/* <div className="description inline-description">website and <Link href='https://apps.apple.com/us/app/buseroo/id6736895918' target="_blank">app</Link> to find closest school bus to any address.</div> */}
                         </li>
                         <li>

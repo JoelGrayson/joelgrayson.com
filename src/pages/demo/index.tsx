@@ -121,7 +121,7 @@ export default function Demo() {
                     <Link href='https://buseroo.com/app?institution=demo-institution&group=Early+Buses' target='_blank' className='flex justify-center items-center gap-2 button !px-1.5 !py-1'>
                         Try Web Demo
                     </Link>
-                    <Link href='https://apps.apple.com/us/app/buseroo/id6736895918' target='_blank'>
+                    <Link href='https://apps.apple.com/us/app/buseroo/id6736895918?pt=126612879&ct=web' target='_blank'>
                         <Image src='/image/software/worderoo/download-on-the-app-store.png' alt={'Download on the App Store'} width={114} height={38} />
                     </Link>
                 </div>
@@ -135,7 +135,7 @@ export default function Demo() {
         </div>
 
         <hr className='my-3' />
-        <p>Other projects include <Link target='_blank' href='https://apps.apple.com/us/app/techmap/id6748248815'>TechMap</Link>, <Link href='https://apps.apple.com/app/worderoo/id6745312298' target='_blank'>Worderoo</Link>, <Link target='_blank' href='https://memorizethepresidents.com'>memorizethepresidents.com</Link>, <Link target='_blank' href='https://shirtocracy.com'>shirtocracy.com</Link>, and <Link target='_blank' href='https://studentsforelectricbuses.org'>studentsforelectricbuses.org</Link>.</p>
+        <p>Other projects include <Link target='_blank' href='https://apps.apple.com/us/app/techmap/id6748248815?pt=126612879&ct=web'>TechMap</Link>, <Link href='https://apps.apple.com/app/worderoo/id6745312298' target='_blank'>Worderoo</Link>, <Link target='_blank' href='https://memorizethepresidents.com'>memorizethepresidents.com</Link>, <Link target='_blank' href='https://shirtocracy.com'>shirtocracy.com</Link>, and <Link target='_blank' href='https://studentsforelectricbuses.org'>studentsforelectricbuses.org</Link>.</p>
     </Page>;
 }
 

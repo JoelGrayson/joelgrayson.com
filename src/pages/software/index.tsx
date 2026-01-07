@@ -23,9 +23,9 @@ export default function Software() {
                 Apps
                 <ul>
                     <li><Link href='/software/edit-time' target='_blank'>Edit Time</Link> (<Link target='_blank' href='https://apps.apple.com/us/app/edit-time/id6464405876?pt=126612879&ct=web'>App Store Link</Link>)</li>
-                    <li><Link href='/techmap' target='_blank'>TechMap</Link> (<Link target='_blank' href='https://apps.apple.com/us/app/techmap/id6748248815'>App Store Link</Link>)</li>
-                    <li><Link href='https://apps.apple.com/app/worderoo/id6745312298' target='_blank'>Worderoo</Link></li>
-                    <li><Link href='https://apps.apple.com/us/app/buseroo/id6736895918' target='_blank'>Buseroo App</Link></li>
+                    <li><Link href='/techmap' target='_blank'>TechMap</Link> (<Link target='_blank' href='https://apps.apple.com/us/app/techmap/id6748248815?pt=126612879&ct=web'>App Store Link</Link>)</li>
+                    <li><Link href='https://apps.apple.com/us/app/worderoo/id6745312298?pt=126612879&ct=web' target='_blank'>Worderoo</Link></li>
+                    <li><Link href='https://apps.apple.com/us/app/buseroo/id6736895918?pt=126612879&ct=web' target='_blank'>Buseroo App</Link></li>
 
                     {/*
                     Not including/failed:

@@ -19,7 +19,7 @@ export default function MLACite() {
     };
    
     return <AppPage bottomPadding pathname='/software/cite/mla'>
-        <h1 className='gap-5 text-center'>MLA Cite</h1>
+        <h1 className='gap-5 text-center'>MLA Citation Generator</h1>
 
         <h2>Tool</h2>
         <Tool />
