@@ -1,18 +1,18 @@
 import * as z from 'zod';
 
 const envSchema = z.object({
+    // Twilio
     TWILIO_ACCOUNT_SID: z.string(),
     TWILIO_AUTH_TOKEN: z.string(),
     TWILIO_PHONE_NUMBER: z.string(),
     MY_PHONE_NUMBER: z.string(),
+
+    APP_STORE_CONNECT_ISSUER_ID: z.string(),
+    APP_STORE_CONNECT_API_KEY_ID: z.string(),
+    APP_STORE_CONNECT_KEY: z.string() //must have $ → \n
 });
 
-const env = envSchema.parse({
-    TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
-    TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
-    TWILIO_PHONE_NUMBER: process.env.TWILIO_PHONE_NUMBER,
-    MY_PHONE_NUMBER: process.env.MY_PHONE_NUMBER,
-});
+const env = envSchema.parse(process.env);
 
 export default env;
 
