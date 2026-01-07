@@ -14,6 +14,7 @@ import getBuserooUsers from "./get-stats/getBuserooUsers";
 import getShanghaiDictionarySearches from "./get-stats/getShanghaiDictionarySearches";
 import getDownloadLinkGeneratorVisits from "./get-stats/getDownloadLinkGeneratorVisits";
 import getStatsFromPrisma from "./get-stats/getStatsFromPrisma";
+import getEditTimeSales from "./get-stats/getEditTimeSales";
 
 
 // Opt out of caching
@@ -39,6 +40,7 @@ export async function getLiveStats() {
         getLastWeeksStats(),
         getStatsFromPrisma(),
 
+        getEditTimeSales(),
 
 
         // Additional Not Displayed
@@ -64,7 +66,7 @@ export async function getLiveStats() {
         lastWeeksStats,
         statsFromPrisma,
 
-
+        editTimeSales,
 
         blogViews,
         buserooUsers,
@@ -84,6 +86,8 @@ export async function getLiveStats() {
         ...statsFromPrisma, // editTimeUsers. Ideally, would also include editTimeRevenue
         ...downloadLinkGeneratorVisits, //{"driveDownloadLinkGeneratorVisits":9933,"dropboxDownloadLinkGeneratorVisits":1590,"boxDownloadLinkGeneratorVisits":8394}
 
+        ...editTimeSales, // editTimeDownloads
+
         blogViews,
         buserooUsers,
         shanghaiDictionarySearches,
@@ -102,7 +106,8 @@ export async function getLiveStats() {
             projectsUsers:        lastWeeksStats?.projectsUsers        ? projectsUsers-lastWeeksStats.projectsUsers               : -4,
 
             habitUsers:           lastWeeksStats?.habitUsers           ? habitUsers-lastWeeksStats.habitUsers                     : -4,
-            numbersUsers:         lastWeeksStats?.numbersUsers         ? numbersUsers-lastWeeksStats.numbersUsers                 : -4
+            numbersUsers:         lastWeeksStats?.numbersUsers         ? numbersUsers-lastWeeksStats.numbersUsers                 : -4,
+            editTimeDownloads: lastWeeksStats?.editTimeDownloads && editTimeSales.editTimeDownloads ? editTimeSales.editTimeDownloads - lastWeeksStats.editTimeDownloads : -4
         }
     } as const;
 

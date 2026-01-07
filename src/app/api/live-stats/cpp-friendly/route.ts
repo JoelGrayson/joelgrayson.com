@@ -23,7 +23,7 @@ export async function GET() {
         data.projectsUsers,
         data.habitUsers,
         data.numbersUsers,
-
+        
         // Diffs are based on the last 7 days
         data.diff.focusUsers,
         data.diff.homeworkCheckerUsers,
@@ -32,7 +32,11 @@ export async function GET() {
         data.diff.journalUsers,
         data.diff.projectsUsers,
         data.diff.habitUsers,
-        data.diff.numbersUsers
+        data.diff.numbersUsers,
+
+        // Added on for backwards compatibility
+        data.editTimeDownloads,
+        data.diff.editTimeDownloads
     ];
     
     return new Response(items.join(' '));
