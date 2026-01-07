@@ -2,6 +2,40 @@ import env from '@/helpers/env';
 import jwt from 'jsonwebtoken';
 import { gunzipSync } from 'zlib';
 
+async function fetchSalesReport(token: string, year: string) {
+    const url = new URL('https://api.appstoreconnect.apple.com/v1/salesReports');
+    url.searchParams.append('filter[frequency]', 'YEARLY')
+    url.searchParams.append('filter[reportDate]', year)
+    url.searchParams.append('filter[reportSubType]', 'SUMMARY')
+    url.searchParams.append('filter[reportType]', 'SALES')
+    url.searchParams.append('filter[vendorNumber]', env.APP_STORE_CONNECT_VENDOR_NUMBER)
+
+    const response = await fetch(url.href, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+
+    // Sales Reports API returns gzip-compressed TSV data
+    const compressedData = await response.arrayBuffer();
+    const decompressed = gunzipSync(Buffer.from(compressedData));
+    const tsvData = decompressed.toString('utf-8');
+
+    // Parse TSV data into an array of objects
+    const lines = tsvData.trim().split('\n');
+    const headers = lines[0].split('\t');
+    const records = lines.slice(1).map(line => {
+        const values = line.split('\t');
+        const record: Record<string, string> = {};
+        headers.forEach((header, index) => {
+            record[header] = values[index];
+        });
+        return record;
+    });
+
+    return records;
+}
+
 export default async function getEditTimeSales() {
     let now = Math.round(new Date().getTime() / 1000);
     let expiresAt = now + 60 * 19;
@@ -24,42 +58,17 @@ export default async function getEditTimeSales() {
     }
 
     const privateKey = env.APP_STORE_CONNECT_KEY.replaceAll('$', '\n');
-    // console.log('pk', privateKey);
-    
     const token = jwt.sign(payload, privateKey, signInOptions);
 
+    // Fetch data for 2024, 2025, and 2026 to get all-time stats
+    const [records2024, records2025] = await Promise.all([
+        fetchSalesReport(token, '2024'),
+        fetchSalesReport(token, '2025'),
+        // fetchSalesReport(token, '2026')
+    ]);
 
-    // https://www.linkedin.com/pulse/using-apples-app-store-connect-api-darren-brooks/
-    const url = new URL('https://api.appstoreconnect.apple.com/v1/salesReports');
-    url.searchParams.append('filter[frequency]', 'YEARLY')
-    url.searchParams.append('filter[reportDate]', '2024') // Get all data from 2024
-    url.searchParams.append('filter[reportSubType]', 'SUMMARY')
-    url.searchParams.append('filter[reportType]', 'SALES')
-    url.searchParams.append('filter[vendorNumber]', env.APP_STORE_CONNECT_VENDOR_NUMBER)
-    // console.log('url', url);
-    const response = await fetch(url.href, {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    });
-
-    // Sales Reports API returns gzip-compressed TSV data
-    const compressedData = await response.arrayBuffer();
-    const decompressed = gunzipSync(Buffer.from(compressedData));
-    const tsvData = decompressed.toString('utf-8');
-    console.log('TSV Data:', tsvData);
-
-    // Parse TSV data into an array of objects
-    const lines = tsvData.trim().split('\n');
-    const headers = lines[0].split('\t');
-    const records = lines.slice(1).map(line => {
-        const values = line.split('\t');
-        const record: Record<string, string> = {};
-        headers.forEach((header, index) => {
-            record[header] = values[index];
-        });
-        return record;
-    });
+    const records = [...records2024, ...records2025];
+    console.log(`Total records fetched: ${records.length}`);
 
     // Calculate total downloads for Edit Time (free app downloads only)
     const editTimeDownloads = records
