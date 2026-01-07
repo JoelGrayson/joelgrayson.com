@@ -1,5 +1,6 @@
 import env from '@/helpers/env';
 import jwt from 'jsonwebtoken';
+import { gunzipSync } from 'zlib';
 
 export default async function getEditTimeSales() {
     let now = Math.round(new Date().getTime() / 1000);
@@ -10,7 +11,7 @@ export default async function getEditTimeSales() {
         iat: now,
         exp: expiresAt,
         aud: 'appstoreconnect-v1',
-        // bid: 'com.joelgrayson.Edit-Time' //bundle id
+        bid: 'com.joelgrayson.Edit-Time' //bundle id
     };
 
     const signInOptions = {
@@ -23,21 +24,45 @@ export default async function getEditTimeSales() {
     }
 
     const privateKey = env.APP_STORE_CONNECT_KEY.replaceAll('$', '\n');
-    console.log('pk', privateKey);
+    // console.log('pk', privateKey);
     
     const token = jwt.sign(payload, privateKey, signInOptions);
 
-    const response = await fetch('https://api.appstoreconnect.apple.com/v1/apps', {
+
+    // https://www.linkedin.com/pulse/using-apples-app-store-connect-api-darren-brooks/
+    const url = new URL('https://api.appstoreconnect.apple.com/v1/salesReports');// + searchParams;
+    url.searchParams.append('filter[frequency]', 'DAILY')
+    url.searchParams.append('filter[reportDate]', '2026-01-04')
+    url.searchParams.append('filter[reportSubType]', 'SUMMARY')
+    url.searchParams.append('filter[reportType]', 'SALES')
+    url.searchParams.append('filter[vendorNumber]', env.APP_STORE_CONNECT_VENDOR_NUMBER)
+    // console.log('url', url);
+    const response = await fetch(url.href, {
         headers: {
             Authorization: `Bearer ${token}`
         }
     });
-    const data = await response.json();
-    console.log(data);
 
+    // Sales Reports API returns gzip-compressed TSV data
+    const compressedData = await response.arrayBuffer();
+    const decompressed = gunzipSync(Buffer.from(compressedData));
+    const tsvData = decompressed.toString('utf-8');
+    console.log('TSV Data:', tsvData);
+
+    // Parse TSV data into an array of objects
+    const lines = tsvData.trim().split('\n');
+    const headers = lines[0].split('\t');
+    const records = lines.slice(1).map(line => {
+        const values = line.split('\t');
+        const record: Record<string, string> = {};
+        headers.forEach((header, index) => {
+            record[header] = values[index];
+        });
+        return record;
+    });
 
     return {
-        editTimeSales: data
+        editTimeSales: records
     };
 }
 
