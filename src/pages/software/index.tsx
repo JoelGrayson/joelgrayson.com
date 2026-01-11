@@ -26,6 +26,7 @@ export default function Software() {
                     <li><Link href='/techmap' target='_blank'>TechMap</Link> (<Link target='_blank' href='https://apps.apple.com/us/app/techmap/id6748248815?pt=126612879&ct=web'>App Store Link</Link>)</li>
                     <li><Link href='https://apps.apple.com/us/app/worderoo/id6745312298?pt=126612879&ct=web' target='_blank'>Worderoo</Link></li>
                     <li><Link href='https://apps.apple.com/us/app/buseroo/id6736895918?pt=126612879&ct=web' target='_blank'>Buseroo App</Link></li>
+                    <li><Link href='https://apps.apple.com/us/app/readometer-track-your-speed/id6757317732?pt=126612879&ct=web' target='_blank'>Readometer</Link></li>
 
                     {/*
                     Not including/failed:

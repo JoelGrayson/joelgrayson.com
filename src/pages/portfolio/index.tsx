@@ -22,7 +22,7 @@ export default function Portfolio() {
             <div>
                 <h3>Edit Time</h3>
                 <p>Desktop app that enables users to change files&apos; date creation properties, which was previously impossible without the terminal.</p>
-                <p>Impact: <b>6,000</b> users and <b>$1,500</b> in revenue</p>
+                <p>Impact: <b>7,000</b> users and <b>$1,500</b> in revenue</p>
                 <p>Tech: Swift/SwiftUI, StoreKit, Bash</p>
                 <div className='flex justify-end items-center gap-2 absolute top-3 right-0'>
                     <Link href='https://apps.apple.com/us/app/edit-time/id6464405876?pt=126612879&ct=web' target='_blank'>

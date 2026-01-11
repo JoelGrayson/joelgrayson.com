@@ -11,7 +11,7 @@ export default function Impact() {
             <li>
                 <b>My climate initiatives reduce emissions by an estimated 340 metric tons of CO₂ equivalent (MTCO₂e) per year.</b>
                 <ul>
-                    <li>Bringing a 109 kW solar installation, producing enough electricity to power 55 households</li>
+                    <li>Bringing a 109 kW solar installation, producing enough electricity to power 13 households</li>
                     <li>Founded Students for Electric Buses to bring electric buses to Riverdale and its neighboring schools</li>
                     <li>Presented to middle and upper schools on climate solutions</li>
                 </ul>

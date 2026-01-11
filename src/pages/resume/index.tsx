@@ -130,7 +130,7 @@ export default function Resume() {
                                 <Link href="https://apps.apple.com/us/app/edit-time/id6464405876?pt=126612879&ct=web">Edit Time</Link>
                             </span>
                             <span className="date">2024</span>
-                            <div className="description inline-description">freemium app with 6,000 installs and $3,000 revenue.</div>
+                            <div className="description inline-description">freemium app with 7,000 installs and $3,000 revenue.</div>
                         </li>
                         <li>
                             <span className="title with-icon">
