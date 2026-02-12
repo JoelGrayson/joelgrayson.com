@@ -6,7 +6,7 @@ import Modal from '@jcomponents/modal';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-// Verify Planning: https://docs.google.com/document/d/1hg9SUuCwXk_PzTEOq7oJTXakGg7oZRXB4trvmor_abY/edit
+// Verify Planning: https://docs.google.com/document/d/1Le4gIrjBuwcz80O-FeitjpxeYT4XXnnW2ErlyLns248/edit?tab=t.0
 
 export default function Verify() {
     const router=useRouter();
