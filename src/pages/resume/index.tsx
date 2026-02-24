@@ -147,7 +147,7 @@ export default function Resume() {
                                 <Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj?utm_source=jgcom&utm_campaign=web&utm_medium=site'>Homework Checker</Link>
                             </span>
                             <span className="date">2021&ndash;22</span>
-                            <div className="description inline-description">helps 6,000 students organize their homework.</div>
+                            <div className="description inline-description">helps 5,000 students organize their homework.</div>
                         </li>
                         <li>
                             <span className="title with-icon">
