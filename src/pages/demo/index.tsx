@@ -35,6 +35,18 @@ export default function Demo() {
 
         <hr />
 
+        <div className='d:grid d:grid-cols-[2fr_3fr] gap-3 relative'>
+            <div className='pt-4'>
+                <Yt width='100%'>zEDVGfCVhaw</Yt>
+            </div>
+            <div>
+                <h3>Self-Driving Car</h3>
+                <p>In 36 hours, turned a 2018 Honda into a partially self-driving car with team at TreeHacks (Stanford&apos;s Hackathon), winning 1st Place in the NVIDIA Track (Edge AI).</p>
+            </div>
+        </div>
+
+        <hr />
+
         <h3>Apps/Websites</h3>
 
         <div className='d:grid d:grid-cols-[2fr_3fr] gap-3 relative'>

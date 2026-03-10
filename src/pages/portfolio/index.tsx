@@ -132,6 +132,18 @@ export default function Portfolio() {
             </div>
         </div>
 
+        <hr />
+
+        <div className='d:grid d:grid-cols-[2fr_3fr] gap-3 relative'>
+            <div className='pt-4'>
+                <Yt width='100%'>zEDVGfCVhaw</Yt>
+            </div>
+            <div>
+                <h3>Self-Driving Car</h3>
+                <p>In 36 hours, turned a 2018 Honda into a partially self-driving car with team at TreeHacks (Stanford&apos;s Hackathon), winning 1st Place in the NVIDIA Track (Edge AI).</p>
+            </div>
+        </div>
+
         <hr className='my-3' />
         <p>Other projects include <Link target='_blank' href='https://apps.apple.com/us/app/techmap/id6748248815?pt=126612879&ct=web'>TechMap</Link>, <Link href='https://apps.apple.com/app/worderoo/id6745312298' target='_blank'>Worderoo</Link>, <Link target='_blank' href='https://memorizethepresidents.com'>memorizethepresidents.com</Link>, <Link target='_blank' href='https://shirtocracy.com'>shirtocracy.com</Link>, and <Link target='_blank' href='https://studentsforelectricbuses.org'>studentsforelectricbuses.org</Link>.</p>
     </Page>;
