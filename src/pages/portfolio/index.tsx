@@ -120,9 +120,7 @@ export default function Portfolio() {
             </div>
             <div>
                 <h3>Venderoo</h3>
-                <p>Designed & built vending machine.</p>
-                <p>Impact: over a hundred snacks sold</p>
-                <p>Tech: Arduino, C++</p>
+                <p>Designed &amp; built vending machine that sold over 100 snacks. Used Arduino, 8 DC motors, LCD display, keypad, bill acceptor, wood, plexiglass, and C++.</p>
                 <div className='flex justify-end absolute bottom-0 right-0'>
                     <Link href='https://github.com/JoelGrayson/Venderoo/blob/main/Venderoo.ino' target='_blank' className='flex justify-center items-center gap-2 button !px-1.5 !py-1'>
                         <GithubIcon width={30} className='fill-black' />
@@ -141,6 +139,24 @@ export default function Portfolio() {
             <div>
                 <h3>Self-Driving Car</h3>
                 <p>In 36 hours, turned a 2018 Honda into a partially self-driving car with team at TreeHacks (Stanford&apos;s Hackathon), winning 1st Place in the NVIDIA Track (Edge AI).</p>
+            </div>
+        </div>
+
+        <hr />
+
+        <div className='d:grid d:grid-cols-[2fr_3fr] gap-3 relative'>
+            <div className='pt-4'>
+                <Yt width='100%'>B2POsO4RqfI</Yt>
+            </div>
+            <div>
+                <h3>FPGA Piano</h3>
+                <p>Wrote Verilog for an FPGA to read in raw signals coming from a PS/2 keyboard so you can play it like a piano and show text and sinusoid waveform of the note on an HDMI monitor.</p>
+                <div className='flex justify-end absolute bottom-0 right-0'>
+                    <Link href='https://github.com/JoelGrayson/FPGA-Piano' target='_blank' className='flex justify-center items-center gap-2 button !px-1.5 !py-1'>
+                        <GithubIcon width={30} className='fill-black' />
+                        View code
+                    </Link>
+                </div>
             </div>
         </div>
 

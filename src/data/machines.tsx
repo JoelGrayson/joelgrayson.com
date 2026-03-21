@@ -19,6 +19,19 @@ export const machines: Machine[]=[
     // },
     {
         sortBy: {
+            rank: 3,
+            date: new Date('2026'),
+            title: 'FPGA Piano'
+        },
+        html: DefaultTemplate({
+            date: '2026',
+            title: <>FPGA Piano</>,
+            desc: <>Wrote Verilog for an FPGA to read in raw signals coming from a PS/2 keyboard so you can play it like a piano and show text and sinusoid waveform of the note on an HDMI monitor. Code: <Link href='https://github.com/JoelGrayson/FPGA-Piano' target='_blank'>github.com/JoelGrayson/FPGA-Piano</Link></>,
+            yt: 'B2POsO4RqfI'
+        })
+    },
+    {
+        sortBy: {
             rank: 3, //sort by best project
             date: new Date('May 2024'), //sort by date of project
             title: 'Venderoo' //sort alphabetically
@@ -26,6 +39,7 @@ export const machines: Machine[]=[
         html: DefaultTemplate({
             date: '2024',
             title: <>Venderoo: Arduino-Based Vending Machine</>,
+            desc: <>Designed &amp; built vending machine that sold over 100 snacks. Used Arduino, 8 DC motors, LCD display, keypad, bill acceptor, wood, plexiglass, and C++. Code: <Link href='https://github.com/JoelGrayson/Venderoo/blob/main/Venderoo.ino' target='_blank'>github.com/JoelGrayson/Venderoo</Link></>,
             yt: 'bHHk2FL5Ujs'
         })
     },
