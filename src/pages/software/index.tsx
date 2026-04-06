@@ -46,6 +46,7 @@ export default function Software() {
                     <li><Link target='_blank' href='https://studentsforelectricbuses.org'>studentsforelectricbuses.org</Link></li>
                     <li><Link target='_blank' href='https://luxpremierllc.com'>luxpremierllc.com</Link></li>
                     <li><Link target='_blank' href='https://memorizethepresidents.com'>memorizethepresidents.com</Link></li>
+                    <li><Link target='_blank' href='https://wasian.io'>wasian.io</Link></li>
                     <li><Link target='_blank' href='https://shirtocracy.com'>shirtocracy.com</Link></li>
                     <li><Link target='_blank' href='/muffin'>The Muffin Game</Link></li>
                     <li><Link target='_blank' href='https://joelkit.com'>joelkit.com</Link></li>
