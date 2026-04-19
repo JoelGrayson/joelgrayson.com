@@ -1,5 +1,6 @@
 import Page from '@/components/page/DefaultPage';
 import { Delete, Mic, Square, Trash2, Volume2 } from 'lucide-react';
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
 const MORSE: Record<string, string> = {
@@ -490,10 +491,14 @@ export default function MorsePage() {
         seo={{
             title: 'Morse | Joel Grayson',
             description: 'Speak Morse code out loud (dun dun dun) and this page transcribes it live. Built for hobbyist EEs and Morse learners.',
+            favicon: '/image/home/morse.jpg',
         }}
         pathname='/morse'
     >
-        <h1 className='text-center mt-8 mb-2'>Morse Code</h1>
+        <h1 className='mt-8 mb-2' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, lineHeight: 1 }}>
+            <Image alt='Morse Code' width={64} height={64} src='/image/home/morse.jpg' style={{ display: 'block', height: '1em', width: '1em', objectFit: 'cover' }} />
+            <span style={{ display: 'inline-block', lineHeight: 1 }}>Morse Code</span>
+        </h1>
 
         <div style={{ maxWidth: 720, margin: '24px auto 0', display: 'grid', gridTemplateColumns: 'auto 1fr auto', gap: 10, alignItems: 'center' }}>
             <label style={{ fontSize: 13, color: '#555' }}>Dot length</label>

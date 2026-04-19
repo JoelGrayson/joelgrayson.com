@@ -151,6 +151,16 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
                 <span className='text-[0.8rem]'>Connecting Street Vendors to the Grid</span>
             </Tile>
 
+            <Tile href='/morse'>
+                <Image alt='Morse Code Logo' width={50} height={50} src='/image/home/morse.jpg' />
+                <span>Morse Code</span>
+            </Tile>
+
+            <Tile href='https://wasian.io'>
+                <Image alt='Wasian.io Logo' width={50} height={50} src='/image/home/wasian-logo.png' />
+                <span>Wasian<span className='text-sm'>.io</span></span>
+            </Tile>
+
             
             
             {/* Arrangement:
