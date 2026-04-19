@@ -251,7 +251,7 @@ export default function MorsePage() {
     // Practice (Recognize / Type)
     type DrillMode = 'char' | 'word' | 'sentence';
     type PracticeMode = 'recognize' | 'type';
-    const [practiceMode, setPracticeMode] = useState<PracticeMode>('recognize');
+    const [practiceMode, setPracticeMode] = useState<PracticeMode>('type');
     const [drillMode, setDrillMode] = useState<DrillMode>('word');
     const [drillLetter, setDrillLetter] = useState<string | null>(null); // Recognize mode prompt
     const [drillGuess, setDrillGuess] = useState<string>('');
@@ -271,9 +271,22 @@ export default function MorsePage() {
     const typePromptRef = useRef<string | null>(null);
     const typePositionRef = useRef<number>(0);
     const typeResultsRef = useRef<TypeEntry[]>([]);
+    const practiceModeRef = useRef<PracticeMode>(practiceMode);
+    // Which rectangle gets morse input: 'top' (top Enter Morse) or 'practice' (practice Enter-Morse rectangle).
+    // Tapping a rectangle sets focus; keying routes according to focus.
+    const [focusedRect, setFocusedRect] = useState<'top' | 'practice'>('top');
+    const focusedRectRef = useRef<'top' | 'practice'>('top');
     useEffect(() => { typePromptRef.current = typePrompt; }, [typePrompt]);
     useEffect(() => { typePositionRef.current = typePosition; }, [typePosition]);
     useEffect(() => { typeResultsRef.current = typeResults; }, [typeResults]);
+    useEffect(() => { practiceModeRef.current = practiceMode; }, [practiceMode]);
+    useEffect(() => { focusedRectRef.current = focusedRect; }, [focusedRect]);
+    // If the practice rectangle disappears, return focus to the top
+    useEffect(() => {
+        if (focusedRect === 'practice' && !(practiceMode === 'type' && typePrompt)) {
+            setFocusedRect('top');
+        }
+    }, [focusedRect, practiceMode, typePrompt]);
 
     // Callback that finalizeLetter uses — intercepts morse input during Type practice
     const letterFinalizeCallbackRef = useRef<((letter: string, pattern: string) => void) | null>(null);
@@ -326,9 +339,9 @@ export default function MorsePage() {
         const letter = decodeLetter(p);
         currentLetterRef.current = '';
         setCurrentLetter('');
-        if (letterFinalizeCallbackRef.current) {
+        if (focusedRectRef.current === 'practice' && letterFinalizeCallbackRef.current) {
             letterFinalizeCallbackRef.current(letter, p);
-        } else {
+        } else if (focusedRectRef.current === 'top') {
             setDecoded(prev => prev + letter);
         }
         letterFinalizedRef.current = true;
@@ -394,7 +407,7 @@ export default function MorsePage() {
             if (!letterFinalizedRef.current && gap > letterGap && currentLetterRef.current) {
                 finalizeLetter();
             }
-            if (letterFinalizedRef.current && !wordBoundaryAddedRef.current && gap > wordGap) {
+            if (letterFinalizedRef.current && !wordBoundaryAddedRef.current && gap > wordGap && focusedRectRef.current === 'top') {
                 setDecoded(prev => (prev.endsWith(' ') ? prev : prev + ' '));
                 wordBoundaryAddedRef.current = true;
             }
@@ -531,7 +544,7 @@ export default function MorsePage() {
         keyGapTimerRef.current = window.setTimeout(() => {
             if (!letterFinalizedRef.current && currentLetterRef.current) finalizeLetter();
             keyGapTimerRef.current = window.setTimeout(() => {
-                if (letterFinalizedRef.current && !wordBoundaryAddedRef.current) {
+                if (letterFinalizedRef.current && !wordBoundaryAddedRef.current && focusedRectRef.current === 'top') {
                     setDecoded(prev => (prev.endsWith(' ') ? prev : prev + ' '));
                     wordBoundaryAddedRef.current = true;
                 }
@@ -584,7 +597,11 @@ export default function MorsePage() {
             }
             if (e.code === 'Backspace' || e.code === 'Delete') {
                 e.preventDefault();
-                deleteCharacter();
+                if (practiceModeRef.current === 'type' && typePromptRef.current) {
+                    deleteTypeCharacter();
+                } else {
+                    deleteCharacter();
+                }
                 return;
             }
             if (e.code !== 'Space') return;
@@ -792,6 +809,8 @@ export default function MorsePage() {
         setCurrentLetter('');
         letterFinalizedRef.current = true;
         wordBoundaryAddedRef.current = true;
+        // Move focus to the practice rectangle so keying routes there by default
+        setFocusedRect('practice');
     }
 
     function resetTypePractice() {
@@ -799,6 +818,31 @@ export default function MorsePage() {
         setTypePosition(0);
         setTypeResults([]);
         setTypeScore({ correct: 0, total: 0 });
+    }
+
+    function restartTypePrompt() {
+        if (!typePrompt) return;
+        const prev = typeResultsRef.current;
+        let correctDelta = 0, totalDelta = 0;
+        for (const r of prev) {
+            if (r) {
+                totalDelta += 1;
+                if (r.status === 'correct') correctDelta += 1;
+            }
+        }
+        setTypeScore(s => ({
+            correct: Math.max(0, s.correct - correctDelta),
+            total: Math.max(0, s.total - totalDelta),
+        }));
+        setTypeResults(new Array(typePrompt.length).fill(null));
+        let startPos = 0;
+        while (startPos < typePrompt.length && /\s/.test(typePrompt[startPos])) startPos++;
+        setTypePosition(startPos);
+        currentLetterRef.current = '';
+        setCurrentLetter('');
+        letterFinalizedRef.current = true;
+        wordBoundaryAddedRef.current = true;
+        setFocusedRect('practice');
     }
 
     function deleteTypeCharacter() {
@@ -850,12 +894,15 @@ export default function MorsePage() {
                 correct: s.correct + (isCorrect ? 1 : 0),
                 total: s.total + 1,
             }));
-            // If we completed the prompt, auto-advance after a brief pause
+            // If we completed the prompt AND every letter was correct, auto-advance after a brief pause.
+            // If any letter was wrong, stay on the prompt so the user can see their mistake.
             if (nextPos >= upper.length) {
-                window.setTimeout(() => {
-                    // only auto-advance if the user hasn't already moved on
-                    if (typePromptRef.current === prompt) nextTypePrompt();
-                }, 1200);
+                const allCorrect = newResults.every((r, i) => /\s/.test(upper[i]) || r?.status === 'correct');
+                if (allCorrect) {
+                    window.setTimeout(() => {
+                        if (typePromptRef.current === prompt) nextTypePrompt();
+                    }, 1200);
+                }
             }
         };
         return () => { letterFinalizeCallbackRef.current = null; };
@@ -1057,18 +1104,19 @@ export default function MorsePage() {
         <div style={{ maxWidth: 720, margin: '28px auto 0' }}>
             <h3 style={{ marginBottom: 8 }}>Enter Morse</h3>
             <button
-                onPointerDown={e => { e.preventDefault(); beginKeyPress(); }}
+                onPointerDown={e => { e.preventDefault(); setFocusedRect('top'); beginKeyPress(); }}
                 onPointerUp={e => { e.preventDefault(); endKeyPress(); }}
                 onPointerLeave={() => { if (keyPressingRef.current) endKeyPress(); }}
                 onPointerCancel={() => { if (keyPressingRef.current) endKeyPress(); }}
                 onContextMenu={e => e.preventDefault()}
                 className='text-gray-600'
                 style={{
-                    width: '100%', padding: '14px 16px', border: '1px solid #cbd5e1',
-                    borderRadius: 10, background: keyPressed ? '#fde68a' : '#f8fafc',
+                    width: '100%', padding: '14px 16px',
+                    border: '2px solid ' + (focusedRect === 'top' ? '#2563eb' : '#cbd5e1'),
+                    borderRadius: 10, background: (keyPressed && focusedRect === 'top') ? '#fde68a' : '#f8fafc',
                     textAlign: 'center', fontSize: 15, cursor: 'pointer',
                     userSelect: 'none', touchAction: 'none',
-                    transition: 'background 60ms linear',
+                    transition: 'background 60ms linear, border-color 120ms linear',
                 }}
             >
                 Tap here, press <kbd style={kbdStyle}>space</kbd> key, or hit{' '}
@@ -1108,7 +1156,7 @@ export default function MorsePage() {
             }}>
                 {decoded || <span style={{ color: '#bbb', fontWeight: 400 }}>Decoded text will show here</span>}
             </div>
-            {currentLetter && (
+            {currentLetter && focusedRect === 'top' && (
                 <div style={{
                     marginTop: 12,
                     fontSize: 24, fontFamily: 'ui-monospace, monospace', letterSpacing: 4,
@@ -1182,20 +1230,19 @@ export default function MorsePage() {
                     display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))',
                     gap: 6, fontFamily: 'ui-monospace, monospace', fontSize: 14,
                 }}>
-                    {LETTERS.map(([l, c]) => {
-                        const highlighted = !!currentLetter && c.startsWith(currentLetter) && currentLetter.length > 0;
-                        return <button key={l} onClick={() => playMorseStandalone(l)}
+                    {LETTERS.map(([l, c]) => (
+                        <button key={l} onClick={() => playMorseStandalone(l)}
                             title={`Play ${l} (${c})`} aria-label={`Play ${l}`}
                             style={{
                                 padding: '6px 10px', border: '1px solid #e5e7eb', borderRadius: 6,
                                 display: 'flex', justifyContent: 'space-between', gap: 8,
-                                background: highlighted ? '#fef3c7' : 'white',
+                                background: 'white',
                                 cursor: 'pointer', font: 'inherit', textAlign: 'left',
                             }}>
                             <span style={{ fontWeight: 700 }}>{l}</span>
                             <span style={{ color: '#444' }}>{c}</span>
-                        </button>;
-                    })}
+                        </button>
+                    ))}
                 </div>
             </div>
         </div>
@@ -1206,50 +1253,44 @@ export default function MorsePage() {
                 padding: 12,
                 border: '1px dashed #cbd5e1', borderRadius: 10, background: '#f8fafc',
             }}>
-                {/* Mode toggle: Recognize vs Type */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
-                    {(['recognize', 'type'] as PracticeMode[]).map(m => (
-                        <button key={m} onClick={() => {
+                {/* Mode toggle: Enter Morse | Recognize Morse — segmented */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10, flexWrap: 'wrap' }}>
+                    <Segmented<PracticeMode>
+                        value={practiceMode}
+                        size='md'
+                        onChange={m => {
                             setPracticeMode(m);
                             setDrillLetter(null); setDrillGuess(''); setDrillResult(null);
                             resetTypePractice();
                         }}
-                            style={{
-                                padding: '6px 14px', fontSize: 14, borderRadius: 6,
-                                border: '1px solid ' + (practiceMode === m ? '#2563eb' : '#cbd5e1'),
-                                background: practiceMode === m ? '#2563eb' : 'white',
-                                color: practiceMode === m ? 'white' : '#374151',
-                                cursor: 'pointer', fontWeight: practiceMode === m ? 600 : 400,
-                            }}>
-                            {m === 'recognize' ? 'Recognize Morse' : 'Enter Morse'}
-                        </button>
-                    ))}
+                        options={[
+                            { value: 'type', label: 'Enter Morse' },
+                            { value: 'recognize', label: 'Recognize Morse' },
+                        ]}
+                    />
                 </div>
 
-                {/* Length selector — shared between modes */}
+                {/* Length selector — segmented, shared between modes */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
-                    <span style={{ fontSize: 13, color: '#555' }}>Length:</span>
-                    {(['char', 'word', 'sentence'] as DrillMode[]).map(m => (
-                        <button key={m} onClick={() => {
+                    <Segmented<DrillMode>
+                        value={drillMode}
+                        size='sm'
+                        onChange={m => {
                             setDrillMode(m);
                             setDrillLetter(null); setDrillGuess(''); setDrillResult(null);
                             resetTypePractice();
                         }}
-                            style={{
-                                padding: '4px 10px', fontSize: 13, borderRadius: 6,
-                                border: '1px solid ' + (drillMode === m ? '#2563eb' : '#cbd5e1'),
-                                background: drillMode === m ? '#dbeafe' : 'white',
-                                color: drillMode === m ? '#1e3a8a' : '#374151',
-                                cursor: 'pointer', fontWeight: drillMode === m ? 600 : 400,
-                            }}>
-                            {m === 'char' ? 'One char' : m === 'word' ? 'One word' : 'One sentence'}
-                        </button>
-                    ))}
+                        options={[
+                            { value: 'char', label: 'One char' },
+                            { value: 'word', label: 'One word' },
+                            { value: 'sentence', label: 'One sentence' },
+                        ]}
+                    />
                 </div>
 
                 {practiceMode === 'recognize' ? (
                     !drillLetter ? (
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 10 }}>
                             <span style={{ fontSize: 13, color: '#555' }}>
                                 Listen and type what you hear.
                             </span>
@@ -1310,9 +1351,9 @@ export default function MorsePage() {
                 ) : (
                     // Type (Enter Morse) mode
                     !typePrompt ? (
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 10 }}>
                             <span style={{ fontSize: 13, color: '#555' }}>
-                                You&apos;ll see English text — key the Morse for each letter.
+                                You&apos;ll be given a {drillMode === 'char' ? 'letter' : drillMode === 'word' ? 'word' : 'sentence'} to key in Morse code.
                             </span>
                             <button className='button' onClick={nextTypePrompt}>Start</button>
                         </div>
@@ -1358,18 +1399,19 @@ export default function MorsePage() {
 
                             {/* Big keying rectangle, same style as top Enter Morse */}
                             <button
-                                onPointerDown={e => { e.preventDefault(); beginKeyPress(); }}
+                                onPointerDown={e => { e.preventDefault(); setFocusedRect('practice'); beginKeyPress(); }}
                                 onPointerUp={e => { e.preventDefault(); endKeyPress(); }}
                                 onPointerLeave={() => { if (keyPressingRef.current) endKeyPress(); }}
                                 onPointerCancel={() => { if (keyPressingRef.current) endKeyPress(); }}
                                 onContextMenu={e => e.preventDefault()}
                                 className='text-gray-600'
                                 style={{
-                                    width: '100%', padding: '14px 16px', border: '1px solid #cbd5e1',
-                                    borderRadius: 10, background: keyPressed ? '#fde68a' : '#f8fafc',
+                                    width: '100%', padding: '14px 16px',
+                                    border: '2px solid ' + (focusedRect === 'practice' ? '#2563eb' : '#cbd5e1'),
+                                    borderRadius: 10, background: (keyPressed && focusedRect === 'practice') ? '#fde68a' : '#f8fafc',
                                     textAlign: 'center', fontSize: 15, cursor: 'pointer',
                                     userSelect: 'none', touchAction: 'none',
-                                    transition: 'background 60ms linear',
+                                    transition: 'background 60ms linear, border-color 120ms linear',
                                 }}
                             >
                                 Tap here, press <kbd style={kbdStyle}>space</kbd> key, or hit{' '}
@@ -1403,9 +1445,9 @@ export default function MorsePage() {
                                     }}>reset</button>
                                 </div>
                             </div>
-                            {typePosition >= typePrompt.length && (
-                                <div style={{ fontSize: 14, color: '#166534', marginTop: 8 }}>
-                                    Done! Loading next...
+                            {typeResults.some(r => r?.status === 'wrong') && (
+                                <div style={{ marginTop: 12 }}>
+                                    <button className='button' onClick={restartTypePrompt}>Restart</button>
                                 </div>
                             )}
                         </div>
@@ -1419,6 +1461,41 @@ export default function MorsePage() {
 
 function decodeLetterPreview(p: string): string {
     return MORSE[p] || '?';
+}
+
+function Segmented<T extends string>({ value, onChange, options, size = 'md' }: {
+    value: T;
+    onChange: (v: T) => void;
+    options: { value: T; label: string }[];
+    size?: 'sm' | 'md';
+}) {
+    const padding = size === 'sm' ? '4px 12px' : '7px 16px';
+    const fontSize = size === 'sm' ? 13 : 14;
+    return <div style={{
+        display: 'inline-flex',
+        border: '1px solid #cbd5e1',
+        borderRadius: 8,
+        overflow: 'hidden',
+        background: 'white',
+    }}>
+        {options.map((opt, i) => {
+            const active = value === opt.value;
+            return <button key={opt.value}
+                onClick={() => onChange(opt.value)}
+                style={{
+                    padding, fontSize,
+                    background: active ? '#2563eb' : 'white',
+                    color: active ? 'white' : '#374151',
+                    fontWeight: active ? 600 : 400,
+                    border: 'none',
+                    borderRight: i < options.length - 1 ? '1px solid #cbd5e1' : 'none',
+                    cursor: 'pointer',
+                    transition: 'background 80ms linear, color 80ms linear',
+                }}>
+                {opt.label}
+            </button>;
+        })}
+    </div>;
 }
 
 function textToMorse(text: string): string {
