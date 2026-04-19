@@ -501,14 +501,28 @@ export default function MorsePage() {
     const keyPressingRef = useRef(false);
     const keyPressStartRef = useRef(0);
     const keyGapTimerRef = useRef<number | null>(null);
-    const keyCtxRef = useRef<AudioContext | null>(null);
+    const sharedAudioCtxRef = useRef<AudioContext | null>(null);
     const keyOscRef = useRef<OscillatorNode | null>(null);
     const keyGainRef = useRef<GainNode | null>(null);
     const [keyPressed, setKeyPressed] = useState(false);
 
-    function startKeyTone() {
+    function getSharedAudioCtx(): AudioContext | null {
         try {
-            const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+            if (!sharedAudioCtxRef.current) {
+                sharedAudioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+            }
+            const ctx = sharedAudioCtxRef.current;
+            if (ctx.state === 'suspended') ctx.resume().catch(() => {});
+            return ctx;
+        } catch {
+            return null;
+        }
+    }
+
+    function startKeyTone() {
+        const ctx = getSharedAudioCtx();
+        if (!ctx) return;
+        try {
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
             osc.type = 'sine';
@@ -518,22 +532,26 @@ export default function MorsePage() {
             gain.gain.linearRampToValueAtTime(0.2, now + 0.005);
             osc.connect(gain).connect(ctx.destination);
             osc.start();
-            keyCtxRef.current = ctx; keyOscRef.current = osc; keyGainRef.current = gain;
+            keyOscRef.current = osc; keyGainRef.current = gain;
         } catch {}
     }
 
     function stopKeyTone() {
-        const ctx = keyCtxRef.current, osc = keyOscRef.current, gain = keyGainRef.current;
+        const osc = keyOscRef.current, gain = keyGainRef.current;
+        const ctx = sharedAudioCtxRef.current;
         if (!ctx || !osc || !gain) return;
-        keyCtxRef.current = null; keyOscRef.current = null; keyGainRef.current = null;
+        keyOscRef.current = null; keyGainRef.current = null;
         const now = ctx.currentTime;
         try {
             gain.gain.cancelScheduledValues(now);
             gain.gain.setValueAtTime(gain.gain.value, now);
-            gain.gain.linearRampToValueAtTime(0, now + 0.01);
-            osc.stop(now + 0.02);
+            gain.gain.linearRampToValueAtTime(0, now + 0.015);
+            osc.stop(now + 0.03);
+            // Disconnect nodes after they're done so they can be GC'd
+            window.setTimeout(() => {
+                try { osc.disconnect(); gain.disconnect(); } catch {}
+            }, 100);
         } catch {}
-        window.setTimeout(() => { ctx.close().catch(() => {}); }, 60);
     }
 
     function scheduleGapFinalization() {
@@ -1055,6 +1073,20 @@ export default function MorsePage() {
     >
         <style dangerouslySetInnerHTML={{ __html: `
             .morse-tap-line { display: block; }
+            .morse-tap-rect {
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                -webkit-touch-callout: none;
+                -webkit-tap-highlight-color: transparent;
+                touch-action: none;
+            }
+            .morse-tap-rect * {
+                -webkit-user-select: none;
+                user-select: none;
+                -webkit-touch-callout: none;
+            }
             @media (max-width: 640px) {
                 .morse-h1 { gap: 14px !important; font-size: 2rem !important; flex-wrap: wrap; }
                 .morse-dot-length {
@@ -1132,7 +1164,10 @@ export default function MorsePage() {
                 onPointerLeave={() => { if (keyPressingRef.current) endKeyPress(); }}
                 onPointerCancel={() => { if (keyPressingRef.current) endKeyPress(); }}
                 onContextMenu={e => e.preventDefault()}
-                className='text-gray-600'
+                onTouchStart={e => e.preventDefault()}
+                onTouchMove={e => e.preventDefault()}
+                onSelect={e => e.preventDefault()}
+                className='morse-tap-rect text-gray-600'
                 style={{
                     display: 'block',
                     width: '100%', padding: '14px 16px',
@@ -1428,7 +1463,10 @@ export default function MorsePage() {
                                 onPointerLeave={() => { if (keyPressingRef.current) endKeyPress(); }}
                                 onPointerCancel={() => { if (keyPressingRef.current) endKeyPress(); }}
                                 onContextMenu={e => e.preventDefault()}
-                                className='text-gray-600'
+                                onTouchStart={e => e.preventDefault()}
+                                onTouchMove={e => e.preventDefault()}
+                                onSelect={e => e.preventDefault()}
+                                className='morse-tap-rect text-gray-600'
                                 style={{
                                     display: 'block',
                                     width: '100%', padding: '14px 16px',
