@@ -38,17 +38,30 @@ const iconBtnStyle: React.CSSProperties = {
     padding: 0,
 };
 
+const kbdStyle: React.CSSProperties = {
+    fontFamily: 'ui-monospace, monospace',
+    fontSize: '0.9em',
+    padding: '1px 6px',
+    border: '1px solid #cbd5e1',
+    borderBottomWidth: 2,
+    borderRadius: 4,
+    background: '#f8fafc',
+    color: '#334155',
+};
+
 export default function MorsePage() {
     const [listening, setListening] = useState(false);
     const [permissionError, setPermissionError] = useState<string | null>(null);
     const [decoded, setDecoded] = useState<string>('');
     const [currentLetter, setCurrentLetter] = useState<string>('');
     const [volume, setVolume] = useState<number>(0);
+    const volumeBarRef = useRef<HTMLDivElement | null>(null);
+    const lastVolumeUpdateRef = useRef<number>(0);
     const [flash, setFlash] = useState<Classification | null>(null);
 
     // Adjustable params
     const [noiseThreshold, setNoiseThreshold] = useState<number>(0.04);
-    const [unitMs, setUnitMs] = useState<number>(150); // nominal dot duration
+    const [unitMs, setUnitMs] = useState<number>(92); // nominal dot duration
 
     // Playback
     const [sampleText, setSampleText] = useState<string>('hello');
@@ -100,7 +113,18 @@ export default function MorsePage() {
         let sum = 0;
         for (let i = 0; i < buf.length; i++) sum += buf[i] * buf[i];
         const rms = Math.sqrt(sum / buf.length);
-        setVolume(rms);
+        // Live DOM update — bypasses React's render cycle for smooth realtime feedback
+        if (volumeBarRef.current) {
+            const pct = Math.min(1, rms / 0.3) * 100;
+            volumeBarRef.current.style.width = `${pct}%`;
+            volumeBarRef.current.style.background = rms > noiseThresholdRef.current ? '#22c55e' : '#9ca3af';
+        }
+        // Throttle React state update to ~10Hz — used only to re-color the flash dot / tip text
+        const now0 = performance.now();
+        if (now0 - lastVolumeUpdateRef.current > 100) {
+            lastVolumeUpdateRef.current = now0;
+            setVolume(rms);
+        }
 
         const now = performance.now();
         const threshold = noiseThresholdRef.current;
@@ -185,6 +209,11 @@ export default function MorsePage() {
         audioCtxRef.current?.close();
         audioCtxRef.current = null;
         analyserRef.current = null;
+        if (volumeBarRef.current) {
+            volumeBarRef.current.style.width = '0%';
+            volumeBarRef.current.style.background = '#9ca3af';
+        }
+        setVolume(0);
         // if a letter is pending, flush it
         if (currentLetterRef.current) finalizeLetter();
         setListening(false);
@@ -197,6 +226,119 @@ export default function MorsePage() {
             audioCtxRef.current?.close();
             playStopRef.current?.();
             playCtxRef.current?.close().catch(() => {});
+        };
+    }, []);
+
+    useEffect(() => {
+        // Space acts as a straight-key Morse input: hold = tone, release = burst.
+        let pressing = false;
+        let pressStart = 0;
+        let gapTimer: number | null = null;
+        let keyCtx: AudioContext | null = null;
+        let keyOsc: OscillatorNode | null = null;
+        let keyGain: GainNode | null = null;
+
+        function isTypingTarget(t: EventTarget | null) {
+            const el = t as HTMLElement | null;
+            if (!el) return false;
+            const tag = el.tagName;
+            return tag === 'INPUT' || tag === 'TEXTAREA' || el.isContentEditable;
+        }
+
+        function startKeyTone() {
+            try {
+                const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = 600;
+                const now = ctx.currentTime;
+                gain.gain.setValueAtTime(0, now);
+                gain.gain.linearRampToValueAtTime(0.2, now + 0.005);
+                osc.connect(gain).connect(ctx.destination);
+                osc.start();
+                keyCtx = ctx; keyOsc = osc; keyGain = gain;
+            } catch {}
+        }
+
+        function stopKeyTone() {
+            if (!keyCtx || !keyOsc || !keyGain) return;
+            const ctx = keyCtx, osc = keyOsc, gain = keyGain;
+            keyCtx = null; keyOsc = null; keyGain = null;
+            const now = ctx.currentTime;
+            try {
+                gain.gain.cancelScheduledValues(now);
+                gain.gain.setValueAtTime(gain.gain.value, now);
+                gain.gain.linearRampToValueAtTime(0, now + 0.01);
+                osc.stop(now + 0.02);
+            } catch {}
+            window.setTimeout(() => { ctx.close().catch(() => {}); }, 60);
+        }
+
+        function scheduleGapFinalization() {
+            if (gapTimer != null) window.clearTimeout(gapTimer);
+            const unit = unitMsRef.current;
+            const letterGap = unit * 3.5;
+            const wordGap = unit * 8;
+            gapTimer = window.setTimeout(() => {
+                if (!letterFinalizedRef.current && currentLetterRef.current) finalizeLetter();
+                gapTimer = window.setTimeout(() => {
+                    if (letterFinalizedRef.current && !wordBoundaryAddedRef.current) {
+                        setDecoded(prev => (prev.endsWith(' ') ? prev : prev + ' '));
+                        wordBoundaryAddedRef.current = true;
+                    }
+                }, Math.max(0, wordGap - letterGap));
+            }, letterGap);
+        }
+
+        function onKeyDown(e: KeyboardEvent) {
+            if (isTypingTarget(e.target)) return;
+            if (e.code === 'Backspace' || e.code === 'Delete') {
+                e.preventDefault();
+                deleteCharacter();
+                return;
+            }
+            if (e.code !== 'Space') return;
+            e.preventDefault();
+            if (e.repeat || pressing) return;
+            pressing = true;
+            pressStart = performance.now();
+            if (gapTimer != null) { window.clearTimeout(gapTimer); gapTimer = null; }
+            startKeyTone();
+        }
+
+        function onKeyUp(e: KeyboardEvent) {
+            if (e.code !== 'Space') return;
+            if (!pressing) return;
+            pressing = false;
+            const dur = performance.now() - pressStart;
+            stopKeyTone();
+            const unit = unitMsRef.current;
+            const dotDashBoundary = unit * 1.8;
+            const cls: Classification = dur < dotDashBoundary ? '.' : '-';
+            currentLetterRef.current += cls;
+            setCurrentLetter(currentLetterRef.current);
+            setFlash(cls);
+            window.setTimeout(() => setFlash(null), 120);
+            letterFinalizedRef.current = false;
+            wordBoundaryAddedRef.current = false;
+            lastSoundEndRef.current = performance.now();
+            scheduleGapFinalization();
+        }
+
+        function onBlur() {
+            if (pressing) { pressing = false; stopKeyTone(); }
+        }
+
+        window.addEventListener('keydown', onKeyDown);
+        window.addEventListener('keyup', onKeyUp);
+        window.addEventListener('blur', onBlur);
+        return () => {
+            window.removeEventListener('keydown', onKeyDown);
+            window.removeEventListener('keyup', onKeyUp);
+            window.removeEventListener('blur', onBlur);
+            if (gapTimer != null) window.clearTimeout(gapTimer);
+            stopKeyTone();
         };
     }, []);
 
@@ -285,8 +427,7 @@ export default function MorsePage() {
         };
     }
 
-    // Volume bar: clamp rms for display
-    const volumePct = Math.min(1, volume / 0.3) * 100;
+    // Volume bar: threshold indicator (live bar updates directly in tick)
     const thresholdPct = Math.min(1, noiseThreshold / 0.3) * 100;
 
     return <Page bottomPadding
@@ -297,8 +438,17 @@ export default function MorsePage() {
         pathname='/morse'
     >
         <h1 className='text-center mt-8 mb-2'>Morse Code</h1>
+        <p className='text-center text-gray-600 max-w-2xl mx-auto'>
+            Hold <kbd style={kbdStyle}>space</kbd> to key Morse, or hit{' '}
+            <Mic size={16} style={{ display: 'inline-block', verticalAlign: 'middle', marginTop: '-0.2em' }} />
+            {' '}to speak it out loud. It will be transcribed below.
+        </p>
 
-        <div className='flex justify-center gap-3 mt-6'>
+        <div style={{ maxWidth: 720, margin: '28px auto 0' }}>
+            <h3 style={{ marginBottom: 8 }}>Decode</h3>
+        </div>
+
+        <div className='flex gap-3' style={{ maxWidth: 720, margin: '8px auto 0' }}>
             {!listening
                 ? <button className='button' onClick={start} title='Start listening' aria-label='Start listening' style={iconBtnStyle}>
                     <Mic size={22} />
@@ -330,11 +480,10 @@ export default function MorsePage() {
                     position: 'relative', flex: 1, height: 18,
                     background: '#eee', borderRadius: 4, overflow: 'hidden',
                 }}>
-                    <div style={{
+                    <div ref={volumeBarRef} style={{
                         position: 'absolute', left: 0, top: 0, bottom: 0,
-                        width: `${volumePct}%`,
-                        background: volume > noiseThreshold ? '#22c55e' : '#9ca3af',
-                        transition: 'width 40ms linear',
+                        width: '0%',
+                        background: '#9ca3af',
                     }} />
                     <div style={{
                         position: 'absolute', top: 0, bottom: 0,
@@ -363,15 +512,29 @@ export default function MorsePage() {
                 <span style={{ fontSize: 12, color: '#666', textAlign: 'right' }}>{noiseThreshold.toFixed(3)}</span>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr 110px', gap: 10, alignItems: 'center' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr 150px', gap: 10, alignItems: 'center' }}>
                 <label style={{ fontSize: 13, color: '#555' }}>Dot length (ms)</label>
-                <input type='range' min={60} max={400} step={10}
+                <input type='range' min={20} max={600} step={1}
                     value={unitMs}
                     onChange={e => setUnitMs(parseInt(e.target.value))}
                 />
-                <span style={{ fontSize: 12, color: '#666', textAlign: 'right' }}>
-                    {unitMs}ms ({(1200 / unitMs).toFixed(1)} WPM)
-                </span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'flex-end' }}>
+                    <input type='number' min={1} max={2000} step={1}
+                        value={unitMs}
+                        onChange={e => {
+                            const v = parseInt(e.target.value);
+                            if (!isNaN(v) && v > 0) setUnitMs(v);
+                        }}
+                        style={{
+                            width: 60, padding: '2px 6px', fontSize: 12,
+                            border: '1px solid #cbd5e1', borderRadius: 4,
+                            fontFamily: 'ui-monospace, monospace', textAlign: 'right',
+                        }}
+                    />
+                    <span style={{ fontSize: 12, color: '#666' }}>
+                        ms ({(1200 / unitMs).toFixed(1)} WPM)
+                    </span>
+                </div>
             </div>
 
         </div>
@@ -380,29 +543,29 @@ export default function MorsePage() {
             maxWidth: 720, margin: '20px auto 0', padding: 16,
             border: '1px solid #ddd', borderRadius: 10, minHeight: 120,
         }}>
-            <div style={{ fontSize: 13, color: '#777', marginBottom: 6 }}>Decoded</div>
             <div style={{
                 fontSize: 28, fontWeight: 600, letterSpacing: 2,
                 fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
                 minHeight: 40, wordBreak: 'break-word',
             }}>
-                {decoded || <span style={{ color: '#bbb', fontWeight: 400 }}>…</span>}
-                <span style={{ color: '#9ca3af' }}>{decoded ? '' : ''}</span>
+                {decoded || <span style={{ color: '#bbb', fontWeight: 400 }}>Decoded text will show here</span>}
             </div>
-            <div style={{ marginTop: 12, fontSize: 13, color: '#777' }}>In progress</div>
-            <div style={{
-                fontSize: 24, fontFamily: 'ui-monospace, monospace', letterSpacing: 4,
-                minHeight: 32, color: '#374151',
-            }}>
-                {currentLetter || <span style={{ color: '#bbb' }}>—</span>}
-                {currentLetter && <span style={{ fontSize: 14, color: '#6b7280', marginLeft: 12 }}>
-                    (maybe “{decodeLetterPreview(currentLetter)}”)
-                </span>}
-            </div>
+            {currentLetter && (
+                <div style={{
+                    marginTop: 12,
+                    fontSize: 24, fontFamily: 'ui-monospace, monospace', letterSpacing: 4,
+                    color: '#374151',
+                }}>
+                    {currentLetter}
+                    <span style={{ fontSize: 14, color: '#6b7280', marginLeft: 12 }}>
+                        (maybe “{decodeLetterPreview(currentLetter)}”)
+                    </span>
+                </div>
+            )}
         </div>
 
         <div style={{ maxWidth: 720, margin: '28px auto 0' }}>
-            <h3 style={{ marginBottom: 8 }}>Play</h3>
+            <h3 style={{ marginBottom: 8 }}>Encode (Play)</h3>
             <div style={{
                 padding: 12,
                 border: '1px dashed #cbd5e1', borderRadius: 10, background: '#f8fafc',
@@ -437,16 +600,20 @@ export default function MorsePage() {
                 display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))',
                 gap: 6, fontFamily: 'ui-monospace, monospace', fontSize: 14,
             }}>
-                {LETTERS.map(([l, c]) => (
-                    <div key={l} style={{
-                        padding: '6px 10px', border: '1px solid #eee', borderRadius: 6,
-                        display: 'flex', justifyContent: 'space-between', gap: 8,
-                        background: currentLetter && c.startsWith(currentLetter) && currentLetter.length > 0 ? '#fef3c7' : 'white',
-                    }}>
+                {LETTERS.map(([l, c]) => {
+                    const highlighted = !!currentLetter && c.startsWith(currentLetter) && currentLetter.length > 0;
+                    return <button key={l} onClick={() => playMorse(l)}
+                        title={`Play ${l} (${c})`} aria-label={`Play ${l}`}
+                        style={{
+                            padding: '6px 10px', border: '1px solid #e5e7eb', borderRadius: 6,
+                            display: 'flex', justifyContent: 'space-between', gap: 8,
+                            background: highlighted ? '#fef3c7' : 'white',
+                            cursor: 'pointer', font: 'inherit', textAlign: 'left',
+                        }}>
                         <span style={{ fontWeight: 700 }}>{l}</span>
                         <span style={{ color: '#444' }}>{c}</span>
-                    </div>
-                ))}
+                    </button>;
+                })}
             </div>
         </div>
 
