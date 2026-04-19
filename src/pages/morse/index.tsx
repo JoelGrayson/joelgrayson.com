@@ -1073,6 +1073,22 @@ export default function MorsePage() {
     >
         <style dangerouslySetInnerHTML={{ __html: `
             .morse-tap-line { display: block; }
+            #pageNamespace {
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                -webkit-touch-callout: none;
+            }
+            #pageNamespace input,
+            #pageNamespace textarea,
+            #pageNamespace [contenteditable] {
+                -webkit-user-select: text;
+                -moz-user-select: text;
+                -ms-user-select: text;
+                user-select: text;
+                -webkit-touch-callout: default;
+            }
             .morse-tap-rect {
                 -webkit-user-select: none;
                 -moz-user-select: none;
@@ -1159,7 +1175,7 @@ export default function MorsePage() {
         <div style={{ maxWidth: 720, margin: '28px auto 0' }}>
             <h3 style={{ marginBottom: 8 }}>Enter Morse</h3>
             <button
-                onPointerDown={e => { e.preventDefault(); setFocusedRect('top'); beginKeyPress(); }}
+                onPointerDown={e => { e.preventDefault(); window.getSelection?.()?.removeAllRanges(); setFocusedRect('top'); beginKeyPress(); }}
                 onPointerUp={e => { e.preventDefault(); endKeyPress(); }}
                 onPointerLeave={() => { if (keyPressingRef.current) endKeyPress(); }}
                 onPointerCancel={() => { if (keyPressingRef.current) endKeyPress(); }}
@@ -1458,7 +1474,7 @@ export default function MorsePage() {
 
                             {/* Big keying rectangle, same style as top Enter Morse */}
                             <button
-                                onPointerDown={e => { e.preventDefault(); setFocusedRect('practice'); beginKeyPress(); }}
+                                onPointerDown={e => { e.preventDefault(); window.getSelection?.()?.removeAllRanges(); setFocusedRect('practice'); beginKeyPress(); }}
                                 onPointerUp={e => { e.preventDefault(); endKeyPress(); }}
                                 onPointerLeave={() => { if (keyPressingRef.current) endKeyPress(); }}
                                 onPointerCancel={() => { if (keyPressingRef.current) endKeyPress(); }}
