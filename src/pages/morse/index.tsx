@@ -1,5 +1,5 @@
 import Page from '@/components/page/DefaultPage';
-import { Delete, Mic, Play, Square, Trash2 } from 'lucide-react';
+import { Delete, Mic, Square, Trash2, Volume2 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 const MORSE: Record<string, string> = {
@@ -57,11 +57,41 @@ export default function MorsePage() {
     const [volume, setVolume] = useState<number>(0);
     const volumeBarRef = useRef<HTMLDivElement | null>(null);
     const lastVolumeUpdateRef = useRef<number>(0);
+    const thresholdTrackRef = useRef<HTMLDivElement | null>(null);
+    const [draggingThreshold, setDraggingThreshold] = useState(false);
+    const [hoveringThreshold, setHoveringThreshold] = useState(false);
     const [flash, setFlash] = useState<Classification | null>(null);
 
-    // Adjustable params
-    const [noiseThreshold, setNoiseThreshold] = useState<number>(0.04);
+    // Adjustable params (persisted to localStorage)
+    const [noiseThreshold, setNoiseThreshold] = useState<number>(0.03);
     const [unitMs, setUnitMs] = useState<number>(92); // nominal dot duration
+    const [prefsLoaded, setPrefsLoaded] = useState(false);
+
+    useEffect(() => {
+        try {
+            const t = localStorage.getItem('morse.noiseThreshold');
+            const u = localStorage.getItem('morse.unitMs');
+            if (t != null) {
+                const v = parseFloat(t);
+                if (!isNaN(v) && v >= 0 && v <= 0.3) setNoiseThreshold(v);
+            }
+            if (u != null) {
+                const v = parseInt(u);
+                if (!isNaN(v) && v > 0 && v <= 2000) setUnitMs(v);
+            }
+        } catch {}
+        setPrefsLoaded(true);
+    }, []);
+
+    useEffect(() => {
+        if (!prefsLoaded) return;
+        try { localStorage.setItem('morse.noiseThreshold', String(noiseThreshold)); } catch {}
+    }, [noiseThreshold, prefsLoaded]);
+
+    useEffect(() => {
+        if (!prefsLoaded) return;
+        try { localStorage.setItem('morse.unitMs', String(unitMs)); } catch {}
+    }, [unitMs, prefsLoaded]);
 
     // Playback
     const [sampleText, setSampleText] = useState<string>('hello');
@@ -230,6 +260,24 @@ export default function MorsePage() {
     }, []);
 
     useEffect(() => {
+        if (!draggingThreshold) return;
+        function updateFromX(clientX: number) {
+            const rect = thresholdTrackRef.current?.getBoundingClientRect();
+            if (!rect) return;
+            const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+            setNoiseThreshold(Number((ratio * 0.3).toFixed(3)));
+        }
+        function onMove(e: PointerEvent) { updateFromX(e.clientX); }
+        function onUp() { setDraggingThreshold(false); }
+        window.addEventListener('pointermove', onMove);
+        window.addEventListener('pointerup', onUp);
+        return () => {
+            window.removeEventListener('pointermove', onMove);
+            window.removeEventListener('pointerup', onUp);
+        };
+    }, [draggingThreshold]);
+
+    useEffect(() => {
         // Space acts as a straight-key Morse input: hold = tone, release = burst.
         let pressing = false;
         let pressStart = 0;
@@ -293,6 +341,11 @@ export default function MorsePage() {
 
         function onKeyDown(e: KeyboardEvent) {
             if (isTypingTarget(e.target)) return;
+            if (e.code === 'Escape') {
+                e.preventDefault();
+                clearText();
+                return;
+            }
             if (e.code === 'Backspace' || e.code === 'Delete') {
                 e.preventDefault();
                 deleteCharacter();
@@ -356,7 +409,10 @@ export default function MorsePage() {
             setCurrentLetter(currentLetterRef.current);
             return;
         }
-        setDecoded(prev => prev.slice(0, -1));
+        setDecoded(prev => {
+            if (prev.endsWith(' ')) return prev.slice(0, -2);
+            return prev.slice(0, -1);
+        });
     }
 
     function stopPlay() {
@@ -438,17 +494,42 @@ export default function MorsePage() {
         pathname='/morse'
     >
         <h1 className='text-center mt-8 mb-2'>Morse Code</h1>
-        <p className='text-center text-gray-600 max-w-2xl mx-auto'>
-            Hold <kbd style={kbdStyle}>space</kbd> to key Morse, or hit{' '}
-            <Mic size={16} style={{ display: 'inline-block', verticalAlign: 'middle', marginTop: '-0.2em' }} />
-            {' '}to speak it out loud. It will be transcribed below.
-        </p>
+
+        <div style={{ maxWidth: 720, margin: '24px auto 0', display: 'grid', gridTemplateColumns: 'auto 1fr auto', gap: 10, alignItems: 'center' }}>
+            <label style={{ fontSize: 13, color: '#555' }}>Dot length</label>
+            <input type='range' min={20} max={600} step={1}
+                value={unitMs}
+                onChange={e => setUnitMs(parseInt(e.target.value))}
+            />
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'flex-end' }}>
+                <input type='number' min={1} max={2000} step={1}
+                    value={unitMs}
+                    onChange={e => {
+                        const v = parseInt(e.target.value);
+                        if (!isNaN(v) && v > 0) setUnitMs(v);
+                    }}
+                    style={{
+                        width: 60, padding: '2px 6px', fontSize: 12,
+                        border: '1px solid #cbd5e1', borderRadius: 4,
+                        fontFamily: 'ui-monospace, monospace', textAlign: 'right',
+                    }}
+                />
+                <span style={{ fontSize: 12, color: '#666' }}>
+                    ms ({(1200 / unitMs).toFixed(1)} WPM)
+                </span>
+            </div>
+        </div>
 
         <div style={{ maxWidth: 720, margin: '28px auto 0' }}>
             <h3 style={{ marginBottom: 8 }}>Decode</h3>
+            <p className='text-gray-600'>
+                Tap <kbd style={kbdStyle}>space</kbd> key on your keyboard to key in morse code or press{' '}
+                <Mic size={16} style={{ display: 'inline-block', verticalAlign: 'middle', marginTop: '-0.2em' }} />
+                {' '}and say morse code out loud.
+            </p>
         </div>
 
-        <div className='flex gap-3' style={{ maxWidth: 720, margin: '8px auto 0' }}>
+        <div className='flex gap-3' style={{ maxWidth: 720, margin: '8px auto 0', alignItems: 'center' }}>
             {!listening
                 ? <button className='button' onClick={start} title='Start listening' aria-label='Start listening' style={iconBtnStyle}>
                     <Mic size={22} />
@@ -464,79 +545,94 @@ export default function MorsePage() {
             <button className='button' onClick={clearText} title='Clear all text' aria-label='Clear all text' style={iconBtnStyle}>
                 <Trash2 size={22} />
             </button>
-        </div>
 
-        {permissionError && (
-            <p className='text-red-600 text-center mt-3'>{permissionError}</p>
-        )}
-
-        <div style={{
-            maxWidth: 720, margin: '20px auto 0', padding: 16,
-            border: '1px solid #ddd', borderRadius: 10, background: '#fafafa',
-        }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
-                <div style={{ width: 90, fontSize: 13, color: '#555' }}>Mic level</div>
-                <div style={{
-                    position: 'relative', flex: 1, height: 18,
-                    background: '#eee', borderRadius: 4, overflow: 'hidden',
-                }}>
-                    <div ref={volumeBarRef} style={{
-                        position: 'absolute', left: 0, top: 0, bottom: 0,
-                        width: '0%',
-                        background: '#9ca3af',
-                    }} />
+            <div ref={thresholdTrackRef} style={{
+                position: 'relative', flex: 1, height: 24, marginLeft: 8,
+                background: '#eee', borderRadius: 4,
+                overflow: 'visible',
+            }}>
                     <div style={{
-                        position: 'absolute', top: 0, bottom: 0,
-                        left: `${thresholdPct}%`, width: 2,
-                        background: '#ef4444',
-                    }} title='Noise threshold' />
-                </div>
-                <div style={{
-                    width: 40, height: 40, borderRadius: '50%',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: 22, fontWeight: 700,
-                    background: flash === '.' ? '#60a5fa' : flash === '-' ? '#f59e0b' : '#e5e7eb',
-                    color: flash ? 'white' : '#9ca3af',
-                    transition: 'background 80ms linear',
-                }}>
-                    {flash === '.' ? '·' : flash === '-' ? '−' : '·'}
-                </div>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr 60px', gap: 10, alignItems: 'center', marginBottom: 6 }}>
-                <label style={{ fontSize: 13, color: '#555' }}>Noise threshold</label>
-                <input type='range' min={0.005} max={0.2} step={0.001}
-                    value={noiseThreshold}
-                    onChange={e => setNoiseThreshold(parseFloat(e.target.value))}
-                />
-                <span style={{ fontSize: 12, color: '#666', textAlign: 'right' }}>{noiseThreshold.toFixed(3)}</span>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr 150px', gap: 10, alignItems: 'center' }}>
-                <label style={{ fontSize: 13, color: '#555' }}>Dot length (ms)</label>
-                <input type='range' min={20} max={600} step={1}
-                    value={unitMs}
-                    onChange={e => setUnitMs(parseInt(e.target.value))}
-                />
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'flex-end' }}>
-                    <input type='number' min={1} max={2000} step={1}
-                        value={unitMs}
-                        onChange={e => {
-                            const v = parseInt(e.target.value);
-                            if (!isNaN(v) && v > 0) setUnitMs(v);
+                        position: 'absolute', inset: 0, borderRadius: 4, overflow: 'hidden',
+                    }}>
+                        <div ref={volumeBarRef} style={{
+                            position: 'absolute', left: 0, top: 0, bottom: 0,
+                            width: '0%',
+                            background: '#9ca3af',
+                        }} />
+                    </div>
+                    <div
+                        onPointerDown={e => {
+                            e.preventDefault();
+                            (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
+                            setDraggingThreshold(true);
+                            const rect = thresholdTrackRef.current?.getBoundingClientRect();
+                            if (rect) {
+                                const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                                setNoiseThreshold(Number((ratio * 0.3).toFixed(3)));
+                            }
                         }}
+                        onPointerEnter={() => setHoveringThreshold(true)}
+                        onPointerLeave={() => setHoveringThreshold(false)}
                         style={{
-                            width: 60, padding: '2px 6px', fontSize: 12,
-                            border: '1px solid #cbd5e1', borderRadius: 4,
-                            fontFamily: 'ui-monospace, monospace', textAlign: 'right',
+                            position: 'absolute', top: -6, bottom: -6,
+                            left: `calc(${thresholdPct}% - 9px)`, width: 18,
+                            cursor: 'ew-resize', touchAction: 'none',
                         }}
-                    />
-                    <span style={{ fontSize: 12, color: '#666' }}>
-                        ms ({(1200 / unitMs).toFixed(1)} WPM)
-                    </span>
+                    >
+                        <div style={{
+                            position: 'absolute', left: 8, top: 0, bottom: 0, width: 2,
+                            background: '#ef4444',
+                        }} />
+                    </div>
+                    {(hoveringThreshold || draggingThreshold) && (
+                        <div style={{
+                            position: 'absolute',
+                            bottom: 'calc(100% + 8px)',
+                            left: `${thresholdPct}%`,
+                            transform: 'translateX(-50%)',
+                            background: '#111827', color: 'white',
+                            padding: '6px 8px', borderRadius: 6,
+                            display: 'flex', alignItems: 'center', gap: 6,
+                            whiteSpace: 'nowrap', fontSize: 12,
+                            boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                            zIndex: 5,
+                        }}>
+                            <span>Sound Threshold</span>
+                            <input type='number' min={0} max={0.3} step={0.001}
+                                value={noiseThreshold}
+                                onChange={e => {
+                                    const v = parseFloat(e.target.value);
+                                    if (!isNaN(v)) setNoiseThreshold(Math.max(0, Math.min(0.3, v)));
+                                }}
+                                onPointerDown={e => e.stopPropagation()}
+                                style={{
+                                    width: 64, padding: '2px 4px', fontSize: 12,
+                                    border: '1px solid #374151', borderRadius: 3,
+                                    fontFamily: 'ui-monospace, monospace', textAlign: 'right',
+                                    background: 'white', color: '#111827',
+                                }}
+                            />
+                            <div style={{
+                                position: 'absolute', top: '100%', left: '50%',
+                                transform: 'translateX(-50%)',
+                                width: 0, height: 0,
+                                borderLeft: '5px solid transparent',
+                                borderRight: '5px solid transparent',
+                                borderTop: '5px solid #111827',
+                            }} />
+                        </div>
+                    )}
                 </div>
+            <div style={{
+                width: 40, height: 40, borderRadius: '50%',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 22, fontWeight: 700,
+                background: flash === '.' ? '#60a5fa' : flash === '-' ? '#f59e0b' : '#e5e7eb',
+                color: flash ? 'white' : '#9ca3af',
+                transition: 'background 80ms linear',
+            }}>
+                {flash === '.' ? '·' : flash === '-' ? '−' : '·'}
             </div>
-
         </div>
 
         <div style={{
@@ -565,7 +661,7 @@ export default function MorsePage() {
         </div>
 
         <div style={{ maxWidth: 720, margin: '28px auto 0' }}>
-            <h3 style={{ marginBottom: 8 }}>Encode (Play)</h3>
+            <h3 style={{ marginBottom: 8 }}>Encode</h3>
             <div style={{
                 padding: 12,
                 border: '1px dashed #cbd5e1', borderRadius: 10, background: '#f8fafc',
@@ -584,7 +680,7 @@ export default function MorsePage() {
                 {!playing
                     ? <button className='button' onClick={() => playMorse(sampleText || 'hello')}
                         title={`Play at ${unitMs}ms`} aria-label='Play' style={iconBtnStyle}>
-                        <Play size={22} fill='currentColor' />
+                        <Volume2 size={22} />
                     </button>
                     : <button className='button' onClick={stopPlay}
                         title='Stop playback' aria-label='Stop playback' style={iconBtnStyle}>
@@ -617,16 +713,6 @@ export default function MorsePage() {
             </div>
         </div>
 
-        <div style={{ maxWidth: 720, margin: '24px auto 0', fontSize: 13, color: '#666' }}>
-            <p><b>Tips:</b></p>
-            <ul style={{ listStyle: 'disc', paddingLeft: 20 }}>
-                <li>If nothing is registering, lower the noise threshold (slide left) or speak louder.</li>
-                <li>If every sound comes out as a dash, lengthen the dot (slide right) or say shorter &quot;dun&quot;s.</li>
-                <li>If letters never finalize, shorten the dot setting — letter gap scales with it.</li>
-                <li>Tap <b>Delete character</b> to back up one symbol or one decoded letter.</li>
-                <li>Uses your mic locally in the browser. No audio is sent anywhere.</li>
-            </ul>
-        </div>
     </Page>;
 }
 
