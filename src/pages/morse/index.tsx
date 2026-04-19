@@ -1053,7 +1053,28 @@ export default function MorsePage() {
         }}
         pathname='/morse'
     >
-        <h1 className='mt-8 mb-2 text-center flex items-center justify-center gap-5'>
+        <style dangerouslySetInnerHTML={{ __html: `
+            .morse-tap-line { display: block; }
+            @media (max-width: 640px) {
+                .morse-h1 { gap: 14px !important; font-size: 2rem !important; flex-wrap: wrap; }
+                .morse-dot-length {
+                    grid-template-columns: auto 1fr !important;
+                    grid-template-areas: 'label meta' 'slider slider' !important;
+                }
+                .morse-dot-length > *:nth-child(1) { grid-area: label; }
+                .morse-dot-length > *:nth-child(2) { grid-area: slider; width: 100%; }
+                .morse-dot-length > *:nth-child(3) { grid-area: meta; justify-content: flex-end; }
+                .morse-dot-length label { font-size: 13px; }
+                .morse-segment-row button { padding: 5px 10px !important; font-size: 12px !important; }
+                .morse-practice-card h3 { font-size: 1.1rem; }
+                .morse-chip-row span { font-size: 16px !important; }
+                .morse-chip-row .chip-letter { font-size: 17px !important; }
+                .morse-action-row { gap: 6px !important; }
+                .morse-score-meta { margin-left: 0 !important; width: 100%; }
+                .morse-reference-grid { grid-template-columns: repeat(3, 1fr) !important; }
+            }
+        ` }} />
+        <h1 className='morse-h1 mt-8 mb-2 text-center flex items-center justify-center gap-5'>
             <span className='morse-portrait inline-block relative bottom-1' style={{ width: 60, height: 60, position: 'relative', overflow: 'hidden', borderRadius: 4 }}>
                 <Image alt='Morse portrait' width={60} height={60} src='/image/morse/face.png'
                     style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
@@ -1073,18 +1094,18 @@ export default function MorsePage() {
                     alt='Download on the App Store' width={114} height={38} />
             </a>
             */}
-            <style>{`
+            <style dangerouslySetInnerHTML={{ __html: `
                 .morse-portrait:hover .morse-glasses { transform: translateY(-8%) rotate(6deg); }
-            `}</style>
+            ` }} />
         </h1>
 
-        <div style={{ maxWidth: 720, margin: '24px auto 0', display: 'grid', gridTemplateColumns: 'auto 1fr auto', gap: 10, alignItems: 'center' }}>
+        <div className='morse-dot-length' style={{ maxWidth: 720, margin: '24px auto 0', display: 'grid', gridTemplateColumns: 'auto 1fr auto', gap: 10, alignItems: 'center' }}>
             <label style={{ fontSize: 13, color: '#555' }}>Dot length</label>
             <input type='range' min={20} max={600} step={1}
                 value={unitMs}
                 onChange={e => setUnitMs(parseInt(e.target.value))}
             />
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'flex-end' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'flex-end', flexWrap: 'wrap' }}>
                 <input type='number' min={1} max={2000} step={1}
                     value={unitMs}
                     onChange={e => {
@@ -1113,6 +1134,7 @@ export default function MorsePage() {
                 onContextMenu={e => e.preventDefault()}
                 className='text-gray-600'
                 style={{
+                    display: 'block',
                     width: '100%', padding: '14px 16px',
                     border: '2px solid ' + (focusedRect === 'top' ? '#2563eb' : '#cbd5e1'),
                     borderRadius: 10, background: (keyPressed && focusedRect === 'top') ? '#fde68a' : '#f8fafc',
@@ -1121,13 +1143,13 @@ export default function MorsePage() {
                     transition: 'background 60ms linear, border-color 120ms linear',
                 }}
             >
-                Tap here, press <kbd style={kbdStyle}>space</kbd> key, or hit{' '}
-                <Mic size={16} style={{ display: 'inline-block', verticalAlign: 'middle', marginTop: '-0.2em' }} />
-                {' '}to speak morse code
+                <span className='morse-tap-line'>Tap here,</span>{' '}
+                <span className='morse-tap-line'>press <kbd style={kbdStyle}>space</kbd> key,</span>{' '}
+                <span className='morse-tap-line'>or hit <Mic size={16} style={{ display: 'inline-block', verticalAlign: 'middle', marginTop: '-0.2em' }} /> to speak morse code</span>
             </button>
         </div>
 
-        <div className='flex gap-3' style={{ maxWidth: 720, margin: '8px auto 0', alignItems: 'center' }}>
+        <div className='flex gap-3 flex-wrap' style={{ maxWidth: 720, margin: '8px auto 0', alignItems: 'center' }}>
             {!listening
                 ? <button className='button' onClick={start} title='Start listening' aria-label='Start listening' style={iconBtnStyle}>
                     <Mic size={22} />
@@ -1227,7 +1249,7 @@ export default function MorsePage() {
                     </div>
                 )}
 
-                <div style={{
+                <div className='morse-reference-grid' style={{
                     marginTop: 12, paddingTop: 12, borderTop: '1px solid #e5e7eb',
                     display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))',
                     gap: 6, fontFamily: 'ui-monospace, monospace', fontSize: 14,
@@ -1283,9 +1305,9 @@ export default function MorsePage() {
                             resetTypePractice();
                         }}
                         options={[
-                            { value: 'char', label: 'One char' },
-                            { value: 'word', label: 'One word' },
-                            { value: 'sentence', label: 'One sentence' },
+                            { value: 'char', label: 'Char' },
+                            { value: 'word', label: 'Word' },
+                            { value: 'sentence', label: 'Sentence' },
                         ]}
                     />
                 </div>
@@ -1408,6 +1430,7 @@ export default function MorsePage() {
                                 onContextMenu={e => e.preventDefault()}
                                 className='text-gray-600'
                                 style={{
+                                    display: 'block',
                                     width: '100%', padding: '14px 16px',
                                     border: '2px solid ' + (focusedRect === 'practice' ? '#2563eb' : '#cbd5e1'),
                                     borderRadius: 10, background: (keyPressed && focusedRect === 'practice') ? '#fde68a' : '#f8fafc',

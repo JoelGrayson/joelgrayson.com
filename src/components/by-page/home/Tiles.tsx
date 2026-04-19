@@ -160,9 +160,9 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
                         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', transition: 'transform 180ms ease-out' }} />
                 </span>
                 <span>Morse Code</span>
-                <style>{`
+                <style dangerouslySetInnerHTML={{ __html: `
                     a:hover .morse-tile-glasses { transform: translateY(-8%) rotate(6deg); }
-                `}</style>
+                ` }} />
             </Tile>
 
             <Tile href='https://wasian.io'>
