@@ -14,6 +14,10 @@ const MORSE: Record<string, string> = {
     '-....-': '-', '-..-.': '/', '.--.-.': '@',
 };
 
+const TO_MORSE: Record<string, string> = Object.fromEntries(
+    Object.entries(MORSE).map(([code, letter]) => [letter, code])
+);
+
 const LETTERS: [string, string][] = [
     ['A', '.-'], ['B', '-...'], ['C', '-.-.'], ['D', '-..'], ['E', '.'],
     ['F', '..-.'], ['G', '--.'], ['H', '....'], ['I', '..'], ['J', '.---'],
@@ -38,6 +42,12 @@ export default function MorsePage() {
     // Adjustable params
     const [noiseThreshold, setNoiseThreshold] = useState<number>(0.04);
     const [unitMs, setUnitMs] = useState<number>(150); // nominal dot duration
+
+    // Playback
+    const [sampleText, setSampleText] = useState<string>('hello');
+    const [playing, setPlaying] = useState<boolean>(false);
+    const playCtxRef = useRef<AudioContext | null>(null);
+    const playStopRef = useRef<(() => void) | null>(null);
 
     // Refs for realtime use — state setters are too slow / cause stale closures
     const audioCtxRef = useRef<AudioContext | null>(null);
@@ -178,6 +188,8 @@ export default function MorsePage() {
             if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
             streamRef.current?.getTracks().forEach(t => t.stop());
             audioCtxRef.current?.close();
+            playStopRef.current?.();
+            playCtxRef.current?.close().catch(() => {});
         };
     }, []);
 
@@ -189,8 +201,81 @@ export default function MorsePage() {
         wordBoundaryAddedRef.current = true;
     }
 
-    function flushLetter() {
-        if (currentLetterRef.current) finalizeLetter();
+    function deleteCharacter() {
+        if (currentLetterRef.current) {
+            currentLetterRef.current = currentLetterRef.current.slice(0, -1);
+            setCurrentLetter(currentLetterRef.current);
+            return;
+        }
+        setDecoded(prev => prev.slice(0, -1));
+    }
+
+    function stopPlay() {
+        playStopRef.current?.();
+        playStopRef.current = null;
+        playCtxRef.current?.close().catch(() => {});
+        playCtxRef.current = null;
+        setPlaying(false);
+    }
+
+    function playMorse(text: string) {
+        stopPlay();
+        const unit = unitMsRef.current / 1000; // seconds
+        const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+        playCtxRef.current = ctx;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = 600; // classic Morse pitch
+        gain.gain.setValueAtTime(0, ctx.currentTime);
+        osc.connect(gain).connect(ctx.destination);
+        osc.start();
+
+        let t = ctx.currentTime + 0.05;
+        const attack = 0.005;
+        const release = 0.005;
+        const pulse = (durUnits: number) => {
+            gain.gain.setValueAtTime(0, t);
+            gain.gain.linearRampToValueAtTime(0.25, t + attack);
+            gain.gain.setValueAtTime(0.25, t + durUnits * unit - release);
+            gain.gain.linearRampToValueAtTime(0, t + durUnits * unit);
+            t += durUnits * unit;
+        };
+        const silence = (durUnits: number) => {
+            gain.gain.setValueAtTime(0, t);
+            t += durUnits * unit;
+        };
+
+        const words = text.toUpperCase().split(/\s+/).filter(Boolean);
+        words.forEach((word, wi) => {
+            [...word].forEach((ch, ci) => {
+                const code = TO_MORSE[ch];
+                if (!code) return;
+                [...code].forEach((sym, si) => {
+                    pulse(sym === '.' ? 1 : 3);
+                    if (si < code.length - 1) silence(1); // intra-letter gap
+                });
+                if (ci < word.length - 1) silence(3); // inter-letter gap
+            });
+            if (wi < words.length - 1) silence(7); // inter-word gap
+        });
+
+        const endAt = t + 0.1;
+        osc.stop(endAt);
+        setPlaying(true);
+        const durationMs = Math.max(0, (endAt - ctx.currentTime) * 1000);
+        const timer = window.setTimeout(() => {
+            if (playCtxRef.current === ctx) {
+                ctx.close().catch(() => {});
+                playCtxRef.current = null;
+                setPlaying(false);
+                playStopRef.current = null;
+            }
+        }, durationMs);
+        playStopRef.current = () => {
+            window.clearTimeout(timer);
+            try { osc.stop(); } catch {}
+        };
     }
 
     // Volume bar: clamp rms for display
@@ -216,13 +301,37 @@ export default function MorsePage() {
                 ? <button className='button' onClick={start}>Start Listening</button>
                 : <button className='button' onClick={stop}>Stop</button>
             }
-            <button className='button' onClick={flushLetter} disabled={!currentLetter}>End letter</button>
+            <button className='button' onClick={deleteCharacter} disabled={!decoded && !currentLetter}>Delete character</button>
             <button className='button' onClick={clearText}>Clear</button>
         </div>
 
         {permissionError && (
             <p className='text-red-600 text-center mt-3'>{permissionError}</p>
         )}
+
+        <div style={{
+            maxWidth: 720, margin: '20px auto 0', padding: 12,
+            border: '1px dashed #cbd5e1', borderRadius: 10, background: '#f8fafc',
+            display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap',
+        }}>
+            <span style={{ fontSize: 13, color: '#555' }}>Hear it first:</span>
+            <input
+                type='text'
+                value={sampleText}
+                onChange={e => setSampleText(e.target.value)}
+                placeholder='hello'
+                style={{
+                    flex: '1 1 180px', padding: '6px 10px', border: '1px solid #cbd5e1',
+                    borderRadius: 6, fontFamily: 'ui-monospace, monospace',
+                }}
+            />
+            {!playing
+                ? <button className='button' onClick={() => playMorse(sampleText || 'hello')}>
+                    Play at {unitMs}ms
+                </button>
+                : <button className='button' onClick={stopPlay}>Stop</button>
+            }
+        </div>
 
         <div style={{
             maxWidth: 720, margin: '28px auto 0', padding: 16,
@@ -267,13 +376,15 @@ export default function MorsePage() {
                 <span style={{ fontSize: 12, color: '#666', textAlign: 'right' }}>{noiseThreshold.toFixed(3)}</span>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr 60px', gap: 10, alignItems: 'center' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr 110px', gap: 10, alignItems: 'center' }}>
                 <label style={{ fontSize: 13, color: '#555' }}>Dot length (ms)</label>
                 <input type='range' min={60} max={400} step={10}
                     value={unitMs}
                     onChange={e => setUnitMs(parseInt(e.target.value))}
                 />
-                <span style={{ fontSize: 12, color: '#666', textAlign: 'right' }}>{unitMs}</span>
+                <span style={{ fontSize: 12, color: '#666', textAlign: 'right' }}>
+                    {unitMs}ms · ~{(1200 / unitMs).toFixed(1)} WPM
+                </span>
             </div>
 
             <div style={{ fontSize: 12, color: '#777', marginTop: 8 }}>
@@ -332,7 +443,7 @@ export default function MorsePage() {
                 <li>If nothing is registering, lower the noise threshold (slide left) or speak louder.</li>
                 <li>If every sound comes out as a dash, lengthen the dot (slide right) or say shorter &quot;dun&quot;s.</li>
                 <li>If letters never finalize, shorten the dot setting — letter gap scales with it.</li>
-                <li>Tap <b>End letter</b> if you want to force-close the letter you just finished.</li>
+                <li>Tap <b>Delete character</b> to back up one symbol or one decoded letter.</li>
                 <li>Uses your mic locally in the browser. No audio is sent anywhere.</li>
             </ul>
         </div>
