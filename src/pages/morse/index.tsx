@@ -501,6 +501,36 @@ export default function MorsePage() {
         };
     }
 
+    function playLetterStandalone(letter: string) {
+        const code = TO_MORSE[letter.toUpperCase()];
+        if (!code) return;
+        const unit = unitMsRef.current / 1000;
+        const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = 600;
+        gain.gain.setValueAtTime(0, ctx.currentTime);
+        osc.connect(gain).connect(ctx.destination);
+        osc.start();
+
+        let t = ctx.currentTime + 0.02;
+        const attack = 0.005;
+        const release = 0.005;
+        [...code].forEach((sym, si) => {
+            const durUnits = sym === '.' ? 1 : 3;
+            gain.gain.setValueAtTime(0, t);
+            gain.gain.linearRampToValueAtTime(0.25, t + attack);
+            gain.gain.setValueAtTime(0.25, t + durUnits * unit - release);
+            gain.gain.linearRampToValueAtTime(0, t + durUnits * unit);
+            t += durUnits * unit;
+            if (si < code.length - 1) t += unit; // intra-letter gap
+        });
+        osc.stop(t + 0.05);
+        const totalMs = Math.max(0, (t + 0.1 - ctx.currentTime) * 1000);
+        window.setTimeout(() => ctx.close().catch(() => {}), totalMs);
+    }
+
     // Volume bar: threshold indicator (live bar updates directly in tick)
     const thresholdPct = Math.min(1, noiseThreshold / 0.3) * 100;
 
@@ -555,7 +585,7 @@ export default function MorsePage() {
         </div>
 
         <div style={{ maxWidth: 720, margin: '28px auto 0' }}>
-            <h3 style={{ marginBottom: 8 }}>Decode</h3>
+            <h3 style={{ marginBottom: 8 }}>Enter Morse</h3>
             <p className='text-gray-600'>
                 Tap <kbd style={kbdStyle}>space</kbd> key on your keyboard to key in morse code or press{' '}
                 <Mic size={16} style={{ display: 'inline-block', verticalAlign: 'middle', marginTop: '-0.2em' }} />
@@ -695,7 +725,7 @@ export default function MorsePage() {
         </div>
 
         <div style={{ maxWidth: 720, margin: '28px auto 0' }}>
-            <h3 style={{ marginBottom: 8 }}>Encode</h3>
+            <h3 style={{ marginBottom: 8 }}>Play</h3>
             <div style={{
                 padding: 12,
                 border: '1px dashed #cbd5e1', borderRadius: 10, background: '#f8fafc',
@@ -759,7 +789,7 @@ export default function MorsePage() {
             }}>
                 {LETTERS.map(([l, c]) => {
                     const highlighted = !!currentLetter && c.startsWith(currentLetter) && currentLetter.length > 0;
-                    return <button key={l} onClick={() => playMorse(l)}
+                    return <button key={l} onClick={() => playLetterStandalone(l)}
                         title={`Play ${l} (${c})`} aria-label={`Play ${l}`}
                         style={{
                             padding: '6px 10px', border: '1px solid #e5e7eb', borderRadius: 6,
