@@ -402,8 +402,8 @@ export default function MorsePage() {
         } else if (!sounding && !soundingRef.current) {
             // gap — check boundaries
             const gap = now - lastSoundEndRef.current;
-            const letterGap = unit * 3.5;
-            const wordGap = unit * 8;
+            const letterGap = unit * 3;
+            const wordGap = unit * 7;
             if (!letterFinalizedRef.current && gap > letterGap && currentLetterRef.current) {
                 finalizeLetter();
             }
@@ -539,8 +539,8 @@ export default function MorsePage() {
     function scheduleGapFinalization() {
         if (keyGapTimerRef.current != null) window.clearTimeout(keyGapTimerRef.current);
         const unit = unitMsRef.current;
-        const letterGap = unit * 3.5;
-        const wordGap = unit * 8;
+        const letterGap = unit * 3;
+        const wordGap = unit * 7;
         keyGapTimerRef.current = window.setTimeout(() => {
             if (!letterFinalizedRef.current && currentLetterRef.current) finalizeLetter();
             keyGapTimerRef.current = window.setTimeout(() => {
@@ -1065,12 +1065,14 @@ export default function MorsePage() {
                     }} />
             </span>
             Morse Code
+            {/* App Store placeholder — re-enable when the app ships
             <a href='#' onClick={e => e.preventDefault()} aria-label='Download on the App Store (coming soon)'
                 title='Coming soon'
                 style={{ opacity: 0.55, cursor: 'default', display: 'inline-block', lineHeight: 0, marginLeft: 4, position: 'relative', bottom: 4 }}>
                 <Image src='/image/software/worderoo/download-on-the-app-store.png'
                     alt='Download on the App Store' width={114} height={38} />
             </a>
+            */}
             <style>{`
                 .morse-portrait:hover .morse-glasses { transform: translateY(-8%) rotate(6deg); }
             `}</style>
