@@ -1,4 +1,5 @@
 import Page from '@/components/page/DefaultPage';
+import { Delete, Mic, Play, Square, Trash2 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 const MORSE: Record<string, string> = {
@@ -30,6 +31,12 @@ const LETTERS: [string, string][] = [
 ];
 
 type Classification = '.' | '-';
+
+const iconBtnStyle: React.CSSProperties = {
+    width: 44, height: 44, display: 'inline-flex',
+    alignItems: 'center', justifyContent: 'center',
+    padding: 0,
+};
 
 export default function MorsePage() {
     const [listening, setListening] = useState(false);
@@ -289,20 +296,24 @@ export default function MorsePage() {
         }}
         pathname='/morse'
     >
-        <h1 className='text-center mt-8 mb-2'>Sing Morse Code</h1>
-        <p className='text-center text-gray-600 max-w-2xl mx-auto'>
-            Say <b>dun</b> for a dot and <b>dunnn</b> (or <b>daah</b>) for a dash. Pause a beat between letters,
-            a longer beat between words. It&apos;s forgiving — stutter and drift as you learn. For hobbyist
-            EEs who want to talk Morse out loud with their friends.
-        </p>
+        <h1 className='text-center mt-8 mb-2'>Morse Code</h1>
 
         <div className='flex justify-center gap-3 mt-6'>
             {!listening
-                ? <button className='button' onClick={start}>Start Listening</button>
-                : <button className='button' onClick={stop}>Stop</button>
+                ? <button className='button' onClick={start} title='Start listening' aria-label='Start listening' style={iconBtnStyle}>
+                    <Mic size={22} />
+                </button>
+                : <button className='button' onClick={stop} title='Stop listening' aria-label='Stop listening' style={iconBtnStyle}>
+                    <Square size={22} fill='currentColor' />
+                </button>
             }
-            <button className='button' onClick={deleteCharacter} disabled={!decoded && !currentLetter}>Delete character</button>
-            <button className='button' onClick={clearText}>Clear</button>
+            <button className='button' onClick={deleteCharacter} disabled={!decoded && !currentLetter}
+                title='Delete last dot/dash or character' aria-label='Delete last dot/dash or character' style={iconBtnStyle}>
+                <Delete size={22} />
+            </button>
+            <button className='button' onClick={clearText} title='Clear all text' aria-label='Clear all text' style={iconBtnStyle}>
+                <Trash2 size={22} />
+            </button>
         </div>
 
         {permissionError && (
@@ -310,31 +321,7 @@ export default function MorsePage() {
         )}
 
         <div style={{
-            maxWidth: 720, margin: '20px auto 0', padding: 12,
-            border: '1px dashed #cbd5e1', borderRadius: 10, background: '#f8fafc',
-            display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap',
-        }}>
-            <span style={{ fontSize: 13, color: '#555' }}>Hear it first:</span>
-            <input
-                type='text'
-                value={sampleText}
-                onChange={e => setSampleText(e.target.value)}
-                placeholder='hello'
-                style={{
-                    flex: '1 1 180px', padding: '6px 10px', border: '1px solid #cbd5e1',
-                    borderRadius: 6, fontFamily: 'ui-monospace, monospace',
-                }}
-            />
-            {!playing
-                ? <button className='button' onClick={() => playMorse(sampleText || 'hello')}>
-                    Play at {unitMs}ms
-                </button>
-                : <button className='button' onClick={stopPlay}>Stop</button>
-            }
-        </div>
-
-        <div style={{
-            maxWidth: 720, margin: '28px auto 0', padding: 16,
+            maxWidth: 720, margin: '20px auto 0', padding: 16,
             border: '1px solid #ddd', borderRadius: 10, background: '#fafafa',
         }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
@@ -383,14 +370,10 @@ export default function MorsePage() {
                     onChange={e => setUnitMs(parseInt(e.target.value))}
                 />
                 <span style={{ fontSize: 12, color: '#666', textAlign: 'right' }}>
-                    {unitMs}ms · ~{(1200 / unitMs).toFixed(1)} WPM
+                    {unitMs}ms ({(1200 / unitMs).toFixed(1)} WPM)
                 </span>
             </div>
 
-            <div style={{ fontSize: 12, color: '#777', marginTop: 8 }}>
-                Bursts shorter than ~{Math.round(unitMs * 1.8)}ms → dot. Longer → dash.
-                Pause &gt;{Math.round(unitMs * 3.5)}ms ends a letter. Pause &gt;{unitMs * 8}ms ends a word.
-            </div>
         </div>
 
         <div style={{
@@ -419,7 +402,37 @@ export default function MorsePage() {
         </div>
 
         <div style={{ maxWidth: 720, margin: '28px auto 0' }}>
-            <h3 style={{ marginBottom: 8 }}>Morse reference</h3>
+            <h3 style={{ marginBottom: 8 }}>Play</h3>
+            <div style={{
+                padding: 12,
+                border: '1px dashed #cbd5e1', borderRadius: 10, background: '#f8fafc',
+                display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap',
+            }}>
+                <input
+                    type='text'
+                    value={sampleText}
+                    onChange={e => setSampleText(e.target.value)}
+                    placeholder='hello'
+                    style={{
+                        flex: '1 1 180px', padding: '6px 10px', border: '1px solid #cbd5e1',
+                        borderRadius: 6, fontFamily: 'ui-monospace, monospace',
+                    }}
+                />
+                {!playing
+                    ? <button className='button' onClick={() => playMorse(sampleText || 'hello')}
+                        title={`Play at ${unitMs}ms`} aria-label='Play' style={iconBtnStyle}>
+                        <Play size={22} fill='currentColor' />
+                    </button>
+                    : <button className='button' onClick={stopPlay}
+                        title='Stop playback' aria-label='Stop playback' style={iconBtnStyle}>
+                        <Square size={22} fill='currentColor' />
+                    </button>
+                }
+            </div>
+        </div>
+
+        <div style={{ maxWidth: 720, margin: '28px auto 0' }}>
+            <h3 style={{ marginBottom: 8 }}>Reference</h3>
             <div style={{
                 display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))',
                 gap: 6, fontFamily: 'ui-monospace, monospace', fontSize: 14,
