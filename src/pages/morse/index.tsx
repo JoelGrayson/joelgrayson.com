@@ -1065,9 +1065,32 @@ export default function MorsePage() {
 
     return <Page bottomPadding
         seo={{
-            title: 'Morse | Joel Grayson',
-            description: 'Speak Morse code out loud (dun dun dun) and this page transcribes it live. Built for hobbyist EEs and Morse learners.',
+            title: 'Morse Code Practice, Encoder & Decoder | Joel Grayson',
+            description: 'Free online Morse code trainer. Practice sending and receiving Morse by keyboard, tap, or microphone. Real-time encode, decode, and listening drills for learners and ham radio enthusiasts.',
+            keywords: [
+                'morse code',
+                'morse code practice',
+                'morse code trainer',
+                'morse code decoder',
+                'morse code encoder',
+                'morse code translator',
+                'learn morse code',
+                'morse code generator',
+                'ham radio',
+                'CW',
+                'morse key simulator',
+                'morse code online',
+                'morse listening drill',
+                'dit dah',
+            ],
             favicon: '/image/home/morse.jpg',
+            og: {
+                title: 'Morse Code Practice, Encoder & Decoder',
+                description: 'Free Morse code trainer — practice sending and receiving Morse by keyboard, tap, or voice. Real-time encode, decode, and listening drills.',
+                image: '/image/home/morse.jpg',
+                imageAlt: 'Samuel Morse portrait — interactive Morse code practice tool',
+                type: 'website',
+            },
         }}
         pathname='/morse'
     >

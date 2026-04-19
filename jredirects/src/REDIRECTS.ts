@@ -28,6 +28,7 @@ export const temporary: redirects={ //302
     '/dashboard': ['/admin', '/control-panel', '/cpanel'],
     '/nyc-budget': ['/new-york-city-budget', '/nycbudget', '/newyorkcitybudget'],
     '/memes': '/meme',
+    '/morse': ['/morse-code', '/morsecode'],
     '/maths': '/math',
     '/art': ['/projects/art', '/arts', '/artwork'],
     '/sites': '/websites',
