@@ -97,6 +97,7 @@ export default function MorsePage() {
     // Playback
     const [sampleText, setSampleText] = useState<string>('hello');
     const [playing, setPlaying] = useState<boolean>(false);
+    const [playingIndex, setPlayingIndex] = useState<number | null>(null);
     const playCtxRef = useRef<AudioContext | null>(null);
     const playStopRef = useRef<(() => void) | null>(null);
 
@@ -422,6 +423,7 @@ export default function MorsePage() {
         playCtxRef.current?.close().catch(() => {});
         playCtxRef.current = null;
         setPlaying(false);
+        setPlayingIndex(null);
     }
 
     function playMorse(text: string) {
@@ -432,7 +434,7 @@ export default function MorsePage() {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = 'sine';
-        osc.frequency.value = 600; // classic Morse pitch
+        osc.frequency.value = 600;
         gain.gain.setValueAtTime(0, ctx.currentTime);
         osc.connect(gain).connect(ctx.destination);
         osc.start();
@@ -448,39 +450,54 @@ export default function MorsePage() {
             t += durUnits * unit;
         };
         const silence = (durUnits: number) => {
-            gain.gain.setValueAtTime(0, t);
             t += durUnits * unit;
         };
 
-        const words = text.toUpperCase().split(/\s+/).filter(Boolean);
-        words.forEach((word, wi) => {
-            [...word].forEach((ch, ci) => {
-                const code = TO_MORSE[ch];
-                if (!code) return;
-                [...code].forEach((sym, si) => {
-                    pulse(sym === '.' ? 1 : 3);
-                    if (si < code.length - 1) silence(1); // intra-letter gap
-                });
-                if (ci < word.length - 1) silence(3); // inter-letter gap
+        const timerIds: number[] = [];
+        const scheduleHighlight = (audioTime: number, idx: number | null) => {
+            const delayMs = Math.max(0, (audioTime - ctx.currentTime) * 1000);
+            timerIds.push(window.setTimeout(() => setPlayingIndex(idx), delayMs));
+        };
+
+        const upper = text.toUpperCase();
+        let prevWasLetter = false;
+        for (let i = 0; i < upper.length; i++) {
+            const ch = upper[i];
+            if (/\s/.test(ch)) {
+                if (prevWasLetter) silence(7); // word gap
+                prevWasLetter = false;
+                continue;
+            }
+            const code = TO_MORSE[ch];
+            if (!code) continue;
+            if (prevWasLetter) silence(3); // inter-letter gap
+            scheduleHighlight(t, i);
+            [...code].forEach((sym, si) => {
+                pulse(sym === '.' ? 1 : 3);
+                if (si < code.length - 1) silence(1);
             });
-            if (wi < words.length - 1) silence(7); // inter-word gap
-        });
+            prevWasLetter = true;
+        }
 
         const endAt = t + 0.1;
         osc.stop(endAt);
         setPlaying(true);
+        setPlayingIndex(null);
         const durationMs = Math.max(0, (endAt - ctx.currentTime) * 1000);
-        const timer = window.setTimeout(() => {
+        const endTimer = window.setTimeout(() => {
             if (playCtxRef.current === ctx) {
                 ctx.close().catch(() => {});
                 playCtxRef.current = null;
                 setPlaying(false);
+                setPlayingIndex(null);
                 playStopRef.current = null;
             }
         }, durationMs);
+        timerIds.push(endTimer);
         playStopRef.current = () => {
-            window.clearTimeout(timer);
+            timerIds.forEach(id => window.clearTimeout(id));
             try { osc.stop(); } catch {}
+            setPlayingIndex(null);
         };
     }
 
@@ -495,9 +512,9 @@ export default function MorsePage() {
         }}
         pathname='/morse'
     >
-        <h1 className='mt-8 mb-2' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, lineHeight: 1 }}>
-            <Image alt='Morse Code' width={64} height={64} src='/image/home/morse.jpg' style={{ display: 'block', height: '1em', width: '1em', objectFit: 'cover' }} />
-            <span style={{ display: 'inline-block', lineHeight: 1 }}>Morse Code</span>
+        <h1 className='mt-8 mb-2 text-center flex items-center justify-center gap-5'>
+            <Image alt='Morse Code' width={60} height={60} src='/image/home/morse.jpg' className='inline relative bottom-1' />
+            Morse Code
         </h1>
 
         <div style={{ maxWidth: 720, margin: '24px auto 0', display: 'grid', gridTemplateColumns: 'auto 1fr auto', gap: 10, alignItems: 'center' }}>
@@ -670,28 +687,55 @@ export default function MorsePage() {
             <div style={{
                 padding: 12,
                 border: '1px dashed #cbd5e1', borderRadius: 10, background: '#f8fafc',
-                display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap',
             }}>
-                <input
-                    type='text'
-                    value={sampleText}
-                    onChange={e => setSampleText(e.target.value)}
-                    placeholder='hello'
-                    style={{
-                        flex: '1 1 180px', padding: '6px 10px', border: '1px solid #cbd5e1',
-                        borderRadius: 6, fontFamily: 'ui-monospace, monospace',
-                    }}
-                />
-                {!playing
-                    ? <button className='button' onClick={() => playMorse(sampleText || 'hello')}
-                        title={`Play at ${unitMs}ms`} aria-label='Play' style={iconBtnStyle}>
-                        <Volume2 size={22} />
-                    </button>
-                    : <button className='button' onClick={stopPlay}
-                        title='Stop playback' aria-label='Stop playback' style={iconBtnStyle}>
-                        <Square size={22} fill='currentColor' />
-                    </button>
-                }
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+                    <input
+                        type='text'
+                        value={sampleText}
+                        onChange={e => setSampleText(e.target.value)}
+                        placeholder='hello'
+                        style={{
+                            flex: '1 1 180px', padding: '6px 10px', border: '1px solid #cbd5e1',
+                            borderRadius: 6, fontFamily: 'ui-monospace, monospace',
+                        }}
+                    />
+                    {!playing
+                        ? <button className='button' onClick={() => playMorse(sampleText || 'hello')}
+                            title={`Play at ${unitMs}ms`} aria-label='Play' style={iconBtnStyle}>
+                            <Volume2 size={22} />
+                        </button>
+                        : <button className='button' onClick={stopPlay}
+                            title='Stop playback' aria-label='Stop playback' style={iconBtnStyle}>
+                            <Square size={22} fill='currentColor' />
+                        </button>
+                    }
+                </div>
+                {sampleText && (
+                    <div style={{
+                        marginTop: 10, padding: '6px 4px',
+                        fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+                        color: '#374151',
+                        display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end',
+                        gap: 4,
+                    }}>
+                        {[...sampleText.toUpperCase()].map((ch, i) => {
+                            if (/\s/.test(ch)) return <span key={i} style={{ width: 14 }} />;
+                            const morse = TO_MORSE[ch];
+                            if (!morse) return null;
+                            const active = playingIndex === i;
+                            return <span key={i} style={{
+                                padding: '3px 6px', borderRadius: 4,
+                                background: active ? '#fde047' : 'transparent',
+                                display: 'inline-flex', flexDirection: 'column',
+                                alignItems: 'center', lineHeight: 1.15,
+                                transition: 'background 60ms linear',
+                            }}>
+                                <span style={{ fontSize: 11, color: active ? '#713f12' : '#6b7280' }}>{ch}</span>
+                                <span style={{ fontSize: 18 }}>{morse}</span>
+                            </span>;
+                        })}
+                    </div>
+                )}
             </div>
         </div>
 
@@ -723,4 +767,11 @@ export default function MorsePage() {
 
 function decodeLetterPreview(p: string): string {
     return MORSE[p] || '?';
+}
+
+function textToMorse(text: string): string {
+    return text.toUpperCase().split(/(\s+)/).map(chunk => {
+        if (/^\s+$/.test(chunk)) return '  ';
+        return [...chunk].map(ch => TO_MORSE[ch] || '').filter(Boolean).join(' ');
+    }).join('').trim();
 }
