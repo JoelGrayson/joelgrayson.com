@@ -74,7 +74,7 @@ export default function MorsePage() {
             const u = localStorage.getItem('morse.unitMs');
             if (t != null) {
                 const v = parseFloat(t);
-                if (!isNaN(v) && v >= 0 && v <= 0.3) setNoiseThreshold(v);
+                if (!isNaN(v) && v >= 0 && v <= 0.15) setNoiseThreshold(v);
             }
             if (u != null) {
                 const v = parseInt(u);
@@ -147,7 +147,7 @@ export default function MorsePage() {
         const rms = Math.sqrt(sum / buf.length);
         // Live DOM update — bypasses React's render cycle for smooth realtime feedback
         if (volumeBarRef.current) {
-            const pct = Math.min(1, rms / 0.3) * 100;
+            const pct = Math.min(1, rms / 0.15) * 100;
             volumeBarRef.current.style.width = `${pct}%`;
             volumeBarRef.current.style.background = rms > noiseThresholdRef.current ? '#22c55e' : '#9ca3af';
         }
@@ -267,7 +267,7 @@ export default function MorsePage() {
             const rect = thresholdTrackRef.current?.getBoundingClientRect();
             if (!rect) return;
             const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-            setNoiseThreshold(Number((ratio * 0.3).toFixed(3)));
+            setNoiseThreshold(Number((ratio * 0.15).toFixed(3)));
         }
         function onMove(e: PointerEvent) { updateFromX(e.clientX); }
         function onUp() { setDraggingThreshold(false); }
@@ -279,66 +279,95 @@ export default function MorsePage() {
         };
     }, [draggingThreshold]);
 
-    useEffect(() => {
-        // Space acts as a straight-key Morse input: hold = tone, release = burst.
-        let pressing = false;
-        let pressStart = 0;
-        let gapTimer: number | null = null;
-        let keyCtx: AudioContext | null = null;
-        let keyOsc: OscillatorNode | null = null;
-        let keyGain: GainNode | null = null;
+    // Straight-key Morse input state (shared between space key and tap button)
+    const keyPressingRef = useRef(false);
+    const keyPressStartRef = useRef(0);
+    const keyGapTimerRef = useRef<number | null>(null);
+    const keyCtxRef = useRef<AudioContext | null>(null);
+    const keyOscRef = useRef<OscillatorNode | null>(null);
+    const keyGainRef = useRef<GainNode | null>(null);
+    const [keyPressed, setKeyPressed] = useState(false);
 
+    function startKeyTone() {
+        try {
+            const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.value = 600;
+            const now = ctx.currentTime;
+            gain.gain.setValueAtTime(0, now);
+            gain.gain.linearRampToValueAtTime(0.2, now + 0.005);
+            osc.connect(gain).connect(ctx.destination);
+            osc.start();
+            keyCtxRef.current = ctx; keyOscRef.current = osc; keyGainRef.current = gain;
+        } catch {}
+    }
+
+    function stopKeyTone() {
+        const ctx = keyCtxRef.current, osc = keyOscRef.current, gain = keyGainRef.current;
+        if (!ctx || !osc || !gain) return;
+        keyCtxRef.current = null; keyOscRef.current = null; keyGainRef.current = null;
+        const now = ctx.currentTime;
+        try {
+            gain.gain.cancelScheduledValues(now);
+            gain.gain.setValueAtTime(gain.gain.value, now);
+            gain.gain.linearRampToValueAtTime(0, now + 0.01);
+            osc.stop(now + 0.02);
+        } catch {}
+        window.setTimeout(() => { ctx.close().catch(() => {}); }, 60);
+    }
+
+    function scheduleGapFinalization() {
+        if (keyGapTimerRef.current != null) window.clearTimeout(keyGapTimerRef.current);
+        const unit = unitMsRef.current;
+        const letterGap = unit * 3.5;
+        const wordGap = unit * 8;
+        keyGapTimerRef.current = window.setTimeout(() => {
+            if (!letterFinalizedRef.current && currentLetterRef.current) finalizeLetter();
+            keyGapTimerRef.current = window.setTimeout(() => {
+                if (letterFinalizedRef.current && !wordBoundaryAddedRef.current) {
+                    setDecoded(prev => (prev.endsWith(' ') ? prev : prev + ' '));
+                    wordBoundaryAddedRef.current = true;
+                }
+            }, Math.max(0, wordGap - letterGap));
+        }, letterGap);
+    }
+
+    function beginKeyPress() {
+        if (keyPressingRef.current) return;
+        keyPressingRef.current = true;
+        keyPressStartRef.current = performance.now();
+        setKeyPressed(true);
+        if (keyGapTimerRef.current != null) { window.clearTimeout(keyGapTimerRef.current); keyGapTimerRef.current = null; }
+        startKeyTone();
+    }
+
+    function endKeyPress() {
+        if (!keyPressingRef.current) return;
+        keyPressingRef.current = false;
+        setKeyPressed(false);
+        const dur = performance.now() - keyPressStartRef.current;
+        stopKeyTone();
+        const unit = unitMsRef.current;
+        const dotDashBoundary = unit * 1.8;
+        const cls: Classification = dur < dotDashBoundary ? '.' : '-';
+        currentLetterRef.current += cls;
+        setCurrentLetter(currentLetterRef.current);
+        setFlash(cls);
+        window.setTimeout(() => setFlash(null), 120);
+        letterFinalizedRef.current = false;
+        wordBoundaryAddedRef.current = false;
+        lastSoundEndRef.current = performance.now();
+        scheduleGapFinalization();
+    }
+
+    useEffect(() => {
         function isTypingTarget(t: EventTarget | null) {
             const el = t as HTMLElement | null;
             if (!el) return false;
             const tag = el.tagName;
             return tag === 'INPUT' || tag === 'TEXTAREA' || el.isContentEditable;
-        }
-
-        function startKeyTone() {
-            try {
-                const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
-                const osc = ctx.createOscillator();
-                const gain = ctx.createGain();
-                osc.type = 'sine';
-                osc.frequency.value = 600;
-                const now = ctx.currentTime;
-                gain.gain.setValueAtTime(0, now);
-                gain.gain.linearRampToValueAtTime(0.2, now + 0.005);
-                osc.connect(gain).connect(ctx.destination);
-                osc.start();
-                keyCtx = ctx; keyOsc = osc; keyGain = gain;
-            } catch {}
-        }
-
-        function stopKeyTone() {
-            if (!keyCtx || !keyOsc || !keyGain) return;
-            const ctx = keyCtx, osc = keyOsc, gain = keyGain;
-            keyCtx = null; keyOsc = null; keyGain = null;
-            const now = ctx.currentTime;
-            try {
-                gain.gain.cancelScheduledValues(now);
-                gain.gain.setValueAtTime(gain.gain.value, now);
-                gain.gain.linearRampToValueAtTime(0, now + 0.01);
-                osc.stop(now + 0.02);
-            } catch {}
-            window.setTimeout(() => { ctx.close().catch(() => {}); }, 60);
-        }
-
-        function scheduleGapFinalization() {
-            if (gapTimer != null) window.clearTimeout(gapTimer);
-            const unit = unitMsRef.current;
-            const letterGap = unit * 3.5;
-            const wordGap = unit * 8;
-            gapTimer = window.setTimeout(() => {
-                if (!letterFinalizedRef.current && currentLetterRef.current) finalizeLetter();
-                gapTimer = window.setTimeout(() => {
-                    if (letterFinalizedRef.current && !wordBoundaryAddedRef.current) {
-                        setDecoded(prev => (prev.endsWith(' ') ? prev : prev + ' '));
-                        wordBoundaryAddedRef.current = true;
-                    }
-                }, Math.max(0, wordGap - letterGap));
-            }, letterGap);
         }
 
         function onKeyDown(e: KeyboardEvent) {
@@ -355,34 +384,21 @@ export default function MorsePage() {
             }
             if (e.code !== 'Space') return;
             e.preventDefault();
-            if (e.repeat || pressing) return;
-            pressing = true;
-            pressStart = performance.now();
-            if (gapTimer != null) { window.clearTimeout(gapTimer); gapTimer = null; }
-            startKeyTone();
+            if (e.repeat) return;
+            beginKeyPress();
         }
 
         function onKeyUp(e: KeyboardEvent) {
             if (e.code !== 'Space') return;
-            if (!pressing) return;
-            pressing = false;
-            const dur = performance.now() - pressStart;
-            stopKeyTone();
-            const unit = unitMsRef.current;
-            const dotDashBoundary = unit * 1.8;
-            const cls: Classification = dur < dotDashBoundary ? '.' : '-';
-            currentLetterRef.current += cls;
-            setCurrentLetter(currentLetterRef.current);
-            setFlash(cls);
-            window.setTimeout(() => setFlash(null), 120);
-            letterFinalizedRef.current = false;
-            wordBoundaryAddedRef.current = false;
-            lastSoundEndRef.current = performance.now();
-            scheduleGapFinalization();
+            endKeyPress();
         }
 
         function onBlur() {
-            if (pressing) { pressing = false; stopKeyTone(); }
+            if (keyPressingRef.current) {
+                keyPressingRef.current = false;
+                setKeyPressed(false);
+                stopKeyTone();
+            }
         }
 
         window.addEventListener('keydown', onKeyDown);
@@ -392,7 +408,7 @@ export default function MorsePage() {
             window.removeEventListener('keydown', onKeyDown);
             window.removeEventListener('keyup', onKeyUp);
             window.removeEventListener('blur', onBlur);
-            if (gapTimer != null) window.clearTimeout(gapTimer);
+            if (keyGapTimerRef.current != null) window.clearTimeout(keyGapTimerRef.current);
             stopKeyTone();
         };
     }, []);
@@ -532,7 +548,7 @@ export default function MorsePage() {
     }
 
     // Volume bar: threshold indicator (live bar updates directly in tick)
-    const thresholdPct = Math.min(1, noiseThreshold / 0.3) * 100;
+    const thresholdPct = Math.min(1, noiseThreshold / 0.15) * 100;
 
     return <Page bottomPadding
         seo={{
@@ -554,6 +570,12 @@ export default function MorsePage() {
                     }} />
             </span>
             Morse Code
+            <a href='#' onClick={e => e.preventDefault()} aria-label='Download on the App Store (coming soon)'
+                title='Coming soon'
+                style={{ opacity: 0.55, cursor: 'default', display: 'inline-block', lineHeight: 0, marginLeft: 4, position: 'relative', bottom: 4 }}>
+                <Image src='/image/software/worderoo/download-on-the-app-store.png'
+                    alt='Download on the App Store' width={114} height={38} />
+            </a>
             <style>{`
                 .morse-portrait:hover .morse-glasses { transform: translateY(-8%) rotate(6deg); }
             `}</style>
@@ -586,11 +608,25 @@ export default function MorsePage() {
 
         <div style={{ maxWidth: 720, margin: '28px auto 0' }}>
             <h3 style={{ marginBottom: 8 }}>Enter Morse</h3>
-            <p className='text-gray-600'>
-                Tap <kbd style={kbdStyle}>space</kbd> key on your keyboard to key in morse code or press{' '}
+            <button
+                onPointerDown={e => { e.preventDefault(); beginKeyPress(); }}
+                onPointerUp={e => { e.preventDefault(); endKeyPress(); }}
+                onPointerLeave={() => { if (keyPressingRef.current) endKeyPress(); }}
+                onPointerCancel={() => { if (keyPressingRef.current) endKeyPress(); }}
+                onContextMenu={e => e.preventDefault()}
+                className='text-gray-600'
+                style={{
+                    width: '100%', padding: '14px 16px', border: '1px solid #cbd5e1',
+                    borderRadius: 10, background: keyPressed ? '#fde68a' : '#f8fafc',
+                    textAlign: 'center', fontSize: 15, cursor: 'pointer',
+                    userSelect: 'none', touchAction: 'none',
+                    transition: 'background 60ms linear',
+                }}
+            >
+                Tap here, press <kbd style={kbdStyle}>space</kbd> key, or hit{' '}
                 <Mic size={16} style={{ display: 'inline-block', verticalAlign: 'middle', marginTop: '-0.2em' }} />
-                {' '}and say morse code out loud.
-            </p>
+                {' '}to speak morse code
+            </button>
         </div>
 
         <div className='flex gap-3' style={{ maxWidth: 720, margin: '8px auto 0', alignItems: 'center' }}>
@@ -632,7 +668,7 @@ export default function MorsePage() {
                             const rect = thresholdTrackRef.current?.getBoundingClientRect();
                             if (rect) {
                                 const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-                                setNoiseThreshold(Number((ratio * 0.3).toFixed(3)));
+                                setNoiseThreshold(Number((ratio * 0.15).toFixed(3)));
                             }
                         }}
                         onPointerEnter={() => setHoveringThreshold(true)}
@@ -662,11 +698,11 @@ export default function MorsePage() {
                             zIndex: 5,
                         }}>
                             <span>Sound Threshold</span>
-                            <input type='number' min={0} max={0.3} step={0.001}
+                            <input type='number' min={0} max={0.15} step={0.001}
                                 value={noiseThreshold}
                                 onChange={e => {
                                     const v = parseFloat(e.target.value);
-                                    if (!isNaN(v)) setNoiseThreshold(Math.max(0, Math.min(0.3, v)));
+                                    if (!isNaN(v)) setNoiseThreshold(Math.max(0, Math.min(0.15, v)));
                                 }}
                                 onPointerDown={e => e.stopPropagation()}
                                 style={{
