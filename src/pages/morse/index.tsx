@@ -31,6 +31,150 @@ const LETTERS: [string, string][] = [
     ['5', '.....'], ['6', '-....'], ['7', '--...'], ['8', '---..'], ['9', '----.'],
 ];
 
+const DRILL_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+const DRILL_WORDS = [
+    // Short everyday nouns
+    'CAT', 'DOG', 'SUN', 'MOON', 'STAR', 'TREE', 'BOOK', 'FISH', 'BIRD', 'LAKE',
+    'ROAD', 'CITY', 'HOUSE', 'APPLE', 'BREAD', 'WATER', 'CLOUD', 'RIVER', 'OCEAN', 'STORM',
+    'PIANO', 'GUITAR', 'BEACH', 'FOREST', 'MOUNTAIN', 'DESERT', 'VALLEY', 'ISLAND', 'BRIDGE', 'TOWER',
+    'WINDOW', 'GARDEN', 'STREET', 'SCHOOL', 'OFFICE', 'COFFEE', 'BUTTER', 'PEPPER', 'CHEESE', 'SUGAR',
+    'TRAIN', 'PLANE', 'TRUCK', 'CYCLE', 'BOAT', 'ROCKET', 'ENGINE', 'MOTOR', 'WHEEL', 'CABLE',
+    // Adjectives and verbs
+    'HAPPY', 'QUICK', 'BRAVE', 'CLEAR', 'SHARP', 'FUNNY', 'SILLY', 'CLEAN', 'FRESH', 'BRIGHT',
+    'EARLY', 'LATE', 'LOUD', 'QUIET', 'WARM', 'COLD', 'SOFT', 'HARD', 'FAST', 'SLOW',
+    'JUMP', 'WALK', 'RUN', 'SWIM', 'DANCE', 'LAUGH', 'WRITE', 'READ', 'THINK', 'DREAM',
+    'BUILD', 'SHINE', 'BREAK', 'CATCH', 'THROW', 'PAINT', 'DRIVE', 'CLIMB', 'LISTEN', 'WATCH',
+    // Tech and science
+    'CODE', 'WIRE', 'CHIP', 'DATA', 'LOGIC', 'SIGNAL', 'CIRCUIT', 'VOLTAGE', 'CURRENT', 'RESISTOR',
+    'ANTENNA', 'RADIO', 'MORSE', 'TELEGRAPH', 'FREQUENCY', 'WAVELENGTH', 'DIODE', 'CAPACITOR',
+    // NATO phonetic alphabet (great for practice)
+    'ALPHA', 'BRAVO', 'CHARLIE', 'DELTA', 'ECHO', 'FOXTROT', 'GOLF', 'HOTEL', 'INDIA', 'JULIET',
+    'KILO', 'LIMA', 'MIKE', 'NOVEMBER', 'OSCAR', 'PAPA', 'QUEBEC', 'ROMEO', 'SIERRA', 'TANGO',
+    'UNIFORM', 'VICTOR', 'WHISKEY', 'XRAY', 'YANKEE', 'ZULU',
+    // Ham-radio shorthand and fun bits
+    'HAM', 'CQ', 'QSL', 'QRZ', 'QTH', 'QSO', 'OM', 'YL', 'DX', 'SOS', 'SKED',
+    // Animals
+    'LION', 'TIGER', 'BEAR', 'WOLF', 'EAGLE', 'HAWK', 'SHARK', 'WHALE', 'TURTLE', 'RABBIT',
+    'HORSE', 'ZEBRA', 'PANDA', 'KOALA', 'DOLPHIN', 'OCTOPUS', 'SPIDER', 'BEETLE', 'FALCON', 'OTTER',
+    // Fun / playful
+    'PIZZA', 'TACO', 'SUSHI', 'BACON', 'HONEY', 'JELLY', 'MANGO', 'PEACH', 'LEMON', 'GRAPE',
+    'WIZARD', 'DRAGON', 'NINJA', 'ROBOT', 'PIRATE', 'KNIGHT', 'CASTLE', 'MAGIC', 'SECRET', 'PUZZLE',
+];
+
+const DRILL_SENTENCES = [
+    // Greetings
+    'HELLO WORLD',
+    'GOOD MORNING',
+    'GOOD EVENING',
+    'GOOD NIGHT',
+    'HOW ARE YOU',
+    'NICE TO MEET YOU',
+    'LONG TIME NO SEE',
+    'WELCOME HOME',
+    'THANK YOU VERY MUCH',
+    'YOU ARE WELCOME',
+    'SEE YOU TOMORROW',
+    'SEE YOU LATER',
+    'TAKE CARE',
+    'HAVE A NICE DAY',
+    'SLEEP WELL',
+    // Ham radio style
+    'CALLING CQ',
+    'CQ CQ CQ',
+    'OVER AND OUT',
+    'WHAT IS YOUR LOCATION',
+    'SIGNAL REPORT FIVE NINE',
+    'NICE COPY THANK YOU',
+    'HAPPY HAM RADIO DAY',
+    'BEST REGARDS SEVENTY THREE',
+    'PLEASE REPEAT YOUR CALL',
+    'STATION IS LOUD AND CLEAR',
+    // Short sayings / quotes
+    'MORSE IS FUN',
+    'KEEP IT SIMPLE',
+    'PRACTICE MAKES PERFECT',
+    'ACTIONS SPEAK LOUDER',
+    'BETTER LATE THAN NEVER',
+    'TIME FLIES WHEN HAVING FUN',
+    'A STITCH IN TIME',
+    'NO PAIN NO GAIN',
+    'LIFE IS BEAUTIFUL',
+    'DREAM BIG WORK HARD',
+    'LESS IS MORE',
+    'SLOW AND STEADY WINS',
+    // The classic
+    'THE QUICK BROWN FOX JUMPS',
+    'PACK MY BOX WITH FIVE DOZEN',
+    'SPHINX OF BLACK QUARTZ',
+    // Conversational
+    'WHAT TIME IS IT',
+    'WHERE ARE YOU GOING',
+    'CAN YOU HEAR ME NOW',
+    'LOVE CONQUERS ALL',
+    'MAY THE FORCE BE WITH YOU',
+    'HAPPY BIRTHDAY TO YOU',
+    'CONGRATULATIONS ON YOUR WIN',
+    'WISHING YOU GOOD LUCK',
+    'SEND HELP QUICKLY',
+    'MEETING AT NOON',
+    'PLEASE CALL BACK LATER',
+    'I WILL BE RIGHT THERE',
+    'DINNER IS ON ME',
+    // Tech / EE fun
+    'HELLO FROM THE CIRCUIT',
+    'VOLTAGE EQUALS CURRENT TIMES RESISTANCE',
+    'OHMS LAW IS MAGIC',
+    'THE ANTENNA IS TUNED',
+    'POWER ON',
+    'SYSTEM ONLINE',
+    'TESTING ONE TWO THREE',
+    'COMMIT AND PUSH',
+    'ALL TESTS PASS',
+    'BUILD SUCCEEDED',
+    // Adventure
+    'INTO THE WILD WE GO',
+    'RACE YOU TO THE FINISH',
+    'FOLLOW THE NORTH STAR',
+    'ADVENTURE IS OUT THERE',
+    'THE JOURNEY BEGINS',
+    'ONE STEP AT A TIME',
+    // Whimsical
+    'THE PARROT KNOWS MORSE',
+    'BEEP BOOP BEEP',
+    'DIT DIT DIT DAH',
+    'LONG LIVE THE DOT',
+    'DASH DOT DASH',
+    'LISTEN TO THE RHYTHM',
+    'CAN YOU HEAR THE STARS',
+    // Classic SOS and urgency
+    'MAYDAY MAYDAY MAYDAY',
+    'HELP ME OBI WAN',
+    'GONE FISHING',
+    'OUT FOR LUNCH',
+    'BE BACK SOON',
+    // Seasonal / holiday
+    'HAPPY NEW YEAR',
+    'MERRY CHRISTMAS',
+    'SPRING IS HERE',
+    'SUMMER VIBES',
+    // Encouragement
+    'YOU CAN DO THIS',
+    'KEEP GOING',
+    'NEVER GIVE UP',
+    'BELIEVE IN YOURSELF',
+    'ONE MORE TRY',
+    // Short fun
+    'I LOVE MORSE CODE',
+    'HELLO FRIEND',
+    'COFFEE PLEASE',
+    'PIZZA TIME',
+    'LET US BEGIN',
+    'HERE WE GO',
+    'GAME ON',
+    'HAPPY CODING',
+];
+
 type Classification = '.' | '-';
 
 const iconBtnStyle: React.CSSProperties = {
@@ -102,11 +246,28 @@ export default function MorsePage() {
     const playStopRef = useRef<(() => void) | null>(null);
 
     // Listening drill
-    const [drillLetter, setDrillLetter] = useState<string | null>(null);
+    type DrillMode = 'char' | 'word' | 'sentence';
+    const [drillMode, setDrillMode] = useState<DrillMode>('word');
+    const [drillLetter, setDrillLetter] = useState<string | null>(null); // actually "drill prompt" - can be multi-char
     const [drillGuess, setDrillGuess] = useState<string>('');
     const [drillResult, setDrillResult] = useState<'correct' | 'wrong' | null>(null);
     const [drillScore, setDrillScore] = useState<{ correct: number; total: number }>({ correct: 0, total: 0 });
     const drillInputRef = useRef<HTMLInputElement | null>(null);
+    const seenCharsRef = useRef<Set<number>>(new Set());
+    const seenWordsRef = useRef<Set<number>>(new Set());
+    const seenSentencesRef = useRef<Set<number>>(new Set());
+
+    useEffect(() => {
+        if (!prefsLoaded) return;
+        try { localStorage.setItem('morse.drillMode', drillMode); } catch {}
+    }, [drillMode, prefsLoaded]);
+
+    useEffect(() => {
+        try {
+            const m = localStorage.getItem('morse.drillMode');
+            if (m === 'char' || m === 'word' || m === 'sentence') setDrillMode(m);
+        } catch {}
+    }, []);
 
     // Refs for realtime use — state setters are too slow / cause stale closures
     const audioCtxRef = useRef<AudioContext | null>(null);
@@ -524,31 +685,47 @@ export default function MorsePage() {
         };
     }
 
+    function pickFromPoolUnseen(pool: string[], seen: Set<number>): string {
+        if (seen.size >= pool.length) seen.clear();
+        let idx: number;
+        do {
+            idx = Math.floor(Math.random() * pool.length);
+        } while (seen.has(idx));
+        seen.add(idx);
+        return pool[idx];
+    }
+
+    function pickDrillPrompt(mode: DrillMode): string {
+        if (mode === 'char') return pickFromPoolUnseen(DRILL_CHARS, seenCharsRef.current);
+        if (mode === 'word') return pickFromPoolUnseen(DRILL_WORDS, seenWordsRef.current);
+        return pickFromPoolUnseen(DRILL_SENTENCES, seenSentencesRef.current);
+    }
+
+    function normalizeDrill(s: string): string {
+        return s.trim().toUpperCase().replace(/\s+/g, ' ');
+    }
+
     function nextDrillLetter() {
-        const pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        let next = pool[Math.floor(Math.random() * pool.length)];
-        if (next === drillLetter && pool.length > 1) {
-            next = pool[(pool.indexOf(next) + 1) % pool.length];
-        }
+        const next = pickDrillPrompt(drillMode);
         setDrillLetter(next);
         setDrillGuess('');
         setDrillResult(null);
-        playLetterStandalone(next);
+        playMorseStandalone(next);
         window.setTimeout(() => drillInputRef.current?.focus(), 50);
     }
 
     function submitDrillGuess() {
         if (!drillLetter || !drillGuess) return;
-        const g = drillGuess.trim().toUpperCase();
+        const g = normalizeDrill(drillGuess);
         if (!g) return;
-        const isCorrect = g === drillLetter;
+        const isCorrect = g === normalizeDrill(drillLetter);
         setDrillResult(isCorrect ? 'correct' : 'wrong');
         setDrillScore(s => ({
             correct: s.correct + (isCorrect ? 1 : 0),
             total: s.total + 1,
         }));
         if (isCorrect) {
-            window.setTimeout(() => { nextDrillLetter(); }, 600);
+            window.setTimeout(() => { nextDrillLetter(); }, 800);
         }
     }
 
@@ -565,9 +742,7 @@ export default function MorsePage() {
         setDrillScore(s => ({ correct: s.correct, total: s.total + 1 }));
     }
 
-    function playLetterStandalone(letter: string) {
-        const code = TO_MORSE[letter.toUpperCase()];
-        if (!code) return;
+    function playMorseStandalone(text: string) {
         const unit = unitMsRef.current / 1000;
         const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
         const osc = ctx.createOscillator();
@@ -581,15 +756,33 @@ export default function MorsePage() {
         let t = ctx.currentTime + 0.02;
         const attack = 0.005;
         const release = 0.005;
-        [...code].forEach((sym, si) => {
-            const durUnits = sym === '.' ? 1 : 3;
+        const pulse = (durUnits: number) => {
             gain.gain.setValueAtTime(0, t);
             gain.gain.linearRampToValueAtTime(0.25, t + attack);
             gain.gain.setValueAtTime(0.25, t + durUnits * unit - release);
             gain.gain.linearRampToValueAtTime(0, t + durUnits * unit);
             t += durUnits * unit;
-            if (si < code.length - 1) t += unit; // intra-letter gap
-        });
+        };
+
+        const upper = text.toUpperCase();
+        let prevWasLetter = false;
+        for (let i = 0; i < upper.length; i++) {
+            const ch = upper[i];
+            if (/\s/.test(ch)) {
+                if (prevWasLetter) t += 7 * unit;
+                prevWasLetter = false;
+                continue;
+            }
+            const code = TO_MORSE[ch];
+            if (!code) continue;
+            if (prevWasLetter) t += 3 * unit;
+            [...code].forEach((sym, si) => {
+                pulse(sym === '.' ? 1 : 3);
+                if (si < code.length - 1) t += unit;
+            });
+            prevWasLetter = true;
+        }
+
         osc.stop(t + 0.05);
         const totalMs = Math.max(0, (t + 0.1 - ctx.currentTime) * 1000);
         window.setTimeout(() => ctx.close().catch(() => {}), totalMs);
@@ -870,7 +1063,7 @@ export default function MorsePage() {
                 }}>
                     {LETTERS.map(([l, c]) => {
                         const highlighted = !!currentLetter && c.startsWith(currentLetter) && currentLetter.length > 0;
-                        return <button key={l} onClick={() => playLetterStandalone(l)}
+                        return <button key={l} onClick={() => playMorseStandalone(l)}
                             title={`Play ${l} (${c})`} aria-label={`Play ${l}`}
                             style={{
                                 padding: '6px 10px', border: '1px solid #e5e7eb', borderRadius: 6,
@@ -892,33 +1085,55 @@ export default function MorsePage() {
                 padding: 12,
                 border: '1px dashed #cbd5e1', borderRadius: 10, background: '#f8fafc',
             }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
+                    <span style={{ fontSize: 13, color: '#555' }}>Length:</span>
+                    {(['char', 'word', 'sentence'] as DrillMode[]).map(m => (
+                        <button key={m} onClick={() => {
+                            setDrillMode(m);
+                            if (drillLetter) { setDrillLetter(null); setDrillGuess(''); setDrillResult(null); }
+                        }}
+                            style={{
+                                padding: '4px 10px', fontSize: 13, borderRadius: 6,
+                                border: '1px solid ' + (drillMode === m ? '#2563eb' : '#cbd5e1'),
+                                background: drillMode === m ? '#dbeafe' : 'white',
+                                color: drillMode === m ? '#1e3a8a' : '#374151',
+                                cursor: 'pointer', fontWeight: drillMode === m ? 600 : 400,
+                            }}>
+                            {m === 'char' ? 'One char' : m === 'word' ? 'One word' : 'One sentence'}
+                        </button>
+                    ))}
+                </div>
                 {!drillLetter ? (
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap' }}>
                         <span style={{ fontSize: 13, color: '#555' }}>
-                            Listen to a random letter and type what you hear.
+                            Listen and type what you hear.
                         </span>
                         <button className='button' onClick={nextDrillLetter}>Start drill</button>
                     </div>
                 ) : (
                     <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-                            <button className='button' onClick={() => playLetterStandalone(drillLetter!)}
-                                title='Replay letter' aria-label='Replay letter' style={iconBtnStyle}>
+                            <button className='button' onClick={() => playMorseStandalone(drillLetter!)}
+                                title='Replay' aria-label='Replay' style={iconBtnStyle}>
                                 <Volume2 size={22} />
                             </button>
                             <input
                                 ref={drillInputRef}
                                 type='text'
                                 value={drillGuess}
-                                maxLength={1}
+                                maxLength={drillMode === 'char' ? 1 : drillMode === 'word' ? 20 : 80}
                                 onChange={e => { setDrillGuess(e.target.value); setDrillResult(null); }}
                                 onKeyDown={e => { if (e.key === 'Enter') submitDrillGuess(); }}
-                                placeholder='?'
+                                placeholder={drillMode === 'char' ? '?' : drillMode === 'word' ? 'your guess' : 'your sentence'}
                                 autoFocus
                                 style={{
-                                    width: 70, padding: '8px 12px', border: '1px solid #cbd5e1',
+                                    flex: drillMode === 'char' ? undefined : '1 1 200px',
+                                    width: drillMode === 'char' ? 70 : undefined,
+                                    padding: '8px 12px', border: '1px solid #cbd5e1',
                                     borderRadius: 6, fontFamily: 'ui-monospace, monospace',
-                                    fontSize: 22, textAlign: 'center', textTransform: 'uppercase',
+                                    fontSize: drillMode === 'char' ? 22 : 16,
+                                    textAlign: drillMode === 'char' ? 'center' : 'left',
+                                    textTransform: 'uppercase',
                                     background: drillResult === 'wrong' ? '#fee2e2' : drillResult === 'correct' ? '#dcfce7' : 'white',
                                 }}
                             />
@@ -940,8 +1155,8 @@ export default function MorsePage() {
                                 color: drillResult === 'correct' ? '#166534' : '#b91c1c',
                             }}>
                                 {drillResult === 'correct'
-                                    ? `Correct! It was ${drillLetter} (${TO_MORSE[drillLetter!]})`
-                                    : <>That was <b>{drillLetter}</b> ({TO_MORSE[drillLetter!]}). Try again or <button onClick={nextDrillLetter} style={{ color: '#2563eb', background: 'none', border: 'none', cursor: 'pointer', padding: 0, textDecoration: 'underline' }}>next letter</button>.</>
+                                    ? <>Correct! It was <b>{drillLetter}</b></>
+                                    : <>That was <b>{drillLetter}</b>. Try again or <button onClick={nextDrillLetter} style={{ color: '#2563eb', background: 'none', border: 'none', cursor: 'pointer', padding: 0, textDecoration: 'underline' }}>next</button>.</>
                                 }
                             </div>
                         )}
