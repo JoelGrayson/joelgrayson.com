@@ -513,8 +513,20 @@ export default function MorsePage() {
         pathname='/morse'
     >
         <h1 className='mt-8 mb-2 text-center flex items-center justify-center gap-5'>
-            <Image alt='Morse Code' width={60} height={60} src='/image/home/morse.jpg' className='inline relative bottom-1' />
+            <span className='morse-portrait inline-block relative bottom-1' style={{ width: 60, height: 60, position: 'relative', overflow: 'hidden', borderRadius: 4 }}>
+                <Image alt='Morse portrait' width={60} height={60} src='/image/morse/face.png'
+                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
+                <Image alt='' aria-hidden='true' width={60} height={60} src='/image/morse/glasses.png'
+                    className='morse-glasses'
+                    style={{
+                        position: 'absolute', inset: 0, width: '100%', height: '100%',
+                        transition: 'transform 180ms ease-out',
+                    }} />
+            </span>
             Morse Code
+            <style>{`
+                .morse-portrait:hover .morse-glasses { transform: translateY(-8%) rotate(6deg); }
+            `}</style>
         </h1>
 
         <div style={{ maxWidth: 720, margin: '24px auto 0', display: 'grid', gridTemplateColumns: 'auto 1fr auto', gap: 10, alignItems: 'center' }}>

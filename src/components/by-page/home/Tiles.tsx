@@ -152,8 +152,17 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
             </Tile>
 
             <Tile href='/morse'>
-                <Image alt='Morse Code Logo' width={50} height={50} src='/image/home/morse.jpg' />
+                <span className='morse-tile-portrait' style={{ position: 'relative', width: 50, height: 50, display: 'inline-block', overflow: 'hidden', borderRadius: 4 }}>
+                    <Image alt='Morse portrait' width={50} height={50} src='/image/morse/face.png'
+                        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
+                    <Image alt='' aria-hidden width={50} height={50} src='/image/morse/glasses.png'
+                        className='morse-tile-glasses'
+                        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', transition: 'transform 180ms ease-out' }} />
+                </span>
                 <span>Morse Code</span>
+                <style>{`
+                    a:hover .morse-tile-glasses { transform: translateY(-8%) rotate(6deg); }
+                `}</style>
             </Tile>
 
             <Tile href='https://wasian.io'>
