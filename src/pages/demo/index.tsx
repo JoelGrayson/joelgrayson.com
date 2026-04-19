@@ -14,7 +14,24 @@ export default function Demo() {
         pathname='/demo'
     >
         <h1 className='text-center mb-3 mt-8 text-5xl'>Joel Grayson&apos;s Demos</h1>
-        
+
+        <div className='d:grid d:grid-cols-[2fr_3fr] gap-3 relative'>
+            <div className='pt-4'>
+                <Yt width='100%'>D4iZ2kXLfdc</Yt>
+            </div>
+            <div>
+                <h3>Morse Code</h3>
+                <p>Interactive Morse code trainer — key Morse with your keyboard, tap, or microphone, and hear/see it decoded in real time. Also includes encoding and practice drills.</p>
+                <div className='flex justify-end absolute bottom-0 right-0'>
+                    <Link href='/morse' className='flex justify-center items-center gap-2 button !px-1.5 !py-1'>
+                        Try it
+                    </Link>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+
         <div className='d:grid d:grid-cols-[2fr_3fr] gap-3 relative'>
             <div className='pt-4'>
                 <Yt width='100%'>bHHk2FL5Ujs</Yt>

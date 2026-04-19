@@ -1157,6 +1157,16 @@ export default function MorsePage() {
                     }} />
             </span>
             Morse Code
+            <a href='https://youtu.be/D4iZ2kXLfdc' target='_blank' rel='noopener noreferrer'
+                style={{
+                    fontSize: 14, fontWeight: 400, color: '#2563eb',
+                    textDecoration: 'underline', marginLeft: 4,
+                    whiteSpace: 'nowrap', lineHeight: 1,
+                    position: 'relative', bottom: 4,
+                    cursor: 'pointer',
+                }}>
+                Watch YouTube Demo
+            </a>
             {/* App Store placeholder — re-enable when the app ships
             <a href='#' onClick={e => e.preventDefault()} aria-label='Download on the App Store (coming soon)'
                 title='Coming soon'
