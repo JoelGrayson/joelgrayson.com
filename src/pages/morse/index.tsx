@@ -201,10 +201,13 @@ export default function MorsePage() {
     const [currentLetter, setCurrentLetter] = useState<string>('');
     const [volume, setVolume] = useState<number>(0);
     const volumeBarRef = useRef<HTMLDivElement | null>(null);
+    const practiceVolumeBarRef = useRef<HTMLDivElement | null>(null);
     const lastVolumeUpdateRef = useRef<number>(0);
     const thresholdTrackRef = useRef<HTMLDivElement | null>(null);
+    const practiceThresholdTrackRef = useRef<HTMLDivElement | null>(null);
     const [draggingThreshold, setDraggingThreshold] = useState(false);
     const [hoveringThreshold, setHoveringThreshold] = useState(false);
+    const draggingTrackRef = useRef<React.MutableRefObject<HTMLDivElement | null> | null>(null);
     const [flash, setFlash] = useState<Classification | null>(null);
 
     // Adjustable params (persisted to localStorage)
@@ -245,10 +248,12 @@ export default function MorsePage() {
     const playCtxRef = useRef<AudioContext | null>(null);
     const playStopRef = useRef<(() => void) | null>(null);
 
-    // Listening drill
+    // Practice (Recognize / Type)
     type DrillMode = 'char' | 'word' | 'sentence';
+    type PracticeMode = 'recognize' | 'type';
+    const [practiceMode, setPracticeMode] = useState<PracticeMode>('recognize');
     const [drillMode, setDrillMode] = useState<DrillMode>('word');
-    const [drillLetter, setDrillLetter] = useState<string | null>(null); // actually "drill prompt" - can be multi-char
+    const [drillLetter, setDrillLetter] = useState<string | null>(null); // Recognize mode prompt
     const [drillGuess, setDrillGuess] = useState<string>('');
     const [drillResult, setDrillResult] = useState<'correct' | 'wrong' | null>(null);
     const [drillScore, setDrillScore] = useState<{ correct: number; total: number }>({ correct: 0, total: 0 });
@@ -257,15 +262,37 @@ export default function MorsePage() {
     const seenWordsRef = useRef<Set<number>>(new Set());
     const seenSentencesRef = useRef<Set<number>>(new Set());
 
+    // Type practice state
+    const [typePrompt, setTypePrompt] = useState<string | null>(null);
+    const [typePosition, setTypePosition] = useState<number>(0);
+    type TypeEntry = { status: 'correct' | 'wrong'; input: string } | null;
+    const [typeResults, setTypeResults] = useState<TypeEntry[]>([]);
+    const [typeScore, setTypeScore] = useState<{ correct: number; total: number }>({ correct: 0, total: 0 });
+    const typePromptRef = useRef<string | null>(null);
+    const typePositionRef = useRef<number>(0);
+    const typeResultsRef = useRef<TypeEntry[]>([]);
+    useEffect(() => { typePromptRef.current = typePrompt; }, [typePrompt]);
+    useEffect(() => { typePositionRef.current = typePosition; }, [typePosition]);
+    useEffect(() => { typeResultsRef.current = typeResults; }, [typeResults]);
+
+    // Callback that finalizeLetter uses — intercepts morse input during Type practice
+    const letterFinalizeCallbackRef = useRef<((letter: string, pattern: string) => void) | null>(null);
+
     useEffect(() => {
         if (!prefsLoaded) return;
         try { localStorage.setItem('morse.drillMode', drillMode); } catch {}
     }, [drillMode, prefsLoaded]);
+    useEffect(() => {
+        if (!prefsLoaded) return;
+        try { localStorage.setItem('morse.practiceMode', practiceMode); } catch {}
+    }, [practiceMode, prefsLoaded]);
 
     useEffect(() => {
         try {
             const m = localStorage.getItem('morse.drillMode');
             if (m === 'char' || m === 'word' || m === 'sentence') setDrillMode(m);
+            const pm = localStorage.getItem('morse.practiceMode');
+            if (pm === 'recognize' || pm === 'type') setPracticeMode(pm);
         } catch {}
     }, []);
 
@@ -299,7 +326,11 @@ export default function MorsePage() {
         const letter = decodeLetter(p);
         currentLetterRef.current = '';
         setCurrentLetter('');
-        setDecoded(prev => prev + letter);
+        if (letterFinalizeCallbackRef.current) {
+            letterFinalizeCallbackRef.current(letter, p);
+        } else {
+            setDecoded(prev => prev + letter);
+        }
         letterFinalizedRef.current = true;
     }
 
@@ -314,10 +345,13 @@ export default function MorsePage() {
         for (let i = 0; i < buf.length; i++) sum += buf[i] * buf[i];
         const rms = Math.sqrt(sum / buf.length);
         // Live DOM update — bypasses React's render cycle for smooth realtime feedback
-        if (volumeBarRef.current) {
-            const pct = Math.min(1, rms / 0.15) * 100;
-            volumeBarRef.current.style.width = `${pct}%`;
-            volumeBarRef.current.style.background = rms > noiseThresholdRef.current ? '#22c55e' : '#9ca3af';
+        const pct = Math.min(1, rms / 0.15) * 100;
+        const bg = rms > noiseThresholdRef.current ? '#22c55e' : '#9ca3af';
+        for (const el of [volumeBarRef.current, practiceVolumeBarRef.current]) {
+            if (el) {
+                el.style.width = `${pct}%`;
+                el.style.background = bg;
+            }
         }
         // Throttle React state update to ~10Hz — used only to re-color the flash dot / tip text
         const now0 = performance.now();
@@ -409,9 +443,11 @@ export default function MorsePage() {
         audioCtxRef.current?.close();
         audioCtxRef.current = null;
         analyserRef.current = null;
-        if (volumeBarRef.current) {
-            volumeBarRef.current.style.width = '0%';
-            volumeBarRef.current.style.background = '#9ca3af';
+        for (const el of [volumeBarRef.current, practiceVolumeBarRef.current]) {
+            if (el) {
+                el.style.width = '0%';
+                el.style.background = '#9ca3af';
+            }
         }
         setVolume(0);
         // if a letter is pending, flush it
@@ -432,13 +468,14 @@ export default function MorsePage() {
     useEffect(() => {
         if (!draggingThreshold) return;
         function updateFromX(clientX: number) {
-            const rect = thresholdTrackRef.current?.getBoundingClientRect();
+            const trackRef = draggingTrackRef.current ?? thresholdTrackRef;
+            const rect = trackRef.current?.getBoundingClientRect();
             if (!rect) return;
             const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
             setNoiseThreshold(Number((ratio * 0.15).toFixed(3)));
         }
         function onMove(e: PointerEvent) { updateFromX(e.clientX); }
-        function onUp() { setDraggingThreshold(false); }
+        function onUp() { setDraggingThreshold(false); draggingTrackRef.current = null; }
         window.addEventListener('pointermove', onMove);
         window.addEventListener('pointerup', onUp);
         return () => {
@@ -742,6 +779,88 @@ export default function MorsePage() {
         setDrillScore(s => ({ correct: s.correct, total: s.total + 1 }));
     }
 
+    function nextTypePrompt() {
+        const next = pickDrillPrompt(drillMode);
+        setTypePrompt(next);
+        // find first non-space position
+        let startPos = 0;
+        while (startPos < next.length && /\s/.test(next[startPos])) startPos++;
+        setTypePosition(startPos);
+        setTypeResults(new Array(next.length).fill(null));
+        // Clear any in-progress letter from key input
+        currentLetterRef.current = '';
+        setCurrentLetter('');
+        letterFinalizedRef.current = true;
+        wordBoundaryAddedRef.current = true;
+    }
+
+    function resetTypePractice() {
+        setTypePrompt(null);
+        setTypePosition(0);
+        setTypeResults([]);
+        setTypeScore({ correct: 0, total: 0 });
+    }
+
+    function deleteTypeCharacter() {
+        // If a partial letter is being keyed, strip just the last dot/dash.
+        if (currentLetterRef.current) {
+            currentLetterRef.current = currentLetterRef.current.slice(0, -1);
+            setCurrentLetter(currentLetterRef.current);
+            return;
+        }
+        const results = typeResultsRef.current;
+        let prevPos = -1;
+        for (let i = results.length - 1; i >= 0; i--) {
+            if (results[i]) { prevPos = i; break; }
+        }
+        if (prevPos < 0) return;
+        const entry = results[prevPos];
+        const newResults = [...results];
+        newResults[prevPos] = null;
+        setTypeResults(newResults);
+        setTypePosition(prevPos);
+        setTypeScore(s => ({
+            correct: s.correct - (entry?.status === 'correct' ? 1 : 0),
+            total: Math.max(0, s.total - 1),
+        }));
+    }
+
+    // Install the Type-practice letter callback while that mode is active
+    useEffect(() => {
+        if (practiceMode !== 'type' || !typePrompt) {
+            letterFinalizeCallbackRef.current = null;
+            return;
+        }
+        letterFinalizeCallbackRef.current = (letter: string, pattern: string) => {
+            const prompt = typePromptRef.current;
+            if (!prompt) return;
+            const upper = prompt.toUpperCase();
+            let pos = typePositionRef.current;
+            while (pos < upper.length && /\s/.test(upper[pos])) pos++;
+            if (pos >= upper.length) return;
+            const expected = upper[pos];
+            const isCorrect = letter === expected;
+            const newResults = [...typeResultsRef.current];
+            newResults[pos] = { status: isCorrect ? 'correct' : 'wrong', input: pattern };
+            setTypeResults(newResults);
+            let nextPos = pos + 1;
+            while (nextPos < upper.length && /\s/.test(upper[nextPos])) nextPos++;
+            setTypePosition(nextPos);
+            setTypeScore(s => ({
+                correct: s.correct + (isCorrect ? 1 : 0),
+                total: s.total + 1,
+            }));
+            // If we completed the prompt, auto-advance after a brief pause
+            if (nextPos >= upper.length) {
+                window.setTimeout(() => {
+                    // only auto-advance if the user hasn't already moved on
+                    if (typePromptRef.current === prompt) nextTypePrompt();
+                }, 1200);
+            }
+        };
+        return () => { letterFinalizeCallbackRef.current = null; };
+    }, [practiceMode, typePrompt]);
+
     function playMorseStandalone(text: string) {
         const unit = unitMsRef.current / 1000;
         const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
@@ -790,6 +909,94 @@ export default function MorsePage() {
 
     // Volume bar: threshold indicator (live bar updates directly in tick)
     const thresholdPct = Math.min(1, noiseThreshold / 0.15) * 100;
+
+    function renderMicBar(trackRef: React.MutableRefObject<HTMLDivElement | null>, barRef: React.MutableRefObject<HTMLDivElement | null>) {
+        return <>
+            <div ref={trackRef} style={{
+                position: 'relative', flex: 1, height: 24, marginLeft: 8,
+                background: '#eee', borderRadius: 4,
+                overflow: 'visible',
+            }}>
+                <div style={{ position: 'absolute', inset: 0, borderRadius: 4, overflow: 'hidden' }}>
+                    <div ref={barRef} style={{
+                        position: 'absolute', left: 0, top: 0, bottom: 0,
+                        width: '0%', background: '#9ca3af',
+                    }} />
+                </div>
+                <div
+                    onPointerDown={e => {
+                        e.preventDefault();
+                        (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
+                        draggingTrackRef.current = trackRef;
+                        setDraggingThreshold(true);
+                        const rect = trackRef.current?.getBoundingClientRect();
+                        if (rect) {
+                            const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                            setNoiseThreshold(Number((ratio * 0.15).toFixed(3)));
+                        }
+                    }}
+                    onPointerEnter={() => setHoveringThreshold(true)}
+                    onPointerLeave={() => setHoveringThreshold(false)}
+                    style={{
+                        position: 'absolute', top: -6, bottom: -6,
+                        left: `calc(${thresholdPct}% - 9px)`, width: 18,
+                        cursor: 'ew-resize', touchAction: 'none',
+                    }}
+                >
+                    <div style={{
+                        position: 'absolute', left: 8, top: 0, bottom: 0, width: 2,
+                        background: '#ef4444',
+                    }} />
+                </div>
+                {(hoveringThreshold || draggingThreshold) && (
+                    <div style={{
+                        position: 'absolute', bottom: 'calc(100% + 8px)',
+                        left: `${thresholdPct}%`, transform: 'translateX(-50%)',
+                        background: '#111827', color: 'white',
+                        padding: '6px 8px', borderRadius: 6,
+                        display: 'flex', alignItems: 'center', gap: 6,
+                        whiteSpace: 'nowrap', fontSize: 12,
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                        zIndex: 5,
+                    }}>
+                        <span>Sound Threshold</span>
+                        <input type='number' min={0} max={0.15} step={0.001}
+                            value={noiseThreshold}
+                            onChange={e => {
+                                const v = parseFloat(e.target.value);
+                                if (!isNaN(v)) setNoiseThreshold(Math.max(0, Math.min(0.15, v)));
+                            }}
+                            onPointerDown={e => e.stopPropagation()}
+                            style={{
+                                width: 64, padding: '2px 4px', fontSize: 12,
+                                border: '1px solid #374151', borderRadius: 3,
+                                fontFamily: 'ui-monospace, monospace', textAlign: 'right',
+                                background: 'white', color: '#111827',
+                            }}
+                        />
+                        <div style={{
+                            position: 'absolute', top: '100%', left: '50%',
+                            transform: 'translateX(-50%)',
+                            width: 0, height: 0,
+                            borderLeft: '5px solid transparent',
+                            borderRight: '5px solid transparent',
+                            borderTop: '5px solid #111827',
+                        }} />
+                    </div>
+                )}
+            </div>
+            <div style={{
+                width: 40, height: 40, borderRadius: '50%',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 22, fontWeight: 700,
+                background: flash === '.' ? '#60a5fa' : flash === '-' ? '#f59e0b' : '#e5e7eb',
+                color: flash ? 'white' : '#9ca3af',
+                transition: 'background 80ms linear',
+            }}>
+                {flash === '.' ? '·' : flash === '-' ? '−' : '·'}
+            </div>
+        </>;
+    }
 
     return <Page bottomPadding
         seo={{
@@ -887,93 +1094,7 @@ export default function MorsePage() {
                 <Trash2 size={22} />
             </button>
 
-            <div ref={thresholdTrackRef} style={{
-                position: 'relative', flex: 1, height: 24, marginLeft: 8,
-                background: '#eee', borderRadius: 4,
-                overflow: 'visible',
-            }}>
-                    <div style={{
-                        position: 'absolute', inset: 0, borderRadius: 4, overflow: 'hidden',
-                    }}>
-                        <div ref={volumeBarRef} style={{
-                            position: 'absolute', left: 0, top: 0, bottom: 0,
-                            width: '0%',
-                            background: '#9ca3af',
-                        }} />
-                    </div>
-                    <div
-                        onPointerDown={e => {
-                            e.preventDefault();
-                            (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
-                            setDraggingThreshold(true);
-                            const rect = thresholdTrackRef.current?.getBoundingClientRect();
-                            if (rect) {
-                                const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-                                setNoiseThreshold(Number((ratio * 0.15).toFixed(3)));
-                            }
-                        }}
-                        onPointerEnter={() => setHoveringThreshold(true)}
-                        onPointerLeave={() => setHoveringThreshold(false)}
-                        style={{
-                            position: 'absolute', top: -6, bottom: -6,
-                            left: `calc(${thresholdPct}% - 9px)`, width: 18,
-                            cursor: 'ew-resize', touchAction: 'none',
-                        }}
-                    >
-                        <div style={{
-                            position: 'absolute', left: 8, top: 0, bottom: 0, width: 2,
-                            background: '#ef4444',
-                        }} />
-                    </div>
-                    {(hoveringThreshold || draggingThreshold) && (
-                        <div style={{
-                            position: 'absolute',
-                            bottom: 'calc(100% + 8px)',
-                            left: `${thresholdPct}%`,
-                            transform: 'translateX(-50%)',
-                            background: '#111827', color: 'white',
-                            padding: '6px 8px', borderRadius: 6,
-                            display: 'flex', alignItems: 'center', gap: 6,
-                            whiteSpace: 'nowrap', fontSize: 12,
-                            boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-                            zIndex: 5,
-                        }}>
-                            <span>Sound Threshold</span>
-                            <input type='number' min={0} max={0.15} step={0.001}
-                                value={noiseThreshold}
-                                onChange={e => {
-                                    const v = parseFloat(e.target.value);
-                                    if (!isNaN(v)) setNoiseThreshold(Math.max(0, Math.min(0.15, v)));
-                                }}
-                                onPointerDown={e => e.stopPropagation()}
-                                style={{
-                                    width: 64, padding: '2px 4px', fontSize: 12,
-                                    border: '1px solid #374151', borderRadius: 3,
-                                    fontFamily: 'ui-monospace, monospace', textAlign: 'right',
-                                    background: 'white', color: '#111827',
-                                }}
-                            />
-                            <div style={{
-                                position: 'absolute', top: '100%', left: '50%',
-                                transform: 'translateX(-50%)',
-                                width: 0, height: 0,
-                                borderLeft: '5px solid transparent',
-                                borderRight: '5px solid transparent',
-                                borderTop: '5px solid #111827',
-                            }} />
-                        </div>
-                    )}
-                </div>
-            <div style={{
-                width: 40, height: 40, borderRadius: '50%',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: 22, fontWeight: 700,
-                background: flash === '.' ? '#60a5fa' : flash === '-' ? '#f59e0b' : '#e5e7eb',
-                color: flash ? 'white' : '#9ca3af',
-                transition: 'background 80ms linear',
-            }}>
-                {flash === '.' ? '·' : flash === '-' ? '−' : '·'}
-            </div>
+            {listening && renderMicBar(thresholdTrackRef, volumeBarRef)}
         </div>
 
         <div style={{
@@ -1080,17 +1201,39 @@ export default function MorsePage() {
         </div>
 
         <div style={{ maxWidth: 720, margin: '28px auto 0' }}>
-            <h3 style={{ marginBottom: 8 }}>Listening Drill</h3>
+            <h3 style={{ marginBottom: 8 }}>Practice</h3>
             <div style={{
                 padding: 12,
                 border: '1px dashed #cbd5e1', borderRadius: 10, background: '#f8fafc',
             }}>
+                {/* Mode toggle: Recognize vs Type */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
+                    {(['recognize', 'type'] as PracticeMode[]).map(m => (
+                        <button key={m} onClick={() => {
+                            setPracticeMode(m);
+                            setDrillLetter(null); setDrillGuess(''); setDrillResult(null);
+                            resetTypePractice();
+                        }}
+                            style={{
+                                padding: '6px 14px', fontSize: 14, borderRadius: 6,
+                                border: '1px solid ' + (practiceMode === m ? '#2563eb' : '#cbd5e1'),
+                                background: practiceMode === m ? '#2563eb' : 'white',
+                                color: practiceMode === m ? 'white' : '#374151',
+                                cursor: 'pointer', fontWeight: practiceMode === m ? 600 : 400,
+                            }}>
+                            {m === 'recognize' ? 'Recognize Morse' : 'Enter Morse'}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Length selector — shared between modes */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
                     <span style={{ fontSize: 13, color: '#555' }}>Length:</span>
                     {(['char', 'word', 'sentence'] as DrillMode[]).map(m => (
                         <button key={m} onClick={() => {
                             setDrillMode(m);
-                            if (drillLetter) { setDrillLetter(null); setDrillGuess(''); setDrillResult(null); }
+                            setDrillLetter(null); setDrillGuess(''); setDrillResult(null);
+                            resetTypePractice();
                         }}
                             style={{
                                 padding: '4px 10px', fontSize: 13, borderRadius: 6,
@@ -1103,64 +1246,170 @@ export default function MorsePage() {
                         </button>
                     ))}
                 </div>
-                {!drillLetter ? (
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: 13, color: '#555' }}>
-                            Listen and type what you hear.
-                        </span>
-                        <button className='button' onClick={nextDrillLetter}>Start drill</button>
-                    </div>
-                ) : (
-                    <div>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-                            <button className='button' onClick={() => playMorseStandalone(drillLetter!)}
-                                title='Replay' aria-label='Replay' style={iconBtnStyle}>
-                                <Volume2 size={22} />
-                            </button>
-                            <input
-                                ref={drillInputRef}
-                                type='text'
-                                value={drillGuess}
-                                maxLength={drillMode === 'char' ? 1 : drillMode === 'word' ? 20 : 80}
-                                onChange={e => { setDrillGuess(e.target.value); setDrillResult(null); }}
-                                onKeyDown={e => { if (e.key === 'Enter') submitDrillGuess(); }}
-                                placeholder={drillMode === 'char' ? '?' : drillMode === 'word' ? 'your guess' : 'your sentence'}
-                                autoFocus
-                                style={{
-                                    flex: drillMode === 'char' ? undefined : '1 1 200px',
-                                    width: drillMode === 'char' ? 70 : undefined,
-                                    padding: '8px 12px', border: '1px solid #cbd5e1',
-                                    borderRadius: 6, fontFamily: 'ui-monospace, monospace',
-                                    fontSize: drillMode === 'char' ? 22 : 16,
-                                    textAlign: drillMode === 'char' ? 'center' : 'left',
-                                    textTransform: 'uppercase',
-                                    background: drillResult === 'wrong' ? '#fee2e2' : drillResult === 'correct' ? '#dcfce7' : 'white',
-                                }}
-                            />
-                            <button className='button' onClick={submitDrillGuess} disabled={!drillGuess}>Check</button>
-                            <button className='button' onClick={showDrillAnswer} disabled={!!drillResult} title='Reveal the letter'>Show answer</button>
-                            <button className='button' onClick={nextDrillLetter} title='Skip to next letter'>Skip</button>
-                            <div style={{ marginLeft: 'auto', fontSize: 13, color: '#555' }}>
-                                Score: <b>{drillScore.correct}</b> / {drillScore.total}
-                                {drillScore.total > 0 && ` (${Math.round(drillScore.correct / drillScore.total * 100)}%)`}
-                                <button onClick={resetDrill} style={{
-                                    marginLeft: 8, fontSize: 12, color: '#2563eb',
-                                    background: 'none', border: 'none', cursor: 'pointer', padding: 0,
-                                }}>reset</button>
-                            </div>
+
+                {practiceMode === 'recognize' ? (
+                    !drillLetter ? (
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap' }}>
+                            <span style={{ fontSize: 13, color: '#555' }}>
+                                Listen and type what you hear.
+                            </span>
+                            <button className='button' onClick={nextDrillLetter}>Start</button>
                         </div>
-                        {drillResult && (
-                            <div style={{
-                                marginTop: 8, fontSize: 14,
-                                color: drillResult === 'correct' ? '#166534' : '#b91c1c',
-                            }}>
-                                {drillResult === 'correct'
-                                    ? <>Correct! It was <b>{drillLetter}</b></>
-                                    : <>That was <b>{drillLetter}</b>. Try again or <button onClick={nextDrillLetter} style={{ color: '#2563eb', background: 'none', border: 'none', cursor: 'pointer', padding: 0, textDecoration: 'underline' }}>next</button>.</>
-                                }
+                    ) : (
+                        <div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+                                <button className='button' onClick={() => playMorseStandalone(drillLetter!)}
+                                    title='Replay' aria-label='Replay' style={iconBtnStyle}>
+                                    <Volume2 size={22} />
+                                </button>
+                                <input
+                                    ref={drillInputRef}
+                                    type='text'
+                                    value={drillGuess}
+                                    maxLength={drillMode === 'char' ? 1 : drillMode === 'word' ? 20 : 80}
+                                    onChange={e => { setDrillGuess(e.target.value); setDrillResult(null); }}
+                                    onKeyDown={e => { if (e.key === 'Enter') submitDrillGuess(); }}
+                                    placeholder={drillMode === 'char' ? '?' : drillMode === 'word' ? 'your guess' : 'your sentence'}
+                                    autoFocus
+                                    style={{
+                                        flex: drillMode === 'char' ? undefined : '1 1 200px',
+                                        width: drillMode === 'char' ? 70 : undefined,
+                                        padding: '8px 12px', border: '1px solid #cbd5e1',
+                                        borderRadius: 6, fontFamily: 'ui-monospace, monospace',
+                                        fontSize: drillMode === 'char' ? 22 : 16,
+                                        textAlign: drillMode === 'char' ? 'center' : 'left',
+                                        textTransform: 'uppercase',
+                                        background: drillResult === 'wrong' ? '#fee2e2' : drillResult === 'correct' ? '#dcfce7' : 'white',
+                                    }}
+                                />
+                                <button className='button' onClick={submitDrillGuess} disabled={!drillGuess}>Check</button>
+                                <button className='button' onClick={showDrillAnswer} disabled={!!drillResult} title='Reveal the letter'>Show answer</button>
+                                <button className='button' onClick={nextDrillLetter} title='Skip to next letter'>Skip</button>
+                                <div style={{ marginLeft: 'auto', fontSize: 13, color: '#555' }}>
+                                    Score: <b>{drillScore.correct}</b> / {drillScore.total}
+                                    {drillScore.total > 0 && ` (${Math.round(drillScore.correct / drillScore.total * 100)}%)`}
+                                    <button onClick={resetDrill} style={{
+                                        marginLeft: 8, fontSize: 12, color: '#2563eb',
+                                        background: 'none', border: 'none', cursor: 'pointer', padding: 0,
+                                    }}>reset</button>
+                                </div>
                             </div>
-                        )}
-                    </div>
+                            {drillResult && (
+                                <div style={{
+                                    marginTop: 8, fontSize: 14,
+                                    color: drillResult === 'correct' ? '#166534' : '#b91c1c',
+                                }}>
+                                    {drillResult === 'correct'
+                                        ? <>Correct! It was <b>{drillLetter}</b></>
+                                        : <>That was <b>{drillLetter}</b>. Try again or <button onClick={nextDrillLetter} style={{ color: '#2563eb', background: 'none', border: 'none', cursor: 'pointer', padding: 0, textDecoration: 'underline' }}>next</button>.</>
+                                    }
+                                </div>
+                            )}
+                        </div>
+                    )
+                ) : (
+                    // Type (Enter Morse) mode
+                    !typePrompt ? (
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap' }}>
+                            <span style={{ fontSize: 13, color: '#555' }}>
+                                You&apos;ll see English text — key the Morse for each letter.
+                            </span>
+                            <button className='button' onClick={nextTypePrompt}>Start</button>
+                        </div>
+                    ) : (
+                        <div>
+                            <div style={{
+                                display: 'flex', flexWrap: 'wrap', gap: 4, marginBottom: 10,
+                                padding: '8px 4px', minHeight: 60, alignItems: 'flex-end',
+                            }}>
+                                {[...typePrompt.toUpperCase()].map((ch, i) => {
+                                    if (/\s/.test(ch)) return <span key={i} style={{ width: 14 }} />;
+                                    const entry = typeResults[i];
+                                    const isCurrent = i === typePosition;
+                                    let bg = 'transparent', color = '#374151';
+                                    if (entry?.status === 'correct') { bg = '#dcfce7'; color = '#166534'; }
+                                    else if (entry?.status === 'wrong') { bg = '#fee2e2'; color = '#b91c1c'; }
+                                    else if (isCurrent) { bg = '#fef3c7'; color = '#713f12'; }
+                                    // What to show under the letter:
+                                    //  - before keyed: blank
+                                    //  - current: currentLetter (dots/dashes being entered)
+                                    //  - after keyed: the pattern they entered (green if correct, red if wrong)
+                                    let below = '';
+                                    if (entry) below = entry.input;
+                                    else if (isCurrent) below = currentLetter;
+                                    return <span key={i} style={{
+                                        padding: '6px 8px', borderRadius: 4, background: bg, color,
+                                        fontFamily: 'ui-monospace, monospace',
+                                        display: 'inline-flex', flexDirection: 'column', alignItems: 'center',
+                                        lineHeight: 1.1,
+                                        border: isCurrent ? '1px solid #f59e0b' : '1px solid transparent',
+                                        transition: 'background 120ms linear, color 120ms linear',
+                                    }}>
+                                        <span style={{ fontSize: 20, fontWeight: 700 }}>{ch}</span>
+                                        <span style={{
+                                            fontSize: 12, minHeight: 14, letterSpacing: 1,
+                                            fontWeight: entry ? 700 : 400,
+                                        }}>
+                                            {below || '\u00A0'}
+                                        </span>
+                                    </span>;
+                                })}
+                            </div>
+
+                            {/* Big keying rectangle, same style as top Enter Morse */}
+                            <button
+                                onPointerDown={e => { e.preventDefault(); beginKeyPress(); }}
+                                onPointerUp={e => { e.preventDefault(); endKeyPress(); }}
+                                onPointerLeave={() => { if (keyPressingRef.current) endKeyPress(); }}
+                                onPointerCancel={() => { if (keyPressingRef.current) endKeyPress(); }}
+                                onContextMenu={e => e.preventDefault()}
+                                className='text-gray-600'
+                                style={{
+                                    width: '100%', padding: '14px 16px', border: '1px solid #cbd5e1',
+                                    borderRadius: 10, background: keyPressed ? '#fde68a' : '#f8fafc',
+                                    textAlign: 'center', fontSize: 15, cursor: 'pointer',
+                                    userSelect: 'none', touchAction: 'none',
+                                    transition: 'background 60ms linear',
+                                }}
+                            >
+                                Tap here, press <kbd style={kbdStyle}>space</kbd> key, or hit{' '}
+                                <Mic size={16} style={{ display: 'inline-block', verticalAlign: 'middle', marginTop: '-0.2em' }} />
+                                {' '}to speak morse code
+                            </button>
+
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 10, flexWrap: 'wrap' }}>
+                                {!listening
+                                    ? <button className='button' onClick={start}
+                                        title='Start microphone' aria-label='Start microphone' style={iconBtnStyle}>
+                                        <Mic size={22} />
+                                    </button>
+                                    : <button className='button' onClick={stop}
+                                        title='Stop microphone' aria-label='Stop microphone' style={iconBtnStyle}>
+                                        <Square size={22} fill='currentColor' />
+                                    </button>
+                                }
+                                <button className='button' onClick={deleteTypeCharacter}
+                                    title='Delete last character' aria-label='Delete last character' style={iconBtnStyle}>
+                                    <Delete size={22} />
+                                </button>
+                                {listening && renderMicBar(practiceThresholdTrackRef, practiceVolumeBarRef)}
+                                <button className='button' onClick={nextTypePrompt} title='Skip to next'>Skip</button>
+                                <div style={{ marginLeft: 'auto', fontSize: 13, color: '#555' }}>
+                                    Score: <b>{typeScore.correct}</b> / {typeScore.total}
+                                    {typeScore.total > 0 && ` (${Math.round(typeScore.correct / typeScore.total * 100)}%)`}
+                                    <button onClick={() => { resetTypePractice(); }} style={{
+                                        marginLeft: 8, fontSize: 12, color: '#2563eb',
+                                        background: 'none', border: 'none', cursor: 'pointer', padding: 0,
+                                    }}>reset</button>
+                                </div>
+                            </div>
+                            {typePosition >= typePrompt.length && (
+                                <div style={{ fontSize: 14, color: '#166534', marginTop: 8 }}>
+                                    Done! Loading next...
+                                </div>
+                            )}
+                        </div>
+                    )
                 )}
             </div>
         </div>
