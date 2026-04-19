@@ -101,6 +101,13 @@ export default function MorsePage() {
     const playCtxRef = useRef<AudioContext | null>(null);
     const playStopRef = useRef<(() => void) | null>(null);
 
+    // Listening drill
+    const [drillLetter, setDrillLetter] = useState<string | null>(null);
+    const [drillGuess, setDrillGuess] = useState<string>('');
+    const [drillResult, setDrillResult] = useState<'correct' | 'wrong' | null>(null);
+    const [drillScore, setDrillScore] = useState<{ correct: number; total: number }>({ correct: 0, total: 0 });
+    const drillInputRef = useRef<HTMLInputElement | null>(null);
+
     // Refs for realtime use — state setters are too slow / cause stale closures
     const audioCtxRef = useRef<AudioContext | null>(null);
     const analyserRef = useRef<AnalyserNode | null>(null);
@@ -517,6 +524,47 @@ export default function MorsePage() {
         };
     }
 
+    function nextDrillLetter() {
+        const pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        let next = pool[Math.floor(Math.random() * pool.length)];
+        if (next === drillLetter && pool.length > 1) {
+            next = pool[(pool.indexOf(next) + 1) % pool.length];
+        }
+        setDrillLetter(next);
+        setDrillGuess('');
+        setDrillResult(null);
+        playLetterStandalone(next);
+        window.setTimeout(() => drillInputRef.current?.focus(), 50);
+    }
+
+    function submitDrillGuess() {
+        if (!drillLetter || !drillGuess) return;
+        const g = drillGuess.trim().toUpperCase();
+        if (!g) return;
+        const isCorrect = g === drillLetter;
+        setDrillResult(isCorrect ? 'correct' : 'wrong');
+        setDrillScore(s => ({
+            correct: s.correct + (isCorrect ? 1 : 0),
+            total: s.total + 1,
+        }));
+        if (isCorrect) {
+            window.setTimeout(() => { nextDrillLetter(); }, 600);
+        }
+    }
+
+    function resetDrill() {
+        setDrillLetter(null);
+        setDrillGuess('');
+        setDrillResult(null);
+        setDrillScore({ correct: 0, total: 0 });
+    }
+
+    function showDrillAnswer() {
+        if (!drillLetter || drillResult) return;
+        setDrillResult('wrong');
+        setDrillScore(s => ({ correct: s.correct, total: s.total + 1 }));
+    }
+
     function playLetterStandalone(letter: string) {
         const code = TO_MORSE[letter.toUpperCase()];
         if (!code) return;
@@ -814,29 +862,91 @@ export default function MorsePage() {
                         })}
                     </div>
                 )}
+
+                <div style={{
+                    marginTop: 12, paddingTop: 12, borderTop: '1px solid #e5e7eb',
+                    display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))',
+                    gap: 6, fontFamily: 'ui-monospace, monospace', fontSize: 14,
+                }}>
+                    {LETTERS.map(([l, c]) => {
+                        const highlighted = !!currentLetter && c.startsWith(currentLetter) && currentLetter.length > 0;
+                        return <button key={l} onClick={() => playLetterStandalone(l)}
+                            title={`Play ${l} (${c})`} aria-label={`Play ${l}`}
+                            style={{
+                                padding: '6px 10px', border: '1px solid #e5e7eb', borderRadius: 6,
+                                display: 'flex', justifyContent: 'space-between', gap: 8,
+                                background: highlighted ? '#fef3c7' : 'white',
+                                cursor: 'pointer', font: 'inherit', textAlign: 'left',
+                            }}>
+                            <span style={{ fontWeight: 700 }}>{l}</span>
+                            <span style={{ color: '#444' }}>{c}</span>
+                        </button>;
+                    })}
+                </div>
             </div>
         </div>
 
         <div style={{ maxWidth: 720, margin: '28px auto 0' }}>
-            <h3 style={{ marginBottom: 8 }}>Reference</h3>
+            <h3 style={{ marginBottom: 8 }}>Listening Drill</h3>
             <div style={{
-                display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))',
-                gap: 6, fontFamily: 'ui-monospace, monospace', fontSize: 14,
+                padding: 12,
+                border: '1px dashed #cbd5e1', borderRadius: 10, background: '#f8fafc',
             }}>
-                {LETTERS.map(([l, c]) => {
-                    const highlighted = !!currentLetter && c.startsWith(currentLetter) && currentLetter.length > 0;
-                    return <button key={l} onClick={() => playLetterStandalone(l)}
-                        title={`Play ${l} (${c})`} aria-label={`Play ${l}`}
-                        style={{
-                            padding: '6px 10px', border: '1px solid #e5e7eb', borderRadius: 6,
-                            display: 'flex', justifyContent: 'space-between', gap: 8,
-                            background: highlighted ? '#fef3c7' : 'white',
-                            cursor: 'pointer', font: 'inherit', textAlign: 'left',
-                        }}>
-                        <span style={{ fontWeight: 700 }}>{l}</span>
-                        <span style={{ color: '#444' }}>{c}</span>
-                    </button>;
-                })}
+                {!drillLetter ? (
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap' }}>
+                        <span style={{ fontSize: 13, color: '#555' }}>
+                            Listen to a random letter and type what you hear.
+                        </span>
+                        <button className='button' onClick={nextDrillLetter}>Start drill</button>
+                    </div>
+                ) : (
+                    <div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+                            <button className='button' onClick={() => playLetterStandalone(drillLetter!)}
+                                title='Replay letter' aria-label='Replay letter' style={iconBtnStyle}>
+                                <Volume2 size={22} />
+                            </button>
+                            <input
+                                ref={drillInputRef}
+                                type='text'
+                                value={drillGuess}
+                                maxLength={1}
+                                onChange={e => { setDrillGuess(e.target.value); setDrillResult(null); }}
+                                onKeyDown={e => { if (e.key === 'Enter') submitDrillGuess(); }}
+                                placeholder='?'
+                                autoFocus
+                                style={{
+                                    width: 70, padding: '8px 12px', border: '1px solid #cbd5e1',
+                                    borderRadius: 6, fontFamily: 'ui-monospace, monospace',
+                                    fontSize: 22, textAlign: 'center', textTransform: 'uppercase',
+                                    background: drillResult === 'wrong' ? '#fee2e2' : drillResult === 'correct' ? '#dcfce7' : 'white',
+                                }}
+                            />
+                            <button className='button' onClick={submitDrillGuess} disabled={!drillGuess}>Check</button>
+                            <button className='button' onClick={showDrillAnswer} disabled={!!drillResult} title='Reveal the letter'>Show answer</button>
+                            <button className='button' onClick={nextDrillLetter} title='Skip to next letter'>Skip</button>
+                            <div style={{ marginLeft: 'auto', fontSize: 13, color: '#555' }}>
+                                Score: <b>{drillScore.correct}</b> / {drillScore.total}
+                                {drillScore.total > 0 && ` (${Math.round(drillScore.correct / drillScore.total * 100)}%)`}
+                                <button onClick={resetDrill} style={{
+                                    marginLeft: 8, fontSize: 12, color: '#2563eb',
+                                    background: 'none', border: 'none', cursor: 'pointer', padding: 0,
+                                }}>reset</button>
+                            </div>
+                        </div>
+                        {drillResult && (
+                            <div style={{
+                                marginTop: 8, fontSize: 14,
+                                color: drillResult === 'correct' ? '#166534' : '#b91c1c',
+                            }}>
+                                {drillResult === 'correct'
+                                    ? `Correct! It was ${drillLetter} (${TO_MORSE[drillLetter!]})`
+                                    : <>That was <b>{drillLetter}</b> ({TO_MORSE[drillLetter!]}). Try again or <button onClick={nextDrillLetter} style={{ color: '#2563eb', background: 'none', border: 'none', cursor: 'pointer', padding: 0, textDecoration: 'underline' }}>next letter</button>.</>
+                                }
+                            </div>
+                        )}
+                    </div>
+                )}
             </div>
         </div>
 
