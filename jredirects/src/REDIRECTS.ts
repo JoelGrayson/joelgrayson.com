@@ -29,7 +29,7 @@ export const temporary: redirects={ //302
     '/nyc-budget': ['/new-york-city-budget', '/nycbudget', '/newyorkcitybudget'],
     '/memes': '/meme',
     '/morse': ['/morse-code', '/morsecode'],
-    '/simplehealth': ['/simple-health', '/simple_health', '/SimpleHealth'],
+    '/simplehealth': ['/simple-health', '/simple_health'],
     '/maths': '/math',
     '/art': ['/projects/art', '/arts', '/artwork'],
     '/sites': '/websites',
