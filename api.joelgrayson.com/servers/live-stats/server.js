@@ -28,25 +28,22 @@ async function getHCAndFocusInstalls() {
 
 
 // Helpers
+const USER_COUNT_SELECTORS=['div.F9iKBc', 'span[title$="users"]'];
+
 function createGetChromeExtensionStats(url) {
     return new Promise(async resolve=>{
         console.log('Getting chrome extension stats v1.1');
-        
+
         let browser;
         try {
             console.log('Creating browser');
             browser=await puppeteer.launch({
-                // pipe: true
-                // // headless: 'new',
-                args: [
-                    '--no-sandbox', //disable security feature of sandboxing chrome's processes. Gives more privileges to the program execution runtime.
-                    // '--disable-setuid-sandbox'
-                ],
-                timeout: 50_000  //default: 30000
+                args: ['--no-sandbox'],
+                timeout: 50_000
             });
         } catch (err) {
-            console.log('There was a problem while creating the browser', err);
-            console.error(err);
+            console.warn('Could not create browser:', err?.message || err);
+            return resolve({ status: 'error', step: 'browser.launch', message: err?.message || String(err) });
         }
 
         let page;
@@ -54,41 +51,65 @@ function createGetChromeExtensionStats(url) {
             console.log('Creating the new page');
             page=await browser.newPage();
         } catch (err) {
-            console.log('There was a problem while creating the page');
-            console.error(err);
+            console.warn('Could not create page:', err?.message || err);
+            await safeClose(browser);
+            return resolve({ status: 'error', step: 'browser.newPage', message: err?.message || String(err) });
         }
 
         try {
             console.log('Going to url', url);
-            await page.goto(url, { waitUntil: 'domcontentloaded' });
-        } catch (e) {
-            console.error('Error in page.goto', e);
+            await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30_000 });
+        } catch (err) {
+            console.warn('page.goto failed:', err?.message || err);
+            await safeClose(page);
+            await safeClose(browser);
+            return resolve({ status: 'error', step: 'page.goto', message: err?.message || String(err) });
         }
-        // await page.waitForSelector('div.F9iKBc');
-    
+
+        let matchedSelector;
+        for (const sel of USER_COUNT_SELECTORS) {
+            try {
+                await page.waitForSelector(sel, { timeout: 15_000 });
+                matchedSelector=sel;
+                break;
+            } catch {
+                // try next selector
+            }
+        }
+        if (!matchedSelector) {
+            console.warn('User count selector not found on', url);
+            await safeClose(page);
+            await safeClose(browser);
+            return resolve({ status: 'error', step: 'waitForSelector', message: 'User count element not found. Chrome Web Store DOM may have changed.' });
+        }
+
         let users;
         try {
-            console.log('Evaluating page')
-            users=await page.evaluate(()=>{
-                console.log('Page evaluated');
-                const usersEl=document.querySelector('div.F9iKBc');
-                const usersText=usersEl.innerText;
-                return parseInt(usersText.match(/([\d,]+) users/)?.[1]?.split(',')?.join('') || '-1');
-
-                // // Old Chrome Web Store GUI
-                // const usersEl=document.querySelector('span[title$="users"]');
-                // const usersText=usersEl.innerText;
-                // return parseInt(usersText.match(/(\d+) users/)?.[1] || '-1');
-            });
-        } catch (e) {
-            console.error('Error in page.evaluate', e);
+            console.log('Evaluating page with selector', matchedSelector);
+            users=await page.evaluate((selector)=>{
+                const usersEl=document.querySelector(selector);
+                if (!usersEl) return null;
+                const usersText=usersEl.innerText || '';
+                const match=usersText.match(/([\d,]+)\s*users/);
+                if (!match) return null;
+                const n=parseInt(match[1].split(',').join(''), 10);
+                return Number.isFinite(n) ? n : null;
+            }, matchedSelector);
+        } catch (err) {
+            console.warn('page.evaluate failed:', err?.message || err);
         }
-        await page.close();
-        await browser.close();
-        if (users)
+
+        await safeClose(page);
+        await safeClose(browser);
+
+        if (typeof users==='number' && users>=0)
             resolve(users);
         else
-            resolve({ status: 'error', message: 'No users found, likely because page.evaluate failed.' });
+            resolve({ status: 'error', step: 'parse', message: 'User count parsed as null or invalid.' });
     });
+}
+
+async function safeClose(handle) {
+    try { await handle?.close?.(); } catch {}
 }
 
