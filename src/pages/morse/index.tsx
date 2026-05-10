@@ -252,6 +252,10 @@ export default function MorsePage() {
     const [flashing, setFlashing] = useState<boolean>(false);
     const [flashOn, setFlashOn] = useState<boolean>(false);
     const flashTimersRef = useRef<number[]>([]);
+    // Tracks the last modality the user used to replay a Recognize prompt;
+    // the next prompt auto-plays the same way.
+    type ReplayMode = 'audio' | 'flash';
+    const [lastReplayMode, setLastReplayMode] = useState<ReplayMode>('audio');
 
     // Practice (Recognize / Type)
     type DrillMode = 'char' | 'word' | 'sentence';
@@ -704,6 +708,7 @@ export default function MorsePage() {
 
     function playMorse(text: string) {
         stopPlay();
+        stopFlashPlay();
         const unit = unitMsRef.current / 1000; // seconds
         const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
         playCtxRef.current = ctx;
@@ -802,7 +807,8 @@ export default function MorsePage() {
         setDrillLetter(next);
         setDrillGuess('');
         setDrillResult(null);
-        playMorseStandalone(next);
+        if (lastReplayMode === 'flash') playMorseFlash(next);
+        else playMorse(next);
         window.setTimeout(() => drillInputRef.current?.focus(), 50);
     }
 
@@ -954,6 +960,7 @@ export default function MorsePage() {
     }
 
     function playMorseFlash(text: string) {
+        stopPlay();
         stopFlashPlay();
         const unit = unitMsRef.current; // ms
         let t = 50; // initial delay
@@ -1474,11 +1481,19 @@ export default function MorsePage() {
                     ) : (
                         <div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-                                <button className='button' onClick={() => playMorseStandalone(drillLetter!)}
-                                    title='Replay' aria-label='Replay' style={iconBtnStyle}>
-                                    <Volume2 size={22} />
-                                </button>
-                                <button className='button' onClick={() => playMorseFlash(drillLetter!)}
+                                {!playing
+                                    ? <button className='button'
+                                        onClick={() => { setLastReplayMode('audio'); playMorse(drillLetter!); }}
+                                        title='Replay' aria-label='Replay' style={iconBtnStyle}>
+                                        <Volume2 size={22} />
+                                    </button>
+                                    : <button className='button' onClick={stopPlay}
+                                        title='Stop playback' aria-label='Stop playback' style={iconBtnStyle}>
+                                        <Square size={22} fill='currentColor' />
+                                    </button>
+                                }
+                                <button className='button'
+                                    onClick={() => { setLastReplayMode('flash'); playMorseFlash(drillLetter!); }}
                                     title='Flash on screen' aria-label='Flash on screen' style={iconBtnStyle}>
                                     <Flashlight size={22} />
                                 </button>
