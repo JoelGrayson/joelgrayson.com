@@ -947,15 +947,17 @@ export default function MorsePage() {
                 correct: s.correct + (isCorrect ? 1 : 0),
                 total: s.total + 1,
             }));
-            // If we completed the prompt AND every letter was correct, auto-advance after a brief pause.
-            // If any letter was wrong, stay on the prompt so the user can see their mistake.
+            // Auto-advance once the prompt is fully attempted; pause longer on mistakes
+            // so the user can see what they got wrong. If Restart is pressed in the meantime
+            // (clearing the last result), skip the auto-advance.
             if (nextPos >= upper.length) {
                 const allCorrect = newResults.every((r, i) => /\s/.test(upper[i]) || r?.status === 'correct');
-                if (allCorrect) {
-                    window.setTimeout(() => {
-                        if (typePromptRef.current === prompt) nextTypePrompt();
-                    }, 1200);
-                }
+                window.setTimeout(() => {
+                    if (
+                        typePromptRef.current === prompt &&
+                        typeResultsRef.current[upper.length - 1] != null
+                    ) nextTypePrompt();
+                }, allCorrect ? 1200 : 2500);
             }
         };
         return () => { letterFinalizeCallbackRef.current = null; };
