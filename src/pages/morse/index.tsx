@@ -244,6 +244,7 @@ export default function MorsePage() {
     // Playback
     const [sampleText, setSampleText] = useState<string>('hello');
     const [playing, setPlaying] = useState<boolean>(false);
+    const [recognizePlaying, setRecognizePlaying] = useState<boolean>(false);
     const [playingIndex, setPlayingIndex] = useState<number | null>(null);
     const playCtxRef = useRef<AudioContext | null>(null);
     const playStopRef = useRef<(() => void) | null>(null);
@@ -703,10 +704,11 @@ export default function MorsePage() {
         playCtxRef.current?.close().catch(() => {});
         playCtxRef.current = null;
         setPlaying(false);
+        setRecognizePlaying(false);
         setPlayingIndex(null);
     }
 
-    function playMorse(text: string) {
+    function playMorse(text: string, target: 'play' | 'recognize' = 'play') {
         stopPlay();
         stopFlashPlay();
         const unit = unitMsRef.current / 1000; // seconds
@@ -736,8 +738,14 @@ export default function MorsePage() {
 
         const timerIds: number[] = [];
         const scheduleHighlight = (audioTime: number, idx: number | null) => {
+            if (target !== 'play') return;
             const delayMs = Math.max(0, (audioTime - ctx.currentTime) * 1000);
             timerIds.push(window.setTimeout(() => setPlayingIndex(idx), delayMs));
+        };
+
+        const setStarted = (b: boolean) => {
+            if (target === 'play') setPlaying(b);
+            else setRecognizePlaying(b);
         };
 
         const upper = text.toUpperCase();
@@ -762,15 +770,15 @@ export default function MorsePage() {
 
         const endAt = t + 0.1;
         osc.stop(endAt);
-        setPlaying(true);
-        setPlayingIndex(null);
+        setStarted(true);
+        if (target === 'play') setPlayingIndex(null);
         const durationMs = Math.max(0, (endAt - ctx.currentTime) * 1000);
         const endTimer = window.setTimeout(() => {
             if (playCtxRef.current === ctx) {
                 ctx.close().catch(() => {});
                 playCtxRef.current = null;
-                setPlaying(false);
-                setPlayingIndex(null);
+                setStarted(false);
+                if (target === 'play') setPlayingIndex(null);
                 playStopRef.current = null;
             }
         }, durationMs);
@@ -778,7 +786,8 @@ export default function MorsePage() {
         playStopRef.current = () => {
             timerIds.forEach(id => window.clearTimeout(id));
             try { osc.stop(); } catch {}
-            setPlayingIndex(null);
+            setStarted(false);
+            if (target === 'play') setPlayingIndex(null);
         };
     }
 
@@ -808,7 +817,7 @@ export default function MorsePage() {
         setDrillGuess('');
         setDrillResult(null);
         if (lastReplayMode === 'flash') playMorseFlash(next);
-        else playMorse(next);
+        else playMorse(next, 'recognize');
         window.setTimeout(() => drillInputRef.current?.focus(), 50);
     }
 
@@ -1481,9 +1490,9 @@ export default function MorsePage() {
                     ) : (
                         <div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-                                {!playing
+                                {!recognizePlaying
                                     ? <button className='button'
-                                        onClick={() => { setLastReplayMode('audio'); playMorse(drillLetter!); }}
+                                        onClick={() => { setLastReplayMode('audio'); playMorse(drillLetter!, 'recognize'); }}
                                         title='Replay' aria-label='Replay' style={iconBtnStyle}>
                                         <Volume2 size={22} />
                                     </button>
