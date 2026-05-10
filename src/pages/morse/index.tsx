@@ -1226,23 +1226,24 @@ export default function MorsePage() {
                 .morse-reference-grid { grid-template-columns: repeat(3, 1fr) !important; }
             }
             @media (prefers-color-scheme: dark) {
+                /* All text on /morse goes pure white in dark mode. */
+                #pageNamespace, #pageNamespace * { color: white !important; }
                 /* Card backgrounds (decoded text + Play / Practice section cards) */
-                .morse-card { background: #0f172a !important; border-color: #334155 !important; color: #e2e8f0; }
-                .morse-section-card { background: #1e293b !important; border-color: #475569 !important; color: #cbd5e1; }
+                .morse-card { background: #0f172a !important; border-color: #334155 !important; }
+                .morse-section-card { background: #1e293b !important; border-color: #475569 !important; }
                 /* Tap rectangles (top + practice) */
-                .morse-tap-rect { background: #1e293b !important; border-color: #475569 !important; color: #cbd5e1 !important; }
+                .morse-tap-rect { background: #1e293b !important; border-color: #475569 !important; }
                 /* Reference grid cells (A-Z buttons) */
-                .morse-ref-cell { background: #0f172a !important; border-color: #334155 !important; color: #e2e8f0 !important; }
-                .morse-ref-cell span:last-child { color: #94a3b8 !important; }
+                .morse-ref-cell { background: #0f172a !important; border-color: #334155 !important; }
                 /* Text inputs */
-                .morse-text-input { background: #0f172a !important; border-color: #334155 !important; color: #e2e8f0 !important; }
-                .morse-text-input::placeholder { color: #64748b !important; }
+                .morse-text-input { background: #0f172a !important; border-color: #334155 !important; }
+                .morse-text-input::placeholder { color: #94a3b8 !important; }
                 /* Segmented control */
                 .morse-segmented { background: #0f172a !important; border-color: #475569 !important; }
-                .morse-segmented-btn { background: #0f172a !important; color: #cbd5e1 !important; border-right-color: #475569 !important; }
-                .morse-segmented-btn-active { background: #2563eb !important; color: white !important; }
+                .morse-segmented-btn { background: #0f172a !important; border-right-color: #475569 !important; }
+                .morse-segmented-btn-active { background: #2563eb !important; }
                 /* Inline kbd "space" pill (only inside the tap rectangle) */
-                .morse-tap-rect kbd { background: #0f172a !important; border-color: #475569 !important; color: #cbd5e1 !important; }
+                .morse-tap-rect kbd { background: #0f172a !important; border-color: #475569 !important; }
             }
         ` }} />
         <h1 className='morse-h1 mt-8 mb-2 text-center flex items-center justify-center gap-5'>
