@@ -1225,6 +1225,25 @@ export default function MorsePage() {
                 .morse-score-meta { margin-left: 0 !important; width: 100%; }
                 .morse-reference-grid { grid-template-columns: repeat(3, 1fr) !important; }
             }
+            @media (prefers-color-scheme: dark) {
+                /* Card backgrounds (decoded text + Play / Practice section cards) */
+                .morse-card { background: #0f172a !important; border-color: #334155 !important; color: #e2e8f0; }
+                .morse-section-card { background: #1e293b !important; border-color: #475569 !important; color: #cbd5e1; }
+                /* Tap rectangles (top + practice) */
+                .morse-tap-rect { background: #1e293b !important; border-color: #475569 !important; color: #cbd5e1 !important; }
+                /* Reference grid cells (A-Z buttons) */
+                .morse-ref-cell { background: #0f172a !important; border-color: #334155 !important; color: #e2e8f0 !important; }
+                .morse-ref-cell span:last-child { color: #94a3b8 !important; }
+                /* Text inputs */
+                .morse-text-input { background: #0f172a !important; border-color: #334155 !important; color: #e2e8f0 !important; }
+                .morse-text-input::placeholder { color: #64748b !important; }
+                /* Segmented control */
+                .morse-segmented { background: #0f172a !important; border-color: #475569 !important; }
+                .morse-segmented-btn { background: #0f172a !important; color: #cbd5e1 !important; border-right-color: #475569 !important; }
+                .morse-segmented-btn-active { background: #2563eb !important; color: white !important; }
+                /* Inline kbd "space" pill (only inside the tap rectangle) */
+                .morse-tap-rect kbd { background: #0f172a !important; border-color: #475569 !important; color: #cbd5e1 !important; }
+            }
         ` }} />
         <h1 className='morse-h1 mt-8 mb-2 text-center flex items-center justify-center gap-5'>
             <span className='morse-portrait inline-block relative bottom-1' style={{ width: 60, height: 60, position: 'relative', overflow: 'hidden', borderRadius: 4 }}>
@@ -1274,6 +1293,7 @@ export default function MorsePage() {
                         const v = parseInt(e.target.value);
                         if (!isNaN(v) && v > 0) setUnitMs(v);
                     }}
+                    className='morse-text-input'
                     style={{
                         width: 60, padding: '2px 6px', fontSize: 12,
                         border: '1px solid #cbd5e1', borderRadius: 4,
@@ -1334,7 +1354,7 @@ export default function MorsePage() {
             {listening && renderMicBar(thresholdTrackRef, volumeBarRef)}
         </div>
 
-        <div style={{
+        <div className='morse-card' style={{
             maxWidth: 720, margin: '20px auto 0', padding: 16,
             border: '1px solid #ddd', borderRadius: 10, minHeight: 120,
         }}>
@@ -1361,7 +1381,7 @@ export default function MorsePage() {
 
         <div style={{ maxWidth: 720, margin: '28px auto 0' }}>
             <h3 style={{ marginBottom: 8 }}>Play</h3>
-            <div style={{
+            <div className='morse-section-card' style={{
                 padding: 12,
                 border: '1px dashed #cbd5e1', borderRadius: 10, background: '#f8fafc',
             }}>
@@ -1371,6 +1391,7 @@ export default function MorsePage() {
                         value={sampleText}
                         onChange={e => setSampleText(e.target.value)}
                         placeholder='hello'
+                        className='morse-text-input'
                         style={{
                             flex: '1 1 180px', padding: '6px 10px', border: '1px solid #cbd5e1',
                             borderRadius: 6, fontFamily: 'ui-monospace, monospace',
@@ -1426,6 +1447,7 @@ export default function MorsePage() {
                     {LETTERS.map(([l, c]) => (
                         <button key={l} onClick={() => playMorseStandalone(l)}
                             title={`Play ${l} (${c})`} aria-label={`Play ${l}`}
+                            className='morse-ref-cell'
                             style={{
                                 padding: '6px 10px', border: '1px solid #e5e7eb', borderRadius: 6,
                                 display: 'flex', justifyContent: 'space-between', gap: 8,
@@ -1442,7 +1464,7 @@ export default function MorsePage() {
 
         <div style={{ maxWidth: 720, margin: '28px auto 0' }}>
             <h3 style={{ marginBottom: 8 }}>Practice</h3>
-            <div style={{
+            <div className='morse-section-card' style={{
                 padding: 12,
                 border: '1px dashed #cbd5e1', borderRadius: 10, background: '#f8fafc',
             }}>
@@ -1517,6 +1539,7 @@ export default function MorsePage() {
                                     onKeyDown={e => { if (e.key === 'Enter') submitDrillGuess(); }}
                                     placeholder={drillMode === 'char' ? '?' : drillMode === 'word' ? 'your guess' : 'your sentence'}
                                     autoFocus
+                                    className='morse-text-input'
                                     style={{
                                         flex: drillMode === 'char' ? undefined : '1 1 200px',
                                         width: drillMode === 'char' ? 70 : undefined,
@@ -1714,7 +1737,7 @@ function Segmented<T extends string>({ value, onChange, options, size = 'md' }: 
 }) {
     const padding = size === 'sm' ? '4px 12px' : '7px 16px';
     const fontSize = size === 'sm' ? 13 : 14;
-    return <div style={{
+    return <div className='morse-segmented' style={{
         display: 'inline-flex',
         border: '1px solid #cbd5e1',
         borderRadius: 8,
@@ -1725,6 +1748,7 @@ function Segmented<T extends string>({ value, onChange, options, size = 'md' }: 
             const active = value === opt.value;
             return <button key={opt.value}
                 onClick={() => onChange(opt.value)}
+                className={active ? 'morse-segmented-btn morse-segmented-btn-active' : 'morse-segmented-btn'}
                 style={{
                     padding, fontSize,
                     background: active ? '#2563eb' : 'white',
