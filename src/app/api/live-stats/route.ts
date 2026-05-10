@@ -40,7 +40,10 @@ export async function getLiveStats() {
         getLastWeeksStats(),
         getStatsFromPrisma(),
 
-        getEditTimeSales(),
+        getEditTimeSales().catch(err => {
+            console.error('getEditTimeSales failed:', err);
+            return { editTimeDownloads: undefined };
+        }),
 
 
         // Additional Not Displayed

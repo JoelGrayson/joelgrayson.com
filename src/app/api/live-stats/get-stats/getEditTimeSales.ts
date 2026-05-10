@@ -16,6 +16,14 @@ async function fetchSalesReport(token: string, frequency: 'YEARLY' | 'MONTHLY' |
         }
     });
 
+    // Apple returns an uncompressed JSON error body for failures (e.g. 404 when a
+    // report doesn't exist yet for the requested date). Bail out before gunzip so
+    // we don't get Z_DATA_ERROR.
+    if (!response.ok) {
+        console.warn(`App Store Connect sales report failed for ${frequency} ${reportDate}: ${response.status}`);
+        return [];
+    }
+
     // Sales Reports API returns gzip-compressed TSV data
     const compressedData = await response.arrayBuffer();
     const decompressed = gunzipSync(Buffer.from(compressedData));
