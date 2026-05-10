@@ -62,7 +62,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ['/contact', .7],
         // No ['/dashboard', .7],
         ['/machines', .7],
-        ['/morse', .7],
+        // /morse moved to https://morsebench.com (handled by REDIRECTS.ts)
         // No ['/plan', .7],
         ['/resume', .7],
         ['/@jcomponents', .6],

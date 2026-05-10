@@ -151,7 +151,7 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
                 <span className='text-[0.8rem]'>Connecting Street Vendors to the Grid</span>
             </Tile>
 
-            <Tile href='/morse'>
+            <Tile href='https://morsebench.com'>
                 <span className='morse-tile-portrait' style={{ position: 'relative', width: 50, height: 50, display: 'inline-block', overflow: 'hidden', borderRadius: 4 }}>
                     <Image alt='Morse portrait' width={50} height={50} src='/image/morse/face.png'
                         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />

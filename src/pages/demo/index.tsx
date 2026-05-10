@@ -23,7 +23,7 @@ export default function Demo() {
                 <h3>Morse Code</h3>
                 <p>Interactive Morse code trainer — key Morse with your keyboard, tap, or microphone, and hear/see it decoded in real time. Also includes encoding and practice drills.</p>
                 <div className='flex justify-end absolute bottom-0 right-0'>
-                    <Link href='/morse' className='flex justify-center items-center gap-2 button !px-1.5 !py-1'>
+                    <Link href='https://morsebench.com' target='_blank' className='flex justify-center items-center gap-2 button !px-1.5 !py-1'>
                         Try it
                     </Link>
                 </div>

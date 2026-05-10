@@ -4,12 +4,14 @@ import Link from 'next/link';
 
 const LAST_UPDATED = 'April 26, 2026';
 
+const SCREENSHOTS = [1, 2, 3, 4, 5, 6, 7, 8, 9] as const;
+
 export default function SimpleHealth() {
     return <Page bottomPadding seo={{
         title: 'SimpleHealth — Privacy Policy & Terms',
         description: 'Privacy policy and terms of service for the SimpleHealth iOS app.'
     }}>
-        <h1 className='mt-8 mb-2 text-center flex items-center justify-center gap-5'>
+        <h1 className='mt-8 mb-2 text-center flex items-center justify-center gap-5 flex-wrap'>
             <Image alt='SimpleHealth logo' src='/image/simple-health/logo.png' width={60} height={60} />
             SimpleHealth
             <a href='https://apps.apple.com/app/id6761314044' target='_blank' rel='noopener noreferrer'
@@ -19,9 +21,22 @@ export default function SimpleHealth() {
                     alt='Download on the App Store' width={114} height={38} />
             </a>
         </h1>
-        <p className='text-center'>SimpleHealth is an iOS app that shows your steps, sleep, and gym visits at a glance. This page contains the privacy policy and terms of service for the app.</p>
+        <p className='text-center max-w-2xl mx-auto'>SimpleHealth is an iOS app that shows your steps, sleep, and gym visits at a glance.</p>
 
-        <p className='text-center'><em>Last updated: {LAST_UPDATED}</em></p>
+        <div className='mt-8 mb-10 flex gap-4 overflow-x-auto pb-4 px-2 snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:snap-none lg:grid-cols-3'>
+            {SCREENSHOTS.map((n) => (
+                <div key={n} className='shrink-0 snap-center md:shrink'>
+                    <Image
+                        src={`/image/simple-health/screenshot-${n}.png`}
+                        alt={`SimpleHealth screenshot ${n}`}
+                        width={1284}
+                        height={2778}
+                        className='rounded-2xl w-[240px] md:w-full h-auto shadow-md'
+                        sizes='(max-width: 768px) 240px, (max-width: 1024px) 33vw, 400px'
+                    />
+                </div>
+            ))}
+        </div>
 
         <hr />
 
@@ -90,6 +105,8 @@ export default function SimpleHealth() {
         <p>
             Questions? <Link href='/contact?referrer=simplehealth'>Get in touch</Link>.
         </p>
+
+        <p className='text-sm'><em>Last updated: {LAST_UPDATED}</em></p>
 
         <hr />
 
@@ -162,6 +179,8 @@ export default function SimpleHealth() {
             principles. Any dispute arising from these terms or your use of the app shall be brought exclusively in the
             state or federal courts located in California.
         </p>
+
+        <p className='text-sm'><em>Last updated: {LAST_UPDATED}</em></p>
 
     </Page>;
 }
