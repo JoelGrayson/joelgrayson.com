@@ -1,5 +1,5 @@
 import Page from '@/components/page/DefaultPage';
-import { Delete, Mic, Square, Trash2, Volume2 } from 'lucide-react';
+import { Delete, Flashlight, Mic, Square, Trash2, Volume2, X } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
@@ -248,6 +248,11 @@ export default function MorsePage() {
     const playCtxRef = useRef<AudioContext | null>(null);
     const playStopRef = useRef<(() => void) | null>(null);
 
+    // Flashlight (visual playback)
+    const [flashing, setFlashing] = useState<boolean>(false);
+    const [flashOn, setFlashOn] = useState<boolean>(false);
+    const flashTimersRef = useRef<number[]>([]);
+
     // Practice (Recognize / Type)
     type DrillMode = 'char' | 'word' | 'sentence';
     type PracticeMode = 'recognize' | 'type';
@@ -475,8 +480,23 @@ export default function MorsePage() {
             audioCtxRef.current?.close();
             playStopRef.current?.();
             playCtxRef.current?.close().catch(() => {});
+            flashTimersRef.current.forEach(id => window.clearTimeout(id));
+            flashTimersRef.current = [];
         };
     }, []);
+
+    // Escape key exits the flashlight overlay early
+    useEffect(() => {
+        if (!flashing) return;
+        function onKey(e: KeyboardEvent) {
+            if (e.code === 'Escape') {
+                e.preventDefault();
+                stopFlashPlay();
+            }
+        }
+        window.addEventListener('keydown', onKey);
+        return () => window.removeEventListener('keydown', onKey);
+    }, [flashing]);
 
     useEffect(() => {
         if (!draggingThreshold) return;
@@ -926,6 +946,49 @@ export default function MorsePage() {
         return () => { letterFinalizeCallbackRef.current = null; };
     }, [practiceMode, typePrompt]);
 
+    function stopFlashPlay() {
+        flashTimersRef.current.forEach(id => window.clearTimeout(id));
+        flashTimersRef.current = [];
+        setFlashOn(false);
+        setFlashing(false);
+    }
+
+    function playMorseFlash(text: string) {
+        stopFlashPlay();
+        const unit = unitMsRef.current; // ms
+        let t = 50; // initial delay
+        const setFlashAt = (delayMs: number, on: boolean) => {
+            flashTimersRef.current.push(window.setTimeout(() => setFlashOn(on), Math.max(0, delayMs)));
+        };
+        const upper = text.toUpperCase();
+        let prevWasLetter = false;
+        for (let i = 0; i < upper.length; i++) {
+            const ch = upper[i];
+            if (/\s/.test(ch)) {
+                if (prevWasLetter) t += 7 * unit;
+                prevWasLetter = false;
+                continue;
+            }
+            const code = TO_MORSE[ch];
+            if (!code) continue;
+            if (prevWasLetter) t += 3 * unit;
+            for (let si = 0; si < code.length; si++) {
+                const sym = code[si];
+                const dur = (sym === '.' ? 1 : 3) * unit;
+                setFlashAt(t, true);
+                setFlashAt(t + dur, false);
+                t += dur;
+                if (si < code.length - 1) t += unit;
+            }
+            prevWasLetter = true;
+        }
+        setFlashing(true);
+        flashTimersRef.current.push(window.setTimeout(() => {
+            setFlashing(false);
+            setFlashOn(false);
+        }, t + 100));
+    }
+
     function playMorseStandalone(text: string) {
         const unit = unitMsRef.current / 1000;
         const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
@@ -1305,6 +1368,10 @@ export default function MorsePage() {
                             <Square size={22} fill='currentColor' />
                         </button>
                     }
+                    <button className='button' onClick={() => playMorseFlash(sampleText || 'hello')}
+                        title='Flash on screen' aria-label='Flash on screen' style={iconBtnStyle}>
+                        <Flashlight size={22} />
+                    </button>
                 </div>
                 {sampleText && (
                     <div style={{
@@ -1410,6 +1477,10 @@ export default function MorsePage() {
                                 <button className='button' onClick={() => playMorseStandalone(drillLetter!)}
                                     title='Replay' aria-label='Replay' style={iconBtnStyle}>
                                     <Volume2 size={22} />
+                                </button>
+                                <button className='button' onClick={() => playMorseFlash(drillLetter!)}
+                                    title='Flash on screen' aria-label='Flash on screen' style={iconBtnStyle}>
+                                    <Flashlight size={22} />
                                 </button>
                                 <input
                                     ref={drillInputRef}
@@ -1567,6 +1638,40 @@ export default function MorsePage() {
                 )}
             </div>
         </div>
+
+        {flashing && (
+            <div
+                onClick={stopFlashPlay}
+                style={{
+                    position: 'fixed', inset: 0,
+                    background: flashOn ? 'white' : 'black',
+                    zIndex: 9999,
+                    cursor: 'pointer',
+                }}
+                role='dialog'
+                aria-label='Flashlight playback — tap or press X to exit'
+            >
+                <button
+                    type='button'
+                    onClick={e => { e.stopPropagation(); stopFlashPlay(); }}
+                    aria-label='Exit flashlight'
+                    title='Exit (Esc)'
+                    style={{
+                        position: 'absolute', top: 16, right: 16,
+                        width: 44, height: 44,
+                        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                        border: '1px solid rgba(127,127,127,0.5)',
+                        borderRadius: 22,
+                        background: 'rgba(127,127,127,0.25)',
+                        color: flashOn ? 'black' : 'white',
+                        cursor: 'pointer',
+                        padding: 0,
+                    }}
+                >
+                    <X size={22} />
+                </button>
+            </div>
+        )}
 
     </Page>;
 }
