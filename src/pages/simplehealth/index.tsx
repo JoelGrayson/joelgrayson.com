@@ -12,6 +12,12 @@ export default function SimpleHealth() {
         <h1 className='mt-8 mb-2 text-center flex items-center justify-center gap-5'>
             <Image alt='SimpleHealth logo' src='/image/simple-health/logo.png' width={60} height={60} />
             SimpleHealth
+            <a href='https://apps.apple.com/app/id6761314044' target='_blank' rel='noopener noreferrer'
+                aria-label='Download SimpleHealth on the App Store'
+                style={{ display: 'inline-block', lineHeight: 0, marginLeft: 4, position: 'relative', bottom: 4 }}>
+                <Image src='/image/software/worderoo/download-on-the-app-store.png'
+                    alt='Download on the App Store' width={114} height={38} />
+            </a>
         </h1>
         <p className='text-center'>SimpleHealth is an iOS app that shows your steps, sleep, and gym visits at a glance. This page contains the privacy policy and terms of service for the app.</p>
 
