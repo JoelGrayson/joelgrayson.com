@@ -229,7 +229,7 @@ function hyphenateName(name: string) {
 
 function Label({children}: {children: any}) {
     return <div className='
-        px-1.5 text-sm py-0.5 rounded-lg border
+        px-1.5 text-sm py-0.5 rounded-lg border whitespace-nowrap
         bg-[#ffd166] border-[#ecb715]
         dark:bg-dark-bg-lighter dark:border-dark-text
     '>{children}</div>;
