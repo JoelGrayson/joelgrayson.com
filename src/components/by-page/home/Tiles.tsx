@@ -99,13 +99,22 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
                 <Image alt='TechMap Logo' width={50} height={50} src='/image/software/techmap/logo.png' />
                 <span className='text-[1rem]'>TechMap</span>
             </Tile>
-            <Tile href='https://apps.apple.com/us/app/readometer-track-your-speed/id6757317732?pt=126612879&ct=web'>
-                <Image alt='Readometer Logo' width={50} height={50} src='/image/software/readometer/logo.png' />
-                <span className='text-[1rem]'>Readometer</span>
+            <Tile href='https://morsebench.com'>
+                <span className='morse-tile-portrait' style={{ position: 'relative', width: 50, height: 50, display: 'inline-block', overflow: 'hidden', borderRadius: 4 }}>
+                    <Image alt='Morse portrait' width={50} height={50} src='/image/morse/face.png'
+                        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
+                    <Image alt='' aria-hidden width={50} height={50} src='/image/morse/glasses.png'
+                        className='morse-tile-glasses'
+                        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', transition: 'transform 180ms ease-out' }} />
+                </span>
+                <span>MorseBench<DotCom /></span>
+                <style dangerouslySetInnerHTML={{ __html: `
+                    a:hover .morse-tile-glasses { transform: translateY(-8%) rotate(6deg); }
+                ` }} />
             </Tile>
-            <Tile href='https://apps.apple.com/us/app/worderoo/id6745312298?pt=126612879&ct=web'>
-                <Image alt='Worderoo Logo' width={50} height={50} src='/image/software/worderoo/logo.png' />
-                <span className='text-[1rem]'>Worderoo</span>
+            <Tile href='https://wasian.io'>
+                <Image alt='Wasian.io Logo' width={50} height={50} src='/image/home/wasian-logo.png' />
+                <span>Wasian<span className='text-sm'>.io</span></span>
             </Tile>
             
             <Tile href='https://joelkit.com'>
@@ -151,23 +160,13 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
                 <span className='text-[0.8rem]'>Connecting Street Vendors to the Grid</span>
             </Tile>
 
-            <Tile href='https://morsebench.com'>
-                <span className='morse-tile-portrait' style={{ position: 'relative', width: 50, height: 50, display: 'inline-block', overflow: 'hidden', borderRadius: 4 }}>
-                    <Image alt='Morse portrait' width={50} height={50} src='/image/morse/face.png'
-                        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
-                    <Image alt='' aria-hidden width={50} height={50} src='/image/morse/glasses.png'
-                        className='morse-tile-glasses'
-                        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', transition: 'transform 180ms ease-out' }} />
-                </span>
-                <span>Morse Code</span>
-                <style dangerouslySetInnerHTML={{ __html: `
-                    a:hover .morse-tile-glasses { transform: translateY(-8%) rotate(6deg); }
-                ` }} />
+            <Tile href='https://apps.apple.com/us/app/readometer-track-your-speed/id6757317732?pt=126612879&ct=web'>
+                <Image alt='Readometer Logo' width={50} height={50} src='/image/software/readometer/logo.png' />
+                <span className='text-[1rem]'>Readometer</span>
             </Tile>
-
-            <Tile href='https://wasian.io'>
-                <Image alt='Wasian.io Logo' width={50} height={50} src='/image/home/wasian-logo.png' />
-                <span>Wasian<span className='text-sm'>.io</span></span>
+            <Tile href='https://apps.apple.com/us/app/worderoo/id6745312298?pt=126612879&ct=web'>
+                <Image alt='Worderoo Logo' width={50} height={50} src='/image/software/worderoo/logo.png' />
+                <span className='text-[1rem]'>Worderoo</span>
             </Tile>
 
             
