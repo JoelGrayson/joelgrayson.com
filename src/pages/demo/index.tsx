@@ -17,23 +17,6 @@ export default function Demo() {
 
         <div className='d:grid d:grid-cols-[2fr_3fr] gap-3 relative'>
             <div className='pt-4'>
-                <Yt width='100%'>D4iZ2kXLfdc</Yt>
-            </div>
-            <div>
-                <h3>Morse Code</h3>
-                <p>Interactive Morse code trainer — key Morse with your keyboard, tap, or microphone, and hear/see it decoded in real time. Also includes encoding and practice drills.</p>
-                <div className='flex justify-end absolute bottom-0 right-0'>
-                    <Link href='https://morsebench.com' target='_blank' className='flex justify-center items-center gap-2 button !px-1.5 !py-1'>
-                        Try it
-                    </Link>
-                </div>
-            </div>
-        </div>
-
-        <hr />
-
-        <div className='d:grid d:grid-cols-[2fr_3fr] gap-3 relative'>
-            <div className='pt-4'>
                 <Yt width='100%'>bHHk2FL5Ujs</Yt>
             </div>
             <div>
@@ -176,6 +159,26 @@ export default function Demo() {
                         View code
                     </Link>
                 </div> */}
+            </div>
+        </div>
+
+        <hr />
+
+        <div className='d:grid d:grid-cols-[2fr_3fr] gap-3 relative'>
+            <div className='pt-4'>
+                <Yt width='100%'>D4iZ2kXLfdc</Yt>
+            </div>
+            <div>
+                <h3>MorseBench</h3>
+                <p>Interactive Morse code trainer—key Morse with your keyboard, tap, or microphone, and hear/see it decoded in real time. Also includes encoding and practice drills.</p>
+                <div className='flex justify-end items-center gap-2 absolute top-3 right-0'>
+                    <Link href='https://morsebench.com' target='_blank' className='flex justify-center items-center gap-2 button !px-1.5 !py-1'>
+                        Try it
+                    </Link>
+                    <Link href='https://apps.apple.com/us/app/morsebench/id6767979247' target='_blank'>
+                        <Image src='/image/software/worderoo/download-on-the-app-store.png' alt={'Download on the App Store'} width={114} height={38} />
+                    </Link>
+                </div>
             </div>
         </div>
 

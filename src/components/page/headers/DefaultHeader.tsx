@@ -62,7 +62,7 @@ export default function DefaultHeader({ pathname='' }: { pathname?: string }) {
                     <HeaderGroupItem pathname={pathname} link='https://shanghaidictionary.com'>ShanghaiDictionary.com</HeaderGroupItem>
                     <HeaderGroupItem pathname={pathname} link='https://shirtocracy.com'>Shirtocracy</HeaderGroupItem>
                     <HeaderGroupItem pathname={pathname} link='https://memorizethepresidents.com'>MemorizeThePresidents.com</HeaderGroupItem>
-                    <HeaderGroupItem pathname={pathname} link='https://morsebench.com'>Morse Code</HeaderGroupItem>
+                    <HeaderGroupItem pathname={pathname} link='https://morsebench.com'>MorseBench.com</HeaderGroupItem>
                     <HeaderGroupItem pathname={pathname} link='https://wasian.io'>Wasian.io</HeaderGroupItem>
                     <HeaderSubGroup pathname={pathname} title='Tools'>
                         <HeaderSubGroupItem pathname={pathname} link='/software/drive-download-link-generator'>Drive Download Link Generator</HeaderSubGroupItem>

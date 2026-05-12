@@ -99,7 +99,7 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
                 <Image alt='TechMap Logo' width={50} height={50} src='/image/software/techmap/logo.png' />
                 <span className='text-[1rem]'>TechMap</span>
             </Tile>
-            <Tile href='https://morsebench.com'>
+            <Tile href='https://apps.apple.com/us/app/morsebench/id6767979247'>
                 <span className='morse-tile-portrait' style={{ position: 'relative', width: 50, height: 50, display: 'inline-block', overflow: 'hidden', borderRadius: 4 }}>
                     <Image alt='Morse portrait' width={50} height={50} src='/image/morse/face.png'
                         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
@@ -107,10 +107,14 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
                         className='morse-tile-glasses'
                         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', transition: 'transform 180ms ease-out' }} />
                 </span>
-                <span>MorseBench<DotCom /></span>
+                <span>MorseBench</span>
                 <style dangerouslySetInnerHTML={{ __html: `
                     a:hover .morse-tile-glasses { transform: translateY(-8%) rotate(6deg); }
                 ` }} />
+            </Tile>
+            <Tile href='https://apps.apple.com/us/app/simplehealth-steps-sleep-gym/id6761314044?pt=126612879&ct=web'>
+                <Image alt='SimpleHealth Logo' width={50} height={50} src='/image/simple-health/logo.png' />
+                <span className='text-[1rem]'>SimpleHealth</span>
             </Tile>
             <Tile href='https://wasian.io'>
                 <Image alt='Wasian.io Logo' width={50} height={50} src='/image/home/wasian-logo.png' />

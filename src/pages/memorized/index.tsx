@@ -10,10 +10,10 @@ export default function Memorized() {
         <ul>
             <li>100 digits of pi</li>
             <li>Drawing a map of the US from memory</li>
+            <li>Morse code</li>
             <li>In progress: Periodic Table of Elements</li>
             <li>In progress: Presidents of the United States</li>
             <li>In progress: All countries and capitals</li>
-            <li>In progress: Morse code</li>
             <li>In progress: Sign language alphabet</li>
             <li>In progress: Arabic alphabet</li>
             <li>In progress: Korean alphabet</li>
