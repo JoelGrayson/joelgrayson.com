@@ -82,6 +82,7 @@ export default function Software() {
                     <li><Link href='/software/cite/mla' target='_blank'>MLA Citation Generator</Link></li>
                     <li><Link href='https://www.youtube.com/watch?v=Fi19NDsJB4E' target='_blank'>Zoom Timers</Link></li>
                     <li><Link href='/software/days-until' target='_blank'>Days Until</Link></li>
+                    <li><Link href='/to-be-finder' target='_blank'>To Be Verb Finder</Link></li>
                 </ul>
             </li>
         </ul>

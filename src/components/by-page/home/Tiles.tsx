@@ -77,27 +77,18 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
                 <Image alt='Combination Safe Machine' width={60} height={53} src='/portfolio/Venderoo/logo.png' />
                 <span>Venderoo</span>
             </Tile>
-            <Tile href='/combating-climate-change#solar-for-riverdale' target='_blank'>
-                <Image alt='Solar' width={50} height={38} src='/image/home/optimized/solar-for-riverdale.avif' />
-                <span>Solar for Riverdale</span>
-            </Tile>
+            <Tryptic
+                name='Shanghai Dictionary'
+                href='https://shanghaidictionary.com'
+                stat={stats?.shanghaiDictionarySearches}
+                statMetric='searches'
+            >
+                Shanghai Dictionary<DotCom />
+            </Tryptic>
 
             <Tile href='/research/organic-optoelectronics' target='_blank'>
                 <Image alt='Organic Solar Cells' width={50} height={50} src='/image/ccc/BrDPA-AzoBipy-Structure.png' className='mb-1 pt-3 dark:invert' />
                 <span className='text-[1rem]'>Organic Solar Cell Research</span>
-            </Tile>
-            <Tile href='https://shirtocracy.com'>
-                <Image alt='Shirtocracy Logo' width={60} height={60} className='relative left-0.5 mb-1 dark:invert' src='/image/home/shirtocracy-logo.png' />
-                <span>Shirtocracy<DotCom /></span>
-            </Tile>
-            <Tile href='https://lirongart.com'>
-                <Image alt='Lirong Art Logo' width={50} height={50} className='relative mb-2' src='/image/home/lirongart-logo.png' />
-                <span>Lirong Art<DotCom /></span>
-            </Tile>
-
-            <Tile href='https://apps.apple.com/us/app/techmap/id6748248815?pt=126612879&ct=web'>
-                <Image alt='TechMap Logo' width={50} height={50} src='/image/software/techmap/logo.png' />
-                <span className='text-[1rem]'>TechMap</span>
             </Tile>
             <Tile href='https://apps.apple.com/us/app/morsebench/id6767979247'>
                 <span className='morse-tile-portrait' style={{ position: 'relative', width: 50, height: 50, display: 'inline-block', overflow: 'hidden', borderRadius: 4 }}>
@@ -116,15 +107,46 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
                 <Image alt='SimpleHealth Logo' width={50} height={50} src='/image/simple-health/logo.png' />
                 <span className='text-[1rem]'>SimpleHealth</span>
             </Tile>
-            <Tile href='https://wasian.io'>
-                <Image alt='Wasian.io Logo' width={50} height={50} src='/image/home/wasian-logo.png' />
-                <span>Wasian<span className='text-sm'>.io</span></span>
+
+            <Tile href='https://apps.apple.com/us/app/techmap/id6748248815?pt=126612879&ct=web'>
+                <Image alt='TechMap Logo' width={50} height={50} src='/image/software/techmap/logo.png' />
+                <span className='text-[1rem]'>TechMap</span>
             </Tile>
-            
             <Tile href='https://joelkit.com'>
                 <Image alt='JoelKit Logo' width={50} height={50} src='/image/software/joelkit/logo.png' />
                 <span className='text-[1rem]'>JoelKit<DotCom /></span>
             </Tile>
+            <Tile href='https://wasian.io'>
+                <Image alt='Wasian.io Logo' width={50} height={50} src='/image/home/wasian-logo.png' />
+                <span>Wasian<span className='text-sm'>.io</span></span>
+            </Tile>
+
+            <Tile href='/combating-climate-change#solar-for-riverdale' target='_blank'>
+                <Image alt='Solar' width={50} height={38} src='/image/home/optimized/solar-for-riverdale.avif' />
+                <span>Solar for Riverdale</span>
+            </Tile>
+            <Tile href='/connecting-street-vendors-to-the-grid' target='_blank'>
+                <Image alt='Generators vs. Grid' width={100} height={55} className='relative left-2' src='/image/connecting-street-vendors-to-the-grid/generators-versus-grid.gif' />
+                <span className='text-[0.8rem]'>Connecting Street Vendors to the Grid</span>
+            </Tile>
+            <Tile href='https://studentsforelectricbuses.org'>
+                <SEBLogo size={50} />
+                <span>Students for Electric Buses</span>
+            </Tile>
+
+            <Tile href='/music'>
+                <ViolinBow size={50} />
+                <span>Compositions</span>
+            </Tile>
+            <Tile href='https://lirongart.com'>
+                <Image alt='Lirong Art Logo' width={50} height={50} className='relative mb-2' src='/image/home/lirongart-logo.png' />
+                <span>Lirong Art<DotCom /></span>
+            </Tile>
+            <Tile href='https://shirtocracy.com'>
+                <Image alt='Shirtocracy Logo' width={60} height={60} className='relative left-0.5 mb-1 dark:invert' src='/image/home/shirtocracy-logo.png' />
+                <span>Shirtocracy<DotCom /></span>
+            </Tile>
+
             {/* <Tile href='https://sparelearn.com'>
                 <Image alt='Spare Learn Logo' width={50} height={50} src='/image/software/sparelearn/logo.png' />
                 <span className='text-[1rem]'>SpareLearn<DotCom /></span>
@@ -133,37 +155,6 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
                 <Image alt='Memorize the Presidents Logo' width={50} height={50} className='relative left-0.5 mb-1' src='/image/home/memorize-the-presidents-logo.png' />
                 <span>MemorizeThe<br />Presidents<DotCom /></span>
             </Tile>
-
-            <Tile href='https://studentsforelectricbuses.org'>
-                <SEBLogo size={50} />
-                <span>Students for Electric Buses</span>
-            </Tile>
-            
-
-            {/* <Tile href='/machines' target='_self'>
-                <Image alt='Combination Safe Machine' width={60} height={53} src='/image/home/optimized/machine.avif' />
-                <span>Machines</span>
-            </Tile> */}
-            
-            
-
-            <Tryptic
-                name='Shanghai Dictionary'
-                href='https://shanghaidictionary.com'
-                stat={stats?.shanghaiDictionarySearches}
-                statMetric='searches'
-            >
-                Shanghai Dictionary<DotCom />
-            </Tryptic>
-            <Tile href='/music'>
-                <ViolinBow size={50} />
-                <span>Compositions</span>
-            </Tile>
-            <Tile href='/connecting-street-vendors-to-the-grid' target='_blank'>
-                <Image alt='Generators vs. Grid' width={100} height={55} className='relative left-2' src='/image/connecting-street-vendors-to-the-grid/generators-versus-grid.gif' />
-                <span className='text-[0.8rem]'>Connecting Street Vendors to the Grid</span>
-            </Tile>
-
             <Tile href='https://apps.apple.com/us/app/readometer-track-your-speed/id6757317732?pt=126612879&ct=web'>
                 <Image alt='Readometer Logo' width={50} height={50} src='/image/software/readometer/logo.png' />
                 <span className='text-[1rem]'>Readometer</span>
@@ -172,6 +163,11 @@ export default function Tiles({ stats }: { stats: Stats | null }) {
                 <Image alt='Worderoo Logo' width={50} height={50} src='/image/software/worderoo/logo.png' />
                 <span className='text-[1rem]'>Worderoo</span>
             </Tile>
+
+            {/* <Tile href='/machines' target='_self'>
+                <Image alt='Combination Safe Machine' width={60} height={53} src='/image/home/optimized/machine.avif' />
+                <span>Machines</span>
+            </Tile> */}
 
             
             
