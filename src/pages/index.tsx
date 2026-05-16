@@ -78,7 +78,7 @@ export default function Home() {
         ],
         description: 'The official website of the United Cells of Joel Grayson',
         og: {
-            image: '/image/home/portraits/4.20.2025/Joel Grayson.webp',
+            image: '/image/home/portraits/5.16.2026/Joel Grayson.webp',
             imageAlt: 'Joel Grayson Profile Photo'
         }
     }}>
@@ -108,12 +108,12 @@ export default function Home() {
                 />
                 {/* Portrait */}
                 <Image
-                    src='/image/home/portraits/4.20.2025/Joel Grayson.webp' alt='Joel Grayson Profile Photo'
-                    width={364/2} height={540/2}
+                    src='/image/home/portraits/5.16.2026/Joel Grayson.webp' alt='Joel Grayson Profile Photo'
+                    width={1258/5} height={1491/5}
                     className={`
                         d:mx-3
-                        w-[182px] h-[270px]    ${''/* 100% OG size */}
-                        m:w-[127.4px] m:h-[189px] ${''/* 70% OG size */}
+                        w-[228px] h-[270px]    ${''/* 100% OG size */}
+                        m:w-[159.6px] m:h-[189px] ${''/* 70% OG size */}
                     `}
                     priority
                 />
