@@ -71,6 +71,8 @@ model Stats {
     dropboxDownloadLinkGeneratorVisits Int?
     boxDownloadLinkGeneratorVisits     Int?
 
+    editTimeRevenue Int?
+
     pageVisits Json?
 }
 
