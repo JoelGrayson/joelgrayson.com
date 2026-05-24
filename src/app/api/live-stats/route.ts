@@ -15,6 +15,7 @@ import getShanghaiDictionarySearches from "./get-stats/getShanghaiDictionarySear
 import getDownloadLinkGeneratorVisits from "./get-stats/getDownloadLinkGeneratorVisits";
 import getStatsFromPrisma from "./get-stats/getStatsFromPrisma";
 import getEditTimeSales from "./get-stats/getEditTimeSales";
+import getPlausibleVisitors from "./get-stats/getPlausibleVisitors";
 
 
 // Opt out of caching
@@ -51,6 +52,9 @@ export async function getLiveStats() {
         getBuserooUsers(),
         getShanghaiDictionarySearches(),
         getDownloadLinkGeneratorVisits(),
+
+        getPlausibleVisitors('wasian.io'),
+        getPlausibleVisitors('memorizethepresidents.com'),
     ];
 
     const res=await Promise.all(promises);
@@ -74,7 +78,10 @@ export async function getLiveStats() {
         blogViews,
         buserooUsers,
         shanghaiDictionarySearches,
-        downloadLinkGeneratorVisits
+        downloadLinkGeneratorVisits,
+
+        wasianVisitors,
+        memorizeThePresidentsVisitors
     ]=res;
     
     const out = {
@@ -97,7 +104,10 @@ export async function getLiveStats() {
         // driveDownloadLinkGeneratorVisits,
         // dropboxDownloadLinkGeneratorVisits,
         // boxDownloadLinkGeneratorVisits,
-        
+
+        wasianVisitors,
+        memorizeThePresidentsVisitors,
+
         diff: {
             focusUsers:           lastWeeksStats?.focusUsers           ? focusUsers-lastWeeksStats.focusUsers                     : -4,
             homeworkCheckerUsers: lastWeeksStats?.homeworkCheckerUsers ? homeworkCheckerUsers-lastWeeksStats.homeworkCheckerUsers : -4,
