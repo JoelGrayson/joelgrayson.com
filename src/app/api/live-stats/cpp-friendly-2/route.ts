@@ -25,6 +25,7 @@ export async function GET() {
         bookshelf:             [0,                                                 NO_DIFF],
         simplehealth:          [0,                                                 NO_DIFF],
         morsebench:            [0,                                                 NO_DIFF],
+        techmap:               [0,                                                 NO_DIFF],
         shirtocracy:           [data.shirtocracyOrders ?? 0,                       data.diff.shirtocracyOrders ?? NO_DIFF],
         memorizethepresidents: [data.memorizeThePresidentsVisitors ?? 0,           NO_DIFF],
     };
