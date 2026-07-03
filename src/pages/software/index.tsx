@@ -13,13 +13,6 @@ export default function Software() {
 
         <ul>
             <li>
-                Chrome Extensions
-                <ul>
-                    <li><Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj?utm_source=jgcom&utm_campaign=web&utm_medium=site' target='_blank'>Homework Checker</Link></li>
-                    <li><Link href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf?utm_source=jgcom&utm_campaign=web&utm_medium=site' target='_blank'>Focus for Google Docs</Link></li>
-                </ul>
-            </li>
-            <li>
                 Apps
                 <ul>
                     <li><Link href='https://apps.apple.com/us/app/edit-time/id6464405876?pt=126612879&ct=web' target='_blank'>Edit Time</Link></li>
@@ -39,15 +32,31 @@ export default function Software() {
                 </ul>
             </li>
             <li>
+                Physical
+                <ul>
+                    <li><Link target='_blank' href='https://youtu.be/bHHk2FL5Ujs'>Venderoo</Link></li>
+                    <li><Link target='_blank' href='https://youtu.be/L5cV2TB7tLQ'>Asteroids</Link></li>
+                </ul>
+            </li>
+            <li>
+                Chrome Extensions
+                <ul>
+                    <li><Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj?utm_source=jgcom&utm_campaign=web&utm_medium=site' target='_blank'>Homework Checker</Link></li>
+                    <li><Link href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf?utm_source=jgcom&utm_campaign=web&utm_medium=site' target='_blank'>Focus for Google Docs</Link></li>
+                </ul>
+            </li>
+            <li>
                 Sites
                 <ul>
                     <li><Link target='_blank' href='/'>joelgrayson.com</Link></li>
                     <li><Link target='_blank' href='https://buseroo.com'>buseroo.com</Link></li>
+                    <li><Link target='_blank' href='https://shanghaidictionary.com'>shanghaidictionary.com</Link></li>
                     <li><Link target='_blank' href='https://morsebench.com'>morsebench.com</Link></li>
+                    <li><Link target='_blank' href='https://wasian.io'>wasian.io</Link></li>
+                    <li><Link target='_blank' href='https://notes.joelgrayson.com'>notes.joelgrayson.com</Link> (course notes)</li>
                     <li><Link target='_blank' href='https://joelkit.com'>joelkit.com</Link></li>
                     <li><Link target='_blank' href='https://lirongart.com'>lirongart.com</Link></li>
                     <li><Link target='_blank' href='https://www.youtube.com/channel/UCAwfG8BfhLuhMddFZh7z09A'>youtube.com/@JoelGrayson</Link></li>
-                    <li><Link target='_blank' href='https://wasian.io'>wasian.io</Link></li>
                     <li><Link target='_blank' href='https://luxpremierllc.com'>luxpremierllc.com</Link></li>
                     <li><Link target='_blank' href='https://studentsforelectricbuses.org'>studentsforelectricbuses.org</Link></li>
                     <li><Link target='_blank' href='https://memorizethepresidents.com'>memorizethepresidents.com</Link></li>
