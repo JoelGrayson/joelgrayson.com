@@ -52,10 +52,16 @@ export default function CCC() {
                 <Image src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='solar panel' width={26} height={20} className='ml-3 inline' />
             } {...{showDescription}}>
                 <div className='relative'>
-                    <p>While learning about different energy sources, I realized that my school&apos;s empty rooftops had great potential for solar energy. I measured the rooftops, created solar models in HelioScope (image below), calculated savings, and gathered quotes from two companies. I presented to the administration and board of trustees, leading to a 109 kW solar installation (enough to power 13 households) that saves the school tens of thousands of dollars every year. The installation is on the roofs of the cafeteria and swimming pool, generating 130 megawatt-hours of electricity per year, helping to make New York City&apos;s electricity cleaner given that currently 85% of it comes from fossil fuels.</p>
+                    <p>While learning about different energy sources, I realized that my school&apos;s empty rooftops had great potential for solar energy. I measured the rooftops, created solar models in HelioScope, calculated savings, and gathered quotes from two companies. I presented to the administration and board of trustees. In 2025, the 109 kW solar installation completed, producing enough electricity to power 13 households and saving the school tens of thousands of dollars every year. The installation is on the roofs of the cafeteria and swimming pool, generating 130 megawatt-hours of electricity per year, helping to make New York City&apos;s electricity cleaner given that currently 85% of it comes from fossil fuels. Additionally, the solar installation on Mow from 2010 was repaired, as it had stopped producing electricity.</p>
                 </div>
-                <Image src='/image/ccc/solar-for-riverdale/models.png' width={720} height={146} alt='Solar Models' />
-                <Image src='/image/ccc/solar-for-riverdale/Presenting.png' width={500} height={265} alt='Solar Models' priority />
+                <figure style={{ margin: 0, maxWidth: 500 }}>
+                    <Image src='/image/ccc/solar-for-riverdale/solar-installation.png' width={500} height={500} alt='Solar Installation' />
+                    <figcaption style={{ marginTop: 4, textAlign: 'center' }}>In 2025, the top right (cafeteria) and bottom right (swimming pool) buildings gained solar panels and the middle building (Mow)&apos;s solar installation from 2010 was repaired.</figcaption>
+                </figure>
+                <figure style={{ margin: 0, maxWidth: 500 }}>
+                    <Image src='/image/ccc/solar-for-riverdale/Presenting.png' width={500} height={265} alt='Presenting to the board' priority />
+                    <figcaption style={{ marginTop: 4, textAlign: 'center' }}>Presenting different financing options to the board</figcaption>
+                </figure>
                 {/* <div className='flex flex-col items-center'>
                     <iframe src={
                         'https://docs.google.com/spreadsheets/d/e/2PACX-1vT7fANCIqaPCEP65K7KyVODt3FVzny1dvch_YCa1wnq0v4smzoEs40Crg6qHKHjTOtRdD_kkUL2ia1n/pubhtml'
