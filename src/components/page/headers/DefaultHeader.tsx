@@ -68,6 +68,7 @@ export default function DefaultHeader({ pathname='' }: { pathname?: string }) {
                         <HeaderSubGroupItem pathname={pathname} link='/software/drive-download-link-generator'>Drive Download Link Generator</HeaderSubGroupItem>
                         <HeaderSubGroupItem pathname={pathname} link='/learn/pi'>Memorize π</HeaderSubGroupItem>
                         <HeaderSubGroupItem pathname={pathname} link='/learn/number?name=tau'>Memorize τ</HeaderSubGroupItem>
+                        <HeaderSubGroupItem pathname={pathname} link='/phasors'>Phasors</HeaderSubGroupItem>
                         <HeaderSubGroupItem pathname={pathname} link='/software/cite/mla'>MLA Citation Generator</HeaderSubGroupItem>
                         <HeaderSubGroupItem pathname={pathname} link='/zoom-timers'>Zoom Timers</HeaderSubGroupItem>
                         {/* <HeaderSubGroupItem pathname={pathname} link='/chess'>Chess</HeaderSubGroupItem> */}
