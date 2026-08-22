@@ -71,7 +71,7 @@
         "fs": "^0.0.1-security",
         "glob": "^10.3.10",
         "globby": "^13.2.2",
-        "googleapis": "^128.0.0",
+        "googleapis": "^176.0.0",
         "gsap": "^3.12.2",
         "immer": "^10.0.3",
         "isomorphic-dompurify": "^2.29.0",
@@ -94,7 +94,7 @@
         "recharts": "^2.15.4",
         "resend": "^6.6.0",
         "sanitize-html": "^2.17.0",
-        "sharp": "^0.32.3",
+        "sharp": "^0.35.3",
         "sonner": "^2.0.4",
         "superjson": "^2.2.1",
         "tailwind-merge": "^2.6.0",
@@ -121,6 +121,7 @@
         "react-dom": "^17.0.0 || ^18.0.0"
     },
     "overrides": {
-        "axios": "^1.15.2"
+        "axios": "^1.15.2",
+        "prismjs": "^1.30.0"
     }
 }
