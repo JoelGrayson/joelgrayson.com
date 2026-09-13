@@ -139,6 +139,11 @@ export default function Portfolio() {
             <div>
                 <h3>Self-Driving Car</h3>
                 <p>In 36 hours, turned a 2018 Honda into a partially self-driving car with team at TreeHacks (Stanford&apos;s Hackathon), winning 1st Place in the NVIDIA Track (Edge AI).</p>
+                <div className='flex justify-end absolute bottom-0 right-0'>
+                    <Link href='https://devpost.com/software/torq' target='_blank' className='flex justify-center items-center gap-2 button !px-1.5 !py-1'>
+                        View on Devpost
+                    </Link>
+                </div>
             </div>
         </div>
 
