@@ -1,8 +1,11 @@
-import SEBLogo from "@/components/by-page/home/SEBLogo";
 import { css } from "@emotion/css";
 import Image from "next/image";
 import Link from "next/link";
 import SEO from "@/components/page/parts/SEO";
+
+function Logo({ src, alt, width = 26, height = 26, className = '', shift = true }: { src: string; alt: string; width?: number; height?: number; className?: string; shift?: boolean }) {
+    return <Image src={src} alt={alt} width={width} height={height} className={`inline relative bottom-[3px] ${shift ? 'mr-1 right-[3px]' : 'mx-1'} ${className}`} />;
+}
 
 export default function Resume() {
     return <>
@@ -31,31 +34,25 @@ export default function Resume() {
                 list-style-type: none;
                 margin-left: 0;
                 margin-bottom: 3px;
+                padding-right: 6rem;
             }
             #root .date {
                 position: absolute;
                 right: 0;
                 top: 0;
                 font-weight: 600;
-            }
-            #root .title::before, .description.is-title::before {
-                content: '';
-                float: right;
-                width: 4rem;
-                height: 1rem;
+                white-space: nowrap;
             }
             #root li>img {
                 vertical-align: top;
                 padding-top: 7px;
             }
             #root .description {
-                display: inline-block;
                 color: #666;
                 font-size: 0.9rem;
-                // no bullet point
                 list-style-type: none;
             }
-            #root .description .title, #root .is-title {
+            #root .title, #root .is-title {
                 font-size: 16px;
                 color: black;
             }
@@ -63,16 +60,12 @@ export default function Resume() {
                 #root .description {
                     color: #aaa;
                 }
-                #root .description .title, #root .is-title {
+                #root .title, #root .is-title {
                     color: white;
                 }
             }
             #root .indent {
                 padding-left: 3rem;
-            }
-            #root .inline-description {
-                position: absolute;
-                right: 4.5rem;
             }
 
             #root .section {
@@ -82,16 +75,11 @@ export default function Resume() {
                 border-radius: 8px;
             }
 
-            #software-section li {
-                margin-block: .4rem;
-            }
-            #education-section li {
+            #root .section li {
                 margin-block: .4rem;
             }
             #root h3 { font-size: 1.6rem; }
-            #root .section h4:first-of-type { margin-top: 5px; }
-            #root h4 { font-size: 1.0rem; margin-top: 15px; margin-bottom: 0px; }
-            #root h4+li { margin-top: 0px; }
+            #root .skills p { margin-block: .3rem; }
             /*
             //#endregion
             */
@@ -120,171 +108,163 @@ export default function Resume() {
                 </Link>
 
 
-                <div className="section hover:bg-blue-100 dark:hover:bg-[rgba(50,50,200,0.2)]" id='software-section'>
-                    <h3>Projects</h3>
-                    <ul>
-                        <h4>Software:</h4>
-                        <li>
-                            <span className="title with-icon">
-                                <Image src='/image/home/edit-time-logo.png' alt='focus-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                                <Link href="https://apps.apple.com/us/app/edit-time/id6464405876?pt=126612879&ct=web">Edit Time</Link>
-                            </span>
-                            <span className="date">2024</span>
-                            <div className="description inline-description">freemium app with 7,000 installs and 5,000 revenue.</div>
-                        </li>
-                        <li>
-                            <span className="title with-icon">
-                                <Image src='/image/home/buseroo-logo.png' alt='buseroo-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                                <Link href="https://buseroo.com">Buseroo.com</Link>
-                            </span>
-                            <span className="date">2021&ndash;23</span>
-                            <div className="description inline-description">1,500 searches, website and <Link href='https://apps.apple.com/us/app/buseroo/id6736895918?pt=126612879&ct=web' target="_blank">app</Link> to find closest school bus to any address.</div>
-                            {/* <div className="description inline-description">website and <Link href='https://apps.apple.com/us/app/buseroo/id6736895918' target="_blank">app</Link> to find closest school bus to any address.</div> */}
-                        </li>
-                        <li>
-                            <span className="title with-icon">
-                                <Image src='/image/home/homework-checker-logo.png' alt='homework-checker-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                                <Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj?utm_source=jgcom&utm_campaign=web&utm_medium=site'>Homework Checker</Link>
-                            </span>
-                            <span className="date">2021&ndash;22</span>
-                            <div className="description inline-description">helps 5,000 students organize their homework.</div>
-                        </li>
-                        <li>
-                            <span className="title with-icon">
-                                <Image src='/image/home/focus-logo.png' alt='focus-logo' width={26} height={26} className='mr-1 inline bottom-[3px] right-[3px] relative' />
-                                <Link href="https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf?utm_source=jgcom&utm_campaign=web&utm_medium=site">Focus</Link>
-                            </span>
-                            <span className="date">2022</span>
-                            <div className="description inline-description">Chrome extension helping 1,000 people write distraction-free.</div>
-                        </li>
-                        <li>
-                            <span className="title with-icon">
-                                <Image src='/image/lirong-art/lirong-art.png' alt='lirongart-logo' width={16.8125} height={30} className='ml-[4.6px] mr-[8.5px] inline bottom-[3px] right-[3px] relative' />
-                                <Link href='https://lirongart.com'>LirongArt.com</Link>
-                            </span>
-                            <span className="date">2020</span>
-                            <div className="description inline-description">online gallery showcasing my mom&apos;s paintings.</div>
-                        </li>
-                        <h4>Physical:</h4>
-                        <li>
-                            <span className="title"><Link href='https://www.youtube.com/watch?v=bHHk2FL5Ujs'>Venderoo</Link></span>
-                            <span className="date">2023</span>
-                            <div className="description inline-description">designed & built vending machine that sold snacks in hallway.</div>
-                        </li>
-                        <h4>Climate Change:</h4>
-                        <li className='mb-2'>
-                            <span className="title with-icon">
-                                Gave a <Link href="https://www.youtube.com/watch?v=rV_8xB7rGyQ">TEDx talk on combating climate change through projects</Link>.
-                            </span>
-                            <span className="date !top-[5px]">2024</span>
-                        </li>
-                        <li>
-                            <span className="title with-icon">
-                                <Image src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='solar panel' width={26} height={20}
-                                    className='inline bottom-0.5 relative'
-                                    style={{ right: 4 }}
-                                />
-                                Facilitated 109 kW solar installation at Riverdale, enough to power 13 households.
-                            </span>    
-                            <span className="date">2021&ndash;2024</span>
-                            <div className="description indent">Measured rooftops, created solar models in HelioScope, gathered quotes from several installers, researched legal & financial aspects, & presented to admin and board.</div>
-                        </li>
-                        <li className='mb-2'>
-                            <span className="title with-icon">
-                                <SEBLogo size={25} inline style={{ marginLeft: 4, marginRight: -4, top: 7, right: 4, paddingTop: 4 }} />
-                                Founded <Link href='https://studentsforelectricbuses.org'>Students for Electric Buses</Link> to electrify school bus fleets.
-                            </span>
-                            <span className="date !top-[5px]">2021&ndash;2024</span>
-                        </li>
-                        <li className='mb-2'>
-                            <span className="title with-icon">
-                                Worked on connecting NYC street vendors to the electrical grid.
-                            </span>
-                            <span className="date !top-[5px]">2023–24</span>
-                        </li>
-                    </ul>
-                </div>
-
-
-                <div className="section hover:bg-green-100 dark:hover:bg-green-950" id='employment-section'>
-                    <h3>Employment</h3>
-                    <ul>
-                        <li>
-                            <span className='description'><span className="title">Manhattan Community Board 1 member</span>: Environmental and Youth & Ed Committees.</span>
-                            <span className='date'>2023&ndash;24</span>
-                        </li>
-                        <li>
-                            <span className='description is-title'><Link href="/research/organic-optoelectronics">Researched novel compound</Link> for organic solar cells at NYU&apos;s Molecular Design Institute.</span>
-                            <span className='date relative'>2023</span>
-                        </li>
-                        <li>
-                            <span className="description"><span className="title">En-ROADS Ambassador</span> (climate educator).</span>
-                            <span className="date">2022&ndash;present</span>
-                        </li>
-                        <li>
-                            <span className='description'><span className="title">Stone House Group intern</span> (energy efficiency consultant).</span>
-                            <span className='date'>2021</span>
-                        </li>
-                    </ul>
-                </div>
-                
-
                 <div className="section hover:bg-gray-200 dark:hover:bg-gray-800" id="education-section">
-                    <h3>Education</h3>
+                    <h3>Education/Honor</h3>
                     <ul>
                         <li>
-                            <span>Stanford University</span>
+                            <span className="title">Stanford University</span>: studying Electrical Engineering and Computer Science.
                             <span className='date'>2024&ndash;28</span>
-                        </li>
-                        <li>
-                            <span>Riverdale Country School</span>
-                            <span className='date'>2017&ndash;24</span>
                             <div className="description indent">
-                                <div>Honors: Geometry, Algebra II, Precalculus, Spanish I&ndash;VII, Biology II, Chemistry II, Physics II</div>
-                                <div>GPA: 3.94 (out of 4.0), SAT: 1560</div>
+                                3.72 GPA. Classes: AI, computer systems/architecture, digital system design, circuits, signals &amp; systems, algorithms &amp; data structures, probability, computability theory, mechanics, E&amp;M, quantum physics, iOS app dev, computer graphics, linear algebra, calculus. Fall 2026: computer networks, VLSI/IC fabrication, OS.
                             </div>
                         </li>
-                    </ul>
-                </div>
-
-
-                <div className="section hover:bg-red-100 dark:hover:bg-[rgba(200,50,50,0.3)]" id='technical-skills-section'>
-                    <h3>Technical Skills</h3>
-                    <p>Web Dev: React/Next.js, TypeScript, Express, Node, PHP, SQL, Docker, AWS/GCP</p>
-                    <p>App Dev: Swift, SwiftUI, React Native, Supabase, Deno, Lithic</p>
-                    <p>Embedded Systems: Arduino, Raspberry Pi, ESP32, C++</p>
-                    <p>Miscellaneous: Python, MATLAB, Java, Fusion 360, FCPX, Dragonframe</p>
-                </div>
-
-
-                {/* <div className="section hover:bg-yellow-100 dark:hover:bg-[rgba(255,255,0,0.1)]" id='honors-section'>
-                    <h3>Honors</h3>
-                    <ul>
-                        <li className='relative'>
-                            <span className="description is-title">Rise for the World finalist (global search for talented youth).</span>
-                            <span className='date'>2021&ndash;22</span>
+                        <li>
+                            <span className="title">Riverdale Country School</span>
+                            <span className='date'>2017&ndash;24</span>
+                            <div className="description indent">
+                                3.94 GPA, 1560 SAT, 5-time Student Govt. representative, Sustainability Club co-head
+                            </div>
+                        </li>
+                        <li>
+                            <span className="title">Rise for the World</span>: finalist in global search for talented youth.
+                            <span className='date'>2022</span>
                         </li>
                     </ul>
-                </div> */}
-                {/* <li>
-                    <span className='description is-title'><Link href='https://youtube.com/@JoelGrayson'>YouTube channel</Link></span>
-                    {/* Wrote, acted, filmed, and edited 34 comedy videos with my father since age 11, created nine9 stop motion animations, and included other projects /}
-                    <span className='date'>2018&ndash;now</span>
-                    <div className="description inline-description">father-and-son comedy, project records, and claymation.</div>
-                </li> */}
-                {/* <li>
-                    <span className='description is-title'>Violin: recitals (e.g., Praeludium & Allegro, Spring) and <Link href='/music'>compositions</Link>.</span>
-                    <span className='date'>2011&ndash;now</span>
-                </li> */}
-                {/* <li>
-                    <span className='description is-title'>Violin: recitals (e.g., Praeludium & Allegro, Spring) and <Link href='/music'>compositions</Link>.</span>
-                    <span className='date'>2011&ndash;now</span>
-                </li> */}
-                {/* hover:bg-yellow-100 dark:hover:bg-[rgba(255,255,0,0.1)]"  */}
+                </div>
+
+
+                <div className="section hover:bg-green-100 dark:hover:bg-green-950" id='experience-section'>
+                    <h3>Experience</h3>
+                    <ul>
+                        <li>
+                            <span className="title">xAI Intern</span>: data center engineering intern on electrical engineering team.
+                            <span className='date'>Jun&ndash;Sep 2026</span>
+                            <div className="description indent">
+                                Created ETAP models for two AI data centers for coordination studies, wrote two switching procedures (MOPs), and documented circuit breakers for 5,760 GPU racks.
+                            </div>
+                        </li>
+                        <li>
+                            <span className="title"><Link href="https://devpost.com/software/torq" target="_blank">TreeHacks 1st Place in NVIDIA Track</Link></span> (Edge AI): made 2018 Honda partially self-driving.
+                            <span className='date'>2026</span>
+                        </li>
+                        <li>
+                            <span className="title"><Link href="https://luxpremierllc.com/" target="_blank">Lux Premier LLC</Link></span> (founder): created software with 10,000+ users &amp; $5,000 in revenue.
+                            <span className='date'>2019&ndash;26</span>
+                        </li>
+                        <li>
+                            <span className="title">NYU Lee Research Lab</span>: <Link href="/research/organic-optoelectronics">researched novel compound</Link> for organic solar cells.
+                            <span className='date'>Jul&ndash;Aug 2023</span>
+                        </li>
+                        <li>
+                            <span className="title">Manhattan Community Board 1</span>: youngest-ever member; Environment &amp; Ed committees.
+                            <span className='date'>2023&ndash;24</span>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div className="section hover:bg-blue-100 dark:hover:bg-[rgba(50,50,200,0.2)]" id='projects-section'>
+                    <h3>Tech Projects</h3>
+                    <ul>
+                        <li>
+                            <span className="title"><Link href="https://youtu.be/L5cV2TB7tLQ" target="_blank">Atari Asteroids</Link></span>: wrote bare-metal C and built arcade console with classmate.
+                            <span className="date">2026</span>
+                        </li>
+                        <li>
+                            <span className="title"><Link href="https://github.com/JoelGrayson/FPGA-Piano" target="_blank">FPGA Piano</Link></span>: wrote Verilog for FPGA to play sounds when PS/2 keyboard keys pressed.
+                            <span className="date">2026</span>
+                        </li>
+                        <li>
+                            <span className="title with-icon">
+                                <Logo src='/image/home/edit-time-logo.png' alt='Edit Time logo' />
+                                <Link href="https://apps.apple.com/us/app/edit-time/id6464405876?pt=126612879&ct=web" target="_blank">Edit Time</Link>
+                            </span>: 11,000 installs, $5,000 revenue, desktop utility app (Swift, StoreKit).
+                            <span className="date">2024&ndash;25</span>
+                        </li>
+                        <li>
+                            <span className="title">Spark Gap Tesla Coil</span> (in progress): received $800 grant. Designed for 1.3 million volts.
+                            <span className="date">2025&ndash;26</span>
+                        </li>
+                        <li>
+                            <span className="title with-icon">
+                                <Logo src='/image/home/venderoo-logo.png' alt='Venderoo logo' width={23} height={26} />
+                                <Link href='https://www.youtube.com/watch?v=bHHk2FL5Ujs' target="_blank">Venderoo</Link>
+                            </span>: designed Arduino-based vending machine that sold over 100 snacks at school.
+                            <span className="date">2023</span>
+                        </li>
+                        <li>
+                            <span className="title with-icon">
+                                <Logo src='/image/home/shanghai-dictionary-logo.png' alt='Shanghai Dictionary logo' />
+                                <Link href="https://shanghaidictionary.com" target="_blank">ShanghaiDictionary.com</Link>
+                            </span>: 60,000 searches, best online Shanghainese dictionary.
+                            <span className="date">2023&ndash;26</span>
+                        </li>
+                        <li>
+                            <span className="title with-icon">
+                                <Logo src='/image/home/buseroo-logo.png' alt='Buseroo logo' />
+                                <Link href="https://buseroo.com" target="_blank">Buseroo.com</Link>
+                            </span>: 2,000 searches, <Link href="https://buseroo.com" target="_blank">website</Link> &amp; <Link href='https://apps.apple.com/us/app/buseroo/id6736895918?pt=126612879&ct=web' target="_blank">app</Link> for student transportation (Next.js, Swift).
+                            <span className="date">2021&ndash;23</span>
+                        </li>
+                        <li>
+                            <span className="title with-icon">
+                                <Logo src='/image/home/homework-checker-logo.png' alt='Homework Checker logo' />
+                                <Link href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj?utm_source=jgcom&utm_campaign=web&utm_medium=site' target="_blank">Homework Checker</Link>
+                            </span>: 8,000 weekly users, helps student organization (TypeScript, OOP).
+                            <span className="date">2021&ndash;22</span>
+                        </li>
+                        <li>
+                            <span className="title with-icon">
+                                <Logo src='/image/home/focus-logo.png' alt='Focus logo' />
+                                <Link href="https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf?utm_source=jgcom&utm_campaign=web&utm_medium=site" target="_blank">Focus</Link>
+                            </span>: 1,000 weekly users, helps enter writing flow (TypeScript, Perl, Bash, HTML).
+                            <span className="date">2022</span>
+                        </li>
+                        <li>
+                            <span className="title with-icon">
+                                <Logo src='/image/ccc/solar-for-riverdale/solar-panel.png' alt='Solar panel' width={26} height={20} />
+                                Spearheaded <Link href="/combating-climate-change#solar-for-riverdale">109 kW solar installation</Link> at Riverdale, enough to power 13 households.
+                            </span>
+                            <span className="date">2021&ndash;24</span>
+                            <div className="description indent">Measured rooftops, created solar models in HelioScope, gathered quotes from several installers, researched legal &amp; financial aspects, &amp; presented to admin and board.</div>
+                        </li>
+                        <li>
+                            <span className="title with-icon">
+                                <Logo src='/image/performances/youtube-icon.png' alt='YouTube logo' width={26} height={19} />
+                                <Link href="https://youtube.com/@JoelGrayson" target="_blank">YouTube Channel</Link>
+                            </span>: projects, explain STEM, animations, comedy, 1.3k subs, 200k views.
+                            <span className="date">2017&ndash;26</span>
+                        </li>
+                        <li>
+                            Other apps include
+                            <Logo src='/image/simple-health/logo.png' alt='SimpleHealth logo' width={22} height={22} className='rounded' shift={false} />
+                            <Link href="https://apps.apple.com/us/app/simplehealth-steps-sleep-gym/id6761314044?pt=126612879&ct=web" target="_blank">SimpleHealth</Link>,
+                            <Logo src='/image/morse/face.png' alt='MorseBench logo' width={22} height={22} className='rounded' shift={false} />
+                            <Link href="https://morsebench.com" target="_blank">MorseBench</Link>,
+                            <Logo src='/image/software/techmap/logo.png' alt='TechMap logo' width={22} height={22} className='rounded' shift={false} />
+                            <Link href="https://apps.apple.com/us/app/techmap/id6748248815?pt=126612879&ct=web" target="_blank">TechMap</Link>,
+                            <Logo src='/image/software/worderoo/logo.png' alt='Worderoo logo' width={22} height={22} className='rounded' shift={false} />
+                            <Link href="https://apps.apple.com/us/app/worderoo/id6745312298?pt=126612879&ct=web" target="_blank">Worderoo</Link>, and
+                            <Logo src='/image/software/readometer/logo.png' alt='Readometer logo' width={22} height={22} className='rounded' shift={false} />
+                            <Link href="https://apps.apple.com/us/app/readometer-track-your-speed/id6757317732?pt=126612879&ct=web" target="_blank">Readometer</Link>.
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div className="section skills hover:bg-red-100 dark:hover:bg-[rgba(200,50,50,0.3)]" id='technical-skills-section'>
+                    <h3>Technical Skills</h3>
+                    <p><span className="title">Embedded Systems</span>: C/C++, ESP32/Arduino/Raspi, oscilloscope, RISC-V, MMIO, bare-metal</p>
+                    <p><span className="title">Hardware/VLSI</span>: digital design, Verilog/RTL, FPGA, Vivado, Tcl, static timing analysis, CMOS</p>
+                    <p><span className="title">Power Systems</span>: AI data centers, single-line diagrams, SEL acSELerator, power electronics</p>
+                    <p><span className="title">Software (Full-Stack)</span>: TypeScript, React/Next.js, Swift/SwiftUI, SQL, HTML/JS/CSS, Java</p>
+                    <p><span className="title">Backend &amp; Infra</span>: Python, AWS/GCP, Firebase, Supabase, Docker, Linux, Bash, Perl, MATLAB</p>
+                </div>
+
+                <p className="text-right description">View portfolio at <Link href="/portfolio">joelgrayson.com/portfolio</Link></p>
             </div>
 
             <br /><br /><br />
         </div>
     </>;
 }
-
