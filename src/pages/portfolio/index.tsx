@@ -22,7 +22,7 @@ export default function Portfolio() {
             <div>
                 <h3>Edit Time</h3>
                 <p>Desktop app that enables users to change files&apos; date creation properties, which was previously impossible without the terminal.</p>
-                <p>Impact: <b>7,000</b> users and <b>5,000</b> in revenue</p>
+                <p>Impact: <b>11,000</b> installs and <b>$5,000</b> in revenue</p>
                 <p>Tech: Swift/SwiftUI, StoreKit, Bash</p>
                 <div className='flex justify-end items-center gap-2 absolute top-3 right-0'>
                     <Link href='https://apps.apple.com/us/app/edit-time/id6464405876?pt=126612879&ct=web' target='_blank'>
@@ -41,7 +41,7 @@ export default function Portfolio() {
             <div>
                 <h3>Focus</h3>
                 <p>Helps users enter the flow while writing in Google Docs.</p>
-                <p>Impact: <b>1,000</b> users</p>
+                <p>Impact: <b>1,000</b> weekly users</p>
                 <p>Tech: TypeScript, HTML/JS/CSS, Perl, Bash</p>
                 <div className='flex justify-end items-center gap-2 absolute top-3 right-0'>
                     <Link target='_blank' className='button' style={{display: 'inline-flex', alignItems: 'center', gap: 6, marginRight: 10, width: 163}} href='https://chromewebstore.google.com/detail/focus-for-google-docs/djnloioaddlnmagobbcnjpppmbelfocf?utm_source=jgcom&utm_campaign=web&utm_medium=site'>
@@ -67,7 +67,7 @@ export default function Portfolio() {
             <div>
                 <h3>Homework Checker</h3>
                 <p>Helps students keep track of completed assignments, so they don&apos;t miss any.</p>
-                <p>Impact: <b>3,000</b> users</p>
+                <p>Impact: <b>8,000</b> weekly users</p>
                 <p>Tech: TypeScript, OOP, Gulp, HTML/JS/SASS</p>
                 <div className='flex justify-end items-center gap-2 absolute top-3 right-0'>
                     <Link target='_blank' className='button' style={{display: 'inline-flex', alignItems: 'center', gap: 6, marginRight: 10, width: 163}} href='https://chromewebstore.google.com/detail/homework-checker-schoolog/aflepcmbhmafadnddmdippaajhjnmohj?utm_source=jgcom&utm_campaign=web&utm_medium=site'>
@@ -93,7 +93,7 @@ export default function Portfolio() {
             <div>
                 <h3>Buseroo</h3>
                 <p>Website and mobile app for students and teachers to find which school bus leads to any address. Allows schools to sign up and manage their bus route data in admin page. Example use cases: finding a bus to doctor&apos;s appointment, aunt&apos;s house, or museum.</p>
-                <p>Impact: <b>1,000</b> searches</p>
+                <p>Impact: <b>2,000</b> searches</p>
                 <p>Tech: TypeScript, Next.js/React, Prisma, Swift/SwiftUI, GCP, OAuth</p>
                 <div className='flex justify-end items-center gap-2 absolute top-3 right-0'>
                     <Link href='https://buseroo.com/app?institution=demo-institution&group=Early+Buses' target='_blank' className='flex justify-center items-center gap-2 button !px-1.5 !py-1'>
