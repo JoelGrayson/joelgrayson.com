@@ -137,7 +137,7 @@ export default function Resume() {
                     <h3>Experience</h3>
                     <ul>
                         <li>
-                            <span className="title">xAI Intern</span>: data center engineering intern on electrical engineering team.
+                            <span className="title">SpaceXAI Intern</span>: data center engineering intern on electrical engineering team.
                             <span className='date'>Jun&ndash;Sep 2026</span>
                             <div className="description indent">
                                 Created ETAP models for two AI data centers for coordination studies, wrote two switching procedures (MOPs), and documented circuit breakers for 5,760 GPU racks.
