@@ -41,6 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             ['/software/edit-time', .9, 'daily'],
             ['/software/focus', .9, 'daily'],
             ['/software/homework-checker', .9, 'daily'],
+            ['/software/notification-swipe', .9, 'daily'],
         ['/slaphappy', .7],
         ['/research', .8],
             ['/research/how-do-cultures-combine', .7],

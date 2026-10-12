@@ -22,6 +22,7 @@ export default function Software() {
                     <li><Link href='https://apps.apple.com/us/app/readometer-track-your-speed/id6757317732?pt=126612879&ct=web' target='_blank'>Readometer</Link></li>
                     <li><Link href='https://apps.apple.com/us/app/worderoo/id6745312298?pt=126612879&ct=web' target='_blank'>Worderoo</Link></li>
                     <li><Link href='https://apps.apple.com/us/app/simplehealth-steps-sleep-gym/id6761314044?pt=126612879&ct=web' target='_blank'>SimpleHealth</Link></li>
+                    <li><Link href='/software/notification-swipe' target='_blank'>Notification Swipe</Link></li>
 
                     {/*
                     Not including/failed:
