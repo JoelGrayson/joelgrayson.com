@@ -20,7 +20,7 @@ export default function Portfolio() {
                 <Yt width='100%'>EImxhXcVqFs</Yt>
             </div>
             <div>
-                <h3>Edit Time</h3>
+                <h3 className='m:mt-0'>Edit Time</h3>
                 <p>Desktop app that enables users to change files&apos; date creation properties, which was previously impossible without the terminal.</p>
                 <p>Impact: <b>11,000</b> installs and <b>$5,000</b> in revenue</p>
                 <p>Tech: Swift/SwiftUI, StoreKit, Bash</p>
@@ -39,7 +39,7 @@ export default function Portfolio() {
                 <Yt width='100%'>G8awTY4mh2I</Yt>
             </div>
             <div>
-                <h3>Buseroo</h3>
+                <h3 className='m:mt-0'>Buseroo</h3>
                 <p>Website and mobile app for students and teachers to find which school bus leads to any address. Allows schools to sign up and manage their bus route data in admin page. Example use cases: finding a bus to doctor&apos;s appointment, aunt&apos;s house, or museum.</p>
                 <p>Impact: <b>2,000</b> searches</p>
                 <p>Tech: TypeScript, Next.js/React, Prisma, Swift/SwiftUI, GCP, OAuth</p>
@@ -67,7 +67,7 @@ export default function Portfolio() {
                 <Yt width='100%'>MNnVqfHZyQU</Yt>
             </div>
             <div>
-                <h3>Homework Checker</h3>
+                <h3 className='m:mt-0'>Homework Checker</h3>
                 <p>Helps students keep track of completed assignments, so they don&apos;t miss any.</p>
                 <p>Impact: <b>8,000</b> weekly users</p>
                 <p>Tech: TypeScript, OOP, Gulp, HTML/JS/SASS</p>
@@ -93,7 +93,7 @@ export default function Portfolio() {
                 <Yt width='100%'>ltKnFS1miEQ</Yt>
             </div>
             <div>
-                <h3>Focus</h3>
+                <h3 className='m:mt-0'>Focus</h3>
                 <p>Helps users enter the flow while writing in Google Docs.</p>
                 <p>Impact: <b>1,000</b> weekly users</p>
                 <p>Tech: TypeScript, HTML/JS/CSS, Perl, Bash</p>
@@ -119,7 +119,7 @@ export default function Portfolio() {
                 <Yt width='100%'>D4iZ2kXLfdc</Yt>
             </div>
             <div>
-                <h3>MorseBench</h3>
+                <h3 className='m:mt-0'>MorseBench</h3>
                 <p>Interactive Morse code trainer—key Morse with your keyboard, tap, or microphone, and hear/see it decoded in real time. Also includes encoding and practice drills.</p>
                 <div className='flex justify-end items-center gap-2 absolute top-3 right-0'>
                     <Link href='https://morsebench.com' target='_blank' className='flex justify-center items-center gap-2 button !px-1.5 !py-1'>
@@ -139,7 +139,7 @@ export default function Portfolio() {
                 <Yt width='100%'>bHHk2FL5Ujs</Yt>
             </div>
             <div>
-                <h3>Venderoo</h3>
+                <h3 className='m:mt-0'>Venderoo</h3>
                 <p>Designed &amp; built vending machine that sold over 100 snacks. Used Arduino, 8 DC motors, LCD display, keypad, bill acceptor, wood, plexiglass, and C++.</p>
                 <div className='flex justify-end absolute bottom-0 right-0'>
                     <Link href='https://github.com/JoelGrayson/Venderoo/blob/main/Venderoo.ino' target='_blank' className='flex justify-center items-center gap-2 button !px-1.5 !py-1'>
@@ -157,7 +157,7 @@ export default function Portfolio() {
                 <Yt width='100%'>zEDVGfCVhaw</Yt>
             </div>
             <div>
-                <h3>Self-Driving Car</h3>
+                <h3 className='m:mt-0'>Self-Driving Car</h3>
                 <p>In 36 hours, turned a 2018 Honda into a partially self-driving car with team at TreeHacks (Stanford&apos;s Hackathon), winning 1st Place in the NVIDIA Track (Edge AI).</p>
                 <div className='flex justify-end absolute bottom-0 right-0'>
                     <Link href='https://devpost.com/software/torq' target='_blank' className='flex justify-center items-center gap-2 button !px-1.5 !py-1'>
@@ -174,7 +174,7 @@ export default function Portfolio() {
                 <Yt width='100%'>B2POsO4RqfI</Yt>
             </div>
             <div>
-                <h3>FPGA Piano</h3>
+                <h3 className='m:mt-0'>FPGA Piano</h3>
                 <p>Wrote Verilog for an FPGA to read in raw signals coming from a PS/2 keyboard so you can play it like a piano and show text and sinusoid waveform of the note on an HDMI monitor.</p>
                 <div className='flex justify-end absolute bottom-0 right-0'>
                     <Link href='https://github.com/JoelGrayson/FPGA-Piano' target='_blank' className='flex justify-center items-center gap-2 button !px-1.5 !py-1'>
