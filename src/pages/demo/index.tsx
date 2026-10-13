@@ -19,7 +19,7 @@ export default function Demo() {
             <div className='py-4'>
                 <Yt width='100%'>bHHk2FL5Ujs</Yt>
             </div>
-            <div className='flow-root'>
+            <div className='flow-root m:pb-4'>
                 <h3 className='m:mt-0'>Venderoo</h3>
                 <p>Designed &amp; built vending machine that sold over 100 snacks. Used Arduino, 8 DC motors, LCD display, keypad, bill acceptor, wood, plexiglass, and C++.
                     <span className='float-right ml-3 m:ml-0 inline-flex flex-wrap justify-end items-center gap-2 m:gap-1'>
@@ -38,7 +38,7 @@ export default function Demo() {
             <div className='py-4'>
                 <Yt width='100%'>zEDVGfCVhaw</Yt>
             </div>
-            <div className='flow-root'>
+            <div className='flow-root m:pb-4'>
                 <h3 className='m:mt-0'>Self-Driving Car</h3>
                 <p>In 36 hours, turned a 2018 Honda into a partially self-driving car with team at TreeHacks (Stanford&apos;s Hackathon), winning 1st Place in the NVIDIA Track (Edge AI).
                     <span className='float-right ml-3 m:ml-0 inline-flex flex-wrap justify-end items-center gap-2 m:gap-1'>
@@ -56,7 +56,7 @@ export default function Demo() {
             <div className='py-4'>
                 <Yt width='100%'>L5cV2TB7tLQ</Yt>
             </div>
-            <div className='flow-root'>
+            <div className='flow-root m:pb-4'>
                 <h3 className='m:mt-0'>Asteroids</h3>
                 <p>Recreated the 1979 Atari arcade game Asteroids from scratch with bare-metal C programming.
                     <span className='float-right ml-3 m:ml-0 inline-flex flex-wrap justify-end items-center gap-2 m:gap-1'>
@@ -75,7 +75,7 @@ export default function Demo() {
             <div className='py-4'>
                 <Yt width='100%'>B2POsO4RqfI</Yt>
             </div>
-            <div className='flow-root'>
+            <div className='flow-root m:pb-4'>
                 <h3 className='m:mt-0'>FPGA Piano</h3>
                 <p>Wrote Verilog for an FPGA to read in raw signals coming from a PS/2 keyboard so you can play it like a piano and show text and sinusoid waveform of the note on an HDMI monitor.
                     <span className='float-right ml-3 m:ml-0 inline-flex flex-wrap justify-end items-center gap-2 m:gap-1'>
@@ -96,7 +96,7 @@ export default function Demo() {
             <div className='py-4'>
                 <Yt width='100%'>EImxhXcVqFs</Yt>
             </div>
-            <div className='flow-root'>
+            <div className='flow-root m:pb-4'>
                 <h3 className='m:mt-0'>Edit Time</h3>
                 <p>Desktop app that enables users to change files&apos; date creation properties, which was previously impossible without the terminal.</p>
                 <p>Impact: <b>11,000</b> installs and <b>$5,000</b> in revenue</p>
@@ -116,7 +116,7 @@ export default function Demo() {
             <div className='py-4'>
                 <Yt width='100%'>G8awTY4mh2I</Yt>
             </div>
-            <div className='flow-root'>
+            <div className='flow-root m:pb-4'>
                 <h3 className='m:mt-0'>Buseroo</h3>
                 <p>Website and mobile app for students and teachers to find which school bus leads to any address. Allows schools to sign up and manage their bus route data in admin page. Example use cases: finding a bus to doctor&apos;s appointment, aunt&apos;s house, or museum.</p>
                 <p>Impact: <b>2,000</b> searches</p>
@@ -145,7 +145,7 @@ export default function Demo() {
             <div className='py-4'>
                 <Yt width='100%'>MNnVqfHZyQU</Yt>
             </div>
-            <div className='flow-root'>
+            <div className='flow-root m:pb-4'>
                 <h3 className='m:mt-0'>Homework Checker</h3>
                 <p>Helps students keep track of completed assignments, so they don&apos;t miss any.</p>
                 <p>Impact: <b>8,000</b> weekly users</p>
@@ -170,7 +170,7 @@ export default function Demo() {
             <div className='py-4'>
                 <Yt width='100%'>ltKnFS1miEQ</Yt>
             </div>
-            <div className='flow-root'>
+            <div className='flow-root m:pb-4'>
                 <h3 className='m:mt-0'>Focus</h3>
                 <p>Helps users enter the flow while writing in Google Docs.</p>
                 <p>Impact: <b>1,000</b> weekly users</p>
@@ -195,7 +195,7 @@ export default function Demo() {
             <div className='py-4'>
                 <Yt width='100%'>D4iZ2kXLfdc</Yt>
             </div>
-            <div className='flow-root'>
+            <div className='flow-root m:pb-4'>
                 <h3 className='m:mt-0'>MorseBench</h3>
                 <p>Interactive Morse code trainer—key Morse with your keyboard, tap, or microphone, and hear/see it decoded in real time. Also includes encoding and practice drills.
                     <span className='float-right ml-3 m:ml-0 inline-flex flex-wrap justify-end items-center gap-2 m:gap-1'>
