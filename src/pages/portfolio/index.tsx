@@ -190,7 +190,7 @@ export default function Portfolio() {
         </div>
 
         <hr className='my-3' />
-        <p>Other projects include <Link target='_blank' href='https://apps.apple.com/us/app/techmap/id6748248815?pt=126612879&ct=web'>TechMap</Link>, <Link href='https://apps.apple.com/app/worderoo/id6745312298' target='_blank'>Worderoo</Link>, <Link target='_blank' href='https://memorizethepresidents.com'>memorizethepresidents.com</Link>, <Link target='_blank' href='https://shirtocracy.com'>shirtocracy.com</Link>, and <Link target='_blank' href='https://studentsforelectricbuses.org'>studentsforelectricbuses.org</Link>.</p>
+        <p>Other projects include <Link target='_blank' href='https://shanghaidictionary.com'>shanghaidictionary.com</Link>, <Link target='_blank' href='https://apps.apple.com/us/app/techmap/id6748248815?pt=126612879&ct=web'>TechMap</Link>, <Link href='https://apps.apple.com/app/worderoo/id6745312298' target='_blank'>Worderoo</Link>, <Link target='_blank' href='https://memorizethepresidents.com'>memorizethepresidents.com</Link>, <Link target='_blank' href='https://shirtocracy.com'>shirtocracy.com</Link>, and <Link target='_blank' href='https://studentsforelectricbuses.org'>studentsforelectricbuses.org</Link>.</p>
     </Page>;
 }
 
