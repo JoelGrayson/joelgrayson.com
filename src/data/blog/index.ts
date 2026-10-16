@@ -1,6 +1,7 @@
 import { article as articleT, DEFAULT_SECTION } from './types';
 
 export const articles: articleT[]=[
+    { title: 'Tom Steyer Calls for Single-Payer Health Care, Sustainability at Stanford in Government', hyphenatedTitle: 'steyer-calls-for-single-payer',            date: new Date('Oct 14, 2026'), category: 'government'    , defaultSection: DEFAULT_SECTION.STANFORD_DAILY, defaultIndex: 0, externalUrl: 'https://stanforddaily.com/2026/10/14/steyer-calls-for-single-payer/' },
     { title: 'A Realistic Path to Ending 99% of Human-Induced Animal Suffering', hyphenatedTitle: 'meat',                     date: new Date('Mar 13, 2025'), category: 'science'       , defaultSection: DEFAULT_SECTION.MAIN, defaultIndex: 0 },
     { title: 'Division of Power Within NYC',                 hyphenatedTitle: 'division-of-power-within-nyc',                 date: new Date('Oct 30, 2023'), category: 'government'    , defaultSection: DEFAULT_SECTION.OTHERS, defaultIndex: 0 },
     { title: 'A Better Way to Teach Math',                   hyphenatedTitle: 'a-better-way-to-teach-math',                   date: new Date('Feb 20, 2023'), category: 'science'       , defaultSection: DEFAULT_SECTION.OTHERS, defaultIndex: 0 },

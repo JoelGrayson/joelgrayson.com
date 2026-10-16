@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { article as articleT } from '@/data/blog/types';
 
 export default function ArticleThumbnail({article}: {article: articleT}) { //rectangle with thumbnail and title
-    return <Link href={`/blog/${article.hyphenatedTitle}`} style={{width: 'fit-content', margin: '0.5rem'}} className='unstyled' tabIndex={0}>
+    return <Link href={article.externalUrl ?? `/blog/${article.hyphenatedTitle}`} target={article.externalUrl ? '_blank' : undefined} style={{width: 'fit-content', margin: '0.5rem'}} className='unstyled' tabIndex={0}>
         {/* Thumbnail Heights
             CSS Size
                 image height: 113px

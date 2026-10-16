@@ -34,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ['/art', .7],
         ['/stats', .7],
         ['/blog', 1, 'weekly'],
-            ...blogArticles.map(blogArticle=>[`/blog/${blogArticle.hyphenatedTitle}`, .6, 'weekly', blogArticle.date] as CustomEntry),
+            ...blogArticles.filter(blogArticle=>!blogArticle.externalUrl).map(blogArticle=>[`/blog/${blogArticle.hyphenatedTitle}`, .6, 'weekly', blogArticle.date] as CustomEntry),
         ['/verify', .8],
         ['/student-government', .7],
         ['/software', .7],

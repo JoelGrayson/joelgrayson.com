@@ -112,6 +112,18 @@ export function BlogArticles() {
                     }
                 </div>
                 
+                <h3 className='mt-20 text-center'>Stanford Daily Articles</h3>
+                <div style={gridStyle}>
+                    {
+                        articles
+                            .filter(a=>a.defaultSection === 'STANFORD_DAILY')
+                            .sort(a=>a.defaultIndex)
+                            .map(article=>{
+                                return <ArticleThumbnail key={article.hyphenatedTitle} article={article} />;
+                            })
+                    }
+                </div>
+
                 <h3 className='mt-20 text-center'>Other Articles</h3>
                 <div style={gridStyle}>
                     {

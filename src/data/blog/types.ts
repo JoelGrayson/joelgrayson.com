@@ -15,10 +15,12 @@ export type article={
     category: category;
     defaultSection: keyof typeof DEFAULT_SECTION;
     defaultIndex: number;
+    externalUrl?: string; //if set, the thumbnail links here instead of /blog/<hyphenatedTitle>
 };
 
 export const DEFAULT_SECTION = {
     MAIN: 'MAIN',
+    STANFORD_DAILY: 'STANFORD_DAILY',
     OTHERS: 'OTHERS'
 } as const;
 
