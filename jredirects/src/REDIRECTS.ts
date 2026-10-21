@@ -7,6 +7,7 @@ export const temporary: redirects={ //302
     // Destination: source
     
     // '/image/art/2025%20Lower%20Manhattan.jpg': '/lower-manhattan.jpg',
+    '/software/notification-swipe': ['/notificationswipe', '/notification-swipe'],
     '/phasors': ['/phasor', '/phasor-calculator'],
     '/lower-manhattan-4k': '/lower-manhattan4k',
     '/portfolio': '/portfolio.',

@@ -27,6 +27,9 @@ export default function NotificationSwipe() {
             </Link>
         </div>
 
+        <h3>Demo</h3>
+        <video src='/software/notification-swipe/demo.mp4' className='w-full' controls autoPlay muted loop playsInline></video>
+
         <h3>How to Install</h3>
         <ol>
             <li><Link download href={download} onClick={trackDownload}>Download</Link> and unzip it, then move <code>Notification Swipe.app</code> to your Applications folder.</li>
@@ -40,12 +43,6 @@ export default function NotificationSwipe() {
             <li>Right-click the bell to launch it at login or to quit.</li>
             <li>Hold ⌘ and drag the bell to move it along the menu bar.</li>
         </ul>
-
-        <h3>How It Works</h3>
-        <p>macOS has no way to dismiss a notification without clearing it, so the app does what you would do by hand: it finds each notification and drags it off to the right. Your cursor jumps for an instant and returns to where it was. That is why it needs Accessibility access.</p>
-
-        <h3>Requirements</h3>
-        <p>Made for macOS 26. It has not been tested on earlier versions.</p>
 
         <h3>Privacy</h3>
         <p>No data is collected. The app never connects to the internet.</p>
