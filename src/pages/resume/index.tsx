@@ -148,7 +148,7 @@ export default function Resume() {
                             <span className='date'>2026</span>
                         </li>
                         <li>
-                            <span className="title"><Link href="https://luxpremierllc.com/" target="_blank">Lux Premier LLC</Link></span> (founder): created software with 10,000+ users &amp; $5,000 in revenue.
+                            <span className="title"><Link href="https://luxpremierllc.com/" target="_blank">Lux Premier LLC</Link></span> (founder): created software with 20,000 users &amp; $5,000 in revenue.
                             <span className='date'>2019&ndash;26</span>
                         </li>
                         <li>
