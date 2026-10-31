@@ -21,6 +21,19 @@ export const machines: Machine[]=[
         sortBy: {
             rank: 3,
             date: new Date('2026'),
+            title: 'Asteroids'
+        },
+        html: DefaultTemplate({
+            date: '2026',
+            title: <>Asteroids</>,
+            desc: <>Recreated the 1979 Atari arcade game Asteroids from scratch with bare-metal C programming and built the arcade console with Sebastian. Code: <Link href='https://github.com/JoelGrayson/asteroids' target='_blank'>github.com/JoelGrayson/asteroids</Link></>,
+            yt: 'L5cV2TB7tLQ'
+        })
+    },
+    {
+        sortBy: {
+            rank: 3,
+            date: new Date('2026'),
             title: 'FPGA Piano'
         },
         html: DefaultTemplate({
